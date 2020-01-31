@@ -12,4 +12,4 @@ script:
   docker run --network host
   -v $TRAVIS_BUILD_DIR:/build
   -it enterpriseconnect/webui:v1.1beta
-  ls -al && npm install && npm test
+  /bin/sh -c 'ls -al && npm install && npm test'
