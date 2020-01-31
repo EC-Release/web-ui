@@ -1,0 +1,912 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "EC admin UI backend APIs",
+    "version": "1.0.0",
+    "title": "Admin WebUI"
+  },
+  "host": "localhost:8083",
+  "basePath": "/v1.1beta/ec",
+  "tags": [
+    {
+      "name": "View",
+      "description": "Handles View APIs"
+    },
+    {
+      "name": "Maintain",
+      "description": "Handles Maintain APIs"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/listUsers": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "Lists EC UI users",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of EC UI users",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/listGateways": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "Gives list of gateways for a user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Gateway",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listGatewaysForZone": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "List the gateways for a zone",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "zone_id",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Gateways for zone",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listZones": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "List zone ids for a user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of zone ids",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listServers": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "List servers for a user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of servers",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listClients": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "List clients for a user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of clients",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listServersForGateway": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "List servers for a gateway",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of servers",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listClientsForGateway": {
+      "get": {
+        "tags": [
+          "View"
+        ],
+        "summary": "List clients for a gateway",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of clients",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/generateGatewayScript": {
+      "post": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Store the gateway information and generates script",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GatewayInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client Script"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/generateServerScript": {
+      "post": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Store the server information and generates script",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServerInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client Script"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/generateClientScript": {
+      "post": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Store the client information and generates script",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClientInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client Script"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/updateGateway": {
+      "put": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Updates gateway information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/GatewayInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Information updated"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/updateServer": {
+      "put": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Updates server information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "server_id",
+            "in": "query",
+            "description": "server_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ServerInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Information updated"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/updateClient": {
+      "put": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Updates client information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "user_id ",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "description": "client_id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ClientInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Information updated"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/deleteGateway": {
+      "delete": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Deletes gateway information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gateway_id",
+            "in": "query",
+            "description": "gateway_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway information deleted"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/deleteServer": {
+      "delete": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Deletes server information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "server_id",
+            "in": "query",
+            "description": "server_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Server deleted"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/deleteClient": {
+      "delete": {
+        "tags": [
+          "Maintain"
+        ],
+        "summary": "Deletes client information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "client_id",
+            "in": "query",
+            "description": "client_id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Client deleted"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "GatewayInfo": {
+      "type": "object",
+      "properties": {
+        "mod": {
+          "type": "string"
+        },
+        "hst": {
+          "type": "string"
+        },
+        "dbg": {
+          "type": "boolean"
+        },
+        "tkn": {
+          "type": "string"
+        },
+        "sst": {
+          "type": "string"
+        },
+        "zon": {
+          "type": "string"
+        },
+        "gpt": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
+      }
+    },
+    "ServerInfo": {
+      "type": "object",
+      "properties": {
+        "mod": {
+          "type": "string"
+        },
+        "aid": {
+          "type": "string"
+        },
+        "hst": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "csc": {
+          "type": "string"
+        },
+        "oa2": {
+          "type": "string"
+        },
+        "dur": {
+          "type": "integer"
+        },
+        "dbg": {
+          "type": "boolean"
+        },
+        "grp": {
+          "type": "string"
+        },
+        "sst": {
+          "type": "string"
+        },
+        "zon": {
+          "type": "string"
+        },
+        "cps": {
+          "type": "integer"
+        },
+        "rht": {
+          "type": "string"
+        },
+        "rpt": {
+          "type": "string"
+        },
+        "plg": {
+          "type": "boolean"
+        },
+        "vln": {
+          "type": "boolean"
+        },
+        "tls": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ClientInfo": {
+      "type": "object",
+      "properties": {
+        "mod": {
+          "type": "string"
+        },
+        "aid": {
+          "type": "string"
+        },
+        "tid": {
+          "type": "string"
+        },
+        "hst": {
+          "type": "string"
+        },
+        "cid": {
+          "type": "string"
+        },
+        "csc": {
+          "type": "string"
+        },
+        "oa2": {
+          "type": "string"
+        },
+        "dur": {
+          "type": "integer"
+        },
+        "dbg": {
+          "type": "boolean"
+        },
+        "grp": {
+          "type": "string"
+        },
+        "cps": {
+          "type": "integer"
+        },
+        "lpt": {
+          "type": "string"
+        },
+        "plg": {
+          "type": "boolean"
+        },
+        "vln": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}

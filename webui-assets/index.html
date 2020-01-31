@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <!-- Bootstrap table -->
+    <link rel="stylesheet" href="assets/static/css/jquery.dataTables.css">
+    <!-- Modular library -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
+    <title>xcalr UI</title>
+    <style>
+      @font-face {
+        font-family: customRegular;
+        src: url(assets/static/css/roboto/Roboto-Regular.ttf);
+      }
+
+      #root{
+        font-family: customRegular;
+      }
+      bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+        }
+      }
+      html,
+      body {
+        height: 100%;
+      }
+
+      html,
+      body,
+      div {
+        width: 100%;
+      }
+
+      body {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        align-items: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+      .btn-space {
+        margin-right: 5px;
+      }
+      .required{
+          color: red;
+      }
+      .rounded {
+        border-radius:.25rem!important
+      }
+      .form-signin {
+        width: 100%;
+        max-width: 330px;
+        padding: 15px;
+        margin: auto;
+      }
+      .selection-area{
+       overflow: scroll;
+       height: 550px;
+      }
+
+      .form-signin .checkbox {
+        font-weight: 400;
+      }
+      .form-signin .form-control {
+        position: relative;
+        box-sizing: border-box;
+        height: auto;
+        padding: 10px;
+        font-size: 16px;
+      }
+      .form-signin .form-control:focus {
+        z-index: 2;
+      }
+      .form-signin input[type="id"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+      }
+      .background {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+      }
+
+      .window {
+        box-shadow: 2px 2px 2px #222;
+        border-radius: 10px;
+        max-width: 350px;
+        min-height: 200px; 
+        padding: 20px;
+      }
+
+      #close {
+        font-size: 1em;
+        float: right;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        grid-column-gap: 10px;
+      }
+      #dive_panel{
+        display: block;
+      }
+      #detailsExpanded{
+        text-align:left;
+      }
+      #leftButton{
+        margin-left: 275px;
+      }
+      #leftButton2{
+        margin-left: 35px;
+      }
+      #Button{
+        margin-left: 20px;
+      }
+      #dataView{
+        margin-left: 20px;
+      }
+      .modal-body{
+          padding: 0px;
+      }
+      .lower-navbar a {
+        font-weight: 600;
+        margin-right: 45px;
+      }
+
+      .row{
+        margin-left: 0rem;
+      }
+
+      .alert-notification{
+        margin-bottom: 0rem;
+        position: absolute;
+        z-index: 10;
+        width: 40%;
+        margin: auto;
+        right: 0;
+        left: 0;
+      }
+
+      .custom-success{
+        background-color: #00BF6F;
+      }
+
+      .custom-danger{
+        background-color: #FE5000;
+      }
+
+      .alert-notification p{
+        margin-bottom: 0;
+        color: #ffffff;
+        font-weight: 600;
+      }
+
+      .ajaxBusy {
+        background: url(assets/static/images/rolling.svg) no-repeat center;
+      height: 50px;
+      background-size: 50px;
+      }
+
+      header{
+        background-color: #005EB8;
+      }
+
+      .ge-logo{
+        text-align: left;
+      }
+
+      .header-profile{
+        text-align: right;
+        color: #ffffff;
+        font-weight: 600;
+        margin-top: 2%;
+      }
+
+      .header-profile span{
+        margin-right: 10px;
+      }
+
+      .navbar{
+        padding: 0rem 0rem; 
+        margin: .5rem 0rem 0rem 0rem;
+        border-bottom: 1px solid #e4e7eb;
+      }
+
+      .lower-navbar img{
+        margin-right: 10px;
+      }
+
+      .lower-navbar li.active{
+        border-bottom: 3px solid #005EB8;
+      }
+
+      .navbar-nav li:hover > ul.dropdown-menu {
+        display: block;
+      }
+
+      .dropdown-menu{
+        padding: 0rem 0;
+      }
+
+      .dropdown-item:hover, .dropdown-menu > li:hover{
+        background-color: #f6f9fd;
+      }
+
+      .dropdown-menu li:not(:last-child){
+        border-bottom: 1px solid #e4e7eb;
+      }
+
+      .dropdown-submenu {
+        position:relative;
+      }
+      .dropdown-submenu>.dropdown-menu {
+        top: 0;
+        left: 100%;
+        margin-top:-6px;
+      }
+
+      /* rotate caret on hover */
+      .dropdown-menu > li > a:hover:after {
+        text-decoration: underline;
+        transform: rotate(-90deg);
+      }
+
+      .vl {
+        border-left: 3px solid #ffffff;
+      }
+
+      .dynamic-container{
+        background-color: #f9fafb;
+        width: 100%;
+        /* center a div insie another div*/
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .centered-div{
+        width: 97%;
+        margin: 15px 0px;
+        padding: 5px;
+        background-color: #ffffff;
+        border: 1px solid #ebeced;
+        max-height: 455px;
+      }
+
+      .centered-div-header .view-header h6, .centered-div-header .maintainagentcreate-header h6{
+        font-weight: 600;
+      }
+
+      .centered-div.View{
+        font-size: small;
+      }
+
+      .view-header div:first-child, .Maintainagentcreate{
+        text-align: left;
+      }
+
+      .view-header div:last-child{
+        text-align: right;
+      }
+
+      hr{
+        margin-top: 0rem;
+      }
+
+      .cursor-pointer{
+        cursor: pointer;
+      }
+
+      /* Tree css start */
+      .Topologygraph {
+        height: 100%;
+      }
+
+      .treeview-div{
+        overflow-y: scroll;
+        height: 350px;
+        text-align: left;
+      }
+
+      .tree, .tree ul {
+        margin:0;
+        padding:0;
+        list-style:none
+      }
+
+      .tree ul {
+        margin-left:1em;
+        position:relative
+      }
+
+      .tree ul ul {
+        margin-left:.5em
+      }
+
+      .tree ul:before {
+        content:"";
+        display:block;
+        width:0;
+        position:absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        border-left:1px solid
+      }
+
+      .tree li {
+        margin:0;
+        padding:0 1em;
+        line-height:2em;
+        color:#005EB8;
+        font-weight:600;
+        position:relative
+      }
+
+      .tree ul li:before {
+        content:"";
+        display:block;
+        width:10px;
+        height:0;
+        border-top:1px solid;
+        margin-top:-1px;
+        position:absolute;
+        top:1em;
+        left:0
+      }
+
+      .tree ul li:last-child:before {
+        background:#fff;
+        height:auto;
+        top:1em;
+        bottom:0
+      }
+
+      .indicator {
+        margin-right:5px;
+      }
+
+      .tree li a {
+        text-decoration: none;
+        color:#005EB8;
+      }
+
+      .tree li button, .tree li button:active, .tree li button:focus {
+        text-decoration: none;
+        color:#005EB8;
+        border:none;
+        background:transparent;
+        margin:0px 0px 0px 0px;
+        padding:0px 0px 0px 0px;
+        outline: 0;
+      }
+      /* Tree css end */
+
+      .view-table{
+        max-height: 350px;
+        overflow-y: scroll;
+        font-size: small;
+      }
+
+      .bottom .dataTables_length{
+        text-align: right;
+      }
+
+      table.dataTable thead th{
+        border-bottom: 1px solid #ebeced;
+        font-weight: 500;
+      }
+
+      .customize-view-btn, .customize-view-btn:hover{
+        font-size: small;
+        background-color: #005EB8;
+        color: #ffffff;
+      }
+
+      .customize-reset-btn, .customize-reset-btn:hover{
+        font-size: small;
+        background-color: #ffffff;
+        color: #005EB8;
+        border-color: #ebeced;
+      }
+
+      .icon-arrowmore{
+        cursor: pointer;
+      }
+
+      .Customsearch .vdivide:after{
+        background: #ebeced;
+        width: 1px;
+        content: "";
+        display:block;
+        position: absolute;
+        top:0;
+        bottom: 0;
+        right: 0;
+        min-height: 100%;
+      }
+
+      .Customsearch .view-header small, .Maintainagentcreate .maintainagentcreate-header small{
+        color: #8f9ca9;
+      }
+
+      .Customsearch .view-selection-panel img{
+        height: 25px;
+      }
+
+      .Customsearch .list-group-item.active{
+        background-color: #005EB8;
+        border-color: #005EB8;
+      }
+
+      .Customsearch .view-selection-panel h6 small{
+        color: #00000080;
+        font-weight: 600;
+      }
+
+      .Customsearch .view-selection-panel .list-group{
+        max-height: 370px;
+        margin-bottom: 10px;
+      }
+
+      .Customsearch .view-selection-panel .pre-scrollable {
+        min-height: 340px;
+        overflow-y: auto;
+      }
+
+      .selection-button-div{
+        padding-top: 35%;
+      }
+
+      .Customsearch .remove-row{
+        cursor: pointer;
+        height: 20px;
+      }
+
+      .Customsearch .form-control{
+        font-size: inherit;
+      }
+
+      .Maintainagentcreate .form-body h6{
+        font-weight: 600;
+        color: #8f9ca9;
+      }
+
+      .btn-selected, .btn-selected:hover{
+        color: #ffffff;
+        background-color: #005EB8;
+        border-color: #005EB8;
+        font-weight: 600;
+      }
+
+      .btn-deselected, .btn-deselected:hover{
+        color: #005EB8;
+        background-color: #ffffff;
+        border-color: #00B5E2;
+        font-weight: 600;
+      }
+
+      .minimized-modal{
+        display: block;
+      }
+
+      .minimized-modal-dialog {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 300px;
+        margin: 0rem;
+      }
+
+      .minimized-modal-dialog .modal-body{
+        background-color: #005EB8;
+      }
+
+      .maximize-image-div{
+        margin-top: 20px;
+      }
+
+      .maximize-image-div img{
+        cursor: pointer;
+      }
+
+      .custom-control-checkbox:checked~.custom-control-label::before{
+        background-color: #005EB8;
+        border-color: #005EB8;
+      }
+
+      .theme-color{
+        color: #005EB8;
+      }
+
+      .changeable-form.gateway-form{
+        max-height: 260px;
+      }
+
+      .changeable-form.server-form, .changeable-form.client-form{
+        max-height: 260px;
+      }
+
+      .changeable-form {
+        overflow-y: scroll;
+      }
+
+      .changeable-form .label{
+        font-size: .875rem;
+        font-weight: 600;
+        color: #8f9ca9;
+      }
+
+      .executeModal .modal-content {
+        border-radius: 0rem;
+      }
+
+      .executeModal .modal-header {
+        border-bottom: 0px;
+      }
+
+      .executeModal .modal-header h6 {
+        font-weight: 600;
+        color: #8f9ca9;
+      }
+
+      .executeModal .modal-header h6 small {
+        color: #8f9ca9;
+      }
+
+      .executeModal label{
+        color: #8f9ca9;
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 0rem
+      }
+
+      .executeModal .custom-control-input:checked~.custom-control-label::before{
+        color: #005EB8;
+        border-color: #005EB8;
+        background-color: #005EB8;
+      }
+
+      .execute-script-note{
+        color: #8f9ca9;
+      }
+
+      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div{
+        max-height: 450px;
+        overflow-y: scroll;
+        font-size: small;
+      }
+
+      .Maintainagentview .search-field, .Maintainagentupgrade .search-field{
+        width: 80%;
+      }
+
+      .Maintainagentview button.disabled, .Maintainagentupgrade button.disabled{
+        opacity: inherit;
+        cursor: auto;
+      }
+
+      .action-img img{
+        height: 12px;
+        margin-right: 10px;
+        cursor: pointer;
+      }
+
+      .breadcrumb {
+        margin-bottom: 0rem;
+        padding: 0rem 0rem;
+        font-size: .8rem;
+        background-color: transparent;
+      }
+
+      .breadcrumb-item + .breadcrumb-item::before {
+        content: ">";
+      }
+
+      .Maintainagentcreate .centered-div {
+        margin: 0px 0px;
+      }
+
+      .loader-icon img{
+        height: 50px;
+      }
+
+      .card-header{
+        padding: 0rem 0rem;
+      }
+
+      .card-header .btn-link{
+        color: #005EB8;
+      }
+      
+      @media (max-width: 991px) {
+        .ge-logo, .header-profile {
+          text-align: center;
+        }
+
+        .view-header div:first-child, .view-header div:last-child{
+          text-align: center;
+        }
+      }
+    </style>
+    <link rel="shortcut icon" href="https://www.ge.com/sites/all/themes/ge_2016/favicon.ico" type="image/vnd.microsoft.icon">
+  </head>
+  <body class="text-center" style="background-color: gray;">
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script>
+      System.config({
+        transpiler: 'babel',
+        baseURL: '',
+        map: {
+          babel: 'https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js',
+          react: 'https://unpkg.com/react@16/umd/react.development.js',
+          'react-dom': 'https://unpkg.com/react-dom@16/umd/react-dom.development.js'
+        }
+      });
+
+      // loads
+      System.import('assets/xcalrWebUI.js');
+    </script>
+    <div id="root"></div>
+      <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script type="text/javascript" src="assets/static/js/custom.js"></script>
+    
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  </body>
+</html>

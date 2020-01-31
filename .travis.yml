@@ -1,0 +1,14 @@
+language: minimal
+
+services:
+  - docker
+
+before_install:
+- docker pull enterpriseconnect/webui:v1.1beta
+- docker images
+
+script:
+- >
+  docker run --network host
+  -v $TRAVIS_BUILD_DIR:/build
+  -it enterpriseconnect/webui:v1.1beta

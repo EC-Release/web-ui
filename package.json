@@ -1,0 +1,40 @@
+{
+    "name": "ec-admin-webui",
+    "description": "EC Admin Console UI based on Bootstrap and REACT",
+    "version": "0.0.1",
+    "dependencies": {
+        "@babel/register": "^7.6.2",
+        "babel-cli": "^6.26.0",
+        "babel-preset-react-app": "^9.0.2",
+        "bower": "^1.8.8",
+        "cross-env": "^6.0.0",
+        "istanbul": "^0.4.5",
+        "jasmine-enzyme": "^7.1.1",
+        "jsdom": "^15.1.1",
+        "node-fetch": "^2.6.0",
+        "nyc": "^14.1.1",
+        "protractor": "^5.4.2",
+        "react": "^16.9.0",
+        "react-dom": "^16.9.0",
+        "typescript": "^3.7.3"
+    },
+    "scripts": {
+        "test": "nyc cross-env NODE_ENV=test jasmine",
+        "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test"
+    },
+    "devDependencies": {
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-preset-env": "^1.7.0",
+        "enzyme": "^3.10.0",
+        "enzyme-adapter-react-16": "^1.14.0",
+        "fetch-mock": "^9.0.0-beta.2",
+        "ignore-styles": "^5.0.1",
+        "jasmine": "^3.5.0",
+        "react-test-renderer": "^16.9.0"
+    },
+    "babel": {
+        "presets": [
+            "react-app"
+        ]
+    }
+}
