@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "Admin WebUI"
   },
-  "host": "localhost:8083",
+  "host": "localhost:17990",
   "basePath": "/v1.1beta/ec",
   "tags": [
     {

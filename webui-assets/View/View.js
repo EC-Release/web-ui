@@ -448,7 +448,7 @@ export default class View extends React.Component {
                     <div className="centered-div-header">
                         <div className="row view-header">
                             <div className="col-sm-8">
-                                <h6>Topology view</h6>
+                                <h6 id="view-header-title">Topology view</h6>
                             </div>
                             <div className="col-sm-4">
                                 <div className="row">

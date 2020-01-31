@@ -16,36 +16,36 @@ export default class Navbar extends React.Component {
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav lower-navbar">
                         <li className={this.props.currentView === 'Dashboard' ? 'nav-item active' : 'nav-item'}>
-                            <a className="nav-link" href="#" onClick={this.props.clickEve.bind(this, 'Dashboard')}>
+                            <a id="nav-dashboard" className="nav-link" href="#" onClick={this.props.clickEve.bind(this, 'Dashboard')}>
                                 <img src={'assets/static/images/dashboard_icon.svg'} alt="nav-dashboard" />
                                 Dashboard <span className="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li className={this.props.currentView === 'View' ? 'nav-item active' : 'nav-item'}>
+                        <li id="nav-view" className={this.props.currentView === 'View' ? 'nav-item active' : 'nav-item'}>
                             <a className="nav-link" href="#" onClick={this.props.clickEve.bind(this, 'View')}>
-                                <img src={'assets/static/images/view_icon.svg'} alt="nav-dashboard" />
+                                <img src={'assets/static/images/view_icon.svg'} alt="nav-view" />
                                 View
                             </a>
                         </li>
-                        <li className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' ? "nav-item dropdown active" : "nav-item dropdown"}>
+                        <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' ? "nav-item dropdown active" : "nav-item dropdown"}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/maintain_icon.svg'} alt="nav-maintain" />
                                 Maintain 
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li className="dropdown-submenu">
-                                    <a className="dropdown-item" href="#">
+                                    <a id="nav-agent" className="dropdown-item" href="#">
                                         Agent
                                     </a>
                                     <ul className="dropdown-menu">
                                         <li>
-                                            <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentcreate')} href="#">Create</a>
+                                            <a id="nav-agent-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentcreate')} href="#">Create</a>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentupgrade')} href="#">Update/Disable</a>
+                                            <a id="nav-agent-update-disable" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentupgrade')} href="#">Update/Disable</a>
                                         </li>
                                         <li>
-                                            <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentview')} href="#">View</a>
+                                            <a id="nav-agent-view" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentview')} href="#">View</a>
                                         </li>
                                     </ul>
                                 </li>

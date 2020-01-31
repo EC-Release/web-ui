@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/Enterprise-connect/web-ui-admin.svg?branch=v1.1beta)](https://travis-ci.com/Enterprise-connect/web-ui-admin)
-
 # xcalr-webui
 - xcalr Web UI based on Bootstrap and REACT.
 
@@ -17,19 +15,11 @@
 
 ### How to run
 ```shell
-#get the agent binary
-wget -O ./ecagent_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta.fukuoka.2723/dist/ecagent_linux_sys.tar.gz \
-  && tar -xvzf ./ecagent_linux_sys.tar.gz
-
 #clone the repo
 git clone --recursive <xcalr-webui-repo>
 
 #launch the app
-./ecagent_darwin_sys -mod api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991 -app ec
-
-#Or simply do a docker run. you may follow the example ```--env-file``` below
-#https://github.com/Enterprise-connect/oci/blob/v1.1beta/spec/web-ui/run.env
-docker run -p 17990:17990 -p 17991:17991 --env-file run.env -it enterpriseconnect/webui:v1.1beta
+./ecagent_darwin_sys -api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991
 ```
 ### First time launch the app
 If this is your first time launch your app developmet in agent API mode, please visit [the agent in API mode for more details](https://github.build.ge.com/Enterprise-Connect/agent/blob/v1.1beta/README.md#launch-agent-for-connectivity-via-api-endpoints)
@@ -67,6 +57,26 @@ Step 3. run npm test (It will automatically run the test cases and produce the r
 
 ### Example Result From Unit Test
 ![Demo test result](docs/Unittest/unit_test_result.PNG?raw=true)
+
+### Automation Testing
+Automation Testing is the process of using the assistance of tools, scripts, and software to perform test cases by repeating pre-defined actions. Test Automation focuses on replacing manual human activity with systems or devices that enhance efficiency.
+
+### Package Used For Automation Testing
+Protractor
+
+Protractor is an end-to-end test framework for applications. Protractor runs tests against your application running in a real browser, interacting with it as a user would.
+Official Doc @ https://www.protractortest.org/
+
+### How To Do Automation Testing
+Step 1. Go to project folder in terminal.
+Step 2. Run npm install  (If you are doing for first time. That will create and install all the dependent packages used for automation testing)
+Step 3. Open project-folder/protractor/todo-spec.js. Find "place your login id" and replace with your login id and find "Place your login password" and replace with your password.
+Step 4. Open one terminal at project-folder/protractor and run webdriver-manager update after that run webdriver-manager start at the same terminal ( do not close this terminal).
+![Demo webdriver-manager update and start](docs/Automationtesting/webdriver-manager.png?raw=true)
+Step 5. Open another terminal at project-folder/protractor and run protractor conf.js (it will start testing the application and opens the browser automatically)
+
+### Example Result From Automation Testing
+![Demo automation test result](docs/Automationtesting/protractor-result.png?raw=true)
 
 ### Topology Graph
 Package used: Vis.js
