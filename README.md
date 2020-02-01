@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Enterprise-connect/web-ui-admin.svg?branch=v1.1beta)](https://travis-ci.com/Enterprise-connect/web-ui-admin)
+
 # xcalr-webui
 - xcalr Web UI based on Bootstrap and REACT.
 
@@ -15,11 +17,19 @@
 
 ### How to run
 ```shell
+#get the agent binary
+wget -O ./ecagent_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta.fukuoka.2723/dist/ecagent_linux_sys.tar.gz \
+  && tar -xvzf ./ecagent_linux_sys.tar.gz
+
 #clone the repo
 git clone --recursive <xcalr-webui-repo>
 
 #launch the app
-./ecagent_darwin_sys -api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991
+./ecagent_darwin_sys -mod api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991 -app ec
+
+#Or simply do a docker run. you may follow the example ```--env-file``` below
+#https://github.com/Enterprise-connect/oci/blob/v1.1beta/spec/web-ui/run.env
+docker run -p 17990:17990 -p 17991:17991 --env-file run.env -it enterpriseconnect/webui:v1.1beta
 ```
 ### First time launch the app
 If this is your first time launch your app developmet in agent API mode, please visit [the agent in API mode for more details](https://github.build.ge.com/Enterprise-Connect/agent/blob/v1.1beta/README.md#launch-agent-for-connectivity-via-api-endpoints)
