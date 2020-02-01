@@ -13,20 +13,22 @@ configure({adapter: new Adapter()});
 describe('Testing from Technicalview.test.js <Technicalview />', () => {
 
     it('should render the Technicalview component', () => {
-        fetchMock.mock('*', 'Hello World!');
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Technicalview showHideTableTdData={()=>{}} goToSearch={()=>{}} />);
         expect(wrapper).toBeTruthy();
     });
 
     it('should render Treelist component only once', () => {
-        fetchMock.mock('*', 'Hello World!');
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Technicalview showHideTableTdData={()=>{}} goToSearch={()=>{}} />);
+        wrapper.setState({ loadTreeJs: true });
         expect(wrapper.find(Treelist).length).toBe(1);
     });
 
     it('should render Topologygraph component only once', () => {
-        fetchMock.mock('*', 'Hello World!');
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Technicalview showHideTableTdData={()=>{}} goToSearch={()=>{}} />);
+        wrapper.setState({ loadTreeJs: true });
         expect(wrapper.find(Topologygraph).length).toBe(1);
     });
 });

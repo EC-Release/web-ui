@@ -108,8 +108,8 @@ export default class Maintainagentedit extends React.Component {
             ],
             // API will provide this plugIns
             plugIns: [
-                { name: 'VLN', id: '1' },
-                { name: 'TLS', id: '2' }
+                { name: 'VLN', id: 'vln' },
+                { name: 'TLS', id: 'tls' }
             ],
             apiEndPoints: {
                 baseUrl: 'https://jsonplaceholder.typicode.com/todos/1'
@@ -310,12 +310,14 @@ export default class Maintainagentedit extends React.Component {
         let agentFormData = this.state.agentForm;
         if(type === 'gateway'){
             let gatewayFormData = this.state.gatewayForm;
-            prepareData.environment = gatewayFormData.environment.value;
-            prepareData.gatewayPort = gatewayFormData.gatewayPort.value;
-            prepareData.zone = gatewayFormData.zone.value;
+            prepareData.mod = serverFormData.mode;
+            prepareData.dbg = agentFormData.debugMode.value;
+            prepareData.env = gatewayFormData.environment.value;
+            prepareData.gpt = gatewayFormData.gatewayPort.value;
+            prepareData.zon = gatewayFormData.zone.value;
             prepareData.serviceUrl = gatewayFormData.serviceUrl.value;
-            prepareData.admToken = gatewayFormData.token.value;
-            prepareData.hostUrl = gatewayFormData.host.value;
+            prepareData.tkn = gatewayFormData.token.value;
+            prepareData.hst = gatewayFormData.host.value;
             console.log(prepareData);
             fetch(this.state.apiEndPoints.baseUrl, {
                 method: 'GET'
@@ -344,24 +346,34 @@ export default class Maintainagentedit extends React.Component {
         }
         else if(type === 'server'){
             let serverFormData = this.state.serverForm;
+            prepareData.mod = serverFormData.mode;
+            prepareData.dbg = agentFormData.debugMode.value;
             prepareData.gatewayId = agentFormData.gateway.value;
-            prepareData.agentId = serverFormData.agentId.value;
+            prepareData.aid = serverFormData.agentId.value;
             prepareData.serverId = serverFormData.serverId.value;
             prepareData.userId = serverFormData.userId.value;
-            prepareData.groupId = serverFormData.group.value;
-            prepareData.uaaClientId = serverFormData.clientId.value;
-            prepareData.uaaClientSecret = serverFormData.clientSecret.value;
-            prepareData.duration = serverFormData.duration.value;
-            prepareData.OAuth2 = serverFormData.OAuth2.value;
-            prepareData.host = serverFormData.host.value;
-            prepareData.zone = serverFormData.zone.value;
-            prepareData.serviceUrl = serverFormData.serviceUrl.value;
-            prepareData.remoteHost = serverFormData.remoteHost.value;
-            prepareData.remotePort = serverFormData.remotePort.value;
+            prepareData.grp = serverFormData.group.value;
+            prepareData.cid = serverFormData.clientId.value;
+            prepareData.csc = serverFormData.clientSecret.value;
+            prepareData.dur = serverFormData.duration.value;
+            prepareData.oa2 = serverFormData.OAuth2.value;
+            prepareData.hst = serverFormData.host.value;
+            prepareData.zon = serverFormData.zone.value;
+            prepareData.cps = 0;
+            prepareData.sst = serverFormData.serviceUrl.value;
+            prepareData.rht = serverFormData.remoteHost.value;
+            prepareData.rpt = serverFormData.remotePort.value;
             prepareData.proxy = serverFormData.proxy.value;
-            prepareData.allowPlugIn = serverFormData.allowPlugIn.value;
-            prepareData.plugin = serverFormData.plugIn.value;
-            prepareData.hostUrl = serverFormData.host.value
+            prepareData.plg = serverFormData.allowPlugIn.value;
+            prepareData.hostUrl = serverFormData.host.value;
+            for(let statePlugIn of this.state.plugIns){
+                if(serverFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
+                    prepareData[statePlugIn.id] = true;
+                }
+                else{
+                    prepareData[statePlugIn.id] = false;
+                }
+            }
             console.log(prepareData);
 
             fetch(this.state.apiEndPoints.baseUrl, {
@@ -391,21 +403,22 @@ export default class Maintainagentedit extends React.Component {
         }
         else if(type === 'client'){
             let clientFormData = this.state.clientForm;
+            prepareData.mod = serverFormData.mode;
+            prepareData.dbg = agentFormData.debugMode.value;
             prepareData.gatewayId = agentFormData.gateway.value;
-            prepareData.agentId = clientFormData.agentId.value;
-            prepareData.clientId = clientFormData.clientId.value;
-            prepareData.targetId = clientFormData.targetId.value;
-            prepareData.group = clientFormData.group.value;
-            prepareData.uaaClientId = clientFormData.uaaClientId.value;
-            prepareData.uaaClientSecret = clientFormData.clientSecret.value;
-            prepareData.duration = clientFormData.duration.value;
-            prepareData.OAuth2 = clientFormData.OAuth2.value;
-            prepareData.host = clientFormData.host.value;
-            prepareData.localPort = clientFormData.localPort.value;
+            prepareData.aid = clientFormData.agentId.value;
+            prepareData.cid = clientFormData.clientId.value;
+            prepareData.tid = clientFormData.targetId.value;
+            prepareData.grp = clientFormData.group.value;
+            //prepareData.cid = clientFormData.uaaClientId.value;
+            prepareData.csc = clientFormData.clientSecret.value;
+            prepareData.dur = clientFormData.duration.value;
+            prepareData.cps = 0;
+            prepareData.oa2 = clientFormData.OAuth2.value;
+            prepareData.hst = clientFormData.host.value;
+            prepareData.lpt = clientFormData.localPort.value;
             prepareData.proxy = clientFormData.proxy.value;
-            prepareData.allowPlugIn = clientFormData.allowPlugIn.value;
-            prepareData.plugin = clientFormData.plugIn.value;
-            prepareData.hostUrl = clientFormData.host.value
+            prepareData.plg = clientFormData.allowPlugIn.value;
             console.log(prepareData);
 
             fetch(this.state.apiEndPoints.baseUrl, {

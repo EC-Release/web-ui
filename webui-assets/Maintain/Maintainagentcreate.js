@@ -100,8 +100,8 @@ export default class Maintainagentcreate extends React.Component {
             ],
             // API will provide this plugIns
             plugIns: [
-                { name: 'VLN', id: '1' },
-                { name: 'TLS', id: '2' }
+                { name: 'VLN', id: 'vln' },
+                { name: 'TLS', id: 'tls' }
             ],
             apiEndPoints: {
                 baseUrl: 'https://jsonplaceholder.typicode.com/todos/1'
@@ -854,21 +854,30 @@ export default class Maintainagentcreate extends React.Component {
         else if(type === 'server'){
             let serverFormData = Object.assign({}, this.state.serverForm);
             prepareData.mod = serverFormData.mode;
+            prepareData.dbg = agentFormData.debugMode.value;
             prepareData.gatewayId = agentFormData.gateway.value;
-            prepareData.agentId = serverFormData.agentId.value;
-            prepareData.group = serverFormData.group.value;
-            prepareData.clientId = serverFormData.clientId.value;
-            prepareData.clientSecret = serverFormData.clientSecret.value;
-            prepareData.duration = serverFormData.duration.value;
-            prepareData.OAuth2 = serverFormData.OAuth2.value;
-            prepareData.host = serverFormData.host.value;
-            prepareData.zone = serverFormData.zone.value;
-            prepareData.serviceUrl = serverFormData.serviceUrl.value;
-            prepareData.remoteHost = serverFormData.remoteHost.value;
-            prepareData.remotePort = serverFormData.remotePort.value;
-            prepareData.proxy = serverFormData.proxy.value;
-            prepareData.allowPlugIn = serverFormData.allowPlugIn.value;
-            prepareData.plugIn = serverFormData.plugIn.value;
+            prepareData.aid = serverFormData.agentId.value;
+            prepareData.grp = serverFormData.group.value;
+            prepareData.cid = serverFormData.clientId.value;
+            prepareData.csc = serverFormData.clientSecret.value;
+            prepareData.dur = serverFormData.duration.value;
+            prepareData.oa2 = serverFormData.OAuth2.value;
+            prepareData.hst = serverFormData.host.value;
+            prepareData.zon = serverFormData.zone.value;
+            prepareData.cps = 0;
+            prepareData.sst = serverFormData.serviceUrl.value;
+            prepareData.rht = serverFormData.remoteHost.value;
+            prepareData.rpt = serverFormData.remotePort.value;
+            prepareData.prx = serverFormData.proxy.value;
+            prepareData.plg = serverFormData.allowPlugIn.value;
+            for(let statePlugIn of this.state.plugIns){
+                if(serverFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
+                    prepareData[statePlugIn.id] = true;
+                }
+                else{
+                    prepareData[statePlugIn.id] = false;
+                }
+            }
             console.log(prepareData);
             fetch(this.state.apiEndPoints.baseUrl, {  // '/generateServerScript?user_id='+this.state.userId+'&gateway_id='+agentFormData.gateway.value
                 method: 'GET'
@@ -993,7 +1002,7 @@ export default class Maintainagentcreate extends React.Component {
                         <div className="centered-div-header">
                             <div className="row maintainagentcreate-header">
                                 <div className="col-md-12">
-                                    <h6>Create Agent <small>Creating parameters.</small></h6>
+                                    <h6 id="maintainagentcreate-title">Create Agent <small>Creating parameters.</small></h6>
                                 </div>
                             </div>
                             <hr></hr>
@@ -1007,6 +1016,7 @@ export default class Maintainagentcreate extends React.Component {
                                                     <button
                                                         key={"agentModeButton"+buttonIndex} 
                                                         type="button"
+                                                        id={"agentModeButton"+buttonIndex}
                                                         name="agentMode" 
                                                         className={agentModeButton.value == this.state.agentForm.agentMode.value ? "btn btn-sm mr-2 btn-selected" : "btn btn-sm mr-2 btn-deselected"}
                                                         onClick={this.handleChangeAgentMode.bind(this, agentModeButton.value)} >{agentModeButton.text}</button>
@@ -1154,6 +1164,7 @@ export default class Maintainagentcreate extends React.Component {
                                         <button 
                                             disabled = {!this.state.gatewayFormIsValid}
                                             onClick={this.downloadFile.bind(this, 'gateway')} 
+                                            id="create-gateway-btn"
                                             className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
                                         {/*<button type="button" data-toggle="modal" data-target="#executeModal" className="btn btn-sm customize-view-btn ml-2">EXECUTE SCRIPT</button>*/}
                                     </div>
@@ -1389,6 +1400,7 @@ export default class Maintainagentcreate extends React.Component {
                                     </div>
                                     <div className="col-sm-7 mb-2">
                                         <button 
+                                            id="create-server-btn"
                                             disabled={!this.state.serverFormIsValid}
                                             onClick={this.downloadFile.bind(this, 'server')} 
                                             className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
@@ -1586,6 +1598,7 @@ export default class Maintainagentcreate extends React.Component {
                                     </div>
                                     <div className="col-sm-7 mb-2">
                                         <button
+                                            id="create-client-btn"
                                             disabled = {!this.state.clientFormIsValid} 
                                             onClick={this.downloadFile.bind(this, 'client')} 
                                             className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
