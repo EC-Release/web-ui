@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/Enterprise-connect/web-ui-admin.svg?branch=v1.1beta)](https://travis-ci.com/Enterprise-connect/web-ui-admin)
 
-# xcalr-webui
-- xcalr Web UI based on Bootstrap and REACT.
+# admin-webui
+- EC Web UI based on Bootstrap and REACT.
 
 ## Runtime Requirement:
 * Agent v1.1beta [#1686+](https://github.com/Enterprise-connect/ec-x-sdk/releases/tag/v1.1beta.fukuoka.1686)
