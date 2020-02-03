@@ -18,14 +18,14 @@
 ### How to run
 ```shell
 #get the agent binary
-wget -O ./ecagent_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta.fukuoka.2723/dist/ecagent_linux_sys.tar.gz \
-  && tar -xvzf ./ecagent_linux_sys.tar.gz
+wget -O ./webui_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta/dist/webui/webui_linux_sys.tar.gz \
+  && tar -xvzf ./webui_linux_sys.tar.gz
 
 #clone the repo
 git clone --recursive <xcalr-webui-repo>
 
 #launch the app
-./ecagent_darwin_sys -mod api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991 -app ec
+./webui_darwin_sys -mod api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991 -app ec
 
 #Or simply do a docker run. you may follow the example ```--env-file``` below
 #https://github.com/Enterprise-connect/oci/blob/v1.1beta/spec/web-ui/run.env
