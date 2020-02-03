@@ -30,6 +30,11 @@ git clone --recursive <xcalr-webui-repo>
 #Or simply do a docker run. you may follow the example ```--env-file``` below
 #https://github.com/Enterprise-connect/oci/blob/v1.1beta/spec/web-ui/run.env
 docker run -p 17990:17990 -p 17991:17991 --env-file run.env -it enterpriseconnect/webui:v1.1beta
+
+#you may utilise docker as the package system to test out the UI
+#make sure the webui artifact from the step 1 exists in the root folder-
+# of the repo before you run the command 
+docker run -p 17990:17990 -p 17991:17991 -v /path/to/local/webui/repo:/build --env-file run.env -it enterpriseconnect/webui:v1.1beta
 ```
 ### First time launch the app
 If this is your first time launch your app developmet in agent API mode, please visit [the agent in API mode for more details](https://github.build.ge.com/Enterprise-Connect/agent/blob/v1.1beta/README.md#launch-agent-for-connectivity-via-api-endpoints)
