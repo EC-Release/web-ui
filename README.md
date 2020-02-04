@@ -36,11 +36,8 @@ docker run -p 17990:17990 -p 17991:17991 --env-file run.env -it enterpriseconnec
 # of the repo before you run the command 
 docker run -p 17990:17990 -p 17991:17991 -v </path/to/local/webui/repo>:/build --env-file run.env -it enterpriseconnect/webui:v1.1beta
 ```
-### First time launch the app
-If this is your first time launch your app developmet in agent API mode, please visit [the agent in API mode for more details](https://github.build.ge.com/Enterprise-Connect/agent/blob/v1.1beta/README.md#launch-agent-for-connectivity-via-api-endpoints)
-
-### First time launch OAuth2
-If this is your first time launch agent in OAuth2, please [refer to the agent docs.](https://github.build.ge.com/Enterprise-Connect/agent/blob/v1.1beta/README.md#first-launch)
+### Credential
+Please contact [the team](mailto:ec-research@ge.com) for your beta subscription.
 
 ### How to browse
 ```
