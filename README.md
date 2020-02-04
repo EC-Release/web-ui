@@ -17,7 +17,7 @@
 
 ### How to run
 ```shell
-#get the agent binary
+#get the webui binary
 wget -O ./webui_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta/dist/webui/webui_linux_sys.tar.gz \
   && tar -xvzf ./webui_linux_sys.tar.gz
 
@@ -44,7 +44,7 @@ If this is your first time launch agent in OAuth2, please [refer to the agent do
 
 ### How to browse
 ```
-open http://localhost:17990/v1.1beta.fukuoka.1686/webui
+open http://localhost:17990/v1.1beta/ec
 ```
 
 ### Development WIP
