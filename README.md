@@ -16,8 +16,24 @@
 
 
 ### How to run
+
+#### The easy way
 ```shell
-#get the webui binary
+# follow the example ```--env-file``` below
+# https://github.com/Enterprise-connect/oci/blob/v1.1beta/spec/web-ui/run.env
+docker run -p 17990:17990 -p 17991:17991 --env-file run.env \
+-it enterpriseconnect/webui:v1.1beta
+
+# you may utilise docker as the package system to test out the UI
+# make sure the webui artifact from the step 1 exists in the root folder-
+# of the repo before you run the command 
+docker run -p 17990:17990 -p 17991:17991 -v </path/to/local/webui/repo>:/build \
+--env-file run.env -it enterpriseconnect/webui:v1.1beta
+```
+
+#### The YKWTD way (you-know-what-to-do)
+```shell
+# get the webui binary
 wget -O ./webui_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta/dist/webui/webui_linux_sys.tar.gz \
   && tar -xvzf ./webui_linux_sys.tar.gz
 
@@ -25,19 +41,12 @@ wget -O ./webui_linux_sys.tar.gz https://raw.githubusercontent.com/Enterprise-co
 git clone --recursive <xcalr-webui-repo>
 
 #launch the app
-./webui_darwin_sys -mod api -pks <private-key> -pbk <certificate> -oa2 http://localhost:17991 -app ec
-
-#Or simply do a docker run. you may follow the example ```--env-file``` below
-#https://github.com/Enterprise-connect/oci/blob/v1.1beta/spec/web-ui/run.env
-docker run -p 17990:17990 -p 17991:17991 --env-file run.env -it enterpriseconnect/webui:v1.1beta
-
-#you may utilise docker as the package system to test out the UI
-#make sure the webui artifact from the step 1 exists in the root folder-
-# of the repo before you run the command 
-docker run -p 17990:17990 -p 17991:17991 -v </path/to/local/webui/repo>:/build --env-file run.env -it enterpriseconnect/webui:v1.1beta
+./webui_darwin_sys -mod api -pks <private-key> -pbk <certificate> \
+-oa2 http://localhost:17991 -app ec
 ```
+
 ### Credential
-Please contact [the team](mailto:ec-research@ge.com) for your beta subscription.
+When first lauch the app, it will prompt to enter the passphrase. Please contact [the team](mailto:ec-research@ge.com) for your beta subscription.
 
 ### How to browse
 ```
