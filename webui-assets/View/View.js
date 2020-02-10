@@ -27,7 +27,7 @@ export default class View extends React.Component {
 
     componentDidMount(){
         let technicalTableData = [];
-        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
+        fetch(this.state.apiEndPoints.baseUrl , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
             method: 'GET',
             headers: {
                 'Accept': 'application/json',

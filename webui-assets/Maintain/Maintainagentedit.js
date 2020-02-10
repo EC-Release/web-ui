@@ -60,6 +60,7 @@ export default class Maintainagentedit extends React.Component {
                 OAuth2: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
                 localPort: { value: '', dirtyState: false },
+                targetId: { value: '', dirtyState: false },
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
@@ -179,6 +180,7 @@ export default class Maintainagentedit extends React.Component {
             OAuth2: { value: formData.oauth_provider, dirtyState: false },
             host: { value: formData.hostUrl, dirtyState: false },
             localPort: { value: formData.localPort, dirtyState: false },
+            targetId: { value: formData.targetId, dirtyState: false },
             proxy: { value: '', dirtyState: false },
             allowPlugIn: { value: false, dirtyState: false },
             plugIn: { value: [], dirtyState: false },
@@ -310,7 +312,7 @@ export default class Maintainagentedit extends React.Component {
         let agentFormData = this.state.agentForm;
         if(type === 'gateway'){
             let gatewayFormData = this.state.gatewayForm;
-            prepareData.mod = serverFormData.mode;
+            prepareData.mod = gatewayFormData.mode;
             prepareData.dbg = agentFormData.debugMode.value;
             prepareData.env = gatewayFormData.environment.value;
             prepareData.gpt = gatewayFormData.gatewayPort.value;
@@ -403,7 +405,7 @@ export default class Maintainagentedit extends React.Component {
         }
         else if(type === 'client'){
             let clientFormData = this.state.clientForm;
-            prepareData.mod = serverFormData.mode;
+            prepareData.mod = clientFormData.mode;
             prepareData.dbg = agentFormData.debugMode.value;
             prepareData.gatewayId = agentFormData.gateway.value;
             prepareData.aid = clientFormData.agentId.value;
@@ -417,6 +419,7 @@ export default class Maintainagentedit extends React.Component {
             prepareData.oa2 = clientFormData.OAuth2.value;
             prepareData.hst = clientFormData.host.value;
             prepareData.lpt = clientFormData.localPort.value;
+            prepareData.tid = clientFormData.targetId.value;
             prepareData.proxy = clientFormData.proxy.value;
             prepareData.plg = clientFormData.allowPlugIn.value;
             console.log(prepareData);
@@ -601,6 +604,10 @@ export default class Maintainagentedit extends React.Component {
             currentClientForm.localPort.value = updatedValue;
             currentClientForm.localPort.dirtyState = true;
         }
+        else if(fieldName === 'targetId'){
+            currentClientForm.targetId.value = updatedValue;
+            currentClientForm.targetId.dirtyState = true;
+        }
         else if(fieldName === 'proxy'){
             currentClientForm.proxy.value = updatedValue;
             currentClientForm.proxy.dirtyState = true;
@@ -646,6 +653,8 @@ export default class Maintainagentedit extends React.Component {
         let hostDirtyState = currentFormData.host.dirtyState;
         let localPortValue = currentFormData.localPort.value;
         let localPortDirtyState = currentFormData.localPort.dirtyState;
+        let targetIdValue = currentFormData.targetId.value;
+        let targetIdDirtyState = currentFormData.targetId.dirtyState;
         let allowPlugInValue = currentFormData.allowPlugIn.value;
         let plugInValue = currentFormData.plugIn.value;
         let plugInDirtyState = currentFormData.plugIn.dirtyState;
@@ -698,6 +707,12 @@ export default class Maintainagentedit extends React.Component {
         if(localPortValue.trim() === ''){
             if(localPortDirtyState){
                 errors['localPort'] = 'Please enter Local Port';
+            }
+            formIsValid = false;
+        }
+        if(targetIdValue.trim() === ''){
+            if(targetIdDirtyState){
+                errors['targetId'] = 'Please enter Target Id';
             }
             formIsValid = false;
         }
@@ -1094,8 +1109,8 @@ export default class Maintainagentedit extends React.Component {
 
                                     <div className="row">
                                         <div className="col-sm-5 mb-2">
-                                            <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
-                                            <a onClick={this.copyFromClientToGateway.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from client</small></a>
+                                            {/*<img alt="copy" src="assets/static/images/copy.svg" height="15px" />
+                                            <a onClick={this.copyFromClientToGateway.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from client</small></a>*/}
                                         </div>
                                         <div className="col-sm-7 mb-2">
                                             <button 
@@ -1348,8 +1363,8 @@ export default class Maintainagentedit extends React.Component {
 
                                     <div className="row">
                                         <div className="col-sm-5 mb-2">
-                                            <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
-                                            <a onClick={this.copyFromClientToServer.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from client</small></a>
+                                            {/*<img alt="copy" src="assets/static/images/copy.svg" height="15px" />
+                                            <a onClick={this.copyFromClientToServer.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from client</small></a>*/}
                                         </div>
                                         <div className="col-sm-7 mb-2">
                                             <button 
@@ -1368,7 +1383,7 @@ export default class Maintainagentedit extends React.Component {
                             {this.state.agentForm.agentMode.value == 3 ?
                                 <div className="changeable-form client-form">
                                     <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 MODE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1381,7 +1396,7 @@ export default class Maintainagentedit extends React.Component {
                                                     defaultValue={this.state.clientForm.mode} />
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1395,7 +1410,7 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['agentId']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1409,10 +1424,7 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['group']}</small>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1426,7 +1438,10 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['clientId']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1440,7 +1455,7 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['clientSecret']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 DURATION <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1455,10 +1470,7 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['duration']}</small>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 OAUTH2 <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1472,7 +1484,7 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['OAuth2']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1486,7 +1498,10 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['host']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 LOCAL PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1500,10 +1515,21 @@ export default class Maintainagentedit extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['localPort']}</small>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
+                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    className="form-control form-control-sm"
+                                                    name="targetId"
+                                                    value={this.state.clientForm.targetId.value}
+                                                    onChange={(event)=>{this.handleClientFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsClientForm['targetId']}</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 PROXY
                                             </div>
@@ -1517,7 +1543,7 @@ export default class Maintainagentedit extends React.Component {
                                                 
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1534,9 +1560,12 @@ export default class Maintainagentedit extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
+
+                                    <div className="row">
                                         {
                                             this.state.clientForm.allowPlugIn.value ? 
-                                            <div className="col-sm-4">
+                                            <div className="col-sm-3">
                                                 <div className="col-sm-12 label">
                                                     PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                                 </div>
@@ -1561,8 +1590,8 @@ export default class Maintainagentedit extends React.Component {
 
                                     <div className="row">
                                         <div className="col-sm-5 mb-2">
-                                            <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
-                                            <a onClick={this.copyFromServerToClient.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from server</small></a>
+                                            {/*<img alt="copy" src="assets/static/images/copy.svg" height="15px" />
+                                            <a onClick={this.copyFromServerToClient.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from server</small></a>*/}
                                         </div>
                                         <div className="col-sm-7 mb-2">
                                             <button

@@ -59,6 +59,7 @@ export default class Maintainagentcreate extends React.Component {
                 OAuth2: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
                 localPort: { value: '', dirtyState: false },
+                targetId: { value: '', dirtyState: false },
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
@@ -599,6 +600,10 @@ export default class Maintainagentcreate extends React.Component {
             currentClientForm.localPort.value = updatedValue;
             currentClientForm.localPort.dirtyState = true;
         }
+        else if(fieldName === 'targetId'){
+            currentClientForm.targetId.value = updatedValue;
+            currentClientForm.targetId.dirtyState = true;
+        }
         else if(fieldName === 'proxy'){
             currentClientForm.proxy.value = updatedValue;
             currentClientForm.proxy.dirtyState = true;
@@ -644,6 +649,8 @@ export default class Maintainagentcreate extends React.Component {
         let hostDirtyState = currentFormData.host.dirtyState;
         let localPortValue = currentFormData.localPort.value;
         let localPortDirtyState = currentFormData.localPort.dirtyState;
+        let targetIdValue = currentFormData.targetId.value;
+        let targetIdDirtyState = currentFormData.targetId.dirtyState;
         let allowPlugInValue = currentFormData.allowPlugIn.value;
         let plugInValue = currentFormData.plugIn.value;
         let plugInDirtyState = currentFormData.plugIn.dirtyState;
@@ -699,6 +706,12 @@ export default class Maintainagentcreate extends React.Component {
             }
             formIsValid = false;
         }
+        if(targetIdValue.trim() === ''){
+            if(targetIdDirtyState){
+                errors['targetId'] = 'Please enter Target Id';
+            }
+            formIsValid = false;
+        }
         
         if(allowPlugInValue){
             if(plugInValue.length === 0){
@@ -743,6 +756,7 @@ export default class Maintainagentcreate extends React.Component {
         currentServerForm.duration.value = currentClientForm.duration.value;
         currentServerForm.OAuth2.value = currentClientForm.OAuth2.value;
         currentServerForm.host.value = currentClientForm.host.value;
+        currentServerForm.proxy.value = currentClientForm.proxy.value;
         currentServerForm.allowPlugIn.value = currentClientForm.allowPlugIn.value;
         currentServerForm.plugIn.value = currentClientForm.plugIn.value;
 
@@ -768,6 +782,7 @@ export default class Maintainagentcreate extends React.Component {
         currentClientForm.duration.value = currentServerForm.duration.value;
         currentClientForm.OAuth2.value = currentServerForm.OAuth2.value;
         currentClientForm.host.value = currentServerForm.host.value;
+        currentClientForm.proxy.value = currentServerForm.proxy.value;
         currentClientForm.allowPlugIn.value = currentServerForm.allowPlugIn.value;
         currentClientForm.plugIn.value = currentServerForm.plugIn.value;
 
@@ -920,6 +935,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.OAuth2 = clientFormData.OAuth2.value;
             prepareData.host = clientFormData.host.value;
             prepareData.localPort = clientFormData.localPort.value;
+            prepareData.targetId = clientFormData.targetId.value;
             prepareData.proxy = clientFormData.proxy.value;
             prepareData.allowPlugIn = clientFormData.allowPlugIn.value;
             prepareData.plugIn = clientFormData.plugIn.value;
@@ -943,6 +959,7 @@ export default class Maintainagentcreate extends React.Component {
                             OAuth2: { value: '', dirtyState: false },
                             host: { value: '', dirtyState: false },
                             localPort: { value: '', dirtyState: false },
+                            targetId: { value: '', dirtyState: false },
                             proxy: { value: '', dirtyState: false },
                             allowPlugIn: { value: false, dirtyState: false },
                             plugIn: { value: [], dirtyState: false },
@@ -1448,7 +1465,7 @@ export default class Maintainagentcreate extends React.Component {
                             {this.state.agentForm.agentMode.value == 3 ?
                                 <div className="changeable-form client-form">
                                     <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 MODE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1461,7 +1478,7 @@ export default class Maintainagentcreate extends React.Component {
                                                     defaultValue={this.state.clientForm.mode} />
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1476,7 +1493,7 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['agentId']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1491,10 +1508,7 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['group']}</small>
                                             </div>
                                         </div>
-                                    </div> 
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1509,7 +1523,10 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['clientId']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                    </div> 
+
+                                    <div className="row">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1524,7 +1541,7 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['clientSecret']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 DURATION <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1540,10 +1557,7 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['duration']}</small>
                                             </div>
                                         </div>
-                                    </div> 
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 OAUTH2 <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1558,7 +1572,7 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['OAuth2']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1573,7 +1587,10 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['host']}</small>
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                    </div> 
+
+                                    <div className="row">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 LOCAL PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1588,10 +1605,22 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['localPort']}</small>
                                             </div>
                                         </div>
-                                    </div> 
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
+                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="targetId"
+                                                    value={this.state.clientForm.targetId.value}
+                                                    onChange={(event)=>{this.handleClientFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsClientForm['targetId']}</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 PROXY
                                             </div>
@@ -1606,7 +1635,7 @@ export default class Maintainagentcreate extends React.Component {
                                                 
                                             </div>
                                         </div>
-                                        <div className="col-sm-4">
+                                        <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
@@ -1623,10 +1652,12 @@ export default class Maintainagentcreate extends React.Component {
                                                 </div>
                                             </div>
                                         </div>
+                                    </div> 
 
+                                    <div className="row">
                                         {
                                             this.state.clientForm.allowPlugIn.value ? 
-                                            <div className="col-sm-4">
+                                            <div className="col-sm-3">
                                                 <div className="col-sm-12 label">
                                                     PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                                 </div>
