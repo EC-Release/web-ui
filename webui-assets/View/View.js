@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import Technicalview from './Technicalview.js';
 import Businessview from './Businessview.js';
@@ -20,34 +19,27 @@ export default class View extends React.Component {
                 allFields: []
             },
             apiEndPoints: {
-                baseUrl : 'https://reqres.in/api/users/2'
-            },
-            userId: ''
+                baseUrl : 'https://jsonplaceholder.typicode.com/users',
+                baseUrl1 : 'https://jsonplaceholder.typicode.com/todos/1'
+            }
         }
     }
 
     componentDidMount(){
-        var name = "user_id=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                this.setState({
-                    userId: c.substring(name.length, c.length)
-                })
-            }
-        }
         let technicalTableData = [];
-        fetch(this.state.apiEndPoints.baseUrl, { // Get gateways '/listGateways?user_id='+this.state.userId;
-            method: 'GET'
+        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': this.props.authToken
+            }
         })
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((gateways) => {
+                    console.log(gateways);
+                    console.log(typeof gateways);
                     gateways = [
                         {
                           "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
@@ -83,7 +75,7 @@ export default class View extends React.Component {
                         }
                     }
                     
-                    fetch(this.state.apiEndPoints.baseUrl, { // Get servers 'listServers?user_id='+this.state.userId;
+                    fetch(this.state.apiEndPoints.baseUrl, { // Get servers 'listServers?user_id='+this.props.userId;
                         method: 'GET'
                     })
                     .then((response) => {
@@ -140,7 +132,7 @@ export default class View extends React.Component {
                                     }
                                 }
 
-                                fetch(this.state.apiEndPoints.baseUrl, { // Get clients '/listClients?user_id='+this.state.userId;
+                                fetch(this.state.apiEndPoints.baseUrl, { // Get clients '/listClients?user_id='+this.props.userId;
                                     method: 'GET'
                                 })
                                 .then((response) => {
@@ -241,8 +233,8 @@ export default class View extends React.Component {
                 let objKey = 0;
                 for(let dataKey of allDataKeys){
                     let singleObj = {};
-                    if(allData[dataKey].length > 20){
-                        singleObj.value = allData[dataKey].substr(0, 20);
+                    if(allData[dataKey].length > 10){
+                        singleObj.value = allData[dataKey].substr(0, 10);
                         singleObj.hiddenValue = allData[dataKey];
                         singleObj.hiddenState = true;
                     }
@@ -304,11 +296,11 @@ export default class View extends React.Component {
         const currentTopologyView = this.state.topologyView;
         if(!currentTopologyView){
             // Technical view
-            return <Technicalview showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Technicalview userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
         }
         else{
             // Business view
-            return <Businessview showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Businessview userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
         }
     }
 
@@ -416,8 +408,8 @@ export default class View extends React.Component {
             let objKey = 0;
             for(let dataKey of selectedDataKeys){
                 let singleObj = {};
-                if(allData[dataKey].length > 20){
-                    singleObj.value = allData[dataKey].substr(0, 20);
+                if(allData[dataKey].length > 10){
+                    singleObj.value = allData[dataKey].substr(0, 10);
                     singleObj.hiddenValue = allData[dataKey];
                     singleObj.hiddenState = true;
                 }
@@ -482,7 +474,8 @@ export default class View extends React.Component {
                         hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}
                         allFields={this.state.allFields} 
                         selectedFields={this.state.table.thead}
-                        createView={this.createView.bind(this)}></Customsearch>
+                        createView={this.createView.bind(this)}
+                        userId={this.props.userId}></Customsearch>
                 }
             </div>
         )

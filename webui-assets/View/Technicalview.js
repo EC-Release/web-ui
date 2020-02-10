@@ -18,34 +18,18 @@ export default class Technicalview extends React.Component {
             apiEndPoints:{
                 baseUrl: 'https://reqres.in/api/users/2'
             },
-            loadTreeJs: false,
-            userId: ''
+            loadTreeJs: false
         }
     }
 
     componentDidMount(){
-
-        var name = "user_id=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                this.setState({
-                    userId: c.substring(name.length, c.length)
-                })
-            }
-        }
         
         let treeValue = [{
             id: 1,
             value: 'EC'
         }]
 
-        fetch(this.state.apiEndPoints.baseUrl, { // Get zones 'listZones?user_id='+this.state.userId
+        fetch(this.state.apiEndPoints.baseUrl, { // Get zones 'listZones?user_id='+this.props.userId
 			method: 'GET'
 		})
 		.then((response) => {

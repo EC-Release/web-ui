@@ -15,7 +15,7 @@ describe('ec-web-ui test cases', function () {
     // Login test start
     it('Login test', function () {
         browser.driver.sleep(2000);
-        expect(browser.getTitle()).toEqual('xcalr UI');
+        expect(browser.getTitle()).toEqual('EC Admin Console');
     });
     // Login test end
 

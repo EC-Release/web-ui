@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="assets/static/css/jquery.dataTables.css">
     <!-- Modular library -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
-    <title>xcalr UI</title>
+    <title>EC Admin Console</title>
     <style>
-      @font-face {
+      /*@font-face {
         font-family: customRegular;
         src: url(assets/static/css/roboto/Roboto-Regular.ttf);
       }
 
       #root{
         font-family: customRegular;
-      }
+      }*/
       bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -188,6 +188,7 @@
 
       header{
         background-color: #005EB8;
+        border-radius: 1rem 1rem 0rem 0rem;
       }
 
       .ge-logo{
@@ -385,7 +386,7 @@
 
       .view-table{
         max-height: 350px;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
         font-size: small;
       }
 
@@ -396,6 +397,11 @@
       table.dataTable thead th{
         border-bottom: 1px solid #ebeced;
         font-weight: 500;
+        border-top: 0px;
+      }
+
+      .tab-pane{
+        border-left: 1px solid rgba(0,0,0,.1);
       }
 
       .customize-view-btn, .customize-view-btn:hover{
@@ -471,6 +477,7 @@
       .Maintainagentcreate .form-body h6{
         font-weight: 600;
         color: #8f9ca9;
+        margin-left: 15px;;
       }
 
       .btn-selected, .btn-selected:hover{
@@ -525,15 +532,15 @@
       }
 
       .changeable-form.server-form, .changeable-form.client-form{
-        max-height: 260px;
+        height: 350px;
       }
 
-      .changeable-form {
+      /*.changeable-form {
         overflow-y: scroll;
-      }
+      }*/
 
-      .changeable-form .label{
-        font-size: .875rem;
+      .changeable-form .label, .health-label{
+        font-size: .7rem;
         font-weight: 600;
         color: #8f9ca9;
       }
@@ -572,10 +579,14 @@
         color: #8f9ca9;
       }
 
-      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div{
+      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div{
         max-height: 450px;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
         font-size: small;
+      }
+
+      .Notification .centered-div{
+        margin: 0px 0px;
       }
 
       .Maintainagentview .search-field, .Maintainagentupgrade .search-field{
@@ -619,6 +630,69 @@
       .card-header .btn-link{
         color: #005EB8;
       }
+
+      .has-search .form-control {
+        padding-left: 2.375rem;
+      }
+
+      .has-search .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.05rem;
+        text-align: center;
+        pointer-events: none;
+        color: #aaa;
+      }
+
+      .modal-content {
+        border-radius: 1.2rem;
+      }
+
+      .fa{
+        font-weight: normal;
+      }
+
+      .scroll{
+        max-height: 400px;
+        overflow: auto;
+        scroll-behavior: smooth;
+      }
+
+      .Monitorhealthstatus select {
+        font-family: 'FontAwesome', 'sans-serif';
+      }
+
+      .Monitorhealthstatus .control-label{
+        text-align: left;
+      }
+
+      .insidedata{
+        padding: 1rem;
+      }
+
+      .Monitorhealthstatus form, .insidedata .nav-tabs{
+        width: 100%;
+        font-size: small;
+      }
+
+      .Monitorhealthstatus form label{
+        margin-left: 15px;
+        color: #8f9ca9;
+        font-weight: 600;
+      }
+      
+      .help-text img{
+        height: 15px;
+        cursor: pointer;
+      }
+
+      .popover-body{
+        text-align: center;
+      }
+      
       
       @media (max-width: 991px) {
         .ge-logo, .header-profile {

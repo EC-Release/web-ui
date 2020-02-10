@@ -352,8 +352,8 @@ export default class Maintainagentview extends React.Component {
             let newDataObj = {};
             newDataObj.agent_id = dataObj.agent_id;
             newDataObj.group = dataObj.group;
-            if(dataObj.gateway.length > 20){
-                newDataObj.gateway = dataObj.gateway.substr(0, 20);
+            if(dataObj.gateway.length > 10){
+                newDataObj.gateway = dataObj.gateway.substr(0, 10);
                 newDataObj.gatewayHidden = dataObj.gateway
                 newDataObj.gatewayHiddenFlag = true;
             }
@@ -362,8 +362,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.gatewayHiddenFlag = false;
             }
 
-            if (dataObj.oauth_provider.length > 20){
-                newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 20);
+            if (dataObj.oauth_provider.length > 10){
+                newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 10);
                 newDataObj.oauth_providerHidden = dataObj.oauth_provider
                 newDataObj.oauth_providerHiddenFlag = true;
             }
@@ -372,8 +372,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.oauth_providerHiddenFlag = false;
             }
 
-            if (dataObj.zone.length > 20){
-                newDataObj.zone = dataObj.zone.substr(0, 20);
+            if (dataObj.zone.length > 10){
+                newDataObj.zone = dataObj.zone.substr(0, 10);
                 newDataObj.zoneHidden = dataObj.zone
                 newDataObj.zoneHiddenFlag = true;
             }
@@ -382,8 +382,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.zoneHiddenFlag = false;
             }
 
-            if (dataObj.subscription.length > 20){
-                newDataObj.subscription = dataObj.subscription.substr(0, 20);
+            if (dataObj.subscription.length > 10){
+                newDataObj.subscription = dataObj.subscription.substr(0, 10);
                 newDataObj.subscriptionHidden = dataObj.subscription
                 newDataObj.subscriptionHiddenFlag = true;
             }
@@ -392,8 +392,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.subscriptionHiddenFlag = false;
             }
 
-            if (dataObj.remote_host.length > 20){
-                newDataObj.remote_host = dataObj.remote_host.substr(0, 20);
+            if (dataObj.remote_host.length > 10){
+                newDataObj.remote_host = dataObj.remote_host.substr(0, 10);
                 newDataObj.remote_hostHidden = dataObj.remote_host
                 newDataObj.remote_hostHiddenFlag = true;
             }
@@ -403,8 +403,8 @@ export default class Maintainagentview extends React.Component {
             }
 
 
-            if (dataObj.remote_port.length > 20){
-                newDataObj.remote_port = dataObj.remote_port.substr(0, 20);
+            if (dataObj.remote_port.length > 10){
+                newDataObj.remote_port = dataObj.remote_port.substr(0, 10);
                 newDataObj.remote_portHidden = dataObj.remote_port
                 newDataObj.remote_portHiddenFlag = true;
             }
@@ -501,8 +501,8 @@ export default class Maintainagentview extends React.Component {
             let newDataObj = {};
             newDataObj.agent_id = dataObj.agent_id;
             newDataObj.group = dataObj.group;
-            if(dataObj.gateway.length > 20){
-                newDataObj.gateway = dataObj.gateway.substr(0, 20);
+            if(dataObj.gateway.length > 10){
+                newDataObj.gateway = dataObj.gateway.substr(0, 10);
                 newDataObj.gatewayHidden = dataObj.gateway
                 newDataObj.gatewayHiddenFlag = true;
             }
@@ -511,8 +511,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.gatewayHiddenFlag = false;
             }
 
-            if (dataObj.oauth_provider.length > 20){
-                newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 20);
+            if (dataObj.oauth_provider.length > 10){
+                newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 10);
                 newDataObj.oauth_providerHidden = dataObj.oauth_provider
                 newDataObj.oauth_providerHiddenFlag = true;
             }
@@ -521,8 +521,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.oauth_providerHiddenFlag = false;
             }
 
-            if (dataObj.zone.length > 20){
-                newDataObj.zone = dataObj.zone.substr(0, 20);
+            if (dataObj.zone.length > 10){
+                newDataObj.zone = dataObj.zone.substr(0, 10);
                 newDataObj.zoneHidden = dataObj.zone
                 newDataObj.zoneHiddenFlag = true;
             }
@@ -531,8 +531,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.zoneHiddenFlag = false;
             }
 
-            if (dataObj.subscription.length > 20){
-                newDataObj.subscription = dataObj.subscription.substr(0, 20);
+            if (dataObj.subscription.length > 10){
+                newDataObj.subscription = dataObj.subscription.substr(0, 10);
                 newDataObj.subscriptionHidden = dataObj.subscription
                 newDataObj.subscriptionHiddenFlag = true;
             }
@@ -541,8 +541,8 @@ export default class Maintainagentview extends React.Component {
                 newDataObj.subscriptionHiddenFlag = false;
             }
 
-            if (dataObj.remote_host.length > 20){
-                newDataObj.remote_host = dataObj.remote_host.substr(0, 20);
+            if (dataObj.remote_host.length > 10){
+                newDataObj.remote_host = dataObj.remote_host.substr(0, 10);
                 newDataObj.remote_hostHidden = dataObj.remote_host
                 newDataObj.remote_hostHiddenFlag = true;
             }
@@ -552,8 +552,8 @@ export default class Maintainagentview extends React.Component {
             }
 
 
-            if (dataObj.remote_port.length > 20){
-                newDataObj.remote_port = dataObj.remote_port.substr(0, 20);
+            if (dataObj.remote_port.length > 10){
+                newDataObj.remote_port = dataObj.remote_port.substr(0, 10);
                 newDataObj.remote_portHidden = dataObj.remote_port
                 newDataObj.remote_portHiddenFlag = true;
             }

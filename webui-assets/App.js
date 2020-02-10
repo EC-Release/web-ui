@@ -11,11 +11,17 @@ import Maintainwatchercreate from './Maintain/Maintainwatchercreate.js';
 import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
 import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
 import Monitor from './Monitor/Monitor.js';
+import Notification from './Monitor/Notification.js';
+import Alert from './Monitor/Alert.js';
+import Healthstatus from './Monitor/Healthstatus.js';
 import Report from './Report/Report.js';
 import Settings from './Settings/Settings.js';
 import Navbar from './Navbar/Navbar.js';
 import Header from './Header/Header.js';
 import Support from './Support/Support.js';
+
+import * as helpTextFile from './static/helpText/helpText.js';
+const HELPTEXT = helpTextFile.default;
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,8 +35,35 @@ export default class App extends React.Component {
         text: '',
         classname: ''
       },
-      maximizeModal: true
+      maximizeModal: true,
+      userId: '12fd119f-1b00-41bf-ab82-85182df9c64f',
+      authToken: '',
+      apiEndPoints: {
+        baseUrl : 'http://localhost:17990/v1.1beta/ec',
+      }
     };
+  }
+
+  componentDidMount(){
+    let authToken = this.getToken('ec-config');
+    this.setState({
+      authToken: authToken
+    });
+  }
+
+  getToken(name){
+    var name = name+"=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+    }
   }
 
   servedView() {
@@ -39,23 +72,29 @@ export default class App extends React.Component {
       case 'Dashboard':
         return <Dashboard />;
       case 'View':
-        return <View showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Maintain':
         return <Maintain />;
       case 'Maintainagentcreate':
-        return <Maintainagentcreate showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Maintainagentupgrade':
-        return <Maintainagentupgrade showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Maintainagentview':
-        return <Maintainagentview />;
+        return <Maintainagentview baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Maintainwatchercreate':
-        return <Maintainwatchercreate />;
+        return <Maintainwatchercreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Maintainwatcherupgrade':
-        return <Maintainwatcherupgrade />;
+        return <Maintainwatcherupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Maintainwatcherview':
         return <Maintainwatcherview />;
       case 'Monitor':
         return <Monitor />;
+      case 'Notification':
+        return <Notification userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+      case 'Alert':
+        return <Alert userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+      case 'Healthstatus':
+        return <Healthstatus userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Report':
         return <Report />;
       case 'Settings':
