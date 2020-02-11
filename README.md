@@ -90,7 +90,7 @@ Official Doc @ https://www.protractortest.org/
 
 ### How To Do Automation Testing
 Step 1. Go to project folder in terminal.
-Step 2. Run npm install  (If you are doing for first time. That will create and install all the dependent packages used for automation testing)
+Step 2. Run npm install and npm install -g webdriver-manager (If you are doing for first time. That will create and install all the dependent packages used for automation testing)
 Step 3. Open project-folder/protractor/todo-spec.js. Find "place your login id" and replace with your login id and find "Place your login password" and replace with your password.
 Step 4. Open one terminal at project-folder/protractor and run webdriver-manager update after that run webdriver-manager start at the same terminal ( do not close this terminal).
 ![Demo webdriver-manager update and start](docs/Automationtesting/webdriver-manager.png?raw=true)
