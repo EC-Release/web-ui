@@ -19,15 +19,15 @@ export default class View extends React.Component {
                 allFields: []
             },
             apiEndPoints: {
-                baseUrl : 'https://jsonplaceholder.typicode.com/users',
-                baseUrl1 : 'https://jsonplaceholder.typicode.com/todos/1'
+                baseUrl : 'https://reqres.in/api/users/2',
+                baseUrl1 : 'https://reqres.in/api/users/2'
             }
         }
     }
 
     componentDidMount(){
         let technicalTableData = [];
-        fetch(this.state.apiEndPoints.baseUrl , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
+        fetch(this.state.apiEndPoints.baseUrl1 , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -37,29 +37,28 @@ export default class View extends React.Component {
         })
         .then((response) => {
             if (response.status === 200) {
-                response.json().then((gateways) => {
-                    console.log(gateways);
-                    console.log(typeof gateways);
-                    gateways = [
-                        {
-                          "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                          "userId": "212712078",
-                          "gatewayPort": "8080",
-                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                          "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                          "hostUrl": "wss://gateway-url/agent"
-                        },
-                        {
-                          "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                          "userId": "212712078",
-                          "gatewayPort": "8080",
-                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                          "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                          "hostUrl": "wss://gateway-url/agent"
-                        }
-                    ];
+                response.json().then((respData) => {
+                    //console.log(respData);
+                    let gateways =[
+                                    {
+                                      "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
+                                      "userId": "212712078",
+                                      "gatewayPort": "8080",
+                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
+                                      "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
+                                      "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
+                                      "hostUrl": "wss://gateway-url/agent"
+                                    },
+                                    {
+                                      "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
+                                      "userId": "212712078",
+                                      "gatewayPort": "8080",
+                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
+                                      "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
+                                      "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
+                                      "hostUrl": "wss://gateway-url/agent"
+                                    }
+                                ];
 
                     if(gateways.length > 0){
                         for(let gateway of gateways){

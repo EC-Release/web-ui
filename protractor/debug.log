@@ -1,0 +1,3 @@
+[0211/131457.161:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\KOUSHI~1.PAL\AppData\Local\Temp\scoped_dir15872_880420556\Crashpad: The system cannot find the file specified. (0x2)
+[0211/131715.079:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\KOUSHI~1.PAL\AppData\Local\Temp\scoped_dir1668_1307272086\Crashpad: The system cannot find the file specified. (0x2)
+[0211/133935.645:ERROR:crash_report_database_win.cc(558)] GetFileAttributes C:\Users\KOUSHI~1.PAL\AppData\Local\Temp\scoped_dir13772_992137549\Crashpad: The system cannot find the file specified. (0x2)

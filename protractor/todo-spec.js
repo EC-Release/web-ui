@@ -3,10 +3,10 @@ describe('ec-web-ui test cases', function () {
     beforeEach(function () {
         browser.waitForAngularEnabled(false);
         browser.driver.sleep(4000);
-        browser.get('http://localhost:17990/v1.1beta/dive');
+        browser.get('http://localhost:17990/v1.1beta/ec');
         browser.driver.sleep(1000);
-        element(by.id('user-id')).sendKeys('place your login id');
-        element(by.id('password')).sendKeys('Place your login password');
+        element(by.id('user-id')).sendKeys('Place your login id');
+        element(by.id('password')).sendKeys('Place your password');
         element(by.id('login-btn')).click();
         browser.driver.sleep(1000);
         element(by.id('cont-btn')).click();
@@ -115,6 +115,50 @@ describe('ec-web-ui test cases', function () {
         expect(element.all(by.css('.Maintainagentview')).isPresent()).toBe(true);
     });
     // Agent view component test end
+
+    it('Monitor Notification component test', function () {
+        browser.driver.sleep(4000);
+        element(by.id('nav-monitor')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-notification')).click();
+        browser.driver.sleep(1000);
+        expect(element.all(by.css('.Notification')).isPresent()).toBe(true);
+    });
+    //Monitor Notification Component test end
+
+    //Monitor Alert Component test start
+    /*  it('Monitor Alert component test', function () {
+         browser.driver.sleep(4000);
+         element(by.id('nav-monitor')).click();
+         browser.driver.sleep(1000);
+         element(by.id('nav-alert')).click();
+         browser.driver.sleep(1000);
+         expect(element.all(by.css('.Alert')).isPresent()).toBe(true);
+     }); */
+    //Monitor alert Component test end
+
+    //Monitor Health Status Component test start
+    it('Monitor Health Status component test', function () {
+        browser.driver.sleep(4000);
+        element(by.id('nav-monitor')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-healthStatus')).click();
+        browser.driver.sleep(1000);
+        expect(element.all(by.css('.Monitorhealthstatus')).isPresent()).toBe(true);
+    });
+    //Maintain Health Status Component test end
+
+    //Monitor  Health Status button disable Component test start
+    it('Monitor component test', function () {
+        browser.driver.sleep(4000);
+        element(by.id('nav-monitor')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-healthStatus')).click();
+        browser.driver.sleep(1000);
+        element(by.id('fetch-health-status-btn')).getAttribute('disabled').then(function (attr) {
+            expect(attr).toBe('true');
+        }); 
+    });
 
     afterEach(function () {
         browser.driver.sleep(4000);

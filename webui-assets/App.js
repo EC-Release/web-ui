@@ -15,7 +15,7 @@ import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 import Report from './Report/Report.js';
-import Settings from './Settings/Settings.js';
+import Usermanagement from './Settings/Usermanagement.js';
 import Navbar from './Navbar/Navbar.js';
 import Header from './Header/Header.js';
 import Support from './Support/Support.js';
@@ -97,8 +97,8 @@ export default class App extends React.Component {
         return <Healthstatus userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
       case 'Report':
         return <Report />;
-      case 'Settings':
-        return <Settings />;
+      case 'Usermanagement':
+        return <Usermanagement />;
       case 'Support':
         return <Support />;
       default:

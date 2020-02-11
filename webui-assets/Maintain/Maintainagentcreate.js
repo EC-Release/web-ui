@@ -812,12 +812,18 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.tkn = gatewayFormData.token.value;
             prepareData.hst = gatewayFormData.host.value;
             console.log(prepareData);
-            fetch(this.state.apiEndPoints.baseUrl, { // '/generateGatewayScript?user_id'+this.props.userId
-                method: 'GET'
+            fetch(this.props.baseUrl + '/generateGatewayScript?user_id='+this.props.userId, { // '/generateGatewayScript?user_id='+this.props.userId
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': this.props.authToken
+                },
+                body: JSON.stringify(prepareData)
             })
             .then((response) => {
                 if (response.status === 200) {
-                    this.props.showGlobalMessage(true, true, 'Record saved successfully', 'custom-success');
+                    this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
                     setTimeout(()=> {
                         this.props.hideGlobalMessage();
                         let gatewayForm = {
@@ -829,6 +835,22 @@ export default class Maintainagentcreate extends React.Component {
                             token: { value: '', dirtyState: false },
                             host: { value: '', dirtyState: false },
                         };
+
+                        let filename = "gateway.yml";
+                        let data = "ec-config: \nconf: \nmod: "+gatewayFormData.mode.toLowerCase()+" \ngpt: "+ gatewayFormData.gatewayPort.value +" \nzon: "+ gatewayFormData.zone.value +" \nsst: "+ gatewayFormData.serviceUrl.value +" \ndbg: "+ agentFormData.debugMode.value +" \ntkn: "+ gatewayFormData.token.value +" \nhst: "+ gatewayFormData.host.value;
+                        let blob = new Blob([data], { type: 'text/yml' });
+                        if (window.navigator.msSaveOrOpenBlob) {
+                            window.navigator.msSaveBlob(blob, filename);
+                        }
+                        else {
+                            let elem = window.document.createElement('a');
+                            elem.href = window.URL.createObjectURL(blob);
+                            elem.download = filename;
+                            document.body.appendChild(elem);
+                            elem.click();
+                            document.body.removeChild(elem);
+                        }
+
                         this.setState({
                             gatewayForm: gatewayForm,
                             gatewayFormIsValid: false

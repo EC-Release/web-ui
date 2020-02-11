@@ -238,20 +238,437 @@ export default class Healthstatus extends React.Component {
         let currentSession = Object.assign({}, this.state.session);
         let currentSuperConnection = Object.assign({},this.state.superConnection);
         let currentConnection = Object.assign({},this.state.connection);
-        fetch('https://additive-prod-ec-gateway.run.aws-usw02-pr.ice.predix.io/health') // healthLink
+        fetch('https://jsonplaceholder.typicode.com/todos/1') // healthLink
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
                     this.props.showGlobalMessage(true, true, 'Please wait', 'custom-success');
                     console.log(respData);
-                    respData=[{
-                        "sessionId" : "OfxhwZxbW6",
-                        "id" : "OGhEuE",
-                        "bindId" : 'CejeRnKYuO',
-                        "targetId": 'value',
-                        "groupId" : 'smartshop-prod',
-                    }
-                    ];
+                    respData={
+                        "Version": "v1.hokkaido.212",
+                        "GatewayID": "1f703d50-e9c9-473e-9309-1cfeea1ec2ac",
+                        "RefID": "1",
+                        "IP": "10.254.0.42",
+                        "PID": 17,
+                        "NumOfConnSinceLaunch": 49412,
+                        "Sessions": {
+                          "0DZSiogZGu": {
+                            "sessionId": "0DZSiogZGu",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "5ZyTK7kkrJ",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-08T23:09:54.906015311Z"
+                          },
+                          "8sGmr0Zz6l": {
+                            "sessionId": "8sGmr0Zz6l",
+                            "serverConfig": {
+                              "id": "mOuTjM",
+                              "bindId": "o43eTByjmP",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ub1ype",
+                              "bindId": "",
+                              "targetId": "mOuTjM",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-08T22:57:16.857906466Z"
+                          },
+                          "9As4szpFlY": {
+                            "sessionId": "9As4szpFlY",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "1gYsvJDCVZ",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:37:26.892280615Z"
+                          },
+                          "BTtIbQGePB": {
+                            "sessionId": "BTtIbQGePB",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "jXAQnVfUNh",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-09T06:50:44.881407754Z"
+                          },
+                          "CQVTPdgqen": {
+                            "sessionId": "CQVTPdgqen",
+                            "serverConfig": {
+                              "id": "mOuTjM",
+                              "bindId": "fteij3AY7F",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ub1ype",
+                              "bindId": "",
+                              "targetId": "mOuTjM",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-08T14:02:35.877650613Z"
+                          },
+                          "IrNOX7Ti15": {
+                            "sessionId": "IrNOX7Ti15",
+                            "serverConfig": {
+                              "id": "mOuTjM",
+                              "bindId": "HfedwY1bT2",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ub1ype",
+                              "bindId": "",
+                              "targetId": "mOuTjM",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-08T14:02:04.845292886Z"
+                          },
+                          "QVuJrEAKy3": {
+                            "sessionId": "QVuJrEAKy3",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "lZUuKrSKw1",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-08T14:48:33.880675241Z"
+                          },
+                          "bKEV7YUV7A": {
+                            "sessionId": "bKEV7YUV7A",
+                            "serverConfig": {
+                              "id": "mOuTjM",
+                              "bindId": "4YmdvcvlXY",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ub1ype",
+                              "bindId": "",
+                              "targetId": "mOuTjM",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-09T10:17:12.898013082Z"
+                          },
+                          "m2AyukOB1L": {
+                            "sessionId": "m2AyukOB1L",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "Ky8a4fHw6y",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-09T03:15:55.89144109Z"
+                          },
+                          "mB1slLcXtT": {
+                            "sessionId": "mB1slLcXtT",
+                            "serverConfig": {
+                              "id": "4kY8Rp",
+                              "bindId": "lRkWy1QXVm",
+                              "targetId": "",
+                              "groupId": "cirrus-corpsftp-prod"
+                            },
+                            "clientConfig": {
+                              "id": "SBewk9",
+                              "bindId": "",
+                              "targetId": "4kY8Rp",
+                              "groupId": "cirrus-corpsftp-prod"
+                            },
+                            "timeCreated": "2020-02-09T14:45:08.929716188Z"
+                          },
+                          "o700yaf9bL": {
+                            "sessionId": "o700yaf9bL",
+                            "serverConfig": {
+                              "id": "mOuTjM",
+                              "bindId": "LfishYQSdX",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ub1ype",
+                              "bindId": "",
+                              "targetId": "mOuTjM",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-09T19:22:16.881634483Z"
+                          },
+                          "oMVOXyR7A5": {
+                            "sessionId": "oMVOXyR7A5",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "NDgvIOL9Fi",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-09T03:33:20.90654554Z"
+                          },
+                          "rOmRthusnf": {
+                            "sessionId": "rOmRthusnf",
+                            "serverConfig": {
+                              "id": "4kY8Rp",
+                              "bindId": "iWPCJnT9zx",
+                              "targetId": "",
+                              "groupId": "cirrus-corpsftp-prod"
+                            },
+                            "clientConfig": {
+                              "id": "SBewk9",
+                              "bindId": "",
+                              "targetId": "4kY8Rp",
+                              "groupId": "cirrus-corpsftp-prod"
+                            },
+                            "timeCreated": "2020-02-09T13:40:20.595895236Z"
+                          },
+                          "rnlY55fVmz": {
+                            "sessionId": "rnlY55fVmz",
+                            "serverConfig": {
+                              "id": "mOuTjM",
+                              "bindId": "BSGCMCPLnU",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ub1ype",
+                              "bindId": "",
+                              "targetId": "mOuTjM",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-10T05:20:09.895990145Z"
+                          },
+                          "tsQXMHvoBj": {
+                            "sessionId": "tsQXMHvoBj",
+                            "serverConfig": {
+                              "id": "OqkLan",
+                              "bindId": "jpFS5dbV9T",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "clientConfig": {
+                              "id": "Ia8DkA",
+                              "bindId": "",
+                              "targetId": "OqkLan",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-09T10:25:05.90541234Z"
+                          }
+                        },
+                        "SuperConns": [
+                          {
+                            "serverId": "4kY8Rp",
+                            "bindId": {
+                              "id": "4kY8Rp",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-corpsftp-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.204711682Z",
+                            "ip": "10.72.1.11:63694",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "mKDAUS",
+                            "bindId": {
+                              "id": "mKDAUS",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttojeeves-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.214632814Z",
+                            "ip": "10.72.11.10:13236",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "r60wh4",
+                            "bindId": {
+                              "id": "r60wh4",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-smtp-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.217563438Z",
+                            "ip": "10.72.11.13:30718",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "wj8ut5",
+                            "bindId": {
+                              "id": "wj8ut5",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-postgres-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:21.953060319Z",
+                            "ip": "10.72.1.10:3704",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "OqkLan",
+                            "bindId": {
+                              "id": "OqkLan",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:22.787765221Z",
+                            "ip": "10.72.1.10:4068",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "DzaYzX",
+                            "bindId": {
+                              "id": "DzaYzX",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "concur-sftp-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.192820259Z",
+                            "ip": "10.72.11.14:41642",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "mKDAUS",
+                            "bindId": {
+                              "id": "mKDAUS",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttojeeves-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.192218957Z",
+                            "ip": "10.72.1.12:41234",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "4kY8Rp",
+                            "bindId": {
+                              "id": "4kY8Rp",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-corpsftp-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.193435382Z",
+                            "ip": "10.72.1.12:41228",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "mOuTjM",
+                            "bindId": {
+                              "id": "mOuTjM",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.203509394Z",
+                            "ip": "10.72.1.14:31870",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "r60wh4",
+                            "bindId": {
+                              "id": "r60wh4",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-smtp-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:20.767499516Z",
+                            "ip": "10.72.1.14:32616",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "mOuTjM",
+                            "bindId": {
+                              "id": "mOuTjM",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-mfttomdm-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:22.291384425Z",
+                            "ip": "10.72.11.14:42994",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "OqkLan",
+                            "bindId": {
+                              "id": "OqkLan",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-fdl-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:24.577507601Z",
+                            "ip": "10.72.11.16:28370",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          },
+                          {
+                            "serverId": "wj8ut5",
+                            "bindId": {
+                              "id": "wj8ut5",
+                              "bindId": "",
+                              "targetId": "",
+                              "groupId": "cirrus-postgres-prod"
+                            },
+                            "timeCreated": "2020-02-08T11:01:18.185183585Z",
+                            "ip": "10.72.11.14:41648",
+                            "lastPong": "0001-01-01T00:00:00Z"
+                          }
+                        ],
+                        "ClientPool": [],
+                        "Alloc": 18745352,
+                        "TotalAlloc": 57944971144,
+                        "Sys": 143329528,
+                        "Lookups": 0,
+                        "Mallocs": 290459711,
+                        "Frees": 290304507,
+                        "HeapAlloc": 18745352,
+                        "HeapSys": 96337920,
+                        "HeapIdle": 70377472,
+                        "HeapInuse": 25960448,
+                        "HeapReleased": 61628416,
+                        "HeapObjects": 155204,
+                        "Report": {
+                          "lastUsage": 3437,
+                          "lastReport": "0001-01-01T00:00:00Z"
+                        }
+                      };
                     if(respData.length > 0){
                         for(let session of respData){
                             currentSession.sessionId = session.sessionId;

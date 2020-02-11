@@ -101,6 +101,7 @@ function initTable(tableId){
                     $('td:eq('+i+')', row).css('min-width', (840/data.length)+'px');
                 }
             },
+            "pageLength": 5,
             destroy: true
         });
     }
