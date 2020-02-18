@@ -877,7 +877,7 @@ Package contains all EC Data models
 		
 			
 			
-			<h2 id="Token">type <a href="/src/github.build.ge.com/212359746/wzschema/token.go?s=497:768#L9">Token</a>
+			<h2 id="Token">type <a href="/src/github.build.ge.com/212359746/wzschema/token.go?s=497:806#L9">Token</a>
 				<a class="permalink" href="#Token">&#xb6;</a>
 				
 				
@@ -889,6 +889,7 @@ Package contains all EC Data models
 <span id="Token.ExpiresIn"></span>    ExpiresIn   <a href="/pkg/builtin/#int64">int64</a>  `json:&#34;expires_in&#34;`
 <span id="Token.Scope"></span>    Scope       <a href="/pkg/builtin/#string">string</a> `json:&#34;scope&#34;`
 <span id="Token.JTI"></span>    JTI         <a href="/pkg/builtin/#string">string</a> `json:&#34;jti&#34;`
+<span id="Token.TokenStatus"></span>    TokenStatus *<a href="#TokenStatus">TokenStatus</a>
 }
 </pre>
 
@@ -906,7 +907,7 @@ Package contains all EC Data models
 		
 			
 			
-			<h2 id="TokenStatus">type <a href="/src/github.build.ge.com/212359746/wzschema/token.go?s=770:935#L17">TokenStatus</a>
+			<h2 id="TokenStatus">type <a href="/src/github.build.ge.com/212359746/wzschema/token.go?s=808:1018#L18">TokenStatus</a>
 				<a class="permalink" href="#TokenStatus">&#xb6;</a>
 				
 				
@@ -916,6 +917,7 @@ Package contains all EC Data models
 <span id="TokenStatus.Status"></span>    Status <a href="/pkg/builtin/#string">string</a> `json:&#34;status&#34;`
 <span id="TokenStatus.Code"></span>    Code   <a href="/pkg/builtin/#string">string</a> `json:&#34;code&#34;`
 <span id="TokenStatus.Plan"></span>    Plan   <a href="/pkg/builtin/#string">string</a> `json:plan`
+<span id="TokenStatus.DevId"></span>    DevId  <a href="/pkg/builtin/#string">string</a> `json:devid`
 }
 </pre>
 
