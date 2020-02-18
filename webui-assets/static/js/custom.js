@@ -1,4 +1,6 @@
 $( document ).ready(function() {
+
+    $('[data-toggle="tooltip"]').tooltip(); // For tooltips
     $.fn.extend({
         treed: function (o) {
         
@@ -82,8 +84,28 @@ function generateTopology(nodeData, replacedDivId){
     });
 }
 
-function initTable(tableId){
-    if(tableId !== 'viewTable'){
+function initTable(tableId,  preserveState){
+    if(tableId == 'viewTable'){
+        $('#'+tableId).DataTable({
+            "dom": '<"top"f>rt<"bottom"lp>',
+            "bSort": true,
+            "scrollX": true,
+            "language": {
+                "paginate": {
+                    "previous": "<",
+                    "next": ">"
+                }
+            },
+            'createdRow': function(row, data, dataIndex){
+                for(i=0; i < data.length; i++){
+                    $('td:eq('+i+')', row).css('min-width', (840/data.length)+'px');
+                }
+            },
+            "pageLength": 5,
+            destroy: true
+        });
+    }
+    else if(tableId == 'maintainagentupgradeTable'){
         $('#'+tableId).DataTable({
             "dom": 'rt<"bottom"lp>',
             "bSort": true,
@@ -96,16 +118,19 @@ function initTable(tableId){
             },
             'createdRow': function(row, data, dataIndex){
                 for(i=0; i < data.length; i++){
-                    $('td:eq('+i+')', row).css('min-width', '150px');
+                    $('td:eq('+i+')', row).css('min-width', '120px');
                 }
             },
+            "pageLength": 5,
+            stateSave: preserveState,
             destroy: true
         });
     }
     else{
         $('#'+tableId).DataTable({
-            "dom": '<"top"f>rt<"bottom"lp>',
+            "dom": 'rt<"bottom"lp>',
             "bSort": true,
+            "scrollX": true,
             "language": {
                 "paginate": {
                     "previous": "<",
@@ -114,9 +139,10 @@ function initTable(tableId){
             },
             'createdRow': function(row, data, dataIndex){
                 for(i=0; i < data.length; i++){
-                    $('td:eq('+i+')', row).css('min-width', '150px');
+                    $('td:eq('+i+')', row).css('min-width', '100px');
                 }
             },
+            "pageLength": 5,
             destroy: true
         });
     }
@@ -136,5 +162,11 @@ function openCollapsible(btnId) {
     if (collapsebleState === 'false') {
         el.click();
     }
+}
+
+function enableToolTip(){
+    setTimeout(() => {
+        $('[data-toggle="popover"]').popover(); // For tooltips
+    }, 1000);
 }
 

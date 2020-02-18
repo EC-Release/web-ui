@@ -12,16 +12,16 @@
     <link rel="stylesheet" href="assets/static/css/jquery.dataTables.css">
     <!-- Modular library -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
-    <title>xcalr UI</title>
+    <title>EC Admin Console</title>
     <style>
-      @font-face {
+      /*@font-face {
         font-family: customRegular;
         src: url(assets/static/css/roboto/Roboto-Regular.ttf);
       }
 
       #root{
         font-family: customRegular;
-      }
+      }*/
       bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -188,6 +188,7 @@
 
       header{
         background-color: #005EB8;
+        border-radius: 1rem 1rem 0rem 0rem;
       }
 
       .ge-logo{
@@ -385,7 +386,7 @@
 
       .view-table{
         max-height: 350px;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
         font-size: small;
       }
 
@@ -396,6 +397,11 @@
       table.dataTable thead th{
         border-bottom: 1px solid #ebeced;
         font-weight: 500;
+        border-top: 0px;
+      }
+
+      .tab-pane{
+        border-left: 1px solid rgba(0,0,0,.1);
       }
 
       .customize-view-btn, .customize-view-btn:hover{
@@ -471,6 +477,7 @@
       .Maintainagentcreate .form-body h6{
         font-weight: 600;
         color: #8f9ca9;
+        margin-left: 15px;;
       }
 
       .btn-selected, .btn-selected:hover{
@@ -525,15 +532,15 @@
       }
 
       .changeable-form.server-form, .changeable-form.client-form{
-        max-height: 260px;
+        height: 350px;
       }
 
-      .changeable-form {
+      /*.changeable-form {
         overflow-y: scroll;
-      }
+      }*/
 
-      .changeable-form .label{
-        font-size: .875rem;
+      .changeable-form .label, .health-label{
+        font-size: .7rem;
         font-weight: 600;
         color: #8f9ca9;
       }
@@ -572,10 +579,14 @@
         color: #8f9ca9;
       }
 
-      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div{
+      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div{
         max-height: 450px;
-        overflow-y: scroll;
+        /*overflow-y: scroll;*/
         font-size: small;
+      }
+
+      .Notification .centered-div{
+        margin: 0px 0px;
       }
 
       .Maintainagentview .search-field, .Maintainagentupgrade .search-field{
@@ -619,7 +630,137 @@
       .card-header .btn-link{
         color: #005EB8;
       }
+
+      .has-search .form-control {
+        padding-left: 2.375rem;
+      }
+
+      .has-search .form-control-feedback {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 2.375rem;
+        height: 2.375rem;
+        line-height: 2.05rem;
+        text-align: center;
+        pointer-events: none;
+        color: #aaa;
+      }
+
+      .modal-content {
+        border-radius: 1.2rem;
+      }
+
+      .fa{
+        font-weight: normal;
+      }
+
+      .scroll{
+        max-height: 400px;
+        overflow: auto;
+        scroll-behavior: smooth;
+      }
+
+      .Monitorhealthstatus select {
+        font-family: 'FontAwesome', 'sans-serif';
+      }
+
+      .Monitorhealthstatus .control-label{
+        text-align: left;
+      }
+
+      .insidedata{
+        padding: 1rem;
+      }
+
+      .Monitorhealthstatus form, .insidedata .nav-tabs{
+        width: 100%;
+        font-size: small;
+      }
+
+      .Monitorhealthstatus form label{
+        margin-left: 15px;
+        color: #8f9ca9;
+        font-weight: 600;
+      }
       
+      .help-text img{
+        height: 12px;
+        cursor: pointer;
+      }
+
+      .popover-body{
+        text-align: center;
+      }
+
+      .UserManagement small{
+          color: #8f9ca9;
+        }
+        .field-wrapper{
+            position: relative;
+            margin-bottom: 2px;
+        }
+    
+        .field-wrapper input{
+            border: 1px solid #DADCE0;
+            padding: 15px;
+            border-radius: 4px;
+            width: 100%;
+        }
+ 
+        .field-wrapper .field-placeholder{
+            font-size: 16px;
+            position: absolute;
+            /* background: #fff; */
+            bottom: 5px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            color: #80868b;
+            left: 8px;
+            padding: 0 8px;
+            -webkit-transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+            transition: transform 150ms cubic-bezier(0.4,0,0.2,1),opacity 150ms cubic-bezier(0.4,0,0.2,1);
+            z-index: 1;
+ 
+            text-align: left;
+            width: 100%;
+        }        
+        
+        .field-wrapper .field-placeholder span{
+            background: #ffffff;
+            padding: 0px 8px;
+        }
+ 
+        .field-wrapper input:not([disabled]):focus~.field-placeholder
+        {
+            color:#1A73E8;
+        }
+    
+        .field-wrapper input:not([disabled]):focus~.field-placeholder,
+        .field-wrapper.hasValue input:not([disabled])~.field-placeholder
+        {
+            -webkit-transform: scale(.75) translateY(-39px) translateX(-60px);
+            transform: scale(.75) translateY(-19px) translateX(-40px);
+            
+        } 
+ 
+      .customize-user-btn, .customize-user-btn:hover{
+        font-size: small;
+        background-color: #005EB8;
+        color: #ffffff;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+      }
+      
+      .custom-user-label{
+        color: #80868b;
+      }
+
+      .dataTables_length label{
+        display: none;
+      }
+
       @media (max-width: 991px) {
         .ge-logo, .header-profile {
           text-align: center;
@@ -642,6 +783,9 @@
           babel: 'https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js',
           react: 'https://unpkg.com/react@16/umd/react.development.js',
           'react-dom': 'https://unpkg.com/react-dom@16/umd/react-dom.development.js'
+        },
+        babelOptions: {
+          compact: true
         }
       });
 
