@@ -371,7 +371,7 @@ export default class Maintainagentview extends React.Component {
         //window.initTable('maintainagentviewTable');
     }
 
-    /*generateTableStructure(technicalTableData){
+    generateTableStructure(technicalTableData){
         let tableData = technicalTableData;
         let newTableData = [];
         for(let dataObj of tableData){
@@ -450,7 +450,7 @@ export default class Maintainagentview extends React.Component {
         setTimeout(function(){
             window.initTable('maintainagentviewTable');
         }, 100);
-    }*/
+    }
 
     showHideTableTdData(objectIndex, fieldName){
         let newTableData = [...this.state.newTableData];
