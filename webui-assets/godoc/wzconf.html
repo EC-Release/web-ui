@@ -117,13 +117,10 @@ Waza Library configuration package which will help bootstrap the settings for th
 			
 			
 				
+				<dd><a href="#GetRev">func GetRev() string</a></dd>
+			
+				
 				<dd><a href="#KillContainer">func KillContainer(contId string) error</a></dd>
-			
-				
-				<dd><a href="#StartAgentAPI">func StartAgentAPI(wagt api.AgentHTTPIntr, _pt, _cb, _pk, _oa, _pxy, _ap string, tls bool)</a></dd>
-			
-				
-				<dd><a href="#StartOAuth2">func StartOAuth2(oagt api.OAuth2ModeIntr, _pt, _cb, _pk, tlspvk, tlscrt string)</a></dd>
 			
 			
 				
@@ -172,13 +169,19 @@ Waza Library configuration package which will help bootstrap the settings for th
 					<dd>&nbsp; &nbsp; <a href="#Config.InitServerConfig">func (c *Config) InitServerConfig(cm map[string]interface{}) error</a></dd>
 				
 					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitXClientConfig">func (c *Config) InitXClientConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitXGatewayConfig">func (c *Config) InitXGatewayConfig(cm map[string]interface{}, cred map[string]interface{}, tls bool) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitXServerConfig">func (c *Config) InitXServerConfig(cm map[string]interface{}) error</a></dd>
+				
+					
 					<dd>&nbsp; &nbsp; <a href="#Config.IsValidSettings">func (c *Config) IsValidSettings() bool</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Config.ProxySetting">func (c *Config) ProxySetting(req *http.Request) (*url.URL, error)</a></dd>
-				
-					
-					<dd>&nbsp; &nbsp; <a href="#Config.TokenRefresh">func (c *Config) TokenRefresh() &lt;-chan *model.Token</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Config.TokenValidation">func (c *Config) TokenValidation() &lt;-chan *model.TokenStatus</a></dd>
@@ -211,7 +214,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.DeployWatcher">func (wc *WatcherConfig) DeployWatcher(wbuilder WatcherCmdBuilder) error</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.Init">func (wc *WatcherConfig) Init(wconf, cconf map[interface{}]interface{}) error</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.Init">func (wc *WatcherConfig) Init(wconf, cconf map[string]interface{}) error</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.KillProc">func (wc *WatcherConfig) KillProc() error</a></dd>
@@ -285,55 +288,26 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillContainer">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=15269:15308#L660">KillContainer</a>
+			<h2 id="GetRev">func <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=5655:5675#L151">GetRev</a>
+				<a class="permalink" href="#GetRev">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetRev() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="KillContainer">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=15272:15311#L660">KillContainer</a>
 				<a class="permalink" href="#KillContainer">&#xb6;</a>
 				
 				
 			</h2>
 			<pre>func KillContainer(contId <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
 			
-			
-			
-
-		
-			
-			
-			<h2 id="StartAgentAPI">func <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=6201:6291#L177">StartAgentAPI</a>
-				<a class="permalink" href="#StartAgentAPI">&#xb6;</a>
-				
-				
-			</h2>
-			<pre>func StartAgentAPI(wagt <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#AgentHTTPIntr">AgentHTTPIntr</a>, _pt, _cb, _pk, _oa, _pxy, _ap <a href="/pkg/builtin/#string">string</a>, tls <a href="/pkg/builtin/#bool">bool</a>)</pre>
-			<p>
-create a new agent api mode instance. wagt refers to the callback interface. pt represents  api http port, where crt an preloaded cert instance.
-start the agent api.
-@_pt: port#
-@_cb: publickey
-@_pk: publickey
-@tls: is TLS enable
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="StartOAuth2">func <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=7183:7262#L235">StartOAuth2</a>
-				<a class="permalink" href="#StartOAuth2">&#xb6;</a>
-				
-				
-			</h2>
-			<pre>func StartOAuth2(oagt <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#OAuth2ModeIntr">OAuth2ModeIntr</a>, _pt, _cb, _pk, tlspvk, tlscrt <a href="/pkg/builtin/#string">string</a>)</pre>
-			<p>
-launch agent in OAuth2 mode. wagt refers to the callback interface. pt represents  api http port, where crt an preloaded cert instance.
-start the agent api.
-@_pt: port#
-@_cb: publickey
-@_pk: publickey
-@tls: is TLS enable
-</p>
-
 			
 			
 
@@ -368,7 +342,7 @@ start the agent api.
 		
 			
 			
-			<h2 id="Config">type <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=1549:5720#L55">Config</a>
+			<h2 id="Config">type <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=1551:5653#L55">Config</a>
 				<a class="permalink" href="#Config">&#xb6;</a>
 				
 				
@@ -424,19 +398,13 @@ basic agent setting structure.
     <span class="comment">//reserved for OAuth2 providers, and for the health api Basic Auth in this http-header format &#34;Authentication:Basic  base64&lt;ClientId:ClientSecret&gt;&#34;. Deprecated in the future cert-based release</span>
 <span id="Config.ClientSecret"></span>    ClientSecret <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
 
-    <span class="comment">//indicate a http proxy for  connectivity if needed.</span>
-<span id="Config.Proxy"></span>    Proxy <a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
-
-<span id="Config.GatewayHost"></span>    GatewayHost <a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;ghost&#34;`
-<span id="Config.HST_NPX"></span>    HST_NPX     <a href="/pkg/builtin/#bool">bool</a>    `json:&#34;-&#34;`
+<span id="Config.GatewayHost"></span>    GatewayHost *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;ghost&#34;`
 
     <span class="comment">//reserved for OAuth2 providers. Deprecated in the future cert-based release</span>
-<span id="Config.OAuthURL"></span>    OAuthURL <a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
-<span id="Config.OA2_NPX"></span>    OA2_NPX  <a href="/pkg/builtin/#bool">bool</a>    `json:&#34;-&#34;`
+<span id="Config.OAuthURL"></span>    OAuthURL *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
 
     <span class="comment">//endpoint for reporting purposes. Please refer to the wiki for possible endpoints.</span>
-<span id="Config.ServiceURL"></span>    ServiceURL <a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
-<span id="Config.SST_NPX"></span>    SST_NPX    <a href="/pkg/builtin/#bool">bool</a>    `json:&#34;-&#34;`
+<span id="Config.ServiceURL"></span>    ServiceURL *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
 
     <span class="comment">//cloud foundry service id. Deprecated in future cert-based releases.</span>
 <span id="Config.Zone"></span>    Zone      <a href="/pkg/builtin/#string">string</a>   `json:&#34;-&#34;`
@@ -446,9 +414,10 @@ basic agent setting structure.
 <span id="Config.BlockList"></span>    BlockList []<a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
 
     <span class="comment">//cert update</span>
-<span id="Config.Cert"></span>    Cert      *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a> `json:&#34;-&#34;`
-<span id="Config.TLSKeyDir"></span>    TLSKeyDir <a href="/pkg/builtin/#string">string</a>     `json:&#34;-&#34;`
-<span id="Config.TLSCrtDir"></span>    TLSCrtDir <a href="/pkg/builtin/#string">string</a>     `json:&#34;-&#34;`
+<span id="Config.Cert"></span>    Cert *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a> `json:&#34;-&#34;`
+    <span class="comment">//TLSKeyDir                string   `json:&#34;-&#34;`</span>
+    <span class="comment">//TLSCrtDir                string   `json:&#34;-&#34;`</span>
+<span id="Config.TLS"></span>    TLS <a href="/pkg/builtin/#bool">bool</a> `json:&#34;-&#34;`
 
     <span class="comment">//the report schema rendered in the healthcheck endpoint.</span>
 <span id="Config.Report"></span>    Report      *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a> `json:&#34;report&#34;`
@@ -478,7 +447,7 @@ basic agent setting structure.
 
 			
 				
-				<h3 id="Init">func <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=7697:7750#L267">Init</a>
+				<h3 id="Init">func <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=6000:6053#L174">Init</a>
 					<a class="permalink" href="#Init">&#xb6;</a>
 					
 					
@@ -494,7 +463,7 @@ initialise the EC configuration with the collection of the settings
 
 			
 				
-				<h3 id="Config.AutoRefresh">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=32921:32981#L1483">AutoRefresh</a>
+				<h3 id="Config.AutoRefresh">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=38883:38943#L1753">AutoRefresh</a>
 					<a class="permalink" href="#Config.AutoRefresh">&#xb6;</a>
 					
 					
@@ -506,7 +475,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.ExchangeGatewayList">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=40877:40978#L1890">ExchangeGatewayList</a>
+				<h3 id="Config.ExchangeGatewayList">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=45941:46042#L2114">ExchangeGatewayList</a>
 					<a class="permalink" href="#Config.ExchangeGatewayList">&#xb6;</a>
 					
 					
@@ -518,7 +487,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.GetEncryptedKey">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=39699:39756#L1827">GetEncryptedKey</a>
+				<h3 id="Config.GetEncryptedKey">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=44763:44820#L2051">GetEncryptedKey</a>
 					<a class="permalink" href="#Config.GetEncryptedKey">&#xb6;</a>
 					
 					
@@ -530,7 +499,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.GetPublicKey">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=38451:38498#L1749">GetPublicKey</a>
+				<h3 id="Config.GetPublicKey">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=43515:43562#L1973">GetPublicKey</a>
 					<a class="permalink" href="#Config.GetPublicKey">&#xb6;</a>
 					
 					
@@ -542,7 +511,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.GetPublicKeyUsrApi">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=39066:39119#L1788">GetPublicKeyUsrApi</a>
+				<h3 id="Config.GetPublicKeyUsrApi">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=44130:44183#L2012">GetPublicKeyUsrApi</a>
 					<a class="permalink" href="#Config.GetPublicKeyUsrApi">&#xb6;</a>
 					
 					
@@ -554,7 +523,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.GroupValidation">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=37540:37599#L1701">GroupValidation</a>
+				<h3 id="Config.GroupValidation">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=42610:42669#L1925">GroupValidation</a>
 					<a class="permalink" href="#Config.GroupValidation">&#xb6;</a>
 					
 					
@@ -566,7 +535,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.InitClientConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=27252:27317#L1198">InitClientConfig</a>
+				<h3 id="Config.InitClientConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=28284:28349#L1226">InitClientConfig</a>
 					<a class="permalink" href="#Config.InitClientConfig">&#xb6;</a>
 					
 					
@@ -578,7 +547,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.InitGWClientConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=20575:20642#L905">InitGWClientConfig</a>
+				<h3 id="Config.InitGWClientConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=21425:21492#L929">InitGWClientConfig</a>
 					<a class="permalink" href="#Config.InitGWClientConfig">&#xb6;</a>
 					
 					
@@ -590,7 +559,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.InitGWServerConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=23991:24058#L1056">InitGWServerConfig</a>
+				<h3 id="Config.InitGWServerConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=24934:25001#L1082">InitGWServerConfig</a>
 					<a class="permalink" href="#Config.InitGWServerConfig">&#xb6;</a>
 					
 					
@@ -602,7 +571,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.InitGatewayConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=18139:18205#L799">InitGatewayConfig</a>
+				<h3 id="Config.InitGatewayConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=16576:16642#L709">InitGatewayConfig</a>
 					<a class="permalink" href="#Config.InitGatewayConfig">&#xb6;</a>
 					
 					
@@ -614,7 +583,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.InitServerConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=30074:30139#L1342">InitServerConfig</a>
+				<h3 id="Config.InitServerConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=33359:33424#L1483">InitServerConfig</a>
 					<a class="permalink" href="#Config.InitServerConfig">&#xb6;</a>
 					
 					
@@ -626,7 +595,43 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.IsValidSettings">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=17787:17824#L779">IsValidSettings</a>
+				<h3 id="Config.InitXClientConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=31155:31221#L1371">InitXClientConfig</a>
+					<a class="permalink" href="#Config.InitXClientConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitXClientConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitXGatewayConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=19101:19207#L817">InitXGatewayConfig</a>
+					<a class="permalink" href="#Config.InitXGatewayConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitXGatewayConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}, cred map[<a href="/pkg/builtin/#string">string</a>]interface{}, tls <a href="/pkg/builtin/#bool">bool</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitXServerConfig">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=36295:36361#L1625">InitXServerConfig</a>
+					<a class="permalink" href="#Config.InitXServerConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitXServerConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.IsValidSettings">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=16224:16261#L689">IsValidSettings</a>
 					<a class="permalink" href="#Config.IsValidSettings">&#xb6;</a>
 					
 					
@@ -638,7 +643,7 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.ProxySetting">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=38227:38293#L1739">ProxySetting</a>
+				<h3 id="Config.ProxySetting">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=43297:43363#L1963">ProxySetting</a>
 					<a class="permalink" href="#Config.ProxySetting">&#xb6;</a>
 					
 					
@@ -650,31 +655,22 @@ initialise the EC configuration with the collection of the settings
 				
 			
 				
-				<h3 id="Config.TokenRefresh">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=33941:33993#L1523">TokenRefresh</a>
-					<a class="permalink" href="#Config.TokenRefresh">&#xb6;</a>
-					
-					
-				</h3>
-				<pre>func (c *<a href="#Config">Config</a>) TokenRefresh() &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a></pre>
-				
-				
-				
-				
-			
-				
-				<h3 id="Config.TokenValidation">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=36885:36946#L1663">TokenValidation</a>
+				<h3 id="Config.TokenValidation">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=41955:42016#L1887">TokenValidation</a>
 					<a class="permalink" href="#Config.TokenValidation">&#xb6;</a>
 					
 					
 				</h3>
 				<pre>func (c *<a href="#Config">Config</a>) TokenValidation() &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a></pre>
-				
+				<p>
+GE cloud foundry only. Being deprecated
+</p>
+
 				
 				
 				
 			
 				
-				<h3 id="Config.UsageReporting">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=34800:34863#L1567">UsageReporting</a>
+				<h3 id="Config.UsageReporting">func (*Config) <a href="/src/github.build.ge.com/212359746/wzconf/wzconf.go?s=39827:39890#L1790">UsageReporting</a>
 					<a class="permalink" href="#Config.UsageReporting">&#xb6;</a>
 					
 					
@@ -785,7 +781,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 				
 			
 				
-				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=14153:14265#L603">CreateProc</a>
+				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=14156:14268#L603">CreateProc</a>
 					<a class="permalink" href="#WatcherConfig.CreateProc">&#xb6;</a>
 					
 					
@@ -801,7 +797,7 @@ func (wc *WatcherConfig) CreateProc(is string, ip, hp int, wg *sync.WaitGroup, o
 				
 			
 				
-				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=8652:8724#L369">DeployWatcher</a>
+				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=8655:8727#L369">DeployWatcher</a>
 					<a class="permalink" href="#WatcherConfig.DeployWatcher">&#xb6;</a>
 					
 					
@@ -813,12 +809,12 @@ func (wc *WatcherConfig) CreateProc(is string, ip, hp int, wg *sync.WaitGroup, o
 				
 			
 				
-				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=5939:6016#L245">Init</a>
+				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=5939:6011#L245">Init</a>
 					<a class="permalink" href="#WatcherConfig.Init">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) Init(wconf, cconf map[interface{}]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) Init(wconf, cconf map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
 				<p>
 @@wconf watcher config map
 @@cconf credential config map
@@ -830,7 +826,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=15527:15568#L672">KillProc</a>
+				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=15530:15571#L672">KillProc</a>
 					<a class="permalink" href="#WatcherConfig.KillProc">&#xb6;</a>
 					
 					
@@ -842,7 +838,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.Monitor">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=16145:16185#L705">Monitor</a>
+				<h3 id="WatcherConfig.Monitor">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=16148:16188#L705">Monitor</a>
 					<a class="permalink" href="#WatcherConfig.Monitor">&#xb6;</a>
 					
 					
@@ -857,7 +853,7 @@ check the health of the port number @@pt
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=11303:11342#L502">ProxyHTTPReq</a>
+				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=11306:11345#L502">ProxyHTTPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyHTTPReq">&#xb6;</a>
 					
 					
@@ -873,7 +869,7 @@ turn watcher into an internal http proxy
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=9625:9663#L418">ProxyTCPReq</a>
+				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=9628:9666#L418">ProxyTCPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyTCPReq">&#xb6;</a>
 					
 					

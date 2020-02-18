@@ -264,6 +264,9 @@
 				<dd><a href="#TheCaller">func TheCaller() string</a></dd>
 			
 				
+				<dd><a href="#TokenRefresh">func TokenRefresh(crt *Cert, oa2 *url.URL) &lt;-chan *model.Token</a></dd>
+			
+				
 				<dd><a href="#URL_CA">func URL_CA() string</a></dd>
 			
 				
@@ -331,6 +334,9 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptV2">func (c *Cert) EncryptV2(d string) []byte</a></dd>
 				
 					
+					<dd>&nbsp; &nbsp; <a href="#Cert.FetchPassphrase">func (c *Cert) FetchPassphrase() (string, error)</a></dd>
+				
+					
 					<dd>&nbsp; &nbsp; <a href="#Cert.GenerateCRTFile">func (c *Cert) GenerateCRTFile(fname string, derBytes, intDERBytes []byte) ([]byte, error)</a></dd>
 				
 					
@@ -341,6 +347,9 @@
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.GeneratePVKFile">func (c *Cert) GeneratePVKFile(fname, _pw string, _key *rsa.PrivateKey) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetBearToken">func (c *Cert) GetBearToken() string</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.GetCertDetail">func (c *Cert) GetCertDetail() *CertDetail</a></dd>
@@ -355,7 +364,7 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.GetExtensions">func (c *Cert) GetExtensions() *CertExts</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.GetPassphrase">func (c *Cert) GetPassphrase() string</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetHashedPassphrase">func (c *Cert) GetHashedPassphrase() (string, error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.GetScopeList">func (c *Cert) GetScopeList() ([]string, error)</a></dd>
@@ -376,10 +385,16 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.LoadPublicCrt">func (c *Cert) LoadPublicCrt(pub_raw string) (*x509.Certificate, error)</a></dd>
 				
 					
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadSavedKeypair">func (c *Cert) LoadSavedKeypair() error</a></dd>
+				
+					
 					<dd>&nbsp; &nbsp; <a href="#Cert.ParseCRT">func (c *Cert) ParseCRT(d []byte) (*x509.Certificate, error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.ParseCSR">func (c *Cert) ParseCSR(d []byte) (*x509.CertificateRequest, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.RegisterPassphrase">func (c *Cert) RegisterPassphrase() (string, error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.Renew">func (c *Cert) Renew()</a></dd>
@@ -391,6 +406,9 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.Request">func (c *Cert) Request()</a></dd>
 				
 					
+					<dd>&nbsp; &nbsp; <a href="#Cert.SetRawPrivateKey">func (c *Cert) SetRawPrivateKey(pkey string)</a></dd>
+				
+					
 					<dd>&nbsp; &nbsp; <a href="#Cert.Sign">func (c *Cert) Sign()</a></dd>
 				
 					
@@ -400,7 +418,10 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateScope">func (c *Cert) ValidateScope(scp string) bool</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateToken">func (c *Cert) ValidateToken(_sg, _om string, exp int) (string, error)</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateToken">func (c *Cert) ValidateToken(_sg, _om string) (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateTokenExp">func (c *Cert) ValidateTokenExp(_om string) (string, error)</a></dd>
 				
 			
 				
@@ -499,7 +520,7 @@
 		
 			
 			
-			<h2 id="AppendToFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=16826:16873#L681">AppendToFile</a>
+			<h2 id="AppendToFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17203:17250#L694">AppendToFile</a>
 				<a class="permalink" href="#AppendToFile">&#xb6;</a>
 				
 				
@@ -512,7 +533,7 @@
 		
 			
 			
-			<h2 id="BRAND_CONFIG">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6396:6422#L216">BRAND_CONFIG</a>
+			<h2 id="BRAND_CONFIG">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6442:6468#L217">BRAND_CONFIG</a>
 				<a class="permalink" href="#BRAND_CONFIG">&#xb6;</a>
 				
 				
@@ -525,7 +546,7 @@
 		
 			
 			
-			<h2 id="Branding">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=5086:5119#L160">Branding</a>
+			<h2 id="Branding">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=5131:5164#L161">Branding</a>
 				<a class="permalink" href="#Branding">&#xb6;</a>
 				
 				
@@ -552,7 +573,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="CONFIG_MAIN">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7065:7090#L260">CONFIG_MAIN</a>
+			<h2 id="CONFIG_MAIN">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7111:7136#L261">CONFIG_MAIN</a>
 				<a class="permalink" href="#CONFIG_MAIN">&#xb6;</a>
 				
 				
@@ -565,7 +586,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="CURRENT_PATH">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7176:7202#L268">CURRENT_PATH</a>
+			<h2 id="CURRENT_PATH">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7222:7248#L269">CURRENT_PATH</a>
 				<a class="permalink" href="#CURRENT_PATH">&#xb6;</a>
 				
 				
@@ -578,7 +599,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="ContainsString">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=16417:16473#L662">ContainsString</a>
+			<h2 id="ContainsString">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=16794:16850#L675">ContainsString</a>
 				<a class="permalink" href="#ContainsString">&#xb6;</a>
 				
 				
@@ -591,7 +612,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="Copyright">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9016:9032#L343">Copyright</a>
+			<h2 id="Copyright">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9393:9409#L356">Copyright</a>
 				<a class="permalink" href="#Copyright">&#xb6;</a>
 				
 				
@@ -617,7 +638,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="Decompress">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=20865:20916#L885">Decompress</a>
+			<h2 id="Decompress">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=21242:21293#L898">Decompress</a>
 				<a class="permalink" href="#Decompress">&#xb6;</a>
 				
 				
@@ -630,7 +651,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="DownloadArt">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=24446:24496#L1079">DownloadArt</a>
+			<h2 id="DownloadArt">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=24786:24836#L1092">DownloadArt</a>
 				<a class="permalink" href="#DownloadArt">&#xb6;</a>
 				
 				
@@ -643,7 +664,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="DownloadFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=24092:24137#L1059">DownloadFile</a>
+			<h2 id="DownloadFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=24432:24477#L1072">DownloadFile</a>
 				<a class="permalink" href="#DownloadFile">&#xb6;</a>
 				
 				
@@ -669,7 +690,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="ENV_CF_INST_IDX">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6817:6846#L244">ENV_CF_INST_IDX</a>
+			<h2 id="ENV_CF_INST_IDX">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6863:6892#L245">ENV_CF_INST_IDX</a>
 				<a class="permalink" href="#ENV_CF_INST_IDX">&#xb6;</a>
 				
 				
@@ -682,7 +703,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="ENV_INST_IDX">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6758:6784#L240">ENV_INST_IDX</a>
+			<h2 id="ENV_INST_IDX">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6804:6830#L241">ENV_INST_IDX</a>
 				<a class="permalink" href="#ENV_INST_IDX">&#xb6;</a>
 				
 				
@@ -695,7 +716,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="EncodeRFC2047">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9513:9553#L365">EncodeRFC2047</a>
+			<h2 id="EncodeRFC2047">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9890:9930#L378">EncodeRFC2047</a>
 				<a class="permalink" href="#EncodeRFC2047">&#xb6;</a>
 				
 				
@@ -721,7 +742,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="ExternalIP">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=18317:18350#L768">ExternalIP</a>
+			<h2 id="ExternalIP">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=18694:18727#L781">ExternalIP</a>
 				<a class="permalink" href="#ExternalIP">&#xb6;</a>
 				
 				
@@ -747,7 +768,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="GetCurrentIPAddrs">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17127:17165#L702">GetCurrentIPAddrs</a>
+			<h2 id="GetCurrentIPAddrs">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17504:17542#L715">GetCurrentIPAddrs</a>
 				<a class="permalink" href="#GetCurrentIPAddrs">&#xb6;</a>
 				
 				
@@ -760,7 +781,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="GetGRId">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=19046:19067#L805">GetGRId</a>
+			<h2 id="GetGRId">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=19423:19444#L818">GetGRId</a>
 				<a class="permalink" href="#GetGRId">&#xb6;</a>
 				
 				
@@ -773,7 +794,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="GetHTTPClientPxyOpt">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=23551:23603#L1028">GetHTTPClientPxyOpt</a>
+			<h2 id="GetHTTPClientPxyOpt">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=23891:23943#L1041">GetHTTPClientPxyOpt</a>
 				<a class="permalink" href="#GetHTTPClientPxyOpt">&#xb6;</a>
 				
 				
@@ -790,7 +811,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="GetPath">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9881:9916#L386">GetPath</a>
+			<h2 id="GetPath">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=10258:10293#L399">GetPath</a>
 				<a class="permalink" href="#GetPath">&#xb6;</a>
 				
 				
@@ -803,7 +824,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_AUTH">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6339:6364#L212">HEADER_AUTH</a>
+			<h2 id="HEADER_AUTH">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6385:6410#L213">HEADER_AUTH</a>
 				<a class="permalink" href="#HEADER_AUTH">&#xb6;</a>
 				
 				
@@ -816,7 +837,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_CF_INST">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6455:6483#L220">HEADER_CF_INST</a>
+			<h2 id="HEADER_CF_INST">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6501:6529#L221">HEADER_CF_INST</a>
 				<a class="permalink" href="#HEADER_CF_INST">&#xb6;</a>
 				
 				
@@ -829,7 +850,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_CONFIG">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6636:6663#L232">HEADER_CONFIG</a>
+			<h2 id="HEADER_CONFIG">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6682:6709#L233">HEADER_CONFIG</a>
 				<a class="permalink" href="#HEADER_CONFIG">&#xb6;</a>
 				
 				
@@ -842,7 +863,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_INST">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6518:6543#L224">HEADER_INST</a>
+			<h2 id="HEADER_INST">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6564:6589#L225">HEADER_INST</a>
 				<a class="permalink" href="#HEADER_INST">&#xb6;</a>
 				
 				
@@ -855,7 +876,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_INST_BY_REFID">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6194:6240#L205">HEADER_INST_BY_REFID</a>
+			<h2 id="HEADER_INST_BY_REFID">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6240:6286#L206">HEADER_INST_BY_REFID</a>
 				<a class="permalink" href="#HEADER_INST_BY_REFID">&#xb6;</a>
 				
 				
@@ -868,7 +889,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_PLUGIN">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6575:6602#L228">HEADER_PLUGIN</a>
+			<h2 id="HEADER_PLUGIN">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6621:6648#L229">HEADER_PLUGIN</a>
 				<a class="permalink" href="#HEADER_PLUGIN">&#xb6;</a>
 				
 				
@@ -881,7 +902,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="HEADER_SUB_ID">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6697:6724#L236">HEADER_SUB_ID</a>
+			<h2 id="HEADER_SUB_ID">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6743:6770#L237">HEADER_SUB_ID</a>
 				<a class="permalink" href="#HEADER_SUB_ID">&#xb6;</a>
 				
 				
@@ -894,7 +915,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="INST_INDEX">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=5978:6002#L192">INST_INDEX</a>
+			<h2 id="INST_INDEX">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6023:6047#L193">INST_INDEX</a>
 				<a class="permalink" href="#INST_INDEX">&#xb6;</a>
 				
 				
@@ -923,7 +944,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="Init">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7291:7321#L278">Init</a>
+			<h2 id="Init">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7337:7367#L279">Init</a>
 				<a class="permalink" href="#Init">&#xb6;</a>
 				
 				
@@ -936,7 +957,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="InitSystemCltDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=12566:12703#L522">InitSystemCltDetails</a>
+			<h2 id="InitSystemCltDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=12943:13080#L535">InitSystemCltDetails</a>
 				<a class="permalink" href="#InitSystemCltDetails">&#xb6;</a>
 				
 				
@@ -949,7 +970,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="InitSystemDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=11744:11829#L490">InitSystemDetails</a>
+			<h2 id="InitSystemDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=12121:12206#L503">InitSystemDetails</a>
 				<a class="permalink" href="#InitSystemDetails">&#xb6;</a>
 				
 				
@@ -962,7 +983,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="InitSystemGWServerDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=15424:15607#L627">InitSystemGWServerDetails</a>
+			<h2 id="InitSystemGWServerDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=15801:15984#L640">InitSystemGWServerDetails</a>
 				<a class="permalink" href="#InitSystemGWServerDetails">&#xb6;</a>
 				
 				
@@ -975,7 +996,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="InitSystemGwyDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=14401:14599#L591">InitSystemGwyDetails</a>
+			<h2 id="InitSystemGwyDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=14778:14976#L604">InitSystemGwyDetails</a>
 				<a class="permalink" href="#InitSystemGwyDetails">&#xb6;</a>
 				
 				
@@ -988,7 +1009,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="InitSystemSrvDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=13454:13609#L556">InitSystemSrvDetails</a>
+			<h2 id="InitSystemSrvDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=13831:13986#L569">InitSystemSrvDetails</a>
 				<a class="permalink" href="#InitSystemSrvDetails">&#xb6;</a>
 				
 				
@@ -1001,7 +1022,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="LGPrint">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9190:9204#L353">LGPrint</a>
+			<h2 id="LGPrint">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9567:9581#L366">LGPrint</a>
 				<a class="permalink" href="#LGPrint">&#xb6;</a>
 				
 				
@@ -1014,7 +1035,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="MacAddr">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=19283:19311#L814">MacAddr</a>
+			<h2 id="MacAddr">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=19660:19688#L827">MacAddr</a>
 				<a class="permalink" href="#MacAddr">&#xb6;</a>
 				
 				
@@ -1027,7 +1048,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="PROXY_FILTER">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=22057:22105#L953">PROXY_FILTER</a>
+			<h2 id="PROXY_FILTER">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=22434:22482#L966">PROXY_FILTER</a>
 				<a class="permalink" href="#PROXY_FILTER">&#xb6;</a>
 				
 				
@@ -1040,7 +1061,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="PanicRecovery">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17747:17780#L734">PanicRecovery</a>
+			<h2 id="PanicRecovery">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=18124:18157#L747">PanicRecovery</a>
 				<a class="permalink" href="#PanicRecovery">&#xb6;</a>
 				
 				
@@ -1053,7 +1074,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="RandStringRunes">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=9680:9724#L371">RandStringRunes</a>
+			<h2 id="RandStringRunes">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=10057:10101#L384">RandStringRunes</a>
 				<a class="permalink" href="#RandStringRunes">&#xb6;</a>
 				
 				
@@ -1066,7 +1087,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="ReadFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=10149:10203#L403">ReadFile</a>
+			<h2 id="ReadFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=10526:10580#L416">ReadFile</a>
 				<a class="permalink" href="#ReadFile">&#xb6;</a>
 				
 				
@@ -1079,7 +1100,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="RetrieveUploadFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=10535:10600#L429">RetrieveUploadFile</a>
+			<h2 id="RetrieveUploadFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=10912:10977#L442">RetrieveUploadFile</a>
 				<a class="permalink" href="#RetrieveUploadFile">&#xb6;</a>
 				
 				
@@ -1092,7 +1113,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="SaveToFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=16687:16731#L675">SaveToFile</a>
+			<h2 id="SaveToFile">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17064:17108#L688">SaveToFile</a>
 				<a class="permalink" href="#SaveToFile">&#xb6;</a>
 				
 				
@@ -1105,7 +1126,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="ServiceReq">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=24835:24877#L1103">ServiceReq</a>
+			<h2 id="ServiceReq">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=25175:25217#L1116">ServiceReq</a>
 				<a class="permalink" href="#ServiceReq">&#xb6;</a>
 				
 				
@@ -1118,7 +1139,7 @@ getting the current instance index indicator
 		
 			
 			
-			<h2 id="SingleJoiningSlash">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17489:17532#L722">SingleJoiningSlash</a>
+			<h2 id="SingleJoiningSlash">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17866:17909#L735">SingleJoiningSlash</a>
 				<a class="permalink" href="#SingleJoiningSlash">&#xb6;</a>
 				
 				
@@ -1134,7 +1155,7 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="StringInSlice">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=18157:18205#L759">StringInSlice</a>
+			<h2 id="StringInSlice">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=18534:18582#L772">StringInSlice</a>
 				<a class="permalink" href="#StringInSlice">&#xb6;</a>
 				
 				
@@ -1147,7 +1168,7 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="TheCaller">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=17947:17970#L746">TheCaller</a>
+			<h2 id="TheCaller">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=18324:18347#L759">TheCaller</a>
 				<a class="permalink" href="#TheCaller">&#xb6;</a>
 				
 				
@@ -1160,7 +1181,23 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="URL_CA">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6882:6902#L248">URL_CA</a>
+			<h2 id="TokenRefresh">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=25653:25717#L1145">TokenRefresh</a>
+				<a class="permalink" href="#TokenRefresh">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TokenRefresh(crt *<a href="#Cert">Cert</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a></pre>
+			<p>
+TokenRefresh fetch the host&#39;s bearer token for HTTP authorisation purpose
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="URL_CA">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6928:6948#L249">URL_CA</a>
 				<a class="permalink" href="#URL_CA">&#xb6;</a>
 				
 				
@@ -1173,7 +1210,7 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="URL_ISSUE_TRACKER">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6996:7027#L256">URL_ISSUE_TRACKER</a>
+			<h2 id="URL_ISSUE_TRACKER">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7042:7073#L257">URL_ISSUE_TRACKER</a>
 				<a class="permalink" href="#URL_ISSUE_TRACKER">&#xb6;</a>
 				
 				
@@ -1186,7 +1223,7 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="URL_WATCHER_CONF">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6929:6959#L252">URL_WATCHER_CONF</a>
+			<h2 id="URL_WATCHER_CONF">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=6975:7005#L253">URL_WATCHER_CONF</a>
 				<a class="permalink" href="#URL_WATCHER_CONF">&#xb6;</a>
 				
 				
@@ -1199,7 +1236,7 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="USER_MAIN">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7123:7146#L264">USER_MAIN</a>
+			<h2 id="USER_MAIN">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=7169:7192#L265">USER_MAIN</a>
 				<a class="permalink" href="#USER_MAIN">&#xb6;</a>
 				
 				
@@ -1212,7 +1249,7 @@ a mimic function from the reverseproxy pkg
 		
 			
 			
-			<h2 id="Unzip">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=19688:19741#L829">Unzip</a>
+			<h2 id="Unzip">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=20065:20118#L842">Unzip</a>
 				<a class="permalink" href="#Unzip">&#xb6;</a>
 				
 				
@@ -1229,7 +1266,7 @@ within the zip file (parameter 1) to an output directory (parameter 2).
 		
 			
 			
-			<h2 id="WriteResponse">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=11503:11574#L479">WriteResponse</a>
+			<h2 id="WriteResponse">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=11880:11951#L492">WriteResponse</a>
 				<a class="permalink" href="#WriteResponse">&#xb6;</a>
 				
 				
@@ -1243,7 +1280,7 @@ within the zip file (parameter 1) to an output directory (parameter 2).
 		
 			
 			
-			<h2 id="BrandingConfig">type <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=4029:4321#L128">BrandingConfig</a>
+			<h2 id="BrandingConfig">type <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=4074:4366#L129">BrandingConfig</a>
 				<a class="permalink" href="#BrandingConfig">&#xb6;</a>
 				
 				
@@ -1284,7 +1321,7 @@ within the zip file (parameter 1) to an output directory (parameter 2).
 		
 			
 			
-			<h2 id="Cert">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=23613:24084#L125">Cert</a>
+			<h2 id="Cert">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=23613:24346#L125">Cert</a>
 				<a class="permalink" href="#Cert">&#xb6;</a>
 				
 				
@@ -1292,6 +1329,10 @@ within the zip file (parameter 1) to an output directory (parameter 2).
 			
 			<pre>type Cert struct {
 <span id="Cert.Version"></span>    Version <a href="/pkg/builtin/#string">string</a> `json:&#34;version&#34;`
+
+    <span class="comment">// identify the validation to be integrated</span>
+    <span class="comment">// ad (ActiveDirectory) pkcs1v15 (pkcs check)</span>
+<span id="Cert.Validation"></span>    Validation <a href="/pkg/builtin/#string">string</a>
 
     <span class="comment">//Cert.Subject.SerialNumber represent the developer Id</span>
 <span id="Cert.Cert"></span>    Cert *<a href="/pkg/crypto/x509/">x509</a>.<a href="/pkg/crypto/x509/#Certificate">Certificate</a> `json:&#34;-&#34;`
@@ -1309,7 +1350,7 @@ within the zip file (parameter 1) to an output directory (parameter 2).
 
 			
 				
-				<h3 id="NewCert">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=45829:45867#L1183">NewCert</a>
+				<h3 id="NewCert">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=46231:46269#L1201">NewCert</a>
 					<a class="permalink" href="#NewCert">&#xb6;</a>
 					
 					
@@ -1325,7 +1366,7 @@ create a cert instance with a custom revision
 
 			
 				
-				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=46184:46249#L1203">AgentCertVerify</a>
+				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=46586:46651#L1221">AgentCertVerify</a>
 					<a class="permalink" href="#Cert.AgentCertVerify">&#xb6;</a>
 					
 					
@@ -1342,7 +1383,7 @@ The function is made to verify
 				
 			
 				
-				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=38229:38345#L834">CRTRenewing</a>
+				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=38631:38747#L852">CRTRenewing</a>
 					<a class="permalink" href="#Cert.CRTRenewing">&#xb6;</a>
 					
 					
@@ -1357,7 +1398,7 @@ uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppw
 				
 			
 				
-				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=36690:36777#L748">CSRSelfSigning</a>
+				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=37092:37179#L766">CSRSelfSigning</a>
 					<a class="permalink" href="#Cert.CSRSelfSigning">&#xb6;</a>
 					
 					
@@ -1369,7 +1410,7 @@ uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppw
 				
 			
 				
-				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=37325:37434#L784">CSRSigning</a>
+				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=37727:37836#L802">CSRSigning</a>
 					<a class="permalink" href="#Cert.CSRSigning">&#xb6;</a>
 					
 					
@@ -1384,7 +1425,7 @@ uid must be provisioned for the signee&#39;s csr. cert,ppvk,ppwd all refer to th
 				
 			
 				
-				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=39137:39255#L884">CreateSelfSignedCert</a>
+				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=39539:39657#L902">CreateSelfSignedCert</a>
 					<a class="permalink" href="#Cert.CreateSelfSignedCert">&#xb6;</a>
 					
 					
@@ -1399,7 +1440,7 @@ for embedded root cert in the agent
 				
 			
 				
-				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=33890:33946#L590">CreateSignatureByPvkStr</a>
+				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=34292:34348#L608">CreateSignatureByPvkStr</a>
 					<a class="permalink" href="#Cert.CreateSignatureByPvkStr">&#xb6;</a>
 					
 					
@@ -1415,7 +1456,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=40563:40729#L938">CreateSignedCert</a>
+				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=40965:41131#L956">CreateSignedCert</a>
 					<a class="permalink" href="#Cert.CreateSignedCert">&#xb6;</a>
 					
 					
@@ -1427,7 +1468,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66704:66750#L2091">Decrypt</a>
+				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68331:68377#L2166">Decrypt</a>
 					<a class="permalink" href="#Cert.Decrypt">&#xb6;</a>
 					
 					
@@ -1439,7 +1480,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.DecryptCmd">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=31277:31303#L457">DecryptCmd</a>
+				<h3 id="Cert.DecryptCmd">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=31679:31705#L475">DecryptCmd</a>
 					<a class="permalink" href="#Cert.DecryptCmd">&#xb6;</a>
 					
 					
@@ -1451,7 +1492,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=35135:35197#L650">DecryptOneShotByBase64PvkStr</a>
+				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=35537:35599#L668">DecryptOneShotByBase64PvkStr</a>
 					<a class="permalink" href="#Cert.DecryptOneShotByBase64PvkStr">&#xb6;</a>
 					
 					
@@ -1466,7 +1507,7 @@ Decrypt the given @_da uuid based on the preloaded private key/passphrase.
 				
 			
 				
-				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=33063:33116#L551">EncryptOneShotByBase64CertStr</a>
+				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=33465:33518#L569">EncryptOneShotByBase64CertStr</a>
 					<a class="permalink" href="#Cert.EncryptOneShotByBase64CertStr">&#xb6;</a>
 					
 					
@@ -1481,7 +1522,7 @@ Encrypt a uuid-based string (_da) based on the preloaded cert.
 				
 			
 				
-				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65712:65753#L2028">EncryptV2</a>
+				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67339:67380#L2103">EncryptV2</a>
 					<a class="permalink" href="#Cert.EncryptV2">&#xb6;</a>
 					
 					
@@ -1496,7 +1537,22 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=54665:54753#L1556">GenerateCRTFile</a>
+				<h3 id="Cert.FetchPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63282:63329#L1920">FetchPassphrase</a>
+					<a class="permalink" href="#Cert.FetchPassphrase">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) FetchPassphrase() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+get the cached passphrase in plaintext
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=55066:55154#L1573">GenerateCRTFile</a>
 					<a class="permalink" href="#Cert.GenerateCRTFile">&#xb6;</a>
 					
 					
@@ -1508,7 +1564,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=52625:52690#L1467">GenerateCSR</a>
+				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=53026:53091#L1484">GenerateCSR</a>
 					<a class="permalink" href="#Cert.GenerateCSR">&#xb6;</a>
 					
 					
@@ -1520,7 +1576,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=54368:54443#L1545">GenerateCSRFile</a>
+				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=54769:54844#L1562">GenerateCSRFile</a>
 					<a class="permalink" href="#Cert.GenerateCSRFile">&#xb6;</a>
 					
 					
@@ -1532,7 +1588,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=55456:55532#L1590">GeneratePVKFile</a>
+				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=55857:55933#L1607">GeneratePVKFile</a>
 					<a class="permalink" href="#Cert.GeneratePVKFile">&#xb6;</a>
 					
 					
@@ -1544,7 +1600,19 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58837:58879#L1750">GetCertDetail</a>
+				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75311:75346#L2492">GetBearToken</a>
+					<a class="permalink" href="#Cert.GetBearToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetBearToken() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59812:59854#L1796">GetCertDetail</a>
 					<a class="permalink" href="#Cert.GetCertDetail">&#xb6;</a>
 					
 					
@@ -1556,7 +1624,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=70883:70938#L2294">GetDecryptedPrivateKey</a>
+				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=72937:72992#L2382">GetDecryptedPrivateKey</a>
 					<a class="permalink" href="#Cert.GetDecryptedPrivateKey">&#xb6;</a>
 					
 					
@@ -1571,7 +1639,7 @@ Print decrypted private key by passing the base64 excrypted private key (pk) and
 				
 			
 				
-				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24200:24231#L147">GetDevID</a>
+				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24478:24509#L160">GetDevID</a>
 					<a class="permalink" href="#Cert.GetDevID">&#xb6;</a>
 					
 					
@@ -1586,7 +1654,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58393:58433#L1731">GetExtensions</a>
+				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59368:59408#L1777">GetExtensions</a>
 					<a class="permalink" href="#Cert.GetExtensions">&#xb6;</a>
 					
 					
@@ -1598,14 +1666,14 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24107:24143#L142">GetPassphrase</a>
-					<a class="permalink" href="#Cert.GetPassphrase">&#xb6;</a>
+				<h3 id="Cert.GetHashedPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=64896:64946#L1989">GetHashedPassphrase</a>
+					<a class="permalink" href="#Cert.GetHashedPassphrase">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) GetPassphrase() <a href="/pkg/builtin/#string">string</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetHashedPassphrase() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-get the passphrase
+get unaltered hashed passphrase from the folder
 </p>
 
 				
@@ -1613,7 +1681,7 @@ get the passphrase
 				
 			
 				
-				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58151:58197#L1721">GetScopeList</a>
+				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59126:59172#L1767">GetScopeList</a>
 					<a class="permalink" href="#Cert.GetScopeList">&#xb6;</a>
 					
 					
@@ -1625,7 +1693,7 @@ get the passphrase
 				
 			
 				
-				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=64207:64269#L1953">GetTLSConfigFromBase64Keys</a>
+				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65834:65896#L2028">GetTLSConfigFromBase64Keys</a>
 					<a class="permalink" href="#Cert.GetTLSConfigFromBase64Keys">&#xb6;</a>
 					
 					
@@ -1641,7 +1709,7 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68569:68610#L2190">HexRootCert</a>
+				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=70196:70237#L2265">HexRootCert</a>
 					<a class="permalink" href="#Cert.HexRootCert">&#xb6;</a>
 					
 					
@@ -1653,7 +1721,7 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57391:57447#L1677">LoadKeypair</a>
+				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58366:58422#L1723">LoadKeypair</a>
 					<a class="permalink" href="#Cert.LoadKeypair">&#xb6;</a>
 					
 					
@@ -1669,14 +1737,15 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62023:62075#L1860">LoadPrivateKey</a>
+				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=64220:64272#L1948">LoadPrivateKey</a>
 					<a class="permalink" href="#Cert.LoadPrivateKey">&#xb6;</a>
 					
 					
 				</h3>
 				<pre>func (c *<a href="#Cert">Cert</a>) LoadPrivateKey(prv_raw <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
 				<p>
-func (c *Cert)LoadPrivateKey(prv_raw string) (*rsa.PrivateKey,error) {
+load and evaluate the base64-encoded private key (@@prv_raw)
+with passphrase
 </p>
 
 				
@@ -1684,7 +1753,7 @@ func (c *Cert)LoadPrivateKey(prv_raw string) (*rsa.PrivateKey,error) {
 				
 			
 				
-				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=61486:61555#L1837">LoadPublicCrt</a>
+				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62461:62530#L1883">LoadPublicCrt</a>
 					<a class="permalink" href="#Cert.LoadPublicCrt">&#xb6;</a>
 					
 					
@@ -1696,7 +1765,22 @@ func (c *Cert)LoadPrivateKey(prv_raw string) (*rsa.PrivateKey,error) {
 				
 			
 				
-				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=64962:65020#L1991">ParseCRT</a>
+				<h3 id="Cert.LoadSavedKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57705:57743#L1693">LoadSavedKeypair</a>
+					<a class="permalink" href="#Cert.LoadSavedKeypair">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadSavedKeypair() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+load the saved keypair for the current cert object
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66589:66647#L2066">ParseCRT</a>
 					<a class="permalink" href="#Cert.ParseCRT">&#xb6;</a>
 					
 					
@@ -1711,7 +1795,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65262:65327#L2006">ParseCSR</a>
+				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66889:66954#L2081">ParseCSR</a>
 					<a class="permalink" href="#Cert.ParseCSR">&#xb6;</a>
 					
 					
@@ -1723,7 +1807,24 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=27695:27716#L300">Renew</a>
+				<h3 id="Cert.RegisterPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63075:63126#L1909">RegisterPassphrase</a>
+					<a class="permalink" href="#Cert.RegisterPassphrase">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) RegisterPassphrase() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+the instance will request/update the passphrase
+if the local passphrase set is empty, and
+return the hashed passphrase.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=28097:28118#L318">Renew</a>
 					<a class="permalink" href="#Cert.Renew">&#xb6;</a>
 					
 					
@@ -1735,7 +1836,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=42865:43012#L1043">RenewSignedCert</a>
+				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=43267:43414#L1061">RenewSignedCert</a>
 					<a class="permalink" href="#Cert.RenewSignedCert">&#xb6;</a>
 					
 					
@@ -1747,7 +1848,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=47982:48005#L1289">Request</a>
+				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=48383:48406#L1306">Request</a>
 					<a class="permalink" href="#Cert.Request">&#xb6;</a>
 					
 					
@@ -1759,7 +1860,22 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24273:24293#L151">Sign</a>
+				<h3 id="Cert.SetRawPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24602:24645#L165">SetRawPrivateKey</a>
+					<a class="permalink" href="#Cert.SetRawPrivateKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) SetRawPrivateKey(pkey <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+save raw privatekey base64 string for validation
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24675:24695#L169">Sign</a>
 					<a class="permalink" href="#Cert.Sign">&#xb6;</a>
 					
 					
@@ -1771,7 +1887,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71476:71532#L2327">ValidateClientCreds</a>
+				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=73530:73586#L2415">ValidateClientCreds</a>
 					<a class="permalink" href="#Cert.ValidateClientCreds">&#xb6;</a>
 					
 					
@@ -1786,7 +1902,7 @@ validate the client credentail @cred in base64 string
 				
 			
 				
-				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57914:57958#L1705">ValidateScope</a>
+				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58889:58933#L1751">ValidateScope</a>
 					<a class="permalink" href="#Cert.ValidateScope">&#xb6;</a>
 					
 					
@@ -1798,14 +1914,29 @@ validate the client credentail @cred in base64 string
 				
 			
 				
-				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=72045:72114#L2351">ValidateToken</a>
+				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=74654:74714#L2460">ValidateToken</a>
 					<a class="permalink" href="#Cert.ValidateToken">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) ValidateToken(_sg, _om <a href="/pkg/builtin/#string">string</a>, exp <a href="/pkg/builtin/#int">int</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateToken(_sg, _om <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-oauth2 authentication process, this returns the verified id of this token
+ValidateToken validate against the expiration, and the overall authenticity of the token
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Cert.ValidateTokenExp">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=74174:74231#L2439">ValidateTokenExp</a>
+					<a class="permalink" href="#Cert.ValidateTokenExp">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateTokenExp(_om <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+ValidateTokenExp only validate the expiration of the token, it does not garantee the authenticity of the token. it returns the id of the token owner
 </p>
 
 				
