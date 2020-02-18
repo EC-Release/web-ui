@@ -15,9 +15,6 @@ export default class Technicalview extends React.Component {
                 nodes: [],
                 edges: []
             },
-            apiEndPoints:{
-                baseUrl: 'https://reqres.in/api/users/2'
-            },
             loadTreeJs: false
         }
     }
@@ -29,17 +26,28 @@ export default class Technicalview extends React.Component {
             value: 'EC'
         }]
 
-        fetch(this.state.apiEndPoints.baseUrl, { // Get zones 'listZones?user_id='+this.props.userId
-			method: 'GET'
+        fetch(this.props.baseUrl + '/listZones?user_id='+this.props.userId, { // Get zones 'listZones?user_id='+this.props.userId
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': this.props.authToken
+            }
 		})
 		.then((response) => {
 			if (response.status === 200) {
-                response.json().then((zones) => {
-                    zones = [
+                response.json().then((respData) => {
+                    //console.log(respData);
+                    let zones = respData.data;
+                    /*zones = [
                         "b3a2e601",
                         "b3a2",
                         "b3a2e60"
-                    ];
+                    ];*/
+                    if(zones === null){
+                        zones = [];
+                    }
+
                     let numOfZones = zones.length;
                     let totalNumOfAjax = zones.length;
                     let totalNumOfAjaxProcessed = 0;
@@ -57,7 +65,14 @@ export default class Technicalview extends React.Component {
                         newId++;
                         let newZoneObj = {};
                         newZoneObj.id = newId;
-                        newZoneObj.value = zones[indexZone];
+                        newZoneObj.title = zones[indexZone];
+                        let valueToshow = zones[indexZone];
+                        if(zones[indexZone].length > 20){
+                            let first3Char = zones[indexZone].substr(0, 5);
+                            let last3Char = zones[indexZone].substr(zones[indexZone].length - 5, 5);
+                            valueToshow = first3Char+'...'+last3Char;
+                        }
+                        newZoneObj.value = valueToshow;
                         
                         if(indexZone == 0){
                             treeValue[0].children = [newZoneObj];
@@ -66,13 +81,20 @@ export default class Technicalview extends React.Component {
                             treeValue[0].children.push(newZoneObj);
                         }
 
-                        fetch(this.state.apiEndPoints.baseUrl, { // Get gateways '/listGatewaysForZone?zone_id='+zones[indexZone];
-                            method: 'GET'
+                        fetch(this.props.baseUrl + '/listGatewaysForZone?zone_id='+zones[indexZone], { // Get gateways '/listGatewaysForZone?zone_id='+zones[indexZone];
+                            method: 'GET',
+                            headers: {
+                                'Accept': 'application/json',
+                                'Content-Type': 'application/json',
+                                'Authorization': this.props.authToken
+                            }
                         })
                         .then((response) => {
                             if (response.status === 200) {
-                                response.json().then((gateways) => {
-                                    gateways = [
+                                response.json().then((respData) => {
+                                    //console.log(respData);
+                                    let gateways = respData.data;
+                                    /*gateways = [
                                         {
                                           "gatewayId": "Gateway-10",
                                           "userId": "212712078",
@@ -91,7 +113,11 @@ export default class Technicalview extends React.Component {
                                           "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
                                           "hostUrl": "wss://gateway-url/agent"
                                         }
-                                    ];
+                                    ];*/
+                                    if(gateways === null){
+                                        gateways = [];
+                                    }
+
                                     totalNumOfAjax = totalNumOfAjax + gateways.length;
                                     totalNumOfAjaxProcessed++;
                                     if(totalNumOfAjaxProcessed === totalNumOfAjax){
@@ -108,7 +134,14 @@ export default class Technicalview extends React.Component {
                                         newId++;
                                         let newGatewayObj = {};
                                         newGatewayObj.id = newId;
-                                        newGatewayObj.value = gateways[indexGateway].gatewayId;
+                                        newGatewayObj.title = gateways[indexGateway].gatewayId;
+                                        let valueToshow = gateways[indexGateway].gatewayId;
+                                        if(gateways[indexGateway].gatewayId.length > 20){
+                                            let first3Char = gateways[indexGateway].gatewayId.substr(0, 5);
+                                            let last3Char = gateways[indexGateway].gatewayId.substr(gateways[indexGateway].gatewayId.length - 5, 5);
+                                            valueToshow = first3Char+'...'+last3Char;
+                                        }
+                                        newGatewayObj.value = valueToshow;
 
                                         if(indexGateway == 0){
                                             treeValue[0].children[indexZone].children = [newGatewayObj];
@@ -117,13 +150,20 @@ export default class Technicalview extends React.Component {
                                             treeValue[0].children[indexZone].children.push(newGatewayObj);
                                         }
                                         totalNumOfAjax = totalNumOfAjax + 1; 
-                                        fetch(this.state.apiEndPoints.baseUrl, { // Get servers '/listServersForGateway?gateway_id='+gateways[indexGateway].gatewayId;
-                                            method: 'GET'
+                                        fetch(this.props.baseUrl + '/listServersForGateway?gateway_id='+gateways[indexGateway].gatewayId, { // Get servers '/listServersForGateway?gateway_id='+gateways[indexGateway].gatewayId;
+                                            method: 'GET',
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/json',
+                                                'Authorization': this.props.authToken
+                                            }
                                         })
                                         .then((response) => {
                                             if (response.status === 200) {
-                                                response.json().then((servers) => {
-                                                    servers = [
+                                                response.json().then((respData) => {
+                                                    //console.log(respData);
+                                                    let servers = respData.data;
+                                                    /*let servers = [
                                                         {
                                                           "serverId": "Server-56",
                                                           "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -158,7 +198,11 @@ export default class Technicalview extends React.Component {
                                                           "remotePort": "5432",
                                                           "plugin": null
                                                         }
-                                                    ];
+                                                    ];*/
+
+                                                    if(servers === null){
+                                                        servers = [];
+                                                    }
 
                                                     totalNumOfAjaxProcessed++;
                                                     if(totalNumOfAjaxProcessed === totalNumOfAjax){
@@ -178,7 +222,15 @@ export default class Technicalview extends React.Component {
                                                             newId++;
                                                             let newServerObj = {};
                                                             newServerObj.id = newId;
-                                                            newServerObj.value = servers[indexServer].serverId;
+                                                            newServerObj.title = servers[indexServer].serverId;
+                                                            let valueToshow = servers[indexServer].serverId;
+                                                            if(servers[indexServer].serverId.length > 20){
+                                                                let first3Char = servers[indexServer].serverId.substr(0, 5);
+                                                                let last3Char = servers[indexServer].serverId.substr(servers[indexServer].serverId.length - 5, 5);
+                                                                valueToshow = first3Char+'...'+last3Char;
+                                                            }
+                                                            newServerObj.value = valueToshow;
+
                                                             if(indexServer == 0){
                                                                 treeValue[0].children[indexZone].children[indexGateway].children[0].children = [newServerObj];
                                                             }
@@ -199,13 +251,20 @@ export default class Technicalview extends React.Component {
                                         })
 
 
-                                        fetch(this.state.apiEndPoints.baseUrl, { // Get clients '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId;
-                                            method: 'GET'
+                                        fetch(this.props.baseUrl + '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId, { // Get clients '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId;
+                                            method: 'GET',
+                                            headers: {
+                                                'Accept': 'application/json',
+                                                'Content-Type': 'application/json',
+                                                'Authorization': this.props.authToken
+                                            }
                                         })
                                         .then((response) => {
                                             if (response.status === 200) {
-                                                response.json().then((clients) => {
-                                                    clients = [
+                                                response.json().then((respData) => {
+                                                    //console.log(respData);
+                                                    let clients = respData.data;
+                                                    /*let clients = [
                                                         {
                                                           "clientId": "Client-1b9",
                                                           "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -236,8 +295,11 @@ export default class Technicalview extends React.Component {
                                                           "localPort": "7999",
                                                           "plugin": null
                                                         }
-                                                    ];
+                                                    ];*/
 
+                                                    if(clients === null){
+                                                        clients = [];
+                                                    }
                                                     
                                                     totalNumOfAjaxProcessed++;
 
@@ -255,7 +317,16 @@ export default class Technicalview extends React.Component {
                                                             newId++;
                                                             let newClientObj = {};
                                                             newClientObj.id = newId;
-                                                            newClientObj.value = clients[indexClient].clientId;
+                                                            newClientObj.title = clients[indexClient].clientId;
+                                                            let valueToshow = clients[indexClient].clientId;
+
+                                                            if(clients[indexClient].clientId.length > 20){
+                                                                let first3Char = clients[indexClient].clientId.substr(0, 5);
+                                                                let last3Char = clients[indexClient].clientId.substr(clients[indexClient].clientId.length - 5, 5);
+                                                                valueToshow = first3Char+'...'+last3Char;
+                                                            }
+                                                            newClientObj.value = valueToshow;
+
                                                             if(indexClient == 0){
                                                                 if(treeValue[0].children[indexZone].children[indexGateway].children[0].value === 'Server'){
                                                                     treeValue[0].children[indexZone].children[indexGateway].children[1].children = [newClientObj];
@@ -322,7 +393,8 @@ export default class Technicalview extends React.Component {
                             for(let childNode of treeObj.children){
                                 let childNodeId = childNode.id;
                                 let childNodeLabel = childNode.value;
-                                let preparedChildNode = { id: childNodeId, label: childNodeLabel };
+                                let childNodeTitle = childNode.title;
+                                let preparedChildNode = { id: childNodeId, label: childNodeLabel, title: childNodeTitle };
                                 nodes.push(preparedChildNode);
 
                                 let prepareEdges = { from: 1, to: childNodeId };
@@ -359,9 +431,11 @@ export default class Technicalview extends React.Component {
         let treeObj = Object.assign({}, items);
         let parentNodeId = treeObj.id;
         let parentNodeLabel = treeObj.value;
+        let parentNodeTitle = treeObj.title;
         let parentNode = {};
         parentNode.id = parentNodeId;
         parentNode.label = parentNodeLabel;
+        parentNode.title = parentNodeTitle;
         nodes.push(parentNode);
         if(treeObj.children){
             let childern = [ ...treeObj.children];
@@ -369,9 +443,11 @@ export default class Technicalview extends React.Component {
                 let copiedChildNode = Object.assign({}, childNode);
                 let childNodeId = copiedChildNode.id;
                 let childNodeLabel = copiedChildNode.value;
+                let childNodeTitle = copiedChildNode.title;
                 let preparedChildNode = {};
                 preparedChildNode.id = childNodeId;
                 preparedChildNode.label = childNodeLabel;
+                preparedChildNode.title = childNodeTitle;
                 nodes.push(preparedChildNode);
 
                 let prepareEdges = {};
@@ -406,7 +482,7 @@ export default class Technicalview extends React.Component {
                         this.props.showTable ?
                             <div className="row view-table">
                                 <div className="col-md-12">
-                                    <button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advance search</button>
+                                    <button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
                                     <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>
                                 </div>
                             </div> :

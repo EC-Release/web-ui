@@ -17,17 +17,13 @@ export default class View extends React.Component {
                 thead: [],
                 tbody: [],
                 allFields: []
-            },
-            apiEndPoints: {
-                baseUrl : 'https://reqres.in/api/users/2',
-                baseUrl1 : 'https://reqres.in/api/users/2'
             }
         }
     }
 
     componentDidMount(){
         let technicalTableData = [];
-        fetch(this.state.apiEndPoints.baseUrl1 , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
+        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -39,7 +35,7 @@ export default class View extends React.Component {
             if (response.status === 200) {
                 response.json().then((respData) => {
                     //console.log(respData);
-                    let gateways =[
+                    /*let gateways =[
                                     {
                                       "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
                                       "userId": "212712078",
@@ -58,7 +54,11 @@ export default class View extends React.Component {
                                       "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
                                       "hostUrl": "wss://gateway-url/agent"
                                     }
-                                ];
+                                ];*/
+                    let gateways = respData.data;
+                    if(gateways === null){
+                        gateways = [];
+                    }
 
                     if(gateways.length > 0){
                         for(let gateway of gateways){
@@ -74,13 +74,20 @@ export default class View extends React.Component {
                         }
                     }
                     
-                    fetch(this.state.apiEndPoints.baseUrl, { // Get servers 'listServers?user_id='+this.props.userId;
-                        method: 'GET'
+                    fetch(this.props.baseUrl + '/listServers?user_id='+this.props.userId, { // Get servers 'listServers?user_id='+this.props.userId;
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': this.props.authToken
+                        }
                     })
                     .then((response) => {
                         if (response.status === 200) {
-                            response.json().then((servers) => {
-                                servers = [
+                            response.json().then((respData) => {
+                                //console.log(respData);
+                                let servers = respData.data;
+                                /*servers = [
                                     {
                                       "serverId": "Server-56ca9bb6-62ee-4a41-88bd-107d20ceed30",
                                       "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -115,7 +122,11 @@ export default class View extends React.Component {
                                       "remotePort": "5432",
                                       "plugin": null
                                     }
-                                ];
+                                ];*/
+
+                                if(servers === null){
+                                    servers = [];
+                                }
 
                                 if(servers.length > 0){
                                     for(let server of servers){
@@ -131,13 +142,19 @@ export default class View extends React.Component {
                                     }
                                 }
 
-                                fetch(this.state.apiEndPoints.baseUrl, { // Get clients '/listClients?user_id='+this.props.userId;
-                                    method: 'GET'
+                                fetch(this.props.baseUrl + '/listClients?user_id='+this.props.userId, { // Get clients '/listClients?user_id='+this.props.userId;
+                                    method: 'GET',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Authorization': this.props.authToken
+                                    }
                                 })
                                 .then((response) => {
                                     if (response.status === 200) {
-                                        response.json().then((clients) => {
-                                            clients = [
+                                        response.json().then((respData) => {
+                                            let clients = respData.data;
+                                            /*clients = [
                                                 {
                                                   "clientId": "Client-1b95c319-aa6c-44ba-8c2f-2b1764efe697",
                                                   "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -168,7 +185,11 @@ export default class View extends React.Component {
                                                   "localPort": "7999",
                                                   "plugin": null
                                                 }
-                                            ];
+                                            ];*/
+
+                                            if(clients === null){
+                                                clients = [];
+                                            }
 
                                             for(let client of clients){
                                                 let prepareData = {};
@@ -295,11 +316,11 @@ export default class View extends React.Component {
         const currentTopologyView = this.state.topologyView;
         if(!currentTopologyView){
             // Technical view
-            return <Technicalview userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Technicalview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
         }
         else{
             // Business view
-            return <Businessview userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Businessview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
         }
     }
 

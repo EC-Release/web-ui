@@ -1,5 +1,5 @@
 export default 
 {
-    "mode" : "Agent mode1",
+    "mode" : "Agent mode",
     "environment": "Environment"
 }

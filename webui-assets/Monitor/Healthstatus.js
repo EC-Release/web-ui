@@ -816,6 +816,7 @@ export default class Healthstatus extends React.Component {
                                         <div className="col-sm-4">
                                             <button 
                                                 type="button" 
+                                                id="fetch-health-status-btn"
                                                 disabled={this.state.selectedGateway === '' ? true : false}
                                                 className="btn customize-view-btn btn-sm" 
                                                 onClick={()=>{this.fetchHealthStatus()}}>

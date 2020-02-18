@@ -19,7 +19,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />);
+        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+        
         wrapper.setState({
             agentForm: {
                 agentMode: { value: 1, dirtyState: false },
@@ -45,7 +46,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />);
+        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+        
         wrapper.setState({
             agentForm: {
                 agentMode: { value: 1, dirtyState: false },
@@ -71,7 +73,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />);
+        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+        
         wrapper.setState({
             agentForm: {
                 agentMode: { value: 2, dirtyState: false },
@@ -88,6 +91,7 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
         });
         expect(wrapper.find('div.server-form').length).toBe(1);
     });
+
     it('should have "CLIENT" class with div only once', () => {
         const propsToPass = {
             helpText: {
@@ -96,7 +100,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />);
+        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+        
         wrapper.setState({
             agentForm: {
                 agentMode: { value: 3, dirtyState: false },
@@ -113,6 +118,4 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
         });
         expect(wrapper.find('div.client-form').length).toBe(1);
     });
-
-
 });

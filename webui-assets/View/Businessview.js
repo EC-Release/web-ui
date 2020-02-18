@@ -226,7 +226,7 @@ export default class Businessview extends React.Component {
                         this.props.showTable ?
                             <div className="row view-table">
                                 <div className="col-md-12">
-                                    <button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advance search</button>
+                                    <button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
                                     <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>
                                 </div>
                             </div> :

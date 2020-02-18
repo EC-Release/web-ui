@@ -84,7 +84,7 @@ function generateTopology(nodeData, replacedDivId){
     });
 }
 
-function initTable(tableId){
+function initTable(tableId,  preserveState){
     if(tableId == 'viewTable'){
         $('#'+tableId).DataTable({
             "dom": '<"top"f>rt<"bottom"lp>',
@@ -121,6 +121,8 @@ function initTable(tableId){
                     $('td:eq('+i+')', row).css('min-width', '120px');
                 }
             },
+            "pageLength": 5,
+            stateSave: preserveState,
             destroy: true
         });
     }
@@ -140,6 +142,7 @@ function initTable(tableId){
                     $('td:eq('+i+')', row).css('min-width', '100px');
                 }
             },
+            "pageLength": 5,
             destroy: true
         });
     }

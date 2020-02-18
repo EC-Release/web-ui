@@ -2,11 +2,11 @@ describe('ec-web-ui test cases', function () {
 
     beforeEach(function () {
         browser.waitForAngularEnabled(false);
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         browser.get('http://localhost:17990/v1.1beta/ec');
         browser.driver.sleep(1000);
-        element(by.id('user-id')).sendKeys('Place your login id');
-        element(by.id('password')).sendKeys('Place your password');
+        element(by.id('user-id')).sendKeys('place your login id');
+        element(by.id('password')).sendKeys('Place your login password');
         element(by.id('login-btn')).click();
         browser.driver.sleep(1000);
         element(by.id('cont-btn')).click();
@@ -14,23 +14,23 @@ describe('ec-web-ui test cases', function () {
 
     // Login test start
     it('Login test', function () {
-        browser.driver.sleep(2000);
+        browser.driver.sleep(8000);
         expect(browser.getTitle()).toEqual('EC Admin Console');
     });
     // Login test end
 
     // View component test start
     it('View component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-view')).click();
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         expect(element(by.id('view-header-title')).getText()).toEqual('Topology view');
     });
     // View component test end
 
     // Agent create component test start
     it('Agent create component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-agent')).click();
@@ -43,7 +43,7 @@ describe('ec-web-ui test cases', function () {
 
     // Agent create (Gateway) button should be disable initially test start
     it('Agent--> Gateway create button should be disable initially', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-agent')).click();
@@ -58,7 +58,7 @@ describe('ec-web-ui test cases', function () {
 
     // Agent create (Server) button should be disable initially test start
     it('Agent--> Gateway create button should be disable initially', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-agent')).click();
@@ -75,7 +75,7 @@ describe('ec-web-ui test cases', function () {
 
     // Agent create (Client) button should be disable initially test start
     it('Agent--> Client create button should be disable initially', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-agent')).click();
@@ -92,7 +92,7 @@ describe('ec-web-ui test cases', function () {
 
     // Agent update/disable component test start
     it('Agent update/disable component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-agent')).click();
@@ -105,7 +105,7 @@ describe('ec-web-ui test cases', function () {
 
     // Agent view component test start
     it('Agent view component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-agent')).click();
@@ -117,7 +117,7 @@ describe('ec-web-ui test cases', function () {
     // Agent view component test end
 
     it('Monitor Notification component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-monitor')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-notification')).click();
@@ -127,19 +127,19 @@ describe('ec-web-ui test cases', function () {
     //Monitor Notification Component test end
 
     //Monitor Alert Component test start
-    /*  it('Monitor Alert component test', function () {
-         browser.driver.sleep(4000);
+    it('Monitor Alert component test', function () {
+         browser.driver.sleep(8000);
          element(by.id('nav-monitor')).click();
          browser.driver.sleep(1000);
          element(by.id('nav-alert')).click();
          browser.driver.sleep(1000);
          expect(element.all(by.css('.Alert')).isPresent()).toBe(true);
-     }); */
+     }); 
     //Monitor alert Component test end
 
     //Monitor Health Status Component test start
     it('Monitor Health Status component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-monitor')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-healthStatus')).click();
@@ -150,7 +150,7 @@ describe('ec-web-ui test cases', function () {
 
     //Monitor  Health Status button disable Component test start
     it('Monitor component test', function () {
-        browser.driver.sleep(4000);
+        browser.driver.sleep(8000);
         element(by.id('nav-monitor')).click();
         browser.driver.sleep(1000);
         element(by.id('nav-healthStatus')).click();

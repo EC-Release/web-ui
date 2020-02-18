@@ -151,21 +151,24 @@ export default class Maintainagentview extends React.Component {
         this.state = {
             tableData: [],
             newTableData: [],
-            apiEndPoints: {
-                baseUrl : 'https://jsonplaceholder.typicode.com/todos/1'
-            }
+            showTableInit: false
         }
     }
 
     componentDidMount(){
         let technicalTableData = [];
-        fetch(this.state.apiEndPoints.baseUrl, { // Get gateways
-            method: 'GET'
+        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId, { // Get gateways
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': this.props.authToken
+            }
         })
         .then((response) => {
             if (response.status === 200) {
-                response.json().then((gateways) => {
-                    gateways = [
+                response.json().then((respData) => {
+                    /*let gateways = [
                         {
                           "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
                           "userId": "212712078",
@@ -184,7 +187,12 @@ export default class Maintainagentview extends React.Component {
                           "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
                           "hostUrl": "wss://gateway-url/agent"
                         }
-                    ];
+                    ];*/
+
+                    let gateways = respData.data;
+                    if(gateways === null){
+                        gateways = [];
+                    }
 
                     if(gateways.length > 0){
                         for(let gateway of gateways){
@@ -201,13 +209,18 @@ export default class Maintainagentview extends React.Component {
                         }
                     }
                     
-                    fetch(this.state.apiEndPoints.baseUrl, { // Get servers
-                        method: 'GET'
+                    fetch(this.props.baseUrl + '/listServers?user_id='+this.props.userId, { // Get servers
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': this.props.authToken
+                        }
                     })
                     .then((response) => {
                         if (response.status === 200) {
-                            response.json().then((servers) => {
-                                servers = [
+                            response.json().then((respData) => {
+                                /*let servers = [
                                     {
                                       "serverId": "Server-56ca9bb6-62ee-4a41-88bd-107d20ceed30",
                                       "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -242,7 +255,11 @@ export default class Maintainagentview extends React.Component {
                                       "remotePort": "5432",
                                       "plugin": null
                                     }
-                                ];
+                                ];*/
+                                let servers = respData.data;
+                                if(servers === null){
+                                    servers = [];
+                                }
 
                                 if(servers.length > 0){
                                     for(let server of servers){
@@ -259,13 +276,18 @@ export default class Maintainagentview extends React.Component {
                                     }
                                 }
 
-                                fetch(this.state.apiEndPoints.baseUrl, { // Get clients
-                                    method: 'GET'
+                                fetch(this.props.baseUrl + '/listClients?user_id='+this.props.userId, { // Get clients
+                                    method: 'GET',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Authorization': this.props.authToken
+                                    }
                                 })
                                 .then((response) => {
                                     if (response.status === 200) {
-                                        response.json().then((clients) => {
-                                            clients = [
+                                        response.json().then((respData) => {
+                                            /*let clients = [
                                                 {
                                                   "clientId": "Client-1b95c319-aa6c-44ba-8c2f-2b1764efe697",
                                                   "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -296,7 +318,11 @@ export default class Maintainagentview extends React.Component {
                                                   "localPort": "7999",
                                                   "plugin": null
                                                 }
-                                            ];
+                                            ];*/
+                                            let clients = respData.data;
+                                            if(clients === null){
+                                                clients = [];
+                                            }
 
                                             for(let client of clients){
                                                 let prepareData = {};
@@ -345,7 +371,7 @@ export default class Maintainagentview extends React.Component {
         //window.initTable('maintainagentviewTable');
     }
 
-    generateTableStructure(technicalTableData){
+    /*generateTableStructure(technicalTableData){
         let tableData = technicalTableData;
         let newTableData = [];
         for(let dataObj of tableData){
@@ -417,13 +443,14 @@ export default class Maintainagentview extends React.Component {
         }
 
         this.setState({
-            newTableData: newTableData
+            newTableData: newTableData,
+            showTableInit: true
         });
 
         setTimeout(function(){
             window.initTable('maintainagentviewTable');
         }, 100);
-    }
+    }*/
 
     showHideTableTdData(objectIndex, fieldName){
         let newTableData = [...this.state.newTableData];
@@ -484,7 +511,7 @@ export default class Maintainagentview extends React.Component {
             Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
     }
 
-    filterData(e){
+    /*filterData(e){
         window.destroyDataTable('maintainagentviewTable');
         let searchStr = e.target.value.trim();
         let wholeData = [...this.state.tableData];
@@ -572,7 +599,7 @@ export default class Maintainagentview extends React.Component {
         setTimeout(function(){
             window.initTable('maintainagentviewTable');
         }, 0);
-    }
+    }*/
 
     
 
@@ -597,72 +624,77 @@ export default class Maintainagentview extends React.Component {
                         </div>
                     </div>
                     <div className="centered-div">
-                        <table id="maintainagentviewTable" className="table">
-                            <thead>
-                                <tr>
-                                    <th>Subscription</th>
-                                    <th>Agent ID</th>
-                                    <th>Gateway</th>
-                                    <th>Group</th>
-                                    <th>OAuth Provider</th>
-                                    <th>Zone</th>
-                                    <th>Remote Host</th>
-                                    <th>Remote Port</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
-                                return(
-                                    <tr key={'maintainagentviewTableTbodyTr_'+tbodyIndex}>
-                                        <td>
-                                            { tbodyVal.subscription }&nbsp;&nbsp;
-                                            {  tbodyVal.subscriptionHiddenFlag ?
-                                                <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscription')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                null
-                                            }
-                                        </td>
-                                        <td>{ tbodyVal.agent_id }</td>
-                                        <td>
-                                            { tbodyVal.gateway }&nbsp;&nbsp;
-                                            {
-                                                tbodyVal.gatewayHiddenFlag ?
-                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'gateway')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                    null
-                                            }
-                                        </td>
-                                        <td>{ tbodyVal.group }</td>
-                                        <td>
-                                            { tbodyVal.oauth_provider }&nbsp;&nbsp;
-                                            {  tbodyVal.oauth_providerHiddenFlag ?
-                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'oauth_provider')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                    null
-                                                }
-                                           </td>
-                                        <td>
-                                            { tbodyVal.zone }&nbsp;&nbsp;
-                                            {   tbodyVal.zoneHiddenFlag ?
-                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'zone')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                    null
-                                                }
-                                        </td>
-                                        <td>
-                                            { tbodyVal.remote_host }&nbsp;&nbsp;
-                                            {  tbodyVal.remote_hostHiddenFlag ?
-                                                <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_host')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                null
-                                            }
-                                        </td>
-                                        <td>
-                                            { tbodyVal.remote_port }&nbsp;&nbsp;
-                                            {  tbodyVal.remote_portHiddenFlag ?
-                                                <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_port')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                null
-                                            }</td>
+                        { this.state.showTableInit ?
+                            <table id="maintainagentviewTable" className="table">
+                                <thead>
+                                    <tr>
+                                        <th>Subscription</th>
+                                        <th>Agent ID</th>
+                                        <th>Gateway</th>
+                                        <th>Group</th>
+                                        <th>OAuth Provider</th>
+                                        <th>Zone</th>
+                                        <th>Remote Host</th>
+                                        <th>Remote Port</th>
                                     </tr>
-                                )
-                            })}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
+                                    return(
+                                        <tr key={'maintainagentviewTableTbodyTr_'+tbodyIndex}>
+                                            <td>
+                                                { tbodyVal.subscription }&nbsp;&nbsp;
+                                                {  tbodyVal.subscriptionHiddenFlag ?
+                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscription')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                    null
+                                                }
+                                            </td>
+                                            <td>{ tbodyVal.agent_id }</td>
+                                            <td>
+                                                { tbodyVal.gateway }&nbsp;&nbsp;
+                                                {
+                                                    tbodyVal.gatewayHiddenFlag ?
+                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'gateway')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                        null
+                                                }
+                                            </td>
+                                            <td>{ tbodyVal.group }</td>
+                                            <td>
+                                                { tbodyVal.oauth_provider }&nbsp;&nbsp;
+                                                {  tbodyVal.oauth_providerHiddenFlag ?
+                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'oauth_provider')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                        null
+                                                    }
+                                            </td>
+                                            <td>
+                                                { tbodyVal.zone }&nbsp;&nbsp;
+                                                {   tbodyVal.zoneHiddenFlag ?
+                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'zone')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                        null
+                                                    }
+                                            </td>
+                                            <td>
+                                                { tbodyVal.remote_host }&nbsp;&nbsp;
+                                                {  tbodyVal.remote_hostHiddenFlag ?
+                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_host')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                    null
+                                                }
+                                            </td>
+                                            <td>
+                                                { tbodyVal.remote_port }&nbsp;&nbsp;
+                                                {  tbodyVal.remote_portHiddenFlag ?
+                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_port')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                    null
+                                                }</td>
+                                        </tr>
+                                    )
+                                })}
+                                </tbody>
+                            </table>:
+                            <p className="text-center loader-icon">
+                                <img alt="loading" src="assets/static/images/rolling.svg" />
+                            </p>
+                        }
                     </div>
                 </div>
             </div>
