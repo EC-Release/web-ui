@@ -3,10 +3,12 @@ import ReactDOM from "react-dom";
 
 export default class Header extends React.Component {
 
+    /* istanbul ignore next */
     constructor(props){
         super(props)
     }
 
+    /* istanbul ignore next */
     render() {
         return (
             <header>

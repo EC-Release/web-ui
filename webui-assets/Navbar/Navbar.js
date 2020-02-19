@@ -67,24 +67,24 @@ export default class Navbar extends React.Component {
                                 </li>
                             </ul>
                         </li>
-                        <li className={this.props.currentView === 'Monitor' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
+                        <li id="nav-monitor" className={this.props.currentView === 'Notification' || this.props.currentView === 'Alert' || this.props.currentView === 'Healthstatus' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/monitor_icon.svg'} alt="nav-monitor" />
                                 Monitor
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Monitor')} href="#">
+                                    <a id="nav-notification" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Notification')} href="#">
                                         Notifications
                                     </a>
                                 </li>
                                 <li>
-                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Monitor')} href="#">
+                                    <a id="nav-alert" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Alert')} href="#">
                                         Alert
                                     </a>
                                 </li>
                                 <li>
-                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Monitor')} href="#">
+                                    <a id="nav-healthStatus" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Healthstatus')} href="#">
                                         Health Status
                                     </a>
                                 </li>
@@ -96,14 +96,14 @@ export default class Navbar extends React.Component {
                                 Report
                             </a>
                         </li>
-                        <li className={this.props.currentView === 'Settings' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
+                        <li className={this.props.currentView === 'Usermanagement' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/settings_icon.svg'} alt="nav-settings" />
                                 Settings
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Settings')} href="#">
+                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
                                         User Management
                                     </a>
                                 </li>

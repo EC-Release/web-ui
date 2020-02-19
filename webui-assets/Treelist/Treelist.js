@@ -29,7 +29,11 @@ export default class Treelist extends React.Component {
         if(items.children){
             return(
                 <li key={'parentTreeNode'+items.id}>
-                    <a href="#" id={'parentTreeNodeAnchor'+items.id} onClick={this.props.changeTopology.bind(this, items)}>
+                    <a 
+                        href="#" 
+                        id={'parentTreeNodeAnchor'+items.id} 
+                        onClick={this.props.changeTopology.bind(this, items)}
+                        title={ items.title }>
                         &nbsp;
                         { items.value }
                     </a>
@@ -43,7 +47,7 @@ export default class Treelist extends React.Component {
         }
         else{
             return (
-                <li key={'terminalTreeNode'+items.id}>{ items.value }</li>
+                <li key={'terminalTreeNode'+items.id} title={ items.title }>{ items.value }</li>
             )
         }
     }

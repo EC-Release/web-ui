@@ -4,7 +4,9 @@ import Adapter from 'enzyme-adapter-react-16';
 import fetchMock from 'fetch-mock';
 import Maintainagetedit from '../Maintain/Maintainagentedit'
 
-describe('Testing from Maintainagetedit.test.js <View />', () => {
+configure({ adapter: new Adapter() });
+
+describe('Testing from Maintainagetedit.test.js <Maintainagetedit />', () => {
 
     it('should render the Maintainagetedit component', () => {
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
@@ -59,10 +61,11 @@ describe('Testing from Maintainagetedit.test.js <View />', () => {
                 OAuth2: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
                 localPort: { value: '', dirtyState: false },
+                targetId: { value: '', dirtyState: false },
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
-            },
+            }
         });
         expect(wrapper).toBeTruthy();
     });

@@ -9,10 +9,10 @@ configure({ adapter: new Adapter() });
 window.initTable = () => { };
 window.destroyDataTable = () => { };
 
-describe('Testing from Maintainagentupgrade.test.js <View />', () => {
+describe('Testing from Maintainagentupgrade.test.js <Maintainagentupgrade />', () => {
     it('should render the Maintainagentupgrade component', () => {
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentupgrade />);
+        const wrapper = shallow(<Maintainagentupgrade />, { disableLifecycleMethods: true });
         expect(wrapper).toBeTruthy();
     });
 });

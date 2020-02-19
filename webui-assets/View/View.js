@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 import Technicalview from './Technicalview.js';
 import Businessview from './Businessview.js';
@@ -18,56 +17,48 @@ export default class View extends React.Component {
                 thead: [],
                 tbody: [],
                 allFields: []
-            },
-            apiEndPoints: {
-                baseUrl : 'https://reqres.in/api/users/2'
-            },
-            userId: ''
+            }
         }
     }
 
     componentDidMount(){
-        var name = "user_id=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                this.setState({
-                    userId: c.substring(name.length, c.length)
-                })
-            }
-        }
         let technicalTableData = [];
-        fetch(this.state.apiEndPoints.baseUrl, { // Get gateways '/listGateways?user_id='+this.state.userId;
-            method: 'GET'
+        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': this.props.authToken
+            }
         })
         .then((response) => {
             if (response.status === 200) {
-                response.json().then((gateways) => {
-                    gateways = [
-                        {
-                          "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                          "userId": "212712078",
-                          "gatewayPort": "8080",
-                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                          "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                          "hostUrl": "wss://gateway-url/agent"
-                        },
-                        {
-                          "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                          "userId": "212712078",
-                          "gatewayPort": "8080",
-                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                          "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                          "hostUrl": "wss://gateway-url/agent"
-                        }
-                    ];
+                response.json().then((respData) => {
+                    //console.log(respData);
+                    /*let gateways =[
+                                    {
+                                      "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
+                                      "userId": "212712078",
+                                      "gatewayPort": "8080",
+                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
+                                      "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
+                                      "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
+                                      "hostUrl": "wss://gateway-url/agent"
+                                    },
+                                    {
+                                      "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
+                                      "userId": "212712078",
+                                      "gatewayPort": "8080",
+                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
+                                      "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
+                                      "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
+                                      "hostUrl": "wss://gateway-url/agent"
+                                    }
+                                ];*/
+                    let gateways = respData.data;
+                    if(gateways === null){
+                        gateways = [];
+                    }
 
                     if(gateways.length > 0){
                         for(let gateway of gateways){
@@ -83,13 +74,20 @@ export default class View extends React.Component {
                         }
                     }
                     
-                    fetch(this.state.apiEndPoints.baseUrl, { // Get servers 'listServers?user_id='+this.state.userId;
-                        method: 'GET'
+                    fetch(this.props.baseUrl + '/listServers?user_id='+this.props.userId, { // Get servers 'listServers?user_id='+this.props.userId;
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': this.props.authToken
+                        }
                     })
                     .then((response) => {
                         if (response.status === 200) {
-                            response.json().then((servers) => {
-                                servers = [
+                            response.json().then((respData) => {
+                                //console.log(respData);
+                                let servers = respData.data;
+                                /*servers = [
                                     {
                                       "serverId": "Server-56ca9bb6-62ee-4a41-88bd-107d20ceed30",
                                       "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -124,7 +122,11 @@ export default class View extends React.Component {
                                       "remotePort": "5432",
                                       "plugin": null
                                     }
-                                ];
+                                ];*/
+
+                                if(servers === null){
+                                    servers = [];
+                                }
 
                                 if(servers.length > 0){
                                     for(let server of servers){
@@ -140,13 +142,19 @@ export default class View extends React.Component {
                                     }
                                 }
 
-                                fetch(this.state.apiEndPoints.baseUrl, { // Get clients '/listClients?user_id='+this.state.userId;
-                                    method: 'GET'
+                                fetch(this.props.baseUrl + '/listClients?user_id='+this.props.userId, { // Get clients '/listClients?user_id='+this.props.userId;
+                                    method: 'GET',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Authorization': this.props.authToken
+                                    }
                                 })
                                 .then((response) => {
                                     if (response.status === 200) {
-                                        response.json().then((clients) => {
-                                            clients = [
+                                        response.json().then((respData) => {
+                                            let clients = respData.data;
+                                            /*clients = [
                                                 {
                                                   "clientId": "Client-1b95c319-aa6c-44ba-8c2f-2b1764efe697",
                                                   "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
@@ -177,7 +185,11 @@ export default class View extends React.Component {
                                                   "localPort": "7999",
                                                   "plugin": null
                                                 }
-                                            ];
+                                            ];*/
+
+                                            if(clients === null){
+                                                clients = [];
+                                            }
 
                                             for(let client of clients){
                                                 let prepareData = {};
@@ -241,8 +253,8 @@ export default class View extends React.Component {
                 let objKey = 0;
                 for(let dataKey of allDataKeys){
                     let singleObj = {};
-                    if(allData[dataKey].length > 20){
-                        singleObj.value = allData[dataKey].substr(0, 20);
+                    if(allData[dataKey].length > 10){
+                        singleObj.value = allData[dataKey].substr(0, 10);
                         singleObj.hiddenValue = allData[dataKey];
                         singleObj.hiddenState = true;
                     }
@@ -304,11 +316,11 @@ export default class View extends React.Component {
         const currentTopologyView = this.state.topologyView;
         if(!currentTopologyView){
             // Technical view
-            return <Technicalview showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Technicalview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
         }
         else{
             // Business view
-            return <Businessview showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Businessview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
         }
     }
 
@@ -416,8 +428,8 @@ export default class View extends React.Component {
             let objKey = 0;
             for(let dataKey of selectedDataKeys){
                 let singleObj = {};
-                if(allData[dataKey].length > 20){
-                    singleObj.value = allData[dataKey].substr(0, 20);
+                if(allData[dataKey].length > 10){
+                    singleObj.value = allData[dataKey].substr(0, 10);
                     singleObj.hiddenValue = allData[dataKey];
                     singleObj.hiddenState = true;
                 }
@@ -482,7 +494,8 @@ export default class View extends React.Component {
                         hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}
                         allFields={this.state.allFields} 
                         selectedFields={this.state.table.thead}
-                        createView={this.createView.bind(this)}></Customsearch>
+                        createView={this.createView.bind(this)}
+                        userId={this.props.userId}></Customsearch>
                 }
             </div>
         )
