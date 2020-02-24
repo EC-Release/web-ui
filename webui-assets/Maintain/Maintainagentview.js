@@ -152,7 +152,7 @@ export default class Maintainagentview extends React.Component {
             tableData: [],
             newTableData: [],
             showTableInit: false
-        }
+        };
     }
 
     componentDidMount(){
@@ -340,31 +340,30 @@ export default class Maintainagentview extends React.Component {
                                             this.setState({
                                                 tableData: technicalTableData
                                             });
-                                        })
+                                        });
                                     }
                                     else{
                                         //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                                         //console.log('Looks like there was a problem. Status Code: ' + response.status);
                                         //this.showAjaxBusy(false);
                                     }
-                                })
-                            })
+                                });
+                            });
                         }
                         else{
                             //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                             //console.log('Looks like there was a problem. Status Code: ' + response.status);
                             //this.showAjaxBusy(false);
                         }
-                    })
-                })
+                    });
+                });
             }
             else{
                 //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                 //console.log('Looks like there was a problem. Status Code: ' + response.status);
                 //this.showAjaxBusy(false);
             }
-        })
-        
+        });
     }
 
     componentDidUpdate(){
@@ -604,6 +603,7 @@ export default class Maintainagentview extends React.Component {
     
 
     render() {
+        /* jshint ignore:start */
         return (
             <div className="row Maintainagentview">
                 <div className="col-md-12">
@@ -699,5 +699,6 @@ export default class Maintainagentview extends React.Component {
                 </div>
             </div>
         )
+        /* jshint ignore:end */
     }
 }

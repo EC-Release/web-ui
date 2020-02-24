@@ -18,7 +18,7 @@ export default class View extends React.Component {
                 tbody: [],
                 allFields: []
             }
-        }
+        };
     }
 
     componentDidMount(){
@@ -206,31 +206,30 @@ export default class View extends React.Component {
                                             this.setState({
                                                 mockTableData: technicalTableData
                                             });
-                                        })
+                                        });
                                     }
                                     else{
                                         //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                                         //console.log('Looks like there was a problem. Status Code: ' + response.status);
                                         //this.showAjaxBusy(false);
                                     }
-                                })
-                            })
+                                });
+                            });
                         }
                         else{
                             //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                             //console.log('Looks like there was a problem. Status Code: ' + response.status);
                             //this.showAjaxBusy(false);
                         }
-                    })
-                })
+                    });
+                });
             }
             else{
                 //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                 //console.log('Looks like there was a problem. Status Code: ' + response.status);
                 //this.showAjaxBusy(false);
             }
-        })
-        
+        });
     }
 
     generateTableStructure(technicalTableData){
@@ -309,18 +308,18 @@ export default class View extends React.Component {
     changeToSearchView(){
         this.setState({
             isSearchView: true
-        })
+        });
     }
 
     servedTopologyView(){
         const currentTopologyView = this.state.topologyView;
         if(!currentTopologyView){
             // Technical view
-            return <Technicalview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Technicalview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />; // jshint ignore:line
         }
         else{
             // Business view
-            return <Businessview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />;
+            return <Businessview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showTable={this.state.showTable} tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)} goToSearch={this.changeToSearchView.bind(this)} />; // jshint ignore:line
         }
     }
 
@@ -343,22 +342,22 @@ export default class View extends React.Component {
         if(andFilters.length > 0){
             for(let andFilter of andFilters){
                 if(andFilter.whereOperator == '='){
-                    filteredData = filteredData.filter(function(data) {
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
                         return data[andFilter.whereField] == andFilter.whereValue;
                     });
                 }
                 else if(andFilter.whereOperator == '>'){
-                    filteredData = filteredData.filter(function(data) {
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
                         return data[andFilter.whereField] > andFilter.whereValue;
                     });
                 }
                 else if(andFilter.whereOperator == '<'){
-                    filteredData = filteredData.filter(function(data) {
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
                         return data[andFilter.whereField] < andFilter.whereValue;
                     });
                 }
                 else if(andFilter.whereOperator == '!='){
-                    filteredData = filteredData.filter(function(data) {
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
                         return data[andFilter.whereField] != andFilter.whereValue;
                     });
                 }
@@ -371,22 +370,22 @@ export default class View extends React.Component {
                 let orFilteredDatas = [];
                 let wholeData = [...this.state.mockTableData];
                 if(orFilter.whereOperator == '='){
-                    orFilteredDatas = wholeData.filter(function(data) {
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
                         return data[orFilter.whereField] == orFilter.whereValue;
                     });
                 }
                 else if(orFilter.whereOperator == '>'){
-                    orFilteredDatas = wholeData.filter(function(data) {
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
                         return data[orFilter.whereField] > orFilter.whereValue;
                     });
                 }
                 else if(orFilter.whereOperator == '<'){
-                    orFilteredDatas = wholeData.filter(function(data) {
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
                         return data[orFilter.whereField] < orFilter.whereValue;
                     });
                 }
                 else if(orFilter.whereOperator == '!='){
-                    orFilteredDatas = wholeData.filter(function(data) {
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
                         return data[orFilter.whereField] != orFilter.whereValue;
                     });
                 }
@@ -449,11 +448,10 @@ export default class View extends React.Component {
             },
             isSearchView: false
         });
-        
-        //window.openCollapsible('dynamic-table-btn');
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <div className="centered-div View">
                 { !this.state.isSearchView ? 
@@ -498,6 +496,7 @@ export default class View extends React.Component {
                         userId={this.props.userId}></Customsearch>
                 }
             </div>
-        )
+        );
+        /* jshint ignore:end */
     }
 }

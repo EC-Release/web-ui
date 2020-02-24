@@ -46,7 +46,7 @@ export default class Healthstatus extends React.Component {
             showSession:false,
             showConnection:false,
             showSuperConnection:false
-        }
+        };
     }
 
     componentDidMount(){
@@ -70,10 +70,10 @@ export default class Healthstatus extends React.Component {
                     ];
                     this.setState({
                         gateways: gateways
-                    })
-                })
+                    });
+                });
             }
-        })
+        });
 
         //get session, connection, super connection
         
@@ -679,7 +679,7 @@ export default class Healthstatus extends React.Component {
                         }
                         this.setState({
                             session : currentSession
-                        })
+                        });
                     }
 
                     fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -708,7 +708,7 @@ export default class Healthstatus extends React.Component {
                         }
                         this.setState({
                             superConnection : currentSuperConnection
-                        })
+                        });
                     }
 
                     fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -757,13 +757,13 @@ export default class Healthstatus extends React.Component {
                             }
                             this.setState({
                                 connection : currentConnection
-                            })
+                            });
                             let that= this;
                             that.props.hideGlobalMessage();
                             }});
-                        }})  
+                        }}) ; 
                     });}
-                })     
+                });    
             });}
         })
         .catch((err) => {
@@ -785,7 +785,7 @@ export default class Healthstatus extends React.Component {
     }
 
     render() {
-        
+        /* jshint ignore:start */
         return (
             <div className = "Monitorhealthstatus">
                 <div className="card mt-2">
@@ -1150,5 +1150,6 @@ export default class Healthstatus extends React.Component {
                 
                                     </div> */
         )
+        /* jshint ignore:end */
     }
 }

@@ -761,6 +761,10 @@
         display: none;
       }
 
+      .index-loader{
+        height: 70px;
+      }
+
       @media (max-width: 991px) {
         .ge-logo, .header-profile {
           text-align: center;
@@ -792,7 +796,15 @@
       // loads
       System.import('assets/xcalrWebUI.js');
     </script>
-    <div id="root"></div>
+    <div id="root">
+      <div class="Index container">
+        <div class="row">
+          <div class="col-md-12">
+            <img class="index-loader" alt="loading" src="assets/static/images/rolling.svg" />
+          </div>
+        </div>
+      </div>
+    </div>
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

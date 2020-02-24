@@ -7,6 +7,7 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <nav className="navbar navbar-expand-md navbar-light">
                 <a className="navbar-brand pb-2" href="#">&nbsp;</a>
@@ -119,5 +120,6 @@ export default class Navbar extends React.Component {
                 </div>
             </nav>
         )
+        /* jshint ignore:end */
     }
 }
