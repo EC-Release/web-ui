@@ -757,7 +757,7 @@ export default class Maintainagentcreate extends React.Component {
         }
         else if(fieldName === 'targetId'){
             if(updatedValue.length > 6){
-                updatedValue = currentClientForm.agentId.value;
+                updatedValue = currentClientForm.targetId.value;
             }
             currentClientForm.targetId.value = updatedValue;
             currentClientForm.targetId.dirtyState = true;
@@ -1036,9 +1036,13 @@ export default class Maintainagentcreate extends React.Component {
                             this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
                             setTimeout(()=> {
                                 this.props.hideGlobalMessage();
+                                let selectedEnv = '';
+                                if(this.state.environments.length > 0){
+                                    selectedEnv = this.state.environments[0].id;
+                                }
                                 let gatewayForm = {
                                     mode: 'GATEWAY',
-                                    environment: { value: '', dirtyState: false },
+                                    environment: { value: selectedEnv, dirtyState: false },
                                     gatewayPort: { value: '', dirtyState: false },
                                     zone: { value: '', dirtyState: false },
                                     serviceUrl: { value: '', dirtyState: false },

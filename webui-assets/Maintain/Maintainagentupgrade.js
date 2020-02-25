@@ -478,7 +478,7 @@ export default class Maintainagentupgrade extends React.Component {
         });
     }
 
-    deleteData(tbodyVal) {
+    deleteData(tbodyVal, rowIndex) {
         let cnf = window.confirm('Are you sure you want to delete');
         let rowdata = tbodyVal;
         let deletePath = '';
@@ -510,35 +510,28 @@ export default class Maintainagentupgrade extends React.Component {
                     'Authorization': this.props.authToken
                 }
             })
-                .then((response) => {
-                    if (response.status === 200) {
-                        response.json().then((respData) => {
-                            if (respData.errorStatus.status === 'ok') {
-                                setTimeout(() => {
-                                    this.handleDataTable(true);
-                                }, 3000);
-                                this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
-                                let that = this;
-                                setTimeout(function () {
-                                    that.props.hideGlobalMessage();
-                                }, 2000);
-                                /* this.setState({
-                                    newTableData: newRows,
-                                }); */
-                            }
-                        });
-                    }
-                    else {
-                        this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                        let that = this;
-                        setTimeout(function () {
-                            that.props.hideGlobalMessage();
-                        }, 2000);
-
-                    }
-                });
+            .then((response) => {
+                if (response.status === 200) {
+                    response.json().then((respData) => {
+                        if (respData.errorStatus.status === 'ok') {
+                            this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
+                            window.removeDataTableRow('maintainagentupgradeTable', rowIndex);
+                            let that = this;
+                            setTimeout(function () {
+                                that.props.hideGlobalMessage();
+                            }, 2000);
+                        }
+                    });
+                }
+                else {
+                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                    let that = this;
+                    setTimeout(function () {
+                        that.props.hideGlobalMessage();
+                    }, 2000);
+                }
+            });
         }
-
     }
 
     disbableData(tbodyIndex) {
@@ -615,7 +608,7 @@ export default class Maintainagentupgrade extends React.Component {
                                             {
                                             this.state.newTableData.map((tbodyVal, tbodyIndex) => {
                                                     return (
-                                                        <tr key={'maintainagentupgradeTableTbodyTr_' + tbodyIndex}>
+                                                        <tr id={'maintainagentupgradeTableTbodyTr_' + tbodyIndex} key={'maintainagentupgradeTableTbodyTr_' + tbodyIndex}>
                                                             <td>
                                                                 {tbodyVal.subscription}&nbsp;&nbsp;
                                             {tbodyVal.subscriptionHiddenFlag ?
@@ -650,7 +643,7 @@ export default class Maintainagentupgrade extends React.Component {
                                                             <td>
                                                                 <span className="action-img">
                                                                     <img onClick={this.edit.bind(this, tbodyVal)} alt="edit-icon" title="Edit" src="assets/static/images/iconedit_tablemaintainmonitor.svg" />
-                                                                    <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
+                                                                    <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
                                                                 </span>
                                                             </td>
                                                         </tr>

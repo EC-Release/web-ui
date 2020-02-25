@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-
     $('[data-toggle="tooltip"]').tooltip(); // For tooltips
     $.fn.extend({
         treed: function (o) {
@@ -154,6 +153,11 @@ function initTable(tableId,  preserveState){
 function destroyDataTable(tableId){
     var table = $('#'+tableId).DataTable();
     table.destroy();
+}
+
+function removeDataTableRow(tableId, rowIndex){
+    var table = $('#'+tableId).DataTable();
+    table.row("#"+tableId+'TbodyTr_'+rowIndex).remove().draw(false);
 }
 
 function openCollapsible(btnId) {
