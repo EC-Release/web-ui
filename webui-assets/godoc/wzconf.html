@@ -288,6 +288,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 
     <span id="WATCHER_FIELD_HTTP_PORT">WATCHER_FIELD_HTTP_PORT</span>    = &#34;Http_Port&#34;
     <span id="WATCHER_FIELD_TCP_PORT">WATCHER_FIELD_TCP_PORT</span>     = &#34;Tcp_Port&#34;
+    <span id="WATCHER_FIELD_CUSTOM_PORT">WATCHER_FIELD_CUSTOM_PORT</span>  = &#34;Custom_Port&#34;
     <span id="WATCHER_FIELD_CONT_REV">WATCHER_FIELD_CONT_REV</span>     = &#34;contRev&#34;
     <span id="WATCHER_FIELD_WATR_REV">WATCHER_FIELD_WATR_REV</span>     = &#34;watrRev&#34;
     <span id="WATCHER_FIELD_CONT_ART_URL">WATCHER_FIELD_CONT_ART_URL</span> = &#34;contArtURL&#34;
@@ -325,7 +326,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="FetchArt">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=12121:12181#L498">FetchArt</a>
+			<h2 id="FetchArt">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=12504:12564#L515">FetchArt</a>
 				<a class="permalink" href="#FetchArt">&#xb6;</a>
 				
 				
@@ -351,7 +352,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillBridge">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=20150:20189#L902">KillBridge</a>
+			<h2 id="KillBridge">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=20654:20693#L923">KillBridge</a>
 				<a class="permalink" href="#KillBridge">&#xb6;</a>
 				
 				
@@ -364,7 +365,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillContainer">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=19892:19931#L890">KillContainer</a>
+			<h2 id="KillContainer">func <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=20396:20435#L911">KillContainer</a>
 				<a class="permalink" href="#KillContainer">&#xb6;</a>
 				
 				
@@ -378,7 +379,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="CmdInfo">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2086:2172#L77">CmdInfo</a>
+			<h2 id="CmdInfo">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2130:2216#L78">CmdInfo</a>
 				<a class="permalink" href="#CmdInfo">&#xb6;</a>
 				
 				
@@ -775,7 +776,7 @@ cloud foundry only. Being deprecated
 		
 			
 			
-			<h2 id="ProcessLocker">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2174:2242#L83">ProcessLocker</a>
+			<h2 id="ProcessLocker">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2218:2286#L84">ProcessLocker</a>
 				<a class="permalink" href="#ProcessLocker">&#xb6;</a>
 				
 				
@@ -801,7 +802,7 @@ cloud foundry only. Being deprecated
 		
 			
 			
-			<h2 id="WatcherCmdBuilder">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=1920:1964#L74">WatcherCmdBuilder</a>
+			<h2 id="WatcherCmdBuilder">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=1964:2008#L75">WatcherCmdBuilder</a>
 				<a class="permalink" href="#WatcherCmdBuilder">&#xb6;</a>
 				
 				
@@ -826,7 +827,7 @@ dir of the artifact @@art, and @@path to the configuration yaml
 		
 			
 			
-			<h2 id="WatcherConfig">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2658:2995#L99">WatcherConfig</a>
+			<h2 id="WatcherConfig">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2702:3052#L100">WatcherConfig</a>
 				<a class="permalink" href="#WatcherConfig">&#xb6;</a>
 				
 				
@@ -839,7 +840,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 
 			<pre>type WatcherConfig struct {
 <span id="WatcherConfig.ExternalCfgFile"></span>    ExternalCfgFile, ExternalCertDir,
-    Http_Port, Tcp_Port <a href="/pkg/builtin/#string">string</a>
+    Http_Port, Tcp_Port, Custom_Port <a href="/pkg/builtin/#string">string</a>
 <span id="WatcherConfig.NumInst"></span>    NumInst <a href="/pkg/builtin/#int">int</a>
     <span class="comment">// contains filtered or unexported fields</span>
 }
@@ -857,7 +858,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 
 			
 				
-				<h3 id="WatcherConfig.CreateContainer">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=4293:4407#L150">CreateContainer</a>
+				<h3 id="WatcherConfig.CreateContainer">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=4342:4456#L150">CreateContainer</a>
 					<a class="permalink" href="#WatcherConfig.CreateContainer">&#xb6;</a>
 					
 					
@@ -872,7 +873,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 				
 			
 				
-				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=18732:18842#L830">CreateProc</a>
+				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=19236:19346#L851">CreateProc</a>
 					<a class="permalink" href="#WatcherConfig.CreateProc">&#xb6;</a>
 					
 					
@@ -887,7 +888,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=12815:12887#L536">DeployWatcher</a>
+				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=13198:13270#L553">DeployWatcher</a>
 					<a class="permalink" href="#WatcherConfig.DeployWatcher">&#xb6;</a>
 					
 					
@@ -899,7 +900,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=18234:18287#L803">GetIPMap</a>
+				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=18738:18791#L824">GetIPMap</a>
 					<a class="permalink" href="#WatcherConfig.GetIPMap">&#xb6;</a>
 					
 					
@@ -911,7 +912,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.GetOAuthToken">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=3410:3458#L126">GetOAuthToken</a>
+				<h3 id="WatcherConfig.GetOAuthToken">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=3467:3515#L127">GetOAuthToken</a>
 					<a class="permalink" href="#WatcherConfig.GetOAuthToken">&#xb6;</a>
 					
 					
@@ -926,7 +927,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=8186:8258#L334">Init</a>
+				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=8474:8546#L349">Init</a>
 					<a class="permalink" href="#WatcherConfig.Init">&#xb6;</a>
 					
 					
@@ -943,7 +944,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=11062:11139#L450">InitProxy</a>
+				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=11445:11522#L467">InitProxy</a>
 					<a class="permalink" href="#WatcherConfig.InitProxy">&#xb6;</a>
 					
 					
@@ -955,7 +956,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=20370:20411#L915">KillProc</a>
+				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=20874:20915#L936">KillProc</a>
 					<a class="permalink" href="#WatcherConfig.KillProc">&#xb6;</a>
 					
 					
@@ -967,7 +968,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.Monitor">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=21103:21143#L956">Monitor</a>
+				<h3 id="WatcherConfig.Monitor">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=21607:21647#L977">Monitor</a>
 					<a class="permalink" href="#WatcherConfig.Monitor">&#xb6;</a>
 					
 					
@@ -982,7 +983,7 @@ check the health of the containers
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=16348:16386#L728">ProxyHTTPReq</a>
+				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=16852:16890#L749">ProxyHTTPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyHTTPReq">&#xb6;</a>
 					
 					
@@ -998,7 +999,7 @@ turn watcher into an internal http proxy
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=14526:14563#L626">ProxyTCPReq</a>
+				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=15030:15067#L647">ProxyTCPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyTCPReq">&#xb6;</a>
 					
 					
@@ -1010,7 +1011,7 @@ turn watcher into an internal http proxy
 				
 			
 				
-				<h3 id="WatcherConfig.RefreshRootSecret">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=3628:3677#L134">RefreshRootSecret</a>
+				<h3 id="WatcherConfig.RefreshRootSecret">func (*WatcherConfig) <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=3685:3734#L135">RefreshRootSecret</a>
 					<a class="permalink" href="#WatcherConfig.RefreshRootSecret">&#xb6;</a>
 					
 					
@@ -1027,7 +1028,7 @@ RefreshRootToken in watcher mode, the mode helps refresh the secret by its oauth
 		
 			
 			
-			<h2 id="WatcherIntr">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2244:2387#L88">WatcherIntr</a>
+			<h2 id="WatcherIntr">type <a href="/src/github.build.ge.com/212359746/wzconf/watrconf.go?s=2288:2431#L89">WatcherIntr</a>
 				<a class="permalink" href="#WatcherIntr">&#xb6;</a>
 				
 				
