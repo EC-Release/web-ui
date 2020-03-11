@@ -1498,7 +1498,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=69311:69357#L2217">Decrypt</a>
+				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=69450:69496#L2228">Decrypt</a>
 					<a class="permalink" href="#Cert.Decrypt">&#xb6;</a>
 					
 					
@@ -1552,7 +1552,7 @@ Encrypt a uuid-based string (_da) based on the preloaded cert.
 				
 			
 				
-				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68319:68360#L2154">EncryptV2</a>
+				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68458:68499#L2165">EncryptV2</a>
 					<a class="permalink" href="#Cert.EncryptV2">&#xb6;</a>
 					
 					
@@ -1615,7 +1615,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=76432:76467#L2545">GetBearToken</a>
+				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=76571:76606#L2556">GetBearToken</a>
 					<a class="permalink" href="#Cert.GetBearToken">&#xb6;</a>
 					
 					
@@ -1627,7 +1627,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=60417:60459#L1820">GetCertDetail</a>
+				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=60563:60605#L1828">GetCertDetail</a>
 					<a class="permalink" href="#Cert.GetCertDetail">&#xb6;</a>
 					
 					
@@ -1639,7 +1639,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=74036:74091#L2433">GetDecryptedPrivateKey</a>
+				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=74175:74230#L2444">GetDecryptedPrivateKey</a>
 					<a class="permalink" href="#Cert.GetDecryptedPrivateKey">&#xb6;</a>
 					
 					
@@ -1669,7 +1669,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59973:60013#L1801">GetExtensions</a>
+				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=60119:60159#L1809">GetExtensions</a>
 					<a class="permalink" href="#Cert.GetExtensions">&#xb6;</a>
 					
 					
@@ -1681,7 +1681,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetHashedPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65850:65900#L2037">GetHashedPassphrase</a>
+				<h3 id="Cert.GetHashedPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65994:66044#L2045">GetHashedPassphrase</a>
 					<a class="permalink" href="#Cert.GetHashedPassphrase">&#xb6;</a>
 					
 					
@@ -1696,7 +1696,7 @@ get unaltered hashed passphrase from the folder
 				
 			
 				
-				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59653:59699#L1787">GetScopeList</a>
+				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59799:59845#L1795">GetScopeList</a>
 					<a class="permalink" href="#Cert.GetScopeList">&#xb6;</a>
 					
 					
@@ -1708,7 +1708,7 @@ get unaltered hashed passphrase from the folder
 				
 			
 				
-				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66814:66876#L2079">GetTLSConfigFromBase64Keys</a>
+				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66865:66927#L2086">GetTLSConfigFromBase64Keys</a>
 					<a class="permalink" href="#Cert.GetTLSConfigFromBase64Keys">&#xb6;</a>
 					
 					
@@ -1716,7 +1716,6 @@ get unaltered hashed passphrase from the folder
 				<pre>func (c *<a href="#Cert">Cert</a>) GetTLSConfigFromBase64Keys() (*<a href="/pkg/crypto/tls/">tls</a>.<a href="/pkg/crypto/tls/#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 getting the tls.Config pair for the tls-secured calls
-pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in der string
 </p>
 
 				
@@ -1724,7 +1723,7 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71174:71215#L2315">HexRootCert</a>
+				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71313:71354#L2326">HexRootCert</a>
 					<a class="permalink" href="#Cert.HexRootCert">&#xb6;</a>
 					
 					
@@ -1736,7 +1735,7 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58893:58949#L1743">LoadKeypair</a>
+				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59039:59095#L1751">LoadKeypair</a>
 					<a class="permalink" href="#Cert.LoadKeypair">&#xb6;</a>
 					
 					
@@ -1752,7 +1751,7 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65174:65226#L1996">LoadPrivateKey</a>
+				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=65320:65372#L2004">LoadPrivateKey</a>
 					<a class="permalink" href="#Cert.LoadPrivateKey">&#xb6;</a>
 					
 					
@@ -1768,7 +1767,7 @@ with passphrase
 				
 			
 				
-				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63066:63135#L1907">LoadPublicCrt</a>
+				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63212:63281#L1915">LoadPublicCrt</a>
 					<a class="permalink" href="#Cert.LoadPublicCrt">&#xb6;</a>
 					
 					
@@ -1795,7 +1794,7 @@ load the saved keypair for the current cert object
 				
 			
 				
-				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67569:67627#L2117">ParseCRT</a>
+				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67708:67766#L2128">ParseCRT</a>
 					<a class="permalink" href="#Cert.ParseCRT">&#xb6;</a>
 					
 					
@@ -1810,7 +1809,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67869:67934#L2132">ParseCSR</a>
+				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68008:68073#L2143">ParseCSR</a>
 					<a class="permalink" href="#Cert.ParseCSR">&#xb6;</a>
 					
 					
@@ -1822,7 +1821,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.RefreshRootSecretByToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63553:63622#L1930">RefreshRootSecretByToken</a>
+				<h3 id="Cert.RefreshRootSecretByToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63699:63768#L1938">RefreshRootSecretByToken</a>
 					<a class="permalink" href="#Cert.RefreshRootSecretByToken">&#xb6;</a>
 					
 					
@@ -1834,7 +1833,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.RegisterPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63937:63988#L1949">RegisterPassphrase</a>
+				<h3 id="Cert.RegisterPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=64083:64134#L1957">RegisterPassphrase</a>
 					<a class="permalink" href="#Cert.RegisterPassphrase">&#xb6;</a>
 					
 					
@@ -1914,7 +1913,7 @@ save raw privatekey base64 string for validation
 				
 			
 				
-				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=74629:74685#L2466">ValidateClientCreds</a>
+				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=74768:74824#L2477">ValidateClientCreds</a>
 					<a class="permalink" href="#Cert.ValidateClientCreds">&#xb6;</a>
 					
 					
@@ -1929,7 +1928,7 @@ validate the client credentail @cred in base64 string
 				
 			
 				
-				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59416:59460#L1771">ValidateScope</a>
+				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59562:59606#L1779">ValidateScope</a>
 					<a class="permalink" href="#Cert.ValidateScope">&#xb6;</a>
 					
 					
@@ -1941,7 +1940,7 @@ validate the client credentail @cred in base64 string
 				
 			
 				
-				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75775:75835#L2513">ValidateToken</a>
+				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75914:75974#L2524">ValidateToken</a>
 					<a class="permalink" href="#Cert.ValidateToken">&#xb6;</a>
 					
 					
@@ -1956,7 +1955,7 @@ ValidateToken validate against the expiration, and the overall authenticity of t
 				
 			
 				
-				<h3 id="Cert.ValidateTokenExp">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75295:75352#L2492">ValidateTokenExp</a>
+				<h3 id="Cert.ValidateTokenExp">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75434:75491#L2503">ValidateTokenExp</a>
 					<a class="permalink" href="#Cert.ValidateTokenExp">&#xb6;</a>
 					
 					
