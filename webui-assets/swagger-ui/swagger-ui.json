@@ -15,6 +15,10 @@
     {
       "name": "Maintain",
       "description": "Handles Maintain APIs"
+    },
+    {
+      "name": "Subscription",
+      "description": "Handles Subscription APIs"
     }
   ],
   "schemes": [
@@ -69,9 +73,9 @@
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           }
@@ -108,7 +112,7 @@
             "type": "string"
           },
           {
-            "name": "zone_id",
+            "name": "zoneID",
             "in": "query",
             "required": true,
             "type": "string"
@@ -146,9 +150,9 @@
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           }
@@ -185,9 +189,9 @@
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           }
@@ -224,9 +228,9 @@
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           }
@@ -263,9 +267,9 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           }
@@ -302,9 +306,9 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           }
@@ -344,9 +348,9 @@
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           },
@@ -391,16 +395,16 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           },
@@ -445,16 +449,16 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           },
@@ -499,16 +503,16 @@
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           },
@@ -553,23 +557,23 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           },
           {
-            "name": "server_id",
+            "name": "serverID",
             "in": "query",
-            "description": "server_id",
+            "description": "serverID",
             "required": true,
             "type": "string"
           },
@@ -614,23 +618,23 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           },
           {
-            "name": "user_id",
+            "name": "userID",
             "in": "query",
-            "description": "user_id ",
+            "description": "userID ",
             "required": true,
             "type": "string"
           },
           {
-            "name": "client_id",
+            "name": "clientID",
             "in": "query",
-            "description": "client_id",
+            "description": "clientID",
             "required": true,
             "type": "string"
           },
@@ -675,9 +679,9 @@
             "type": "string"
           },
           {
-            "name": "gateway_id",
+            "name": "gatewayID",
             "in": "query",
-            "description": "gateway_id",
+            "description": "gatewayID",
             "required": true,
             "type": "string"
           }
@@ -714,9 +718,9 @@
             "type": "string"
           },
           {
-            "name": "server_id",
+            "name": "serverID",
             "in": "query",
-            "description": "server_id",
+            "description": "serverID",
             "required": true,
             "type": "string"
           }
@@ -753,9 +757,9 @@
             "type": "string"
           },
           {
-            "name": "client_id",
+            "name": "clientID",
             "in": "query",
-            "description": "client_id",
+            "description": "clientID",
             "required": true,
             "type": "string"
           }
@@ -766,6 +770,411 @@
           },
           "400": {
             "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/listSubscriptions": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Lists EC subscriptions for users",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of EC subscriptions for user",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/listSubscriptionsAdmin": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Lists all EC subscriptions",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all EC subscriptions",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/listApprovedSubscriptions": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Lists approved EC subscriptions for users",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of approved EC subscriptions for user",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/listApprovedSubscriptionsAdmin": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Lists all approved EC subscriptions",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all approved EC subscriptions",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/listDeclinedSubscriptions": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Lists declined EC subscriptions for users",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of declined EC subscriptions for user",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/listDeclinedSubscriptionsAdmin": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Lists all declined EC subscriptions",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of all declined EC subscriptions",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/viewSubscription": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Displays particular subascriptio",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionID",
+            "in": "query",
+            "description": "subscriptionID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Info of a subscripion",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/checkStatus": {
+      "get": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Checks status of subascription",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionID",
+            "in": "query",
+            "description": "subscriptionID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status- approved/declined",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/updateSubscription": {
+      "put": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Updates subscription information",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Information updated"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/createSubscription": {
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Creates subscription record",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Subscription"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Information created"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/approveSubscription": {
+      "post": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Approve the subascription",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionID",
+            "in": "query",
+            "description": "subscriptionID",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "status - approved/declined",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Status- approved/declined",
+            "examples": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/deleteSubscription": {
+      "delete": {
+        "tags": [
+          "Subscription"
+        ],
+        "summary": "Deletes subascription record",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionID",
+            "in": "query",
+            "description": "subscriptionID",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription deleted",
+            "examples": {
+              "application/json": {}
+            }
           }
         }
       }
@@ -901,6 +1310,89 @@
         },
         "vln": {
           "type": "boolean"
+        }
+      }
+    },
+    "Subscription": {
+      "type": "object",
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "adminToken": {
+          "type": "string"
+        },
+        "app": {
+          "type": "string"
+        },
+        "assetId": {
+          "type": "string"
+        },
+        "bucAdn": {
+          "type": "string"
+        },
+        "clientId": {
+          "type": "string"
+        },
+        "clientSc": {
+          "type": "string"
+        },
+        "cluster": {
+          "type": "string"
+        },
+        "compliance": {
+          "type": "string"
+        },
+        "confidentiality": {
+          "type": "boolean"
+        },
+        "customer": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        },
+        "managementHostType": {
+          "type": "string"
+        },
+        "optInoptOut": {
+          "type": "boolean"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "preserve": {
+          "type": "boolean"
+        },
+        "project": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "security": {
+          "type": "string"
+        },
+        "serviceUri": {
+          "type": "string"
+        },
+        "subscriptionId": {
+          "type": "string"
+        },
+        "subscriptionName": {
+          "type": "string"
+        },
+        "uaaUrl": {
+          "type": "string"
+        },
+        "uai": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
         }
       }
     }

@@ -5,8 +5,8 @@ describe('ec-web-ui test cases', function () {
         browser.driver.sleep(10000);
         browser.get('http://localhost:17990/v1.1beta/ec');
         browser.driver.sleep(1000);
-        element(by.id('user-id')).sendKeys('Place your login id');
-        element(by.id('password')).sendKeys('Place your login password');
+        element(by.id('user-id')).sendKeys('5108fe10-147b-49a5-b18c-98ffb212bd3e');
+        element(by.id('password')).sendKeys('Koushik@123');
         element(by.id('login-btn')).click();
         browser.driver.sleep(1000);
         element(by.id('cont-btn')).click();
@@ -27,6 +27,34 @@ describe('ec-web-ui test cases', function () {
         expect(element(by.id('view-header-title')).getText()).toEqual('Topology view');
     });
     // View component test end
+
+    // Subscription create component test start
+    it('Subscription create component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-maintain')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-subscription')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-subscription-create')).click();
+        browser.driver.sleep(1000);
+        expect(element(by.id('maintainsubscriptioncreate-title')).getText()).toEqual('Create Subscription Creating parameters.');
+    });
+    // Subscription create component test end
+
+    // Subscription submit button should be disable initially test start
+    it('Agent--> Gateway create button should be disable initially', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-maintain')).click();
+        browser.driver.sleep(2000);
+        element(by.id('nav-subscription')).click();
+        browser.driver.sleep(2000);
+        element(by.id('nav-subscription-create')).click();
+        browser.driver.sleep(2000);
+        element(by.id('create-subscription-btn')).getAttribute('disabled').then(function (attr) {
+            expect(attr).toBe('true');
+        });
+    });
+    // Subscription submit button should be disable initially test end
 
     // Agent create component test start
     it('Agent create component test', function () {
@@ -115,7 +143,8 @@ describe('ec-web-ui test cases', function () {
         expect(element.all(by.css('.Maintainagentview')).isPresent()).toBe(true);
     });
     // Agent view component test end
-
+    /*
+    //Monitor Notification Component test start
     it('Monitor Notification component test', function () {
         browser.driver.sleep(10000);
         element(by.id('nav-monitor')).click();
@@ -158,7 +187,7 @@ describe('ec-web-ui test cases', function () {
         element(by.id('fetch-health-status-btn')).getAttribute('disabled').then(function (attr) {
             expect(attr).toBe('true');
         }); 
-    });
+    });*/
 
     afterEach(function () {
         browser.driver.sleep(4000);

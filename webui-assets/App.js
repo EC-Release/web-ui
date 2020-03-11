@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import Dashboard from './Dashboard/Dashboard.js';
 import View from './View/View.js';
 import Maintain from './Maintain/Maintain.js';
+import Subscriptioncreate from './Maintain/Subscriptioncreate.js';
 import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
 import Maintainagentview from './Maintain/Maintainagentview.js';
@@ -75,6 +76,8 @@ export default class App extends React.Component {
         return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintain':
         return <Maintain />; // jshint ignore:line
+      case 'Subscriptioncreate':
+        return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentupgrade':
