@@ -1178,6 +1178,84 @@
           }
         }
       }
+    },
+    "/gatewayList": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Gives list of gateways for a user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionID",
+            "in": "query",
+            "description": "subscriptionID ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Gateways",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/getGatewayHealth": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Gateway health",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gatewayURL",
+            "in": "query",
+            "description": "gatewayURL ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway health",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
     }
   },
   "definitions": {

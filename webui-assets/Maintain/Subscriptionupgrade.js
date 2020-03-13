@@ -291,6 +291,7 @@ export default class Subscriptionupgrade extends React.Component {
             newDataObj.security = dataObj.security;
             newDataObj.uai = dataObj.uai;
             newDataObj.version = dataObj.version;
+            newDataObj.developerId = dataObj.developerId; 
             if (dataObj.subscriptionId.length > 10) {
                 newDataObj.subscriptionId = dataObj.subscriptionId.substr(0, 10);
                 newDataObj.subscriptionIdHidden = dataObj.subscriptionId;
@@ -466,6 +467,7 @@ export default class Subscriptionupgrade extends React.Component {
             newDataObj.security = dataObj.security;
             newDataObj.uai = dataObj.uai;
             newDataObj.version = dataObj.version;
+            newDataObj.developerId = dataObj.developerId; 
             if (dataObj.subscriptionId.length > 10) {
                 newDataObj.subscriptionId = dataObj.subscriptionId.substr(0, 10);
                 newDataObj.subscriptionIdHidden = dataObj.subscriptionId;
@@ -562,7 +564,7 @@ export default class Subscriptionupgrade extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
+                    'Authorization': 'Bearer '+this.props.authToken
                 }
             })
             .then((response) => {

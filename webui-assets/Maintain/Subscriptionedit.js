@@ -31,7 +31,8 @@ export default class Subscriptionedit extends React.Component {
                 version: { value: '', dirtyState: false },
                 app: { value: '', dirtyState: false },
                 assetId: { value: '', dirtyState: false },
-                uai: { value: '', dirtyState: false }
+                uai: { value: '', dirtyState: false },
+                developerId: { value: '', dirtyState: false } 
             },
             errorsSubscriptionForm: {},
             subscriptionFormIsValid: false,
@@ -84,7 +85,8 @@ export default class Subscriptionedit extends React.Component {
             version: { value: formData.version, dirtyState: false },
             app: { value: formData.app, dirtyState: false },
             assetId: { value: formData.assetId, dirtyState: false },
-            uai: { value: formData.uai, dirtyState: false }
+            uai: { value: formData.uai, dirtyState: false },
+            developerId: { value: formData.developerId, dirtyState: false } 
         };
 
         this.setState({
@@ -128,6 +130,7 @@ export default class Subscriptionedit extends React.Component {
         prepareData.app = currentForm.app.value;
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
+        prepareData.developerId = currentForm.developerId.value;
 
         fetch(this.props.baseUrl+'/updateSubscription', {
             method: 'PUT',
