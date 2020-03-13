@@ -27,6 +27,7 @@ export default class Treelist extends React.Component {
 
     handleGenerateTreeList(items, key){
         if(items.children){
+            /* jshint ignore:start */
             return(
                 <li key={'parentTreeNode'+items.id}>
                     <a 
@@ -44,15 +45,19 @@ export default class Treelist extends React.Component {
                     </ul>
                 </li>
             )
+            /* jshint ignore:end */
         }
         else{
+            /* jshint ignore:start */
             return (
                 <li key={'terminalTreeNode'+items.id} title={ items.title }>{ items.value }</li>
             )
+            /* jshint ignore:end */
         }
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <ul id="treeList">
                 {this.props.treeValue.length > 0 ?
@@ -65,5 +70,6 @@ export default class Treelist extends React.Component {
                 }
             </ul>
         )
+        /* jshint ignore:end */
     }
 }

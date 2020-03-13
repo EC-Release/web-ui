@@ -60,15 +60,14 @@ export default class Usermanagement extends React.Component {
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((profile) => {
-                    profile =
-                        {
-                            "firstName":'Aarav',
-                            "lastName":'Patel',
-                            "geId":'aarav.patel@ge.com',
-                            "mobile":'07525493650',
-                            "city":'Pune',
-                            "country":'India'
-                        }
+                    profile = {
+                        "firstName":'Aarav',
+                        "lastName":'Patel',
+                        "geId":'aarav.patel@ge.com',
+                        "mobile":'07525493650',
+                        "city":'Pune',
+                        "country":'India'
+                    };
                     let currentbasicProfile= Object.assign({}, this.state.basicProfile);
                     let currentCopyBasicProfile = Object.assign({}, this.state.copyBasicProfile);
                     currentCopyBasicProfile.firstName=profile.firstName;
@@ -100,14 +99,13 @@ export default class Usermanagement extends React.Component {
                     .then((response) => {
                         if (response.status === 200) {
                             response.json().then((notifications) => {
-                                notifications = 
-                                    {
-                                        "notifications_email":false,
-                                        "notifications_text":true,
-                                        "notifications_phone":true,
-                                        "messages_email":false,
-                                        "messages_text":false
-                                    }
+                                notifications = {
+                                    "notifications_email":false,
+                                    "notifications_text":true,
+                                    "notifications_phone":true,
+                                    "messages_email":false,
+                                    "messages_text":false
+                                };
                                     
                                 let currentNotifications= Object.assign({}, this.state.notifications);
                                 currentNotifications.notifications_email = notifications.notifications_email;
@@ -117,14 +115,13 @@ export default class Usermanagement extends React.Component {
                                 currentNotifications.messages_text = notifications.messages_text;
                                 this.setState({
                                     notifications:currentNotifications
-                                })
-                                
-                            })
+                                });
+                            });
                         }
-                    })////
-                })
+                    });
+                });
             }
-        })
+        });
     }
 
     handlePlaceholder(e){
@@ -266,6 +263,7 @@ export default class Usermanagement extends React.Component {
     }    
    
     render() {
+        /* jshint ignore:start */
         return (
             <div className = "UserManagement scroll">
                 <div className = "row mt-1">
@@ -524,5 +522,6 @@ export default class Usermanagement extends React.Component {
                 </div>
             </div>
         )
+        /* jshint ignore:end */
     }
 }

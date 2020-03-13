@@ -155,7 +155,7 @@ export default class Notification extends React.Component {
             viewTable: true,
             editItemData: {},
             searchString: '',
-        }
+        };
     }
 
     componentDidMount(){ 
@@ -165,6 +165,7 @@ export default class Notification extends React.Component {
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <div>
             { this.state.viewTable ?
@@ -239,5 +240,6 @@ export default class Notification extends React.Component {
         }
         </div>
         )
+        /* jshint ignore:end */
     }
 }

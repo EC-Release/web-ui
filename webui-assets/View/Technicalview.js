@@ -16,7 +16,7 @@ export default class Technicalview extends React.Component {
                 edges: []
             },
             loadTreeJs: false
-        }
+        };
     }
 
     componentDidMount(){
@@ -24,7 +24,7 @@ export default class Technicalview extends React.Component {
         let treeValue = [{
             id: 1,
             value: 'EC'
-        }]
+        }];
 
         fetch(this.props.baseUrl + '/listZones?user_id='+this.props.userId, { // Get zones 'listZones?user_id='+this.props.userId
             method: 'GET',
@@ -56,7 +56,7 @@ export default class Technicalview extends React.Component {
                         setTimeout(function(){
                             that.setState({
                                 loadTreeJs: true
-                            })
+                            });
                             console.log('zones');
                         }, 1000);
                     }
@@ -89,7 +89,7 @@ export default class Technicalview extends React.Component {
                                 'Authorization': this.props.authToken
                             }
                         })
-                        .then((response) => {
+                        .then((response) => { // jshint ignore:line
                             if (response.status === 200) {
                                 response.json().then((respData) => {
                                     //console.log(respData);
@@ -158,7 +158,7 @@ export default class Technicalview extends React.Component {
                                                 'Authorization': this.props.authToken
                                             }
                                         })
-                                        .then((response) => {
+                                        .then((response) => { // jshint ignore:line
                                             if (response.status === 200) {
                                                 response.json().then((respData) => {
                                                     //console.log(respData);
@@ -239,7 +239,7 @@ export default class Technicalview extends React.Component {
                                                             }
                                                         }
                                                     }
-                                                })
+                                                });
                                             }
                                             else{
                                                 this.props.showGlobalMessage(false, true, 'Please try after some time', 'custom-success');
@@ -248,7 +248,7 @@ export default class Technicalview extends React.Component {
                                                     that.props.hideGlobalMessage();
                                                 }, 2000);
                                             }
-                                        })
+                                        });
 
 
                                         fetch(this.props.baseUrl + '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId, { // Get clients '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId;
@@ -259,7 +259,7 @@ export default class Technicalview extends React.Component {
                                                 'Authorization': this.props.authToken
                                             }
                                         })
-                                        .then((response) => {
+                                        .then((response) => { // jshint ignore:line
                                             if (response.status === 200) {
                                                 response.json().then((respData) => {
                                                     //console.log(respData);
@@ -356,15 +356,14 @@ export default class Technicalview extends React.Component {
                                                             console.log('clients');
                                                         }, 2000);
                                                     }
-                                                })
+                                                });
                                             }
                                             else{
                                                 //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                                                 //console.log('Looks like there was a problem. Status Code: ' + response.status);
                                                 //this.showAjaxBusy(false);
                                             }
-                                        })
-
+                                        });
                                     }
                                 });
                             }
@@ -466,6 +465,7 @@ export default class Technicalview extends React.Component {
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <div className="Technicalview">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -516,5 +516,6 @@ export default class Technicalview extends React.Component {
                 </div>
             </div>
         )
+        /* jshint ignore:end */
     }
 }

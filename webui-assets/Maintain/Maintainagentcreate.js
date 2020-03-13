@@ -112,7 +112,7 @@ export default class Maintainagentcreate extends React.Component {
                 baseUrl: 'https://reqres.in/api/users/2'
             },
             isTesting: false
-        }
+        };
     }
 
     componentDidMount(){
@@ -132,7 +132,7 @@ export default class Maintainagentcreate extends React.Component {
             gatewayForm.environment.value = selectedEnv;
             this.setState({
                 gatewayForm: gatewayForm
-            })
+            });
         }
 
     
@@ -177,11 +177,11 @@ export default class Maintainagentcreate extends React.Component {
 
                         this.setState({
                             gateways: gateways
-                        })
+                        });
                     }
-                })
+                });
             }
-        })
+        });
     }
 
     handleChangeAgentMode(newAgentMode){
@@ -259,14 +259,14 @@ export default class Maintainagentcreate extends React.Component {
 		let errors = {};
 
         if(businessIdValue === ''){
-            errors['businessId'] = 'Please select Business';
+            errors.businessId = 'Please select Business';
             formIsValid = false;
         }
 
         if(businessIdValue == 0){
             if(businessNameValue.trim() === ''){
                 if(businessNameDirtyState){
-                    errors['businessName'] = 'Please enter Business Name';
+                    errors.businessName = 'Please enter Business Name';
                 }
                 formIsValid = false;
             }
@@ -274,28 +274,28 @@ export default class Maintainagentcreate extends React.Component {
 
         if(requestorValue.trim() === ''){
             if(requestorDirtyState){
-                errors['requestor'] = 'Please enter Requestor';
+                errors.requestor = 'Please enter Requestor';
             }
             formIsValid = false;
         }
 
         if(requestedDateValue.trim() === ''){
             if(requestedDateDirtyState){
-                errors['requestedDate'] = 'Please enter Requested Date';
+                errors.requestedDate = 'Please enter Requested Date';
             }
             formIsValid = false;
         }
 
         if(customerEmailValue.trim() === ''){
             if(customerEmailDirtyState){
-                errors['customerEmail'] = 'Please enter Customer Email';
+                errors.customerEmail = 'Please enter Customer Email';
             }
             formIsValid = false;
         }
 
         if(bucAndValue.trim() === ''){
             if(bucAndDirtyState){
-                errors['bucAnd'] = 'Please enter BUC/AND';
+                errors.bucAnd = 'Please enter BUC/AND';
             }
             formIsValid = false;
         }
@@ -369,72 +369,72 @@ export default class Maintainagentcreate extends React.Component {
         
         if(environmentValue.trim() === ''){
             if(environmentDirtyState){
-                errors['environment'] = 'Please enter Environment';
+                errors.environment = 'Please enter Environment';
             }
             formIsValid = false;
         }
 
         if(gatewayPortValue.trim() === ''){
             if(gatewayPortDirtyState){
-                errors['gatewayPort'] = 'Please enter Gateway Port in digit';
+                errors.gatewayPort = 'Please enter Gateway Port in digit';
             }
             formIsValid = false;
         }
         else if(gatewayPortValue.length != 4){
             if(gatewayPortDirtyState){
-                errors['gatewayPort'] = 'Gateway Port must have 4 digit';
+                errors.gatewayPort = 'Gateway Port must have 4 digit';
             }
             formIsValid = false;
         }
 
         if(zoneValue.trim() === ''){
             if(zoneDirtyState){
-                errors['zone'] = 'Please enter Zone';
+                errors.zone = 'Please enter Zone';
             }
             formIsValid = false;
         }
         else if(zoneValue.length < 36){
             if(zoneDirtyState){
-                errors['zone'] = 'Zone must have 36 character';
+                errors.zone = 'Zone must have 36 character';
             }
             formIsValid = false;
         }
 
         if(serviceUrlValue.trim() === ''){
             if(serviceUrlDirtyState){
-                errors['serviceUrl'] = 'Please enter Service Url';
+                errors.serviceUrl = 'Please enter Service Url';
             }
             formIsValid = false;
         }
         else if(!urlRegExp.test(serviceUrlValue)){
             if(serviceUrlDirtyState){
-                errors['serviceUrl'] = 'Please enter valid URL';
+                errors.serviceUrl = 'Please enter valid URL';
             }
             formIsValid = false;
         }
 
         if(tokenValue.trim() === ''){
             if(tokenDirtyState){
-                errors['token'] = 'Please enter Token';
+                errors.token = 'Please enter Token';
             }
             formIsValid = false;
         }
 
         if(hostValue.trim() === ''){
             if(hostDirtyState){
-                errors['host'] = 'Please enter Host';
+                errors.host = 'Please enter Host';
             }
             formIsValid = false;
         }
         else if(hostValue.substr(0, 6) != 'wss://' && hostValue.substr(0, 5) != 'ws://'){
             if(hostDirtyState){
-                errors['host'] = 'Host starts with wss:// or ws://';
+                errors.host = 'Host starts with wss:// or ws://';
             }
             formIsValid = false;
         }
         else if(hostValue.substr(hostValue.length - 6, 6) != '/agent'){
             if(hostDirtyState){
-                errors['host'] = 'Host ends with /agent';
+                errors.host = 'Host ends with /agent';
             }
             formIsValid = false;
         }
@@ -569,125 +569,125 @@ export default class Maintainagentcreate extends React.Component {
         
         if(agentIdValue.trim() === ''){
             if(agentIdDirtyState){
-                errors['agentId'] = 'Please enter Agent Id';
+                errors.agentId = 'Please enter Agent Id';
             }
             formIsValid = false;
         }
         else if(agentIdValue.length < 6){
             if(agentIdDirtyState){
-                errors['agentId'] = 'Agent Id must have 6 character';
+                errors.agentId = 'Agent Id must have 6 character';
             }
             formIsValid = false;
         }
 
         if(groupValue.trim() === ''){
             if(groupDirtyState){
-                errors['group'] = 'Please enter Group';
+                errors.group = 'Please enter Group';
             }
             formIsValid = false;
         }
 
         if(clientIdValue.trim() === ''){
             if(clientIdDirtyState){
-                errors['clientId'] = 'Please enter Client Id';
+                errors.clientId = 'Please enter Client Id';
             }
             formIsValid = false;
         }
 
         if(clientSecretValue.trim() === ''){
             if(clientSecretDirtyState){
-                errors['clientSecret'] = 'Please enter Client Secret';
+                errors.clientSecret = 'Please enter Client Secret';
             }
             formIsValid = false;
         }
 
         if(durationValue === ''){
             if(durationDirtyState){
-                errors['duration'] = 'Please enter Duration in digit';
+                errors.duration = 'Please enter Duration in digit';
             }
             formIsValid = false;
         }
         else if(durationValue < 1200){
             if(durationDirtyState){
-                errors['duration'] = 'Duration at least 1200';
+                errors.duration = 'Duration at least 1200';
             }
             formIsValid = false;
         }
 
         if(OAuth2Value.trim() === ''){
             if(OAuth2DirtyState){
-                errors['OAuth2'] = 'Please enter OAuth2';
+                errors.OAuth2 = 'Please enter OAuth2';
             }
             formIsValid = false;
         }
         else if(!urlRegExp.test(OAuth2Value)){
             if(OAuth2DirtyState){
-                errors['OAuth2'] = 'Please enter valid URL';
+                errors.OAuth2 = 'Please enter valid URL';
             }
             formIsValid = false;
         }
 
         if(hostValue.trim() === ''){
             if(hostDirtyState){
-                errors['host'] = 'Please enter Host';
+                errors.host = 'Please enter Host';
             }
             formIsValid = false;
         }
         else if(hostValue.substr(0, 6) != 'wss://' && hostValue.substr(0, 5) != 'ws://'){
             if(hostDirtyState){
-                errors['host'] = 'Host starts with wss:// or ws://';
+                errors.host = 'Host starts with wss:// or ws://';
             }
             formIsValid = false;
         }
         else if(hostValue.substr(hostValue.length - 6, 6) != '/agent'){
             if(hostDirtyState){
-                errors['host'] = 'Host ends with /agent';
+                errors.host = 'Host ends with /agent';
             }
             formIsValid = false;
         }
 
         if(zoneValue.trim() === ''){
             if(zoneDirtyState){
-                errors['zone'] = 'Please enter Zone';
+                errors.zone = 'Please enter Zone';
             }
             formIsValid = false;
         }
         else if(zoneValue.length < 36){
             if(zoneDirtyState){
-                errors['zone'] = 'Zone must have 36 character';
+                errors.zone = 'Zone must have 36 character';
             }
             formIsValid = false;
         }
 
         if(serviceUrlValue.trim() === ''){
             if(serviceUrlDirtyState){
-                errors['serviceUrl'] = 'Please enter Service Url';
+                errors.serviceUrl = 'Please enter Service Url';
             }
             formIsValid = false;
         }
         else if(!urlRegExp.test(serviceUrlValue)){
             if(serviceUrlDirtyState){
-                errors['serviceUrl'] = 'Please enter valid URL';
+                errors.serviceUrl = 'Please enter valid URL';
             }
             formIsValid = false;
         }
 
         if(remoteHostValue.trim() === ''){
             if(remoteHostDirtyState){
-                errors['remoteHost'] = 'Please enter Remote Host';
+                errors.remoteHost = 'Please enter Remote Host';
             }
             formIsValid = false;
         }
 
         if(remotePortValue.trim() === ''){
             if(remotePortDirtyState){
-                errors['remotePort'] = 'Please enter Remote Port in digit';
+                errors.remotePort = 'Please enter Remote Port in digit';
             }
             formIsValid = false;
         }
         else if(remotePortValue.length != 4){
             if(remotePortDirtyState){
-                errors['remotePort'] = 'Remote Port must have 4 digit';
+                errors.remotePort = 'Remote Port must have 4 digit';
             }
             formIsValid = false;
         }
@@ -695,7 +695,7 @@ export default class Maintainagentcreate extends React.Component {
         if(allowPlugInValue){
             if(plugInValue.length === 0){
                 if(plugInDirtyState){
-                    errors['plugIn'] = 'Please select Plug-In';
+                    errors.plugIn = 'Please select Plug-In';
                 }
                 formIsValid = false;
             }
@@ -757,7 +757,7 @@ export default class Maintainagentcreate extends React.Component {
         }
         else if(fieldName === 'targetId'){
             if(updatedValue.length > 6){
-                updatedValue = currentClientForm.agentId.value;
+                updatedValue = currentClientForm.targetId.value;
             }
             currentClientForm.targetId.value = updatedValue;
             currentClientForm.targetId.dirtyState = true;
@@ -818,105 +818,105 @@ export default class Maintainagentcreate extends React.Component {
 
         if(agentIdValue.trim() === ''){
             if(agentIdDirtyState){
-                errors['agentId'] = 'Please enter Agent Id';
+                errors.agentId = 'Please enter Agent Id';
             }
             formIsValid = false;
         }
         else if(agentIdValue.length < 6){
             if(agentIdDirtyState){
-                errors['agentId'] = 'Agent Id must have 6 character';
+                errors.agentId = 'Agent Id must have 6 character';
             }
             formIsValid = false;
         }
 
         if(groupValue.trim() === ''){
             if(groupDirtyState){
-                errors['group'] = 'Please enter Group';
+                errors.group = 'Please enter Group';
             }
             formIsValid = false;
         }
 
         if(clientIdValue.trim() === ''){
             if(clientIdDirtyState){
-                errors['clientId'] = 'Please enter Client Id';
+                errors.clientId = 'Please enter Client Id';
             }
             formIsValid = false;
         }
 
         if(clientSecretValue.trim() === ''){
             if(clientSecretDirtyState){
-                errors['clientSecret'] = 'Please enter Client Secret';
+                errors.clientSecret = 'Please enter Client Secret';
             }
             formIsValid = false;
         }
 
         if(durationValue === ''){
             if(durationDirtyState){
-                errors['duration'] = 'Please enter Duration in digit';
+                errors.duration = 'Please enter Duration in digit';
             }
             formIsValid = false;
         }
         else if(durationValue < 1200){
             if(durationDirtyState){
-                errors['duration'] = 'Duration at least 1200';
+                errors.duration = 'Duration at least 1200';
             }
             formIsValid = false;
         }
 
         if(OAuth2Value.trim() === ''){
             if(OAuth2DirtyState){
-                errors['OAuth2'] = 'Please enter OAuth2';
+                errors.OAuth2 = 'Please enter OAuth2';
             }
             formIsValid = false;
         }
         else if(!urlRegExp.test(OAuth2Value)){
             if(OAuth2DirtyState){
-                errors['OAuth2'] = 'Please enter valid URL';
+                errors.OAuth2 = 'Please enter valid URL';
             }
             formIsValid = false;
         }
 
         if(hostValue.trim() === ''){
             if(hostDirtyState){
-                errors['host'] = 'Please enter Host';
+                errors.host = 'Please enter Host';
             }
             formIsValid = false;
         }
         else if(hostValue.substr(0, 6) != 'wss://' && hostValue.substr(0, 5) != 'ws://'){
             if(hostDirtyState){
-                errors['host'] = 'Host starts with wss:// or ws://';
+                errors.host = 'Host starts with wss:// or ws://';
             }
             formIsValid = false;
         }
         else if(hostValue.substr(hostValue.length - 6, 6) != '/agent'){
             if(hostDirtyState){
-                errors['host'] = 'Host ends with /agent';
+                errors.host = 'Host ends with /agent';
             }
             formIsValid = false;
         }
 
         if(localPortValue.trim() === ''){
             if(localPortDirtyState){
-                errors['localPort'] = 'Please enter Local Port in digit';
+                errors.localPort = 'Please enter Local Port in digit';
             }
             formIsValid = false;
         }
         else if(localPortValue.length != 4){
             if(localPortDirtyState){
-                errors['localPort'] = 'Local Port must have 4 digit';
+                errors.localPort = 'Local Port must have 4 digit';
             }
             formIsValid = false;
         }
 
         if(targetIdValue.trim() === ''){
             if(targetIdDirtyState){
-                errors['targetId'] = 'Please enter Target Id';
+                errors.targetId = 'Please enter Target Id';
             }
             formIsValid = false;
         }
         else if(targetIdValue.length < 6){
             if(targetIdDirtyState){
-                errors['targetId'] = 'Target Id must have 6 character';
+                errors.targetId = 'Target Id must have 6 character';
             }
             formIsValid = false;
         }
@@ -924,7 +924,7 @@ export default class Maintainagentcreate extends React.Component {
         if(allowPlugInValue){
             if(plugInValue.length === 0){
                 if(plugInDirtyState){
-                    errors['plugIn'] = 'Please select Plug-In';
+                    errors.plugIn = 'Please select Plug-In';
                 }
                 formIsValid = false;
             }
@@ -1036,9 +1036,13 @@ export default class Maintainagentcreate extends React.Component {
                             this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
                             setTimeout(()=> {
                                 this.props.hideGlobalMessage();
+                                let selectedEnv = '';
+                                if(this.state.environments.length > 0){
+                                    selectedEnv = this.state.environments[0].id;
+                                }
                                 let gatewayForm = {
                                     mode: 'GATEWAY',
-                                    environment: { value: '', dirtyState: false },
+                                    environment: { value: selectedEnv, dirtyState: false },
                                     gatewayPort: { value: '', dirtyState: false },
                                     zone: { value: '', dirtyState: false },
                                     serviceUrl: { value: '', dirtyState: false },
@@ -1073,7 +1077,7 @@ export default class Maintainagentcreate extends React.Component {
                                 this.props.hideGlobalMessage();
                             }, 2000);
                         }
-                    })
+                    });
                 }
                 else{
                     this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
@@ -1153,7 +1157,7 @@ export default class Maintainagentcreate extends React.Component {
                                 };
                                 
                                 let filename = "server.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+serverFormData.mode.toLowerCase()+ "\n\t\tzon: "+ serverFormData.zone.value +" \n\t\tgrp: "+ serverFormData.group.value +" \n\t\tsst: "+ serverFormData.serviceUrl.value +" \n\t\thst: "+ serverFormData.host.value +" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tcid: "+ serverFormData.clientId.value+" \n\t\tcsc: "+ serverFormData.clientSecret.value+" \n\t\toa2: "+ serverFormData.OAuth2.value+" \n\t\tdur: "+ serverFormData.duration.value+" \n\t\taid: "+ serverFormData.agentId.value+" \n\t\trpt: "+ serverFormData.remotePort.value+" \n\t\trht: "+ serverFormData.remoteHost.value+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ serverFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData['vln']+" \n\t\ttls: "+  prepareData['tls'];
+                                let data = "ec-config: \n\tconf: \n\t\tmod: "+serverFormData.mode.toLowerCase()+ "\n\t\tzon: "+ serverFormData.zone.value +" \n\t\tgrp: "+ serverFormData.group.value +" \n\t\tsst: "+ serverFormData.serviceUrl.value +" \n\t\thst: "+ serverFormData.host.value +" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tcid: "+ serverFormData.clientId.value+" \n\t\tcsc: "+ serverFormData.clientSecret.value+" \n\t\toa2: "+ serverFormData.OAuth2.value+" \n\t\tdur: "+ serverFormData.duration.value+" \n\t\taid: "+ serverFormData.agentId.value+" \n\t\trpt: "+ serverFormData.remotePort.value+" \n\t\trht: "+ serverFormData.remoteHost.value+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ serverFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData.vln+" \n\t\ttls: "+  prepareData.tls;
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1179,7 +1183,7 @@ export default class Maintainagentcreate extends React.Component {
                                 this.props.hideGlobalMessage();
                             }, 2000);
                         }
-                    })
+                    });
                 }
                 else{
                     this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
@@ -1256,7 +1260,7 @@ export default class Maintainagentcreate extends React.Component {
                                 };
 
                                 let filename = "client.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+clientFormData.mode.toLowerCase()+ "\n\t\taid: "+ clientFormData.agentId.value +" \n\t\ttid: "+ clientFormData.targetId.value +" \n\t\tsst: "+ " \n\t\thst: "+ clientFormData.host.value +" \n\t\tcid: "+ clientFormData.clientId.value+" \n\t\tcsc: "+ clientFormData.clientSecret.value+ " \n\t\toa2: "+ clientFormData.OAuth2.value+" \n\t\tdur: "+ clientFormData.duration.value+" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tgrp: "+ clientFormData.group.value+" \n\t\tlpt: "+ clientFormData.localPort.value+" \n\t\tfup: "+ ''+" \n\t\tfdw: "+ ''+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ clientFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData['vln']+" \n\t\ttls: "+  prepareData['tls'];
+                                let data = "ec-config: \n\tconf: \n\t\tmod: "+clientFormData.mode.toLowerCase()+ "\n\t\taid: "+ clientFormData.agentId.value +" \n\t\ttid: "+ clientFormData.targetId.value +" \n\t\tsst: "+ " \n\t\thst: "+ clientFormData.host.value +" \n\t\tcid: "+ clientFormData.clientId.value+" \n\t\tcsc: "+ clientFormData.clientSecret.value+ " \n\t\toa2: "+ clientFormData.OAuth2.value+" \n\t\tdur: "+ clientFormData.duration.value+" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tgrp: "+ clientFormData.group.value+" \n\t\tlpt: "+ clientFormData.localPort.value+" \n\t\tfup: "+ ''+" \n\t\tfdw: "+ ''+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ clientFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData.vln+" \n\t\ttls: "+  prepareData.tls;
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1282,7 +1286,7 @@ export default class Maintainagentcreate extends React.Component {
                                 this.props.hideGlobalMessage();
                             }, 2000);
                         }
-                    })
+                    });
                 }
                 else{
                     this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
@@ -1302,6 +1306,7 @@ export default class Maintainagentcreate extends React.Component {
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <div className="row Maintainagentcreate">
                 <div className="col-md-12 mt-2">
@@ -2024,5 +2029,6 @@ export default class Maintainagentcreate extends React.Component {
                 </div>
             </div>
         )
+        /* jshint ignore:end */
     }
 }

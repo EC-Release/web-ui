@@ -18,7 +18,7 @@ export default class Customsearch extends React.Component {
             finalFormDatas: [],
             isFormValid: true,
             isDisableCreateViewButton: false
-        }
+        };
     }
 
     componentDidMount(){
@@ -35,7 +35,7 @@ export default class Customsearch extends React.Component {
             {operator: '>', label: '>'},
             {operator: '<', label: '<'},
             {operator: '!=', label: '!='},
-        ]
+        ];
         let formDatas = [
             {
                 whereCondition: whereCondition[0].condition,
@@ -48,7 +48,7 @@ export default class Customsearch extends React.Component {
 
         let slicedAvailableFields = allStateFields;
         for(let selectedField of selectedFields){
-            slicedAvailableFields = slicedAvailableFields.filter(function( obj ) {
+            slicedAvailableFields = slicedAvailableFields.filter(function( obj ) { // jshint ignore:line
                 return obj.fieldId !== selectedField.fieldId;
             });
         }
@@ -83,7 +83,7 @@ export default class Customsearch extends React.Component {
         const termLowerCase = term.toLowerCase();
         return (singleObj) =>
             Object.keys(singleObj)
-                .some(propName => singleObj[propName].toLowerCase().indexOf(termLowerCase) !== -1)
+                .some(propName => singleObj[propName].toLowerCase().indexOf(termLowerCase) !== -1);
     }
 
     removeObject(myArray, key, value){
@@ -188,7 +188,7 @@ export default class Customsearch extends React.Component {
             whereOperator: this.state.whereOperator[0].operator,
             whereValue: '',
             whereValueError: ''
-        }
+        };
         currentFormRows.push(formNewObject);
 
         this.setState({
@@ -291,6 +291,7 @@ export default class Customsearch extends React.Component {
     }
 
     render(){
+        /* jshint ignore:start */
         return(
             <div className="Customsearch">
                 <div className="row">
@@ -419,5 +420,6 @@ export default class Customsearch extends React.Component {
                 </div>
             </div>
         )
+        /* jshint ignore:end */
     }
 }

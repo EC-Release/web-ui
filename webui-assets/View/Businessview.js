@@ -29,7 +29,7 @@ export default class Businessview extends React.Component {
                 thead: [],
                 tbody: []
             }
-        }
+        };
     }
 
     componentDidMount(){
@@ -158,6 +158,7 @@ export default class Businessview extends React.Component {
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <div className="Businessview">
                 {/*<div id="accordion">
@@ -248,5 +249,6 @@ export default class Businessview extends React.Component {
                 </div>
             </div>
         )
+        /* jshint ignore:end */
     }
 }

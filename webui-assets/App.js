@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import Dashboard from './Dashboard/Dashboard.js';
 import View from './View/View.js';
 import Maintain from './Maintain/Maintain.js';
+import Subscriptioncreate from './Maintain/Subscriptioncreate.js';
 import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
 import Maintainagentview from './Maintain/Maintainagentview.js';
@@ -52,7 +53,7 @@ export default class App extends React.Component {
   }
 
   getToken(name){
-    var name = name+"=";
+    var cookieName = name+"=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
@@ -60,8 +61,8 @@ export default class App extends React.Component {
         while (c.charAt(0) == ' ') {
             c = c.substring(1);
         }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
+        if (c.indexOf(cookieName) == 0) {
+          return c.substring(cookieName.length, c.length);
         }
     }
   }
@@ -70,37 +71,39 @@ export default class App extends React.Component {
     const currentView = this.state.currentView;
     switch(currentView) {
       case 'Dashboard':
-        return <Dashboard />;
+        return <Dashboard />; // jshint ignore:line
       case 'View':
-        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintain':
-        return <Maintain />;
+        return <Maintain />; // jshint ignore:line
+      case 'Subscriptioncreate':
+        return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentcreate':
-        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentupgrade':
-        return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentview':
-        return <Maintainagentview baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainagentview baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainwatchercreate':
-        return <Maintainwatchercreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainwatchercreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainwatcherupgrade':
-        return <Maintainwatcherupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Maintainwatcherupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainwatcherview':
-        return <Maintainwatcherview />;
+        return <Maintainwatcherview />; // jshint ignore:line
       case 'Monitor':
-        return <Monitor />;
+        return <Monitor />; // jshint ignore:line
       case 'Notification':
-        return <Notification userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Notification userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Alert':
-        return <Alert userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Alert userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Healthstatus':
-        return <Healthstatus userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />;
+        return <Healthstatus userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Report':
-        return <Report />;
+        return <Report />; // jshint ignore:line
       case 'Usermanagement':
-        return <Usermanagement />;
+        return <Usermanagement />; // jshint ignore:line
       case 'Support':
-        return <Support />;
+        return <Support />; // jshint ignore:line
       default:
         return null;
     }
@@ -143,6 +146,7 @@ export default class App extends React.Component {
   }
 
   render() {
+    /* jshint ignore:start */
     return (
       <div className="App container">
         {
@@ -194,5 +198,6 @@ export default class App extends React.Component {
           }
         </div>
     );
+    /* jshint ignore:end */
   }
 }

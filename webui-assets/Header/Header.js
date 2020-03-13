@@ -5,11 +5,12 @@ export default class Header extends React.Component {
 
     /* istanbul ignore next */
     constructor(props){
-        super(props)
+        super(props);
     }
 
     /* istanbul ignore next */
     render() {
+        /* jshint ignore:start */
         return (
             <header>
                 <div className="col-md-12">
@@ -40,5 +41,6 @@ export default class Header extends React.Component {
                 </div>
             </header>
         )
+        /* jshint ignore:end */
     }
 }

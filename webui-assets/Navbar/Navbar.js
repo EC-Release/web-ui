@@ -7,6 +7,7 @@ export default class Navbar extends React.Component {
     }
 
     render() {
+        /* jshint ignore:start */
         return (
             <nav className="navbar navbar-expand-md navbar-light">
                 <a className="navbar-brand pb-2" href="#">&nbsp;</a>
@@ -27,12 +28,22 @@ export default class Navbar extends React.Component {
                                 View
                             </a>
                         </li>
-                        <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' ? "nav-item dropdown active" : "nav-item dropdown"}>
+                        <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' || this.props.currentView === 'Subscriptioncreate' ? "nav-item dropdown active" : "nav-item dropdown"}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/maintain_icon.svg'} alt="nav-maintain" />
                                 Maintain 
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <li className="dropdown-submenu">
+                                    <a id="nav-subscription" className="dropdown-item" href="#">
+                                        Subscription
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <a id="nav-subscription-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Subscriptioncreate')} href="#">Create</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li className="dropdown-submenu">
                                     <a id="nav-agent" className="dropdown-item" href="#">
                                         Agent
@@ -119,5 +130,6 @@ export default class Navbar extends React.Component {
                 </div>
             </nav>
         )
+        /* jshint ignore:end */
     }
 }

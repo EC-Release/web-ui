@@ -15,6 +15,8 @@ export default class Topologygraph extends React.Component {
     }
 
     render(){
+        /* jshint ignore:start */
         return(<div className="Topologygraph" id="topologygraph"></div>)
+        /* jshint ignore:end */
     }
 }

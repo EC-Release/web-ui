@@ -1,149 +1,6 @@
 import React from "react";
 
 import Maintainagentedit from './Maintainagentedit.js';
-/*
-const MOCK_TABLE_DATA = [
-    {
-        agent_id: 'DEV63016760',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename1',
-        group: '1',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016761',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename11',
-        group: '2',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016762',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '3',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016763',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '4',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016764',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '1',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016765',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '2',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016766',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '3',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016767',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '4',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016768',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '1',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016769',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '2',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016770',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '3',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016771',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '4',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016772',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '1',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    },
-    {
-        agent_id: 'DEV63016773',
-        gateway: 'https://avipocsubdomain.domainname.ext/pagename',
-        group: '2',
-        oauth_provider: 'https://avipocsubdomain.domainname.ext/pagename',
-        zone: 'https://avipocsubdomain.domainname.ext/pagename',
-        subscription: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_host: 'https://avipocsubdomain.domainname.ext/pagename',
-        remote_port: 'https://avipocsubdomain.domainname.ext/pagename'
-    }
-];*/
 
 export default class Maintainagentupgrade extends React.Component {
 
@@ -156,11 +13,11 @@ export default class Maintainagentupgrade extends React.Component {
             editItemData: {},
             searchString: '',
             showTableInit: false
-        }
+        };
     }
 
     componentDidMount() {
-        this.handleDataTable(false)
+        this.handleDataTable(false);
     }
 
     handleDataTable(preserveState) {
@@ -176,32 +33,10 @@ export default class Maintainagentupgrade extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        let gateways = respData.data
+                        let gateways = respData.data;
                         if (gateways === null) {
-                            gateways = []
+                            gateways = [];
                         }
-                        /*  gateways = [
-                             {
-                                 "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                                 "userId": "212712078",
-                                 "gatewayPort": "8080",
-                                 "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                 "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                 "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                 "hostUrl": "wss://gateway-url/agent",
-                                 "env": 'local'
-                             },
-                             {
-                                 "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                                 "userId": "212712078",
-                                 "gatewayPort": "8080",
-                                 "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                                 "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                 "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                 "hostUrl": "wss://gateway-url/agent",
-                                 "env": 'local'
-                             }
-                         ]; */
 
                         if (gateways.length > 0) {
                             for (let gateway of gateways) {
@@ -244,47 +79,11 @@ export default class Maintainagentupgrade extends React.Component {
                             .then((response) => {
                                 if (response.status === 200) {
                                     response.json().then((respData) => {
-                                        let servers = respData.data
+                                        let servers = respData.data;
                                         if (servers === null) {
-                                            servers = []
+                                            servers = [];
                                         }
-                                        /*   servers = [
-                                              {
-                                                  "serverId": "Server-56ca9bb6-62ee-4a41-88bd-107d20ceed30",
-                                                  "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                  "userId": "212712078",
-                                                  "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                                  "serviceUrl": "https://service-url",
-                                                  "hostUrl": "wss://gateway-url/agent",
-                                                  "agentId": "xbdhfg",
-                                                  "groupId": "ec-test",
-                                                  "uaaUrl": "https://uaa-url",
-                                                  "uaaClientId": "ec-test",
-                                                  "uaaClientSecret": "ec-test",
-                                                  "duration": 3000,
-                                                  "remoteHost": "localhost",
-                                                  "remotePort": "5432",
-                                                  "plugin": null
-                                              },
-                                              {
-                                                  "serverId": "Server-849d04cc-2f81-413d-a269-5402960fbd8e",
-                                                  "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                  "userId": "212712078",
-                                                  "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                                  "serviceUrl": "https://service-url",
-                                                  "hostUrl": "wss://gateway-url/agent",
-                                                  "agentId": "xbdhfg",
-                                                  "groupId": "ec-test",
-                                                  "uaaUrl": "https://uaa-url",
-                                                  "uaaClientId": "ec-test",
-                                                  "uaaClientSecret": "ec-test",
-                                                  "duration": 3000,
-                                                  "remoteHost": "localhost",
-                                                  "remotePort": "5432",
-                                                  "plugin": null
-                                              }
-                                          ]; */
-
+                                        
                                         if (servers.length > 0) {
                                             for (let server of servers) {
                                                 let prepareData = {};
@@ -326,43 +125,11 @@ export default class Maintainagentupgrade extends React.Component {
                                             .then((response) => {
                                                 if (response.status === 200) {
                                                     response.json().then((respData) => {
-                                                        let clients = respData.data
+                                                        let clients = respData.data;
                                                         if (clients === null) {
-                                                            clients = []
+                                                            clients = [];
                                                         }
-                                                        /*  clients = [
-                                                             {
-                                                                 "clientId": "Client-1b95c319-aa6c-44ba-8c2f-2b1764efe697",
-                                                                 "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                                                                 "userId": "212712078",
-                                                                 "hostUrl": "wss://gateway-url/agent",
-                                                                 "agentId": "hdsvhe",
-                                                                 "targetId": "dhvhye",
-                                                                 "groupId": "ec-test",
-                                                                 "uaaUrl": "https://url.predix.io/token",
-                                                                 "uaaClientId": "ec-test",
-                                                                 "uaaClientSecret": "ec-test",
-                                                                 "duration": 3000,
-                                                                 "localPort": "7999",
-                                                                 "plugin": null
-                                                             },
-                                                             {
-                                                                 "clientId": "Client-45a222d9-50fa-48c8-a7ec-ec700a1ce44f",
-                                                                 "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                                 "userId": "212712078",
-                                                                 "hostUrl": "wss://gateway-url/agent",
-                                                                 "agentId": "hdsvhe",
-                                                                 "targetId": "dhvhye",
-                                                                 "groupId": "ec-test",
-                                                                 "uaaUrl": "https://url.predix.io/token",
-                                                                 "uaaClientId": "ec-test",
-                                                                 "uaaClientSecret": "ec-test",
-                                                                 "duration": 3000,
-                                                                 "localPort": "7999",
-                                                                 "plugin": null
-                                                             }
-                                                         ]; */
-
+                                                        
                                                         for (let client of clients) {
                                                             let prepareData = {};
                                                             prepareData.agent_id = client.agentId;
@@ -394,30 +161,30 @@ export default class Maintainagentupgrade extends React.Component {
                                                         this.setState({
                                                             tableData: technicalTableData
                                                         });
-                                                    })
+                                                    });
                                                 }
                                                 else {
                                                     //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                                                     //console.log('Looks like there was a problem. Status Code: ' + response.status);
                                                     //this.showAjaxBusy(false);
                                                 }
-                                            })
-                                    })
+                                            });
+                                    });
                                 }
                                 else {
                                     //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                                     //console.log('Looks like there was a problem. Status Code: ' + response.status);
                                     //this.showAjaxBusy(false);
                                 }
-                            })
-                    })
+                            });
+                    });
                 }
                 else {
                     //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
                     //console.log('Looks like there was a problem. Status Code: ' + response.status);
                     //this.showAjaxBusy(false);
                 }
-            })
+            });
     }
 
 
@@ -446,7 +213,7 @@ export default class Maintainagentupgrade extends React.Component {
             newDataObj.hostUrl = dataObj.hostUrl;
             if (dataObj.gateway.length > 10) {
                 newDataObj.gateway = dataObj.gateway.substr(0, 10);
-                newDataObj.gatewayHidden = dataObj.gateway
+                newDataObj.gatewayHidden = dataObj.gateway;
                 newDataObj.gatewayHiddenFlag = true;
             }
             else {
@@ -456,7 +223,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.oauth_provider.length > 10) {
                 newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 10);
-                newDataObj.oauth_providerHidden = dataObj.oauth_provider
+                newDataObj.oauth_providerHidden = dataObj.oauth_provider;
                 newDataObj.oauth_providerHiddenFlag = true;
             }
             else {
@@ -466,7 +233,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.zone.length > 10) {
                 newDataObj.zone = dataObj.zone.substr(0, 10);
-                newDataObj.zoneHidden = dataObj.zone
+                newDataObj.zoneHidden = dataObj.zone;
                 newDataObj.zoneHiddenFlag = true;
             }
             else {
@@ -476,7 +243,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.subscription.length > 10) {
                 newDataObj.subscription = dataObj.subscription.substr(0, 10);
-                newDataObj.subscriptionHidden = dataObj.subscription
+                newDataObj.subscriptionHidden = dataObj.subscription;
                 newDataObj.subscriptionHiddenFlag = true;
             }
             else {
@@ -486,7 +253,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.remote_host.length > 10) {
                 newDataObj.remote_host = dataObj.remote_host.substr(0, 10);
-                newDataObj.remote_hostHidden = dataObj.remote_host
+                newDataObj.remote_hostHidden = dataObj.remote_host;
                 newDataObj.remote_hostHiddenFlag = true;
             }
             else {
@@ -497,7 +264,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.remote_port.length > 10) {
                 newDataObj.remote_port = dataObj.remote_port.substr(0, 10);
-                newDataObj.remote_portHidden = dataObj.remote_port
+                newDataObj.remote_portHidden = dataObj.remote_port;
                 newDataObj.remote_portHiddenFlag = true;
             }
             else {
@@ -623,7 +390,7 @@ export default class Maintainagentupgrade extends React.Component {
             newDataObj.hostUrl = dataObj.hostUrl;
             if (dataObj.gateway.length > 10) {
                 newDataObj.gateway = dataObj.gateway.substr(0, 10);
-                newDataObj.gatewayHidden = dataObj.gateway
+                newDataObj.gatewayHidden = dataObj.gateway;
                 newDataObj.gatewayHiddenFlag = true;
             }
             else {
@@ -633,7 +400,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.oauth_provider.length > 10) {
                 newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 10);
-                newDataObj.oauth_providerHidden = dataObj.oauth_provider
+                newDataObj.oauth_providerHidden = dataObj.oauth_provider;
                 newDataObj.oauth_providerHiddenFlag = true;
             }
             else {
@@ -643,7 +410,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.zone.length > 10) {
                 newDataObj.zone = dataObj.zone.substr(0, 10);
-                newDataObj.zoneHidden = dataObj.zone
+                newDataObj.zoneHidden = dataObj.zone;
                 newDataObj.zoneHiddenFlag = true;
             }
             else {
@@ -653,7 +420,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.subscription.length > 10) {
                 newDataObj.subscription = dataObj.subscription.substr(0, 10);
-                newDataObj.subscriptionHidden = dataObj.subscription
+                newDataObj.subscriptionHidden = dataObj.subscription;
                 newDataObj.subscriptionHiddenFlag = true;
             }
             else {
@@ -663,7 +430,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.remote_host.length > 10) {
                 newDataObj.remote_host = dataObj.remote_host.substr(0, 10);
-                newDataObj.remote_hostHidden = dataObj.remote_host
+                newDataObj.remote_hostHidden = dataObj.remote_host;
                 newDataObj.remote_hostHiddenFlag = true;
             }
             else {
@@ -674,7 +441,7 @@ export default class Maintainagentupgrade extends React.Component {
 
             if (dataObj.remote_port.length > 10) {
                 newDataObj.remote_port = dataObj.remote_port.substr(0, 10);
-                newDataObj.remote_portHidden = dataObj.remote_port
+                newDataObj.remote_portHidden = dataObj.remote_port;
                 newDataObj.remote_portHiddenFlag = true;
             }
             else {
@@ -711,27 +478,27 @@ export default class Maintainagentupgrade extends React.Component {
         });
     }
 
-    deleteData(tbodyIndex, tbodyVal) {
+    deleteData(tbodyVal, rowIndex) {
         let cnf = window.confirm('Are you sure you want to delete');
-        let rowdata = tbodyVal
-        let deletePath = ''
-        let deleteId = ''
+        let rowdata = tbodyVal;
+        let deletePath = '';
+        let deleteId = '';
         if (cnf) {
             this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
 
             if (rowdata.agentMode === '1') {
-                deleteId = rowdata.gatewayId
-                deletePath = '/deleteGateway?gateway_id='
+                deleteId = rowdata.gatewayId;
+                deletePath = '/deleteGateway?gateway_id=';
 
             }
             else if (rowdata.agentMode === '2') {
-                deleteId = rowdata.serverId
-                deletePath = '/deleteServer?server_id='
+                deleteId = rowdata.serverId;
+                deletePath = '/deleteServer?server_id=';
 
             }
             else if (rowdata.agentMode === '3') {
-                deleteId = rowdata.clientId
-                deletePath = '/deleteClient?client_id='
+                deleteId = rowdata.clientId;
+                deletePath = '/deleteClient?client_id=';
 
             }
 
@@ -743,38 +510,28 @@ export default class Maintainagentupgrade extends React.Component {
                     'Authorization': this.props.authToken
                 }
             })
-                .then((response) => {
-                    if (response.status === 200) {
-                        response.json().then((respData) => {
-                            if (respData.errorStatus.status === 'ok') {
-                                console.log(respData)
-                                let newData = respData.data
-                                setTimeout(() => {
-                                    this.handleDataTable(true)
-                                }, 3000);
-                                this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
-                                let that = this;
-                                setTimeout(function () {
-                                    that.props.hideGlobalMessage();
-                                }, 2000);
-                                /* this.setState({
-                                    newTableData: newRows,
-                                }); */
-                            }
-                        });
-                    }
-                    else {
-                        this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                        let that = this;
-                        setTimeout(function () {
-                            that.props.hideGlobalMessage();
-                        }, 2000);
-
-                    }
-                })
-
+            .then((response) => {
+                if (response.status === 200) {
+                    response.json().then((respData) => {
+                        if (respData.errorStatus.status === 'ok') {
+                            this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
+                            window.removeDataTableRow('maintainagentupgradeTable', rowIndex);
+                            let that = this;
+                            setTimeout(function () {
+                                that.props.hideGlobalMessage();
+                            }, 2000);
+                        }
+                    });
+                }
+                else {
+                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                    let that = this;
+                    setTimeout(function () {
+                        that.props.hideGlobalMessage();
+                    }, 2000);
+                }
+            });
         }
-
     }
 
     disbableData(tbodyIndex) {
@@ -795,10 +552,8 @@ export default class Maintainagentupgrade extends React.Component {
 
                         });
                     }
-                })
-
+            });
         }
-
     }
 
     changeView() {
@@ -808,9 +563,11 @@ export default class Maintainagentupgrade extends React.Component {
         setTimeout(function () {
             window.initTable('maintainagentupgradeTable', true);
         }, 0);
-    }
-
-    render() {
+    } // jshint ignore:line
+    
+    
+    render(){
+        /* jshint ignore:start */
         return (
             <div>
                 {this.state.viewTable ?
@@ -851,7 +608,7 @@ export default class Maintainagentupgrade extends React.Component {
                                             {
                                             this.state.newTableData.map((tbodyVal, tbodyIndex) => {
                                                     return (
-                                                        <tr key={'maintainagentupgradeTableTbodyTr_' + tbodyIndex}>
+                                                        <tr id={'maintainagentupgradeTableTbodyTr_' + tbodyIndex} key={'maintainagentupgradeTableTbodyTr_' + tbodyIndex}>
                                                             <td>
                                                                 {tbodyVal.subscription}&nbsp;&nbsp;
                                             {tbodyVal.subscriptionHiddenFlag ?
@@ -886,9 +643,7 @@ export default class Maintainagentupgrade extends React.Component {
                                                             <td>
                                                                 <span className="action-img">
                                                                     <img onClick={this.edit.bind(this, tbodyVal)} alt="edit-icon" title="Edit" src="assets/static/images/iconedit_tablemaintainmonitor.svg" />
-                                                                    {/*<img alt="refresh-icon" title="Refresh" src="assets/static/images/iconupdate_tablemaintain.svg" />
-                                                                    <img alt="disable-icon" onClick={this.disbableData.bind(this, tbodyIndex, tbodyVal)} title="Disable" src="assets/static/images/icondisable_tablemaintain.svg" />*/}
-                                                                    <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyIndex, tbodyVal)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
+                                                                    <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -909,5 +664,6 @@ export default class Maintainagentupgrade extends React.Component {
                 }
             </div>
         )
+        /* jshint ignore:end */
     }
 }

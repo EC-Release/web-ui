@@ -10,6 +10,7 @@ export default class Viewtable extends React.Component {
     }
 
     render(){
+        /* jshint ignore:start */
         return(
             <table id="viewTable" className="table">
                 <thead>
@@ -41,6 +42,7 @@ export default class Viewtable extends React.Component {
                 </tbody>
             </table>
         )
+        /* jshint ignore:end */
     }
 
 }
