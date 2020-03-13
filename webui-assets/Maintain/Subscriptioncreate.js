@@ -333,7 +333,7 @@ export default class Subscriptioncreate extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
+                    'Authorization': 'Bearer '+this.props.authToken
                 },
                 body: JSON.stringify(prepareData)
             })
