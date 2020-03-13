@@ -84,6 +84,7 @@ function generateTopology(nodeData, replacedDivId){
 }
 
 function initTable(tableId,  preserveState){
+    var pageLength = 5;
     if(tableId == 'viewTable'){
         $('#'+tableId).DataTable({
             "dom": '<"top"f>rt<"bottom"lp>',
@@ -100,8 +101,16 @@ function initTable(tableId,  preserveState){
                     $('td:eq('+i+')', row).css('min-width', (840/data.length)+'px');
                 }
             },
-            "pageLength": 5,
-            destroy: true
+            "pageLength": pageLength,
+            destroy: true,
+            "fnDrawCallback": function(oSettings) {
+                if ($('#'+tableId+' tr').length < pageLength) {
+                    $('.dataTables_paginate').hide();
+                }
+                else{
+                    $('.dataTables_paginate').show();
+                }
+            }
         });
     }
     else if(tableId == 'maintainagentupgradeTable'){
@@ -120,9 +129,46 @@ function initTable(tableId,  preserveState){
                     $('td:eq('+i+')', row).css('min-width', '120px');
                 }
             },
-            "pageLength": 5,
+            "pageLength": pageLength,
             stateSave: preserveState,
-            destroy: true
+            destroy: true,
+            "fnDrawCallback": function(oSettings) {
+                if ($('#'+tableId+' tr').length < pageLength) {
+                    $('.dataTables_paginate').hide();
+                }
+                else{
+                    $('.dataTables_paginate').show();
+                }
+            }
+        });
+    }
+    else if(tableId == 'subscriptionupgradeTable'){
+        $('#'+tableId).DataTable({
+            "dom": 'rt<"bottom"lp>',
+            "bSort": true,
+            "scrollX": true,
+            "language": {
+                "paginate": {
+                    "previous": "<",
+                    "next": ">"
+                }
+            },
+            'createdRow': function(row, data, dataIndex){
+                for(i=0; i < data.length; i++){
+                    $('td:eq('+i+')', row).css('min-width', '120px');
+                }
+            },
+            "pageLength": pageLength,
+            stateSave: preserveState,
+            destroy: true,
+            "fnDrawCallback": function(oSettings) {
+                if ($('#'+tableId+' tr').length < pageLength) {
+                    $('.dataTables_paginate').hide();
+                }
+                else{
+                    $('.dataTables_paginate').show();
+                }
+            }
         });
     }
     else{
@@ -141,8 +187,16 @@ function initTable(tableId,  preserveState){
                     $('td:eq('+i+')', row).css('min-width', '100px');
                 }
             },
-            "pageLength": 5,
-            destroy: true
+            "pageLength": pageLength,
+            destroy: true,
+            "fnDrawCallback": function(oSettings) {
+                if ($('#'+tableId+' tr').length < pageLength) {
+                    $('.dataTables_paginate').hide();
+                }
+                else{
+                    $('.dataTables_paginate').show();
+                }
+            }
         });
     }
     $('.bottom').addClass('row');

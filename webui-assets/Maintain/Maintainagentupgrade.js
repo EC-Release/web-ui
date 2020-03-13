@@ -521,15 +521,29 @@ export default class Maintainagentupgrade extends React.Component {
                                 that.props.hideGlobalMessage();
                             }, 2000);
                         }
+                        else {
+                            this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                            let that = this;
+                            setTimeout(function () {
+                                that.props.hideGlobalMessage();
+                            }, 2000);
+                        }
                     });
                 }
                 else {
-                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
                     let that = this;
                     setTimeout(function () {
                         that.props.hideGlobalMessage();
                     }, 2000);
                 }
+            })
+            .catch((err) => {
+                console.log(err);
+                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                setTimeout(()=> {
+                    this.props.hideGlobalMessage();
+                }, 2000);
             });
         }
     }
