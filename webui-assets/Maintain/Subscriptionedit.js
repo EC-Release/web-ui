@@ -129,8 +129,7 @@ export default class Subscriptionedit extends React.Component {
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
 
-        console.log(JSON.stringify(prepareData));
-        fetch(this.props.baseUrl + '​/updateSubscription', {
+        fetch(this.props.baseUrl+'/updateSubscription', {
             method: 'PUT',
             headers: {
                 'Accept': 'application/json',
@@ -226,6 +225,12 @@ export default class Subscriptionedit extends React.Component {
         if(serviceUriValue.trim() === ''){
             if(serviceUriDirtyState)
                 errors.serviceUri = 'Please enter Service URI';
+            formIsValid = false;
+        }
+        else if(!urlRegExp.test(serviceUriValue)){
+            if(serviceUriDirtyState){
+                errors.serviceUri = 'Please enter valid URL';
+            }
             formIsValid = false;
         }
 

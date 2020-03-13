@@ -230,6 +230,12 @@ export default class Subscriptioncreate extends React.Component {
                 errors.serviceUri = 'Please enter Service URI';
             formIsValid = false;
         }
+        else if(!urlRegExp.test(serviceUriValue)){
+            if(serviceUriDirtyState){
+                errors.serviceUri = 'Please enter valid URL';
+            }
+            formIsValid = false;
+        }
 
         if(clientIdValue.trim() === ''){
             if(clientIdDirtyState)
