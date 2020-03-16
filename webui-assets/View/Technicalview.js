@@ -26,7 +26,7 @@ export default class Technicalview extends React.Component {
             value: 'EC'
         }];
 
-        fetch(this.props.baseUrl + '/listZones?user_id='+this.props.userId, { // Get zones 'listZones?user_id='+this.props.userId
+        /*fetch(this.props.baseUrl + '/listZones?user_id='+this.props.userId, { // Get zones 'listZones?user_id='+this.props.userId
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -44,7 +44,7 @@ export default class Technicalview extends React.Component {
                         "b3a2",
                         "b3a2e60"
                     ];*/
-                    if(zones === null){
+                    /*if(zones === null){
                         zones = [];
                     }
 
@@ -114,7 +114,7 @@ export default class Technicalview extends React.Component {
                                           "hostUrl": "wss://gateway-url/agent"
                                         }
                                     ];*/
-                                    if(gateways === null){
+                                    /*if(gateways === null){
                                         gateways = [];
                                     }
 
@@ -200,7 +200,7 @@ export default class Technicalview extends React.Component {
                                                         }
                                                     ];*/
 
-                                                    if(servers === null){
+                                                    /*if(servers === null){
                                                         servers = [];
                                                     }
 
@@ -297,7 +297,7 @@ export default class Technicalview extends React.Component {
                                                         }
                                                     ];*/
 
-                                                    if(clients === null){
+                                                    /*if(clients === null){
                                                         clients = [];
                                                     }
                                                     
@@ -421,7 +421,169 @@ export default class Technicalview extends React.Component {
 			//this.showGlobalMessage('Oops! There is an error with API', 'alert-danger');
 			//console.log('Fetch Error: ' + err);
 			//this.showAjaxBusy(false);
-        });
+        });*/
+
+        fetch(this.props.baseUrl + '/listSubscriptions', { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+this.props.authToken
+            }
+        })
+		.then((response) => {
+			if (response.status === 200) {
+                response.json().then((respData) => {
+                    //console.log(respData);
+                    if(respData.errorStatus.status == 'ok'){
+                        let subscriptions = respData.data;
+                        if(subscriptions.length == 0){
+                            subscriptions = [];
+                        }
+
+                        let numOfSubscriptions = subscriptions.length;
+                        let totalNumOfAjax = subscriptions.length;
+                        let totalNumOfAjaxProcessed = 0;
+                        if(numOfSubscriptions === 0){
+                            let that = this;
+                            setTimeout(function(){
+                                that.setState({
+                                    loadTreeJs: true
+                                });
+                                console.log('subscriptions');
+                            }, 1000);
+                        }
+
+                        let newId = treeValue[0].id;
+                        for(let indexSubscriptions in subscriptions){
+                            let subscriptionId = subscriptions[indexSubscriptions].subscriptionId.trim();
+                            newId++;
+                            let newSubscriptionsObj = {};
+                            newSubscriptionsObj.id = newId;
+                            newSubscriptionsObj.title = subscriptionId;
+                            let valueToshow = subscriptionId;
+                            if(subscriptionId.length > 20){
+                                let first3Char = subscriptionId.substr(0, 5);
+                                let last3Char = subscriptionId.substr(subscriptionId.length - 5, 5);
+                                valueToshow = first3Char+'...'+last3Char;
+                            }
+                            newSubscriptionsObj.value = valueToshow;
+                            
+                            if(indexSubscriptions == 0){
+                                treeValue[0].children = [newSubscriptionsObj];
+                            }
+                            else{
+                                treeValue[0].children.push(newSubscriptionsObj);
+                            }
+
+
+
+                            if(subscriptionId != ''){
+                                fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
+                                    method: 'GET',
+                                    headers: {
+                                        'Accept': 'application/json',
+                                        'Content-Type': 'application/json',
+                                        'Authorization': 'Bearer '+this.props.authToken
+                                    }
+                                })
+                                .then((response) => { // jshint ignore:line
+                                    if (response.status === 200) {
+                                        response.json().then((respData) => {
+                                            console.log(respData.errorStatus.status);
+                                            if(respData.errorStatus.status == 'ok'){
+                                                let gateways = respData.data.glist;
+                                                totalNumOfAjax = totalNumOfAjax + gateways.length;
+                                                totalNumOfAjaxProcessed++;
+                                                if(totalNumOfAjaxProcessed === totalNumOfAjax){
+                                                    let that = this;
+                                                    setTimeout(function(){
+                                                        that.setState({
+                                                            loadTreeJs: true
+                                                        });
+                                                        console.log('gateways');
+                                                    }, 2000);
+                                                }
+
+                                                for(let indexGateway in gateways){
+                                                    console.log(indexGateway);
+                                                    newId++;
+                                                    let newGatewayObj = {};
+                                                    newGatewayObj.id = newId;
+                                                    newGatewayObj.title = gateways[indexGateway].cfURL;
+                                                    let valueToshow = gateways[indexGateway].cfURL;
+                                                    if(gateways[indexGateway].cfURL.length > 20){
+                                                        let first3Char = gateways[indexGateway].cfURL.substr(0, 5);
+                                                        let last3Char = gateways[indexGateway].cfURL.substr(gateways[indexGateway].cfURL.length - 5, 5);
+                                                        valueToshow = first3Char+'...'+last3Char;
+                                                    }
+                                                    newGatewayObj.value = valueToshow;
+            
+                                                    if(indexGateway == 0){
+                                                        treeValue[0].children[indexSubscriptions].children = [newGatewayObj];
+                                                    }
+                                                    else{
+                                                        treeValue[0].children[indexSubscriptions].children.push(newGatewayObj);
+                                                    }
+                                                    totalNumOfAjax = totalNumOfAjax + 1; 
+                                                }
+
+
+
+
+                                                let nodes = [];
+                                                let edges = [];
+                                                if(treeValue.length > 0){
+                                                    let treeObj = treeValue[0];
+                                                    let parentNodeId = treeObj.id;
+                                                    let parentNodeLabel = treeObj.value;
+                                                    let parentNode = { id: parentNodeId, label: parentNodeLabel };
+                                                    nodes.push(parentNode);
+                                                    if(treeObj.children){
+                                                        for(let childNode of treeObj.children){
+                                                            let childNodeId = childNode.id;
+                                                            let childNodeLabel = childNode.value;
+                                                            let childNodeTitle = childNode.title;
+                                                            let preparedChildNode = { id: childNodeId, label: childNodeLabel, title: childNodeTitle };
+                                                            nodes.push(preparedChildNode);
+
+                                                            let prepareEdges = { from: 1, to: childNodeId };
+                                                            edges.push(prepareEdges);
+                                                        }
+                                                    }
+                                                }
+
+                                                this.setState({
+                                                    treeValue: treeValue,
+                                                    graph: {
+                                                        nodes: nodes,
+                                                        edges: edges
+                                                    }
+                                                });
+
+
+
+
+                                            }
+                                        })
+                                    }
+                                })
+                            }
+
+                        
+                        }
+
+                        let that = this;
+                        setTimeout(function(){
+                            that.setState({
+                                loadTreeJs: true
+                            });
+                            console.log('trial');
+                        }, 10000);
+                    }
+                })
+            }
+        })
     }
 
     changeTopologyView(items){
