@@ -26,404 +26,7 @@ export default class Technicalview extends React.Component {
             value: 'EC'
         }];
 
-        /*fetch(this.props.baseUrl + '/listZones?user_id='+this.props.userId, { // Get zones 'listZones?user_id='+this.props.userId
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': this.props.authToken
-            }
-		})
-		.then((response) => {
-			if (response.status === 200) {
-                response.json().then((respData) => {
-                    //console.log(respData);
-                    let zones = respData.data;
-                    /*zones = [
-                        "b3a2e601",
-                        "b3a2",
-                        "b3a2e60"
-                    ];*/
-                    /*if(zones === null){
-                        zones = [];
-                    }
-
-                    let numOfZones = zones.length;
-                    let totalNumOfAjax = zones.length;
-                    let totalNumOfAjaxProcessed = 0;
-                    if(numOfZones === 0){
-                        let that = this;
-                        setTimeout(function(){
-                            that.setState({
-                                loadTreeJs: true
-                            });
-                            console.log('zones');
-                        }, 1000);
-                    }
-                    let newId = treeValue[0].id;
-                    for(let indexZone in zones){
-                        newId++;
-                        let newZoneObj = {};
-                        newZoneObj.id = newId;
-                        newZoneObj.title = zones[indexZone];
-                        let valueToshow = zones[indexZone];
-                        if(zones[indexZone].length > 20){
-                            let first3Char = zones[indexZone].substr(0, 5);
-                            let last3Char = zones[indexZone].substr(zones[indexZone].length - 5, 5);
-                            valueToshow = first3Char+'...'+last3Char;
-                        }
-                        newZoneObj.value = valueToshow;
-                        
-                        if(indexZone == 0){
-                            treeValue[0].children = [newZoneObj];
-                        }
-                        else{
-                            treeValue[0].children.push(newZoneObj);
-                        }
-
-                        fetch(this.props.baseUrl + '/listGatewaysForZone?zone_id='+zones[indexZone], { // Get gateways '/listGatewaysForZone?zone_id='+zones[indexZone];
-                            method: 'GET',
-                            headers: {
-                                'Accept': 'application/json',
-                                'Content-Type': 'application/json',
-                                'Authorization': this.props.authToken
-                            }
-                        })
-                        .then((response) => { // jshint ignore:line
-                            if (response.status === 200) {
-                                response.json().then((respData) => {
-                                    //console.log(respData);
-                                    let gateways = respData.data;
-                                    /*gateways = [
-                                        {
-                                          "gatewayId": "Gateway-10",
-                                          "userId": "212712078",
-                                          "gatewayPort": "8080",
-                                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                          "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                          "hostUrl": "wss://gateway-url/agent"
-                                        },
-                                        {
-                                          "gatewayId": "Gateway-d4",
-                                          "userId": "212712078",
-                                          "gatewayPort": "8080",
-                                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                          "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                          "hostUrl": "wss://gateway-url/agent"
-                                        }
-                                    ];*/
-                                    /*if(gateways === null){
-                                        gateways = [];
-                                    }
-
-                                    totalNumOfAjax = totalNumOfAjax + gateways.length;
-                                    totalNumOfAjaxProcessed++;
-                                    if(totalNumOfAjaxProcessed === totalNumOfAjax){
-                                        let that = this;
-                                        setTimeout(function(){
-                                            that.setState({
-                                                loadTreeJs: true
-                                            });
-                                            console.log('gateways');
-                                        }, 2000);
-                                    }
-
-                                    for(let indexGateway in gateways){
-                                        newId++;
-                                        let newGatewayObj = {};
-                                        newGatewayObj.id = newId;
-                                        newGatewayObj.title = gateways[indexGateway].gatewayId;
-                                        let valueToshow = gateways[indexGateway].gatewayId;
-                                        if(gateways[indexGateway].gatewayId.length > 20){
-                                            let first3Char = gateways[indexGateway].gatewayId.substr(0, 5);
-                                            let last3Char = gateways[indexGateway].gatewayId.substr(gateways[indexGateway].gatewayId.length - 5, 5);
-                                            valueToshow = first3Char+'...'+last3Char;
-                                        }
-                                        newGatewayObj.value = valueToshow;
-
-                                        if(indexGateway == 0){
-                                            treeValue[0].children[indexZone].children = [newGatewayObj];
-                                        }
-                                        else{
-                                            treeValue[0].children[indexZone].children.push(newGatewayObj);
-                                        }
-                                        totalNumOfAjax = totalNumOfAjax + 1; 
-                                        fetch(this.props.baseUrl + '/listServersForGateway?gateway_id='+gateways[indexGateway].gatewayId, { // Get servers '/listServersForGateway?gateway_id='+gateways[indexGateway].gatewayId;
-                                            method: 'GET',
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json',
-                                                'Authorization': this.props.authToken
-                                            }
-                                        })
-                                        .then((response) => { // jshint ignore:line
-                                            if (response.status === 200) {
-                                                response.json().then((respData) => {
-                                                    //console.log(respData);
-                                                    let servers = respData.data;
-                                                    /*let servers = [
-                                                        {
-                                                          "serverId": "Server-56",
-                                                          "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                          "userId": "212712078",
-                                                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                                          "serviceUrl": "https://service-url",
-                                                          "hostUrl": "wss://gateway-url/agent",
-                                                          "agentId": "xbdhfg",
-                                                          "groupId": "ec-test",
-                                                          "uaaUrl": "https://uaa-url",
-                                                          "uaaClientId": "ec-test",
-                                                          "uaaClientSecret": "ec-test",
-                                                          "duration": 3000,
-                                                          "remoteHost": "localhost",
-                                                          "remotePort": "5432",
-                                                          "plugin": null
-                                                        },
-                                                        {
-                                                          "serverId": "Server-849",
-                                                          "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                          "userId": "212712078",
-                                                          "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                                          "serviceUrl": "https://service-url",
-                                                          "hostUrl": "wss://gateway-url/agent",
-                                                          "agentId": "xbdhfg",
-                                                          "groupId": "ec-test",
-                                                          "uaaUrl": "https://uaa-url",
-                                                          "uaaClientId": "ec-test",
-                                                          "uaaClientSecret": "ec-test",
-                                                          "duration": 3000,
-                                                          "remoteHost": "localhost",
-                                                          "remotePort": "5432",
-                                                          "plugin": null
-                                                        }
-                                                    ];*/
-
-                                                    /*if(servers === null){
-                                                        servers = [];
-                                                    }
-
-                                                    totalNumOfAjaxProcessed++;
-                                                    if(totalNumOfAjaxProcessed === totalNumOfAjax){
-                                                        let that = this;
-                                                        setTimeout(function(){
-                                                            that.setState({
-                                                                loadTreeJs: true
-                                                            });
-                                                            console.log('servers');
-                                                        }, 2000);
-                                                    }
-
-                                                    if(servers.length > 0){
-                                                        newId++;
-                                                        treeValue[0].children[indexZone].children[indexGateway].children = [{id: newId, value: 'Server'}];
-                                                        for(let indexServer in servers){
-                                                            newId++;
-                                                            let newServerObj = {};
-                                                            newServerObj.id = newId;
-                                                            newServerObj.title = servers[indexServer].serverId;
-                                                            let valueToshow = servers[indexServer].serverId;
-                                                            if(servers[indexServer].serverId.length > 20){
-                                                                let first3Char = servers[indexServer].serverId.substr(0, 5);
-                                                                let last3Char = servers[indexServer].serverId.substr(servers[indexServer].serverId.length - 5, 5);
-                                                                valueToshow = first3Char+'...'+last3Char;
-                                                            }
-                                                            newServerObj.value = valueToshow;
-
-                                                            if(indexServer == 0){
-                                                                treeValue[0].children[indexZone].children[indexGateway].children[0].children = [newServerObj];
-                                                            }
-                                                            else{
-                                                                treeValue[0].children[indexZone].children[indexGateway].children[0].children.push(newServerObj);
-                                                            }
-                                                        }
-                                                    }
-                                                });
-                                            }
-                                            else{
-                                                this.props.showGlobalMessage(false, true, 'Please try after some time', 'custom-success');
-                                                let that = this;
-                                                setTimeout(function(){
-                                                    that.props.hideGlobalMessage();
-                                                }, 2000);
-                                            }
-                                        });
-
-
-                                        fetch(this.props.baseUrl + '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId, { // Get clients '/listClientsForGateway?gateway_id='+gateways[indexGateway].gatewayId;
-                                            method: 'GET',
-                                            headers: {
-                                                'Accept': 'application/json',
-                                                'Content-Type': 'application/json',
-                                                'Authorization': this.props.authToken
-                                            }
-                                        })
-                                        .then((response) => { // jshint ignore:line
-                                            if (response.status === 200) {
-                                                response.json().then((respData) => {
-                                                    //console.log(respData);
-                                                    let clients = respData.data;
-                                                    /*let clients = [
-                                                        {
-                                                          "clientId": "Client-1b9",
-                                                          "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                          "userId": "212712078",
-                                                          "hostUrl": "wss://gateway-url/agent",
-                                                          "agentId": "hdsvhe",
-                                                          "targetId": "dhvhye",
-                                                          "groupId": "ec-test",
-                                                          "uaaUrl": "https://url.predix.io/token",
-                                                          "uaaClientId": "ec-test",
-                                                          "uaaClientSecret": "ec-test",
-                                                          "duration": 3000,
-                                                          "localPort": "7999",
-                                                          "plugin": null
-                                                        },
-                                                        {
-                                                          "clientId": "Client-45",
-                                                          "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                          "userId": "212712078",
-                                                          "hostUrl": "wss://gateway-url/agent",
-                                                          "agentId": "hdsvhe",
-                                                          "targetId": "dhvhye",
-                                                          "groupId": "ec-test",
-                                                          "uaaUrl": "https://url.predix.io/token",
-                                                          "uaaClientId": "ec-test",
-                                                          "uaaClientSecret": "ec-test",
-                                                          "duration": 3000,
-                                                          "localPort": "7999",
-                                                          "plugin": null
-                                                        }
-                                                    ];*/
-
-                                                    /*if(clients === null){
-                                                        clients = [];
-                                                    }
-                                                    
-                                                    totalNumOfAjaxProcessed++;
-
-                                                    if(clients.length > 0){
-                                                        newId++;
-                                                        
-                                                        if(!treeValue[0].children[indexZone].children[indexGateway].children){
-                                                            treeValue[0].children[indexZone].children[indexGateway].children = [{id: newId, value: 'Client'}];
-                                                        }
-                                                        else{
-                                                            treeValue[0].children[indexZone].children[indexGateway].children.push({id: newId, value: 'Client'});
-                                                        }
-                                                        
-                                                        for(let indexClient in clients){
-                                                            newId++;
-                                                            let newClientObj = {};
-                                                            newClientObj.id = newId;
-                                                            newClientObj.title = clients[indexClient].clientId;
-                                                            let valueToshow = clients[indexClient].clientId;
-
-                                                            if(clients[indexClient].clientId.length > 20){
-                                                                let first3Char = clients[indexClient].clientId.substr(0, 5);
-                                                                let last3Char = clients[indexClient].clientId.substr(clients[indexClient].clientId.length - 5, 5);
-                                                                valueToshow = first3Char+'...'+last3Char;
-                                                            }
-                                                            newClientObj.value = valueToshow;
-
-                                                            if(indexClient == 0){
-                                                                if(treeValue[0].children[indexZone].children[indexGateway].children[0].value === 'Server'){
-                                                                    treeValue[0].children[indexZone].children[indexGateway].children[1].children = [newClientObj];
-                                                                }
-                                                                else{
-                                                                    treeValue[0].children[indexZone].children[indexGateway].children[0].children = [newClientObj];
-                                                                }
-                                                                
-                                                            }
-                                                            else{
-                                                                if(treeValue[0].children[indexZone].children[indexGateway].children[0].value === 'Server'){
-                                                                    treeValue[0].children[indexZone].children[indexGateway].children[1].children.push(newClientObj);
-                                                                }
-                                                                else{
-                                                                    treeValue[0].children[indexZone].children[indexGateway].children[0].children.push(newClientObj);
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-
-                                                    if(totalNumOfAjaxProcessed === totalNumOfAjax){
-                                                        let that = this;
-                                                        setTimeout(function(){
-                                                            that.setState({
-                                                                loadTreeJs: true
-                                                            });
-                                                            console.log('clients');
-                                                        }, 2000);
-                                                    }
-                                                });
-                                            }
-                                            else{
-                                                //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
-                                                //console.log('Looks like there was a problem. Status Code: ' + response.status);
-                                                //this.showAjaxBusy(false);
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                            else{
-                                //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
-                                //console.log('Looks like there was a problem. Status Code: ' + response.status);
-                                //this.showAjaxBusy(false);
-                            }
-                        })
-                        .catch((err) => {
-                            //this.showGlobalMessage('Oops! There is an error with API', 'alert-danger');
-                            //console.log('Fetch Error: ' + err);
-                            //this.showAjaxBusy(false);
-                        });
-                    }
-                    
-                    let nodes = [];
-                    let edges = [];
-                    if(treeValue.length > 0){
-                        let treeObj = treeValue[0];
-                        let parentNodeId = treeObj.id;
-                        let parentNodeLabel = treeObj.value;
-                        let parentNode = { id: parentNodeId, label: parentNodeLabel };
-                        nodes.push(parentNode);
-                        if(treeObj.children){
-                            for(let childNode of treeObj.children){
-                                let childNodeId = childNode.id;
-                                let childNodeLabel = childNode.value;
-                                let childNodeTitle = childNode.title;
-                                let preparedChildNode = { id: childNodeId, label: childNodeLabel, title: childNodeTitle };
-                                nodes.push(preparedChildNode);
-
-                                let prepareEdges = { from: 1, to: childNodeId };
-                                edges.push(prepareEdges);
-                            }
-                        }
-                    }
-
-                    this.setState({
-                        treeValue: treeValue,
-                        graph: {
-                            nodes: nodes,
-                            edges: edges
-                        }
-                    });
-                });
-			}
-			else{
-				//this.showGlobalMessage('Oops! There is an error', 'alert-danger');
-				//console.log('Looks like there was a problem. Status Code: ' + response.status);
-				//this.showAjaxBusy(false);
-			}
-		})
-		.catch((err) => {
-			//this.showGlobalMessage('Oops! There is an error with API', 'alert-danger');
-			//console.log('Fetch Error: ' + err);
-			//this.showAjaxBusy(false);
-        });*/
-
-        fetch(this.props.baseUrl + '/listSubscriptions', { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
+        fetch(this.props.baseUrl + '/listSubscriptions', {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -434,7 +37,7 @@ export default class Technicalview extends React.Component {
 		.then((response) => {
 			if (response.status === 200) {
                 response.json().then((respData) => {
-                    //console.log(respData);
+                    
                     if(respData.errorStatus.status == 'ok'){
                         let subscriptions = respData.data;
                         if(subscriptions.length == 0){
@@ -476,8 +79,6 @@ export default class Technicalview extends React.Component {
                                 treeValue[0].children.push(newSubscriptionsObj);
                             }
 
-
-
                             if(subscriptionId != ''){
                                 fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
                                     method: 'GET',
@@ -489,12 +90,12 @@ export default class Technicalview extends React.Component {
                                 })
                                 .then((response) => { // jshint ignore:line
                                     if (response.status === 200) {
+                                        totalNumOfAjaxProcessed++;
                                         response.json().then((respData) => {
-                                            console.log(respData.errorStatus.status);
                                             if(respData.errorStatus.status == 'ok'){
                                                 let gateways = respData.data.glist;
-                                                totalNumOfAjax = totalNumOfAjax + gateways.length;
-                                                totalNumOfAjaxProcessed++;
+                                                totalNumOfAjax = totalNumOfAjax + Object.keys(gateways).length;
+                                                
                                                 if(totalNumOfAjaxProcessed === totalNumOfAjax){
                                                     let that = this;
                                                     setTimeout(function(){
@@ -504,86 +105,163 @@ export default class Technicalview extends React.Component {
                                                         console.log('gateways');
                                                     }, 2000);
                                                 }
-
+   
                                                 for(let indexGateway in gateways){
-                                                    console.log(indexGateway);
                                                     newId++;
                                                     let newGatewayObj = {};
                                                     newGatewayObj.id = newId;
                                                     newGatewayObj.title = gateways[indexGateway].cfURL;
                                                     let valueToshow = gateways[indexGateway].cfURL;
-                                                    if(gateways[indexGateway].cfURL.length > 20){
-                                                        let first3Char = gateways[indexGateway].cfURL.substr(0, 5);
-                                                        let last3Char = gateways[indexGateway].cfURL.substr(gateways[indexGateway].cfURL.length - 5, 5);
-                                                        valueToshow = first3Char+'...'+last3Char;
+                                                    if(gateways[indexGateway].cfURL.length > 30){
+                                                        let first7Char = gateways[indexGateway].cfURL.substr(0, 10);
+                                                        let last7Char = gateways[indexGateway].cfURL.substr(gateways[indexGateway].cfURL.length - 10, 10);
+                                                        valueToshow = first7Char+'...'+last7Char;
                                                     }
                                                     newGatewayObj.value = valueToshow;
             
-                                                    if(indexGateway == 0){
+                                                    if(indexGateway.split(":")[1] == 0){
                                                         treeValue[0].children[indexSubscriptions].children = [newGatewayObj];
                                                     }
                                                     else{
                                                         treeValue[0].children[indexSubscriptions].children.push(newGatewayObj);
                                                     }
-                                                    totalNumOfAjax = totalNumOfAjax + 1; 
-                                                }
 
-
-
-
-                                                let nodes = [];
-                                                let edges = [];
-                                                if(treeValue.length > 0){
-                                                    let treeObj = treeValue[0];
-                                                    let parentNodeId = treeObj.id;
-                                                    let parentNodeLabel = treeObj.value;
-                                                    let parentNode = { id: parentNodeId, label: parentNodeLabel };
-                                                    nodes.push(parentNode);
-                                                    if(treeObj.children){
-                                                        for(let childNode of treeObj.children){
-                                                            let childNodeId = childNode.id;
-                                                            let childNodeLabel = childNode.value;
-                                                            let childNodeTitle = childNode.title;
-                                                            let preparedChildNode = { id: childNodeId, label: childNodeLabel, title: childNodeTitle };
-                                                            nodes.push(preparedChildNode);
-
-                                                            let prepareEdges = { from: 1, to: childNodeId };
-                                                            edges.push(prepareEdges);
+                                                    fetch(this.props.baseUrl + '/getGatewayHealth?gatewayURL='+gateways[indexGateway].cfURL, {
+                                                        method: 'GET',
+                                                        headers: {
+                                                            'Accept': 'application/json',
+                                                            'Content-Type': 'application/json',
+                                                            'Authorization': 'Bearer '+this.props.authToken
                                                         }
-                                                    }
+                                                    })
+                                                    .then((response) => { // jshint ignore:line
+                                                        if (response.status === 200) {
+                                                            response.json().then((respData) => {
+                                                                totalNumOfAjaxProcessed++;
+                                                                if(respData.errorStatus.status == 'ok'){
+                                                                    console.log(respData.data);
+                                                                    let clientPools = respData.data.ClientPool;
+                                                                    let superConns = respData.data.SuperConns;
+                                                                    
+                                                                    if(clientPools.length > 0){
+                                                                        newId++;
+                                                                        treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [{id: newId, value: 'Client Pools'}];
+                                                                        for(let indexClientPool in clientPools){
+                                                                            newId++;
+                                                                            let newClientPoolObj = {};
+                                                                            newClientPoolObj.id = newId;
+                                                                            newClientPoolObj.title = clientPools[indexClientPool].clientConfig.groupId+' ['+clientPools[indexClientPool].clientConfig.id+']';
+                                                                            let valueToshow = clientPools[indexClientPool].clientConfig.groupId+' ['+clientPools[indexClientPool].clientConfig.id+']';
+                                                                            
+                                                                            newClientPoolObj.value = valueToshow;
+
+                                                                            if(indexClientPool == 0){
+                                                                                treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children = [newClientPoolObj];
+                                                                            }
+                                                                            else{
+                                                                                treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children.push(newClientPoolObj);
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                    if(superConns.length > 0){
+                                                                        newId++;
+                                                                        
+                                                                        if(!treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children){
+                                                                            treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [{id: newId, value: 'Super Connections'}];
+                                                                        }
+                                                                        else{
+                                                                            treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children.push({id: newId, value: 'Super Connections'});
+                                                                        }
+                                                                        
+                                                                        for(let indexSuperConn in superConns){
+                                                                            newId++;
+                                                                            let newSuperConnObj = {};
+                                                                            newSuperConnObj.id = newId;
+                                                                            newSuperConnObj.title = superConns[indexSuperConn].bindId.groupId+' ['+ superConns[indexSuperConn].bindId.id + ']';
+                                                                            let valueToshow = superConns[indexSuperConn].bindId.groupId+' ['+ superConns[indexSuperConn].bindId.id + ']';
+                
+                                                                            newSuperConnObj.value = valueToshow;
+                
+                                                                            if(indexSuperConn == 0){
+                                                                                if(treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].value === 'Client Pools'){
+                                                                                    treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[1].children = [newSuperConnObj];
+                                                                                }
+                                                                                else{
+                                                                                    treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children = [newSuperConnObj];
+                                                                                }
+                                                                                
+                                                                            }
+                                                                            else{
+                                                                                if(treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].value === 'Client Pools'){
+                                                                                    treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[1].children.push(newSuperConnObj);
+                                                                                }
+                                                                                else{
+                                                                                    treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children.push(newSuperConnObj);
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    }
+
+                                                                }
+
+                                                                if(totalNumOfAjaxProcessed === totalNumOfAjax){
+                                                                    let that = this;
+                                                                    setTimeout(function(){
+                                                                        that.setState({
+                                                                            loadTreeJs: true
+                                                                        });
+                                                                        console.log('getGatewayHealth');
+                                                                    }, 2000);
+                                                                }
+                                                            });
+                                                        }
+                                                    });
                                                 }
-
-                                                this.setState({
-                                                    treeValue: treeValue,
-                                                    graph: {
-                                                        nodes: nodes,
-                                                        edges: edges
-                                                    }
-                                                });
-
-
-
-
                                             }
-                                        })
+                                        });
                                     }
-                                })
+                                });
                             }
-
+                            else{
+                                totalNumOfAjaxProcessed++;
+                            }
                         
                         }
 
-                        let that = this;
-                        setTimeout(function(){
-                            that.setState({
-                                loadTreeJs: true
-                            });
-                            console.log('trial');
-                        }, 10000);
+                        let nodes = [];
+                        let edges = [];
+                        if(treeValue.length > 0){
+                            let treeObj = treeValue[0];
+                            let parentNodeId = treeObj.id;
+                            let parentNodeLabel = treeObj.value;
+                            let parentNode = { id: parentNodeId, label: parentNodeLabel };
+                            nodes.push(parentNode);
+                            if(treeObj.children){
+                                for(let childNode of treeObj.children){
+                                    let childNodeId = childNode.id;
+                                    let childNodeLabel = childNode.value;
+                                    let childNodeTitle = childNode.title;
+                                    let preparedChildNode = { id: childNodeId, label: childNodeLabel, title: childNodeTitle };
+                                    nodes.push(preparedChildNode);
+
+                                    let prepareEdges = { from: 1, to: childNodeId };
+                                    edges.push(prepareEdges);
+                                }
+                            }
+                        }
+
+                        this.setState({
+                            treeValue: treeValue,
+                            graph: {
+                                nodes: nodes,
+                                edges: edges
+                            }
+                        });
                     }
-                })
+                });
             }
-        })
+        });
     }
 
     changeTopologyView(items){

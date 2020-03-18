@@ -104,7 +104,8 @@ function initTable(tableId,  preserveState){
             "pageLength": pageLength,
             destroy: true,
             "fnDrawCallback": function(oSettings) {
-                if ($('#'+tableId+' tr').length < pageLength) {
+                console.log(oSettings);
+                if (oSettings.aiDisplay.length <= pageLength) {
                     $('.dataTables_paginate').hide();
                 }
                 else{
@@ -133,7 +134,7 @@ function initTable(tableId,  preserveState){
             stateSave: preserveState,
             destroy: true,
             "fnDrawCallback": function(oSettings) {
-                if ($('#'+tableId+' tr').length < pageLength) {
+                if (oSettings.aiDisplay.length <= pageLength) {
                     $('.dataTables_paginate').hide();
                 }
                 else{
@@ -162,7 +163,7 @@ function initTable(tableId,  preserveState){
             stateSave: preserveState,
             destroy: true,
             "fnDrawCallback": function(oSettings) {
-                if ($('#'+tableId+' tr').length < pageLength) {
+                if (oSettings.aiDisplay.length <= pageLength) {
                     $('.dataTables_paginate').hide();
                 }
                 else{
@@ -190,7 +191,7 @@ function initTable(tableId,  preserveState){
             "pageLength": pageLength,
             destroy: true,
             "fnDrawCallback": function(oSettings) {
-                if ($('#'+tableId+' tr').length < pageLength) {
+                if (oSettings.aiDisplay.length <= pageLength) {
                     $('.dataTables_paginate').hide();
                 }
                 else{
