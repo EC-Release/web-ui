@@ -116,6 +116,11 @@ Package contains all EC Data models
 			
 			
 				
+				<dd><a href="#BrandingConfig">type BrandingConfig</a></dd>
+				
+				
+			
+				
 				<dd><a href="#ClientPool">type ClientPool</a></dd>
 				
 				
@@ -127,6 +132,11 @@ Package contains all EC Data models
 			
 				
 				<dd><a href="#ConfigDetails">type ConfigDetails</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Env">type Env</a></dd>
 				
 				
 			
@@ -233,6 +243,8 @@ Package contains all EC Data models
 			
 				<a href="/src/github.build.ge.com/212359746/wzschema/clientpool.go">clientpool.go</a>
 			
+				<a href="/src/github.build.ge.com/212359746/wzschema/env.go">env.go</a>
+			
 				<a href="/src/github.build.ge.com/212359746/wzschema/gatewaypool.go">gatewaypool.go</a>
 			
 				<a href="/src/github.build.ge.com/212359746/wzschema/group.go">group.go</a>
@@ -258,6 +270,48 @@ Package contains all EC Data models
 		
 		
 		
+		
+			
+			
+			<h2 id="BrandingConfig">type <a href="/src/github.build.ge.com/212359746/wzschema/env.go?s=45:348#L1">BrandingConfig</a>
+				<a class="permalink" href="#BrandingConfig">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type BrandingConfig struct {
+<span id="BrandingConfig.CONFIG_MAIN"></span>    CONFIG_MAIN,
+    BRAND_CONFIG,
+    ART_NAME,
+    LOGO,
+    COPY_RIGHT,
+    HEADER_PLUGIN,
+    HEADER_CONFIG,
+    HEADER_AUTH,
+    HEADER_SUB_ID,
+    HEADER_CF_INST,
+    ENV_CF_INST_IDX,
+    HEADER_INST,
+    ENV_INST_IDX,
+    USER_MAIN,
+    CLIENT_SECRET_FILE,
+    URL_CA,
+    URL_WATCHER_CONF,
+    URL_ISSUE_TRACKER <a href="/pkg/builtin/#string">string</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
 		
 			
 			
@@ -327,6 +381,32 @@ Package contains all EC Data models
 <span id="ConfigDetails.BindID"></span>    BindID   <a href="/pkg/builtin/#string">string</a> `json:&#34;bindId&#34;`
 <span id="ConfigDetails.TargetID"></span>    TargetID <a href="/pkg/builtin/#string">string</a> `json:&#34;targetId&#34;`
 <span id="ConfigDetails.GroupID"></span>    GroupID  <a href="/pkg/builtin/#string">string</a> `json:&#34;groupId&#34;`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Env">type <a href="/src/github.build.ge.com/212359746/wzschema/env.go?s=350:404#L19">Env</a>
+				<a class="permalink" href="#Env">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type Env struct {
+<span id="Env.DaemonId"></span>    DaemonId  <a href="/pkg/builtin/#string">string</a>
+<span id="Env.WatcherId"></span>    WatcherId <a href="/pkg/builtin/#string">string</a>
 }
 </pre>
 

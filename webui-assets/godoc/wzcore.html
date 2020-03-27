@@ -120,9 +120,6 @@ The 技(waza) libraries main package contains core functionality which consists 
 				<dd><a href="#KeepAlive">func KeepAlive(agt *Agent) chan bool</a></dd>
 			
 				
-				<dd><a href="#Operation">func Operation(agt AgentIntr)</a></dd>
-			
-				
 				<dd><a href="#SendPong">func SendPong(ws *WSocket) error</a></dd>
 			
 			
@@ -462,8 +459,6 @@ The 技(waza) libraries main package contains core functionality which consists 
     <span class="comment">//WZ_HTTP_HEADER = &#34;wz-options&#34;</span>
     <span id="X_FORWARDED_FOR">X_FORWARDED_FOR</span> = &#34;x-forwarded-for&#34;
 
-    <span class="comment">//WZ_INST_HEADER = &#34;X_SUB_ID&#34;</span>
-    <span id="REPORT_DUR">REPORT_DUR</span>    = 60
     <span id="KEEPALIVE_DUR">KEEPALIVE_DUR</span> = 30
 
     <span id="BUFFER_SIZE">BUFFER_SIZE</span> = 128
@@ -528,19 +523,6 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			</h2>
 			<pre>func KeepAlive(agt *<a href="#Agent">Agent</a>) chan <a href="/pkg/builtin/#bool">bool</a></pre>
-			
-			
-			
-
-		
-			
-			
-			<h2 id="Operation">func <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=19282:19311#L899">Operation</a>
-				<a class="permalink" href="#Operation">&#xb6;</a>
-				
-				
-			</h2>
-			<pre>func Operation(agt <a href="#AgentIntr">AgentIntr</a>)</pre>
 			
 			
 			
@@ -621,7 +603,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="Client">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3207:3321#L118">Client</a>
+			<h2 id="Client">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3212:3326#L119">Client</a>
 				<a class="permalink" href="#Client">&#xb6;</a>
 				
 				
@@ -642,7 +624,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 
 			
 				
-				<h3 id="NewClient">func <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3400:3469#L131">NewClient</a>
+				<h3 id="NewClient">func <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3405:3474#L132">NewClient</a>
 					<a class="permalink" href="#NewClient">&#xb6;</a>
 					
 					
@@ -655,7 +637,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 
 			
 				
-				<h3 id="Client.Config">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3338:3379#L127">Config</a>
+				<h3 id="Client.Config">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3343:3384#L128">Config</a>
 					<a class="permalink" href="#Client.Config">&#xb6;</a>
 					
 					
@@ -667,7 +649,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.DeleteBinding">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5106:5148#L198">DeleteBinding</a>
+				<h3 id="Client.DeleteBinding">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5111:5153#L199">DeleteBinding</a>
 					<a class="permalink" href="#Client.DeleteBinding">&#xb6;</a>
 					
 					
@@ -679,7 +661,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.DeleteSession">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5610:5652#L224">DeleteSession</a>
+				<h3 id="Client.DeleteSession">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5615:5657#L225">DeleteSession</a>
 					<a class="permalink" href="#Client.DeleteSession">&#xb6;</a>
 					
 					
@@ -691,7 +673,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.Fire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=19252:19275#L895">Fire</a>
+				<h3 id="Client.Fire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=19257:19280#L896">Fire</a>
 					<a class="permalink" href="#Client.Fire">&#xb6;</a>
 					
 					
@@ -703,7 +685,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.Hire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=12743:12766#L574">Hire</a>
+				<h3 id="Client.Hire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=12748:12771#L575">Hire</a>
 					<a class="permalink" href="#Client.Hire">&#xb6;</a>
 					
 					
@@ -1107,7 +1089,7 @@ gateway mode
 		
 			
 			
-			<h2 id="Locker">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3144:3205#L113">Locker</a>
+			<h2 id="Locker">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3149:3210#L114">Locker</a>
 				<a class="permalink" href="#Locker">&#xb6;</a>
 				
 				
