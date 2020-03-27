@@ -33,9 +33,20 @@ export default class Header extends React.Component {
                             <span>
                                 <img src="assets/static/images/logout_icon.svg" />
                             </span>
-                            <span>
-                                <img className="cursor-pointer" alt="minimize-window" src="assets/static/images/minimize.svg" onClick={this.props.maxMinModal.bind(this)} />
-                            </span>
+                            {this.props.isFullScreenModal ?
+                                <span>
+                                    <img className="cursor-pointer" alt="minimize-window" src="assets/static/images/minimize.svg" onClick={this.props.medModal.bind(this)} />
+                                </span> :
+                                <span>
+                                    <img className="cursor-pointer" alt="minimize-window" src="assets/static/images/minimize.svg" onClick={this.props.maxMinModal.bind(this)} />
+                                </span>
+                            }
+                            {this.props.isFullScreenModal ?
+                                null :
+                                <span>
+                                    <img className="cursor-pointer" alt="maximize-window" onClick={this.props.fullScreenModal.bind(this)} alt="maximize-window" src="assets/static/images/maximize.svg" />
+                                </span>
+                            }
                         </div>
                     </div>
                 </div>

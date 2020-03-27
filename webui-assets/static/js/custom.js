@@ -85,7 +85,9 @@ function generateTopology(nodeData, replacedDivId){
 
 function initTable(tableId,  preserveState){
     var pageLength = 5;
+    let tableWidth = 0;
     if(tableId == 'viewTable'){
+        tableWidth = $('#viewTableDiv')[0].offsetWidth - 200;
         $('#'+tableId).DataTable({
             "dom": '<"top"f>rt<"bottom"lp>',
             "bSort": true,
@@ -98,13 +100,12 @@ function initTable(tableId,  preserveState){
             },
             'createdRow': function(row, data, dataIndex){
                 for(i=0; i < data.length; i++){
-                    $('td:eq('+i+')', row).css('min-width', (840/data.length)+'px');
+                    $('td:eq('+i+')', row).css('min-width', (tableWidth/data.length)+'px');
                 }
             },
             "pageLength": pageLength,
             destroy: true,
             "fnDrawCallback": function(oSettings) {
-                console.log(oSettings);
                 if (oSettings.aiDisplay.length <= pageLength) {
                     $('.dataTables_paginate').hide();
                 }
@@ -115,6 +116,7 @@ function initTable(tableId,  preserveState){
         });
     }
     else if(tableId == 'maintainagentupgradeTable'){
+        tableWidth = $('#maintainagentupgradeTableDiv')[0].offsetWidth - 200;
         $('#'+tableId).DataTable({
             "dom": 'rt<"bottom"lp>',
             "bSort": true,
@@ -127,7 +129,7 @@ function initTable(tableId,  preserveState){
             },
             'createdRow': function(row, data, dataIndex){
                 for(i=0; i < data.length; i++){
-                    $('td:eq('+i+')', row).css('min-width', '120px');
+                    $('td:eq('+i+')', row).css('min-width', (tableWidth/data.length)+'px');
                 }
             },
             "pageLength": pageLength,
@@ -143,7 +145,8 @@ function initTable(tableId,  preserveState){
             }
         });
     }
-    else if(tableId == 'subscriptionupgradeTable'){
+    else if(tableId == 'subscriptionupgradeTable'){ 
+        tableWidth = $('#subscriptionupgradeTableDiv')[0].offsetWidth - 200;
         $('#'+tableId).DataTable({
             "dom": 'rt<"bottom"lp>',
             "bSort": true,
@@ -156,7 +159,7 @@ function initTable(tableId,  preserveState){
             },
             'createdRow': function(row, data, dataIndex){
                 for(i=0; i < data.length; i++){
-                    $('td:eq('+i+')', row).css('min-width', '120px');
+                    $('td:eq('+i+')', row).css('min-width', (tableWidth/data.length)+'px');
                 }
             },
             "pageLength": pageLength,
@@ -173,6 +176,7 @@ function initTable(tableId,  preserveState){
         });
     }
     else{
+        tableWidth = $('#'+tableId+'Div')[0].offsetWidth - 200;
         $('#'+tableId).DataTable({
             "dom": 'rt<"bottom"lp>',
             "bSort": true,
@@ -185,7 +189,7 @@ function initTable(tableId,  preserveState){
             },
             'createdRow': function(row, data, dataIndex){
                 for(i=0; i < data.length; i++){
-                    $('td:eq('+i+')', row).css('min-width', '100px');
+                    $('td:eq('+i+')', row).css('min-width', (tableWidth/data.length)+'px');
                 }
             },
             "pageLength": pageLength,
@@ -207,6 +211,7 @@ function initTable(tableId,  preserveState){
 
 function destroyDataTable(tableId){
     var table = $('#'+tableId).DataTable();
+    console.log(table);
     table.destroy();
 }
 
@@ -227,5 +232,20 @@ function enableToolTip(){
     setTimeout(() => {
         $('[data-toggle="popover"]').popover(); // For tooltips
     }, 1000);
+}
+
+function extraLargeModal(currentView){
+    $('#mediumModal').addClass('largeModal');
+    $('#mediumModalContent').addClass('largeModalContent');
+    if(document.getElementsByClassName('table').length > 0){
+        let tableInitial = currentView.toLowerCase();
+        initTable(tableInitial+'Table', true);
+    }
+    
+}
+
+function medModal(currentView){
+    $('#mediumModal').removeClass('largeModal');
+    $('#mediumModalContent').removeClass('largeModalContent');
 }
 

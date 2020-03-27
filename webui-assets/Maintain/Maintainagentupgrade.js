@@ -605,71 +605,73 @@ export default class Maintainagentupgrade extends React.Component {
                                 </div>
                             </div>
                             <div className="centered-div">
-                                { this.state.showTableInit ? 
-                                    <table id="maintainagentupgradeTable" className="table">
-                                        <thead>
-                                            <tr>
-                                                <th>Subscription</th>
-                                                <th>Agent ID</th>
-                                                <th>Gateway</th>
-                                                <th>Group</th>
-                                                <th>OAuth Provider</th>
-                                                <th>Zone</th>
-                                                <th>Actions</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {
-                                            this.state.newTableData.map((tbodyVal, tbodyIndex) => {
-                                                    return (
-                                                        <tr id={'maintainagentupgradeTableTbodyTr_' + tbodyIndex} key={'maintainagentupgradeTableTbodyTr_' + tbodyIndex}>
-                                                            <td>
-                                                                {tbodyVal.subscription}&nbsp;&nbsp;
-                                            {tbodyVal.subscriptionHiddenFlag ?
-                                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscription')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
-                                                                    null
-                                                                }
-                                                            </td>
-                                                            <td>{tbodyVal.agent_id}</td>
-                                                            <td>
-                                                                {tbodyVal.gateway}&nbsp;&nbsp;
-                                            {
-                                                                    tbodyVal.gatewayHiddenFlag ?
-                                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'gateway')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
+                                <div id="maintainagentupgradeTableDiv">
+                                    { this.state.showTableInit ? 
+                                        <table id="maintainagentupgradeTable" className="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Subscription</th>
+                                                    <th>Agent ID</th>
+                                                    <th>Gateway</th>
+                                                    <th>Group</th>
+                                                    <th>OAuth Provider</th>
+                                                    <th>Zone</th>
+                                                    <th>Actions</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {
+                                                this.state.newTableData.map((tbodyVal, tbodyIndex) => {
+                                                        return (
+                                                            <tr id={'maintainagentupgradeTableTbodyTr_' + tbodyIndex} key={'maintainagentupgradeTableTbodyTr_' + tbodyIndex}>
+                                                                <td>
+                                                                    {tbodyVal.subscription}&nbsp;&nbsp;
+                                                                    {tbodyVal.subscriptionHiddenFlag ?
+                                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscription')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
                                                                         null
-                                                                }
-                                                            </td>
-                                                            <td>{tbodyVal.group}</td>
-                                                            <td>
-                                                                {tbodyVal.oauth_provider}&nbsp;&nbsp;
-                                            {tbodyVal.oauth_providerHiddenFlag ?
-                                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'oauth_provider')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
-                                                                    null
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                {tbodyVal.zone}&nbsp;&nbsp;
-                                            {tbodyVal.zoneHiddenFlag ?
-                                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'zone')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
-                                                                    null
-                                                                }
-                                                            </td>
-                                                            <td>
-                                                                <span className="action-img">
-                                                                    <img onClick={this.edit.bind(this, tbodyVal)} alt="edit-icon" title="Edit" src="assets/static/images/iconedit_tablemaintainmonitor.svg" />
-                                                                    <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
-                                                                </span>
-                                                            </td>
-                                                        </tr>
-                                                    )
-                                                })
-                                            }
-                                        </tbody>
-                                    </table> :
-                                    <p className="text-center loader-icon">
-                                        <img alt="loading" src="assets/static/images/rolling.svg" />
-                                    </p>
-                                }
+                                                                    }
+                                                                </td>
+                                                                <td>{tbodyVal.agent_id}</td>
+                                                                <td>
+                                                                    {tbodyVal.gateway}&nbsp;&nbsp;
+                                                                    {
+                                                                        tbodyVal.gatewayHiddenFlag ?
+                                                                            <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'gateway')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
+                                                                            null
+                                                                    }
+                                                                </td>
+                                                                <td>{tbodyVal.group}</td>
+                                                                <td>
+                                                                    {tbodyVal.oauth_provider}&nbsp;&nbsp;
+                                                                    {tbodyVal.oauth_providerHiddenFlag ?
+                                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'oauth_provider')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
+                                                                        null
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    {tbodyVal.zone}&nbsp;&nbsp;
+                                                                    {tbodyVal.zoneHiddenFlag ?
+                                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'zone')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
+                                                                        null
+                                                                    }
+                                                                </td>
+                                                                <td>
+                                                                    <span className="action-img">
+                                                                        <img onClick={this.edit.bind(this, tbodyVal)} alt="edit-icon" title="Edit" src="assets/static/images/iconedit_tablemaintainmonitor.svg" />
+                                                                        <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
+                                                                    </span>
+                                                                </td>
+                                                            </tr>
+                                                        )
+                                                    })
+                                                }
+                                            </tbody>
+                                        </table> :
+                                        <p className="text-center loader-icon">
+                                            <img alt="loading" src="assets/static/images/rolling.svg" />
+                                        </p>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>

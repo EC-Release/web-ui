@@ -42,7 +42,8 @@ export default class App extends React.Component {
       authToken: '',
       apiEndPoints: {
         baseUrl : 'http://localhost:17990/v1.1beta/ec',
-      }
+      },
+      isFullScreenModal: false
     };
   }
 
@@ -141,11 +142,32 @@ export default class App extends React.Component {
       }
     });
   }
-
+  
   maxMinModal(){
     this.setState({
       maximizeModal: !this.state.maximizeModal
     });
+  }
+
+  fullScreenModal(){
+    window.extraLargeModal(this.state.currentView);
+    this.setState({
+      isFullScreenModal: true
+    });
+  }
+
+  medModal(currentView){
+    window.medModal(currentView);
+    this.setState({
+      isFullScreenModal: false
+    });
+    console.log(currentView);
+    if(document.getElementsByClassName('table').length > 0){
+      this.changeView('');
+      setTimeout(()=>{
+        this.changeView(currentView);
+      },200);
+    }
   }
 
   render() {
@@ -155,8 +177,8 @@ export default class App extends React.Component {
         {
           this.state.maximizeModal ?
             <div className="modal" tabIndex="-1" role="dialog" id="dive_panel">
-              <div className="modal-dialog modal-xl" role="document">
-                <div className="modal-content">
+              <div id="mediumModal" className="modal-dialog modal-xl" role="document">
+                <div id="mediumModalContent" className="modal-content">
                   {this.state.ajaxBusy.flag ?
                     <div className={"alert-notification alert "+ this.state.ajaxBusy.classname}>
                       {this.state.ajaxBusy.showLoader ?
@@ -172,7 +194,7 @@ export default class App extends React.Component {
                   }
                 
                   <div className="modal-body">
-                    <Header maxMinModal={this.maxMinModal.bind(this)}></Header>
+                    <Header maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
                     <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }
