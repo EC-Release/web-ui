@@ -58,7 +58,7 @@ open http://localhost:17990/v1.1beta/ec
 
 ![OAuth2 flow](docs/oauth_scope.png?raw=true)
 
-**UI example (not the current development for xcalr UI)**
+**UI example** 
 
 ![UI example](docs/ecUIDashboard.png?raw=true)
 

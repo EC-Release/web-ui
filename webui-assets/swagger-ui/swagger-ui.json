@@ -73,9 +73,9 @@
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           }
@@ -112,7 +112,7 @@
             "type": "string"
           },
           {
-            "name": "zoneID",
+            "name": "zone_id",
             "in": "query",
             "required": true,
             "type": "string"
@@ -150,9 +150,9 @@
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           }
@@ -189,9 +189,9 @@
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           }
@@ -228,9 +228,9 @@
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           }
@@ -267,9 +267,9 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           }
@@ -306,9 +306,9 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           }
@@ -348,9 +348,9 @@
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           },
@@ -395,16 +395,16 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           },
@@ -449,16 +449,16 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           },
@@ -503,16 +503,16 @@
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           },
@@ -557,23 +557,23 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           },
           {
-            "name": "serverID",
+            "name": "server_id",
             "in": "query",
-            "description": "serverID",
+            "description": "server_id",
             "required": true,
             "type": "string"
           },
@@ -618,23 +618,23 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           },
           {
-            "name": "userID",
+            "name": "user_id",
             "in": "query",
-            "description": "userID ",
+            "description": "user_id ",
             "required": true,
             "type": "string"
           },
           {
-            "name": "clientID",
+            "name": "client_id",
             "in": "query",
-            "description": "clientID",
+            "description": "client_id",
             "required": true,
             "type": "string"
           },
@@ -679,9 +679,9 @@
             "type": "string"
           },
           {
-            "name": "gatewayID",
+            "name": "gateway_id",
             "in": "query",
-            "description": "gatewayID",
+            "description": "gateway_id",
             "required": true,
             "type": "string"
           }
@@ -718,9 +718,9 @@
             "type": "string"
           },
           {
-            "name": "serverID",
+            "name": "server_id",
             "in": "query",
-            "description": "serverID",
+            "description": "server_id",
             "required": true,
             "type": "string"
           }
@@ -757,9 +757,9 @@
             "type": "string"
           },
           {
-            "name": "clientID",
+            "name": "client_id",
             "in": "query",
-            "description": "clientID",
+            "description": "client_id",
             "required": true,
             "type": "string"
           }
@@ -1175,6 +1175,84 @@
             "examples": {
               "application/json": {}
             }
+          }
+        }
+      }
+    },
+    "/gatewayList": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Gives list of gateways for a user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "subscriptionID",
+            "in": "query",
+            "description": "subscriptionID ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of Gateways",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/getGatewayHealth": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Gateway health",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "gatewayURL",
+            "in": "query",
+            "description": "gatewayURL ",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Gateway health",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
           }
         }
       }

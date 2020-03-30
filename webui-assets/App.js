@@ -5,12 +5,15 @@ import Dashboard from './Dashboard/Dashboard.js';
 import View from './View/View.js';
 import Maintain from './Maintain/Maintain.js';
 import Subscriptioncreate from './Maintain/Subscriptioncreate.js';
+import Subscriptionupgrade from './Maintain/Subscriptionupgrade.js';
 import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
+/* istanbul ignore next */
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
 import Maintainagentview from './Maintain/Maintainagentview.js';
 import Maintainwatchercreate from './Maintain/Maintainwatchercreate.js';
 import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
 import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
+/* istanbul ignore next */
 import Monitor from './Monitor/Monitor.js';
 import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
@@ -29,6 +32,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       currentView: 'Dashboard',
+      /* istanbul ignore next */
       ajaxBusy: {
         flag: false,
         showLoader: false,
@@ -41,10 +45,12 @@ export default class App extends React.Component {
       authToken: '',
       apiEndPoints: {
         baseUrl : 'http://localhost:17990/v1.1beta/ec',
-      }
+      },
+      isFullScreenModal: false
     };
   }
 
+  /* istanbul ignore next */
   componentDidMount(){
     let authToken = this.getToken('ec-config');
     this.setState({
@@ -58,8 +64,9 @@ export default class App extends React.Component {
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
+        /* istanbul ignore next */
         while (c.charAt(0) == ' ') {
-            c = c.substring(1);
+          c = c.substring(1);
         }
         if (c.indexOf(cookieName) == 0) {
           return c.substring(cookieName.length, c.length);
@@ -67,6 +74,7 @@ export default class App extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
   servedView() {
     const currentView = this.state.currentView;
     switch(currentView) {
@@ -78,6 +86,8 @@ export default class App extends React.Component {
         return <Maintain />; // jshint ignore:line
       case 'Subscriptioncreate':
         return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+      case 'Subscriptionupgrade':
+        return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentupgrade':
@@ -109,12 +119,14 @@ export default class App extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
   changeView(changeViewTo){
     this.setState({
       currentView: changeViewTo
     });
   }
 
+  /* istanbul ignore next */
   showGlobalMessage(showLoader, showText, text, classname){
 		this.setState({
 			ajaxBusy:{
@@ -127,6 +139,7 @@ export default class App extends React.Component {
     });
   }
   
+  /* istanbul ignore next */
   hideGlobalMessage(){
     this.setState({
       ajaxBusy: {
@@ -138,11 +151,35 @@ export default class App extends React.Component {
       }
     });
   }
-
+  
+  /* istanbul ignore next */
   maxMinModal(){
     this.setState({
       maximizeModal: !this.state.maximizeModal
     });
+  }
+
+  /* istanbul ignore next */
+  fullScreenModal(){
+    window.extraLargeModal(this.state.currentView);
+    this.setState({
+      isFullScreenModal: true
+    });
+  }
+
+  /* istanbul ignore next */
+  medModal(currentView){
+    window.medModal(currentView);
+    this.setState({
+      isFullScreenModal: false
+    });
+    console.log(currentView);
+    if(document.getElementsByClassName('table').length > 0){
+      this.changeView('');
+      setTimeout(()=>{
+        this.changeView(currentView);
+      },200);
+    }
   }
 
   render() {
@@ -152,8 +189,8 @@ export default class App extends React.Component {
         {
           this.state.maximizeModal ?
             <div className="modal" tabIndex="-1" role="dialog" id="dive_panel">
-              <div className="modal-dialog modal-xl" role="document">
-                <div className="modal-content">
+              <div id="mediumModal" className="modal-dialog modal-xl" role="document">
+                <div id="mediumModalContent" className="modal-content">
                   {this.state.ajaxBusy.flag ?
                     <div className={"alert-notification alert "+ this.state.ajaxBusy.classname}>
                       {this.state.ajaxBusy.showLoader ?
@@ -169,7 +206,7 @@ export default class App extends React.Component {
                   }
                 
                   <div className="modal-body">
-                    <Header maxMinModal={this.maxMinModal.bind(this)}></Header>
+                    <Header maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
                     <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }

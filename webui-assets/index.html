@@ -275,7 +275,15 @@
         height: 500px;
       }
 
-      .centered-div-header .view-header h6, .centered-div-header .maintainagentcreate-header h6{
+      .centered-div.View{
+        height: 450px;
+      }
+
+      .Maintainagentupgrade .centered-div, .Maintainagentview .centered-div, .Subscriptionupgrade .centered-div{
+        height: 300px;
+      }
+
+      .centered-div-header .view-header h6, .centered-div-header .maintainagentcreate-header h6, .centered-div-header .subscriptionupgrade-header h6{
         font-weight: 600;
       }
 
@@ -579,7 +587,7 @@
         color: #8f9ca9;
       }
 
-      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div{
+      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div, .Subscriptionupgrade .centered-div{
         max-height: 450px;
         /*overflow-y: scroll;*/
         font-size: small;
@@ -589,11 +597,11 @@
         margin: 0px 0px;
       }
 
-      .Maintainagentview .search-field, .Maintainagentupgrade .search-field{
+      .Maintainagentview .search-field, .Maintainagentupgrade .search-field, .Subscriptionupgrade .search-field{
         width: 80%;
       }
 
-      .Maintainagentview button.disabled, .Maintainagentupgrade button.disabled{
+      .Maintainagentview button.disabled, .Maintainagentupgrade button.disabled, .Subscriptionupgrade button.disabled{
         opacity: inherit;
         cursor: auto;
       }
@@ -763,6 +771,20 @@
 
       .index-loader{
         height: 70px;
+      }
+
+      .largeModal{
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width:none !important;
+      }
+
+      .largeModalContent{
+        height: auto !important;
+        min-height: 100% !important;
+        border-radius: 0 !important;
       }
 
       @media (max-width: 991px) {

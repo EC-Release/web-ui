@@ -1,7 +1,8 @@
 import React from "react";
 
-export default class Subscriptioncreate extends React.Component {
-    constructor(props){
+export default class Subscriptionedit extends React.Component {
+
+    constructor(props) {
         super(props);
         this.state = {
             subscriptionForm:{
@@ -30,7 +31,8 @@ export default class Subscriptioncreate extends React.Component {
                 version: { value: '', dirtyState: false },
                 app: { value: '', dirtyState: false },
                 assetId: { value: '', dirtyState: false },
-                uai: { value: '', dirtyState: false }
+                uai: { value: '', dirtyState: false },
+                developerId: { value: '', dirtyState: false } 
             },
             errorsSubscriptionForm: {},
             subscriptionFormIsValid: false,
@@ -55,124 +57,122 @@ export default class Subscriptioncreate extends React.Component {
         };
     }
 
-    componentDidMount(){
-        window.enableToolTip();
-    }
-
-    handleFormData(e){
-        let fieldName = e.target.name;
-        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        let currentForm =  Object.assign({}, this.state.subscriptionForm);
-
-        if(fieldName === 'subscriptionName'){
-            currentForm.subscriptionName.value = updatedValue;
-            currentForm.subscriptionName.dirtyState = true;
-        }
-        else if(fieldName === 'accountId'){
-            currentForm.accountId.value = updatedValue;
-            currentForm.accountId.dirtyState = true;
-        }
-        else if(fieldName === 'subscriptionId'){
-            currentForm.subscriptionId.value = updatedValue;
-            currentForm.subscriptionId.dirtyState = true;
-        }
-        else if(fieldName === 'serviceUri'){
-            currentForm.serviceUri.value = updatedValue;
-            currentForm.serviceUri.dirtyState = true;
-        }
-        else if(fieldName === 'clientId'){
-            currentForm.clientId.value = updatedValue;
-            currentForm.clientId.dirtyState = true;
-        }
-        else if(fieldName === 'clientSecret'){
-            currentForm.clientSecret.value = updatedValue;
-            currentForm.clientSecret.dirtyState = true;
-        }
-        else if(fieldName === 'OAuth2'){
-            currentForm.OAuth2.value = updatedValue;
-            currentForm.OAuth2.dirtyState = true;
-        }
-        else if(fieldName === 'adminToken'){
-            currentForm.adminToken.value = updatedValue;
-            currentForm.adminToken.dirtyState = true;
-        }
-        else if(fieldName === 'applicationRole'){
-            currentForm.applicationRole.value = updatedValue;
-            currentForm.applicationRole.dirtyState = true;
-        }
-        else if(fieldName === 'bucAdn'){
-            currentForm.bucAdn.value = updatedValue;
-            currentForm.bucAdn.dirtyState = true;
-        }
-        else if(fieldName === 'compliance'){
-            currentForm.compliance.value = updatedValue;
-            currentForm.compliance.dirtyState = true;
-        }
-        else if(fieldName === 'confidentiality'){
-            currentForm.confidentiality.value = updatedValue;
-            currentForm.confidentiality.dirtyState = true;
-        }
-        else if(fieldName === 'customer'){
-            currentForm.customer.value = updatedValue;
-            currentForm.customer.dirtyState = true;
-        }
-        else if(fieldName === 'cluster'){
-            currentForm.cluster.value = updatedValue;
-            currentForm.cluster.dirtyState = true;
-        }
-        else if(fieldName === 'date'){
-            currentForm.date.value = updatedValue;
-            currentForm.date.dirtyState = true;
-        }
-        else if(fieldName === 'environment'){
-            currentForm.environment.value = updatedValue;
-            currentForm.environment.dirtyState = true;
-        }
-        else if(fieldName === 'managementHostType'){
-            currentForm.managementHostType.value = updatedValue;
-            currentForm.managementHostType.dirtyState = true;
-        }
-        else if(fieldName === 'optInoptOut'){
-            currentForm.optInoptOut.value = updatedValue;
-            currentForm.optInoptOut.dirtyState = true;
-        }
-        else if(fieldName === 'preserve'){
-            currentForm.preserve.value = updatedValue;
-            currentForm.preserve.dirtyState = true;
-        }
-        else if(fieldName === 'owner'){
-            currentForm.owner.value = updatedValue;
-            currentForm.owner.dirtyState = true;
-        }
-        else if(fieldName === 'project'){
-            currentForm.project.value = updatedValue;
-            currentForm.project.dirtyState = true;
-        }
-        else if(fieldName === 'security'){
-            currentForm.security.value = updatedValue;
-            currentForm.security.dirtyState = true;
-        }
-        else if(fieldName === 'version'){
-            currentForm.version.value = updatedValue;
-            currentForm.version.dirtyState = true;
-        }
-        else if(fieldName === 'app'){
-            currentForm.app.value = updatedValue;
-            currentForm.app.dirtyState = true;
-        }
-        else if(fieldName === 'assetId'){
-            currentForm.assetId.value = updatedValue;
-            currentForm.assetId.dirtyState = true;
-        }
-        else if(fieldName === 'uai'){
-            currentForm.uai.value = updatedValue;
-            currentForm.uai.dirtyState = true;
-        }
+    componentDidMount() {
+        let formData = Object.assign({}, this.props.editItemData);
+        let subscriptionForm = {
+            subscriptionName: { value: formData.subscriptionName, dirtyState: false },
+            accountId: { value: formData.accountId, dirtyState: false },
+            subscriptionId: { value: formData.subscriptionId, dirtyState: false },
+            serviceUri: { value: formData.serviceUri, dirtyState: false },
+            clientId: { value: formData.clientId, dirtyState: false },
+            clientSecret: { value: formData.clientSc, dirtyState: false },
+            OAuth2: { value: formData.uaaUrl, dirtyState: false },
+            adminToken: { value: formData.adminToken, dirtyState: false },
+            applicationRole: { value: formData.role, dirtyState: false },
+            bucAdn: { value: formData.bucAdn, dirtyState: false },
+            compliance: { value: formData.compliance, dirtyState: false },
+            confidentiality: { value: formData.confidentiality, dirtyState: false },
+            customer: { value: formData.customer, dirtyState: false },
+            cluster: { value: formData.cluster, dirtyState: false },
+            date: { value: formData.date, dirtyState: false },
+            environment: { value: formData.env, dirtyState: false },
+            managementHostType: { value: formData.managementHostType, dirtyState: false },
+            optInoptOut: { value: formData.optInoptOut, dirtyState: false },
+            preserve: { value: formData.preserve, dirtyState: false },
+            owner: { value: formData.owner, dirtyState: false },
+            project: { value: formData.project, dirtyState: false },
+            security: { value: formData.security, dirtyState: false },
+            version: { value: formData.version, dirtyState: false },
+            app: { value: formData.app, dirtyState: false },
+            assetId: { value: formData.assetId, dirtyState: false },
+            uai: { value: formData.uai, dirtyState: false },
+            developerId: { value: formData.developerId, dirtyState: false } 
+        };
 
         this.setState({
-            subscriptionForm: currentForm
+            subscriptionForm: subscriptionForm,
         });
-        this.handleFormValidation();
+        window.enableToolTip();
+
+        let that = this;
+        setTimeout(function () {
+            that.handleFormValidation();
+        }, 1000);
+    }
+
+    editSubscription(){
+        let currentForm =  Object.assign({}, this.state.subscriptionForm);
+        let prepareData = {};
+
+        prepareData.subscriptionName = currentForm.subscriptionName.value;
+        prepareData.accountId = currentForm.accountId.value;
+        prepareData.subscriptionId = currentForm.subscriptionId.value;
+        prepareData.serviceUri = currentForm.serviceUri.value;
+        prepareData.clientId = currentForm.clientId.value;
+        prepareData.clientSc = currentForm.clientSecret.value;
+        prepareData.uaaUrl = currentForm.OAuth2.value;
+        prepareData.adminToken = currentForm.adminToken.value;
+        prepareData.role = currentForm.applicationRole.value;
+        prepareData.bucAdn = currentForm.bucAdn.value;
+        prepareData.compliance = currentForm.compliance.value;
+        prepareData.confidentiality = currentForm.confidentiality.value;
+        prepareData.customer = currentForm.customer.value;
+        prepareData.cluster = currentForm.cluster.value;
+        prepareData.date = currentForm.date.value;
+        prepareData.env = currentForm.environment.value;
+        prepareData.managementHostType = currentForm.managementHostType.value;
+        prepareData.optInoptOut = currentForm.optInoptOut.value;
+        prepareData.preserve = currentForm.preserve.value;
+        prepareData.owner = currentForm.owner.value;
+        prepareData.project = currentForm.project.value;
+        prepareData.security = currentForm.security.value;
+        prepareData.version = currentForm.version.value;
+        prepareData.app = currentForm.app.value;
+        prepareData.assetId = currentForm.assetId.value;
+        prepareData.uai = currentForm.uai.value;
+        prepareData.developerId = currentForm.developerId.value;
+
+        fetch(this.props.baseUrl+'/updateSubscription', {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+this.props.authToken
+            },
+            body: JSON.stringify(prepareData)
+        })
+        .then((response) => {
+            if (response.status === 200) {
+                response.json().then((respData) => {
+                    if(respData.errorStatus.status == 'ok'){
+                        this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
+                        this.props.handleDataTable(true);
+                        setTimeout(()=> {
+                            this.props.hideGlobalMessage();
+                        }, 2000);
+                    }
+                    else{
+                        this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                        setTimeout(()=> {
+                            this.props.hideGlobalMessage();
+                        }, 2000);
+                    }
+                });
+            }
+            else{
+                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                setTimeout(()=> {
+                    this.props.hideGlobalMessage();
+                }, 2000);
+            }
+        })
+        .catch((err) => {
+            console.log(err);
+            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+            setTimeout(()=> {
+                this.props.hideGlobalMessage();
+            }, 2000);
+        });
     }
 
     handleFormValidation(){
@@ -303,110 +303,120 @@ export default class Subscriptioncreate extends React.Component {
 		});
     }
 
-    createSubscription(){
+    handleFormData(e){
+        let fieldName = e.target.name;
+        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         let currentForm =  Object.assign({}, this.state.subscriptionForm);
-        let prepareData = {};
 
-        prepareData.subscriptionName = currentForm.subscriptionName.value;
-        prepareData.accountId = currentForm.accountId.value;
-        prepareData.subscriptionId = currentForm.subscriptionId.value;
-        prepareData.serviceUri = currentForm.serviceUri.value;
-        prepareData.clientId = currentForm.clientId.value;
-        prepareData.clientSc = currentForm.clientSecret.value;
-        prepareData.uaaUrl = currentForm.OAuth2.value;
-        prepareData.adminToken = currentForm.adminToken.value;
-        prepareData.role = currentForm.applicationRole.value;
-        prepareData.bucAdn = currentForm.bucAdn.value;
-        prepareData.compliance = currentForm.compliance.value;
-        prepareData.confidentiality = currentForm.confidentiality.value;
-        prepareData.customer = currentForm.customer.value;
-        prepareData.cluster = currentForm.cluster.value;
-        prepareData.date = currentForm.date.value;
-        prepareData.env = currentForm.environment.value;
-        prepareData.managementHostType = currentForm.managementHostType.value;
-        prepareData.optInoptOut = currentForm.optInoptOut.value;
-        prepareData.preserve = currentForm.preserve.value;
-        prepareData.owner = currentForm.owner.value;
-        prepareData.project = currentForm.project.value;
-        prepareData.security = currentForm.security.value;
-        prepareData.version = currentForm.version.value;
-        prepareData.app = currentForm.app.value;
-        prepareData.assetId = currentForm.assetId.value;
-        prepareData.uai = currentForm.uai.value;
+        if(fieldName === 'subscriptionName'){
+            currentForm.subscriptionName.value = updatedValue;
+            currentForm.subscriptionName.dirtyState = true;
+        }
+        else if(fieldName === 'accountId'){
+            currentForm.accountId.value = updatedValue;
+            currentForm.accountId.dirtyState = true;
+        }
+        else if(fieldName === 'subscriptionId'){
+            currentForm.subscriptionId.value = updatedValue;
+            currentForm.subscriptionId.dirtyState = true;
+        }
+        else if(fieldName === 'serviceUri'){
+            currentForm.serviceUri.value = updatedValue;
+            currentForm.serviceUri.dirtyState = true;
+        }
+        else if(fieldName === 'clientId'){
+            currentForm.clientId.value = updatedValue;
+            currentForm.clientId.dirtyState = true;
+        }
+        else if(fieldName === 'clientSecret'){
+            currentForm.clientSecret.value = updatedValue;
+            currentForm.clientSecret.dirtyState = true;
+        }
+        else if(fieldName === 'OAuth2'){
+            currentForm.OAuth2.value = updatedValue;
+            currentForm.OAuth2.dirtyState = true;
+        }
+        else if(fieldName === 'adminToken'){
+            currentForm.adminToken.value = updatedValue;
+            currentForm.adminToken.dirtyState = true;
+        }
+        else if(fieldName === 'applicationRole'){
+            currentForm.applicationRole.value = updatedValue;
+            currentForm.applicationRole.dirtyState = true;
+        }
+        else if(fieldName === 'bucAdn'){
+            currentForm.bucAdn.value = updatedValue;
+            currentForm.bucAdn.dirtyState = true;
+        }
+        else if(fieldName === 'compliance'){
+            currentForm.compliance.value = updatedValue;
+            currentForm.compliance.dirtyState = true;
+        }
+        else if(fieldName === 'confidentiality'){
+            currentForm.confidentiality.value = updatedValue;
+            currentForm.confidentiality.dirtyState = true;
+        }
+        else if(fieldName === 'customer'){
+            currentForm.customer.value = updatedValue;
+            currentForm.customer.dirtyState = true;
+        }
+        else if(fieldName === 'cluster'){
+            currentForm.cluster.value = updatedValue;
+            currentForm.cluster.dirtyState = true;
+        }
+        else if(fieldName === 'date'){
+            currentForm.date.value = updatedValue;
+            currentForm.date.dirtyState = true;
+        }
+        else if(fieldName === 'environment'){
+            currentForm.environment.value = updatedValue;
+            currentForm.environment.dirtyState = true;
+        }
+        else if(fieldName === 'managementHostType'){
+            currentForm.managementHostType.value = updatedValue;
+            currentForm.managementHostType.dirtyState = true;
+        }
+        else if(fieldName === 'optInoptOut'){
+            currentForm.optInoptOut.value = updatedValue;
+            currentForm.optInoptOut.dirtyState = true;
+        }
+        else if(fieldName === 'preserve'){
+            currentForm.preserve.value = updatedValue;
+            currentForm.preserve.dirtyState = true;
+        }
+        else if(fieldName === 'owner'){
+            currentForm.owner.value = updatedValue;
+            currentForm.owner.dirtyState = true;
+        }
+        else if(fieldName === 'project'){
+            currentForm.project.value = updatedValue;
+            currentForm.project.dirtyState = true;
+        }
+        else if(fieldName === 'security'){
+            currentForm.security.value = updatedValue;
+            currentForm.security.dirtyState = true;
+        }
+        else if(fieldName === 'version'){
+            currentForm.version.value = updatedValue;
+            currentForm.version.dirtyState = true;
+        }
+        else if(fieldName === 'app'){
+            currentForm.app.value = updatedValue;
+            currentForm.app.dirtyState = true;
+        }
+        else if(fieldName === 'assetId'){
+            currentForm.assetId.value = updatedValue;
+            currentForm.assetId.dirtyState = true;
+        }
+        else if(fieldName === 'uai'){
+            currentForm.uai.value = updatedValue;
+            currentForm.uai.dirtyState = true;
+        }
 
-        fetch(this.props.baseUrl + '/createSubscription', {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer '+this.props.authToken
-                },
-                body: JSON.stringify(prepareData)
-            })
-        .then((response) => {
-            if (response.status === 200) {
-                response.json().then((respData) => {
-                    if(respData.errorStatus.status == 'ok'){
-                        this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
-                        setTimeout(()=> {
-                            this.props.hideGlobalMessage();
-                            let subscriptionForm = {
-                                subscriptionName: { value: '', dirtyState: false },
-                                accountId: { value: '', dirtyState: false },
-                                subscriptionId: { value: '', dirtyState: false },
-                                serviceUri: { value: '', dirtyState: false },
-                                clientId: { value: '', dirtyState: false },
-                                clientSecret: { value: '', dirtyState: false },
-                                OAuth2: { value: '', dirtyState: false },
-                                adminToken: { value: '', dirtyState: false },
-                                applicationRole: { value: '', dirtyState: false },
-                                bucAdn: { value: '', dirtyState: false },
-                                compliance: { value: '', dirtyState: false },
-                                confidentiality: { value: 'true', dirtyState: false },
-                                customer: { value: '', dirtyState: false },
-                                cluster: { value: '', dirtyState: false },
-                                date: { value: '', dirtyState: false },
-                                environment: { value: '', dirtyState: false },
-                                managementHostType: { value: '', dirtyState: false },
-                                optInoptOut: { value: 'true', dirtyState: false },
-                                preserve: { value: 'true', dirtyState: false },
-                                owner: { value: '', dirtyState: false },
-                                project: { value: '', dirtyState: false },
-                                security: { value: '', dirtyState: false },
-                                version: { value: '', dirtyState: false },
-                                app: { value: '', dirtyState: false },
-                                assetId: { value: '', dirtyState: false },
-                                uai: { value: '', dirtyState: false }
-                            };
-
-                            this.setState({
-                                subscriptionForm: subscriptionForm,
-                                subscriptionFormIsValid: false
-                            });
-                        }, 2000);
-                    }
-                    else{
-                        this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                        setTimeout(()=> {
-                            this.props.hideGlobalMessage();
-                        }, 2000);
-                    }
-                });
-            }
-            else{
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
-            }
-        })
-        .catch((err) => {
-            console.log(err);
-            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-            setTimeout(()=> {
-                this.props.hideGlobalMessage();
-            }, 2000);
+        this.setState({
+            subscriptionForm: currentForm
         });
+        this.handleFormValidation();
     }
 
     render() {
@@ -418,7 +428,7 @@ export default class Subscriptioncreate extends React.Component {
                         <div className="centered-div-header">
                             <div className="row maintainagentcreate-header">
                                 <div className="col-md-12">
-                                    <h6 id="maintainsubscriptioncreate-title">Create Subscription <small>Creating parameters.</small></h6>
+                                    <h6 id="maintainsubscriptioncreate-title">Edit Subscription <small>Creating parameters.</small></h6>
                                 </div>
                             </div>
                             <hr></hr>
@@ -472,6 +482,7 @@ export default class Subscriptioncreate extends React.Component {
                                                 autoComplete="off"
                                                 className="form-control form-control-sm"
                                                 name="subscriptionId"
+                                                disabled={true}
                                                 value={this.state.subscriptionForm.subscriptionId.value}
                                                 onChange={(event)=>{this.handleFormData(event)}} />
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['subscriptionId']}</small>
@@ -924,8 +935,11 @@ export default class Subscriptioncreate extends React.Component {
                                         <button 
                                             id="create-subscription-btn"
                                             disabled={!this.state.subscriptionFormIsValid}
-                                            onClick={this.createSubscription.bind(this)} 
-                                            className="btn btn-sm customize-view-btn">CREATE SUBSCRIPTION</button>
+                                            onClick={this.editSubscription.bind(this)} 
+                                            className="btn btn-sm customize-view-btn">EDIT SUBSCRIPTION</button>
+                                        <button
+                                            onClick={this.props.changeView.bind(this)}
+                                            className="btn btn-sm customize-view-btn ml-2">BACK</button>
                                     </div>
                                 </div>
                             </div>

@@ -624,77 +624,79 @@ export default class Maintainagentview extends React.Component {
                         </div>
                     </div>
                     <div className="centered-div">
-                        { this.state.showTableInit ?
-                            <table id="maintainagentviewTable" className="table">
-                                <thead>
-                                    <tr>
-                                        <th>Subscription</th>
-                                        <th>Agent ID</th>
-                                        <th>Gateway</th>
-                                        <th>Group</th>
-                                        <th>OAuth Provider</th>
-                                        <th>Zone</th>
-                                        <th>Remote Host</th>
-                                        <th>Remote Port</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
-                                    return(
-                                        <tr key={'maintainagentviewTableTbodyTr_'+tbodyIndex}>
-                                            <td>
-                                                { tbodyVal.subscription }&nbsp;&nbsp;
-                                                {  tbodyVal.subscriptionHiddenFlag ?
-                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscription')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                    null
-                                                }
-                                            </td>
-                                            <td>{ tbodyVal.agent_id }</td>
-                                            <td>
-                                                { tbodyVal.gateway }&nbsp;&nbsp;
-                                                {
-                                                    tbodyVal.gatewayHiddenFlag ?
-                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'gateway')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                        null
-                                                }
-                                            </td>
-                                            <td>{ tbodyVal.group }</td>
-                                            <td>
-                                                { tbodyVal.oauth_provider }&nbsp;&nbsp;
-                                                {  tbodyVal.oauth_providerHiddenFlag ?
-                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'oauth_provider')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                        null
-                                                    }
-                                            </td>
-                                            <td>
-                                                { tbodyVal.zone }&nbsp;&nbsp;
-                                                {   tbodyVal.zoneHiddenFlag ?
-                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'zone')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                        null
-                                                    }
-                                            </td>
-                                            <td>
-                                                { tbodyVal.remote_host }&nbsp;&nbsp;
-                                                {  tbodyVal.remote_hostHiddenFlag ?
-                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_host')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                    null
-                                                }
-                                            </td>
-                                            <td>
-                                                { tbodyVal.remote_port }&nbsp;&nbsp;
-                                                {  tbodyVal.remote_portHiddenFlag ?
-                                                    <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_port')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
-                                                    null
-                                                }</td>
+                    <div id="maintainagentviewTableDiv">
+                            { this.state.showTableInit ?
+                                <table id="maintainagentviewTable" className="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Subscription</th>
+                                            <th>Agent ID</th>
+                                            <th>Gateway</th>
+                                            <th>Group</th>
+                                            <th>OAuth Provider</th>
+                                            <th>Zone</th>
+                                            <th>Remote Host</th>
+                                            <th>Remote Port</th>
                                         </tr>
-                                    )
-                                })}
-                                </tbody>
-                            </table>:
-                            <p className="text-center loader-icon">
-                                <img alt="loading" src="assets/static/images/rolling.svg" />
-                            </p>
-                        }
+                                    </thead>
+                                    <tbody>
+                                    {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
+                                        return(
+                                            <tr key={'maintainagentviewTableTbodyTr_'+tbodyIndex}>
+                                                <td>
+                                                    { tbodyVal.subscription }&nbsp;&nbsp;
+                                                    {  tbodyVal.subscriptionHiddenFlag ?
+                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscription')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                        null
+                                                    }
+                                                </td>
+                                                <td>{ tbodyVal.agent_id }</td>
+                                                <td>
+                                                    { tbodyVal.gateway }&nbsp;&nbsp;
+                                                    {
+                                                        tbodyVal.gatewayHiddenFlag ?
+                                                            <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'gateway')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                            null
+                                                    }
+                                                </td>
+                                                <td>{ tbodyVal.group }</td>
+                                                <td>
+                                                    { tbodyVal.oauth_provider }&nbsp;&nbsp;
+                                                    {  tbodyVal.oauth_providerHiddenFlag ?
+                                                            <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'oauth_provider')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                            null
+                                                        }
+                                                </td>
+                                                <td>
+                                                    { tbodyVal.zone }&nbsp;&nbsp;
+                                                    {   tbodyVal.zoneHiddenFlag ?
+                                                            <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'zone')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                            null
+                                                        }
+                                                </td>
+                                                <td>
+                                                    { tbodyVal.remote_host }&nbsp;&nbsp;
+                                                    {  tbodyVal.remote_hostHiddenFlag ?
+                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_host')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                        null
+                                                    }
+                                                </td>
+                                                <td>
+                                                    { tbodyVal.remote_port }&nbsp;&nbsp;
+                                                    {  tbodyVal.remote_portHiddenFlag ?
+                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'remote_port')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
+                                                        null
+                                                    }</td>
+                                            </tr>
+                                        )
+                                    })}
+                                    </tbody>
+                                </table>:
+                                <p className="text-center loader-icon">
+                                    <img alt="loading" src="assets/static/images/rolling.svg" />
+                                </p>
+                            }
+                        </div>
                     </div>
                 </div>
             </div>
