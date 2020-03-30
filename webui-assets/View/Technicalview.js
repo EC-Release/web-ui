@@ -48,6 +48,7 @@ export default class Technicalview extends React.Component {
                     
                     if(respData.errorStatus.status == 'ok'){
                         let subscriptions = respData.data;
+                        treeValue[0].value = treeValue[0].value + ' (' + subscriptions.length +')';
                         if(subscriptions.length == 0){
                             subscriptions = [];
                         }
@@ -104,17 +105,21 @@ export default class Technicalview extends React.Component {
                                         response.json().then((respData) => {
                                             if(respData.errorStatus.status == 'ok'){
                                                 let gateways = respData.data.glist;
-                                                totalNumOfAjax = totalNumOfAjax + Object.keys(gateways).length;
-   
+                                                let gatewaysCount = Object.keys(gateways).length
+                                                totalNumOfAjax = totalNumOfAjax + gatewaysCount;
+                                                treeValue[0].children[indexSubscriptions].value = treeValue[0].children[indexSubscriptions].value + ' (' + gatewaysCount +')';
                                                 for(let indexGateway in gateways){
                                                     newId++;
                                                     let newGatewayObj = {};
                                                     newGatewayObj.id = newId;
                                                     newGatewayObj.title = gateways[indexGateway].cfURL;
-                                                    let valueToshow = gateways[indexGateway].cfURL;
-                                                    if(gateways[indexGateway].cfURL.length > 30){
-                                                        let first7Char = gateways[indexGateway].cfURL.substr(0, 10);
-                                                        let last7Char = gateways[indexGateway].cfURL.substr(gateways[indexGateway].cfURL.length - 10, 10);
+                                                    let cfUrl = gateways[indexGateway].cfURL;
+                                                    let startPos = cfUrl.indexOf('://') + 3;
+                                                    let endPos = cfUrl.indexOf('.');
+                                                    let valueToshow = cfUrl.slice(startPos, endPos);
+                                                    if(valueToshow > 30){
+                                                        let first7Char = valueToshow.substr(0, 10);
+                                                        let last7Char = valueToshow.substr(valueToshow.length - 10, 10);
                                                         valueToshow = first7Char+'...'+last7Char;
                                                     }
                                                     newGatewayObj.value = valueToshow;
@@ -146,7 +151,19 @@ export default class Technicalview extends React.Component {
                                                                     let superConns = respData.data.SuperConns;
                                                                     let preparedSuperConns = [];
                                                                     let superConnCounts = {};
-                                                                    
+                                                                    let sessions = respData.data.Sessions;
+                                                                    let secondarySessions = [];
+                                                                    let preparedSessions = [];
+                                                                    let sessionCounts = {};
+                                                                    console.log(sessions);
+                                                                    for(let sessionIndex in sessions){
+                                                                        console.log(sessions[sessionIndex].clientConfig.groupId);
+                                                                        let prepareSessionData = {};
+                                                                        prepareSessionData.sessionId = sessionIndex;
+                                                                        prepareSessionData.groupId = sessions[sessionIndex].clientConfig.groupId;
+                                                                        secondarySessions.push(prepareSessionData);
+                                                                    }
+                                                                    console.log(secondarySessions);
                                                                     if(clientPools.length > 0){
                                                                         clientPools.forEach(function(element) {
                                                                             clientPoolCounts[element.bindId] = (clientPoolCounts[element.bindId] || 0) + 1;
@@ -157,7 +174,7 @@ export default class Technicalview extends React.Component {
 
                                                                     if(preparedClientPools.length > 0){
                                                                         newId++;
-                                                                        treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [{id: newId, value: 'Client Pools', title: 'Client Pools', nodeType: 'clientpooltitle'}];
+                                                                        treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [{id: newId, value: 'Client Pools ('+ clientPools.length + ')', title: 'Client Pools', nodeType: 'clientpooltitle'}];
                                                                         for(let indexClientPool in preparedClientPools){
                                                                             newId++;
                                                                             let newClientPoolObj = {};
@@ -190,14 +207,14 @@ export default class Technicalview extends React.Component {
                                                                             treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [
                                                                                 {
                                                                                     id: newId, 
-                                                                                    value: 'Super Connections', 
+                                                                                    value: 'Super Connections (' + superConns.length + ')', 
                                                                                     title: 'Super Connections',
                                                                                     nodeType: 'superconnectiontitle'
                                                                                 }
                                                                             ];
                                                                         }
                                                                         else{
-                                                                            treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children.push({id: newId, value: 'Super Connections', title: 'Super Connections', nodeType: 'superconnectiontitle'});
+                                                                            treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children.push({id: newId, value: 'Super Connections (' + superConns.length + ')', title: 'Super Connections', nodeType: 'superconnectiontitle'});
                                                                         }
                                                                         
                                                                         for(let indexSuperConn in preparedSuperConns){
@@ -211,7 +228,7 @@ export default class Technicalview extends React.Component {
                                                                             newSuperConnObj.nodeType = 'superconnection';
                 
                                                                             if(indexSuperConn == 0){
-                                                                                if(treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].value === 'Client Pools'){
+                                                                                if(treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].title === 'Client Pools'){
                                                                                     treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[1].children = [newSuperConnObj];
                                                                                 }
                                                                                 else{
@@ -220,11 +237,54 @@ export default class Technicalview extends React.Component {
                                                                                 
                                                                             }
                                                                             else{
-                                                                                if(treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].value === 'Client Pools'){
+                                                                                if(treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].title === 'Client Pools'){
                                                                                     treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[1].children.push(newSuperConnObj);
                                                                                 }
                                                                                 else{
                                                                                     treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children.push(newSuperConnObj);
+                                                                                }
+                                                                            }
+                                                                        }
+
+                                                                        if(secondarySessions.length > 0){
+                                                                            secondarySessions.forEach(function(element) {
+                                                                                sessionCounts[element.groupId] = (sessionCounts[element.groupId] || 0) + 1;
+                                                                            });
+                                                                            preparedSessions = this.removeDuplicates(secondarySessions, 'groupId');
+                                                                        }
+
+                                                                        if(preparedSessions.length > 0){
+                                                                            newId++;
+                                                                            
+                                                                            if(!treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children){
+                                                                                treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [
+                                                                                    {
+                                                                                        id: newId, 
+                                                                                        value: 'Sessions (' + secondarySessions.length + ')', 
+                                                                                        title: 'Sessions',
+                                                                                        nodeType: 'sessiontitle'
+                                                                                    }
+                                                                                ];
+                                                                            }
+                                                                            else{
+                                                                                treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children.push({id: newId, value: 'Sessions (' + secondarySessions.length + ')', title: 'Sessions', nodeType: 'sessiontitle'});
+                                                                            }
+                                                                            let sessionIndexToPushChildren = treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children.length - 1;
+                                                                            for(let indexSession in preparedSessions){
+                                                                                newId++;
+                                                                                let newSessionObj = {};
+                                                                                newSessionObj.id = newId;
+                                                                                newSessionObj.title = preparedSessions[indexSession].groupId +'('+ sessionCounts[preparedSessions[indexSession].groupId] +')';
+                                                                                let valueToshow = preparedSessions[indexSession].groupId +'('+ sessionCounts[preparedSessions[indexSession].groupId] +')';
+                    
+                                                                                newSessionObj.value = valueToshow;
+                                                                                newSessionObj.nodeType = 'session';
+                    
+                                                                                if(indexSession == 0){
+                                                                                    treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[sessionIndexToPushChildren].children = [newSessionObj];
+                                                                                }
+                                                                                else{
+                                                                                    treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[sessionIndexToPushChildren].children.push(newSessionObj);
                                                                                 }
                                                                             }
                                                                         }
@@ -243,6 +303,9 @@ export default class Technicalview extends React.Component {
                                                         }
                                                     });
                                                 }
+                                            }
+                                            else{
+                                                treeValue[0].children[indexSubscriptions].value = treeValue[0].children[indexSubscriptions].value + ' (0)';
                                             }
 
                                             if(totalNumOfAjaxProcessed === totalNumOfAjax){
@@ -289,7 +352,7 @@ export default class Technicalview extends React.Component {
                                     if(childNode.nodeType == 'subscription'){
                                         shape = 'circle';
                                     }
-                                    else if(childNode.nodeType == 'superconnectiontitle' || childNode.nodeType == 'clientpooltitle'){
+                                    else if(childNode.nodeType == 'superconnectiontitle' || childNode.nodeType == 'clientpooltitle' || childNode.nodeType == 'sessiontitle'){
                                         shape = 'circle';
                                     }
                                     else if(childNode.nodeType == 'clientpool'){
@@ -357,13 +420,17 @@ export default class Technicalview extends React.Component {
                     shape = 'circle';
                     color = '#08cc9efa';
                 }
-                else if(childNodeType == 'superconnectiontitle' || childNodeType == 'clientpooltitle'){
+                else if(childNodeType == 'superconnectiontitle' || childNodeType == 'clientpooltitle' || childNodeType == 'sessiontitle'){
                     shape = 'circle';
                     color = '#08cc9efa';
                 }
                 else if(childNodeType == 'clientpool'){
                     shape = 'ellipse';
                     color = '#e84a4a';
+                }
+                else if(childNodeType == 'session'){
+                    shape = 'box';
+                    color = '#ffc107';
                 }
                 preparedChildNode.shape = shape;
                 preparedChildNode.color = color;

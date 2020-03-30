@@ -42,7 +42,7 @@ describe('ec-web-ui test cases', function () {
     // Subscription create component test end
 
     // Subscription submit button should be disable initially test start
-    it('Agent--> Gateway create button should be disable initially', function () {
+    it('Subscription--> Gateway create button should be disable initially', function () {
         browser.driver.sleep(10000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(2000);
@@ -55,6 +55,19 @@ describe('ec-web-ui test cases', function () {
         });
     });
     // Subscription submit button should be disable initially test end
+
+    // Subscription update/delete component test start
+    it('Subscription update/delete component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-maintain')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-subscription')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-subscription-update-disable')).click();
+        browser.driver.sleep(1000);
+        expect(element.all(by.css('.Subscriptionupgrade')).isPresent()).toBe(true);
+    });
+    // Subscription update/delete component test end
 
     // Agent create component test start
     it('Agent create component test', function () {

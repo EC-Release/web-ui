@@ -539,7 +539,7 @@ export default class Subscriptionupgrade extends React.Component {
         if(editItem.serviceUriHiddenFlag){
             editItem.serviceUri = editItem.serviceUriHidden;
         }
-        if(editItem.subscriptionNameFlag){
+        if(editItem.subscriptionNameHiddenFlag){
             editItem.subscriptionName = editItem.subscriptionNameHidden;
         }
         if(editItem.uaaUrlHiddenFlag){

@@ -237,6 +237,9 @@ function enableToolTip(){
 function extraLargeModal(currentView){
     $('#mediumModal').addClass('largeModal');
     $('#mediumModalContent').addClass('largeModalContent');
+    $('#mediumModalContent').addClass('rounded-0');
+    $('#mediumModalContent').addClass('rounded-0');
+    $('#mediumModalContent header').addClass('rounded-0');
     if(document.getElementsByClassName('table').length > 0){
         let tableInitial = currentView.toLowerCase();
         initTable(tableInitial+'Table', true);
@@ -247,5 +250,7 @@ function extraLargeModal(currentView){
 function medModal(currentView){
     $('#mediumModal').removeClass('largeModal');
     $('#mediumModalContent').removeClass('largeModalContent');
+    $('#mediumModalContent').removeClass('rounded-0');
+    $('#mediumModalContent header').removeClass('rounded-0');
 }
 
