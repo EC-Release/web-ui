@@ -72,6 +72,7 @@ export default class Maintainagentcreate extends React.Component {
                 { text: 'SERVER', value: 2 },
                 { text: 'CLIENT', value: 3 }
             ],
+            /* istanbul ignore next */
             // API will provide this gateways
             gateways: [],
             // API will provide this businesses
@@ -115,6 +116,7 @@ export default class Maintainagentcreate extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
         window.enableToolTip();
         let businesses = [...this.state.businesses];
@@ -184,6 +186,7 @@ export default class Maintainagentcreate extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleChangeAgentMode(newAgentMode){
         let currentAgentForm =  Object.assign({}, this.state.agentForm);
         currentAgentForm.agentMode.value = newAgentMode;
@@ -194,6 +197,7 @@ export default class Maintainagentcreate extends React.Component {
         window.enableToolTip();
     }
 
+    /* istanbul ignore next */
     handleAgentFormData(e){
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -242,6 +246,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleAgentFormValidation();
     }
 
+    /* istanbul ignore next */
     handleAgentFormValidation(){
         let currentFormData = this.state.agentForm;
         let businessIdValue = currentFormData.businessId.value;
@@ -306,6 +311,7 @@ export default class Maintainagentcreate extends React.Component {
 		});
     }
 
+    /* istanbul ignore next */
     handleGatewayFormData(e){
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -349,6 +355,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleGatewayFormValidation();
     }
 
+    /* istanbul ignore next */
     handleGatewayFormValidation(){
         let currentFormData = this.state.gatewayForm;
         let environmentValue = currentFormData.environment.value;
@@ -445,6 +452,7 @@ export default class Maintainagentcreate extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleServerFormData(e){
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -535,6 +543,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleServerFormValidation();
     }
 
+    /* istanbul ignore next */
     handleServerFormValidation(){
         let currentFormData = this.state.serverForm;
         let agentIdValue = currentFormData.agentId.value;
@@ -707,6 +716,7 @@ export default class Maintainagentcreate extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleClientFormData(e){
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -789,6 +799,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleClientFormValidation();
     }
 
+    /* istanbul ignore next */
     handleClientFormValidation(){
         let currentFormData = this.state.clientForm;
         let agentIdValue = currentFormData.agentId.value;
@@ -936,6 +947,7 @@ export default class Maintainagentcreate extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     copyFromClientToGateway(){
         let currentClientForm =  Object.assign({}, this.state.clientForm);
         let currentGatewayForm =  Object.assign({}, this.state.gatewayForm);
@@ -953,6 +965,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleGatewayFormValidation();
     }
 
+     /* istanbul ignore next */
     copyFromClientToServer(){
         let currentClientForm =  Object.assign({}, this.state.clientForm);
         let currentServerForm =  Object.assign({}, this.state.serverForm);
@@ -979,6 +992,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleServerFormValidation();
     }
 
+    /* istanbul ignore next */
     copyFromServerToClient(){
         let currentServerForm =  Object.assign({}, this.state.serverForm);
         let currentClientForm =  Object.assign({}, this.state.clientForm);
@@ -1005,6 +1019,7 @@ export default class Maintainagentcreate extends React.Component {
         this.handleClientFormValidation();
     }
 
+     /* istanbul ignore next */
     downloadFile(type){
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         let prepareData = {};
@@ -1307,6 +1322,7 @@ export default class Maintainagentcreate extends React.Component {
 
     render() {
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div className="row Maintainagentcreate">
                 <div className="col-md-12 mt-2">

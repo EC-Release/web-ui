@@ -16,10 +16,12 @@ export default class Maintainagentupgrade extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount() {
         this.handleDataTable(false);
     }
 
+    /* istanbul ignore next */
     handleDataTable(preserveState) {
         let technicalTableData = [];
         fetch(this.props.baseUrl + '/listGateways?user_id=' + this.props.userId, { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
@@ -39,7 +41,9 @@ export default class Maintainagentupgrade extends React.Component {
                         }
 
                         if (gateways.length > 0) {
+                            /* istanbul ignore next */
                             for (let gateway of gateways) {
+                                /* istanbul ignore next */
                                 let prepareData = {};
                                 prepareData.agent_id = '';
                                 prepareData.serverId = '';
@@ -187,8 +191,7 @@ export default class Maintainagentupgrade extends React.Component {
             });
     }
 
-
-
+    /* istanbul ignore next */
     generateTableStructure(technicalTableData, preserveState) {
         let tableData = technicalTableData;
         let newTableData = [];
@@ -292,10 +295,13 @@ export default class Maintainagentupgrade extends React.Component {
         }
 
     }
+
+    /* istanbul ignore next */
     componentDidUpdate() {
         //window.initTable('maintainagentupgradeTable');
     }
 
+    /* istanbul ignore next */
     showHideTableTdData(objectIndex, fieldName) {
         let newTableData = [...this.state.newTableData];
         let copiedObjectToChange = Object.assign({}, newTableData[objectIndex]);
@@ -350,11 +356,13 @@ export default class Maintainagentupgrade extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     filterByValue(array, string) {
         return array.filter(o =>
             Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
     }
 
+    /* istanbul ignore next */
     filterData(e) {
         window.destroyDataTable('maintainagentupgradeTable');
         let searchStr = e.target.value.trim();
@@ -462,6 +470,7 @@ export default class Maintainagentupgrade extends React.Component {
         }, 0);
     }
 
+    /* istanbul ignore next */
     edit(item) {
         //console.log(item);
         let editItem = Object.assign({}, item);
@@ -478,6 +487,7 @@ export default class Maintainagentupgrade extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     deleteData(tbodyVal, rowIndex) {
         let cnf = window.confirm('Are you sure you want to delete');
         let rowdata = tbodyVal;
@@ -548,6 +558,7 @@ export default class Maintainagentupgrade extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
     disbableData(tbodyIndex) {
         let cnf = window.confirm('Are you sure you want to disable');
         if (cnf) {
@@ -561,15 +572,14 @@ export default class Maintainagentupgrade extends React.Component {
                             setTimeout(function () {
                                 that.props.hideGlobalMessage();
                             }, 2000);
-
                             this.generateTableStructure();
-
                         });
                     }
             });
         }
     }
 
+    /* istanbul ignore next */
     changeView() {
         this.setState({
             viewTable: true
@@ -582,6 +592,7 @@ export default class Maintainagentupgrade extends React.Component {
     
     render(){
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div>
                 {this.state.viewTable ?
