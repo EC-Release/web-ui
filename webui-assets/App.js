@@ -27,13 +27,7 @@ import Support from './Support/Support.js';
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 
-var API_URL = '';
-if(window.location.href.indexOf('http://localhost') != -1){
-  API_URL = 'http://localhost:17990/v1.1beta/ec';
-}
-else{
-  API_URL = 'https://dev-ec.apps.ge.com/v1.1beta/ec';
-}
+var API_URL = '/v1.1beta/ec';
 
 export default class App extends React.Component {
   constructor(props) {
