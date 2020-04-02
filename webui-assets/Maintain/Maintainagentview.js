@@ -155,6 +155,7 @@ export default class Maintainagentview extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
         let technicalTableData = [];
         fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId, { // Get gateways
@@ -366,10 +367,12 @@ export default class Maintainagentview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     componentDidUpdate(){
         //window.initTable('maintainagentviewTable');
     }
 
+    /* istanbul ignore next */
     generateTableStructure(technicalTableData){
         let tableData = technicalTableData;
         let newTableData = [];
@@ -451,6 +454,7 @@ export default class Maintainagentview extends React.Component {
         }, 100);
     }
 
+    /* istanbul ignore next */
     showHideTableTdData(objectIndex, fieldName){
         let newTableData = [...this.state.newTableData];
         let copiedObjectToChange = Object.assign({}, newTableData[objectIndex]);
@@ -505,12 +509,14 @@ export default class Maintainagentview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     filterByValue(array, string) {
         return array.filter(o =>
             Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
     }
 
-    /*filterData(e){
+    /* istanbul ignore next */
+    filterData(e){
         window.destroyDataTable('maintainagentviewTable');
         let searchStr = e.target.value.trim();
         let wholeData = [...this.state.tableData];
@@ -598,12 +604,11 @@ export default class Maintainagentview extends React.Component {
         setTimeout(function(){
             window.initTable('maintainagentviewTable');
         }, 0);
-    }*/
-
-    
+    }
 
     render() {
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div className="row Maintainagentview">
                 <div className="col-md-12">

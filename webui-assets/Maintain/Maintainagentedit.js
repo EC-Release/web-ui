@@ -37,6 +37,7 @@ export default class Maintainagentedit extends React.Component {
                 clientId: { value: '', dirtyState: false },
                 clientSecret: { value: '', dirtyState: false },
                 duration: { value: '', dirtyState: false },
+                /* istanbul ignore next */
                 OAuth2: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
                 zone: { value: '', dirtyState: false },
@@ -122,6 +123,7 @@ export default class Maintainagentedit extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount() {
 
         // get gateway list start
@@ -244,6 +246,7 @@ export default class Maintainagentedit extends React.Component {
         }, 1000);
     }
 
+    /* istanbul ignore next */
     handleChangeAgentMode(newAgentMode) {
         let currentAgentForm = Object.assign({}, this.state.agentForm);
         currentAgentForm.agentMode.value = newAgentMode;
@@ -253,6 +256,7 @@ export default class Maintainagentedit extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     copyFromClientToGateway() {
         let currentClientForm = Object.assign({}, this.state.clientForm);
         let currentGatewayForm = Object.assign({}, this.state.gatewayForm);
@@ -270,6 +274,7 @@ export default class Maintainagentedit extends React.Component {
         this.handleGatewayFormValidation();
     }
 
+    /* istanbul ignore next */
     copyFromServerToClient() {
         let currentServerForm = Object.assign({}, this.state.serverForm);
         let currentClientForm = Object.assign({}, this.state.clientForm);
@@ -295,6 +300,7 @@ export default class Maintainagentedit extends React.Component {
         this.handleClientFormValidation();
     }
 
+    /* istanbul ignore next */
     copyFromClientToServer() {
         let currentClientForm = Object.assign({}, this.state.clientForm);
         let currentServerForm = Object.assign({}, this.state.serverForm);
@@ -320,6 +326,7 @@ export default class Maintainagentedit extends React.Component {
         this.handleServerFormValidation();
     }
 
+    /* istanbul ignore next */
     downloadFile(type) {
         let prepareData = {};
         let agentFormData = this.state.agentForm;
@@ -567,6 +574,7 @@ export default class Maintainagentedit extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
     handleAgentFormData(e) {
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -587,6 +595,7 @@ export default class Maintainagentedit extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleGatewayFormData(e) {
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -630,6 +639,7 @@ export default class Maintainagentedit extends React.Component {
         this.handleGatewayFormValidation();
     }
 
+    /* istanbul ignore next */
     handleGatewayFormValidation() {
         let currentFormData = this.state.gatewayForm;
         let environmentValue = currentFormData.environment.value;
@@ -726,6 +736,7 @@ export default class Maintainagentedit extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleClientFormData(e) {
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -808,6 +819,7 @@ export default class Maintainagentedit extends React.Component {
         this.handleClientFormValidation();
     }
 
+     /* istanbul ignore next */
     handleClientFormValidation() {
         let currentFormData = this.state.clientForm;
         let agentIdValue = currentFormData.agentId.value;
@@ -950,6 +962,7 @@ export default class Maintainagentedit extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleServerFormData(e) {
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
@@ -1040,6 +1053,7 @@ export default class Maintainagentedit extends React.Component {
         this.handleServerFormValidation();
     }
 
+    /* istanbul ignore next */
     handleServerFormValidation() {
         let currentFormData = this.state.serverForm;
         let agentIdValue = currentFormData.agentId.value;
@@ -1214,6 +1228,7 @@ export default class Maintainagentedit extends React.Component {
 
     render() {
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div className="row Maintainagentcreate">
                 <div className="col-md-12 mt-2">

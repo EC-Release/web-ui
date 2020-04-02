@@ -105,7 +105,7 @@ export default class Technicalview extends React.Component {
                                         response.json().then((respData) => {
                                             if(respData.errorStatus.status == 'ok'){
                                                 let gateways = respData.data.glist;
-                                                let gatewaysCount = Object.keys(gateways).length
+                                                let gatewaysCount = Object.keys(gateways).length;
                                                 totalNumOfAjax = totalNumOfAjax + gatewaysCount;
                                                 treeValue[0].children[indexSubscriptions].value = treeValue[0].children[indexSubscriptions].value + ' (' + gatewaysCount +')';
                                                 for(let indexGateway in gateways){
@@ -409,7 +409,7 @@ export default class Technicalview extends React.Component {
                 let childNodeId = copiedChildNode.id;
                 let childNodeLabel = copiedChildNode.value;
                 let childNodeTitle = copiedChildNode.title;
-                let childNodeType = copiedChildNode.nodeType
+                let childNodeType = copiedChildNode.nodeType;
                 let preparedChildNode = {};
                 preparedChildNode.id = childNodeId;
                 preparedChildNode.label = childNodeLabel;

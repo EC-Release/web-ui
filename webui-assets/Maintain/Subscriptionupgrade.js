@@ -16,10 +16,12 @@ export default class Subscriptionupgrade extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount() {
         this.handleDataTable(false);
     }
 
+    /* istanbul ignore next */
     handleDataTable(preserveState) {
         let technicalTableData = [];
         fetch(this.props.baseUrl + '/listSubscriptions', { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
@@ -263,8 +265,7 @@ export default class Subscriptionupgrade extends React.Component {
         });
     }
 
-
-
+    /* istanbul ignore next */
     generateTableStructure(technicalTableData, preserveState) {
         let tableData = technicalTableData;
         let newTableData = [];
@@ -360,9 +361,9 @@ export default class Subscriptionupgrade extends React.Component {
                 window.initTable('subscriptionupgradeTable', false);
             }, 100);
         }
-
     }
 
+    /* istanbul ignore next */
     showHideTableTdData(objectIndex, fieldName) {
         let newTableData = [...this.state.newTableData];
         let copiedObjectToChange = Object.assign({}, newTableData[objectIndex]);
@@ -410,6 +411,7 @@ export default class Subscriptionupgrade extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     /*filterByValue(array, string) {
         return array.filter(o =>
             Object.keys(o).some((k) => {
@@ -419,6 +421,7 @@ export default class Subscriptionupgrade extends React.Component {
             }));
     }*/
 
+    /* istanbul ignore next */
     filterByValue(myArray, string){
         let retArr = [];
         for (var i=0; i < myArray.length; i++) {
@@ -429,6 +432,7 @@ export default class Subscriptionupgrade extends React.Component {
         return retArr;
     }
 
+    /* istanbul ignore next */
     filterData(e) {
         window.destroyDataTable('subscriptionupgradeTable');
         let searchStr = e.target.value.trim();
@@ -531,6 +535,7 @@ export default class Subscriptionupgrade extends React.Component {
         }, 0);
     }
 
+    /* istanbul ignore next */
     edit(item) {
         let editItem = Object.assign({}, item);
         if(editItem.subscriptionIdHiddenFlag){
@@ -555,6 +560,7 @@ export default class Subscriptionupgrade extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     deleteData(tbodyVal, rowIndex) {
         let cnf = window.confirm('Are you sure you want to delete');
         if (cnf) {
@@ -608,6 +614,7 @@ export default class Subscriptionupgrade extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
     changeView() {
         this.setState({
             viewTable: true
@@ -620,6 +627,7 @@ export default class Subscriptionupgrade extends React.Component {
     
     render(){
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div>
                 {this.state.viewTable ?

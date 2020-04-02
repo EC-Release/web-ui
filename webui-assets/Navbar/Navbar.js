@@ -9,7 +9,7 @@ export default class Navbar extends React.Component {
     render() {
         /* jshint ignore:start */
         return (
-            <nav className="navbar navbar-expand-md navbar-light">
+            <nav className="navbar navbar-expand-lg navbar-light">
                 <a className="navbar-brand pb-2" href="#">&nbsp;</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

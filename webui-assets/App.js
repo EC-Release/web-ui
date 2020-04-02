@@ -27,6 +27,14 @@ import Support from './Support/Support.js';
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 
+var API_URL = '';
+if(window.location.href.indexOf('http://localhost') != -1){
+  API_URL = 'http://localhost:17990/v1.1beta/ec';
+}
+else{
+  API_URL = 'https://dev-ec.apps.ge.com/v1.1beta/ec';
+}
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +52,7 @@ export default class App extends React.Component {
       userId: '12fd119f-1b00-41bf-ab82-85182df9c64f',
       authToken: '',
       apiEndPoints: {
-        baseUrl : 'http://localhost:17990/v1.1beta/ec',
+        baseUrl : API_URL,
       },
       isFullScreenModal: false
     };
@@ -58,13 +66,13 @@ export default class App extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   getToken(name){
     var cookieName = name+"=";
     var decodedCookie = decodeURIComponent(document.cookie);
     var ca = decodedCookie.split(';');
     for(var i = 0; i <ca.length; i++) {
         var c = ca[i];
-        /* istanbul ignore next */
         while (c.charAt(0) == ' ') {
           c = c.substring(1);
         }
@@ -173,7 +181,7 @@ export default class App extends React.Component {
     this.setState({
       isFullScreenModal: false
     });
-    console.log(currentView);
+
     if(document.getElementsByClassName('table').length > 0){
       this.changeView('');
       setTimeout(()=>{
@@ -184,6 +192,7 @@ export default class App extends React.Component {
 
   render() {
     /* jshint ignore:start */
+    /* istanbul ignore next */
     return (
       <div className="App container">
         {
