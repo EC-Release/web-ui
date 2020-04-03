@@ -19,6 +19,6 @@ notifications:
     recipients:  
     - ec-research@ge.com
     - koushik.apal@ge.com
-    - subhash.vishwakarma@ge.com
+    - prasad.alokam@ge.com
     on_success: always  
     on_failure: always
