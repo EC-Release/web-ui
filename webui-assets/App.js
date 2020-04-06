@@ -33,7 +33,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentView: 'Dashboard',
+      currentView: '',
       /* istanbul ignore next */
       ajaxBusy: {
         flag: false,
@@ -43,7 +43,7 @@ export default class App extends React.Component {
         classname: ''
       },
       maximizeModal: true,
-      userId: '12fd119f-1b00-41bf-ab82-85182df9c64f',
+      userId: '',
       authToken: '',
       apiEndPoints: {
         baseUrl : API_URL,
@@ -58,6 +58,43 @@ export default class App extends React.Component {
     this.setState({
       authToken: authToken
     });
+
+    // Get logged user's userId start
+    fetch('https://reqres.in/api/users/2', { // this.state.apiEndPoints.baseUrl + '/getUserId'
+      method: 'GET',
+      /*headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': authToken
+      }*/
+    })
+    .then((response) => {
+        if (response.status === 200) {
+          response.json().then((respData) => {
+            let userId = '12fd119f-1b00-41bf-ab82-85182df9c64f';
+            this.setState({
+              userId: userId,
+              currentView: 'Dashboard'
+            });
+            /*let gateways = respData.data;
+            if (respData.errorStatus.status === 'ok') {
+            }
+            else{
+              this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+              setTimeout(function () {
+                location.reload(true);
+              }, 2000);
+            }*/
+          });
+        }
+        else {
+          this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+          setTimeout(function () {
+            location.reload(true);
+          }, 2000);
+        }
+    });
+    // Get logged user's userId end
   }
 
   /* istanbul ignore next */

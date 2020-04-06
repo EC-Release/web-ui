@@ -7,6 +7,7 @@ export default class Treelist extends React.Component {
         super(props);
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
         let that = this;
         setTimeout(function(){
@@ -21,10 +22,12 @@ export default class Treelist extends React.Component {
         }, 2);
     }
 
+    /* istanbul ignore next */
     componentDidUpdate(){
         //console.log(this.props.treeValue);
     }
 
+    /* istanbul ignore next */
     handleGenerateTreeList(items, key){
         if(items.children){
             /* jshint ignore:start */
@@ -58,6 +61,7 @@ export default class Treelist extends React.Component {
 
     render() {
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <ul id="treeList">
                 {this.props.treeValue.length > 0 ?

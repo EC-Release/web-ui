@@ -5,12 +5,14 @@ export default class Viewtable extends React.Component {
     componentDidMount(){
     }
 
+    /* istanbul ignore next */
     componentDidUpdate(){
         window.initTable('viewTable');
     }
 
     render(){
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return(
             <table id="viewTable" className="table">
                 <thead>
