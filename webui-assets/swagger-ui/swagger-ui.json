@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "Admin WebUI"
   },
-  "host": "dev-ec.apps.ge.com",
+  "host": "localhost:17990",
   "basePath": "/v1.1beta/ec",
   "tags": [
     {
@@ -19,9 +19,14 @@
     {
       "name": "Subscription",
       "description": "Handles Subscription APIs"
+    },
+    {
+      "name": "Real time view",
+      "description": "Handles real time APIs"
     }
   ],
   "schemes": [
+    "http",
     "https"
   ],
   "paths": {
@@ -1256,7 +1261,39 @@
           }
         }
       }
-    }
+      },
+      "/getDevId": {
+        "get": {
+          "tags": [
+            "Real time view"
+          ],
+          "summary": "Gives Developer id of logged in user",
+          "description": "",
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "header",
+              "name": "Authorization",
+              "description": "Bearer Authorization token",
+              "required": true,
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Developer ID",
+              "examples": {
+                "application/json": {}
+              }
+            },
+            "400": {
+              "description": "Invalid value"
+            }
+          }
+        }
+      }
   },
   "definitions": {
     "GatewayInfo": {
