@@ -1,6 +1,7 @@
 import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import fetchMock from 'fetch-mock';
 
 import App from '../App.js';
 import Header from '../Header/Header.js';
@@ -11,17 +12,20 @@ configure({adapter: new Adapter()});
 describe('Testing from App.test.js <App />', () => {
 
     it('should render the App component', () => {
-        const wrapper = shallow(<App />);
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+        const wrapper = shallow(<App />, { disableLifecycleMethods: true });
         expect(wrapper).toBeTruthy();
     });
 
     it('should render Header component only once', () => {
-        const wrapper = shallow(<App />);
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+        const wrapper = shallow(<App />, { disableLifecycleMethods: true });
         expect(wrapper.find(Header).length).toBe(1);
     });
 
     it('should render Navbar component only once', () => {
-        const wrapper = shallow(<App />);
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+        const wrapper = shallow(<App />, { disableLifecycleMethods: true });
         expect(wrapper.find(Navbar).length).toBe(1);
     });
 
