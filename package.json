@@ -33,6 +33,7 @@
         "ignore-styles": "^5.0.1",
         "jasmine": "^3.5.0",
         "jshint": "^2.11.0",
+        "kind-of": "^6.0.3",
         "minimist": "^1.2.5",
         "react-test-renderer": "^16.9.0"
     },
@@ -43,6 +44,7 @@
     },
     "resolutions": {
         "minimist": "^1.2.5",
-        "braces": "^3.0.2"
+        "braces": "^3.0.2",
+        "kind-of": "^6.0.3"
     }
 }
