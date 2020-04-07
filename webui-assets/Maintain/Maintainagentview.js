@@ -535,7 +535,7 @@ export default class Maintainagentview extends React.Component {
             newDataObj.group = dataObj.group;
             if(dataObj.gateway.length > 10){
                 newDataObj.gateway = dataObj.gateway.substr(0, 10);
-                newDataObj.gatewayHidden = dataObj.gateway
+                newDataObj.gatewayHidden = dataObj.gateway;
                 newDataObj.gatewayHiddenFlag = true;
             }
             else{
@@ -545,7 +545,7 @@ export default class Maintainagentview extends React.Component {
 
             if (dataObj.oauth_provider.length > 10){
                 newDataObj.oauth_provider = dataObj.oauth_provider.substr(0, 10);
-                newDataObj.oauth_providerHidden = dataObj.oauth_provider
+                newDataObj.oauth_providerHidden = dataObj.oauth_provider;
                 newDataObj.oauth_providerHiddenFlag = true;
             }
             else{
@@ -555,7 +555,7 @@ export default class Maintainagentview extends React.Component {
 
             if (dataObj.zone.length > 10){
                 newDataObj.zone = dataObj.zone.substr(0, 10);
-                newDataObj.zoneHidden = dataObj.zone
+                newDataObj.zoneHidden = dataObj.zone;
                 newDataObj.zoneHiddenFlag = true;
             }
             else{
@@ -565,7 +565,7 @@ export default class Maintainagentview extends React.Component {
 
             if (dataObj.subscription.length > 10){
                 newDataObj.subscription = dataObj.subscription.substr(0, 10);
-                newDataObj.subscriptionHidden = dataObj.subscription
+                newDataObj.subscriptionHidden = dataObj.subscription;
                 newDataObj.subscriptionHiddenFlag = true;
             }
             else{
@@ -575,7 +575,7 @@ export default class Maintainagentview extends React.Component {
 
             if (dataObj.remote_host.length > 10){
                 newDataObj.remote_host = dataObj.remote_host.substr(0, 10);
-                newDataObj.remote_hostHidden = dataObj.remote_host
+                newDataObj.remote_hostHidden = dataObj.remote_host;
                 newDataObj.remote_hostHiddenFlag = true;
             }
             else{
@@ -586,7 +586,7 @@ export default class Maintainagentview extends React.Component {
 
             if (dataObj.remote_port.length > 10){
                 newDataObj.remote_port = dataObj.remote_port.substr(0, 10);
-                newDataObj.remote_portHidden = dataObj.remote_port
+                newDataObj.remote_portHidden = dataObj.remote_port;
                 newDataObj.remote_portHiddenFlag = true;
             }
             else{

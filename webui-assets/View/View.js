@@ -21,8 +21,9 @@ export default class View extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
-        let technicalTableData = [];
+        /*let technicalTableData = [];
         fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId , { // Get gateways this.props.baseUrl+'/listGateways?user_id='+this.props.userId
             method: 'GET',
             headers: {
@@ -34,27 +35,6 @@ export default class View extends React.Component {
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    //console.log(respData);
-                    /*let gateways =[
-                                    {
-                                      "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                                      "userId": "212712078",
-                                      "gatewayPort": "8080",
-                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                      "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                      "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                      "hostUrl": "wss://gateway-url/agent"
-                                    },
-                                    {
-                                      "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                                      "userId": "212712078",
-                                      "gatewayPort": "8080",
-                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                                      "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                      "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                      "hostUrl": "wss://gateway-url/agent"
-                                    }
-                                ];*/
                     let gateways = respData.data;
                     if(gateways === null){
                         gateways = [];
@@ -85,44 +65,7 @@ export default class View extends React.Component {
                     .then((response) => {
                         if (response.status === 200) {
                             response.json().then((respData) => {
-                                //console.log(respData);
                                 let servers = respData.data;
-                                /*servers = [
-                                    {
-                                      "serverId": "Server-56ca9bb6-62ee-4a41-88bd-107d20ceed30",
-                                      "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                      "userId": "212712078",
-                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                      "serviceUrl": "https://service-url",
-                                      "hostUrl": "wss://gateway-url/agent",
-                                      "agentId": "xbdhfg",
-                                      "groupId": "ec-test",
-                                      "uaaUrl": "https://uaa-url",
-                                      "uaaClientId": "ec-test",
-                                      "uaaClientSecret": "ec-test",
-                                      "duration": 3000,
-                                      "remoteHost": "localhost",
-                                      "remotePort": "5432",
-                                      "plugin": null
-                                    },
-                                    {
-                                      "serverId": "Server-849d04cc-2f81-413d-a269-5402960fbd8e",
-                                      "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                      "userId": "212712078",
-                                      "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                      "serviceUrl": "https://service-url",
-                                      "hostUrl": "wss://gateway-url/agent",
-                                      "agentId": "xbdhfg",
-                                      "groupId": "ec-test",
-                                      "uaaUrl": "https://uaa-url",
-                                      "uaaClientId": "ec-test",
-                                      "uaaClientSecret": "ec-test",
-                                      "duration": 3000,
-                                      "remoteHost": "localhost",
-                                      "remotePort": "5432",
-                                      "plugin": null
-                                    }
-                                ];*/
 
                                 if(servers === null){
                                     servers = [];
@@ -154,38 +97,6 @@ export default class View extends React.Component {
                                     if (response.status === 200) {
                                         response.json().then((respData) => {
                                             let clients = respData.data;
-                                            /*clients = [
-                                                {
-                                                  "clientId": "Client-1b95c319-aa6c-44ba-8c2f-2b1764efe697",
-                                                  "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                  "userId": "212712078",
-                                                  "hostUrl": "wss://gateway-url/agent",
-                                                  "agentId": "hdsvhe",
-                                                  "targetId": "dhvhye",
-                                                  "groupId": "ec-test",
-                                                  "uaaUrl": "https://url.predix.io/token",
-                                                  "uaaClientId": "ec-test",
-                                                  "uaaClientSecret": "ec-test",
-                                                  "duration": 3000,
-                                                  "localPort": "7999",
-                                                  "plugin": null
-                                                },
-                                                {
-                                                  "clientId": "Client-45a222d9-50fa-48c8-a7ec-ec700a1ce44f",
-                                                  "gatewayId": "Gateway-16450058-e7e3-4ac2-9315-5fa93afaf709",
-                                                  "userId": "212712078",
-                                                  "hostUrl": "wss://gateway-url/agent",
-                                                  "agentId": "hdsvhe",
-                                                  "targetId": "dhvhye",
-                                                  "groupId": "ec-test",
-                                                  "uaaUrl": "https://url.predix.io/token",
-                                                  "uaaClientId": "ec-test",
-                                                  "uaaClientSecret": "ec-test",
-                                                  "duration": 3000,
-                                                  "localPort": "7999",
-                                                  "plugin": null
-                                                }
-                                            ];*/
 
                                             if(clients === null){
                                                 clients = [];
@@ -209,29 +120,21 @@ export default class View extends React.Component {
                                         });
                                     }
                                     else{
-                                        //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
-                                        //console.log('Looks like there was a problem. Status Code: ' + response.status);
-                                        //this.showAjaxBusy(false);
                                     }
                                 });
                             });
                         }
                         else{
-                            //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
-                            //console.log('Looks like there was a problem. Status Code: ' + response.status);
-                            //this.showAjaxBusy(false);
                         }
                     });
                 });
             }
             else{
-                //this.showGlobalMessage('Oops! There is an error', 'alert-danger');
-                //console.log('Looks like there was a problem. Status Code: ' + response.status);
-                //this.showAjaxBusy(false);
             }
-        });
+        });*/
     }
 
+    /* istanbul ignore next */
     generateTableStructure(technicalTableData){
         let thead = [];
         let allFields = [];
@@ -277,12 +180,14 @@ export default class View extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     toTableHeaderCase(str){
         return str.split('_').map(function(word, index){
             return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
         }).join(' ');
     }
 
+    /* istanbul ignore next */
     showHideTableTdData(objectIndex, itemIndex){
         let currentTbody = this.state.table.tbody;
         let copiedObjectToChange = Object.assign({}, currentTbody[objectIndex][itemIndex]);
@@ -299,18 +204,21 @@ export default class View extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     changeTopologyView(){
         this.setState({
             topologyView: event.target.checked
         });
     }
 
+    /* istanbul ignore next */
     changeToSearchView(){
         this.setState({
             isSearchView: true
         });
     }
 
+    /* istanbul ignore next */
     servedTopologyView(){
         const currentTopologyView = this.state.topologyView;
         if(!currentTopologyView){
@@ -323,6 +231,7 @@ export default class View extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
     createView(selectedFields, filterFields){
         // search functionality here
         let mockTableData = [...this.state.mockTableData];
@@ -452,6 +361,7 @@ export default class View extends React.Component {
 
     render() {
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div className="centered-div View">
                 { !this.state.isSearchView ? 

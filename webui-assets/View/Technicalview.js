@@ -21,10 +21,12 @@ export default class Technicalview extends React.Component {
                 'ellipse',
                 'circle',
                 'box',
-            ]
+            ],
+            apiLoadPercentage: 0
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
         
         let treeValue = [{
@@ -33,6 +35,7 @@ export default class Technicalview extends React.Component {
             title: 'EC',
             nodeType: 'root'
         }];
+        let progressPercent = 0;
 
         fetch(this.props.baseUrl + '/listSubscriptions', {
             method: 'GET',
@@ -65,6 +68,11 @@ export default class Technicalview extends React.Component {
                                 console.log('subscriptions');
                             }, 1000);
                         }
+
+                        progressPercent = Math.round((totalNumOfAjaxProcessed / totalNumOfAjax) * 100);
+                        this.setState({
+                            apiLoadPercentage: progressPercent
+                        });
 
                         let newId = treeValue[0].id;
                         for(let indexSubscriptions in subscriptions){
@@ -102,11 +110,19 @@ export default class Technicalview extends React.Component {
                                 .then((response) => { // jshint ignore:line
                                     if (response.status === 200) {
                                         totalNumOfAjaxProcessed++;
+                                        progressPercent = Math.round((totalNumOfAjaxProcessed / totalNumOfAjax) * 100);
+                                        this.setState({
+                                            apiLoadPercentage: progressPercent
+                                        });
                                         response.json().then((respData) => {
                                             if(respData.errorStatus.status == 'ok'){
                                                 let gateways = respData.data.glist;
                                                 let gatewaysCount = Object.keys(gateways).length;
                                                 totalNumOfAjax = totalNumOfAjax + gatewaysCount;
+                                                progressPercent = Math.round((totalNumOfAjaxProcessed / totalNumOfAjax) * 100);
+                                                this.setState({
+                                                    apiLoadPercentage: progressPercent
+                                                });
                                                 treeValue[0].children[indexSubscriptions].value = treeValue[0].children[indexSubscriptions].value + ' (' + gatewaysCount +')';
                                                 for(let indexGateway in gateways){
                                                     newId++;
@@ -144,6 +160,10 @@ export default class Technicalview extends React.Component {
                                                         if (response.status === 200) {
                                                             response.json().then((respData) => {
                                                                 totalNumOfAjaxProcessed++;
+                                                                progressPercent = Math.round((totalNumOfAjaxProcessed / totalNumOfAjax) * 100);
+                                                                this.setState({
+                                                                    apiLoadPercentage: progressPercent
+                                                                });
                                                                 if(respData.errorStatus.status == 'ok'){
                                                                     let clientPools = respData.data.ClientPool;
                                                                     let preparedClientPools = [];
@@ -323,6 +343,10 @@ export default class Technicalview extends React.Component {
                             }
                             else{
                                 totalNumOfAjaxProcessed++;
+                                progressPercent = Math.round((totalNumOfAjaxProcessed / totalNumOfAjax) * 100);
+                                this.setState({
+                                    apiLoadPercentage: progressPercent
+                                });
                             }
                         
                         }
@@ -386,6 +410,7 @@ export default class Technicalview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     changeTopologyView(items){
         let shapeArray = this.state.nodeShapes;
         let nodes = [];
@@ -451,6 +476,7 @@ export default class Technicalview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     removeDuplicates(myArr, prop) {
         return myArr.filter((obj, pos, arr) => {
             return arr.map(mapObj => mapObj[prop]).indexOf(obj[prop]) === pos;
@@ -459,6 +485,7 @@ export default class Technicalview extends React.Component {
 
     render() {
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return (
             <div className="Technicalview">
                 <ul className="nav nav-tabs" id="myTab" role="tablist">
@@ -471,42 +498,45 @@ export default class Technicalview extends React.Component {
                 </ul>
                 <div className="tab-content" id="myTabContent">
                     <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div className="row view-table">
-                            <div className="col-md-12" id="viewTableDiv">
-                            {
-                                this.props.showTable ?
-                                        <div>
-                                            <button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
-                                            <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>
-                                        </div> :
-                                    <p className="text-center loader-icon">
-                                        <img alt="loading" src="assets/static/images/rolling.svg" />
-                                    </p>
-                            }
+                        {
+                            this.state.loadTreeJs ?
+                            <div className="row view-table">
+                                <div className="col-md-12" id="viewTableDiv">
+                                    {/*<button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
+                                    <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>*/}
+                                    <h3>Work in progress for real time data</h3>
+                                </div>
+                            </div>:
+                            <div className="row">
+                                <div className="col-md-12 mt-5">
+                                    <p>Please wait...</p>
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: this.state.apiLoadPercentage+ '%'}}></div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        }
                     </div>
                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div className="row">
-                            <div className="col-md-4 treeview-div">
-                                {
-                                this.state.loadTreeJs ? 
-                                    <Treelist treeValue={this.state.treeValue} changeTopology={this.changeTopologyView.bind(this)}></Treelist>:
-                                    <p className="text-center loader-icon">
-                                        <img alt="loading" src="assets/static/images/rolling.svg" />
-                                    </p>
-                                }
+                        {
+                        this.state.loadTreeJs ?
+                            <div className="row">
+                                <div className="col-md-4 treeview-div">
+                                    <Treelist treeValue={this.state.treeValue} changeTopology={this.changeTopologyView.bind(this)}></Treelist>
+                                </div>
+                                <div className="col-md-8 treeview-div">
+                                    <Topologygraph nodeData={this.state.graph}></Topologygraph>
+                                </div>
+                            </div> : 
+                            <div className="row">
+                                <div className="col-md-12 mt-5">
+                                    <p>Please wait...</p>
+                                    <div className="progress">
+                                        <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: this.state.apiLoadPercentage+ '%'}}></div>
+                                    </div>
+                                </div>
                             </div>
-                            <div className="col-md-8 treeview-div">
-                                {
-                                this.state.loadTreeJs ?
-                                    <Topologygraph nodeData={this.state.graph}></Topologygraph>:
-                                    <p className="text-center loader-icon">
-                                        <img alt="loading" src="assets/static/images/rolling.svg" />
-                                    </p>
-                                }
-                            </div>
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
