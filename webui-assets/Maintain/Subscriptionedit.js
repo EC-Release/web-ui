@@ -7,7 +7,6 @@ export default class Subscriptionedit extends React.Component {
         this.state = {
             subscriptionForm:{
                 subscriptionName: { value: '', dirtyState: false },
-                accountId: { value: '', dirtyState: false },
                 subscriptionId: { value: '', dirtyState: false },
                 serviceUri: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
@@ -62,7 +61,6 @@ export default class Subscriptionedit extends React.Component {
         let formData = Object.assign({}, this.props.editItemData);
         let subscriptionForm = {
             subscriptionName: { value: formData.subscriptionName, dirtyState: false },
-            accountId: { value: formData.accountId, dirtyState: false },
             subscriptionId: { value: formData.subscriptionId, dirtyState: false },
             serviceUri: { value: formData.serviceUri, dirtyState: false },
             clientId: { value: formData.clientId, dirtyState: false },
@@ -103,11 +101,11 @@ export default class Subscriptionedit extends React.Component {
 
     /* istanbul ignore next */
     editSubscription(){
+        this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         let currentForm =  Object.assign({}, this.state.subscriptionForm);
         let prepareData = {};
 
         prepareData.subscriptionName = currentForm.subscriptionName.value;
-        prepareData.accountId = currentForm.accountId.value;
         prepareData.subscriptionId = currentForm.subscriptionId.value;
         prepareData.serviceUri = currentForm.serviceUri.value;
         prepareData.clientId = currentForm.clientId.value;
@@ -182,8 +180,6 @@ export default class Subscriptionedit extends React.Component {
         let currentFormData = this.state.subscriptionForm;
         let subscriptionNameValue = currentFormData.subscriptionName.value;
         let subscriptionNameDirtyState = currentFormData.subscriptionName.dirtyState;
-        let accountIdValue = currentFormData.accountId.value;
-        let accountIdDirtyState = currentFormData.accountId.dirtyState;
         let subscriptionIdValue = currentFormData.subscriptionId.value;
         let subscriptionIdDirtyState = currentFormData.subscriptionId.dirtyState;
         let serviceUriValue = currentFormData.serviceUri.value;
@@ -213,12 +209,6 @@ export default class Subscriptionedit extends React.Component {
         if(subscriptionNameValue.trim() === ''){
             if(subscriptionNameDirtyState)
                 errors.subscriptionName = 'Please enter Subscription Name';
-            formIsValid = false;
-        }
-
-        if(accountIdValue.trim() === ''){
-            if(accountIdDirtyState)
-                errors.accountId = 'Please enter Account ID';
             formIsValid = false;
         }
 
@@ -315,10 +305,6 @@ export default class Subscriptionedit extends React.Component {
         if(fieldName === 'subscriptionName'){
             currentForm.subscriptionName.value = updatedValue;
             currentForm.subscriptionName.dirtyState = true;
-        }
-        else if(fieldName === 'accountId'){
-            currentForm.accountId.value = updatedValue;
-            currentForm.accountId.dirtyState = true;
         }
         else if(fieldName === 'subscriptionId'){
             currentForm.subscriptionId.value = updatedValue;
@@ -458,9 +444,9 @@ export default class Subscriptionedit extends React.Component {
                                     </div>
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
-                                            ACCOUNT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            OWNER <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             <span className="float-right help-text" >
-                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.accountId} />
+                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.owner} />
                                             </span>
                                         </div>
                                         <div className="col-sm-12 mb-2">
@@ -468,10 +454,10 @@ export default class Subscriptionedit extends React.Component {
                                                 type="text"
                                                 autoComplete="off"
                                                 className="form-control form-control-sm"
-                                                name="accountId"
-                                                value={this.state.subscriptionForm.accountId.value}
+                                                name="owner"
+                                                value={this.state.subscriptionForm.owner.value}
                                                 onChange={(event)=>{this.handleFormData(event)}} />
-                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['accountId']}</small>
+                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['owner']}</small>
                                         </div>
                                     </div>
                                     <div className="col-sm-3">
@@ -804,21 +790,20 @@ export default class Subscriptionedit extends React.Component {
                                         </div>
                                     </div>
                                     <div className="col-sm-3">
-                                        <div className="col-sm-12 label required">
-                                            OWNER <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                        <div className="col-sm-12 label">
+                                            ASSET ID
                                             <span className="float-right help-text" >
-                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.owner} />
+                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.assetId} />
                                             </span>
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
                                                 type="text"
-                                                autoComplete="off"
                                                 className="form-control form-control-sm"
-                                                name="owner"
-                                                value={this.state.subscriptionForm.owner.value}
+                                                name="assetId"
+                                                value={this.state.subscriptionForm.assetId.value}
                                                 onChange={(event)=>{this.handleFormData(event)}} />
-                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['owner']}</small>
+                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['assetId']}</small>
                                         </div>
                                     </div>
                                 </div>
@@ -898,24 +883,6 @@ export default class Subscriptionedit extends React.Component {
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-sm-3">
-                                        <div className="col-sm-12 label">
-                                            ASSET ID
-                                            <span className="float-right help-text" >
-                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.assetId} />
-                                            </span>
-                                        </div>
-                                        <div className="col-sm-12 mb-2">
-                                            <input
-                                                type="text"
-                                                className="form-control form-control-sm"
-                                                name="assetId"
-                                                value={this.state.subscriptionForm.assetId.value}
-                                                onChange={(event)=>{this.handleFormData(event)}} />
-                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['assetId']}</small>
-                                        </div>
-                                    </div>
-
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label">
                                             UNIFIED APPLICATION IDENTIFIER

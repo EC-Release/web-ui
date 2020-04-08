@@ -60,23 +60,18 @@ export default class App extends React.Component {
     });
 
     // Get logged user's userId start
-    fetch('https://reqres.in/api/users/2', { // this.state.apiEndPoints.baseUrl + '/getDevId'
+    fetch(this.state.apiEndPoints.baseUrl + '/getDevId', {
       method: 'GET',
-      /*headers: {
+      headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
           'Authorization': authToken
-      }*/
+      }
     })
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            let userId = '12fd119f-1b00-41bf-ab82-85182df9c64f';
-            this.setState({
-              userId: userId,
-              currentView: 'Dashboard'
-            });
-            /*if (respData.errorStatus.status === 'ok') {
+            if (respData.errorStatus.status === 'ok') {
               let userId = respData.data.user_id;
               this.setState({
                 userId: userId,
@@ -88,7 +83,7 @@ export default class App extends React.Component {
               setTimeout(function () {
                 location.reload(true);
               }, 2000);
-            }*/
+            }
           });
         }
         else {

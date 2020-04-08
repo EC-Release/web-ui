@@ -504,7 +504,7 @@ export default class Technicalview extends React.Component {
                                 <div className="col-md-12" id="viewTableDiv">
                                     {/*<button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
                                     <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>*/}
-                                    <h3>Work in progress for real time data</h3>
+                                    <h3>Work in progress for real time table view</h3>
                                 </div>
                             </div>:
                             <div className="row">
