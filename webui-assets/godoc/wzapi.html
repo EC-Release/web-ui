@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#375EAB">
 
-  <title>File github.build.ge.com/212359746/wzapi - Go Documentation Server</title>
+  <title>wzapi - Go Documentation Server</title>
 
 <link type="text/css" rel="stylesheet" href="lib/godoc/style.css">
 
@@ -43,13 +43,11 @@
 
 
   <h1>
-    File github.build.ge.com/212359746/wzapi
+    Package wzapi
     <span class="text-muted"></span>
   </h1>
 
 
-
-  <h2>github.build.ge.com/212359746/wzapi</h2>
 
 
 
@@ -63,10 +61,868 @@
 	Use of this source code is governed by a BSD-style
 	license that can be found in the LICENSE file.
 -->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
 
-<p>
-<span class="alert" style="font-size:120%">Scan is not yet complete. Please retry after a few moments</span>
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.build.ge.com/212359746/wzapi"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+			
+				
+				<dd><a href="#ErrResponse">func ErrResponse(w http.ResponseWriter, errcode uint16, err error, str string)</a></dd>
+			
+				
+				<dd><a href="#GetOAuthToken">func GetOAuthToken(cid, csc string, oa2 *url.URL, tkn *model.Token) string</a></dd>
+			
+				
+				<dd><a href="#HealthCheck">func HealthCheck(w http.ResponseWriter, r *http.Request, rpt *model.Report, ver string, aid, refId string)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckClt">func HealthCheckClt(w http.ResponseWriter, r *http.Request, rpt *model.Report, ver string, aid string, d []*model.RequestDetail, c []*model.ClientSession)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckGWServer">func HealthCheckGWServer(w http.ResponseWriter, r *http.Request, rpt *model.Report, ses map[string]*model.SessionDetails, cpl []*model.ClientPool, ver string, gtwId string, refId string, ncon int)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckGwy">func HealthCheckGwy(w http.ResponseWriter, r *http.Request, rpt *model.Report, ses map[string]*model.SessionDetails, scs []*model.SuperConns, cpl []*model.ClientPool, ver string, gtwId string, refId string, ncon int)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckSrv">func HealthCheckSrv(w http.ResponseWriter, r *http.Request, rpt *model.Report, srv []*model.ServerPool, srl []*model.ServerSConnList, ver string, aid string, gurl, refId string)</a></dd>
+			
+				
+				<dd><a href="#TokenRefresh">func TokenRefresh(cid, csc string, oa2 *url.URL) &lt;-chan *model.Token</a></dd>
+			
+				
+				<dd><a href="#TokenValidationV2">func TokenValidationV2(oa2 *url.URL, valTkn, tkn string) &lt;-chan *model.TokenStatus</a></dd>
+			
+			
+				
+				<dd><a href="#APIMode">type APIMode</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewAPIMode">func NewAPIMode(wagt AgentHTTPIntr, cred map[string]interface{}, _id, _oa, _rv string) *APIMode</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.EnforceToken">func (a *APIMode) EnforceToken(_tk string) (*model.TokenStatus, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.FetchTokenByAuthCode">func (a *APIMode) FetchTokenByAuthCode(w http.ResponseWriter, code string) (*model.Token, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.FetchUserDetailByUserId">func (a *APIMode) FetchUserDetailByUserId(uid string) (*model.UserDetail, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.GetOAuthToken">func (a *APIMode) GetOAuthToken() string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.RedirectAuthForm">func (a *APIMode) RedirectAuthForm(w http.ResponseWriter, originURL string) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.Start">func (a *APIMode) Start(tls bool, _ap, app string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.Stop">func (a *APIMode) Stop()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#APIMode.UpdateUserDetail">func (a *APIMode) UpdateUserDetail(uid string) (*model.UserDetail, error)</a></dd>
+				
+			
+				
+				<dd><a href="#AgentHTTPIntr">type AgentHTTPIntr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckCltType">type HealthCheckCltType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckGWServerType">type HealthCheckGWServerType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckGwyType">type HealthCheckGwyType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckSrvType">type HealthCheckSrvType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckType">type HealthCheckType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OAuth2Mode">type OAuth2Mode</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewOAuth2Mode">func NewOAuth2Mode(oagt OAuth2ModeIntr, authgrp []interface{}, _rv string) *OAuth2Mode</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#OAuth2Mode.Start">func (o *OAuth2Mode) Start(_ap string, tls bool)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#OAuth2Mode.Stop">func (o *OAuth2Mode) Stop()</a></dd>
+				
+			
+				
+				<dd><a href="#OAuth2ModeIntr">type OAuth2ModeIntr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OAuthLocker">type OAuthLocker</a></dd>
+				
+				
+			
+				
+				<dd><a href="#ProfileLocker">type ProfileLocker</a></dd>
+				
+				
+			
+				
+				<dd><a href="#TokenDetail">type TokenDetail</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.build.ge.com/212359746/wzapi/apimode.go">apimode.go</a>
+			
+				<a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go">oa2mode.go</a>
+			
+				<a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go">wzapi.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="HTML_APIMODE_DIR">HTML_APIMODE_DIR</span>   = &#34;webui-assets&#34;
+    <span id="HTML_APIMODE_INDEX">HTML_APIMODE_INDEX</span> = &#34;webui-assets/index.html&#34;
+)</pre>
+			
+				
+				<pre>const (
+    <span class="comment">//OAUTH2_TOKEN_EXPIRED_TIME = 3</span>
+    <span id="OAUTH_TOKEN_VALIDATE">OAUTH_TOKEN_VALIDATE</span> = &#34;/introspect&#34;
+    <span id="OAUTH_TOKEN_FETCH">OAUTH_TOKEN_FETCH</span>    = &#34;/oauth/token&#34;
+    <span id="OAUTH_AUTHORIZATION">OAUTH_AUTHORIZATION</span>  = &#34;/oauth/authorize&#34;
+
+    <span id="OAUTH_ASSET">OAUTH_ASSET</span>  = &#34;/assets/&#34;
+    <span id="OAUTH_USER">OAUTH_USER</span>   = &#34;/users&#34;
+    <span id="OAUTH_CLIENT">OAUTH_CLIENT</span> = &#34;/clients&#34;
+
+    <span id="HTML_OA2MODE_DIR">HTML_OA2MODE_DIR</span> = &#34;oa2-assets&#34;
+    <span id="HTML_OA2MODE_IDX">HTML_OA2MODE_IDX</span> = &#34;login.html&#34;
+
+    <span id="APP_SCOPE">APP_SCOPE</span> = &#34;api.auth&#34;
+)</pre>
+			
+		
+		
+		
+			
+			
+			<h2 id="ErrResponse">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=5058:5136#L171">ErrResponse</a>
+				<a class="permalink" href="#ErrResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ErrResponse(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, errcode <a href="/pkg/builtin/#uint16">uint16</a>, err <a href="/pkg/builtin/#error">error</a>, str <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetOAuthToken">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=6400:6474#L230">GetOAuthToken</a>
+				<a class="permalink" href="#GetOAuthToken">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetOAuthToken(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<p>
+GetOAuthToken return a valid token for authorisation purpose
 </p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheck">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=778:884#L23">HealthCheck</a>
+				<a class="permalink" href="#HealthCheck">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheck(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckClt">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1231:1385#L38">HealthCheckClt</a>
+				<a class="permalink" href="#HealthCheckClt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckClt(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientSession">ClientSession</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckGWServer">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2982:3178#L84">HealthCheckGWServer</a>
+				<a class="permalink" href="#HealthCheckGWServer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckGWServer(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckGwy">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2354:2570#L68">HealthCheckGwy</a>
+				<a class="permalink" href="#HealthCheckGwy">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckGwy(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckSrv">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1754:1929#L53">HealthCheckSrv</a>
+				<a class="permalink" href="#HealthCheckSrv">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckSrv(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="TokenRefresh">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=5443:5512#L182">TokenRefresh</a>
+				<a class="permalink" href="#TokenRefresh">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TokenRefresh(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a></pre>
+			<p>
+TokenRefresh fetch the host&#39;s bearer token for HTTP authorisation purpose
+</p>
+
+			
+			
+
+		
+			
+			
+			<h2 id="TokenValidationV2">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=7216:7300#L260">TokenValidationV2</a>
+				<a class="permalink" href="#TokenValidationV2">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func TokenValidationV2(oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, valTkn, tkn <a href="/pkg/builtin/#string">string</a>) &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a></pre>
+			<p>
+TokenValidationV2 invokes oauth2 (@@oa2) /introspect call to validate the token (@@tkn)
+@@crt used to extract the validator&#39;s token as the Authorization header
+@@valTkn is the valiodator&#39;s own token
+</p>
+
+			
+			
+
+		
+		
+			
+			
+			<h2 id="APIMode">type <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=778:1108#L37">APIMode</a>
+				<a class="permalink" href="#APIMode">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type APIMode struct {
+<span id="APIMode.Cert"></span>    Cert *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a>
+
+<span id="APIMode.OAuth2URL"></span>    OAuth2URL     *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>
+<span id="APIMode.AgentHTTPIntr"></span>    AgentHTTPIntr <a href="#AgentHTTPIntr">AgentHTTPIntr</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewAPIMode">func <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=2294:2389#L80">NewAPIMode</a>
+					<a class="permalink" href="#NewAPIMode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewAPIMode(wagt <a href="#AgentHTTPIntr">AgentHTTPIntr</a>, cred map[<a href="/pkg/builtin/#string">string</a>]interface{}, _id, _oa, _rv <a href="/pkg/builtin/#string">string</a>) *<a href="#APIMode">APIMode</a></pre>
+				<p>
+create a new agent api mode instance. wagt refers to the callback interface. pt represents  api http port, where crt an preloaded cert instance.
+start the agent api.
+@wagt: API callback Interface
+@_ap: port#
+@_pb: publickey
+@_ps: privatekey
+@_oa: oauth instance
+@_an: the api context path
+@_tl: is TLS enable
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12816:12885#L567">EnforceToken</a>
+					<a class="permalink" href="#APIMode.EnforceToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) EnforceToken(_tk <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=10996:11089#L485">FetchTokenByAuthCode</a>
+					<a class="permalink" href="#APIMode.FetchTokenByAuthCode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchTokenByAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, code <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=11848:11927#L519">FetchUserDetailByUserId</a>
+					<a class="permalink" href="#APIMode.FetchUserDetailByUserId">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchUserDetailByUserId(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+FetchUserDetailByUserId gives detail of the user id @@uid.
+The function will first check the user detail in the cache
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="APIMode.GetOAuthToken">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=3171:3212#L129">GetOAuthToken</a>
+					<a class="permalink" href="#APIMode.GetOAuthToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) GetOAuthToken() <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=10022:10103#L451">RedirectAuthForm</a>
+					<a class="permalink" href="#APIMode.RedirectAuthForm">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) RedirectAuthForm(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, originURL <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="APIMode.Start">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=3517:3567#L138">Start</a>
+					<a class="permalink" href="#APIMode.Start">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) Start(tls <a href="/pkg/builtin/#bool">bool</a>, _ap, app <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+Starting Agent in API mode.
+AgentHTTPIntr is the interface type of which the variable (wagt) implemented and passed.
+_pt refers to the port# to launch the api,
+where the _cb as the public key, _ps as private key, respectively.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=9993:10016#L447">Stop</a>
+					<a class="permalink" href="#APIMode.Stop">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) Stop()</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="APIMode.UpdateUserDetail">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12307:12379#L543">UpdateUserDetail</a>
+					<a class="permalink" href="#APIMode.UpdateUserDetail">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) UpdateUserDetail(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+UpdateUserDetail will directly invoke the users detail endpoint from the oauth2 instance
+</p>
+
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="AgentHTTPIntr">type <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=1198:1965#L56">AgentHTTPIntr</a>
+				<a class="permalink" href="#AgentHTTPIntr">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Agent HTTP Interface. Each of func below will be invoked during the API mode process.
+</p>
+
+			<pre>type AgentHTTPIntr interface {
+    <span class="comment">//Launch(optId string)</span>
+    <span class="comment">//Token(w http.ResponseWriter, r *http.Request, token, optId string)</span>
+    InitOps(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    Status(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    Hire(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    Fire(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    Suspend(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    Resume(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    POSTConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    PUTConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    GETConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+    Ext(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tknStatus *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckCltType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1066:1229#L36">HealthCheckCltType</a>
+				<a class="permalink" href="#HealthCheckCltType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckCltType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientSession">ClientSession</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckGWServerType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2775:2980#L82">HealthCheckGWServerType</a>
+				<a class="permalink" href="#HealthCheckGWServerType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckGWServerType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckGwyType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2127:2352#L66">HealthCheckGwyType</a>
+				<a class="permalink" href="#HealthCheckGwyType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckGwyType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckSrvType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1568:1752#L51">HealthCheckSrvType</a>
+				<a class="permalink" href="#HealthCheckSrvType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckSrvType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=661:776#L21">HealthCheckType</a>
+				<a class="permalink" href="#HealthCheckType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OAuth2Mode">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1077:1293#L52">OAuth2Mode</a>
+				<a class="permalink" href="#OAuth2Mode">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+OAuth2Mode: launch the runtime as a OAuth2 IdP
+</p>
+
+			<pre>type OAuth2Mode struct {
+<span id="OAuth2Mode.Cert"></span>    Cert *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a>
+
+<span id="OAuth2Mode.OAuth2ModeIntr"></span>    OAuth2ModeIntr <a href="#OAuth2ModeIntr">OAuth2ModeIntr</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewOAuth2Mode">func <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2730:2816#L105">NewOAuth2Mode</a>
+					<a class="permalink" href="#NewOAuth2Mode">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewOAuth2Mode(oagt <a href="#OAuth2ModeIntr">OAuth2ModeIntr</a>, authgrp []interface{}, _rv <a href="/pkg/builtin/#string">string</a>) *<a href="#OAuth2Mode">OAuth2Mode</a></pre>
+				<p>
+NewOAuth2Mode: will return an new OAuth2Mode instance
+@@oagt: OAuth2 Callback Interface
+@@_pt: port#
+@@_pb: publickey
+@@_ps: privatekey
+func NewOAuth2Mode(oagt OAuth2ModeIntr, authgrp []interface{}, _oa2, _rv string) *OAuth2Mode {
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="OAuth2Mode.Start">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=5232:5280#L224">Start</a>
+					<a class="permalink" href="#OAuth2Mode.Start">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#OAuth2Mode">OAuth2Mode</a>) Start(_ap <a href="/pkg/builtin/#string">string</a>, tls <a href="/pkg/builtin/#bool">bool</a>)</pre>
+				<p>
+Starting Agent in OAuth2 mode.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="OAuth2Mode.Stop">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=12038:12064#L516">Stop</a>
+					<a class="permalink" href="#OAuth2Mode.Stop">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (o *<a href="#OAuth2Mode">OAuth2Mode</a>) Stop()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="OAuth2ModeIntr">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1386:1926#L64">OAuth2ModeIntr</a>
+				<a class="permalink" href="#OAuth2ModeIntr">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+Agent HTTP Interface. Each of func below will be invoked during the OAuth2 mode process.
+</p>
+
+			<pre>type OAuth2ModeIntr interface {
+    GetUser(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cd *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>)
+    CheckToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, ts *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>)
+    CreateToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>)
+    CreateTokenByAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, code <a href="/pkg/builtin/#string">string</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>)
+    CreateAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cid, uid, auth_code, scope, callbackURL <a href="/pkg/builtin/#string">string</a>)
+    Authorization(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cid, uid, scope, callbackURL <a href="/pkg/builtin/#string">string</a>)
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OAuthLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=960:1025#L46">OAuthLocker</a>
+				<a class="permalink" href="#OAuthLocker">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type OAuthLocker struct {
+    <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="ProfileLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=701:776#L32">ProfileLocker</a>
+				<a class="permalink" href="#ProfileLocker">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ProfileLocker struct {
+    <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="TokenDetail">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1928:2006#L73">TokenDetail</a>
+				<a class="permalink" href="#TokenDetail">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type TokenDetail struct {
+<span id="TokenDetail.Status"></span>    Status *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>
+<span id="TokenDetail.Info"></span>    Info   *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#CertDetail">CertDetail</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
 
 
 <div id="footer">
