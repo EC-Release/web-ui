@@ -458,10 +458,6 @@ The 技(waza) libraries main package contains core functionality which consists 
 			
 				
 				<pre>const (
-    <span class="comment">//HEALTH_PORT = &#34;38989&#34;</span>
-    <span class="comment">//WZ_HTTP_HEADER = &#34;wz-options&#34;</span>
-    <span id="X_FORWARDED_FOR">X_FORWARDED_FOR</span> = &#34;x-forwarded-for&#34;
-
     <span id="KEEPALIVE_DUR">KEEPALIVE_DUR</span> = 30
 
     <span id="BUFFER_SIZE">BUFFER_SIZE</span> = 128
@@ -540,7 +536,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="KeepAlive">func <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=26014:26050#L1086">KeepAlive</a>
+			<h2 id="KeepAlive">func <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=26019:26055#L1086">KeepAlive</a>
 				<a class="permalink" href="#KeepAlive">&#xb6;</a>
 				
 				
@@ -626,7 +622,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="Client">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3745:3859#L133">Client</a>
+			<h2 id="Client">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3708:3822#L132">Client</a>
 				<a class="permalink" href="#Client">&#xb6;</a>
 				
 				
@@ -647,7 +643,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 
 			
 				
-				<h3 id="NewClient">func <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3938:4007#L146">NewClient</a>
+				<h3 id="NewClient">func <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3901:3970#L145">NewClient</a>
 					<a class="permalink" href="#NewClient">&#xb6;</a>
 					
 					
@@ -660,7 +656,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 
 			
 				
-				<h3 id="Client.Config">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3876:3917#L142">Config</a>
+				<h3 id="Client.Config">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3839:3880#L141">Config</a>
 					<a class="permalink" href="#Client.Config">&#xb6;</a>
 					
 					
@@ -672,7 +668,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.DeleteBinding">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5641:5683#L213">DeleteBinding</a>
+				<h3 id="Client.DeleteBinding">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5604:5646#L212">DeleteBinding</a>
 					<a class="permalink" href="#Client.DeleteBinding">&#xb6;</a>
 					
 					
@@ -684,7 +680,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.DeleteSession">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=6145:6187#L239">DeleteSession</a>
+				<h3 id="Client.DeleteSession">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=6108:6150#L238">DeleteSession</a>
 					<a class="permalink" href="#Client.DeleteSession">&#xb6;</a>
 					
 					
@@ -696,7 +692,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.Fire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=19787:19810#L910">Fire</a>
+				<h3 id="Client.Fire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=19750:19773#L909">Fire</a>
 					<a class="permalink" href="#Client.Fire">&#xb6;</a>
 					
 					
@@ -708,7 +704,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.Hire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=13278:13301#L589">Hire</a>
+				<h3 id="Client.Hire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=13241:13264#L588">Hire</a>
 					<a class="permalink" href="#Client.Hire">&#xb6;</a>
 					
 					
@@ -1014,7 +1010,7 @@ gateway mode
 
 			
 				
-				<h3 id="Gateway.ClientPiping">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=14881:14936#L582">ClientPiping</a>
+				<h3 id="Gateway.ClientPiping">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=14886:14941#L582">ClientPiping</a>
 					<a class="permalink" href="#Gateway.ClientPiping">&#xb6;</a>
 					
 					
@@ -1038,7 +1034,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.DeleteClientInPool">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=14321:14369#L556">DeleteClientInPool</a>
+				<h3 id="Gateway.DeleteClientInPool">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=14326:14374#L556">DeleteClientInPool</a>
 					<a class="permalink" href="#Gateway.DeleteClientInPool">&#xb6;</a>
 					
 					
@@ -1050,7 +1046,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.DeleteSession">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=13545:13600#L521">DeleteSession</a>
+				<h3 id="Gateway.DeleteSession">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=13550:13605#L521">DeleteSession</a>
 					<a class="permalink" href="#Gateway.DeleteSession">&#xb6;</a>
 					
 					
@@ -1074,7 +1070,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.Fire">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=25985:26009#L1084">Fire</a>
+				<h3 id="Gateway.Fire">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=25990:26014#L1084">Fire</a>
 					<a class="permalink" href="#Gateway.Fire">&#xb6;</a>
 					
 					
@@ -1086,7 +1082,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.Hire">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=19651:19675#L802">Hire</a>
+				<h3 id="Gateway.Hire">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=19656:19680#L802">Hire</a>
 					<a class="permalink" href="#Gateway.Hire">&#xb6;</a>
 					
 					
@@ -1098,7 +1094,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.ServerPiping">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=17506:17586#L703">ServerPiping</a>
+				<h3 id="Gateway.ServerPiping">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=17511:17591#L703">ServerPiping</a>
 					<a class="permalink" href="#Gateway.ServerPiping">&#xb6;</a>
 					
 					
@@ -1112,7 +1108,7 @@ gateway mode
 		
 			
 			
-			<h2 id="Locker">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3682:3743#L128">Locker</a>
+			<h2 id="Locker">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3645:3706#L127">Locker</a>
 				<a class="permalink" href="#Locker">&#xb6;</a>
 				
 				
@@ -1612,7 +1608,7 @@ x:gateway mode
 
 			
 				
-				<h3 id="XGateway.ClientPiping">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=16020:16077#L616">ClientPiping</a>
+				<h3 id="XGateway.ClientPiping">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=16025:16082#L616">ClientPiping</a>
 					<a class="permalink" href="#XGateway.ClientPiping">&#xb6;</a>
 					
 					
@@ -1636,7 +1632,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.DeleteClientInPool">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=15452:15502#L590">DeleteClientInPool</a>
+				<h3 id="XGateway.DeleteClientInPool">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=15457:15507#L590">DeleteClientInPool</a>
 					<a class="permalink" href="#XGateway.DeleteClientInPool">&#xb6;</a>
 					
 					
@@ -1648,7 +1644,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.DeleteSession">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=14667:14724#L555">DeleteSession</a>
+				<h3 id="XGateway.DeleteSession">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=14672:14729#L555">DeleteSession</a>
 					<a class="permalink" href="#XGateway.DeleteSession">&#xb6;</a>
 					
 					
@@ -1672,7 +1668,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.Fire">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=27616:27642#L1140">Fire</a>
+				<h3 id="XGateway.Fire">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=27621:27647#L1140">Fire</a>
 					<a class="permalink" href="#XGateway.Fire">&#xb6;</a>
 					
 					
@@ -1699,7 +1695,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XGateway.Hire">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=20815:20841#L836">Hire</a>
+				<h3 id="XGateway.Hire">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=20820:20846#L836">Hire</a>
 					<a class="permalink" href="#XGateway.Hire">&#xb6;</a>
 					
 					
@@ -1711,7 +1707,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XGateway.ServerPiping">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=18655:18737#L737">ServerPiping</a>
+				<h3 id="XGateway.ServerPiping">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=18660:18742#L737">ServerPiping</a>
 					<a class="permalink" href="#XGateway.ServerPiping">&#xb6;</a>
 					
 					
