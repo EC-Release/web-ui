@@ -223,17 +223,22 @@
 				
 			
 				
-				<dd><a href="#OAuthLocker">type OAuthLocker</a></dd>
+				<dd><a href="#OAuth2Ops">type OAuth2Ops</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OAuthCertLocker">type OAuthCertLocker</a></dd>
+				
+				
+			
+				
+				<dd><a href="#OAuthCodeLocker">type OAuthCodeLocker</a></dd>
 				
 				
 			
 				
 				<dd><a href="#ProfileLocker">type ProfileLocker</a></dd>
-				
-				
-			
-				
-				<dd><a href="#TokenDetail">type TokenDetail</a></dd>
 				
 				
 			
@@ -279,8 +284,8 @@
     <span id="OAUTH_AUTHORIZATION">OAUTH_AUTHORIZATION</span>  = &#34;/oauth/authorize&#34;
 
     <span id="OAUTH_ASSET">OAUTH_ASSET</span>  = &#34;/assets/&#34;
-    <span id="OAUTH_USER">OAUTH_USER</span>   = &#34;/users&#34;
-    <span id="OAUTH_CLIENT">OAUTH_CLIENT</span> = &#34;/clients&#34;
+    <span id="OAUTH_USER">OAUTH_USER</span>   = &#34;/users/&#34;
+    <span id="OAUTH_CLIENT">OAUTH_CLIENT</span> = &#34;/clients/&#34;
 
     <span id="HTML_OA2MODE_DIR">HTML_OA2MODE_DIR</span> = &#34;oa2-assets&#34;
     <span id="HTML_OA2MODE_IDX">HTML_OA2MODE_IDX</span> = &#34;login.html&#34;
@@ -471,7 +476,7 @@ start the agent api.
 
 			
 				
-				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12929:12998#L576">EnforceToken</a>
+				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12358:12427#L554">EnforceToken</a>
 					<a class="permalink" href="#APIMode.EnforceToken">&#xb6;</a>
 					
 					
@@ -483,7 +488,7 @@ start the agent api.
 				
 			
 				
-				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=11109:11202#L494">FetchTokenByAuthCode</a>
+				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=10538:10631#L472">FetchTokenByAuthCode</a>
 					<a class="permalink" href="#APIMode.FetchTokenByAuthCode">&#xb6;</a>
 					
 					
@@ -495,7 +500,7 @@ start the agent api.
 				
 			
 				
-				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=11961:12040#L528">FetchUserDetailByUserId</a>
+				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=11390:11469#L506">FetchUserDetailByUserId</a>
 					<a class="permalink" href="#APIMode.FetchUserDetailByUserId">&#xb6;</a>
 					
 					
@@ -523,7 +528,7 @@ The function will first check the user detail in the cache
 				
 			
 				
-				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=10135:10216#L460">RedirectAuthForm</a>
+				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=9564:9645#L438">RedirectAuthForm</a>
 					<a class="permalink" href="#APIMode.RedirectAuthForm">&#xb6;</a>
 					
 					
@@ -553,7 +558,7 @@ where the _cb as the public key, _ps as private key, respectively.
 				
 			
 				
-				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=10106:10129#L456">Stop</a>
+				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=9535:9558#L434">Stop</a>
 					<a class="permalink" href="#APIMode.Stop">&#xb6;</a>
 					
 					
@@ -565,7 +570,7 @@ where the _cb as the public key, _ps as private key, respectively.
 				
 			
 				
-				<h3 id="APIMode.UpdateUserDetail">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12420:12492#L552">UpdateUserDetail</a>
+				<h3 id="APIMode.UpdateUserDetail">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=11849:11921#L530">UpdateUserDetail</a>
 					<a class="permalink" href="#APIMode.UpdateUserDetail">&#xb6;</a>
 					
 					
@@ -730,7 +735,7 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="OAuth2Mode">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1077:1293#L52">OAuth2Mode</a>
+			<h2 id="OAuth2Mode">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1432:1665#L64">OAuth2Mode</a>
 				<a class="permalink" href="#OAuth2Mode">&#xb6;</a>
 				
 				
@@ -757,7 +762,7 @@ OAuth2Mode: launch the runtime as a OAuth2 IdP
 
 			
 				
-				<h3 id="NewOAuth2Mode">func <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2730:2816#L105">NewOAuth2Mode</a>
+				<h3 id="NewOAuth2Mode">func <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2995:3081#L117">NewOAuth2Mode</a>
 					<a class="permalink" href="#NewOAuth2Mode">&#xb6;</a>
 					
 					
@@ -778,7 +783,7 @@ func NewOAuth2Mode(oagt OAuth2ModeIntr, authgrp []interface{}, _oa2, _rv string)
 
 			
 				
-				<h3 id="OAuth2Mode.Start">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=5232:5280#L224">Start</a>
+				<h3 id="OAuth2Mode.Start">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=6507:6555#L282">Start</a>
 					<a class="permalink" href="#OAuth2Mode.Start">&#xb6;</a>
 					
 					
@@ -793,7 +798,7 @@ Starting Agent in OAuth2 mode.
 				
 			
 				
-				<h3 id="OAuth2Mode.Stop">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=12038:12064#L516">Stop</a>
+				<h3 id="OAuth2Mode.Stop">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=13792:13818#L598">Stop</a>
 					<a class="permalink" href="#OAuth2Mode.Stop">&#xb6;</a>
 					
 					
@@ -807,7 +812,7 @@ Starting Agent in OAuth2 mode.
 		
 			
 			
-			<h2 id="OAuth2ModeIntr">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1386:1926#L64">OAuth2ModeIntr</a>
+			<h2 id="OAuth2ModeIntr">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1758:2187#L77">OAuth2ModeIntr</a>
 				<a class="permalink" href="#OAuth2ModeIntr">&#xb6;</a>
 				
 				
@@ -820,8 +825,7 @@ Agent HTTP Interface. Each of func below will be invoked during the OAuth2 mode 
     GetUser(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cd *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>)
     CheckToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, ts *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>)
     CreateToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>)
-    CreateTokenByAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, code <a href="/pkg/builtin/#string">string</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>)
-    CreateAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cid, uid, auth_code, scope, callbackURL <a href="/pkg/builtin/#string">string</a>)
+    CreateAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, auth_code, callbackURL <a href="/pkg/builtin/#string">string</a>)
     Authorization(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cid, uid, scope, callbackURL <a href="/pkg/builtin/#string">string</a>)
 }</pre>
 
@@ -839,13 +843,71 @@ Agent HTTP Interface. Each of func below will be invoked during the OAuth2 mode 
 		
 			
 			
-			<h2 id="OAuthLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=960:1025#L46">OAuthLocker</a>
-				<a class="permalink" href="#OAuthLocker">&#xb6;</a>
+			<h2 id="OAuth2Ops">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1296:1380#L58">OAuth2Ops</a>
+				<a class="permalink" href="#OAuth2Ops">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+OAuth2Ops host the clientid/userid, and the timestamp when the OAuth call was last invoked.
+</p>
+
+			<pre>type OAuth2Ops struct {
+<span id="OAuth2Ops.ClientID"></span>    ClientID, UserID, Token, Scope <a href="/pkg/builtin/#string">string</a>
+<span id="OAuth2Ops.TimeStamp"></span>    TimeStamp                      <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OAuthCertLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=962:1031#L46">OAuthCertLocker</a>
+				<a class="permalink" href="#OAuthCertLocker">&#xb6;</a>
 				
 				
 			</h2>
 			
-			<pre>type OAuthLocker struct {
+			<pre>type OAuthCertLocker struct {
+    <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="OAuthCodeLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1130:1199#L52">OAuthCodeLocker</a>
+				<a class="permalink" href="#OAuthCodeLocker">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+OAuthLocker the structure contains a OAuth instance map and is protected by a mutex interface
+</p>
+
+			<pre>type OAuthCodeLocker struct {
     <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
     <span class="comment">// contains filtered or unexported fields</span>
 }
@@ -874,32 +936,6 @@ Agent HTTP Interface. Each of func below will be invoked during the OAuth2 mode 
 			<pre>type ProfileLocker struct {
     <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
     <span class="comment">// contains filtered or unexported fields</span>
-}
-</pre>
-
-			
-
-			
-
-			
-			
-			
-
-			
-
-			
-		
-			
-			
-			<h2 id="TokenDetail">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1928:2006#L73">TokenDetail</a>
-				<a class="permalink" href="#TokenDetail">&#xb6;</a>
-				
-				
-			</h2>
-			
-			<pre>type TokenDetail struct {
-<span id="TokenDetail.Status"></span>    Status *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>
-<span id="TokenDetail.Info"></span>    Info   *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#CertDetail">CertDetail</a>
 }
 </pre>
 
