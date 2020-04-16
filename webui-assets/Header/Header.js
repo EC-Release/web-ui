@@ -12,7 +12,7 @@ export default class Header extends React.Component {
     render() {
         /* jshint ignore:start */
         return (
-            <header>
+            <header className="rounded-0">
                 <div className="col-md-12">
                     <div className="row">
                         <div className="col-lg-6 ge-logo">

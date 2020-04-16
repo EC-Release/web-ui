@@ -15,7 +15,6 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
-                accountId: '',
                 subscriptionId: '',
                 serviceUri: '',
                 clientId: '',
@@ -41,7 +40,6 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         wrapper.setState({
             subscriptionForm:{
                 subscriptionName: { value: '', dirtyState: false },
-                accountId: { value: '', dirtyState: false },
                 subscriptionId: { value: '', dirtyState: false },
                 serviceUri: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
@@ -75,7 +73,6 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
-                accountId: '',
                 subscriptionId: '',
                 serviceUri: '',
                 clientId: '',
@@ -101,7 +98,6 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         wrapper.setState({
             subscriptionForm:{
                 subscriptionName: { value: '', dirtyState: false },
-                accountId: { value: '', dirtyState: false },
                 subscriptionId: { value: '', dirtyState: false },
                 serviceUri: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },

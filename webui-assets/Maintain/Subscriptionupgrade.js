@@ -36,204 +36,7 @@ export default class Subscriptionupgrade extends React.Component {
             if (response.status === 200) {
                 response.json().then((respData) => {
                     let subscriptions = respData.data;
-                    /*subscriptions = [
-                        {
-                              "accountId": "12341",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": true,
-                              "customer": "ec",
-                              "date": "2020/11/03",
-                              "env": "DEV",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service1.com",
-                              "subscriptionId": "123cd1",
-                              "subscriptionName": "ec test1",
-                              "uaaUrl": "https://uaa1.com",
-                              "uai": "none",
-                              "version": "1"
-                        },
-                        {
-                              "accountId": "12342",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": false,
-                              "customer": "ec",
-                              "date": "2020/12/03",
-                              "env": "TEST",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service2.com",
-                              "subscriptionId": "123cd2",
-                              "subscriptionName": "ec test2",
-                              "uaaUrl": "https://uaa2.com",
-                              "uai": "none",
-                              "version": "1"
-                        },
-                        {
-                              "accountId": "12343",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": true,
-                              "customer": "ec",
-                              "date": "2020/13/03",
-                              "env": "DEV",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service3.com",
-                              "subscriptionId": "123cd3",
-                              "subscriptionName": "ec test3",
-                              "uaaUrl": "https://uaa3.com",
-                              "uai": "none",
-                              "version": "1"
-                        },
-                        {
-                              "accountId": "12344",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": true,
-                              "customer": "ec",
-                              "date": "2020/12/3",
-                              "env": "DEV",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service4.com",
-                              "subscriptionId": "123cd4",
-                              "subscriptionName": "ec test4",
-                              "uaaUrl": "https://uaa4.com",
-                              "uai": "none",
-                              "version": "1"
-                        },
-                        {
-                              "accountId": "12345",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": true,
-                              "customer": "ec",
-                              "date": "2020/12/3",
-                              "env": "DEV",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service5.com",
-                              "subscriptionId": "123cd5",
-                              "subscriptionName": "ec test5",
-                              "uaaUrl": "https://uaa5.com",
-                              "uai": "none",
-                              "version": "1"
-                        },
-                        {
-                              "accountId": "12346",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": true,
-                              "customer": "ec",
-                              "date": "2020/12/3",
-                              "env": "DEV",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service5.com",
-                              "subscriptionId": "123cd6",
-                              "subscriptionName": "ec test6",
-                              "uaaUrl": "https://uaa5.com",
-                              "uai": "none",
-                              "version": "1"
-                        },
-                        {
-                              "accountId": "12347",
-                              "adminToken": "xyzxc",
-                              "app": "abc",
-                              "assetId": "123er",
-                              "bucAdn": "xbchd",
-                              "clientId": "ec-test",
-                              "clientSc": "ec-test",
-                              "cluster": "abc",
-                              "compliance": "none",
-                              "confidentiality": true,
-                              "customer": "ec",
-                              "date": "2020/12/3",
-                              "env": "DEV",
-                              "managementHostType": "none",
-                              "optInoptOut": true,
-                              "owner": "EC",
-                              "preserve": true,
-                              "project": "Test",
-                              "role": "Web",
-                              "security": "none",
-                              "serviceUri": "https://service7.com",
-                              "subscriptionId": "123cd7",
-                              "subscriptionName": "ec test7",
-                              "uaaUrl": "https://uaa7.com",
-                              "uai": "none",
-                              "version": "1"
-                        }
-                    ];*/
+
                     if (subscriptions === null) {
                         subscriptions = [];
                     }
@@ -333,16 +136,6 @@ export default class Subscriptionupgrade extends React.Component {
                 newDataObj.uaaUrlHiddenFlag = false;
             }
 
-            if (dataObj.accountId.length > 10) {
-                newDataObj.accountId = dataObj.accountId.substr(0, 10);
-                newDataObj.accountIdHidden = dataObj.accountId;
-                newDataObj.accountIdHiddenFlag = true;
-            }
-            else {
-                newDataObj.accountId = dataObj.accountId;
-                newDataObj.accountIdHiddenFlag = false;
-            }
-
             newTableData.push(newDataObj);
         }
 
@@ -398,14 +191,6 @@ export default class Subscriptionupgrade extends React.Component {
             newTableData[objectIndex] = copiedObjectToChange;
         }
 
-        else if (fieldName === 'accountId') {
-            let tempValue = copiedObjectToChange.accountId;
-            copiedObjectToChange.accountId = copiedObjectToChange.accountIdHidden;
-            copiedObjectToChange.accountIdHidden = tempValue;
-            copiedObjectToChange.accountIdHiddenFlag = !copiedObjectToChange.accountIdHiddenFlag;
-            newTableData[objectIndex] = copiedObjectToChange;
-        }
-
         this.setState({
             newTableData: newTableData
         });
@@ -425,7 +210,7 @@ export default class Subscriptionupgrade extends React.Component {
     filterByValue(myArray, string){
         let retArr = [];
         for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].subscriptionId.toLowerCase().includes(string.toLowerCase()) || myArray[i].serviceUri.toLowerCase().includes(string.toLowerCase()) || myArray[i].subscriptionName.toLowerCase().replace(/\s/g, "").includes(string.toLowerCase().replace(/\s/g, "")) || myArray[i].uaaUrl.toLowerCase().includes(string.toLowerCase()) || myArray[i].role.toLowerCase().includes(string.toLowerCase()) || myArray[i].accountId.toLowerCase().includes(string.toLowerCase())) {
+            if (myArray[i].subscriptionId.toLowerCase().includes(string.toLowerCase()) || myArray[i].serviceUri.toLowerCase().includes(string.toLowerCase()) || myArray[i].subscriptionName.toLowerCase().replace(/\s/g, "").includes(string.toLowerCase().replace(/\s/g, "")) || myArray[i].uaaUrl.toLowerCase().includes(string.toLowerCase()) || myArray[i].role.toLowerCase().includes(string.toLowerCase())) {
                 retArr.push(myArray[i]);
             }
         }
@@ -512,16 +297,6 @@ export default class Subscriptionupgrade extends React.Component {
                 newDataObj.uaaUrlHiddenFlag = false;
             }
 
-            if (dataObj.accountId.length > 10) {
-                newDataObj.accountId = dataObj.accountId.substr(0, 10);
-                newDataObj.accountIdHidden = dataObj.accountId;
-                newDataObj.accountIdHiddenFlag = true;
-            }
-            else {
-                newDataObj.accountId = dataObj.accountId;
-                newDataObj.accountIdHiddenFlag = false;
-            }
-
             newTableData.push(newDataObj);
         }
 
@@ -549,9 +324,6 @@ export default class Subscriptionupgrade extends React.Component {
         }
         if(editItem.uaaUrlHiddenFlag){
             editItem.uaaUrl = editItem.uaaUrlHidden;
-        }
-        if(editItem.accountIdHiddenFlag){
-            editItem.accountId = editItem.accountIdHidden;
         }
         window.destroyDataTable('subscriptionupgradeTable');
         this.setState({
@@ -660,8 +432,8 @@ export default class Subscriptionupgrade extends React.Component {
                                                     <th>Service Uri</th>
                                                     <th>Subscription Name</th>
                                                     <th>OAuth Provider</th>
+                                                    <th>Owner</th>
                                                     <th>Application Role</th>
-                                                    <th>Account ID</th>
                                                     <th>Actions</th>
                                                 </tr>
                                             </thead>
@@ -699,14 +471,10 @@ export default class Subscriptionupgrade extends React.Component {
                                                                     }
                                                                 </td>
                                                                 <td>
-                                                                    {tbodyVal.role}
+                                                                    {tbodyVal.owner}
                                                                 </td>
                                                                 <td>
-                                                                    {tbodyVal.accountId}&nbsp;&nbsp;
-                                                                    {tbodyVal.accountIdHiddenFlag ?
-                                                                        <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'accountId')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
-                                                                        null
-                                                                    }
+                                                                    {tbodyVal.role}
                                                                 </td>
                                                                 <td>
                                                                     <span className="action-img">

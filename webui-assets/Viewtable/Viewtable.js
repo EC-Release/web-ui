@@ -2,12 +2,14 @@ import React from "react";
 
 export default class Viewtable extends React.Component {
 
+    /* istanbul ignore next */
     componentDidMount(){
+        window.initTable('viewTable');
     }
 
     /* istanbul ignore next */
     componentDidUpdate(){
-        window.initTable('viewTable');
+        //window.initTable('viewTable');
     }
 
     render(){
