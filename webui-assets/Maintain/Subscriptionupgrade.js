@@ -36,7 +36,6 @@ export default class Subscriptionupgrade extends React.Component {
             if (response.status === 200) {
                 response.json().then((respData) => {
                     let subscriptions = respData.data;
-
                     if (subscriptions === null) {
                         subscriptions = [];
                     }
@@ -45,11 +44,11 @@ export default class Subscriptionupgrade extends React.Component {
                         for (let subscription of subscriptions) {
                             technicalTableData.push(subscription);
                         }
-                        this.generateTableStructure(technicalTableData, preserveState);
-                        this.setState({
-                            tableData: technicalTableData
-                        });
                     }
+                    this.generateTableStructure(technicalTableData, preserveState);
+                    this.setState({
+                        tableData: technicalTableData
+                    });
                 });
             }
             else {
