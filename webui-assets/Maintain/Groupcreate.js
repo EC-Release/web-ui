@@ -218,7 +218,7 @@ export default class Groupcreate extends React.Component {
         }, 2000);
 
         
-        fetch('https://reqres.in/api/users/2'/*, { //this.props.baseUrl + '/createGroup'
+        fetch(this.props.baseUrl + '/createGroup', { //this.props.baseUrl + '/createGroup'
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -226,12 +226,12 @@ export default class Groupcreate extends React.Component {
                 'Authorization': 'Bearer '+this.props.authToken
             },
             body: JSON.stringify(prepareData)
-        }*/)
+        })
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    //if(respData.errorStatus.status == 'ok'){
-                        setTimeout(()=> {
+                    if(respData.errorStatus.status == 'ok'){
+                        
                             let oldNewlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups"));
                             let findIndex = oldNewlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === prepareData.subscriptionId);
                             let allNewlyCreatedGroupsData = [...oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData];
@@ -239,14 +239,14 @@ export default class Groupcreate extends React.Component {
                             allNewlyCreatedGroupsData.splice(findGroupIndex, 1);
                             oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData = allNewlyCreatedGroupsData;
                             localStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
-                        }, 10000);
-                    /*}
+                    
+                    }
                     else{
                         this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
                         }, 2000);
-                    }*/
+                    }
 
                 });
             }

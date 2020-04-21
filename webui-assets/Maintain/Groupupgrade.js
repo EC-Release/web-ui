@@ -40,19 +40,20 @@ export default class Groupupgrade extends React.Component {
                                 this.generateTableStructure([]);
                             }
                             else{
-                                fetch('https://reqres.in/api/users/2'/*, { //this.props.baseUrl + '/groupList?subscriptionId='+selectedSubscriptionId
-                                    method: 'POST',
+                                fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+                                    method: 'GET',
                                     headers: {
                                         'Accept': 'application/json',
                                         'Content-Type': 'application/json',
                                         'Authorization': 'Bearer '+this.props.authToken
-                                    },
-                                    body: JSON.stringify(prepareData)
-                                }*/)
+                                    }
+                                
+                                })
                                 .then((response) => {
                                     if (response.status === 200) {
                                         response.json().then((respData) => {
-                                            respData = {
+                                            console.log(respData)
+                                            /*respData = {
                                                 data:[
                                                     {
                                                         groupId: 'fad66a52-8d59-4824-b96d-42564b68c711',
@@ -77,7 +78,7 @@ export default class Groupupgrade extends React.Component {
                                                     }
                                                 ],
                                                 errorStatus: {status: 'ok'}
-                                            };
+                                            };*/
                                             let data = respData.data;
                                             if(respData.errorStatus.status == 'ok'){
                                                 // check selectedSubscriptionId in createGroup localStorage and append it to data here
@@ -159,19 +160,19 @@ export default class Groupupgrade extends React.Component {
                 this.generateTableStructure([]);
             }
             else{
-                fetch('https://reqres.in/api/users/2'/*, { //this.props.baseUrl + '/groupList?subscriptionId='+selectedSubscriptionId
-                    method: 'POST',
+                fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+                    method: 'GET',
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json',
                         'Authorization': 'Bearer '+this.props.authToken
-                    },
-                    body: JSON.stringify(prepareData)
-                }*/)
+                    }
+                })
                 .then((response) => {
                     if (response.status === 200) {
                         response.json().then((respData) => {
-                            respData = {
+                            console.log(respData)
+                            /*respData = {
                                 data:[
                                     {
                                         groupId: 'fad66a52-8d59-4824-b96d-42564b68c711',
@@ -196,7 +197,7 @@ export default class Groupupgrade extends React.Component {
                                     }
                                 ],
                                 errorStatus: {status: 'ok'}
-                            };
+                            };*/
                             let data = respData.data;
                             if(respData.errorStatus.status == 'ok'){
                                 // check selectedSubscriptionId in createGroup localStorage and append it to data here
@@ -323,19 +324,19 @@ export default class Groupupgrade extends React.Component {
             this.generateTableStructure([]);
         }
         else{
-            fetch('https://reqres.in/api/users/2'/*, { //this.props.baseUrl + '/groupList?subscriptionId='+selectedSubscriptionId
-                method: 'POST',
+            fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+                method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer '+this.props.authToken
-                },
-                body: JSON.stringify(prepareData)
-            }*/)
+                }
+            })
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        respData = {
+                        console.log(respData)
+                        /*respData = {
                             data:[
                                 {
                                     groupId: 'fad66a52-8d59-4824-b96d-42564b68c711',
@@ -360,7 +361,7 @@ export default class Groupupgrade extends React.Component {
                                 }
                             ],
                             errorStatus:{status: 'ok'}
-                        };
+                        };*/
                         let data = respData.data;
                         if(respData.errorStatus.status == 'ok'){
                             // check selectedSubscriptionId in createGroup localStorage and append it to data here
@@ -455,11 +456,12 @@ export default class Groupupgrade extends React.Component {
 
     /* istanbul ignore next */
     deleteData(tbodyVal, rowIndex) {
+        console.log(rowIndex)
         let cnf = window.confirm('Are you sure you want to delete');
         if (cnf) {
             let groupId = tbodyVal.groupId;
             this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
-            fetch(this.props.baseUrl + '/deleteGroup?groupID='+groupId, {
+            fetch(this.props.baseUrl + '/deleteGroup?groupID='+groupId+'&subscriptionID='+this.state.selectedSubscriptionId , {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -556,7 +558,7 @@ export default class Groupupgrade extends React.Component {
                                     <tbody>
                                     {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
                                         return(
-                                            <tr key={'groupupgradeTableTbodyTr_'+tbodyIndex}>
+                                            <tr key={'groupupgradeTableTbodyTr_'+tbodyIndex} id={'groupupgradeTableTbodyTr_'+tbodyIndex}>
                                                 
                                                 <td>{ tbodyVal.groupId }</td>
                                                 <td>{ tbodyVal.aid }</td>
