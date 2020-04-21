@@ -28,7 +28,7 @@ export default class Navbar extends React.Component {
                                 View
                             </a>
                         </li>
-                        <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' || this.props.currentView === 'Subscriptioncreate' || this.props.currentView === 'Subscriptionupgrade' ? "nav-item dropdown active" : "nav-item dropdown"}>
+                        <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' || this.props.currentView === 'Subscriptioncreate' || this.props.currentView === 'Subscriptionupgrade' || this.props.currentView === 'Groupcreate' || this.props.currentView === 'Groupupgrade' ? "nav-item dropdown active" : "nav-item dropdown"}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/maintain_icon.svg'} alt="nav-maintain" />
                                 Maintain 
@@ -36,7 +36,7 @@ export default class Navbar extends React.Component {
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li className="dropdown-submenu">
                                     <a id="nav-subscription" className="dropdown-item" href="#">
-                                        Subscription
+                                        Subscriptions
                                     </a>
                                     <ul className="dropdown-menu">
                                         <li>
@@ -48,24 +48,37 @@ export default class Navbar extends React.Component {
                                     </ul>
                                 </li>
                                 <li className="dropdown-submenu">
+                                    <a id="nav-group" className="dropdown-item" href="#">
+                                        Groups
+                                    </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <a id="nav-group-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Groupcreate')} href="#">Create</a>
+                                        </li>
+                                        <li>
+                                            <a id="nav-group-view-delete" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Groupupgrade')} href="#">View/Delete</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li className="dropdown-submenu">
                                     <a id="nav-agent" className="dropdown-item" href="#">
-                                        Agent
+                                        Agents
                                     </a>
                                     <ul className="dropdown-menu">
                                         <li>
                                             <a id="nav-agent-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentcreate')} href="#">Create</a>
                                         </li>
-                                        <li>
+                                        {/*<li>
                                             <a id="nav-agent-update-disable" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentupgrade')} href="#">Update/Disable</a>
                                         </li>
                                         <li>
                                             <a id="nav-agent-view" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentview')} href="#">View</a>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </li>
                                 <li className="dropdown-submenu">
                                     <a className="dropdown-item" href="#">
-                                        Watcher
+                                        Watchers
                                     </a>
                                     <ul className="dropdown-menu">
                                         <li>

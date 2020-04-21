@@ -279,7 +279,7 @@
         height: 450px;
       }
 
-      .Maintainagentupgrade .centered-div, .Maintainagentview .centered-div, .Subscriptionupgrade .centered-div{
+      .Maintainagentupgrade .centered-div, .Maintainagentview .centered-div, .Subscriptionupgrade .centered-div, .Groupupgrade .centered-div{
         height: 300px;
       }
 
@@ -291,7 +291,7 @@
         font-size: small;
       }
 
-      .view-header div:first-child, .Maintainagentcreate, .Subscriptioncreate{
+      .view-header div:first-child, .Maintainagentcreate, .Subscriptioncreate, .Groupcreate{
         text-align: left;
       }
 
@@ -406,6 +406,10 @@
         border-bottom: 1px solid #ebeced;
         font-weight: 500;
         border-top: 0px;
+      }
+
+      .dataTables_wrapper.no-footer .dataTables_scrollBody{
+        border-bottom: 1px solid #ebeced;
       }
 
       .tab-pane{
@@ -587,7 +591,7 @@
         color: #8f9ca9;
       }
 
-      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div, .Subscriptionupgrade .centered-div{
+      .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div, .Subscriptionupgrade .centered-div, .Groupupgrade .centered-div{
         max-height: 450px;
         /*overflow-y: scroll;*/
         font-size: small;
@@ -597,11 +601,11 @@
         margin: 0px 0px;
       }
 
-      .Maintainagentview .search-field, .Maintainagentupgrade .search-field, .Subscriptionupgrade .search-field{
+      .Maintainagentview .search-field, .Maintainagentupgrade .search-field, .Subscriptionupgrade .search-field, .Groupupgrade .search-field{
         width: 80%;
       }
 
-      .Maintainagentview button.disabled, .Maintainagentupgrade button.disabled, .Subscriptionupgrade button.disabled{
+      .Maintainagentview button.disabled, .Maintainagentupgrade button.disabled, .Subscriptionupgrade button.disabled, .Groupupgrade button.disabled{
         opacity: inherit;
         cursor: auto;
       }
@@ -787,6 +791,53 @@
         border-radius: 0 !important;
       }
 
+      /*Cookie Consent Begin*/
+      #cookieConsent {
+          text-align: left;
+          background-color: rgba(20,20,20,0.8);
+          min-height: 26px;
+          font-size: 14px;
+          color: #ccc;
+          line-height: 26px;
+          padding: 8px 0 8px 30px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          display: none;
+          z-index: 9999;
+          position: absolute;
+      }
+      #cookieConsent a {
+          color: #4B8EE7;
+          text-decoration: none;
+      }
+      #closeCookieConsent {
+          float: right;
+          display: inline-block;
+          cursor: pointer;
+          height: 20px;
+          width: 20px;
+          margin: -15px 0 0 0;
+          font-weight: bold;
+      }
+      #closeCookieConsent:hover {
+          color: #FFF;
+      }
+      #cookieConsent a.cookieConsentOK {
+          background-color: #F1D600;
+          color: #000;
+          display: inline-block;
+          border-radius: 5px;
+          padding: 0 20px;
+          cursor: pointer;
+          float: right;
+          margin: 0 60px 0 10px;
+      }
+      #cookieConsent a.cookieConsentOK:hover {
+          background-color: #E0C91F;
+      }
+      /*Cookie Consent End*/
+
       @media (max-width: 991px) {
         .ge-logo, .header-profile {
           text-align: center;
@@ -829,7 +880,7 @@
     </div>
       <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>

@@ -19,16 +19,24 @@ describe('Testing from Technicalview.test.js <Technicalview />', () => {
     });
 
     it('should render Treelist component only once', () => {
+        const graph = {nodes: [{key: 'value'}]};
+        const treeValue = [{key: 'value'}];
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Technicalview showHideTableTdData={()=>{}} goToSearch={()=>{}} />, { disableLifecycleMethods: true });
-        wrapper.setState({ loadTreeJs: true });
+        wrapper.setState({ loadTreeJs: true});
+        wrapper.setState({ graph: graph });
+        wrapper.setState({ treeValue: treeValue });
         expect(wrapper.find(Treelist).length).toBe(1);
     });
 
     it('should render Topologygraph component only once', () => {
+        const graph = {nodes: [{key: 'value'}]};
+        const treeValue = [{key: 'value'}];
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Technicalview showHideTableTdData={()=>{}} goToSearch={()=>{}} />, { disableLifecycleMethods: true });
-        wrapper.setState({ loadTreeJs: true });
+        wrapper.setState({ loadTreeJs: true});
+        wrapper.setState({ graph: graph });
+        wrapper.setState({ treeValue: treeValue });
         expect(wrapper.find(Topologygraph).length).toBe(1);
     });
 });
