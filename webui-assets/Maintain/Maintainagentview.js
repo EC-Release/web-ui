@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 /*const MOCK_TABLE_DATA = [
     {
