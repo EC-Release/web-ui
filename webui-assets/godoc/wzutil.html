@@ -194,6 +194,9 @@
 				<dd><a href="#GetCurrentIPAddrs">func GetCurrentIPAddrs() (ips []net.IP)</a></dd>
 			
 				
+				<dd><a href="#GetCurrentPrompt">func GetCurrentPrompt(devId, instId, cpath string) string</a></dd>
+			
+				
 				<dd><a href="#GetEnv">func GetEnv() *model.Env</a></dd>
 			
 				
@@ -204,6 +207,9 @@
 			
 				
 				<dd><a href="#GetPath">func GetPath(paths []string) string</a></dd>
+			
+				
+				<dd><a href="#GetWinSize">func GetWinSize() (w string, h string)</a></dd>
 			
 				
 				<dd><a href="#HEADER_AUTH">func HEADER_AUTH() string</a></dd>
@@ -236,6 +242,9 @@
 				<dd><a href="#Init">func Init(cp string, dbg bool)</a></dd>
 			
 				
+				<dd><a href="#InitPtyWinsize">func InitPtyWinsize(w, h string) *pty.Winsize</a></dd>
+			
+				
 				<dd><a href="#InitSystemCltDetails">func InitSystemCltDetails(r *model.Report, ver string, aid string, rd []*model.RequestDetail, c []*model.ClientSession) *model.SystemClt</a></dd>
 			
 				
@@ -249,6 +258,9 @@
 			
 				
 				<dd><a href="#InitSystemSrvDetails">func InitSystemSrvDetails(r *model.Report, s []*model.ServerPool, l []*model.ServerSConnList, ver string, aid string, gurl, refId string) *model.SystemSrv</a></dd>
+			
+				
+				<dd><a href="#InitXTermClient">func InitXTermClient(devId, instId string, exeCB ExeCB) error</a></dd>
 			
 				
 				<dd><a href="#InterfaceConversion">func InterfaceConversion(_cv map[interface{}]interface{}) map[string]interface{}</a></dd>
@@ -508,6 +520,11 @@
 				
 			
 				
+				<dd><a href="#ExeCB">type ExeCB</a></dd>
+				
+				
+			
+				
 				<dd><a href="#IpFilter">type IpFilter</a></dd>
 				
 				
@@ -565,6 +582,48 @@
 					<dd>&nbsp; &nbsp; <a href="#PGPObj.ValidateSignature">func (p *PGPObj) ValidateSignature(fi string) error</a></dd>
 				
 			
+				
+				<dd><a href="#StreamIntr">type StreamIntr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#XTermClient">type XTermClient</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Close">func (xtc *XTermClient) Close() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Read">func (xtc *XTermClient) Read(_b []byte) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.SetDeadline">func (xtc *XTermClient) SetDeadline(t time.Time) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Write">func (xtc *XTermClient) Write(_b []byte) (int, error)</a></dd>
+				
+			
+				
+				<dd><a href="#XTermServer">type XTermServer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewXTermServer">func NewXTermServer(width, height, cmd string) (*XTermServer, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Close">func (xts *XTermServer) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Read">func (xts *XTermServer) Read(_b []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.SetDeadline">func (xtc *XTermServer) SetDeadline(t time.Time) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Write">func (xts *XTermServer) Write(_b []byte) (int, error)</a></dd>
+				
+			
 			
 			</dl>
 			</div><!-- #manual-nav -->
@@ -587,6 +646,10 @@
 				<a href="/src/github.build.ge.com/212359746/wzutil/pgp.go">pgp.go</a>
 			
 				<a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go">wzutil.go</a>
+			
+				<a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go">xterm-client.go</a>
+			
+				<a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go">xterm-server.go</a>
 			
 			</span>
 			</p>
@@ -723,7 +786,7 @@
 		
 			
 			
-			<h2 id="BcryptComp">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59717:59753#L1803">BcryptComp</a>
+			<h2 id="BcryptComp">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59557:59593#L1803">BcryptComp</a>
 				<a class="permalink" href="#BcryptComp">&#xb6;</a>
 				
 				
@@ -739,7 +802,7 @@ BcryptComp compares given@pw is pwd in plaintext, and @d is pwd in bcrypt hash
 		
 			
 			
-			<h2 id="BcryptHash">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59926:59974#L1814">BcryptHash</a>
+			<h2 id="BcryptHash">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59766:59814#L1814">BcryptHash</a>
 				<a class="permalink" href="#BcryptHash">&#xb6;</a>
 				
 				
@@ -808,7 +871,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="ClearMemory">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=60078:60104#L1821">ClearMemory</a>
+			<h2 id="ClearMemory">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=59918:59944#L1821">ClearMemory</a>
 				<a class="permalink" href="#ClearMemory">&#xb6;</a>
 				
 				
@@ -990,7 +1053,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="GeneratePassphrase">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67663:67703#L2158">GeneratePassphrase</a>
+			<h2 id="GeneratePassphrase">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67503:67543#L2158">GeneratePassphrase</a>
 				<a class="permalink" href="#GeneratePassphrase">&#xb6;</a>
 				
 				
@@ -1009,6 +1072,19 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 				
 			</h2>
 			<pre>func GetCurrentIPAddrs() (ips []<a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetCurrentPrompt">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=529:583#L27">GetCurrentPrompt</a>
+				<a class="permalink" href="#GetCurrentPrompt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetCurrentPrompt(devId, instId, cpath <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
 			
 			
 			
@@ -1065,6 +1141,19 @@ setting in the environment variable to the current process
 				
 			</h2>
 			<pre>func GetPath(paths []<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetWinSize">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=272:309#L14">GetWinSize</a>
+				<a class="permalink" href="#GetWinSize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetWinSize() (w <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/builtin/#string">string</a>)</pre>
 			
 			
 			
@@ -1205,6 +1294,19 @@ getting the current instance index indicator
 		
 			
 			
+			<h2 id="InitPtyWinsize">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=165:210#L9">InitPtyWinsize</a>
+				<a class="permalink" href="#InitPtyWinsize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitPtyWinsize(w, h <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.com/creack/pty/">pty</a>.<a href="/pkg/github.com/creack/pty/#Winsize">Winsize</a></pre>
+			
+			
+			
+
+		
+			
+			
 			<h2 id="InitSystemCltDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=11473:11610#L491">InitSystemCltDetails</a>
 				<a class="permalink" href="#InitSystemCltDetails">&#xb6;</a>
 				
@@ -1264,6 +1366,22 @@ getting the current instance index indicator
 			</h2>
 			<pre>func InitSystemSrvDetails(r *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, s []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerPool">ServerPool</a>, l []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SystemSrv">SystemSrv</a></pre>
 			
+			
+			
+
+		
+			
+			
+			<h2 id="InitXTermClient">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=1495:1555#L55">InitXTermClient</a>
+				<a class="permalink" href="#InitXTermClient">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitXTermClient(devId, instId <a href="/pkg/builtin/#string">string</a>, exeCB <a href="#ExeCB">ExeCB</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+InitXTermClient launches the xterm simulator with the prompt format of target @@devId and @@instId. The callback @@exeCB will be invoked on each command line @@cmd ended with the line break.
+</p>
+
 			
 			
 
@@ -1524,7 +1642,7 @@ within the zip file (parameter 1) to an output directory (parameter 2).
 		
 			
 			
-			<h2 id="ValidateTokenExp">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=79665:79712#L2719">ValidateTokenExp</a>
+			<h2 id="ValidateTokenExp">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=79505:79552#L2719">ValidateTokenExp</a>
 				<a class="permalink" href="#ValidateTokenExp">&#xb6;</a>
 				
 				
@@ -1554,7 +1672,7 @@ ValidateTokenExp only validate the expiration of the token, it does not garantee
 		
 			
 			
-			<h2 id="Cert">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=23673:24406#L127">Cert</a>
+			<h2 id="Cert">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=23513:24246#L127">Cert</a>
 				<a class="permalink" href="#Cert">&#xb6;</a>
 				
 				
@@ -1583,7 +1701,7 @@ ValidateTokenExp only validate the expiration of the token, it does not garantee
 
 			
 				
-				<h3 id="NewCert">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=48867:48905#L1349">NewCert</a>
+				<h3 id="NewCert">func <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=48707:48745#L1349">NewCert</a>
 					<a class="permalink" href="#NewCert">&#xb6;</a>
 					
 					
@@ -1599,7 +1717,7 @@ create a cert instance with a custom revision
 
 			
 				
-				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=49222:49287#L1369">AgentCertVerify</a>
+				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=49062:49127#L1369">AgentCertVerify</a>
 					<a class="permalink" href="#Cert.AgentCertVerify">&#xb6;</a>
 					
 					
@@ -1616,7 +1734,7 @@ The function is made to verify
 				
 			
 				
-				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=41241:41352#L998">CRTRenewing</a>
+				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=41081:41192#L998">CRTRenewing</a>
 					<a class="permalink" href="#Cert.CRTRenewing">&#xb6;</a>
 					
 					
@@ -1631,7 +1749,7 @@ uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppw
 				
 			
 				
-				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=39702:39789#L912">CSRSelfSigning</a>
+				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=39542:39629#L912">CSRSelfSigning</a>
 					<a class="permalink" href="#Cert.CSRSelfSigning">&#xb6;</a>
 					
 					
@@ -1643,7 +1761,7 @@ uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppw
 				
 			
 				
-				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=40337:40446#L948">CSRSigning</a>
+				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=40177:40286#L948">CSRSigning</a>
 					<a class="permalink" href="#Cert.CSRSigning">&#xb6;</a>
 					
 					
@@ -1658,7 +1776,7 @@ uid must be provisioned for the signee&#39;s csr. cert,ppvk,ppwd all refer to th
 				
 			
 				
-				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=42175:42293#L1050">CreateSelfSignedCert</a>
+				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=42015:42133#L1050">CreateSelfSignedCert</a>
 					<a class="permalink" href="#Cert.CreateSelfSignedCert">&#xb6;</a>
 					
 					
@@ -1673,7 +1791,7 @@ for embedded root cert in the agent
 				
 			
 				
-				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=36881:36937#L754">CreateSignatureByPvkStr</a>
+				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=36721:36777#L754">CreateSignatureByPvkStr</a>
 					<a class="permalink" href="#Cert.CreateSignatureByPvkStr">&#xb6;</a>
 					
 					
@@ -1689,7 +1807,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=43601:43767#L1104">CreateSignedCert</a>
+				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=43441:43607#L1104">CreateSignedCert</a>
 					<a class="permalink" href="#Cert.CreateSignedCert">&#xb6;</a>
 					
 					
@@ -1701,7 +1819,7 @@ create the signature (sha256) based on the given data by the preloaded private k
 				
 			
 				
-				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=72781:72827#L2408">Decrypt</a>
+				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=72621:72667#L2408">Decrypt</a>
 					<a class="permalink" href="#Cert.Decrypt">&#xb6;</a>
 					
 					
@@ -1716,7 +1834,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=26485:26537#L269">DecryptFile</a>
+				<h3 id="Cert.DecryptFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=26325:26377#L269">DecryptFile</a>
 					<a class="permalink" href="#Cert.DecryptFile">&#xb6;</a>
 					
 					
@@ -1728,7 +1846,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptFileByKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=26243:26310#L255">DecryptFileByKeypair</a>
+				<h3 id="Cert.DecryptFileByKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=26083:26150#L255">DecryptFileByKeypair</a>
 					<a class="permalink" href="#Cert.DecryptFileByKeypair">&#xb6;</a>
 					
 					
@@ -1740,7 +1858,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=38147:38209#L814">DecryptOneShotByBase64PvkStr</a>
+				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=37987:38049#L814">DecryptOneShotByBase64PvkStr</a>
 					<a class="permalink" href="#Cert.DecryptOneShotByBase64PvkStr">&#xb6;</a>
 					
 					
@@ -1755,7 +1873,7 @@ Decrypt the given @_da token and return uuid string based on the preloaded priva
 				
 			
 				
-				<h3 id="Cert.DecryptString">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=26689:26749#L282">DecryptString</a>
+				<h3 id="Cert.DecryptString">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=26529:26589#L282">DecryptString</a>
 					<a class="permalink" href="#Cert.DecryptString">&#xb6;</a>
 					
 					
@@ -1767,7 +1885,7 @@ Decrypt the given @_da token and return uuid string based on the preloaded priva
 				
 			
 				
-				<h3 id="Cert.DecryptToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=73124:73176#L2423">DecryptToken</a>
+				<h3 id="Cert.DecryptToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=72964:73016#L2423">DecryptToken</a>
 					<a class="permalink" href="#Cert.DecryptToken">&#xb6;</a>
 					
 					
@@ -1782,7 +1900,7 @@ DecryptString will decrypt the string part of the product of the EncryptV2 by th
 				
 			
 				
-				<h3 id="Cert.EncryptFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=25330:25382#L204">EncryptFile</a>
+				<h3 id="Cert.EncryptFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=25170:25222#L204">EncryptFile</a>
 					<a class="permalink" href="#Cert.EncryptFile">&#xb6;</a>
 					
 					
@@ -1794,7 +1912,7 @@ DecryptString will decrypt the string part of the product of the EncryptV2 by th
 				
 			
 				
-				<h3 id="Cert.EncryptFileByKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=25576:25656#L216">EncryptFileByKeypair</a>
+				<h3 id="Cert.EncryptFileByKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=25416:25496#L216">EncryptFileByKeypair</a>
 					<a class="permalink" href="#Cert.EncryptFileByKeypair">&#xb6;</a>
 					
 					
@@ -1809,7 +1927,7 @@ EncryptFileByKeypair produces the encrypt file, a pairkey, and the signature
 				
 			
 				
-				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=36054:36107#L715">EncryptOneShotByBase64CertStr</a>
+				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=35894:35947#L715">EncryptOneShotByBase64CertStr</a>
 					<a class="permalink" href="#Cert.EncryptOneShotByBase64CertStr">&#xb6;</a>
 					
 					
@@ -1824,7 +1942,7 @@ Encrypt a uuid-based string (_da) based on the preloaded cert.
 				
 			
 				
-				<h3 id="Cert.EncryptString">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=25091:25151#L193">EncryptString</a>
+				<h3 id="Cert.EncryptString">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24931:24991#L193">EncryptString</a>
 					<a class="permalink" href="#Cert.EncryptString">&#xb6;</a>
 					
 					
@@ -1836,7 +1954,7 @@ Encrypt a uuid-based string (_da) based on the preloaded cert.
 				
 			
 				
-				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71701:71742#L2341">EncryptV2</a>
+				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71541:71582#L2341">EncryptV2</a>
 					<a class="permalink" href="#Cert.EncryptV2">&#xb6;</a>
 					
 					
@@ -1851,7 +1969,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57767:57855#L1725">GenerateCRTFile</a>
+				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57607:57695#L1725">GenerateCRTFile</a>
 					<a class="permalink" href="#Cert.GenerateCRTFile">&#xb6;</a>
 					
 					
@@ -1863,7 +1981,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=55727:55792#L1636">GenerateCSR</a>
+				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=55567:55632#L1636">GenerateCSR</a>
 					<a class="permalink" href="#Cert.GenerateCSR">&#xb6;</a>
 					
 					
@@ -1875,7 +1993,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57470:57545#L1714">GenerateCSRFile</a>
+				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=57310:57385#L1714">GenerateCSRFile</a>
 					<a class="permalink" href="#Cert.GenerateCSRFile">&#xb6;</a>
 					
 					
@@ -1887,7 +2005,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58558:58634#L1759">GeneratePVKFile</a>
+				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=58398:58474#L1759">GeneratePVKFile</a>
 					<a class="permalink" href="#Cert.GeneratePVKFile">&#xb6;</a>
 					
 					
@@ -1899,7 +2017,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=80781:80816#L2772">GetBearToken</a>
+				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=80621:80656#L2772">GetBearToken</a>
 					<a class="permalink" href="#Cert.GetBearToken">&#xb6;</a>
 					
 					
@@ -1911,7 +2029,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63635:63677#L1998">GetCertDetail</a>
+				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63475:63517#L1998">GetCertDetail</a>
 					<a class="permalink" href="#Cert.GetCertDetail">&#xb6;</a>
 					
 					
@@ -1923,7 +2041,7 @@ encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=78376:78431#L2660">GetDecryptedPrivateKey</a>
+				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=78216:78271#L2660">GetDecryptedPrivateKey</a>
 					<a class="permalink" href="#Cert.GetDecryptedPrivateKey">&#xb6;</a>
 					
 					
@@ -1938,7 +2056,7 @@ Print decrypted private key by passing the base64 excrypted private key (pk) and
 				
 			
 				
-				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24538:24569#L162">GetDevID</a>
+				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24378:24409#L162">GetDevID</a>
 					<a class="permalink" href="#Cert.GetDevID">&#xb6;</a>
 					
 					
@@ -1953,7 +2071,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63191:63231#L1979">GetExtensions</a>
+				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=63031:63071#L1979">GetExtensions</a>
 					<a class="permalink" href="#Cert.GetExtensions">&#xb6;</a>
 					
 					
@@ -1965,7 +2083,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetHashedPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=69239:69289#L2221">GetHashedPassphrase</a>
+				<h3 id="Cert.GetHashedPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=69079:69129#L2221">GetHashedPassphrase</a>
 					<a class="permalink" href="#Cert.GetHashedPassphrase">&#xb6;</a>
 					
 					
@@ -1980,7 +2098,7 @@ get unaltered hashed passphrase from the folder
 				
 			
 				
-				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62871:62917#L1965">GetScopeList</a>
+				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62711:62757#L1965">GetScopeList</a>
 					<a class="permalink" href="#Cert.GetScopeList">&#xb6;</a>
 					
 					
@@ -1992,7 +2110,7 @@ get unaltered hashed passphrase from the folder
 				
 			
 				
-				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=70108:70170#L2262">GetTLSConfigFromBase64Keys</a>
+				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=69948:70010#L2262">GetTLSConfigFromBase64Keys</a>
 					<a class="permalink" href="#Cert.GetTLSConfigFromBase64Keys">&#xb6;</a>
 					
 					
@@ -2007,7 +2125,7 @@ getting the tls.Config pair for the tls-secured calls
 				
 			
 				
-				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75412:75453#L2537">HexRootCert</a>
+				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=75252:75293#L2537">HexRootCert</a>
 					<a class="permalink" href="#Cert.HexRootCert">&#xb6;</a>
 					
 					
@@ -2019,7 +2137,7 @@ getting the tls.Config pair for the tls-secured calls
 				
 			
 				
-				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62111:62167#L1921">LoadKeypair</a>
+				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=61951:62007#L1921">LoadKeypair</a>
 					<a class="permalink" href="#Cert.LoadKeypair">&#xb6;</a>
 					
 					
@@ -2035,7 +2153,7 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68544:68596#L2179">LoadPrivateKey</a>
+				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=68384:68436#L2179">LoadPrivateKey</a>
 					<a class="permalink" href="#Cert.LoadPrivateKey">&#xb6;</a>
 					
 					
@@ -2051,7 +2169,7 @@ with passphrase
 				
 			
 				
-				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66284:66353#L2085">LoadPublicCrt</a>
+				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66124:66193#L2085">LoadPublicCrt</a>
 					<a class="permalink" href="#Cert.LoadPublicCrt">&#xb6;</a>
 					
 					
@@ -2063,7 +2181,7 @@ with passphrase
 				
 			
 				
-				<h3 id="Cert.LoadSavedKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=61304:61342#L1883">LoadSavedKeypair</a>
+				<h3 id="Cert.LoadSavedKeypair">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=61144:61182#L1883">LoadSavedKeypair</a>
 					<a class="permalink" href="#Cert.LoadSavedKeypair">&#xb6;</a>
 					
 					
@@ -2078,7 +2196,7 @@ load the saved keypair for the current cert object
 				
 			
 				
-				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=70951:71009#L2304">ParseCRT</a>
+				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=70791:70849#L2304">ParseCRT</a>
 					<a class="permalink" href="#Cert.ParseCRT">&#xb6;</a>
 					
 					
@@ -2093,7 +2211,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71251:71316#L2319">ParseCSR</a>
+				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=71091:71156#L2319">ParseCSR</a>
 					<a class="permalink" href="#Cert.ParseCSR">&#xb6;</a>
 					
 					
@@ -2105,7 +2223,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.RefreshRootSecretByToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66771:66840#L2108">RefreshRootSecretByToken</a>
+				<h3 id="Cert.RefreshRootSecretByToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66611:66680#L2108">RefreshRootSecretByToken</a>
 					<a class="permalink" href="#Cert.RefreshRootSecretByToken">&#xb6;</a>
 					
 					
@@ -2117,7 +2235,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.RegisterPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=67153:67204#L2127">RegisterPassphrase</a>
+				<h3 id="Cert.RegisterPassphrase">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=66993:67044#L2127">RegisterPassphrase</a>
 					<a class="permalink" href="#Cert.RegisterPassphrase">&#xb6;</a>
 					
 					
@@ -2134,7 +2252,7 @@ return the plaintext passphrase.
 				
 			
 				
-				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=30985:31006#L477">Renew</a>
+				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=30825:30846#L477">Renew</a>
 					<a class="permalink" href="#Cert.Renew">&#xb6;</a>
 					
 					
@@ -2146,7 +2264,7 @@ return the plaintext passphrase.
 				
 			
 				
-				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=45903:46050#L1209">RenewSignedCert</a>
+				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=45743:45890#L1209">RenewSignedCert</a>
 					<a class="permalink" href="#Cert.RenewSignedCert">&#xb6;</a>
 					
 					
@@ -2158,7 +2276,7 @@ return the plaintext passphrase.
 				
 			
 				
-				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=51019:51042#L1454">Request</a>
+				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=50859:50882#L1454">Request</a>
 					<a class="permalink" href="#Cert.Request">&#xb6;</a>
 					
 					
@@ -2170,7 +2288,7 @@ return the plaintext passphrase.
 				
 			
 				
-				<h3 id="Cert.SetRawPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24735:24778#L172">SetRawPrivateKey</a>
+				<h3 id="Cert.SetRawPrivateKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24575:24618#L172">SetRawPrivateKey</a>
 					<a class="permalink" href="#Cert.SetRawPrivateKey">&#xb6;</a>
 					
 					
@@ -2185,7 +2303,7 @@ save raw privatekey base64 string for validation
 				
 			
 				
-				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=27414:27434#L321">Sign</a>
+				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=27254:27274#L321">Sign</a>
 					<a class="permalink" href="#Cert.Sign">&#xb6;</a>
 					
 					
@@ -2197,7 +2315,7 @@ save raw privatekey base64 string for validation
 				
 			
 				
-				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=79000:79056#L2693">ValidateClientCreds</a>
+				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=78840:78896#L2693">ValidateClientCreds</a>
 					<a class="permalink" href="#Cert.ValidateClientCreds">&#xb6;</a>
 					
 					
@@ -2212,7 +2330,7 @@ ValidateClientCreds validate the @@cid and @csc combine and enable token generat
 				
 			
 				
-				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62634:62678#L1949">ValidateScope</a>
+				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=62474:62518#L1949">ValidateScope</a>
 					<a class="permalink" href="#Cert.ValidateScope">&#xb6;</a>
 					
 					
@@ -2224,7 +2342,7 @@ ValidateClientCreds validate the @@cid and @csc combine and enable token generat
 				
 			
 				
-				<h3 id="Cert.ValidateSignatureByPublicKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24808:24882#L176">ValidateSignatureByPublicKey</a>
+				<h3 id="Cert.ValidateSignatureByPublicKey">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=24648:24722#L176">ValidateSignatureByPublicKey</a>
 					<a class="permalink" href="#Cert.ValidateSignatureByPublicKey">&#xb6;</a>
 					
 					
@@ -2236,7 +2354,7 @@ ValidateClientCreds validate the @@cid and @csc combine and enable token generat
 				
 			
 				
-				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=80125:80185#L2740">ValidateToken</a>
+				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=79965:80025#L2740">ValidateToken</a>
 					<a class="permalink" href="#Cert.ValidateToken">&#xb6;</a>
 					
 					
@@ -2253,7 +2371,7 @@ ValidateToken validate against the expiration, and the overall authenticity of t
 		
 			
 			
-			<h2 id="CertDetail">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=21956:22689#L83">CertDetail</a>
+			<h2 id="CertDetail">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=21796:22529#L83">CertDetail</a>
 				<a class="permalink" href="#CertDetail">&#xb6;</a>
 				
 				
@@ -2291,7 +2409,7 @@ ValidateToken validate against the expiration, and the overall authenticity of t
 		
 			
 			
-			<h2 id="CertExts">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=22691:22846#L100">CertExts</a>
+			<h2 id="CertExts">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=22531:22686#L100">CertExts</a>
 				<a class="permalink" href="#CertExts">&#xb6;</a>
 				
 				
@@ -2319,7 +2437,7 @@ ValidateToken validate against the expiration, and the overall authenticity of t
 		
 			
 			
-			<h2 id="CertReqInfo">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=22848:23671#L107">CertReqInfo</a>
+			<h2 id="CertReqInfo">type <a href="/src/github.build.ge.com/212359746/wzutil/cert.go?s=22688:23511#L107">CertReqInfo</a>
 				<a class="permalink" href="#CertReqInfo">&#xb6;</a>
 				
 				
@@ -2489,6 +2607,31 @@ a properties file. This feature i createddd for k8s configmap conversion purpose
 				
 				
 				
+			
+		
+			
+			
+			<h2 id="ExeCB">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=1266:1299#L52">ExeCB</a>
+				<a class="permalink" href="#ExeCB">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ExeCB used as a callback contains the @@widthx@@height of the xterm. The callback will be invoked on each command line @@cmd ended with the line break.
+</p>
+
+			<pre>type ExeCB func(xtc *<a href="#XTermClient">XTermClient</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
 			
 		
 			
@@ -2733,6 +2876,202 @@ EncryptFileByRSAPrivateKey use the RSA private key to encrypt the file.
 					
 				</h3>
 				<pre>func (p *<a href="#PGPObj">PGPObj</a>) ValidateSignature(fi <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StreamIntr">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=142:270#L7">StreamIntr</a>
+				<a class="permalink" href="#StreamIntr">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type StreamIntr interface {
+    Read([]<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+    Write([]<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+    SetDeadline(<a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) <a href="/pkg/builtin/#error">error</a>
+    Close() <a href="/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="XTermClient">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=958:1108#L43">XTermClient</a>
+				<a class="permalink" href="#XTermClient">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+XTermClient implemented StreamIntr interface for two-way-binding at requster&#39;s end
+</p>
+
+			<pre>type XTermClient struct {
+<span id="XTermClient.DevId"></span>    DevId, InstId, Cmd,
+    Width, Height <a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="XTermClient.Close">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2930:2973#L136">Close</a>
+					<a class="permalink" href="#XTermClient.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Close() (err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.Read">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2657:2715#L123">Read</a>
+					<a class="permalink" href="#XTermClient.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Read(_b []<a href="/pkg/builtin/#byte">byte</a>) (n <a href="/pkg/builtin/#int">int</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.SetDeadline">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2826:2886#L131">SetDeadline</a>
+					<a class="permalink" href="#XTermClient.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) SetDeadline(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.Write">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2744:2796#L127">Write</a>
+					<a class="permalink" href="#XTermClient.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Write(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="XTermServer">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=431:482#L18">XTermServer</a>
+				<a class="permalink" href="#XTermServer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+XTermServer implemented StreamIntr interface for two-way-binding at resource&#39;s end
+</p>
+
+			<pre>type XTermServer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewXTermServer">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=659:724#L24">NewXTermServer</a>
+					<a class="permalink" href="#NewXTermServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewXTermServer(width, height, cmd <a href="/pkg/builtin/#string">string</a>) (*<a href="#XTermServer">XTermServer</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewXTerminalServer gives a ptty control of the target process to the app.
+@@width, @@height resize the window of the process. @@cmd will be executed in the filo fashion
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="XTermServer.Close">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1678:1715#L78">Close</a>
+					<a class="permalink" href="#XTermServer.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Close() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.Read">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1422:1473#L65">Read</a>
+					<a class="permalink" href="#XTermServer.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Read(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.SetDeadline">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1586:1646#L73">SetDeadline</a>
+					<a class="permalink" href="#XTermServer.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermServer">XTermServer</a>) SetDeadline(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.Write">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1503:1555#L69">Write</a>
+					<a class="permalink" href="#XTermServer.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Write(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				
 				
 				
