@@ -194,6 +194,9 @@
 				<dd><a href="#GetCurrentIPAddrs">func GetCurrentIPAddrs() (ips []net.IP)</a></dd>
 			
 				
+				<dd><a href="#GetCurrentPrompt">func GetCurrentPrompt(devId, instId, cpath string) string</a></dd>
+			
+				
 				<dd><a href="#GetEnv">func GetEnv() *model.Env</a></dd>
 			
 				
@@ -204,6 +207,9 @@
 			
 				
 				<dd><a href="#GetPath">func GetPath(paths []string) string</a></dd>
+			
+				
+				<dd><a href="#GetWinSize">func GetWinSize() (w string, h string)</a></dd>
 			
 				
 				<dd><a href="#HEADER_AUTH">func HEADER_AUTH() string</a></dd>
@@ -236,6 +242,9 @@
 				<dd><a href="#Init">func Init(cp string, dbg bool)</a></dd>
 			
 				
+				<dd><a href="#InitPtyWinsize">func InitPtyWinsize(w, h string) *pty.Winsize</a></dd>
+			
+				
 				<dd><a href="#InitSystemCltDetails">func InitSystemCltDetails(r *model.Report, ver string, aid string, rd []*model.RequestDetail, c []*model.ClientSession) *model.SystemClt</a></dd>
 			
 				
@@ -249,6 +258,9 @@
 			
 				
 				<dd><a href="#InitSystemSrvDetails">func InitSystemSrvDetails(r *model.Report, s []*model.ServerPool, l []*model.ServerSConnList, ver string, aid string, gurl, refId string) *model.SystemSrv</a></dd>
+			
+				
+				<dd><a href="#InitXTermClient">func InitXTermClient(devId, instId string, exeCB ExeCB) error</a></dd>
 			
 				
 				<dd><a href="#InterfaceConversion">func InterfaceConversion(_cv map[interface{}]interface{}) map[string]interface{}</a></dd>
@@ -508,6 +520,11 @@
 				
 			
 				
+				<dd><a href="#ExeCB">type ExeCB</a></dd>
+				
+				
+			
+				
 				<dd><a href="#IpFilter">type IpFilter</a></dd>
 				
 				
@@ -565,6 +582,48 @@
 					<dd>&nbsp; &nbsp; <a href="#PGPObj.ValidateSignature">func (p *PGPObj) ValidateSignature(fi string) error</a></dd>
 				
 			
+				
+				<dd><a href="#StreamIntr">type StreamIntr</a></dd>
+				
+				
+			
+				
+				<dd><a href="#XTermClient">type XTermClient</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Close">func (xtc *XTermClient) Close() (err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Read">func (xtc *XTermClient) Read(_b []byte) (n int, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.SetDeadline">func (xtc *XTermClient) SetDeadline(t time.Time) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermClient.Write">func (xtc *XTermClient) Write(_b []byte) (int, error)</a></dd>
+				
+			
+				
+				<dd><a href="#XTermServer">type XTermServer</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#NewXTermServer">func NewXTermServer(width, height, cmd string) (*XTermServer, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Close">func (xts *XTermServer) Close() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Read">func (xts *XTermServer) Read(_b []byte) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.SetDeadline">func (xtc *XTermServer) SetDeadline(t time.Time) (int, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#XTermServer.Write">func (xts *XTermServer) Write(_b []byte) (int, error)</a></dd>
+				
+			
 			
 			</dl>
 			</div><!-- #manual-nav -->
@@ -587,6 +646,10 @@
 				<a href="/src/github.build.ge.com/212359746/wzutil/pgp.go">pgp.go</a>
 			
 				<a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go">wzutil.go</a>
+			
+				<a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go">xterm-client.go</a>
+			
+				<a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go">xterm-server.go</a>
 			
 			</span>
 			</p>
@@ -1016,6 +1079,19 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
+			<h2 id="GetCurrentPrompt">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=529:583#L27">GetCurrentPrompt</a>
+				<a class="permalink" href="#GetCurrentPrompt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetCurrentPrompt(devId, instId, cpath <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
 			<h2 id="GetEnv">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=16135:16161#L668">GetEnv</a>
 				<a class="permalink" href="#GetEnv">&#xb6;</a>
 				
@@ -1065,6 +1141,19 @@ setting in the environment variable to the current process
 				
 			</h2>
 			<pre>func GetPath(paths []<a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetWinSize">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=272:309#L14">GetWinSize</a>
+				<a class="permalink" href="#GetWinSize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetWinSize() (w <a href="/pkg/builtin/#string">string</a>, h <a href="/pkg/builtin/#string">string</a>)</pre>
 			
 			
 			
@@ -1205,6 +1294,19 @@ getting the current instance index indicator
 		
 			
 			
+			<h2 id="InitPtyWinsize">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=165:210#L9">InitPtyWinsize</a>
+				<a class="permalink" href="#InitPtyWinsize">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitPtyWinsize(w, h <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.com/creack/pty/">pty</a>.<a href="/pkg/github.com/creack/pty/#Winsize">Winsize</a></pre>
+			
+			
+			
+
+		
+			
+			
 			<h2 id="InitSystemCltDetails">func <a href="/src/github.build.ge.com/212359746/wzutil/wzutil.go?s=11473:11610#L491">InitSystemCltDetails</a>
 				<a class="permalink" href="#InitSystemCltDetails">&#xb6;</a>
 				
@@ -1264,6 +1366,22 @@ getting the current instance index indicator
 			</h2>
 			<pre>func InitSystemSrvDetails(r *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, s []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerPool">ServerPool</a>, l []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>) *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SystemSrv">SystemSrv</a></pre>
 			
+			
+			
+
+		
+			
+			
+			<h2 id="InitXTermClient">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=1495:1555#L55">InitXTermClient</a>
+				<a class="permalink" href="#InitXTermClient">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func InitXTermClient(devId, instId <a href="/pkg/builtin/#string">string</a>, exeCB <a href="#ExeCB">ExeCB</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			<p>
+InitXTermClient launches the xterm simulator with the prompt format of target @@devId and @@instId. The callback @@exeCB will be invoked on each command line @@cmd ended with the line break.
+</p>
+
 			
 			
 
@@ -2493,6 +2611,31 @@ a properties file. This feature i createddd for k8s configmap conversion purpose
 		
 			
 			
+			<h2 id="ExeCB">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=1266:1299#L52">ExeCB</a>
+				<a class="permalink" href="#ExeCB">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+ExeCB used as a callback contains the @@widthx@@height of the xterm. The callback will be invoked on each command line @@cmd ended with the line break.
+</p>
+
+			<pre>type ExeCB func(xtc *<a href="#XTermClient">XTermClient</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
 			<h2 id="IpFilter">type <a href="/src/github.build.ge.com/212359746/wzutil/ipfilter.go?s=550:618#L17">IpFilter</a>
 				<a class="permalink" href="#IpFilter">&#xb6;</a>
 				
@@ -2733,6 +2876,202 @@ EncryptFileByRSAPrivateKey use the RSA private key to encrypt the file.
 					
 				</h3>
 				<pre>func (p *<a href="#PGPObj">PGPObj</a>) ValidateSignature(fi <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="StreamIntr">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=142:270#L7">StreamIntr</a>
+				<a class="permalink" href="#StreamIntr">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type StreamIntr interface {
+    Read([]<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+    Write([]<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)
+    SetDeadline(<a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) <a href="/pkg/builtin/#error">error</a>
+    Close() <a href="/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="XTermClient">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=958:1108#L43">XTermClient</a>
+				<a class="permalink" href="#XTermClient">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+XTermClient implemented StreamIntr interface for two-way-binding at requster&#39;s end
+</p>
+
+			<pre>type XTermClient struct {
+<span id="XTermClient.DevId"></span>    DevId, InstId, Cmd,
+    Width, Height <a href="/pkg/builtin/#string">string</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="XTermClient.Close">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2930:2973#L136">Close</a>
+					<a class="permalink" href="#XTermClient.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Close() (err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.Read">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2657:2715#L123">Read</a>
+					<a class="permalink" href="#XTermClient.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Read(_b []<a href="/pkg/builtin/#byte">byte</a>) (n <a href="/pkg/builtin/#int">int</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.SetDeadline">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2826:2886#L131">SetDeadline</a>
+					<a class="permalink" href="#XTermClient.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) SetDeadline(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermClient.Write">func (*XTermClient) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-client.go?s=2744:2796#L127">Write</a>
+					<a class="permalink" href="#XTermClient.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermClient">XTermClient</a>) Write(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="XTermServer">type <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=431:482#L18">XTermServer</a>
+				<a class="permalink" href="#XTermServer">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+XTermServer implemented StreamIntr interface for two-way-binding at resource&#39;s end
+</p>
+
+			<pre>type XTermServer struct {
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="NewXTermServer">func <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=659:724#L24">NewXTermServer</a>
+					<a class="permalink" href="#NewXTermServer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func NewXTermServer(width, height, cmd <a href="/pkg/builtin/#string">string</a>) (*<a href="#XTermServer">XTermServer</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+NewXTerminalServer gives a ptty control of the target process to the app.
+@@width, @@height resize the window of the process. @@cmd will be executed in the filo fashion
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="XTermServer.Close">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1678:1715#L78">Close</a>
+					<a class="permalink" href="#XTermServer.Close">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Close() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.Read">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1422:1473#L65">Read</a>
+					<a class="permalink" href="#XTermServer.Read">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Read(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.SetDeadline">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1586:1646#L73">SetDeadline</a>
+					<a class="permalink" href="#XTermServer.SetDeadline">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xtc *<a href="#XTermServer">XTermServer</a>) SetDeadline(t <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="XTermServer.Write">func (*XTermServer) <a href="/src/github.build.ge.com/212359746/wzutil/xterm-server.go?s=1503:1555#L69">Write</a>
+					<a class="permalink" href="#XTermServer.Write">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (xts *<a href="#XTermServer">XTermServer</a>) Write(_b []<a href="/pkg/builtin/#byte">byte</a>) (<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				
 				
 				
