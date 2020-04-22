@@ -11,7 +11,7 @@ export default class Header extends React.Component {
     logout(e){
         document.cookie = "ec-config=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         localStorage.clear();
-        let loginUrl = window.location.origin+'/'+window.location.pathname;
+        let loginUrl = window.location.origin+window.location.pathname;
         window.location.href = loginUrl;
     }
 

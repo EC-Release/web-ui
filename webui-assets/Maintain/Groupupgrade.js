@@ -52,7 +52,6 @@ export default class Groupupgrade extends React.Component {
                                 .then((response) => {
                                     if (response.status === 200) {
                                         response.json().then((respData) => {
-                                            console.log(respData)
                                             /*respData = {
                                                 data:[
                                                     {
@@ -171,7 +170,6 @@ export default class Groupupgrade extends React.Component {
                 .then((response) => {
                     if (response.status === 200) {
                         response.json().then((respData) => {
-                            console.log(respData)
                             /*respData = {
                                 data:[
                                     {
@@ -335,7 +333,6 @@ export default class Groupupgrade extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        console.log(respData)
                         /*respData = {
                             data:[
                                 {
@@ -456,7 +453,6 @@ export default class Groupupgrade extends React.Component {
 
     /* istanbul ignore next */
     deleteData(tbodyVal, rowIndex) {
-        console.log(rowIndex)
         let cnf = window.confirm('Are you sure you want to delete');
         if (cnf) {
             let groupId = tbodyVal.groupId;

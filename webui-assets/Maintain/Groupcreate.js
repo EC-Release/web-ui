@@ -165,7 +165,6 @@ export default class Groupcreate extends React.Component {
         let prepareData = {};
         prepareData.subscriptionId = currentForm.subscriptionId.value;
         prepareData.groupId = currentForm.groupId.value;
-        console.log(prepareData);
         let newlyCreatedGroups = [];
         let createdGroupDataObj = {
             groupId: prepareData.groupId,
