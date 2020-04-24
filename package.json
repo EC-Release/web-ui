@@ -8,9 +8,8 @@
         "babel-preset-react-app": "^9.0.2",
         "bower": "^1.8.8",
         "cross-env": "^6.0.0",
-        "istanbul": "^0.4.5",
         "jasmine-enzyme": "^7.1.1",
-        "jsdom": "^15.1.1",
+        "jsdom": "^16.2.2",
         "node-fetch": "^2.6.0",
         "nyc": "^14.1.1",
         "protractor": "^5.4.2",
@@ -19,6 +18,7 @@
         "typescript": "^3.7.3"
     },
     "scripts": {
+        "preinstall": "npx npm-force-resolutions",
         "test": "nyc cross-env NODE_ENV=test jasmine",
         "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
         "jshint": "jshint webui-assets/"
@@ -26,17 +26,25 @@
     "devDependencies": {
         "babel-plugin-transform-runtime": "^6.23.0",
         "babel-preset-env": "^1.7.0",
+        "braces": "^3.0.2",
         "enzyme": "^3.10.0",
         "enzyme-adapter-react-16": "^1.14.0",
         "fetch-mock": "^9.0.0-beta.2",
         "ignore-styles": "^5.0.1",
         "jasmine": "^3.5.0",
         "jshint": "^2.11.0",
+        "kind-of": "^6.0.3",
+        "minimist": "^1.2.5",
         "react-test-renderer": "^16.9.0"
     },
     "babel": {
         "presets": [
             "react-app"
         ]
+    },
+    "resolutions": {
+        "minimist": "^1.2.5",
+        "braces": "^3.0.2",
+        "kind-of": "^6.0.3"
     }
 }

@@ -1,11 +1,18 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 export default class Header extends React.Component {
 
     /* istanbul ignore next */
     constructor(props){
         super(props);
+    }
+
+    /* istanbul ignore next */
+    logout(e){
+        document.cookie = "ec-config=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        localStorage.clear();
+        let loginUrl = window.location.origin+window.location.pathname;
+        window.location.href = loginUrl;
     }
 
     /* istanbul ignore next */
@@ -21,7 +28,7 @@ export default class Header extends React.Component {
                         </div>
                         <div className="col-lg-6 header-profile">
                             <span>
-                                <span className="name"> Hello Aarav!</span>
+                                <span className="name"> Hello {this.props.profileData.name.split(" ")[0]}!</span>
                             </span>
                             <span>
                                 <img src="assets/static/images/user_icon.svg" height="30" />
@@ -31,7 +38,7 @@ export default class Header extends React.Component {
                                 <img src="assets/static/images/notifications_icon.svg" />
                             </span>
                             <span>
-                                <img src="assets/static/images/logout_icon.svg" />
+                                <img src="assets/static/images/logout_icon.svg" alt="logout" className="cursor-pointer" onClick={(event)=>{this.logout(event)}} />
                             </span>
                             {this.props.isFullScreenModal ?
                                 <span>

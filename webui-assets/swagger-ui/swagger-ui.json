@@ -1261,39 +1261,39 @@
           }
         }
       }
-      },
-      "/getDevId": {
-        "get": {
-          "tags": [
-            "Real time view"
-          ],
-          "summary": "Gives Developer id of logged in user",
-          "description": "",
-          "produces": [
-            "application/json"
-          ],
-          "parameters": [
-            {
-              "in": "header",
-              "name": "Authorization",
-              "description": "Bearer Authorization token",
-              "required": true,
-              "type": "string"
+    },
+    "/getDevId": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Gives Developer id of logged in user",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Developer ID",
+            "examples": {
+              "application/json": {}
             }
-          ],
-          "responses": {
-            "200": {
-              "description": "Developer ID",
-              "examples": {
-                "application/json": {}
-              }
-            },
-            "400": {
-              "description": "Invalid value"
-            }
+          },
+          "400": {
+            "description": "Invalid value"
           }
         }
       }
+    }
   },
   "definitions": {
     "GatewayInfo": {
@@ -1324,191 +1324,191 @@
           "type": "string"
         }
       }
-    },
-    "ServerInfo": {
-      "type": "object",
-      "properties": {
-        "mod": {
-          "type": "string"
-        },
-        "aid": {
-          "type": "string"
-        },
-        "hst": {
-          "type": "string"
-        },
-        "cid": {
-          "type": "string"
-        },
-        "csc": {
-          "type": "string"
-        },
-        "oa2": {
-          "type": "string"
-        },
-        "dur": {
-          "type": "integer"
-        },
-        "dbg": {
-          "type": "boolean"
-        },
-        "grp": {
-          "type": "string"
-        },
-        "sst": {
-          "type": "string"
-        },
-        "zon": {
-          "type": "string"
-        },
-        "cps": {
-          "type": "integer"
-        },
-        "rht": {
-          "type": "string"
-        },
-        "rpt": {
-          "type": "string"
-        },
-        "plg": {
-          "type": "boolean"
-        },
-        "vln": {
-          "type": "boolean"
-        },
-        "tls": {
-          "type": "boolean"
-        }
+    }
+  },
+  "ServerInfo": {
+    "type": "object",
+    "properties": {
+      "mod": {
+        "type": "string"
+      },
+      "aid": {
+        "type": "string"
+      },
+      "hst": {
+        "type": "string"
+      },
+      "cid": {
+        "type": "string"
+      },
+      "csc": {
+        "type": "string"
+      },
+      "oa2": {
+        "type": "string"
+      },
+      "dur": {
+        "type": "integer"
+      },
+      "dbg": {
+        "type": "boolean"
+      },
+      "grp": {
+        "type": "string"
+      },
+      "sst": {
+        "type": "string"
+      },
+      "zon": {
+        "type": "string"
+      },
+      "cps": {
+        "type": "integer"
+      },
+      "rht": {
+        "type": "string"
+      },
+      "rpt": {
+        "type": "string"
+      },
+      "plg": {
+        "type": "boolean"
+      },
+      "vln": {
+        "type": "boolean"
+      },
+      "tls": {
+        "type": "boolean"
       }
-    },
-    "ClientInfo": {
-      "type": "object",
-      "properties": {
-        "mod": {
-          "type": "string"
-        },
-        "aid": {
-          "type": "string"
-        },
-        "tid": {
-          "type": "string"
-        },
-        "hst": {
-          "type": "string"
-        },
-        "cid": {
-          "type": "string"
-        },
-        "csc": {
-          "type": "string"
-        },
-        "oa2": {
-          "type": "string"
-        },
-        "dur": {
-          "type": "integer"
-        },
-        "dbg": {
-          "type": "boolean"
-        },
-        "grp": {
-          "type": "string"
-        },
-        "cps": {
-          "type": "integer"
-        },
-        "lpt": {
-          "type": "string"
-        },
-        "plg": {
-          "type": "boolean"
-        },
-        "vln": {
-          "type": "boolean"
-        }
+    }
+  },
+  "ClientInfo": {
+    "type": "object",
+    "properties": {
+      "mod": {
+        "type": "string"
+      },
+      "aid": {
+        "type": "string"
+      },
+      "tid": {
+        "type": "string"
+      },
+      "hst": {
+        "type": "string"
+      },
+      "cid": {
+        "type": "string"
+      },
+      "csc": {
+        "type": "string"
+      },
+      "oa2": {
+        "type": "string"
+      },
+      "dur": {
+        "type": "integer"
+      },
+      "dbg": {
+        "type": "boolean"
+      },
+      "grp": {
+        "type": "string"
+      },
+      "cps": {
+        "type": "integer"
+      },
+      "lpt": {
+        "type": "string"
+      },
+      "plg": {
+        "type": "boolean"
+      },
+      "vln": {
+        "type": "boolean"
       }
-    },
-    "Subscription": {
-      "type": "object",
-      "properties": {
-        "accountId": {
-          "type": "string"
-        },
-        "adminToken": {
-          "type": "string"
-        },
-        "app": {
-          "type": "string"
-        },
-        "assetId": {
-          "type": "string"
-        },
-        "bucAdn": {
-          "type": "string"
-        },
-        "clientId": {
-          "type": "string"
-        },
-        "clientSc": {
-          "type": "string"
-        },
-        "cluster": {
-          "type": "string"
-        },
-        "compliance": {
-          "type": "string"
-        },
-        "confidentiality": {
-          "type": "boolean"
-        },
-        "customer": {
-          "type": "string"
-        },
-        "date": {
-          "type": "string"
-        },
-        "env": {
-          "type": "string"
-        },
-        "managementHostType": {
-          "type": "string"
-        },
-        "optInoptOut": {
-          "type": "boolean"
-        },
-        "owner": {
-          "type": "string"
-        },
-        "preserve": {
-          "type": "boolean"
-        },
-        "project": {
-          "type": "string"
-        },
-        "role": {
-          "type": "string"
-        },
-        "security": {
-          "type": "string"
-        },
-        "serviceUri": {
-          "type": "string"
-        },
-        "subscriptionId": {
-          "type": "string"
-        },
-        "subscriptionName": {
-          "type": "string"
-        },
-        "uaaUrl": {
-          "type": "string"
-        },
-        "uai": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
+    }
+  },
+  "Subscription": {
+    "type": "object",
+    "properties": {
+      "accountId": {
+        "type": "string"
+      },
+      "adminToken": {
+        "type": "string"
+      },
+      "app": {
+        "type": "string"
+      },
+      "assetId": {
+        "type": "string"
+      },
+      "bucAdn": {
+        "type": "string"
+      },
+      "clientId": {
+        "type": "string"
+      },
+      "clientSc": {
+        "type": "string"
+      },
+      "cluster": {
+        "type": "string"
+      },
+      "compliance": {
+        "type": "string"
+      },
+      "confidentiality": {
+        "type": "boolean"
+      },
+      "customer": {
+        "type": "string"
+      },
+      "date": {
+        "type": "string"
+      },
+      "env": {
+        "type": "string"
+      },
+      "managementHostType": {
+        "type": "string"
+      },
+      "optInoptOut": {
+        "type": "boolean"
+      },
+      "owner": {
+        "type": "string"
+      },
+      "preserve": {
+        "type": "boolean"
+      },
+      "project": {
+        "type": "string"
+      },
+      "role": {
+        "type": "string"
+      },
+      "security": {
+        "type": "string"
+      },
+      "serviceUri": {
+        "type": "string"
+      },
+      "subscriptionId": {
+        "type": "string"
+      },
+      "subscriptionName": {
+        "type": "string"
+      },
+      "uaaUrl": {
+        "type": "string"
+      },
+      "uai": {
+        "type": "string"
+      },
+      "version": {
+        "type": "string"
       }
     }
   },

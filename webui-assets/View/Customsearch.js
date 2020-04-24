@@ -21,6 +21,7 @@ export default class Customsearch extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
         
         let allStateFields = [...this.props.allFields];
@@ -65,6 +66,7 @@ export default class Customsearch extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleAvailableFieldSelect(index){
         this.setState({
             clickedFilteredAvailableFieldIndex: index,
@@ -72,6 +74,7 @@ export default class Customsearch extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleSelectedFieldSelect(index){
         this.setState({
             clickedFilteredSelectedFieldIndex: index,
@@ -79,6 +82,7 @@ export default class Customsearch extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     filterBy(propName, term){
         const termLowerCase = term.toLowerCase();
         return (singleObj) =>
@@ -86,6 +90,7 @@ export default class Customsearch extends React.Component {
                 .some(propName => singleObj[propName].toLowerCase().indexOf(termLowerCase) !== -1);
     }
 
+    /* istanbul ignore next */
     removeObject(myArray, key, value){
         for(var i=0 ; i<myArray.length; i++){
             if(myArray[i][key] == value)
@@ -94,6 +99,7 @@ export default class Customsearch extends React.Component {
         return myArray;
     }
 
+    /* istanbul ignore next */
     availableFieldsSerach(e){
         let searchStr = e.target.value.trim();
         let filteredCurrentAvailableFields = [];
@@ -110,6 +116,7 @@ export default class Customsearch extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleMoveInSelected(){
         let clickedFilteredAvailableFieldIndex = this.state.clickedFilteredAvailableFieldIndex;
         if(clickedFilteredAvailableFieldIndex !== ''){
@@ -137,6 +144,7 @@ export default class Customsearch extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
     selectedFieldsSerach(e){
         let searchStr = e.target.value.trim();
         let filteredCurrentSelectedFields = [];
@@ -153,6 +161,7 @@ export default class Customsearch extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handleMoveInAvailable(){
         let clickedFilteredSelectedFieldIndex = this.state.clickedFilteredSelectedFieldIndex;
         if(clickedFilteredSelectedFieldIndex !== ''){
@@ -180,6 +189,7 @@ export default class Customsearch extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
     addNewFilter(){
         let currentFormRows = [...this.state.formDatas];
         let formNewObject = {
@@ -197,6 +207,7 @@ export default class Customsearch extends React.Component {
         setTimeout(()=>{this.formValidation('inline');}, 500);
     }
 
+    /* istanbul ignore next */
     removeFormRow(formRowIndex){
         let currentFormRows = [...this.state.formDatas];
         currentFormRows.splice(formRowIndex, 1);
@@ -207,6 +218,7 @@ export default class Customsearch extends React.Component {
         setTimeout(()=>{this.formValidation('inline');}, 500);
     }
 
+    /* istanbul ignore next */
     formValidation(type){
         let isFormValid = true;
         let currentFormRows = [...this.state.formDatas];
@@ -230,6 +242,7 @@ export default class Customsearch extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     changeFormValue(e, formRowIndex){
         let fieldName = e.target.name;
         let updatedFieldValue = e.target.value;
@@ -260,6 +273,7 @@ export default class Customsearch extends React.Component {
         this.formValidation('inline');
     }
 
+    /* istanbul ignore next */
     applyFilter(){
         this.setState({
             finalFormDatas: [...this.state.formDatas]
@@ -272,6 +286,7 @@ export default class Customsearch extends React.Component {
         }, 2000);
     }
 
+    /* istanbul ignore next */
     resetFilter(){
         let formDatas = [
             {
@@ -292,6 +307,7 @@ export default class Customsearch extends React.Component {
 
     render(){
         /* jshint ignore:start */
+        /* istanbul ignore next */
         return(
             <div className="Customsearch">
                 <div className="row">

@@ -223,18 +223,14 @@ export default class Businessview extends React.Component {
                 </ul>
                 <div className="tab-content" id="myTabContent">
                     <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    {
-                        this.props.showTable ?
-                            <div className="row view-table">
-                                <div className="col-md-12">
-                                    <button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
-                                    <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>
-                                </div>
-                            </div> :
-                            <p className="text-center loader-icon">
-                                <img alt="loading" src="assets/static/images/rolling.svg" />
-                            </p>
-                    }
+                    
+                        <div className="row view-table">
+                            <div className="col-md-12" id="viewTableDiv">
+                                {/*<button onClick={this.props.goToSearch.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
+                                <Viewtable tableData={this.props.tableData} showHideTableTdData={this.props.showHideTableTdData.bind(this)}></Viewtable>*/}
+                                <h3>Work in progress for real time table view</h3>
+                            </div>
+                        </div>
                     </div>
                     <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <div className="row">

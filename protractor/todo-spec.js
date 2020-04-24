@@ -5,11 +5,11 @@ describe('ec-web-ui test cases', function () {
         browser.driver.sleep(10000);
         browser.get('http://localhost:17990/v1.1beta/ec');
         browser.driver.sleep(1000);
-        element(by.id('user-id')).sendKeys('Place your login id');
-        element(by.id('password')).sendKeys('Place your login password');
-        element(by.id('login-btn')).click();
-        browser.driver.sleep(1000);
-        element(by.id('cont-btn')).click();
+        element(by.name('usr_id')).sendKeys("Place your login id");
+        element(by.name('usr_pwd')).sendKeys("Place your login password");
+        element(by.name('btn_signin')).click();
+        browser.driver.sleep(1000);
+        element(by.name('btn_continue')).click(); 
     });
 
     // Login test start

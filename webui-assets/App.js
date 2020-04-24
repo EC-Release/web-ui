@@ -6,6 +6,8 @@ import View from './View/View.js';
 import Maintain from './Maintain/Maintain.js';
 import Subscriptioncreate from './Maintain/Subscriptioncreate.js';
 import Subscriptionupgrade from './Maintain/Subscriptionupgrade.js';
+import Groupcreate from './Maintain/Groupcreate.js';
+import Groupupgrade from './Maintain/Groupupgrade.js';
 import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 /* istanbul ignore next */
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
@@ -23,6 +25,7 @@ import Usermanagement from './Settings/Usermanagement.js';
 import Navbar from './Navbar/Navbar.js';
 import Header from './Header/Header.js';
 import Support from './Support/Support.js';
+import Cookienotification from './Cookienotification/Cookienotification.js';
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
@@ -33,7 +36,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentView: 'Dashboard',
+      currentView: '',
       /* istanbul ignore next */
       ajaxBusy: {
         flag: false,
@@ -43,8 +46,12 @@ export default class App extends React.Component {
         classname: ''
       },
       maximizeModal: true,
-      userId: '12fd119f-1b00-41bf-ab82-85182df9c64f',
+      userId: '',
       authToken: '',
+      profileData: {
+        email: '',
+        name: ''
+      },
       apiEndPoints: {
         baseUrl : API_URL,
       },
@@ -54,10 +61,53 @@ export default class App extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount(){
+    this.fullScreenModal();
     let authToken = this.getToken('ec-config');
     this.setState({
       authToken: authToken
     });
+
+    // Get logged user's userId start
+    fetch(this.state.apiEndPoints.baseUrl + '/getDevId', {
+      method: 'GET',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': authToken
+      }
+    })
+    .then((response) => {
+        if (response.status === 200) {
+          response.json().then((respData) => {
+            if (respData.errorStatus.status === 'ok') {
+              let userId = respData.data.user_id;
+              let profileName = respData.data.name;
+              let profileEmailId = respData.data.email;
+              this.setState({
+                profileData: {
+                  email: profileEmailId,
+                  name: profileName
+                },
+                userId: userId,
+                currentView: 'Dashboard'
+              });
+            }
+            else{
+              this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+              setTimeout(function () {
+                location.reload(true);
+              }, 2000);
+            }
+          });
+        }
+        else {
+          this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+          setTimeout(function () {
+            location.reload(true);
+          }, 2000);
+        }
+    });
+    // Get logged user's userId end
   }
 
   /* istanbul ignore next */
@@ -90,6 +140,10 @@ export default class App extends React.Component {
         return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Subscriptionupgrade':
         return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+      case 'Groupcreate':
+        return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+      case 'Groupupgrade':
+        return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentupgrade':
@@ -209,11 +263,12 @@ export default class App extends React.Component {
                   }
                 
                   <div className="modal-body">
-                    <Header maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
+                    <Header profileData={this.state.profileData} maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
                     <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }
                     </div>
+                    <Cookienotification />
                   </div>
                 </div>
               </div>
