@@ -29,79 +29,85 @@ export default class Groupupgrade extends React.Component {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
                             let subscriptions = respData.data;
-                            let selectedSubscriptionId = subscriptions[1].subscriptionId;
-                            this.setState({
-                                subscriptions: subscriptions,
-                                selectedSubscriptionId: selectedSubscriptionId
-                            });
-                            if(selectedSubscriptionId == ''){
+                            if(subscriptions.length > 0){
+                                let selectedSubscriptionId = subscriptions[1].subscriptionId;
                                 this.setState({
-                                    tableData: []
+                                    subscriptions: subscriptions,
+                                    selectedSubscriptionId: selectedSubscriptionId
                                 });
-                                this.generateTableStructure([]);
-                            }
-                            else{
-                                fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
-                                    method: 'GET',
-                                    headers: {
-                                        'Accept': 'application/json',
-                                        'Content-Type': 'application/json',
-                                        'Authorization': 'Bearer '+this.props.authToken
-                                    }
-                                
-                                })
-                                .then((response) => {
-                                    if (response.status === 200) {
-                                        response.json().then((respData) => {
-                                            let data = respData.data;
-                                            if(respData.errorStatus.status == 'ok'){
-                                                // check selectedSubscriptionId in createGroup localStorage and append it to data here
-                                                let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
-                                                let findIndex = newlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === selectedSubscriptionId);
-                                                if(findIndex != -1){
-                                                    let allNewlyCreatedGroupsData = [...newlyCreatedGroupsofSubscriptions[findIndex].createdData];
-                                                    if(allNewlyCreatedGroupsData.length > 0){
-                                                        for(let dataToAppendAsPending of allNewlyCreatedGroupsData){
-                                                            let pendingData = {
-                                                                groupId: dataToAppendAsPending.groupId,
-                                                                ids: {
-                                                                    aid: dataToAppendAsPending.aid,
-                                                                    tid: dataToAppendAsPending.tid
-                                                                }
-                                                            };
-                                                            data.push(pendingData);
+                                if(selectedSubscriptionId == ''){
+                                    this.setState({
+                                        tableData: []
+                                    });
+                                    this.generateTableStructure([]);
+                                }
+                                else{
+                                    fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+                                        method: 'GET',
+                                        headers: {
+                                            'Accept': 'application/json',
+                                            'Content-Type': 'application/json',
+                                            'Authorization': 'Bearer '+this.props.authToken
+                                        }
+                                    
+                                    })
+                                    .then((response) => {
+                                        if (response.status === 200) {
+                                            response.json().then((respData) => {
+                                                let data = respData.data;
+                                                if(respData.errorStatus.status == 'ok'){
+                                                    // check selectedSubscriptionId in createGroup localStorage and append it to data here
+                                                    let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
+                                                    let findIndex = newlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === selectedSubscriptionId);
+                                                    if(findIndex != -1){
+                                                        let allNewlyCreatedGroupsData = [...newlyCreatedGroupsofSubscriptions[findIndex].createdData];
+                                                        if(allNewlyCreatedGroupsData.length > 0){
+                                                            for(let dataToAppendAsPending of allNewlyCreatedGroupsData){
+                                                                let pendingData = {
+                                                                    groupId: dataToAppendAsPending.groupId,
+                                                                    ids: {
+                                                                        aid: dataToAppendAsPending.aid,
+                                                                        tid: dataToAppendAsPending.tid
+                                                                    }
+                                                                };
+                                                                data.push(pendingData);
+                                                            }
                                                         }
                                                     }
+                                                    this.setState({
+                                                        tableData: data
+                                                    });
+                                                    this.generateTableStructure(data);
                                                 }
-                                                this.setState({
-                                                    tableData: data
-                                                });
-                                                this.generateTableStructure(data);
-                                            }
-                                            else{
-                                                this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                                                setTimeout(()=> {
-                                                    this.props.hideGlobalMessage();
-                                                }, 2000);
-                                            }
-                                        });
-                                    }
-                                    else{
+                                                else{
+                                                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                                                    setTimeout(()=> {
+                                                        this.props.hideGlobalMessage();
+                                                    }, 2000);
+                                                }
+                                            });
+                                        }
+                                        else{
+                                            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                                            setTimeout(()=> {
+                                                this.props.hideGlobalMessage();
+                                            }, 2000);
+                                        }
+                                    })
+                                    .catch((err) => {
+                                        console.log(err);
                                         this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
                                         setTimeout(()=> {
                                             this.props.hideGlobalMessage();
                                         }, 2000);
-                                    }
-                                })
-                                .catch((err) => {
-                                    console.log(err);
-                                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                                    setTimeout(()=> {
-                                        this.props.hideGlobalMessage();
-                                    }, 2000);
-                                });
+                                    });
+                                }
+                                localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                             }
-                            localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
+                            else{
+                                this.generateTableStructure([]);
+                                this.timerForSubscriptionList = setInterval(()=> this.getSubscriptionList(), 20000);
+                            }
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -122,77 +128,82 @@ export default class Groupupgrade extends React.Component {
         }
         else{
             let subscriptions = JSON.parse(localStorage.getItem("subscriptions"));
-            let selectedSubscriptionId = subscriptions[1].subscriptionId;
-            this.setState({
-                subscriptions: subscriptions,
-                selectedSubscriptionId: selectedSubscriptionId
-            });
-            if(selectedSubscriptionId == ''){
+            if(subscriptions.length > 0){
+                let selectedSubscriptionId = subscriptions[1].subscriptionId;
                 this.setState({
-                    tableData: []
+                    subscriptions: subscriptions,
+                    selectedSubscriptionId: selectedSubscriptionId
                 });
-                this.generateTableStructure([]);
-            }
-            else{
-                fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer '+this.props.authToken
-                    }
-                })
-                .then((response) => {
-                    if (response.status === 200) {
-                        response.json().then((respData) => {
-                            
-                            let data = respData.data;
-                            if(respData.errorStatus.status == 'ok'){
-                                // check selectedSubscriptionId in createGroup localStorage and append it to data here
-                                let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
-                                let findIndex = newlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === selectedSubscriptionId);
-                                if(findIndex != -1){
-                                    let allNewlyCreatedGroupsData = [...newlyCreatedGroupsofSubscriptions[findIndex].createdData];
-                                    if(allNewlyCreatedGroupsData.length > 0){
-                                        for(let dataToAppendAsPending of allNewlyCreatedGroupsData){
-                                            let pendingData = {
-                                                groupId: dataToAppendAsPending.groupId,
-                                                ids: {
-                                                    aid: dataToAppendAsPending.aid,
-                                                    tid: dataToAppendAsPending.tid
-                                                }
-                                            };
-                                            data.push(pendingData);
+                if(selectedSubscriptionId == ''){
+                    this.setState({
+                        tableData: []
+                    });
+                    this.generateTableStructure([]);
+                }
+                else{
+                    fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+                        method: 'GET',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'Authorization': 'Bearer '+this.props.authToken
+                        }
+                    })
+                    .then((response) => {
+                        if (response.status === 200) {
+                            response.json().then((respData) => {
+                                
+                                let data = respData.data;
+                                if(respData.errorStatus.status == 'ok'){
+                                    // check selectedSubscriptionId in createGroup localStorage and append it to data here
+                                    let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
+                                    let findIndex = newlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === selectedSubscriptionId);
+                                    if(findIndex != -1){
+                                        let allNewlyCreatedGroupsData = [...newlyCreatedGroupsofSubscriptions[findIndex].createdData];
+                                        if(allNewlyCreatedGroupsData.length > 0){
+                                            for(let dataToAppendAsPending of allNewlyCreatedGroupsData){
+                                                let pendingData = {
+                                                    groupId: dataToAppendAsPending.groupId,
+                                                    ids: {
+                                                        aid: dataToAppendAsPending.aid,
+                                                        tid: dataToAppendAsPending.tid
+                                                    }
+                                                };
+                                                data.push(pendingData);
+                                            }
                                         }
                                     }
+                                    this.setState({
+                                        tableData: data
+                                    });
+                                    this.generateTableStructure(data);
                                 }
-                                this.setState({
-                                    tableData: data
-                                });
-                                this.generateTableStructure(data);
-                            }
-                            else{
-                                this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                                setTimeout(()=> {
-                                    this.props.hideGlobalMessage();
-                                }, 2000);
-                            }
-                        });
-                    }
-                    else{
+                                else{
+                                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
+                                    setTimeout(()=> {
+                                        this.props.hideGlobalMessage();
+                                    }, 2000);
+                                }
+                            });
+                        }
+                        else{
+                            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                            setTimeout(()=> {
+                                this.props.hideGlobalMessage();
+                            }, 2000);
+                        }
+                    })
+                    .catch((err) => {
+                        console.log(err);
                         this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
                         }, 2000);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                    setTimeout(()=> {
-                        this.props.hideGlobalMessage();
-                    }, 2000);
-                });
+                    });
+                }
+            }
+            else{
+                this.generateTableStructure([]);
             }
             
             this.timerForSubscriptionList = setInterval(()=> this.getSubscriptionList(), 20000);
@@ -464,8 +475,9 @@ export default class Groupupgrade extends React.Component {
                         </div>
                     </div>
                     <div className="centered-div">
-                    <div id="groupupgradeTableDiv">
+                        <div id="groupupgradeTableDiv">
                             { this.state.showTableInit ?
+                                this.state.newTableData.length > 0 ?
                                 <table id="groupupgradeTable" className="table">
                                     <thead>
                                         <tr>
@@ -476,27 +488,35 @@ export default class Groupupgrade extends React.Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
-                                        return(
-                                            <tr key={'groupupgradeTableTbodyTr_'+tbodyIndex} id={'groupupgradeTableTbodyTr_'+tbodyIndex}>
-                                                
-                                                <td>{ tbodyVal.groupId }</td>
-                                                <td>{ tbodyVal.aid }</td>
-                                                <td>{ tbodyVal.tid }</td>
-                                                <td>
-                                                    <span className="action-img">
-                                                        {
-                                                        tbodyVal.aid != 'Pending' && tbodyVal.tid != 'Pending' ? 
-                                                            <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
-                                                            :null
-                                                        }
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        )
-                                    })}
+                                        {this.state.newTableData.map((tbodyVal, tbodyIndex) => {
+                                            return(
+                                                <tr key={'groupupgradeTableTbodyTr_'+tbodyIndex} id={'groupupgradeTableTbodyTr_'+tbodyIndex}>
+                                                    
+                                                    <td>{ tbodyVal.groupId }</td>
+                                                    <td>{ tbodyVal.aid }</td>
+                                                    <td>{ tbodyVal.tid }</td>
+                                                    <td>
+                                                        <span className="action-img">
+                                                            {
+                                                            tbodyVal.aid != 'Pending' && tbodyVal.tid != 'Pending' ? 
+                                                                <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
+                                                                :null
+                                                            }
+                                                        </span>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
                                     </tbody>
-                                </table>:
+                                </table> :
+                                <div className="row mt-2">
+                                    <div className="col-md-12">
+                                        <div className="alert alert-success" role="alert">
+                                            No record found!
+                                        </div>
+                                    </div>
+                                </div>
+                                :
                                 <p className="text-center loader-icon">
                                     <img alt="loading" src="assets/static/images/rolling.svg" />
                                 </p>

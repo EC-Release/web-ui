@@ -9,12 +9,10 @@ export default class Header extends React.Component {
 
     /* istanbul ignore next */ 
     logout(e){
-        let cookieToDelete = 'ec-config';
-        document.cookie = cookieToDelete + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
-        document.cookie = cookieToDelete + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path="+window.location.pathname+";";
         localStorage.clear();
-        let loginUrl = window.location.origin+window.location.pathname;
-        window.location.href = loginUrl;
+        let logOut = window.location.origin+window.location.pathname+'/logout';
+        console.log(logOut);
+        window.location.href = logOut;
     }
 
     /* istanbul ignore next */
