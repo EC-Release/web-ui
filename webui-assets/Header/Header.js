@@ -7,7 +7,7 @@ export default class Header extends React.Component {
         super(props);
     }
 
-    /* istanbul ignore next */
+    /* istanbul ignore next */ 
     logout(e){
         let cookieToDelete = 'ec-config';
         document.cookie = cookieToDelete + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";

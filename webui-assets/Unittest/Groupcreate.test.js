@@ -26,7 +26,7 @@ describe('Testing from Groupcreate.test.js <Groupcreate />', () => {
             }
         });
         expect(wrapper).toBeTruthy();
-    });
+    }); 
 
     it('should have "Group form" with div only once', () => {
         const propsToPass = {

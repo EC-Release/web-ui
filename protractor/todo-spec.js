@@ -1,4 +1,4 @@
-describe('ec-web-ui test cases', function () {
+describe('ec-web-ui test cases', function () { 
 
     beforeEach(function () {
         browser.waitForAngularEnabled(false);

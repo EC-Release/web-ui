@@ -3,7 +3,7 @@ import React from "react";
 export default class Groupupgrade extends React.Component {
 
     /* istanbul ignore next */
-    constructor(props) {
+    constructor(props) { 
         super(props);
         this.state = {
             cookieNotificationKey: 'readCookieNotification'

@@ -325,7 +325,7 @@ export default class Subscriptioncreate extends React.Component {
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
 
-        fetch(this.props.baseUrl + '/createSubscription', {
+        fetch(this.props.baseUrl + '/createSubscription', { 
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

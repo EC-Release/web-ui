@@ -14,5 +14,5 @@ describe('Testing from Subscriptionupgrade.test.js <Subscriptionupgrade />', () 
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Subscriptionupgrade />, { disableLifecycleMethods: true });
         expect(wrapper).toBeTruthy();
-    });
+    }); 
 });

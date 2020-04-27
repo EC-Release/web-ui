@@ -126,7 +126,7 @@ export default class App extends React.Component {
   }
 
   /* istanbul ignore next */
-  getAuthTokenFromBackend(){
+  getAuthTokenFromBackend(){ 
     fetch('https://reqres.in/api/users/2'/*, { // this.state.apiEndPoints.baseUrl + '/getToken'
       method: 'GET',
       headers: {

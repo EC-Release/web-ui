@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Groupupgrade extends React.Component {
+export default class Groupupgrade extends React.Component { 
     /* istanbul ignore next */
     constructor(props){
         super(props);

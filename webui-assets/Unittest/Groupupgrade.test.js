@@ -8,7 +8,7 @@ import Groupupgrade from '../Maintain/Groupupgrade';
 configure({ adapter: new Adapter() });
 
 window.initTable = () => { };
-window.destroyDataTable = () => { };
+window.destroyDataTable = () => { }; 
 
 describe('Testing from Groupupgrade.test.js <Groupupgrade />', () => {
     it('should render the Groupupgrade component', () => {

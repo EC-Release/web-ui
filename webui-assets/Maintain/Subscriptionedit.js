@@ -130,7 +130,7 @@ export default class Subscriptionedit extends React.Component {
         prepareData.app = currentForm.app.value;
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
-        prepareData.developerId = currentForm.developerId.value;
+        prepareData.developerId = currentForm.developerId.value; 
 
         fetch(this.props.baseUrl+'/updateSubscription', {
             method: 'PUT',
