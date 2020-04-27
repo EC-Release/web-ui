@@ -498,7 +498,7 @@ export default class Subscriptioncreate extends React.Component {
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
-                                                type="text"
+                                                type="password"
                                                 autoComplete="off"
                                                 className="form-control form-control-sm"
                                                 name="clientId"
@@ -516,7 +516,7 @@ export default class Subscriptioncreate extends React.Component {
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
-                                                type="text"
+                                                type="password"
                                                 className="form-control form-control-sm"
                                                 name="clientSecret"
                                                 value={this.state.subscriptionForm.clientSecret.value}

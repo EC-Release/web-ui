@@ -69,6 +69,47 @@ describe('ec-web-ui test cases', function () {
     });
     // Subscription update/delete component test end
 
+     // Groups create component test start
+     it('Groups create component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-maintain')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-group')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-group-create')).click();
+        browser.driver.sleep(1000);
+        expect(element(by.id('maintaingroupcreate-title')).getText()).toEqual('Create Group Creating parameters.');
+    });
+    // Groups create component test end
+
+    // Groups create submit button should be disable initially test start
+    it('Groups create submit button should be disable initially', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-maintain')).click();
+        browser.driver.sleep(2000);
+        element(by.id('nav-group')).click();
+        browser.driver.sleep(2000);
+        element(by.id('nav-group-create')).click();
+        browser.driver.sleep(2000);
+        element(by.id('create-group-btn')).getAttribute('disabled').then(function (attr) {
+            expect(attr).toBe('true');
+        });
+    });
+    // Groups create button should be disable initially test end
+
+     // Groups list/delete component test start
+     it('Groups list/delete component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-maintain')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-group')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-group-view-delete')).click();
+        browser.driver.sleep(1000);
+        expect(element.all(by.css('.Groupupgrade')).isPresent()).toBe(true);
+    });
+    // Groups list/delete component test end
+
     // Agent create component test start
     it('Agent create component test', function () {
         browser.driver.sleep(10000);
@@ -132,7 +173,7 @@ describe('ec-web-ui test cases', function () {
     // Agent create (Client) button should be disable initially test end
 
     // Agent update/disable component test start
-    it('Agent update/disable component test', function () {
+    /*it('Agent update/disable component test', function () {
         browser.driver.sleep(10000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
@@ -141,11 +182,11 @@ describe('ec-web-ui test cases', function () {
         element(by.id('nav-agent-update-disable')).click();
         browser.driver.sleep(1000);
         expect(element.all(by.css('.Maintainagentupgrade')).isPresent()).toBe(true);
-    });
+    });*/
     // Agent update/disable component test end
 
     // Agent view component test start
-    it('Agent view component test', function () {
+    /*it('Agent view component test', function () {
         browser.driver.sleep(10000);
         element(by.id('nav-maintain')).click();
         browser.driver.sleep(1000);
@@ -154,8 +195,10 @@ describe('ec-web-ui test cases', function () {
         element(by.id('nav-agent-view')).click();
         browser.driver.sleep(1000);
         expect(element.all(by.css('.Maintainagentview')).isPresent()).toBe(true);
-    });
+    });*/
     // Agent view component test end
+
+
     /*
     //Monitor Notification Component test start
     it('Monitor Notification component test', function () {

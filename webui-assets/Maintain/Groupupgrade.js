@@ -1,6 +1,7 @@
 import React from "react";
 
 export default class Groupupgrade extends React.Component {
+    /* istanbul ignore next */
     constructor(props){
         super(props);
         this.state = {
@@ -52,32 +53,6 @@ export default class Groupupgrade extends React.Component {
                                 .then((response) => {
                                     if (response.status === 200) {
                                         response.json().then((respData) => {
-                                            /*respData = {
-                                                data:[
-                                                    {
-                                                        groupId: 'fad66a52-8d59-4824-b96d-42564b68c711',
-                                                        ids: {
-                                                            aid: 'DstAet1',
-                                                            tid: '0GhEuE1'
-                                                        }
-                                                    },
-                                                    {
-                                                        groupId: 'fad66a52-8d59-4824-b96d-42564b68c712',
-                                                        ids: {
-                                                            aid: 'DstAet2',
-                                                            tid: '0GhEuE2'
-                                                        }
-                                                    },
-                                                    {
-                                                        groupId: 'fad66a52-8d59-4824-b96d-42564b68c713',
-                                                        ids: {
-                                                            aid: 'DstAet3',
-                                                            tid: '0GhEuE3'
-                                                        }
-                                                    }
-                                                ],
-                                                errorStatus: {status: 'ok'}
-                                            };*/
                                             let data = respData.data;
                                             if(respData.errorStatus.status == 'ok'){
                                                 // check selectedSubscriptionId in createGroup localStorage and append it to data here
@@ -170,32 +145,7 @@ export default class Groupupgrade extends React.Component {
                 .then((response) => {
                     if (response.status === 200) {
                         response.json().then((respData) => {
-                            /*respData = {
-                                data:[
-                                    {
-                                        groupId: 'fad66a52-8d59-4824-b96d-42564b68c711',
-                                        ids: {
-                                            aid: 'DstAet1',
-                                            tid: '0GhEuE1'
-                                        }
-                                    },
-                                    {
-                                        groupId: 'fad66a52-8d59-4824-b96d-42564b68c712',
-                                        ids: {
-                                            aid: 'DstAet2',
-                                            tid: '0GhEuE2'
-                                        }
-                                    },
-                                    {
-                                        groupId: 'fad66a52-8d59-4824-b96d-42564b68c713',
-                                        ids: {
-                                            aid: 'DstAet3',
-                                            tid: '0GhEuE3'
-                                        }
-                                    }
-                                ],
-                                errorStatus: {status: 'ok'}
-                            };*/
+                            
                             let data = respData.data;
                             if(respData.errorStatus.status == 'ok'){
                                 // check selectedSubscriptionId in createGroup localStorage and append it to data here
@@ -333,32 +283,6 @@ export default class Groupupgrade extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        /*respData = {
-                            data:[
-                                {
-                                    groupId: 'fad66a52-8d59-4824-b96d-42564b68c711',
-                                    ids: {
-                                        aid: 'DstAet1',
-                                        tid: '0GhEuE1'
-                                    }
-                                },
-                                {
-                                    groupId: 'fad66a52-8d59-4824-b96d-42564b68c712',
-                                    ids: {
-                                        aid: 'DstAet2',
-                                        tid: '0GhEuE2'
-                                    }
-                                },
-                                {
-                                    groupId: 'fad66a52-8d59-4824-b96d-42564b68c713',
-                                    ids: {
-                                        aid: 'DstAet3',
-                                        tid: '0GhEuE3'
-                                    }
-                                }
-                            ],
-                            errorStatus:{status: 'ok'}
-                        };*/
                         let data = respData.data;
                         if(respData.errorStatus.status == 'ok'){
                             // check selectedSubscriptionId in createGroup localStorage and append it to data here

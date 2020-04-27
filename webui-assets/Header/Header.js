@@ -9,7 +9,9 @@ export default class Header extends React.Component {
 
     /* istanbul ignore next */
     logout(e){
-        document.cookie = "ec-config=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        let cookieToDelete = 'ec-config';
+        document.cookie = cookieToDelete + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;";
+        document.cookie = cookieToDelete + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path="+window.location.pathname+";";
         localStorage.clear();
         let loginUrl = window.location.origin+window.location.pathname;
         window.location.href = loginUrl;
@@ -38,7 +40,7 @@ export default class Header extends React.Component {
                                 <img src="assets/static/images/notifications_icon.svg" />
                             </span>
                             <span>
-                                <img src="assets/static/images/logout_icon.svg" alt="logout" className="cursor-pointer" onClick={(event)=>{this.logout(event)}} />
+                                <img src="assets/static/images/logout_icon.svg" alt="logout" title="Logout" className="cursor-pointer" onClick={(event)=>{this.logout(event)}} />
                             </span>
                             {this.props.isFullScreenModal ?
                                 <span>
