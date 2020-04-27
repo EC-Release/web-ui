@@ -9,10 +9,13 @@ export default class Header extends React.Component {
 
     /* istanbul ignore next */ 
     logout(e){
-        localStorage.clear();
-        let logOut = window.location.origin+window.location.pathname+'/logout';
-        console.log(logOut);
-        window.location.href = logOut;
+        let cnf = confirm('Are you sure you want to logout?');
+        if(cnf){
+            localStorage.clear();
+            let logOut = window.location.origin+window.location.pathname+'/logout/';
+            console.log(logOut);
+            window.location.href = logOut;
+        }
     }
 
     /* istanbul ignore next */
