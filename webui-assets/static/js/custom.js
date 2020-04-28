@@ -53,6 +53,14 @@ $( document ).ready(function() {
             });
         }
     });
+    // Auto logout start
+    StartWarningTimer(); 
+    window.onmousemove = ResetTimeOutTimer;
+    window.onmousedown = ResetTimeOutTimer;
+    window.onclick = ResetTimeOutTimer;
+    window.onscroll = ResetTimeOutTimer;
+    window.onkeypress = ResetTimeOutTimer;
+    // Auto logout end
 });
 
 function loadTree(id){
@@ -294,3 +302,40 @@ function hideCookieInfo(){
 }
 /*Cookie Consent End*/
 
+// Auto logout functionality start
+var timoutWarning = 840000;//840000; // Display warning in 14 Mins.
+var timoutNow = 60000; // Warning has been shown, give the user 1 minute to interact
+var logoutUrl = window.location.origin+window.location.pathname+'/logout'; // URL to logout page.
+
+var warningTimer;
+var timeoutTimer;
+
+// Start warning timer.
+function StartWarningTimer() {
+    warningTimer = setTimeout("IdleWarning()", timoutWarning);
+}
+
+// Reset timers.
+function ResetTimeOutTimer() {
+    clearTimeout(timeoutTimer);
+    clearTimeout(warningTimer);
+    StartWarningTimer();
+}
+
+// Show idle timeout warning dialog.
+function IdleWarning() {
+    clearTimeout(warningTimer);
+    timeoutTimer = setTimeout("IdleTimeout()", timoutNow);
+    $('#logoutWarningModal').modal('show');
+}
+
+// Logout the user.
+function IdleTimeout() {
+    localStorage.clear();
+    window.location.href = logoutUrl;
+}
+
+function hideLogoutWarningModal(){
+    $('#logoutWarningModal').modal('hide');
+}
+// Auto logout functionality end
