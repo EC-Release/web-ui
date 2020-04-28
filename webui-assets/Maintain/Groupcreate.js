@@ -33,13 +33,15 @@ export default class Groupcreate extends React.Component {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
                             let subscriptions = respData.data;
-                            let selectedSubscriptionId = subscriptions[0].subscriptionId;
-                            let formObj = Object.assign({}, this.state.groupForm);
-                            formObj.subscriptionId.value = selectedSubscriptionId;
-                            this.setState({
-                                subscriptions: subscriptions,
-                                groupForm: formObj
-                            });
+                            if(subscriptions.length > 0){
+                                let selectedSubscriptionId = subscriptions[0].subscriptionId;
+                                let formObj = Object.assign({}, this.state.groupForm);
+                                formObj.subscriptionId.value = selectedSubscriptionId;
+                                this.setState({
+                                    subscriptions: subscriptions,
+                                    groupForm: formObj
+                                });
+                            }
                             this.props.hideGlobalMessage();
                             localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                         }

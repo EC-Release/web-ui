@@ -7,12 +7,15 @@ export default class Header extends React.Component {
         super(props);
     }
 
-    /* istanbul ignore next */
+    /* istanbul ignore next */ 
     logout(e){
-        document.cookie = "ec-config=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        localStorage.clear();
-        let loginUrl = window.location.origin+window.location.pathname;
-        window.location.href = loginUrl;
+        let cnf = confirm('Are you sure you want to logout?');
+        if(cnf){
+            localStorage.clear();
+            let logOut = window.location.origin+window.location.pathname+'/logout';
+            console.log(logOut);
+            window.location.href = logOut;
+        }
     }
 
     /* istanbul ignore next */
@@ -38,7 +41,7 @@ export default class Header extends React.Component {
                                 <img src="assets/static/images/notifications_icon.svg" />
                             </span>
                             <span>
-                                <img src="assets/static/images/logout_icon.svg" alt="logout" className="cursor-pointer" onClick={(event)=>{this.logout(event)}} />
+                                <img src="assets/static/images/logout_icon.svg" alt="logout" title="Logout" className="cursor-pointer" onClick={(event)=>{this.logout(event)}} />
                             </span>
                             {this.props.isFullScreenModal ?
                                 <span>

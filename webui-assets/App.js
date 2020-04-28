@@ -108,6 +108,47 @@ export default class App extends React.Component {
         }
     });
     // Get logged user's userId end
+
+    setTimeout(()=>{
+      //this.updateEcConfigCookie();
+    },60000); // 1 mins
+  }
+
+  /* istanbul ignore next */
+  updateEcConfigCookie(){
+    this.timer = setInterval(()=> this.getAuthTokenFromBackend(), 60000); // 1 mins
+  }
+
+  /* istanbul ignore next */
+  componentWillUnmount() {
+    clearInterval(this.timer);
+    this.timer = null;
+  }
+
+  /* istanbul ignore next */
+  getAuthTokenFromBackend(){ 
+    fetch('https://reqres.in/api/users/2'/*, { // this.state.apiEndPoints.baseUrl + '/getToken'
+      method: 'GET',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': authToken
+      }
+    }*/)
+    .then((response) => {
+        if (response.status === 200) {
+          response.json().then((respData) => {
+            //if (respData.errorStatus.status === 'ok') {
+              this.setState({
+                // set authToken
+              });
+              let cookieToUpdate = 'ec-config';
+              document.cookie = cookieToUpdate+"=Koushik";
+              document.cookie = cookieToUpdate+"=Koushik;path="+window.location.pathname+";";
+            //}
+          });
+        }
+    });
   }
 
   /* istanbul ignore next */
