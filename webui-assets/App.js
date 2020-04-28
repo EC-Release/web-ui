@@ -127,25 +127,26 @@ export default class App extends React.Component {
 
   /* istanbul ignore next */
   getAuthTokenFromBackend(){ 
-    fetch('https://reqres.in/api/users/2'/*, { // this.state.apiEndPoints.baseUrl + '/getToken'
+    fetch(this.state.apiEndPoints.baseUrl + '/refershToken' , {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': authToken
+          'Authorization': this.state.authToken
       }
-    }*/)
+    })
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            //if (respData.errorStatus.status === 'ok') {
+            if (respData.errorStatus.status === 'ok') {
+              let newToken = respData.data;
               this.setState({
-                // set authToken
+                authToken: newToken
               });
-              let cookieToUpdate = 'ec-config';
-              document.cookie = cookieToUpdate+"=Koushik";
-              document.cookie = cookieToUpdate+"=Koushik;path="+window.location.pathname+";";
-            //}
+              let cookieToUpdate = 'ec-config';
+              document.cookie = cookieToUpdate+"="+newToken;
+              document.cookie = cookieToUpdate+"="+newToken+";path="+window.location.pathname+";"; 
+            }
           });
         }
     });
@@ -279,6 +280,17 @@ export default class App extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
+  forceLogout(){
+    window.IdleTimeout();
+  }
+
+  /* istanbul ignore next */
+  continueSession(){
+    window.hideLogoutWarningModal();
+    window.ResetTimeOutTimer();
+  }  
+
   render() {
     /* jshint ignore:start */
     /* istanbul ignore next */
@@ -310,6 +322,22 @@ export default class App extends React.Component {
                       { this.servedView() }
                     </div>
                     <Cookienotification />
+                    <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                      <div className="modal-dialog modal-sm">
+                        <div className="modal-content rounded-0">
+                        <div className="modal-header rounded-0">
+                          <h6 className="modal-title">Auto logout for inactivity</h6>
+                        </div>
+                          <div className="modal-body">
+                            <p>Your session will end in a minute. Do you want to continue your session?</p>
+                          </div>
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-default" onClick={this.forceLogout.bind(this)}>No</button>
+                            <button type="button" className="btn btn-default customize-view-btn" onClick={this.continueSession.bind(this)}>Yes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

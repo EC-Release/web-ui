@@ -467,7 +467,7 @@ export default class Technicalview extends React.Component {
                                         loadTreeJs: true
                                     });
                                 },2000);
-                                this.timer = setInterval(()=> this.getItems(), 40000);
+                                this.timer = setInterval(()=> this.getItems(), 30000);
                             }
                         }
                     });
@@ -476,7 +476,7 @@ export default class Technicalview extends React.Component {
         }
         else{
             this.displayDataFromLocalStorage();
-            this.timer = setInterval(()=> this.getItems(), 40000);
+            this.timer = setInterval(()=> this.getItems(), 30000);
         }
     }
 
