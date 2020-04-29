@@ -110,13 +110,13 @@ export default class App extends React.Component {
     // Get logged user's userId end
 
     setTimeout(()=>{
-      //this.updateEcConfigCookie();
-    },60000); // 1 mins
+      this.updateEcConfigCookie();
+    },300000); // 5 mins
   }
 
   /* istanbul ignore next */
   updateEcConfigCookie(){
-    this.timer = setInterval(()=> this.getAuthTokenFromBackend(), 60000); // 1 mins
+    this.timer = setInterval(()=> this.getAuthTokenFromBackend(), 300000); // 5 mins
   }
 
   /* istanbul ignore next */
