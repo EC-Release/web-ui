@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "Admin WebUI"
   },
-  "host": "dev-ec.apps.ge.com",
+  "host": "ec-webui.herokuapp.com",
   "basePath": "/v1.1beta/ec",
   "tags": [
     {
@@ -19,6 +19,10 @@
     {
       "name": "Subscription",
       "description": "Handles Subscription APIs"
+    },
+    {
+      "name": "Real time view",
+      "description": "Handles real time APIs"
     }
   ],
   "schemes": [
@@ -26,307 +30,6 @@
     "https"
   ],
   "paths": {
-    "/listUsers": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "Lists EC UI users",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of EC UI users",
-            "examples": {
-              "application/json": {}
-            }
-          }
-        }
-      }
-    },
-    "/listGateways": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "Gives list of gateways for a user",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "user_id",
-            "in": "query",
-            "description": "user_id ",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of Gateway",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
-    "/listGatewaysForZone": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "List the gateways for a zone",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "zone_id",
-            "in": "query",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of Gateways for zone",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
-    "/listZones": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "List zone ids for a user",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "user_id",
-            "in": "query",
-            "description": "user_id ",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of zone ids",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
-    "/listServers": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "List servers for a user",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "user_id",
-            "in": "query",
-            "description": "user_id ",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of servers",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
-    "/listClients": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "List clients for a user",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "user_id",
-            "in": "query",
-            "description": "user_id ",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of clients",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
-    "/listServersForGateway": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "List servers for a gateway",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "gateway_id",
-            "in": "query",
-            "description": "gateway_id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of servers",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
-    "/listClientsForGateway": {
-      "get": {
-        "tags": [
-          "View"
-        ],
-        "summary": "List clients for a gateway",
-        "description": "",
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "description": "Bearer Authorization token",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "gateway_id",
-            "in": "query",
-            "description": "gateway_id",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "List of clients",
-            "examples": {
-              "application/json": {}
-            }
-          },
-          "400": {
-            "description": "Invalid value"
-          }
-        }
-      }
-    },
     "/generateGatewayScript": {
       "post": {
         "tags": [
@@ -1289,36 +992,161 @@
           }
         }
       }
+    },
+    "/groupList": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Get lis of groups for EC service",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "subscriptionID",
+            "description": "subscription id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group list",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/createGroup": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Create a group in EC service",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/groupInfo"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group created",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/deleteGroup": {
+      "get": {
+        "tags": [
+          "Real time view"
+        ],
+        "summary": "Deletes group from EC service",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "subscriptionID",
+            "description": "subscription id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "header",
+            "name": "groupID",
+            "description": "group id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group deleted",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
     }
-  }
-},
-"definitions": {
-  "GatewayInfo": {
-    "type": "object",
-    "properties": {
-      "mod": {
-        "type": "string"
-      },
-      "hst": {
-        "type": "string"
-      },
-      "dbg": {
-        "type": "boolean"
-      },
-      "tkn": {
-        "type": "string"
-      },
-      "sst": {
-        "type": "string"
-      },
-      "zon": {
-        "type": "string"
-      },
-      "gpt": {
-        "type": "string"
-      },
-      "env": {
-        "type": "string"
+  },
+  "definitions": {
+    "GatewayInfo": {
+      "type": "object",
+      "properties": {
+        "mod": {
+          "type": "string"
+        },
+        "hst": {
+          "type": "string"
+        },
+        "dbg": {
+          "type": "boolean"
+        },
+        "tkn": {
+          "type": "string"
+        },
+        "sst": {
+          "type": "string"
+        },
+        "zon": {
+          "type": "string"
+        },
+        "gpt": {
+          "type": "string"
+        },
+        "env": {
+          "type": "string"
+        }
       }
     }
   },
@@ -1507,10 +1335,19 @@
         "type": "string"
       }
     }
+  },
+  "groupInfo": {
+    "properties": {
+      "subscriptionId": {
+        "type": "string"
+      },
+      "groupId": {
+        "type": "string"
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
   }
-},
-"externalDocs": {
-  "description": "Find out more about Swagger",
-  "url": "http://swagger.io"
-}
 }
