@@ -303,9 +303,9 @@ function hideCookieInfo(){
 /*Cookie Consent End*/
 
 // Auto logout functionality start
-var timoutWarning = 840000;//840000; // Display warning in 14 Mins.
+var timoutWarning = 60000;//840000; // Display warning in 14 Mins.
 var timoutNow = 60000; // Warning has been shown, give the user 1 minute to interact
-var logoutUrl = window.location.origin+window.location.pathname+'/logout'; // URL to logout page.
+var logoutUrl = window.location.origin+window.location.pathname.replace('/ec','')+'/logout'; // URL to logout page.
 
 var warningTimer;
 var timeoutTimer;
