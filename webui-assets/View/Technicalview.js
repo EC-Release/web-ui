@@ -3,6 +3,7 @@ import React from "react";
 import Treelist from '../Treelist/Treelist.js';
 import Topologygraph from '../Topologygraph/Topologygraph.js';
 import Viewtable from '../Viewtable/Viewtable.js';
+import Customsearch from './Customsearch.js';
 
 export default class Technicalview extends React.Component {
 
@@ -492,6 +493,9 @@ export default class Technicalview extends React.Component {
         let edges = [];
         let treeValue = JSON.parse(localStorage.getItem("treeValue"));
         let technicalTableData = JSON.parse(localStorage.getItem("technicalTableData"));
+        this.setState({
+            mockTableData: technicalTableData
+        });
         this.generateTableStructure(technicalTableData);
         if(treeValue.length > 0){
             let shapeArray = this.state.nodeShapes;
@@ -591,6 +595,9 @@ export default class Technicalview extends React.Component {
                             if(numOfSubscriptions === 0){
                                 localStorage.setItem("technicalTableData", JSON.stringify(technicalTableData));
                                 localStorage.setItem("treeValue", JSON.stringify(treeValue));
+                                this.setState({
+                                    mockTableData: technicalTableData
+                                });
                             }
 
                             let newId = treeValue[0].id;
@@ -843,6 +850,9 @@ export default class Technicalview extends React.Component {
                                                                     if(totalNumOfAjaxProcessed === totalNumOfAjax){
                                                                         localStorage.setItem("technicalTableData", JSON.stringify(technicalTableData));
                                                                         localStorage.setItem("treeValue", JSON.stringify(treeValue));
+                                                                        this.setState({
+                                                                            mockTableData: technicalTableData
+                                                                        });
                                                                         console.log('Long Poll data GL');
                                                                     }
                                                                 });
@@ -857,6 +867,9 @@ export default class Technicalview extends React.Component {
                                                 if(totalNumOfAjaxProcessed === totalNumOfAjax){
                                                     localStorage.setItem("technicalTableData", JSON.stringify(technicalTableData));
                                                     localStorage.setItem("treeValue", JSON.stringify(treeValue));
+                                                    this.setState({
+                                                        mockTableData: technicalTableData
+                                                    });
                                                     console.log('Long Poll data GL NF');
                                                 }
                                             });
@@ -1063,35 +1076,197 @@ export default class Technicalview extends React.Component {
         }
     }
 
+    /* istanbul ignore next */
+    createView(selectedFields, filterFields){
+        // search functionality here
+        let mockTableData = [...this.state.mockTableData];
+        console.log(mockTableData);
+        let filteredData = mockTableData;
+        let uniqueFilteredData = [];
+        let andFilters = [];
+        let orFilters = [];
+        for(let filterField of filterFields){
+            if(filterField.whereCondition == 'AND' && filterField.whereValue !== ''){
+                andFilters.push(filterField);
+            }
+            else if(filterField.whereCondition == 'OR' && filterField.whereValue !== ''){
+                orFilters.push(filterField);
+            }
+        }
+
+        if(andFilters.length > 0){
+            for(let andFilter of andFilters){
+                if(andFilter.whereOperator == '='){
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
+                        return data[andFilter.whereField] == andFilter.whereValue;
+                    });
+                }
+                else if(andFilter.whereOperator == '>'){
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
+                        return data[andFilter.whereField] > andFilter.whereValue;
+                    });
+                }
+                else if(andFilter.whereOperator == '<'){
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
+                        return data[andFilter.whereField] < andFilter.whereValue;
+                    });
+                }
+                else if(andFilter.whereOperator == '!='){
+                    filteredData = filteredData.filter(function(data) { // jshint ignore:line
+                        return data[andFilter.whereField] != andFilter.whereValue;
+                    });
+                }
+            }
+        }
+        
+        if(orFilters.length > 0){
+            let orResults = [];
+            for(let orFilter of orFilters){
+                let orFilteredDatas = [];
+                let wholeData = [...this.state.mockTableData];
+                if(orFilter.whereOperator == '='){
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
+                        return data[orFilter.whereField] == orFilter.whereValue;
+                    });
+                }
+                else if(orFilter.whereOperator == '>'){
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
+                        return data[orFilter.whereField] > orFilter.whereValue;
+                    });
+                }
+                else if(orFilter.whereOperator == '<'){
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
+                        return data[orFilter.whereField] < orFilter.whereValue;
+                    });
+                }
+                else if(orFilter.whereOperator == '!='){
+                    orFilteredDatas = wholeData.filter(function(data) { // jshint ignore:line
+                        return data[orFilter.whereField] != orFilter.whereValue;
+                    });
+                }
+
+                if(orFilteredDatas.length > 0){
+                    for(let orFilteredData of orFilteredDatas){
+                        orResults.push(orFilteredData);
+                    }
+                }
+            }
+
+            if(orResults.length > 0){
+                for(let orResult of orResults){
+                    filteredData.push(orResult);
+                }
+            }
+        }
+
+        if(orFilters.length > 0){
+            let seen = Object.create(null);
+            let uniqueFilteredData = filteredData.filter(o => {
+                var key = ['subscription_name', 'group_id', 'gateway'].map(k => o[k]).join('|');
+                if (!seen[key]) {
+                    seen[key] = true;
+                    return true;
+                }
+            });
+        }
+        else{
+            uniqueFilteredData = filteredData;
+        }
+
+        let selectedDataKeys = [];
+        let tbody = [];
+        for(let selDatakey of selectedFields){
+            selectedDataKeys.push(selDatakey.fieldId);
+        }
+        for(let allData of filteredData){
+            let tbodyObj = {};
+            let objKey = 0;
+            for(let dataKey of selectedDataKeys){
+                let singleObj = {};
+                if(allData[dataKey].length > 10){
+                    singleObj.value = allData[dataKey].substr(0, 10);
+                    singleObj.hiddenValue = allData[dataKey];
+                    singleObj.hiddenState = true;
+                }
+                else{
+                    singleObj.value = allData[dataKey];
+                }
+                tbodyObj[objKey] = singleObj;
+                objKey++;
+            }
+            tbody.push(tbodyObj);
+        }
+
+        this.setState({
+            table:{
+                thead: selectedFields,
+                tbody: tbody
+            },
+            isSearchView: false
+        });
+    }
+
     render() {
         /* jshint ignore:start */
         /* istanbul ignore next */
         return (
-            <div className="Technicalview">
-                <ul className="nav nav-tabs" id="myTab" role="tablist">
-                    <li className="nav-item">
-                        <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Table</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Treelist and Topology</a>
-                    </li>
-                    <li title="Refresh" className="nav-item cursor-pointer" onClick={(event)=>{this.refreshData(event)}}>
-                        <a className="nav-link disabled" href="#">
-                            <img className="" src="assets/static/images/refresh.svg" alt="refresh" height="15px" />
-                        </a>
-                    </li>
-                </ul>
-                <div className="tab-content" id="myTabContent">
-                    <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        {
-                            this.state.loadTreeJs ?
-                                this.state.table.tbody.length > 0 ?
-                                    <div className="row view-table">
-                                        <div className="col-md-12" id="viewTableDiv">
-                                            <button onClick={this.changeToSearchView.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
-                                            <Viewtable tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)}></Viewtable>
+            <div>
+            { !this.state.isSearchView ?
+                <div className="Technicalview">
+                    <ul className="nav nav-tabs" id="myTab" role="tablist">
+                        <li className="nav-item">
+                            <a className="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Table</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Treelist and Topology</a>
+                        </li>
+                        <li title="Refresh" className="nav-item cursor-pointer" onClick={(event)=>{this.refreshData(event)}}>
+                            <a className="nav-link disabled" href="#">
+                                <img className="" src="assets/static/images/refresh.svg" alt="refresh" height="15px" />
+                            </a>
+                        </li>
+                    </ul>
+                    <div className="tab-content" id="myTabContent">
+                        <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            {
+                                this.state.loadTreeJs ?
+                                    this.state.table.tbody.length > 0 ?
+                                        <div className="row view-table">
+                                            <div className="col-md-12" id="viewTableDiv">
+                                                <button onClick={this.changeToSearchView.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
+                                                <Viewtable tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)}></Viewtable>
+                                            </div>
+                                        </div>:
+                                        <div className="row mt-2">
+                                            <div className="col-md-12">
+                                                <div className="alert alert-success" role="alert">
+                                                    No record found!
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>:
+                                :
+                                <div className="row">
+                                    <div className="col-md-12 mt-5">
+                                        <p>Please wait...</p>
+                                        <div className="progress">
+                                            <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: this.state.apiLoadPercentage+ '%'}}></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            {
+                            this.state.loadTreeJs ?
+                                this.state.graph.nodes.length > 0 && this.state.treeValue.length > 0 ?
+                                    <div className="row">
+                                        <div className="col-md-4 treeview-div">
+                                            <Treelist treeValue={this.state.treeValue} changeTopology={this.changeTopologyView.bind(this)}></Treelist>
+                                        </div>
+                                        <div className="col-md-8 treeview-div">
+                                            <Topologygraph nodeData={this.state.graph}></Topologygraph>
+                                        </div>
+                                    </div> :
                                     <div className="row mt-2">
                                         <div className="col-md-12">
                                             <div className="alert alert-success" role="alert">
@@ -1099,48 +1274,26 @@ export default class Technicalview extends React.Component {
                                             </div>
                                         </div>
                                     </div>
-                            :
-                            <div className="row">
-                                <div className="col-md-12 mt-5">
-                                    <p>Please wait...</p>
-                                    <div className="progress">
-                                        <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: this.state.apiLoadPercentage+ '%'}}></div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
-                    </div>
-                    <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        {
-                        this.state.loadTreeJs ?
-                            this.state.graph.nodes.length > 0 && this.state.treeValue.length > 0 ?
+                                : 
                                 <div className="row">
-                                    <div className="col-md-4 treeview-div">
-                                        <Treelist treeValue={this.state.treeValue} changeTopology={this.changeTopologyView.bind(this)}></Treelist>
-                                    </div>
-                                    <div className="col-md-8 treeview-div">
-                                        <Topologygraph nodeData={this.state.graph}></Topologygraph>
-                                    </div>
-                                </div> :
-                                <div className="row mt-2">
-                                    <div className="col-md-12">
-                                        <div className="alert alert-success" role="alert">
-                                            No record found!
+                                    <div className="col-md-12 mt-5">
+                                        <p>Please wait...</p>
+                                        <div className="progress">
+                                            <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: this.state.apiLoadPercentage+ '%'}}></div>
                                         </div>
                                     </div>
                                 </div>
-                            : 
-                            <div className="row">
-                                <div className="col-md-12 mt-5">
-                                    <p>Please wait...</p>
-                                    <div className="progress">
-                                        <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: this.state.apiLoadPercentage+ '%'}}></div>
-                                    </div>
-                                </div>
-                            </div>
-                        }
+                            }
+                        </div>
                     </div>
-                </div>
+                </div>  :
+                <Customsearch 
+                    showGlobalMessage={this.props.showGlobalMessage.bind(this)}
+                    hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}
+                    allFields={this.state.allFields} 
+                    selectedFields={this.state.table.thead}
+                    createView={this.createView.bind(this)}></Customsearch>
+                }
             </div>
         )
         /* jshint ignore:end */
