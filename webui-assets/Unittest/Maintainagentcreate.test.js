@@ -33,6 +33,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
                 bucAnd: { value: '', dirtyState: false },
                 vpc: { value: '', dirtyState: false },
                 debugMode: { value: true, dirtyState: false },
+                subscriptionId: { value: '', dirtyState: false },
+                ecVersion: { value: '', dirtyState: false },
             }
         });
         expect(wrapper).toBeTruthy();
@@ -60,6 +62,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
                 bucAnd: { value: '', dirtyState: false },
                 vpc: { value: '', dirtyState: false },
                 debugMode: { value: true, dirtyState: false },
+                subscriptionId: { value: '', dirtyState: false },
+                ecVersion: { value: '', dirtyState: false },
             }
         });
         expect(wrapper.find('div.gateway-form').length).toBe(1);
@@ -87,6 +91,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
                 bucAnd: { value: '', dirtyState: false },
                 vpc: { value: '', dirtyState: false },
                 debugMode: { value: true, dirtyState: false },
+                subscriptionId: { value: '', dirtyState: false },
+                ecVersion: { value: '', dirtyState: false },
             }
         });
         expect(wrapper.find('div.server-form').length).toBe(1);
@@ -114,6 +120,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
                 bucAnd: { value: '', dirtyState: false },
                 vpc: { value: '', dirtyState: false },
                 debugMode: { value: true, dirtyState: false },
+                subscriptionId: { value: '', dirtyState: false },
+                ecVersion: { value: '', dirtyState: false },
             }
         });
         expect(wrapper.find('div.client-form').length).toBe(1);

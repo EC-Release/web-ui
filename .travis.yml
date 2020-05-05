@@ -13,12 +13,12 @@ script:
   -v $TRAVIS_BUILD_DIR:/build
   -it enterpriseconnect/webui:v1.1beta
   /bin/sh -c 'ls -al && npm install && npm test'
-
 notifications:  
   email:  
     recipients:  
     - ec-research@ge.com
     - koushik.apal@ge.com
     - prasad.alokam@ge.com
+    - RamaRao.Srikakulapu@ge.com
     on_success: always  
     on_failure: always

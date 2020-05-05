@@ -16,6 +16,8 @@ export default class Maintainagentcreate extends React.Component {
                 bucAnd: { value: '', dirtyState: false },
                 vpc: { value: '', dirtyState: false },
                 debugMode: { value: true, dirtyState: false },
+                subscriptionId: { value: '', dirtyState: false },
+                ecVersion: { value: '', dirtyState: false }
             },
             errorsAgentForm: {},
             agentFormIsValid: false,
@@ -27,6 +29,7 @@ export default class Maintainagentcreate extends React.Component {
                 serviceUrl: { value: '', dirtyState: false },
                 token: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
+                os: { value: '', dirtyState: false },
             },
             errorsGatewayForm: {},
             gatewayFormIsValid: false,
@@ -46,6 +49,8 @@ export default class Maintainagentcreate extends React.Component {
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
+                hca: { value: '', dirtyState: false },
+                os: { value: '', dirtyState: false },
             },
             errorsServerForm: {},
             serverFormIsValid: false,
@@ -63,9 +68,12 @@ export default class Maintainagentcreate extends React.Component {
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
+                hca: { value: '', dirtyState: false },
+                os: { value: '', dirtyState: false },
             },
             errorsClientForm: {},
             clientFormIsValid: false,
+            subscriptions:[],
             // API will provide this agentModeButtons
             agentModeButtons: [
                 { text: 'GATEWAY', value: 1 },
@@ -83,10 +91,8 @@ export default class Maintainagentcreate extends React.Component {
                 { name: 'External', id: '4' },
             ],
             // API will provide this ecVersions
-            ecVersions: [
-                { name: 'v 212 stable', id: '1' },
-                { name: 'v 1724 beta', id: '2' }
-            ],
+            ecVersions: [],
+            groups: [],
             // API will provide this ecSubVersions
             ecSubVersions: [
                 { name: 'v1.hokkaido.212 stable', id: '1', ecVersionId: '1' },
@@ -109,9 +115,11 @@ export default class Maintainagentcreate extends React.Component {
                 { name: 'CF', id: 'cf' },
                 { name: 'AWS', id: 'aws' }
             ],
-            apiEndPoints: {
-                baseUrl: 'https://reqres.in/api/users/2'
-            },
+            operatingSystems: [
+                { name: 'Linux', id: 'linux' },
+                { name: 'Windows', id: 'windows' },
+                { name: 'Darwin', id: 'darwin' }
+            ],
             isTesting: false
         };
     }
@@ -137,9 +145,58 @@ export default class Maintainagentcreate extends React.Component {
             });
         }
 
+        if(this.state.operatingSystems.length > 0){
+            let selectedOs = this.state.operatingSystems[0].id;
+            let gatewayForm = Object.assign({}, this.state.gatewayForm);
+            let serverForm = Object.assign({}, this.state.serverForm);
+            let clientForm = Object.assign({}, this.state.clientForm);
+            gatewayForm.os.value = selectedOs;
+            serverForm.os.value = selectedOs;
+            clientForm.os.value = selectedOs;
+            this.setState({
+                gatewayForm: gatewayForm,
+                serverForm: serverForm,
+                clientForm: clientForm
+            });
+        }
+
+        // Subscription list start
+        fetch(this.props.baseUrl + '/listSubscriptions', {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+this.props.authToken
+            }
+        })
+        .then((response) => {
+            if (response.status === 200) {
+                response.json().then((respData) => {
+                    if(respData.errorStatus.status == 'ok'){
+                        let agentForm = this.state.agentForm;
+                        let subscriptions = respData.data;
+                        let selectedSubscriptionId = '';
+                        if(subscriptions === null){
+                            subscriptions = [];
+                        }
+                        else{
+                            selectedSubscriptionId = subscriptions[1].subscriptionId;
+                            agentForm.subscriptionId.value = selectedSubscriptionId;
+                        }
+
+                        this.setState({
+                            subscriptions: subscriptions,
+                            agentForm: agentForm
+                        });
+                        this.changeFormAutofill(selectedSubscriptionId);
+                    }
+                });
+            }
+        });
+        // Subscription list end
     
-        // get gateway list start
-        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId, { // Get gateways '/listGateways?user_id'+this.props.userId
+        // get EC Version list start
+        fetch(this.props.baseUrl+'/ecVersions', { // this.props.baseUrl+'ecVersions'
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -151,34 +208,19 @@ export default class Maintainagentcreate extends React.Component {
             if (response.status === 200) {
                 response.json().then((respData) => {
                     if(respData.errorStatus.status == 'ok'){
-                        let gateways = respData.data;
-                        /*gateways = [
-                            {
-                            "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                            "userId": "212712078",
-                            "gatewayPort": "8080",
-                            "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                            "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                            "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                            "hostUrl": "wss://gateway-url/agent"
-                            },
-                            {
-                            "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                            "userId": "212712078",
-                            "gatewayPort": "8080",
-                            "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                            "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                            "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                            "hostUrl": "wss://gateway-url/agent"
-                            }
-                        ];*/
+                        let ecVersions = respData.data;
+                        let agentForm = this.state.agentForm;
 
-                        if(gateways === null){
-                            gateways = [];
+                        if(ecVersions === null){
+                            ecVersions = [];
+                        }
+                        else{
+                            agentForm.ecVersion.value = ecVersions[0];
                         }
 
                         this.setState({
-                            gateways: gateways
+                            ecVersions: ecVersions,
+                            agentForm: agentForm
                         });
                     }
                 });
@@ -198,42 +240,158 @@ export default class Maintainagentcreate extends React.Component {
     }
 
     /* istanbul ignore next */
+    changeFormAutofill(selectedSubscriptionId){
+        let subscriptions = this.state.subscriptions;
+        let gatewayForm = this.state.gatewayForm;
+        let serverForm = this.state.serverForm;
+        let clientForm = this.state.clientForm;
+        if(selectedSubscriptionId != ''){
+            let selectedSubscription  = subscriptions.filter(function(o){return o.subscriptionId == selectedSubscriptionId;} );
+            
+            gatewayForm.zone.value = selectedSubscriptionId;
+            gatewayForm.serviceUrl.value = selectedSubscription[0].serviceUri;
+            gatewayForm.token.value = selectedSubscription[0].adminToken;
+
+            serverForm.zone.value = selectedSubscriptionId;
+            serverForm.serviceUrl.value = selectedSubscription[0].serviceUri;
+            serverForm.clientId.value = selectedSubscription[0].clientId;
+            serverForm.clientSecret.value = selectedSubscription[0].clientSc;
+            serverForm.OAuth2.value = selectedSubscription[0].uaaUrl + '/oauth/token';
+
+            clientForm.clientId.value = selectedSubscription[0].clientId;
+            clientForm.clientSecret.value = selectedSubscription[0].clientSc;
+            clientForm.OAuth2.value = selectedSubscription[0].uaaUrl + '/oauth/token';
+
+            fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer '+this.props.authToken
+                }
+            
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    response.json().then((respData) => {
+                        if(respData.errorStatus.status == 'ok'){
+                            let groups = respData.data;
+                            if(groups.length > 0){
+                                let selectedGroup = groups[0];
+                                let selectedGroupId = selectedGroup.groupId;
+                                serverForm.group.value = selectedGroupId;
+                                clientForm.group.value = selectedGroupId;
+                                this.setState({
+                                    groups: groups,
+                                    gatewayForm: gatewayForm,
+                                    serverForm: serverForm,
+                                    clientForm: clientForm
+                                });
+                                this.changeAidForServer(selectedGroupId);
+                                this.changeAidTidForClient(selectedGroupId);
+                            }
+                        }
+                    });
+                }
+            });
+        }
+
+        fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer '+this.props.authToken
+            }
+        
+        })
+        .then((response) => {
+            if (response.status === 200) {
+                response.json().then((respData) => {
+                    if(respData.errorStatus.status == 'ok'){
+                        let gateways = respData.data.glist;
+                        let modifiedGateways = [];
+                        let gatewayKey = 0;
+                        let selectedGateway = '';
+                        for(let indexGateway in gateways){
+                            let cfURL = gateways[indexGateway].cfURL;
+                            if(cfURL != ''){
+                                let modifiedCfUrlObj = {};
+                                let cfURLSplit = cfURL.split("://");
+                                if(cfURLSplit[0].search('https') != -1){
+                                    cfURLSplit[0] = 'wss';
+                                }
+                                else{
+                                    cfURLSplit[0] = 'ws';
+                                }
+                                let newCfURL = cfURLSplit.join('://');
+                                newCfURL += '/agent';
+                                modifiedCfUrlObj.id = newCfURL;
+                                modifiedCfUrlObj.name = newCfURL;
+                                modifiedGateways.push(modifiedCfUrlObj);
+                                if(gatewayKey == 0){
+                                    selectedGateway = newCfURL;
+                                }
+                                gatewayKey++;
+                            }
+                        }
+
+                        gatewayForm.host.value = selectedGateway;
+                        clientForm.host.value = selectedGateway;
+                        serverForm.host.value = selectedGateway;
+                        this.setState({
+                            gateways: modifiedGateways,
+                            gatewayForm: gatewayForm,
+                            clientForm: clientForm,
+                            serverForm: serverForm
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    /* istanbul ignore next */
+    changeAidForServer(selectedGroupId){
+        if(selectedGroupId != ''){
+            let groups = this.state.groups;
+            let serverForm = this.state.serverForm;
+            let selectedGroup  = groups.filter(function(o){return o.groupId == selectedGroupId;});
+            serverForm.agentId.value = selectedGroup[0].ids.tid;
+            this.setState({
+                serverForm: serverForm
+            });
+        }
+    }
+
+    /* istanbul ignore next */
+    changeAidTidForClient(selectedGroupId){
+        if(selectedGroupId != ''){
+            let groups = this.state.groups;
+            let clientForm = this.state.clientForm;
+            let selectedGroup  = groups.filter(function(o){return o.groupId == selectedGroupId;});
+            clientForm.agentId.value = selectedGroup[0].ids.aid;
+            clientForm.targetId.value = selectedGroup[0].ids.tid;
+            this.setState({
+                clientForm: clientForm
+            });
+        }
+    }
+
+    /* istanbul ignore next */
     handleAgentFormData(e){
         let fieldName = e.target.name;
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         let currentAgentForm =  Object.assign({}, this.state.agentForm);
 
-        if(fieldName === 'gateway'){
-            currentAgentForm.gateway.value = updatedValue;
-            currentAgentForm.gateway.dirtyState = true;
+        if(fieldName === 'subscriptionId'){
+            currentAgentForm.subscriptionId.value = updatedValue;
+            currentAgentForm.subscriptionId.dirtyState = true;
+            this.changeFormAutofill(updatedValue);
         }
-        else if(fieldName === 'businessId'){
-            currentAgentForm.businessId.value = updatedValue;
-            currentAgentForm.businessId.dirtyState = true;
-        }
-        else if(fieldName === 'businessName'){
-            currentAgentForm.businessName.value = updatedValue;
-            currentAgentForm.businessName.dirtyState = true;
-        }
-        else if(fieldName === 'requestor'){
-            currentAgentForm.requestor.value = updatedValue;
-            currentAgentForm.requestor.dirtyState = true;
-        }
-        else if(fieldName === 'requestedDate'){
-            currentAgentForm.requestedDate.value = updatedValue;
-            currentAgentForm.requestedDate.dirtyState = true;
-        }
-        else if(fieldName === 'customerEmail'){
-            currentAgentForm.customerEmail.value = updatedValue;
-            currentAgentForm.customerEmail.dirtyState = true;
-        }
-        else if(fieldName === 'bucAnd'){
-            currentAgentForm.bucAnd.value = updatedValue;
-            currentAgentForm.bucAnd.dirtyState = true;
-        }
-        else if(fieldName === 'vpc'){
-            currentAgentForm.vpc.value = updatedValue;
-            currentAgentForm.vpc.dirtyState = true;
+        else if(fieldName === 'ecVersion'){
+            currentAgentForm.ecVersion.value = updatedValue;
+            currentAgentForm.ecVersion.dirtyState = true;
         }
         else if(fieldName === 'debugMode'){
             currentAgentForm.debugMode.value = updatedValue;
@@ -347,6 +505,10 @@ export default class Maintainagentcreate extends React.Component {
         else if(fieldName === 'host'){
             currentGatewayForm.host.value = updatedValue;
             currentGatewayForm.host.dirtyState = true;
+        }
+        else if(fieldName === 'os'){
+            currentGatewayForm.os.value = updatedValue;
+            currentGatewayForm.os.dirtyState = true;
         }
 
         this.setState({
@@ -468,6 +630,7 @@ export default class Maintainagentcreate extends React.Component {
         else if(fieldName === 'group'){
             currentServerForm.group.value = updatedValue;
             currentServerForm.group.dirtyState = true;
+            this.changeAidForServer(updatedValue);
         }
         else if(fieldName === 'clientId'){
             currentServerForm.clientId.value = updatedValue;
@@ -535,6 +698,18 @@ export default class Maintainagentcreate extends React.Component {
             currentServerForm.plugIn.value = value;
             currentServerForm.plugIn.dirtyState = true;
         }
+        else if(fieldName === 'hca'){
+            let hcaAfterValidityCheck = (e.target.validity.valid) ? updatedValue : currentServerForm.hca.value;
+            if(hcaAfterValidityCheck.length > 4){
+                hcaAfterValidityCheck = currentServerForm.hca.value;
+            }
+            currentServerForm.hca.value = hcaAfterValidityCheck;
+            currentServerForm.hca.dirtyState = true;
+        }
+        else if(fieldName === 'os'){
+            currentServerForm.os.value = updatedValue;
+            currentServerForm.os.dirtyState = true;
+        }
 
         this.setState({
             serverForm: currentServerForm
@@ -572,6 +747,8 @@ export default class Maintainagentcreate extends React.Component {
         let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
         let plugInValue = currentFormData.plugIn.value;
         let plugInDirtyState = currentFormData.plugIn.dirtyState;
+        let hcaValue = currentFormData.hca.value;
+        let hcaDirtyState = currentFormData.hca.dirtyState;
         let formIsValid = true;
         let errors = {};
         let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
@@ -709,6 +886,19 @@ export default class Maintainagentcreate extends React.Component {
                 formIsValid = false;
             }
         }
+
+        if(hcaValue.trim() === ''){
+            if(hcaDirtyState){
+                errors.hca = 'Please enter Health Port in digit';
+            }
+            formIsValid = false;
+        }
+        else if(hcaValue.length != 4){
+            if(hcaDirtyState){
+                errors.hca = 'Health Port must have 4 digit';
+            }
+            formIsValid = false;
+        }
         
         this.setState({
             serverFormIsValid: formIsValid,
@@ -732,6 +922,7 @@ export default class Maintainagentcreate extends React.Component {
         else if(fieldName === 'group'){
             currentClientForm.group.value = updatedValue;
             currentClientForm.group.dirtyState = true;
+            this.changeAidTidForClient(updatedValue);
         }
         else if(fieldName === 'clientId'){
             currentClientForm.clientId.value = updatedValue;
@@ -791,6 +982,18 @@ export default class Maintainagentcreate extends React.Component {
             currentClientForm.plugIn.value = value;
             currentClientForm.plugIn.dirtyState = true;
         }
+        else if(fieldName === 'hca'){
+            let hcaAfterValidityCheck = (e.target.validity.valid) ? updatedValue : currentClientForm.hca.value;
+            if(hcaAfterValidityCheck.length > 4){
+                hcaAfterValidityCheck = currentClientForm.hca.value;
+            }
+            currentClientForm.hca.value = hcaAfterValidityCheck;
+            currentClientForm.hca.dirtyState = true;
+        }
+        else if(fieldName === 'os'){
+            currentClientForm.os.value = updatedValue;
+            currentClientForm.os.dirtyState = true;
+        }
 
         this.setState({
             clientForm: currentClientForm
@@ -823,6 +1026,8 @@ export default class Maintainagentcreate extends React.Component {
         let allowPlugInValue = currentFormData.allowPlugIn.value;
         let plugInValue = currentFormData.plugIn.value;
         let plugInDirtyState = currentFormData.plugIn.dirtyState;
+        let hcaValue = currentFormData.hca.value;
+        let hcaDirtyState = currentFormData.hca.dirtyState;
         let formIsValid = true;
         let errors = {};
         let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
@@ -940,6 +1145,19 @@ export default class Maintainagentcreate extends React.Component {
                 formIsValid = false;
             }
         }
+
+        if(hcaValue.trim() === ''){
+            if(hcaDirtyState){
+                errors.hca = 'Please enter Health Port in digit';
+            }
+            formIsValid = false;
+        }
+        else if(hcaValue.length != 4){
+            if(hcaDirtyState){
+                errors.hca = 'Health Port must have 4 digit';
+            }
+            formIsValid = false;
+        }
         
         this.setState({
             clientFormIsValid: formIsValid,
@@ -1028,14 +1246,16 @@ export default class Maintainagentcreate extends React.Component {
             let gatewayFormData = Object.assign({}, this.state.gatewayForm);
             prepareData.mod = gatewayFormData.mode.toLowerCase();
             prepareData.dbg = agentFormData.debugMode.value;
+            prepareData.ecVersion = agentFormData.ecVersion.value;
             prepareData.env = gatewayFormData.environment.value;
             prepareData.gpt = gatewayFormData.gatewayPort.value;
             prepareData.zon = gatewayFormData.zone.value;
             prepareData.sst = gatewayFormData.serviceUrl.value;
             prepareData.tkn = gatewayFormData.token.value;
             prepareData.hst = gatewayFormData.host.value;
-            //console.log(prepareData);
-            fetch(this.props.baseUrl + '/generateGatewayScript?user_id='+this.props.userId, { // '/generateGatewayScript?user_id='+this.props.userId
+            prepareData.os = gatewayFormData.os.value;
+            console.log(prepareData);
+            fetch(this.props.baseUrl + '/generateGatewayScript', { // '/generateGatewayScript?user_id='+this.props.userId
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -1048,25 +1268,33 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
+                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
                             setTimeout(()=> {
-                                this.props.hideGlobalMessage();
                                 let selectedEnv = '';
+                                let selectedOs = '';
+                                let selectedHost = '';
                                 if(this.state.environments.length > 0){
                                     selectedEnv = this.state.environments[0].id;
+                                }
+                                if(this.state.operatingSystems.length > 0){
+                                    selectedOs = this.state.operatingSystems[0].id;
+                                }
+                                if(this.state.gateways.length > 0){
+                                    selectedHost = this.state.gateways[0];
                                 }
                                 let gatewayForm = {
                                     mode: 'GATEWAY',
                                     environment: { value: selectedEnv, dirtyState: false },
                                     gatewayPort: { value: '', dirtyState: false },
-                                    zone: { value: '', dirtyState: false },
-                                    serviceUrl: { value: '', dirtyState: false },
-                                    token: { value: '', dirtyState: false },
-                                    host: { value: '', dirtyState: false },
+                                    zone: { value: gatewayFormData.zone.value, dirtyState: false },
+                                    serviceUrl: { value: gatewayFormData.serviceUrl.value, dirtyState: false },
+                                    token: { value: gatewayFormData.token.value, dirtyState: false },
+                                    host: { value: selectedHost, dirtyState: false },
+                                    os: { value: selectedOs, dirtyState: false },
                                 };
 
                                 let filename = "gateway.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+gatewayFormData.mode.toLowerCase()+" \n\t\tgpt: "+ gatewayFormData.gatewayPort.value +" \n\t\tzon: "+ gatewayFormData.zone.value +" \n\t\tsst: "+ gatewayFormData.serviceUrl.value +" \n\t\tdbg: "+ agentFormData.debugMode.value +" \n\t\ttkn: "+ gatewayFormData.token.value +" \n\t\thst: "+ gatewayFormData.host.value;
+                                let data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1085,6 +1313,9 @@ export default class Maintainagentcreate extends React.Component {
                                     gatewayFormIsValid: false
                                 });
                             }, 2000);
+                            setTimeout(()=>{
+                                this.props.hideGlobalMessage();
+                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1113,7 +1344,7 @@ export default class Maintainagentcreate extends React.Component {
             let serverFormData = Object.assign({}, this.state.serverForm);
             prepareData.mod = serverFormData.mode.toLowerCase();
             prepareData.dbg = agentFormData.debugMode.value;
-            //prepareData.gatewayId = agentFormData.gateway.value;
+            prepareData.ecVersion = agentFormData.ecVersion.value;
             prepareData.aid = serverFormData.agentId.value;
             prepareData.grp = serverFormData.group.value;
             prepareData.cid = serverFormData.clientId.value;
@@ -1128,6 +1359,8 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.rpt = serverFormData.remotePort.value;
             prepareData.prx = serverFormData.proxy.value;
             prepareData.plg = serverFormData.allowPlugIn.value;
+            prepareData.hca = serverFormData.hca.value;
+            prepareData.os = serverFormData.os.value;
             for(let statePlugIn of this.state.plugIns){
                 if(serverFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
                     prepareData[statePlugIn.id] = true;
@@ -1136,8 +1369,8 @@ export default class Maintainagentcreate extends React.Component {
                     prepareData[statePlugIn.id] = false;
                 }
             }
-            //console.log(prepareData);
-            fetch(this.props.baseUrl + '/generateServerScript?user_id='+this.props.userId+'&gateway_id='+agentFormData.gateway.value, {  // '/generateServerScript?user_id='+this.props.userId+'&gateway_id='+agentFormData.gateway.value
+            console.log(prepareData);
+            fetch(this.props.baseUrl + '/generateServerScript', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -1150,29 +1383,38 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(true, true, 'Record saved successfully', 'custom-success');
+                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
                             setTimeout(()=> {
-                                this.props.hideGlobalMessage();
+                                let selectedOs = '';
+                                let selectedHost = '';
+                                if(this.state.operatingSystems.length > 0){
+                                    selectedOs = this.state.operatingSystems[0].id;
+                                }
+                                if(this.state.gateways.length > 0){
+                                    selectedHost = this.state.gateways[0];
+                                }
                                 let serverForm = {
                                     mode: 'SERVER',
-                                    agentId: { value: '', dirtyState: false },
-                                    group: { value: '', dirtyState: false },
-                                    clientId: { value: '', dirtyState: false },
-                                    clientSecret: { value: '', dirtyState: false },
+                                    agentId: { value: serverFormData.agentId.value, dirtyState: false },
+                                    group: { value: serverFormData.group.value, dirtyState: false },
+                                    clientId: { value: serverFormData.clientId.value, dirtyState: false },
+                                    clientSecret: { value: serverFormData.clientSecret.value, dirtyState: false },
                                     duration: { value: '', dirtyState: false },
-                                    OAuth2:{ value: '', dirtyState: false },
-                                    host: { value: '', dirtyState: false },
-                                    zone: { value: '', dirtyState: false },
-                                    serviceUrl: { value: '', dirtyState: false },
+                                    OAuth2:{ value: serverFormData.OAuth2.value, dirtyState: false },
+                                    host: { value: selectedHost, dirtyState: false },
+                                    zone: { value: serverFormData.zone.value, dirtyState: false },
+                                    serviceUrl: { value: serverFormData.serviceUrl.value, dirtyState: false },
                                     remoteHost: { value: '', dirtyState: false },
                                     remotePort: { value: '', dirtyState: false },
                                     proxy: { value: '', dirtyState: false },
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
+                                    hca: { value: '', dirtyState: false },
+                                    os: { value: selectedOs, dirtyState: false },
                                 };
                                 
                                 let filename = "server.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+serverFormData.mode.toLowerCase()+ "\n\t\tzon: "+ serverFormData.zone.value +" \n\t\tgrp: "+ serverFormData.group.value +" \n\t\tsst: "+ serverFormData.serviceUrl.value +" \n\t\thst: "+ serverFormData.host.value +" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tcid: "+ serverFormData.clientId.value+" \n\t\tcsc: "+ serverFormData.clientSecret.value+" \n\t\toa2: "+ serverFormData.OAuth2.value+" \n\t\tdur: "+ serverFormData.duration.value+" \n\t\taid: "+ serverFormData.agentId.value+" \n\t\trpt: "+ serverFormData.remotePort.value+" \n\t\trht: "+ serverFormData.remoteHost.value+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ serverFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData.vln+" \n\t\ttls: "+  prepareData.tls;
+                                let data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1191,6 +1433,9 @@ export default class Maintainagentcreate extends React.Component {
                                     serverFormIsValid: false
                                 });
                             }, 2000);
+                            setTimeout(()=>{
+                                this.props.hideGlobalMessage();
+                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1219,7 +1464,7 @@ export default class Maintainagentcreate extends React.Component {
             let clientFormData = this.state.clientForm;
             prepareData.mod = clientFormData.mode.toLowerCase();
             prepareData.dbg = agentFormData.debugMode.value;
-            //prepareData.gatewayId = agentFormData.gateway.value;
+            prepareData.ecVersion = agentFormData.ecVersion.value;
             prepareData.aid = clientFormData.agentId.value;
             prepareData.grp = clientFormData.group.value;
             prepareData.cps = 0;
@@ -1232,6 +1477,8 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.tid = clientFormData.targetId.value;
             prepareData.proxy = clientFormData.proxy.value;
             prepareData.plg = clientFormData.allowPlugIn.value;
+            prepareData.hca = clientFormData.hca.value;
+            prepareData.os = clientFormData.os.value;
             for(let statePlugIn of this.state.plugIns){
                 if(clientFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
                     prepareData[statePlugIn.id] = true;
@@ -1242,7 +1489,7 @@ export default class Maintainagentcreate extends React.Component {
             }
             console.log(prepareData);
 
-            fetch(this.props.baseUrl + '/generateClientScript?user_id='+this.props.userId+'&gateway_id='+agentFormData.gateway.value, {
+            fetch(this.props.baseUrl + '/generateClientScript', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -1255,27 +1502,36 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(true, true, 'Record saved successfully', 'custom-success');
+                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
                             setTimeout(()=> {
-                                this.props.hideGlobalMessage();
+                                let selectedOs = '';
+                                let selectedHost = '';
+                                if(this.state.operatingSystems.length > 0){
+                                    selectedOs = this.state.operatingSystems[0].id;
+                                }
+                                if(this.state.gateways.length > 0){
+                                    selectedHost = this.state.gateways[0];
+                                }
                                 let clientForm = {
                                     mode: 'CLIENT',
                                     agentId: { value: '', dirtyState: false },
-                                    group: { value: '', dirtyState: false },
-                                    clientId: { value: '', dirtyState: false },
-                                    clientSecret: { value: '', dirtyState: false },
+                                    group: { value: clientFormData.group.value, dirtyState: false },
+                                    clientId: { value: clientFormData.agentId.value, dirtyState: false },
+                                    clientSecret: { value: clientFormData.clientSecret.value, dirtyState: false },
                                     duration: { value: '', dirtyState: false },
-                                    OAuth2: { value: '', dirtyState: false },
-                                    host: { value: '', dirtyState: false },
+                                    OAuth2: { value: clientFormData.OAuth2.value, dirtyState: false },
+                                    host: { value: selectedHost, dirtyState: false },
                                     localPort: { value: '', dirtyState: false },
-                                    targetId: { value: '', dirtyState: false },
+                                    targetId: { value: clientFormData.targetId.value, dirtyState: false },
                                     proxy: { value: '', dirtyState: false },
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
+                                    hca: { value: '', dirtyState: false },
+                                    os: { value: selectedOs, dirtyState: false },
                                 };
 
                                 let filename = "client.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+clientFormData.mode.toLowerCase()+ "\n\t\taid: "+ clientFormData.agentId.value +" \n\t\ttid: "+ clientFormData.targetId.value +" \n\t\tsst: "+ " \n\t\thst: "+ clientFormData.host.value +" \n\t\tcid: "+ clientFormData.clientId.value+" \n\t\tcsc: "+ clientFormData.clientSecret.value+ " \n\t\toa2: "+ clientFormData.OAuth2.value+" \n\t\tdur: "+ clientFormData.duration.value+" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tgrp: "+ clientFormData.group.value+" \n\t\tlpt: "+ clientFormData.localPort.value+" \n\t\tfup: "+ ''+" \n\t\tfdw: "+ ''+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ clientFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData.vln+" \n\t\ttls: "+  prepareData.tls;
+                                let data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1294,6 +1550,9 @@ export default class Maintainagentcreate extends React.Component {
                                     clientFormIsValid: false
                                 });
                             }, 2000);
+                            setTimeout(()=>{
+                                this.props.hideGlobalMessage();
+                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1343,7 +1602,7 @@ export default class Maintainagentcreate extends React.Component {
                             </div>
                             <hr></hr>
                             <div className="row form-body">
-                                <div className="col-sm-4">
+                                <div className="col-sm-3">
                                     <h6>AGENT MODE</h6>
                                         <div className="col-sm-12 mb-2">
                                             {this.state.agentModeButtons.map((agentModeButton, buttonIndex) => {
@@ -1359,7 +1618,7 @@ export default class Maintainagentcreate extends React.Component {
                                             })}
                                         </div>
                                 </div>
-                                <div className="col-sm-4">
+                                <div className="col-sm-3">
                                     <h6>&nbsp;</h6>
                                     <div className="custom-control custom-checkbox">
                                         <input 
@@ -1372,20 +1631,28 @@ export default class Maintainagentcreate extends React.Component {
                                         <label className="custom-control-label" htmlFor="debugMode"><small className="theme-color"><strong>DEBUG MODE ENABLED</strong></small></label>
                                     </div>
                                 </div>
-                                {this.state.agentForm.agentMode.value != 1 ?
-                                        <div className="col-sm-3">
-                                            <h6>&nbsp;</h6>
-                                            <select className="form-control form-control-sm" name="gateway" value={this.state.agentForm.gateway.value} onChange={(event)=>{this.handleAgentFormData(event)}}>
-                                                {this.state.gateways.map((gateway, gatewayIndex) => {
-                                                    return(
-                                                        <option
-                                                            key={"gatewayOption"+gatewayIndex}
-                                                            value={ gateway.gatewayId }>{ gateway.gatewayId }</option>)
-                                                })}
-                                            </select>
-                                        </div>:
-                                    null
-                                }
+                                <div className="col-sm-3">
+                                    <h6 className="ml-0">Subscription</h6>
+                                    <select className="form-control form-control-sm" name="subscriptionId" value={this.state.agentForm.subscriptionId.value} onChange={(event)=>{this.handleAgentFormData(event)}}>
+                                        {this.state.subscriptions.map((subscription, subscriptionIndex) => {
+                                            return(
+                                                <option
+                                                    key={"subscriptionOption"+subscriptionIndex}
+                                                    value={ subscription.subscriptionId }>{ subscription.subscriptionName }</option>)
+                                        })}
+                                    </select>
+                                </div>
+                                <div className="col-sm-3">
+                                    <h6 className="ml-0">EC Version</h6>
+                                    <select className="form-control form-control-sm" name="ecVersion" value={this.state.agentForm.ecVersion.value} onChange={(event)=>{this.handleAgentFormData(event)}}>
+                                        {this.state.ecVersions.map((ecVersion, ecVersionIndex) => {
+                                            return(
+                                                <option
+                                                    key={"ecVersionOption"+ecVersionIndex}
+                                                    value={ ecVersion }>{ ecVersion }</option>)
+                                        })}
+                                    </select>
+                                </div>
                             </div>
                             <hr></hr>
                             {this.state.agentForm.agentMode.value == 1 ?
@@ -1502,22 +1769,40 @@ export default class Maintainagentcreate extends React.Component {
                                             <div className="col-sm-12 label required">
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
-                                            <div className="col-sm-12 mb-2">
+                                            {/*<div className="col-sm-12 mb-2">
                                                 <input
                                                     type="text"
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="host"
                                                     value={this.state.gatewayForm.host.value}
-                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} />
+                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} /> */}
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="host" value={this.state.gatewayForm.host.value} onChange={(event)=>{this.handleGatewayFormData(event)}}>
+                                                    {this.state.gateways.map((gateway, gatewayIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"gatewayOption"+gatewayIndex}
+                                                                value={ gateway.id }>{ gateway.name }</option>)
+                                                    })}
+                                                </select>
                                                 <small className="text-danger">{ this.state.errorsGatewayForm['host'] }</small>
                                             </div>
                                         </div>
                                         <div className="col-sm-4">
-                                            
-                                        </div>
-                                        <div className="col-sm-4">
-                                            
+                                            <div className="col-sm-12 label required">
+                                                OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="os" value={this.state.gatewayForm.os.value} onChange={(event)=>{this.handleGatewayFormData(event)}}>
+                                                    {this.state.operatingSystems.map((os, osIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"osOption"+osIndex}
+                                                                value={ os.id }>{ os.name }</option>)
+                                                    })}
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -1558,6 +1843,22 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
+                                                GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="group" value={this.state.serverForm.group.value} onChange={(event)=>{this.handleServerFormData(event)}}>
+                                                    {this.state.groups.map((group, groupIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"groupOption"+groupIndex}
+                                                                value={ group.groupId }>{ group.groupId }</option>)
+                                                    })}
+                                                </select>
+                                                <small className="text-danger">{ this.state.errorsServerForm['group']}</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
                                                 AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
@@ -1569,21 +1870,6 @@ export default class Maintainagentcreate extends React.Component {
                                                     value={this.state.serverForm.agentId.value}
                                                     onChange={(event)=>{this.handleServerFormData(event)}} />
                                                 <small className="text-danger">{ this.state.errorsServerForm['agentId']}</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-3">
-                                            <div className="col-sm-12 label required">
-                                                GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    autoComplete="off"
-                                                    className="form-control form-control-sm"
-                                                    name="group"
-                                                    value={this.state.serverForm.group.value}
-                                                    onChange={(event)=>{this.handleServerFormData(event)}} />
-                                                <small className="text-danger">{ this.state.errorsServerForm['group']}</small>
                                             </div>
                                         </div>
                                         <div className="col-sm-3">
@@ -1655,13 +1941,14 @@ export default class Maintainagentcreate extends React.Component {
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    autoComplete="off"
-                                                    className="form-control form-control-sm"
-                                                    name="host"
-                                                    value={this.state.serverForm.host.value}
-                                                    onChange={(event)=>{this.handleServerFormData(event)}} />
+                                                <select className="form-control form-control-sm" name="host" value={this.state.serverForm.host.value} onChange={(event)=>{this.handleServerFormData(event)}}>
+                                                    {this.state.gateways.map((gateway, gatewayIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"gatewayOption"+gatewayIndex}
+                                                                value={ gateway.id }>{ gateway.name }</option>)
+                                                    })}
+                                                </select>
                                                 <small className="text-danger">{ this.state.errorsServerForm['host']}</small>
                                             </div>
                                         </div>
@@ -1731,6 +2018,37 @@ export default class Maintainagentcreate extends React.Component {
                                     </div>
                                     
                                     <div className="row">
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
+                                                HEALTH PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    pattern="^[1-9][0-9]*"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="hca"
+                                                    value={this.state.serverForm.hca.value}
+                                                    onChange={(event)=>{this.handleServerFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsServerForm['hca'] }</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
+                                                OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="os" value={this.state.serverForm.os.value} onChange={(event)=>{this.handleServerFormData(event)}}>
+                                                    {this.state.operatingSystems.map((os, osIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"osOption"+osIndex}
+                                                                value={ os.id }>{ os.name }</option>)
+                                                    })}
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 PROXY
@@ -1823,6 +2141,22 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
+                                                GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="group" value={this.state.clientForm.group.value} onChange={(event)=>{this.handleClientFormData(event)}}>
+                                                    {this.state.groups.map((group, groupIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"groupOption"+groupIndex}
+                                                                value={ group.groupId }>{ group.groupId }</option>)
+                                                    })}
+                                                </select>
+                                                <small className="text-danger">{ this.state.errorsClientForm['group']}</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
                                                 AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
@@ -1834,21 +2168,6 @@ export default class Maintainagentcreate extends React.Component {
                                                     value={this.state.clientForm.agentId.value}
                                                     onChange={(event)=>{this.handleClientFormData(event)}} />
                                                 <small className="text-danger">{ this.state.errorsClientForm['agentId']}</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-3">
-                                            <div className="col-sm-12 label required">
-                                                GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    autoComplete="off"
-                                                    className="form-control form-control-sm"
-                                                    name="group"
-                                                    value={this.state.clientForm.group.value}
-                                                    onChange={(event)=>{this.handleClientFormData(event)}} />
-                                                <small className="text-danger">{ this.state.errorsClientForm['group']}</small>
                                             </div>
                                         </div>
                                         <div className="col-sm-3">
@@ -1920,13 +2239,14 @@ export default class Maintainagentcreate extends React.Component {
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    autoComplete="off"
-                                                    className="form-control form-control-sm"
-                                                    name="host"
-                                                    value={this.state.clientForm.host.value}
-                                                    onChange={(event)=>{this.handleClientFormData(event)}} />
+                                                <select className="form-control form-control-sm" name="host" value={this.state.clientForm.host.value} onChange={(event)=>{this.handleClientFormData(event)}}>
+                                                    {this.state.gateways.map((gateway, gatewayIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"gatewayOption"+gatewayIndex}
+                                                                value={ gateway.id }>{ gateway.name }</option>)
+                                                    })}
+                                                </select>
                                                 <small className="text-danger">{ this.state.errorsClientForm['host']}</small>
                                             </div>
                                         </div>
@@ -1976,29 +2296,59 @@ export default class Maintainagentcreate extends React.Component {
                                                     name="proxy"
                                                     value={this.state.clientForm.proxy.value}
                                                     onChange={(event)=>{this.handleClientFormData(event)}} />
-                                                
                                             </div>
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                HEALTH PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
-                                                <div className="custom-control custom-checkbox">
-                                                    <input 
-                                                        type="checkbox" 
-                                                        className="custom-control-input custom-control-checkbox" 
-                                                        id="allowPlugIn" 
-                                                        name="allowPlugIn" 
-                                                        checked={this.state.clientForm.allowPlugIn.value}
-                                                        onChange={(event)=>{this.handleClientFormData(event)}} />
-                                                    <label className="custom-control-label" htmlFor="allowPlugIn"></label>
-                                                </div>
+                                                <input
+                                                    type="text"
+                                                    pattern="^[1-9][0-9]*"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="hca"
+                                                    value={this.state.clientForm.hca.value}
+                                                    onChange={(event)=>{this.handleClientFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsClientForm['hca'] }</small>
                                             </div>
                                         </div>
                                     </div> 
 
                                     <div className="row">
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
+                                                OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="os" value={this.state.clientForm.os.value} onChange={(event)=>{this.handleClientFormData(event)}}>
+                                                    {this.state.operatingSystems.map((os, osIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"osOption"+osIndex}
+                                                                value={ os.id }>{ os.name }</option>)
+                                                    })}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
+                                                    ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                </div>
+                                                <div className="col-sm-12 mb-2">
+                                                    <div className="custom-control custom-checkbox">
+                                                        <input 
+                                                            type="checkbox" 
+                                                            className="custom-control-input custom-control-checkbox" 
+                                                            id="allowPlugIn" 
+                                                            name="allowPlugIn" 
+                                                            checked={this.state.clientForm.allowPlugIn.value}
+                                                            onChange={(event)=>{this.handleClientFormData(event)}} />
+                                                        <label className="custom-control-label" htmlFor="allowPlugIn"></label>
+                                                    </div>
+                                                </div>
+                                        </div>
                                         {
                                             this.state.clientForm.allowPlugIn.value ? 
                                             <div className="col-sm-3">
