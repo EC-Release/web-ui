@@ -29,7 +29,6 @@ export default class Maintainagentcreate extends React.Component {
                 serviceUrl: { value: '', dirtyState: false },
                 token: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
-                hca: { value: '', dirtyState: false },
                 os: { value: '', dirtyState: false },
             },
             errorsGatewayForm: {},
@@ -257,11 +256,11 @@ export default class Maintainagentcreate extends React.Component {
             serverForm.serviceUrl.value = selectedSubscription[0].serviceUri;
             serverForm.clientId.value = selectedSubscription[0].clientId;
             serverForm.clientSecret.value = selectedSubscription[0].clientSc;
-            serverForm.OAuth2.value = selectedSubscription[0].uaaUrl;
+            serverForm.OAuth2.value = selectedSubscription[0].uaaUrl + '/oauth/token';
 
             clientForm.clientId.value = selectedSubscription[0].clientId;
             clientForm.clientSecret.value = selectedSubscription[0].clientSc;
-            clientForm.OAuth2.value = selectedSubscription[0].uaaUrl;
+            clientForm.OAuth2.value = selectedSubscription[0].uaaUrl + '/oauth/token';
 
             fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
                 method: 'GET',
@@ -507,10 +506,6 @@ export default class Maintainagentcreate extends React.Component {
             currentGatewayForm.host.value = updatedValue;
             currentGatewayForm.host.dirtyState = true;
         }
-        else if(fieldName === 'hca'){
-            currentGatewayForm.hca.value = updatedValue;
-            currentGatewayForm.hca.dirtyState = true;
-        }
         else if(fieldName === 'os'){
             currentGatewayForm.os.value = updatedValue;
             currentGatewayForm.os.dirtyState = true;
@@ -537,8 +532,6 @@ export default class Maintainagentcreate extends React.Component {
         let tokenDirtyState = currentFormData.token.dirtyState;
         let hostValue = currentFormData.host.value;
         let hostDirtyState = currentFormData.host.dirtyState;
-        let hcaValue = currentFormData.hca.value;
-        let hcaDirtyState = currentFormData.hca.dirtyState;
         let formIsValid = true;
         let errors = {};
         let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
@@ -611,13 +604,6 @@ export default class Maintainagentcreate extends React.Component {
         else if(hostValue.substr(hostValue.length - 6, 6) != '/agent'){
             if(hostDirtyState){
                 errors.host = 'Host ends with /agent';
-            }
-            formIsValid = false;
-        }
-
-        if(hcaValue.trim() === ''){
-            if(hcaDirtyState){
-                errors.hca = 'Please enter Health Port';
             }
             formIsValid = false;
         }
@@ -713,7 +699,11 @@ export default class Maintainagentcreate extends React.Component {
             currentServerForm.plugIn.dirtyState = true;
         }
         else if(fieldName === 'hca'){
-            currentServerForm.hca.value = updatedValue;
+            let hcaAfterValidityCheck = (e.target.validity.valid) ? updatedValue : currentServerForm.hca.value;
+            if(hcaAfterValidityCheck.length > 4){
+                hcaAfterValidityCheck = currentServerForm.hca.value;
+            }
+            currentServerForm.hca.value = hcaAfterValidityCheck;
             currentServerForm.hca.dirtyState = true;
         }
         else if(fieldName === 'os'){
@@ -899,7 +889,13 @@ export default class Maintainagentcreate extends React.Component {
 
         if(hcaValue.trim() === ''){
             if(hcaDirtyState){
-                errors.hca = 'Please enter Health Port';
+                errors.hca = 'Please enter Health Port in digit';
+            }
+            formIsValid = false;
+        }
+        else if(hcaValue.length != 4){
+            if(hcaDirtyState){
+                errors.hca = 'Health Port must have 4 digit';
             }
             formIsValid = false;
         }
@@ -987,7 +983,11 @@ export default class Maintainagentcreate extends React.Component {
             currentClientForm.plugIn.dirtyState = true;
         }
         else if(fieldName === 'hca'){
-            currentClientForm.hca.value = updatedValue;
+            let hcaAfterValidityCheck = (e.target.validity.valid) ? updatedValue : currentClientForm.hca.value;
+            if(hcaAfterValidityCheck.length > 4){
+                hcaAfterValidityCheck = currentClientForm.hca.value;
+            }
+            currentClientForm.hca.value = hcaAfterValidityCheck;
             currentClientForm.hca.dirtyState = true;
         }
         else if(fieldName === 'os'){
@@ -1148,7 +1148,13 @@ export default class Maintainagentcreate extends React.Component {
 
         if(hcaValue.trim() === ''){
             if(hcaDirtyState){
-                errors.hca = 'Please enter Health Port';
+                errors.hca = 'Please enter Health Port in digit';
+            }
+            formIsValid = false;
+        }
+        else if(hcaValue.length != 4){
+            if(hcaDirtyState){
+                errors.hca = 'Health Port must have 4 digit';
             }
             formIsValid = false;
         }
@@ -1247,7 +1253,6 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.sst = gatewayFormData.serviceUrl.value;
             prepareData.tkn = gatewayFormData.token.value;
             prepareData.hst = gatewayFormData.host.value;
-            prepareData.hca = gatewayFormData.hca.value;
             prepareData.os = gatewayFormData.os.value;
             console.log(prepareData);
             fetch(this.props.baseUrl + '/generateGatewayScript', { // '/generateGatewayScript?user_id='+this.props.userId
@@ -1281,11 +1286,10 @@ export default class Maintainagentcreate extends React.Component {
                                     mode: 'GATEWAY',
                                     environment: { value: selectedEnv, dirtyState: false },
                                     gatewayPort: { value: '', dirtyState: false },
-                                    zone: { value: '', dirtyState: false },
-                                    serviceUrl: { value: '', dirtyState: false },
-                                    token: { value: '', dirtyState: false },
+                                    zone: { value: gatewayFormData.zone.value, dirtyState: false },
+                                    serviceUrl: { value: gatewayFormData.serviceUrl.value, dirtyState: false },
+                                    token: { value: gatewayFormData.token.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
-                                    hca: { value: '', dirtyState: false },
                                     os: { value: selectedOs, dirtyState: false },
                                 };
 
@@ -1391,15 +1395,15 @@ export default class Maintainagentcreate extends React.Component {
                                 }
                                 let serverForm = {
                                     mode: 'SERVER',
-                                    agentId: { value: '', dirtyState: false },
-                                    group: { value: '', dirtyState: false },
-                                    clientId: { value: '', dirtyState: false },
-                                    clientSecret: { value: '', dirtyState: false },
+                                    agentId: { value: serverFormData.agentId.value, dirtyState: false },
+                                    group: { value: serverFormData.group.value, dirtyState: false },
+                                    clientId: { value: serverFormData.clientId.value, dirtyState: false },
+                                    clientSecret: { value: serverFormData.clientSecret.value, dirtyState: false },
                                     duration: { value: '', dirtyState: false },
-                                    OAuth2:{ value: '', dirtyState: false },
+                                    OAuth2:{ value: serverFormData.OAuth2.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
-                                    zone: { value: '', dirtyState: false },
-                                    serviceUrl: { value: '', dirtyState: false },
+                                    zone: { value: serverFormData.zone.value, dirtyState: false },
+                                    serviceUrl: { value: serverFormData.serviceUrl.value, dirtyState: false },
                                     remoteHost: { value: '', dirtyState: false },
                                     remotePort: { value: '', dirtyState: false },
                                     proxy: { value: '', dirtyState: false },
@@ -1511,14 +1515,14 @@ export default class Maintainagentcreate extends React.Component {
                                 let clientForm = {
                                     mode: 'CLIENT',
                                     agentId: { value: '', dirtyState: false },
-                                    group: { value: '', dirtyState: false },
-                                    clientId: { value: '', dirtyState: false },
-                                    clientSecret: { value: '', dirtyState: false },
+                                    group: { value: clientFormData.group.value, dirtyState: false },
+                                    clientId: { value: clientFormData.agentId.value, dirtyState: false },
+                                    clientSecret: { value: clientFormData.clientSecret.value, dirtyState: false },
                                     duration: { value: '', dirtyState: false },
-                                    OAuth2: { value: '', dirtyState: false },
+                                    OAuth2: { value: clientFormData.OAuth2.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
                                     localPort: { value: '', dirtyState: false },
-                                    targetId: { value: '', dirtyState: false },
+                                    targetId: { value: clientFormData.targetId.value, dirtyState: false },
                                     proxy: { value: '', dirtyState: false },
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
@@ -1787,21 +1791,6 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-4">
                                             <div className="col-sm-12 label required">
-                                                HEALTH PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    autoComplete="off"
-                                                    className="form-control form-control-sm"
-                                                    name="hca"
-                                                    value={this.state.gatewayForm.hca.value}
-                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} />
-                                                <small className="text-danger">{ this.state.errorsGatewayForm['hca'] }</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
                                                 OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
@@ -2036,6 +2025,7 @@ export default class Maintainagentcreate extends React.Component {
                                             <div className="col-sm-12 mb-2">
                                                 <input
                                                     type="text"
+                                                    pattern="^[1-9][0-9]*"
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="hca"
@@ -2315,6 +2305,7 @@ export default class Maintainagentcreate extends React.Component {
                                             <div className="col-sm-12 mb-2">
                                                 <input
                                                     type="text"
+                                                    pattern="^[1-9][0-9]*"
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="hca"
