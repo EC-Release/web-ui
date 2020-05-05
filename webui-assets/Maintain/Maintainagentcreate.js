@@ -197,40 +197,17 @@ export default class Maintainagentcreate extends React.Component {
         // Subscription list end
     
         // get EC Version list start
-        fetch('https://reqres.in/api/users/2'/*, { // this.props.baseUrl+'ecVersions'
+        fetch(this.props.baseUrl+'/ecVersions', { // this.props.baseUrl+'ecVersions'
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
                 'Authorization': this.props.authToken
             }
-        }*/)
+        })
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    respData = { 
-                       "data":[ 
-                              "v1.1.edo.0",
-                              "v1.1beta.fukuoka.2733",
-                              "v1.1beta.fukuoka.2732",
-                              "v1.1beta.fukuoka.2731",
-                              "v1.1beta.fukuoka.2730",
-                              "v1.1beta.fukuoka.2729",
-                              "v1.1beta.fukuoka.2728",
-                              "v1.1beta.fukuoka.2726",
-                              "v1.1beta.fukuoka.2725",
-                              "v1.1beta.fukuoka.2724",
-                              "v1.1beta.fukuoka.2723",
-                              "v1.1beta.fukuoka.2722",
-                              "v1.1beta.fukuoka.1696",
-                              "v1.hokkaido.212"
-                        ],
-                       "infoMsg":"versions",
-                       "errorStatus":{ 
-                          "status":"ok",
-                          "statusMsg":""
-                        }
-                    } ;
                     if(respData.errorStatus.status == 'ok'){
                         let ecVersions = respData.data;
                         let agentForm = this.state.agentForm;
@@ -1313,7 +1290,7 @@ export default class Maintainagentcreate extends React.Component {
                                 };
 
                                 let filename = "gateway.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+gatewayFormData.mode.toLowerCase()+" \n\t\tgpt: :"+ gatewayFormData.gatewayPort.value +" \n\t\tzon: "+ gatewayFormData.zone.value +" \n\t\tsst: "+ gatewayFormData.serviceUrl.value +" \n\t\tdbg: "+ agentFormData.debugMode.value +" \n\t\ttkn: "+ gatewayFormData.token.value +" \n\t\thst: "+ gatewayFormData.host.value +" \n\t\thca: "+ gatewayFormData.hca.value;
+                                let data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1402,7 +1379,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(true, true, respData.data, 'custom-success');
+                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
                             setTimeout(()=> {
                                 let selectedOs = '';
                                 let selectedHost = '';
@@ -1433,7 +1410,7 @@ export default class Maintainagentcreate extends React.Component {
                                 };
                                 
                                 let filename = "server.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+serverFormData.mode.toLowerCase()+ "\n\t\tzon: "+ serverFormData.zone.value +" \n\t\tgrp: "+ serverFormData.group.value +" \n\t\tsst: "+ serverFormData.serviceUrl.value +" \n\t\thst: "+ serverFormData.host.value +" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tcid: "+ serverFormData.clientId.value+" \n\t\tcsc: "+ serverFormData.clientSecret.value+" \n\t\toa2: "+ serverFormData.OAuth2.value+" \n\t\tdur: "+ serverFormData.duration.value+" \n\t\taid: "+ serverFormData.agentId.value+" \n\t\trpt: :"+ serverFormData.remotePort.value+" \n\t\trht: "+ serverFormData.remoteHost.value+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ serverFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData.vln+" \n\t\ttls: "+  prepareData.tls +" \n\t\thca: :"+  prepareData.hca;
+                                let data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1521,7 +1498,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(true, true, respData.data, 'custom-success');
+                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
                             setTimeout(()=> {
                                 let selectedOs = '';
                                 let selectedHost = '';
@@ -1550,7 +1527,7 @@ export default class Maintainagentcreate extends React.Component {
                                 };
 
                                 let filename = "client.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+clientFormData.mode.toLowerCase()+ "\n\t\taid: "+ clientFormData.agentId.value +" \n\t\ttid: "+ clientFormData.targetId.value +" \n\t\tsst: "+ " \n\t\thst: "+ clientFormData.host.value +" \n\t\tcid: "+ clientFormData.clientId.value+" \n\t\tcsc: "+ clientFormData.clientSecret.value+ " \n\t\toa2: "+ clientFormData.OAuth2.value+" \n\t\tdur: "+ clientFormData.duration.value+" \n\t\tdbg: "+ agentFormData.debugMode.value+" \n\t\tgrp: "+ clientFormData.group.value+" \n\t\tlpt: :"+ clientFormData.localPort.value+" \n\t\tfup: "+ ''+" \n\t\tfdw: "+ ''+" \n\t\tcps: "+ 0 +" \n\t\tplg: "+ clientFormData.allowPlugIn.value+" \n\t\tvln: "+ prepareData.vln+" \n\t\ttls: "+  prepareData.tls +" \n\t\thca: :"+  prepareData.hca;
+                                let data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
