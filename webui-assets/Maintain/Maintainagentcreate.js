@@ -336,12 +336,10 @@ export default class Maintainagentcreate extends React.Component {
                             }
                         }
 
-                        gatewayForm.host.value = selectedGateway;
                         clientForm.host.value = selectedGateway;
                         serverForm.host.value = selectedGateway;
                         this.setState({
                             gateways: modifiedGateways,
-                            gatewayForm: gatewayForm,
                             clientForm: clientForm,
                             serverForm: serverForm
                         });
@@ -1272,15 +1270,11 @@ export default class Maintainagentcreate extends React.Component {
                             setTimeout(()=> {
                                 let selectedEnv = '';
                                 let selectedOs = '';
-                                let selectedHost = '';
                                 if(this.state.environments.length > 0){
                                     selectedEnv = this.state.environments[0].id;
                                 }
                                 if(this.state.operatingSystems.length > 0){
                                     selectedOs = this.state.operatingSystems[0].id;
-                                }
-                                if(this.state.gateways.length > 0){
-                                    selectedHost = this.state.gateways[0];
                                 }
                                 let gatewayForm = {
                                     mode: 'GATEWAY',
@@ -1289,7 +1283,7 @@ export default class Maintainagentcreate extends React.Component {
                                     zone: { value: gatewayFormData.zone.value, dirtyState: false },
                                     serviceUrl: { value: gatewayFormData.serviceUrl.value, dirtyState: false },
                                     token: { value: gatewayFormData.token.value, dirtyState: false },
-                                    host: { value: selectedHost, dirtyState: false },
+                                    host: { value: '', dirtyState: false },
                                     os: { value: selectedOs, dirtyState: false },
                                 };
 
@@ -1313,9 +1307,6 @@ export default class Maintainagentcreate extends React.Component {
                                     gatewayFormIsValid: false
                                 });
                             }, 2000);
-                            setTimeout(()=>{
-                                this.props.hideGlobalMessage();
-                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1433,9 +1424,6 @@ export default class Maintainagentcreate extends React.Component {
                                     serverFormIsValid: false
                                 });
                             }, 2000);
-                            setTimeout(()=>{
-                                this.props.hideGlobalMessage();
-                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1550,9 +1538,6 @@ export default class Maintainagentcreate extends React.Component {
                                     clientFormIsValid: false
                                 });
                             }, 2000);
-                            setTimeout(()=>{
-                                this.props.hideGlobalMessage();
-                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1769,23 +1754,14 @@ export default class Maintainagentcreate extends React.Component {
                                             <div className="col-sm-12 label required">
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
-                                            {/*<div className="col-sm-12 mb-2">
+                                            <div className="col-sm-12 mb-2">
                                                 <input
                                                     type="text"
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="host"
                                                     value={this.state.gatewayForm.host.value}
-                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} /> */}
-                                            <div className="col-sm-12 mb-2">
-                                                <select className="form-control form-control-sm" name="host" value={this.state.gatewayForm.host.value} onChange={(event)=>{this.handleGatewayFormData(event)}}>
-                                                    {this.state.gateways.map((gateway, gatewayIndex) => {
-                                                        return(
-                                                            <option
-                                                                key={"gatewayOption"+gatewayIndex}
-                                                                value={ gateway.id }>{ gateway.name }</option>)
-                                                    })}
-                                                </select>
+                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} />
                                                 <small className="text-danger">{ this.state.errorsGatewayForm['host'] }</small>
                                             </div>
                                         </div>

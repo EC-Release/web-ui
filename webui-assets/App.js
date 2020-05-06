@@ -303,6 +303,9 @@ export default class App extends React.Component {
                 <div id="mediumModalContent" className="modal-content">
                   {this.state.ajaxBusy.flag ?
                     <div className={"alert-notification alert "+ this.state.ajaxBusy.classname}>
+                      <button type="button" className="close" aria-label="Close" onClick={this.hideGlobalMessage.bind(this)}>
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                       {this.state.ajaxBusy.showLoader ?
                         <div className="ajaxBusy"></div>
                         : null
