@@ -5,7 +5,6 @@
     "version": "1.0.0",
     "title": "Admin WebUI"
   },
-  "host": "ec-webui.herokuapp.com",
   "basePath": "/v1.1beta/ec",
   "tags": [
     {

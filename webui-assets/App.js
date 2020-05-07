@@ -145,7 +145,6 @@ export default class App extends React.Component {
               });
               let cookieToUpdate = 'ec-config';
               document.cookie = cookieToUpdate+"="+newToken;
-              document.cookie = cookieToUpdate+"="+newToken+";path="+window.location.pathname+";"; 
             }
           });
         }

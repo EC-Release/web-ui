@@ -27,7 +27,7 @@ export default class Maintainagentcreate extends React.Component {
                 gatewayPort: { value: '', dirtyState: false },
                 zone: { value: '', dirtyState: false },
                 serviceUrl: { value: '', dirtyState: false },
-                token: { value: '', dirtyState: false },
+                token: { value: '', dirtyState: false, type: 'password' },
                 host: { value: '', dirtyState: false },
                 os: { value: '', dirtyState: false },
             },
@@ -35,10 +35,10 @@ export default class Maintainagentcreate extends React.Component {
             gatewayFormIsValid: false,
             serverForm: {
                 mode: 'SERVER',
-                agentId: { value: '', dirtyState: false },
+                agentId: { value: '', dirtyState: false, type: 'password' },
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
+                clientSecret: { value: '', dirtyState: false, type: 'password' },
                 duration: { value: '', dirtyState: false },
                 OAuth2:{ value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
@@ -56,15 +56,15 @@ export default class Maintainagentcreate extends React.Component {
             serverFormIsValid: false,
             clientForm: {
                 mode: 'CLIENT',
-                agentId: { value: '', dirtyState: false },
+                agentId: { value: '', dirtyState: false, type: 'password' },
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
+                clientSecret: { value: '', dirtyState: false, type: 'password' },
                 duration: { value: '', dirtyState: false },
                 OAuth2: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
                 localPort: { value: '', dirtyState: false },
-                targetId: { value: '', dirtyState: false },
+                targetId: { value: '', dirtyState: false, type: 'password' },
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
@@ -1282,7 +1282,7 @@ export default class Maintainagentcreate extends React.Component {
                                     gatewayPort: { value: '', dirtyState: false },
                                     zone: { value: gatewayFormData.zone.value, dirtyState: false },
                                     serviceUrl: { value: gatewayFormData.serviceUrl.value, dirtyState: false },
-                                    token: { value: gatewayFormData.token.value, dirtyState: false },
+                                    token: { value: gatewayFormData.token.value, dirtyState: false, type: gatewayFormData.token.type },
                                     host: { value: '', dirtyState: false },
                                     os: { value: selectedOs, dirtyState: false },
                                 };
@@ -1386,10 +1386,10 @@ export default class Maintainagentcreate extends React.Component {
                                 }
                                 let serverForm = {
                                     mode: 'SERVER',
-                                    agentId: { value: serverFormData.agentId.value, dirtyState: false },
+                                    agentId: { value: serverFormData.agentId.value, dirtyState: false, type: serverFormData.agentId.type },
                                     group: { value: serverFormData.group.value, dirtyState: false },
                                     clientId: { value: serverFormData.clientId.value, dirtyState: false },
-                                    clientSecret: { value: serverFormData.clientSecret.value, dirtyState: false },
+                                    clientSecret: { value: serverFormData.clientSecret.value, dirtyState: false, type: serverFormData.clientSecret.type },
                                     duration: { value: '', dirtyState: false },
                                     OAuth2:{ value: serverFormData.OAuth2.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
@@ -1502,15 +1502,15 @@ export default class Maintainagentcreate extends React.Component {
                                 }
                                 let clientForm = {
                                     mode: 'CLIENT',
-                                    agentId: { value: '', dirtyState: false },
+                                    agentId: { value: clientFormData.agentId.value, dirtyState: false, type: clientFormData.agentId.type },
                                     group: { value: clientFormData.group.value, dirtyState: false },
                                     clientId: { value: clientFormData.agentId.value, dirtyState: false },
-                                    clientSecret: { value: clientFormData.clientSecret.value, dirtyState: false },
+                                    clientSecret: { value: clientFormData.clientSecret.value, dirtyState: false, type: clientFormData.clientSecret.type },
                                     duration: { value: '', dirtyState: false },
                                     OAuth2: { value: clientFormData.OAuth2.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
                                     localPort: { value: '', dirtyState: false },
-                                    targetId: { value: clientFormData.targetId.value, dirtyState: false },
+                                    targetId: { value: clientFormData.targetId.value, dirtyState: false, type: clientFormData.targetId.type },
                                     proxy: { value: '', dirtyState: false },
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
@@ -1560,6 +1560,43 @@ export default class Maintainagentcreate extends React.Component {
                 setTimeout(()=> {
                     this.props.hideGlobalMessage();
                 }, 2000);
+            });
+        }
+    }
+
+    /* istanbul ignore next */
+    showHideField(e, formName, fieldName){
+        let currentForm = {};
+        if(formName == 'gatewayForm'){
+            currentForm = Object.assign({}, this.state.gatewayForm);
+        }
+        else if(formName == 'serverForm'){
+            currentForm = Object.assign({}, this.state.serverForm);
+        }
+        else if(formName == 'clientForm'){
+            currentForm = Object.assign({}, this.state.clientForm);
+        }
+
+        if(currentForm[fieldName].type == 'password'){
+            currentForm[fieldName].type = 'text'; 
+        }
+        else{
+            currentForm[fieldName].type = 'password';
+        }
+
+        if(formName == 'gatewayForm'){
+            this.setState({
+                gatewayForm: currentForm
+            });
+        }
+        else if(formName == 'serverForm'){
+            this.setState({
+                serverForm: currentForm
+            });
+        }
+        else if(formName == 'clientForm'){
+            this.setState({
+                clientForm: currentForm
             });
         }
     }
@@ -1734,11 +1771,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-4">
                                             <div className="col-sm-12 label required">
-                                                TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                    TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.gatewayForm.token.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'gatewayForm', 'token')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'gatewayForm', 'token')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={this.state.gatewayForm.token.type}
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="token"
@@ -1835,11 +1872,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.serverForm.agentId.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="agentId"
@@ -1868,11 +1905,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.serverForm.clientSecret.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="clientSecret"
@@ -2133,11 +2170,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.clientForm.agentId.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="agentId"
@@ -2166,11 +2203,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.clientForm.clientSecret.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="clientSecret"
@@ -2247,11 +2284,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.targetId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.clientForm.targetId.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="targetId"
