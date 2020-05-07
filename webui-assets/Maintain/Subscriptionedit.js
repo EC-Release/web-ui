@@ -10,9 +10,9 @@ export default class Subscriptionedit extends React.Component {
                 subscriptionId: { value: '', dirtyState: false },
                 serviceUri: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
+                clientSecret: { value: '', dirtyState: false, type: 'password' },
                 OAuth2: { value: '', dirtyState: false },
-                adminToken: { value: '', dirtyState: false },
+                adminToken: { value: '', dirtyState: false, type: 'password' },
                 applicationRole: { value: '', dirtyState: false },
                 bucAdn: { value: '', dirtyState: false },
                 compliance: { value: '', dirtyState: false },
@@ -64,9 +64,9 @@ export default class Subscriptionedit extends React.Component {
             subscriptionId: { value: formData.subscriptionId, dirtyState: false },
             serviceUri: { value: formData.serviceUri, dirtyState: false },
             clientId: { value: formData.clientId, dirtyState: false },
-            clientSecret: { value: formData.clientSc, dirtyState: false },
+            clientSecret: { value: formData.clientSc, dirtyState: false, type: 'password' },
             OAuth2: { value: formData.uaaUrl, dirtyState: false },
-            adminToken: { value: formData.adminToken, dirtyState: false },
+            adminToken: { value: formData.adminToken, dirtyState: false, type: 'password' },
             applicationRole: { value: formData.role, dirtyState: false },
             bucAdn: { value: formData.bucAdn, dirtyState: false },
             compliance: { value: formData.compliance, dirtyState: false },
@@ -409,6 +409,22 @@ export default class Subscriptionedit extends React.Component {
         this.handleFormValidation();
     }
 
+    /* istanbul ignore next */
+    showHideField(e, formName, fieldName){
+        let currentForm = Object.assign({}, this.state.subscriptionForm);
+
+        if(currentForm[fieldName].type == 'password'){
+            currentForm[fieldName].type = 'text'; 
+        }
+        else{
+            currentForm[fieldName].type = 'password';
+        }
+        
+        this.setState({
+            subscriptionForm: currentForm
+        });
+    }
+
     render() {
         /* jshint ignore:start */
         /* istanbul ignore next */
@@ -509,7 +525,7 @@ export default class Subscriptionedit extends React.Component {
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
-                                                type="password"
+                                                type="text"
                                                 autoComplete="off"
                                                 className="form-control form-control-sm"
                                                 name="clientId"
@@ -520,14 +536,14 @@ export default class Subscriptionedit extends React.Component {
                                     </div>
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
-                                            CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.subscriptionForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             <span className="float-right help-text" >
                                                 <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.clientSecret} />
                                             </span>
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
-                                                type="password"
+                                                type={this.state.subscriptionForm.clientSecret.type}
                                                 className="form-control form-control-sm"
                                                 name="clientSecret"
                                                 value={this.state.subscriptionForm.clientSecret.value}
@@ -555,14 +571,14 @@ export default class Subscriptionedit extends React.Component {
                                     </div>
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
-                                            ADMIN TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            ADMIN TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.subscriptionForm.adminToken.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'adminToken')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'adminToken')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             <span className="float-right help-text" >
                                                 <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.adminToken} />
                                             </span>
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
-                                                type="text"
+                                                type={this.state.subscriptionForm.adminToken.type}
                                                 autoComplete="off"
                                                 className="form-control form-control-sm"
                                                 name="adminToken"

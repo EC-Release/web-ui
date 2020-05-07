@@ -27,7 +27,7 @@ export default class Maintainagentcreate extends React.Component {
                 gatewayPort: { value: '', dirtyState: false },
                 zone: { value: '', dirtyState: false },
                 serviceUrl: { value: '', dirtyState: false },
-                token: { value: '', dirtyState: false },
+                token: { value: '', dirtyState: false, type: 'password' },
                 host: { value: '', dirtyState: false },
                 os: { value: '', dirtyState: false },
             },
@@ -35,10 +35,10 @@ export default class Maintainagentcreate extends React.Component {
             gatewayFormIsValid: false,
             serverForm: {
                 mode: 'SERVER',
-                agentId: { value: '', dirtyState: false },
+                agentId: { value: '', dirtyState: false, type: 'password' },
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
+                clientSecret: { value: '', dirtyState: false, type: 'password' },
                 duration: { value: '', dirtyState: false },
                 OAuth2:{ value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
@@ -56,15 +56,15 @@ export default class Maintainagentcreate extends React.Component {
             serverFormIsValid: false,
             clientForm: {
                 mode: 'CLIENT',
-                agentId: { value: '', dirtyState: false },
+                agentId: { value: '', dirtyState: false, type: 'password' },
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
+                clientSecret: { value: '', dirtyState: false, type: 'password' },
                 duration: { value: '', dirtyState: false },
                 OAuth2: { value: '', dirtyState: false },
                 host: { value: '', dirtyState: false },
                 localPort: { value: '', dirtyState: false },
-                targetId: { value: '', dirtyState: false },
+                targetId: { value: '', dirtyState: false, type: 'password' },
                 proxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
@@ -336,12 +336,10 @@ export default class Maintainagentcreate extends React.Component {
                             }
                         }
 
-                        gatewayForm.host.value = selectedGateway;
                         clientForm.host.value = selectedGateway;
                         serverForm.host.value = selectedGateway;
                         this.setState({
                             gateways: modifiedGateways,
-                            gatewayForm: gatewayForm,
                             clientForm: clientForm,
                             serverForm: serverForm
                         });
@@ -1254,7 +1252,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.tkn = gatewayFormData.token.value;
             prepareData.hst = gatewayFormData.host.value;
             prepareData.os = gatewayFormData.os.value;
-            console.log(prepareData);
+            
             fetch(this.props.baseUrl + '/generateGatewayScript', { // '/generateGatewayScript?user_id='+this.props.userId
                 method: 'POST',
                 headers: {
@@ -1272,15 +1270,11 @@ export default class Maintainagentcreate extends React.Component {
                             setTimeout(()=> {
                                 let selectedEnv = '';
                                 let selectedOs = '';
-                                let selectedHost = '';
                                 if(this.state.environments.length > 0){
                                     selectedEnv = this.state.environments[0].id;
                                 }
                                 if(this.state.operatingSystems.length > 0){
                                     selectedOs = this.state.operatingSystems[0].id;
-                                }
-                                if(this.state.gateways.length > 0){
-                                    selectedHost = this.state.gateways[0];
                                 }
                                 let gatewayForm = {
                                     mode: 'GATEWAY',
@@ -1288,13 +1282,19 @@ export default class Maintainagentcreate extends React.Component {
                                     gatewayPort: { value: '', dirtyState: false },
                                     zone: { value: gatewayFormData.zone.value, dirtyState: false },
                                     serviceUrl: { value: gatewayFormData.serviceUrl.value, dirtyState: false },
-                                    token: { value: gatewayFormData.token.value, dirtyState: false },
-                                    host: { value: selectedHost, dirtyState: false },
+                                    token: { value: gatewayFormData.token.value, dirtyState: false, type: gatewayFormData.token.type },
+                                    host: { value: '', dirtyState: false },
                                     os: { value: selectedOs, dirtyState: false },
                                 };
 
                                 let filename = "gateway.yml";
-                                let data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                let data='';
+                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                    data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'"'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value.split(".io")[0]+".io" +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                }
+                                else{
+                                    data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                } 
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1313,9 +1313,6 @@ export default class Maintainagentcreate extends React.Component {
                                     gatewayFormIsValid: false
                                 });
                             }, 2000);
-                            setTimeout(()=>{
-                                this.props.hideGlobalMessage();
-                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1357,7 +1354,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.sst = serverFormData.serviceUrl.value;
             prepareData.rht = serverFormData.remoteHost.value;
             prepareData.rpt = serverFormData.remotePort.value;
-            prepareData.prx = serverFormData.proxy.value;
+            prepareData.pxy = serverFormData.proxy.value;
             prepareData.plg = serverFormData.allowPlugIn.value;
             prepareData.hca = serverFormData.hca.value;
             prepareData.os = serverFormData.os.value;
@@ -1369,7 +1366,7 @@ export default class Maintainagentcreate extends React.Component {
                     prepareData[statePlugIn.id] = false;
                 }
             }
-            console.log(prepareData);
+            
             fetch(this.props.baseUrl + '/generateServerScript', {
                 method: 'POST',
                 headers: {
@@ -1391,14 +1388,14 @@ export default class Maintainagentcreate extends React.Component {
                                     selectedOs = this.state.operatingSystems[0].id;
                                 }
                                 if(this.state.gateways.length > 0){
-                                    selectedHost = this.state.gateways[0];
+                                    selectedHost = this.state.gateways[0].id;
                                 }
                                 let serverForm = {
                                     mode: 'SERVER',
-                                    agentId: { value: serverFormData.agentId.value, dirtyState: false },
+                                    agentId: { value: serverFormData.agentId.value, dirtyState: false, type: serverFormData.agentId.type },
                                     group: { value: serverFormData.group.value, dirtyState: false },
                                     clientId: { value: serverFormData.clientId.value, dirtyState: false },
-                                    clientSecret: { value: serverFormData.clientSecret.value, dirtyState: false },
+                                    clientSecret: { value: serverFormData.clientSecret.value, dirtyState: false, type: serverFormData.clientSecret.type },
                                     duration: { value: '', dirtyState: false },
                                     OAuth2:{ value: serverFormData.OAuth2.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
@@ -1414,7 +1411,14 @@ export default class Maintainagentcreate extends React.Component {
                                 };
                                 
                                 let filename = "server.yml";
-                                let data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
+                                let data=''
+                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                    data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value.split(".io")[0]+".io" +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'"'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'"'+  prepareData.hca +'"';
+                                }
+                                else{
+                                    data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
+                                }
+
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1433,9 +1437,6 @@ export default class Maintainagentcreate extends React.Component {
                                     serverFormIsValid: false
                                 });
                             }, 2000);
-                            setTimeout(()=>{
-                                this.props.hideGlobalMessage();
-                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1475,7 +1476,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.hst = clientFormData.host.value;
             prepareData.lpt = clientFormData.localPort.value;
             prepareData.tid = clientFormData.targetId.value;
-            prepareData.proxy = clientFormData.proxy.value;
+            prepareData.pxy = clientFormData.proxy.value;
             prepareData.plg = clientFormData.allowPlugIn.value;
             prepareData.hca = clientFormData.hca.value;
             prepareData.os = clientFormData.os.value;
@@ -1487,7 +1488,6 @@ export default class Maintainagentcreate extends React.Component {
                     prepareData[statePlugIn.id] = false;
                 }
             }
-            console.log(prepareData);
 
             fetch(this.props.baseUrl + '/generateClientScript', {
                 method: 'POST',
@@ -1510,19 +1510,19 @@ export default class Maintainagentcreate extends React.Component {
                                     selectedOs = this.state.operatingSystems[0].id;
                                 }
                                 if(this.state.gateways.length > 0){
-                                    selectedHost = this.state.gateways[0];
+                                    selectedHost = this.state.gateways[0].id;
                                 }
                                 let clientForm = {
                                     mode: 'CLIENT',
-                                    agentId: { value: '', dirtyState: false },
+                                    agentId: { value: clientFormData.agentId.value, dirtyState: false, type: clientFormData.agentId.type },
                                     group: { value: clientFormData.group.value, dirtyState: false },
                                     clientId: { value: clientFormData.agentId.value, dirtyState: false },
-                                    clientSecret: { value: clientFormData.clientSecret.value, dirtyState: false },
+                                    clientSecret: { value: clientFormData.clientSecret.value, dirtyState: false, type: clientFormData.clientSecret.type },
                                     duration: { value: '', dirtyState: false },
                                     OAuth2: { value: clientFormData.OAuth2.value, dirtyState: false },
                                     host: { value: selectedHost, dirtyState: false },
                                     localPort: { value: '', dirtyState: false },
-                                    targetId: { value: clientFormData.targetId.value, dirtyState: false },
+                                    targetId: { value: clientFormData.targetId.value, dirtyState: false, type: clientFormData.targetId.type },
                                     proxy: { value: '', dirtyState: false },
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
@@ -1531,7 +1531,14 @@ export default class Maintainagentcreate extends React.Component {
                                 };
 
                                 let filename = "client.yml";
-                                let data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
+                                let data='';
+                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                    data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'"'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'"'+ prepareData.hca +'"';
+                                }
+                                else{
+                                    data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
+                                }
+
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1550,9 +1557,6 @@ export default class Maintainagentcreate extends React.Component {
                                     clientFormIsValid: false
                                 });
                             }, 2000);
-                            setTimeout(()=>{
-                                this.props.hideGlobalMessage();
-                            },10000);
                         }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -1575,6 +1579,43 @@ export default class Maintainagentcreate extends React.Component {
                 setTimeout(()=> {
                     this.props.hideGlobalMessage();
                 }, 2000);
+            });
+        }
+    }
+
+    /* istanbul ignore next */
+    showHideField(e, formName, fieldName){
+        let currentForm = {};
+        if(formName == 'gatewayForm'){
+            currentForm = Object.assign({}, this.state.gatewayForm);
+        }
+        else if(formName == 'serverForm'){
+            currentForm = Object.assign({}, this.state.serverForm);
+        }
+        else if(formName == 'clientForm'){
+            currentForm = Object.assign({}, this.state.clientForm);
+        }
+
+        if(currentForm[fieldName].type == 'password'){
+            currentForm[fieldName].type = 'text'; 
+        }
+        else{
+            currentForm[fieldName].type = 'password';
+        }
+
+        if(formName == 'gatewayForm'){
+            this.setState({
+                gatewayForm: currentForm
+            });
+        }
+        else if(formName == 'serverForm'){
+            this.setState({
+                serverForm: currentForm
+            });
+        }
+        else if(formName == 'clientForm'){
+            this.setState({
+                clientForm: currentForm
             });
         }
     }
@@ -1749,11 +1790,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-4">
                                             <div className="col-sm-12 label required">
-                                                TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                    TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.gatewayForm.token.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'gatewayForm', 'token')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'gatewayForm', 'token')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={this.state.gatewayForm.token.type}
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="token"
@@ -1769,23 +1810,14 @@ export default class Maintainagentcreate extends React.Component {
                                             <div className="col-sm-12 label required">
                                                 HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
-                                            {/*<div className="col-sm-12 mb-2">
+                                            <div className="col-sm-12 mb-2">
                                                 <input
                                                     type="text"
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="host"
                                                     value={this.state.gatewayForm.host.value}
-                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} /> */}
-                                            <div className="col-sm-12 mb-2">
-                                                <select className="form-control form-control-sm" name="host" value={this.state.gatewayForm.host.value} onChange={(event)=>{this.handleGatewayFormData(event)}}>
-                                                    {this.state.gateways.map((gateway, gatewayIndex) => {
-                                                        return(
-                                                            <option
-                                                                key={"gatewayOption"+gatewayIndex}
-                                                                value={ gateway.id }>{ gateway.name }</option>)
-                                                    })}
-                                                </select>
+                                                    onChange={(event)=>{this.handleGatewayFormData(event)}} />
                                                 <small className="text-danger">{ this.state.errorsGatewayForm['host'] }</small>
                                             </div>
                                         </div>
@@ -1859,11 +1891,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.serverForm.agentId.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="agentId"
@@ -1892,11 +1924,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.serverForm.clientSecret.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="clientSecret"
@@ -2157,11 +2189,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.clientForm.agentId.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="agentId"
@@ -2190,11 +2222,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.clientForm.clientSecret.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="clientSecret"
@@ -2271,11 +2303,11 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.targetId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
-                                                    type="text"
+                                                    type={ this.state.clientForm.targetId.type }
                                                     autoComplete="off"
                                                     className="form-control form-control-sm"
                                                     name="targetId"
