@@ -1252,7 +1252,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.tkn = gatewayFormData.token.value;
             prepareData.hst = gatewayFormData.host.value;
             prepareData.os = gatewayFormData.os.value;
-            console.log(prepareData);
+            
             fetch(this.props.baseUrl + '/generateGatewayScript', { // '/generateGatewayScript?user_id='+this.props.userId
                 method: 'POST',
                 headers: {
@@ -1366,7 +1366,7 @@ export default class Maintainagentcreate extends React.Component {
                     prepareData[statePlugIn.id] = false;
                 }
             }
-            console.log(prepareData);
+            
             fetch(this.props.baseUrl + '/generateServerScript', {
                 method: 'POST',
                 headers: {
@@ -1388,7 +1388,7 @@ export default class Maintainagentcreate extends React.Component {
                                     selectedOs = this.state.operatingSystems[0].id;
                                 }
                                 if(this.state.gateways.length > 0){
-                                    selectedHost = this.state.gateways[0];
+                                    selectedHost = this.state.gateways[0].id;
                                 }
                                 let serverForm = {
                                     mode: 'SERVER',
@@ -1488,7 +1488,6 @@ export default class Maintainagentcreate extends React.Component {
                     prepareData[statePlugIn.id] = false;
                 }
             }
-            console.log(prepareData);
 
             fetch(this.props.baseUrl + '/generateClientScript', {
                 method: 'POST',
@@ -1511,7 +1510,7 @@ export default class Maintainagentcreate extends React.Component {
                                     selectedOs = this.state.operatingSystems[0].id;
                                 }
                                 if(this.state.gateways.length > 0){
-                                    selectedHost = this.state.gateways[0];
+                                    selectedHost = this.state.gateways[0].id;
                                 }
                                 let clientForm = {
                                     mode: 'CLIENT',
