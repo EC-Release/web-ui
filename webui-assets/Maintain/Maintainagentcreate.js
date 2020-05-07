@@ -1288,7 +1288,13 @@ export default class Maintainagentcreate extends React.Component {
                                 };
 
                                 let filename = "gateway.yml";
-                                let data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                let data='';
+                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                    data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'"'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value.split(".io")[0]+".io" +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                }
+                                else{
+                                    data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                } 
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1405,7 +1411,14 @@ export default class Maintainagentcreate extends React.Component {
                                 };
                                 
                                 let filename = "server.yml";
-                                let data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
+                                let data=''
+                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                    data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value.split(".io")[0]+".io" +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'"'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'"'+  prepareData.hca +'"';
+                                }
+                                else{
+                                    data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
+                                }
+
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
@@ -1519,7 +1532,14 @@ export default class Maintainagentcreate extends React.Component {
                                 };
 
                                 let filename = "client.yml";
-                                let data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
+                                let data='';
+                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                    data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'"'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'"'+ prepareData.hca +'"';
+                                }
+                                else{
+                                    data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
+                                }
+
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
                                     window.navigator.msSaveBlob(blob, filename);
