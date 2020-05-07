@@ -1354,7 +1354,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.sst = serverFormData.serviceUrl.value;
             prepareData.rht = serverFormData.remoteHost.value;
             prepareData.rpt = serverFormData.remotePort.value;
-            prepareData.prx = serverFormData.proxy.value;
+            prepareData.pxy = serverFormData.proxy.value;
             prepareData.plg = serverFormData.allowPlugIn.value;
             prepareData.hca = serverFormData.hca.value;
             prepareData.os = serverFormData.os.value;
@@ -1476,7 +1476,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.hst = clientFormData.host.value;
             prepareData.lpt = clientFormData.localPort.value;
             prepareData.tid = clientFormData.targetId.value;
-            prepareData.proxy = clientFormData.proxy.value;
+            prepareData.pxy = clientFormData.proxy.value;
             prepareData.plg = clientFormData.allowPlugIn.value;
             prepareData.hca = clientFormData.hca.value;
             prepareData.os = clientFormData.os.value;
