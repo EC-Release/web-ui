@@ -47,6 +47,7 @@ export default class Maintainagentcreate extends React.Component {
                 remoteHost: { value: '', dirtyState: false },
                 remotePort: { value: '', dirtyState: false },
                 proxy: { value: '', dirtyState: false },
+                noproxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
                 hca: { value: '', dirtyState: false },
@@ -66,6 +67,7 @@ export default class Maintainagentcreate extends React.Component {
                 localPort: { value: '', dirtyState: false },
                 targetId: { value: '', dirtyState: false, type: 'password' },
                 proxy: { value: '', dirtyState: false },
+                noproxy: { value: '', dirtyState: false },
                 allowPlugIn: { value: false, dirtyState: false },
                 plugIn: { value: [], dirtyState: false },
                 hca: { value: '', dirtyState: false },
@@ -681,6 +683,10 @@ export default class Maintainagentcreate extends React.Component {
             currentServerForm.proxy.value = updatedValue;
             currentServerForm.proxy.dirtyState = true;
         }
+        else if(fieldName === 'noproxy'){
+            currentServerForm.noproxy.value = updatedValue;
+            currentServerForm.noproxy.dirtyState = true;
+        } 
         else if(fieldName === 'allowPlugIn'){
             currentServerForm.allowPlugIn.value = updatedValue;
             currentServerForm.allowPlugIn.dirtyState = true;
@@ -965,6 +971,10 @@ export default class Maintainagentcreate extends React.Component {
             currentClientForm.proxy.value = updatedValue;
             currentClientForm.proxy.dirtyState = true;
         }
+        else if(fieldName === 'noproxy'){
+            currentClientForm.noproxy.value = updatedValue;
+            currentClientForm.noproxy.dirtyState = true;
+        }
         else if(fieldName === 'allowPlugIn'){
             currentClientForm.allowPlugIn.value = updatedValue;
             currentClientForm.allowPlugIn.dirtyState = true;
@@ -1194,6 +1204,7 @@ export default class Maintainagentcreate extends React.Component {
         currentServerForm.OAuth2.value = currentClientForm.OAuth2.value;
         currentServerForm.host.value = currentClientForm.host.value;
         currentServerForm.proxy.value = currentClientForm.proxy.value;
+        currentServerForm.noproxy.value = currentClientForm.noproxy.value; 
         currentServerForm.allowPlugIn.value = currentClientForm.allowPlugIn.value;
         currentServerForm.plugIn.value = currentClientForm.plugIn.value;
 
@@ -1221,6 +1232,7 @@ export default class Maintainagentcreate extends React.Component {
         currentClientForm.OAuth2.value = currentServerForm.OAuth2.value;
         currentClientForm.host.value = currentServerForm.host.value;
         currentClientForm.proxy.value = currentServerForm.proxy.value;
+        currentClientForm.noproxy.value = currentServerForm.noproxy.value; 
         currentClientForm.allowPlugIn.value = currentServerForm.allowPlugIn.value;
         currentClientForm.plugIn.value = currentServerForm.plugIn.value;
 
@@ -1290,10 +1302,10 @@ export default class Maintainagentcreate extends React.Component {
                                 let filename = "gateway.yml";
                                 let data='';
                                 if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
-                                    data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'"'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value.split(".io")[0]+".io" +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                    data = "ec-config:\n  conf:\n    mod: "+gatewayFormData.mode.toLowerCase()+"\n    gpt: "+'"'+ gatewayFormData.gatewayPort.value +'"' +"\n    zon: "+ gatewayFormData.zone.value +"\n    sst: "+ gatewayFormData.serviceUrl.value.split(".io")[0]+".io" +"\n    dbg: "+ agentFormData.debugMode.value +"\n    tkn: "+ gatewayFormData.token.value +"\n    hst: "+ gatewayFormData.host.value;
                                 }
                                 else{
-                                    data = "ec-config: \n  conf: \n    mod: "+gatewayFormData.mode.toLowerCase()+" \n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +" \n    zon: "+ gatewayFormData.zone.value +" \n    sst: "+ gatewayFormData.serviceUrl.value +" \n    dbg: "+ agentFormData.debugMode.value +" \n    tkn: "+ gatewayFormData.token.value +" \n    hst: "+ gatewayFormData.host.value;
+                                    data = "ec-config:\n  conf:\n    mod: "+gatewayFormData.mode.toLowerCase()+"\n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +"\n    zon: "+ gatewayFormData.zone.value +"\n    sst: "+ gatewayFormData.serviceUrl.value +"\n    dbg: "+ agentFormData.debugMode.value +"\n    tkn: "+ gatewayFormData.token.value +"\n    hst: "+ gatewayFormData.host.value;
                                 } 
                                 let blob = new Blob([data], { type: 'text/yml' });
                                 if (window.navigator.msSaveOrOpenBlob) {
@@ -1355,6 +1367,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.rht = serverFormData.remoteHost.value;
             prepareData.rpt = serverFormData.remotePort.value;
             prepareData.pxy = serverFormData.proxy.value;
+            prepareData.nopxy = serverFormData.noproxy.value;
             prepareData.plg = serverFormData.allowPlugIn.value;
             prepareData.hca = serverFormData.hca.value;
             prepareData.os = serverFormData.os.value;
@@ -1404,6 +1417,7 @@ export default class Maintainagentcreate extends React.Component {
                                     remoteHost: { value: '', dirtyState: false },
                                     remotePort: { value: '', dirtyState: false },
                                     proxy: { value: '', dirtyState: false },
+                                    noproxy: { value: '', dirtyState: false }, 
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
                                     hca: { value: '', dirtyState: false },
@@ -1413,10 +1427,17 @@ export default class Maintainagentcreate extends React.Component {
                                 let filename = "server.yml";
                                 let data=''
                                 if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
-                                    data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value.split(".io")[0]+".io" +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'"'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'"'+  prepareData.hca +'"';
+                                    data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +"\n    grp: "+ serverFormData.group.value +"\n    sst: "+ serverFormData.serviceUrl.value.split(".io")[0]+".io" +"\n    hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n    csc: "+ serverFormData.clientSecret.value+"\n    oa2: "+ serverFormData.OAuth2.value+"\n    dur: "+ serverFormData.duration.value+"\n    aid: "+ serverFormData.agentId.value+"\n    rpt: "+'"'+ serverFormData.remotePort.value+'"'+"\n    rht: "+ serverFormData.remoteHost.value+"\n    hca: "+'"'+  prepareData.hca +'"';
+                                    if(serverFormData.proxy.value.trim() !== ''){
+                                        data = data + "\n    pxy: "+ serverFormData.proxy.value;
+                                    }
                                 }
                                 else{
-                                    data = "ec-config: \n  conf: \n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +" \n    grp: "+ serverFormData.group.value +" \n    sst: "+ serverFormData.serviceUrl.value +" \n    hst: "+ serverFormData.host.value +" \n    dbg: "+ agentFormData.debugMode.value+" \n    cid: "+ serverFormData.clientId.value+" \n    csc: "+ serverFormData.clientSecret.value+" \n    oa2: "+ serverFormData.OAuth2.value+" \n    dur: "+ serverFormData.duration.value+" \n    aid: "+ serverFormData.agentId.value+" \n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+" \n    rht: "+ serverFormData.remoteHost.value+" \n    plg: "+ serverFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+  prepareData.hca +'"';
+                                    data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +"\n    grp: "+ serverFormData.group.value +"\n    sst: "+ serverFormData.serviceUrl.value +"\n    hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n    csc: "+ serverFormData.clientSecret.value+"\n    oa2: "+ serverFormData.OAuth2.value+"\n    dur: "+ serverFormData.duration.value+"\n    aid: "+ serverFormData.agentId.value+"\n    rpt: "+'":'+ serverFormData.remotePort.value+'"'+"\n    rht: "+ serverFormData.remoteHost.value+"\n    hca: "+'":'+  prepareData.hca +'"';
+                                }
+
+                                if(serverFormData.allowPlugIn.value){
+                                    data = data + "\n    plg: "+ serverFormData.allowPlugIn.value+"\n    vln: "+ prepareData.vln+"\n    tls: "+  prepareData.tls ;
                                 }
 
                                 let blob = new Blob([data], { type: 'text/yml' });
@@ -1477,6 +1498,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.lpt = clientFormData.localPort.value;
             prepareData.tid = clientFormData.targetId.value;
             prepareData.pxy = clientFormData.proxy.value;
+            prepareData.nopxy = clientFormData.noproxy.value;
             prepareData.plg = clientFormData.allowPlugIn.value;
             prepareData.hca = clientFormData.hca.value;
             prepareData.os = clientFormData.os.value;
@@ -1524,6 +1546,7 @@ export default class Maintainagentcreate extends React.Component {
                                     localPort: { value: '', dirtyState: false },
                                     targetId: { value: clientFormData.targetId.value, dirtyState: false, type: clientFormData.targetId.type },
                                     proxy: { value: '', dirtyState: false },
+                                    noproxy: { value: '', dirtyState: false },
                                     allowPlugIn: { value: false, dirtyState: false },
                                     plugIn: { value: [], dirtyState: false },
                                     hca: { value: '', dirtyState: false },
@@ -1533,10 +1556,17 @@ export default class Maintainagentcreate extends React.Component {
                                 let filename = "client.yml";
                                 let data='';
                                 if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
-                                    data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'"'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'"'+ prepareData.hca +'"';
+                                    data = "ec-config:\n  conf:\n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +"\n    tid: "+ clientFormData.targetId.value +"\n    hst: "+ clientFormData.host.value +"\n    cid: "+ clientFormData.clientId.value+"\n    csc: "+ clientFormData.clientSecret.value+ "\n    oa2: "+ clientFormData.OAuth2.value+"\n    dur: "+ clientFormData.duration.value+"\n    dbg: "+ agentFormData.debugMode.value+"\n    grp: "+ clientFormData.group.value+"\n    lpt: "+'"'+ clientFormData.localPort.value + '"' +"\n    hca: "+'"'+ prepareData.hca +'"';
+                                    if(clientFormData.proxy.value.trim() !== ''){
+                                        data = data +"\n    pxy: "+ clientFormData.proxy.value;
+                                    }
                                 }
                                 else{
-                                    data = "ec-config: \n  conf: \n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +" \n    tid: "+ clientFormData.targetId.value +" \n    hst: "+ clientFormData.host.value +" \n    cid: "+ clientFormData.clientId.value+" \n    csc: "+ clientFormData.clientSecret.value+ " \n    oa2: "+ clientFormData.OAuth2.value+" \n    dur: "+ clientFormData.duration.value+" \n    dbg: "+ agentFormData.debugMode.value+" \n    grp: "+ clientFormData.group.value+" \n    lpt: "+'":'+ clientFormData.localPort.value + '"' +" \n    plg: "+ clientFormData.allowPlugIn.value+" \n    vln: "+ prepareData.vln+" \n    tls: "+  prepareData.tls +" \n    hca: "+'":'+ prepareData.hca +'"';
+                                    data = "ec-config:\n  conf:\n    mod: "+clientFormData.mode.toLowerCase()+ "\n    aid: "+ clientFormData.agentId.value +"\n    tid: "+ clientFormData.targetId.value +"\n    hst: "+ clientFormData.host.value +"\n    cid: "+ clientFormData.clientId.value+"\n    csc: "+ clientFormData.clientSecret.value+ "\n    oa2: "+ clientFormData.OAuth2.value+"\n    dur: "+ clientFormData.duration.value+"\n    dbg: "+ agentFormData.debugMode.value+"\n    grp: "+ clientFormData.group.value+"\n    lpt: "+'":'+ clientFormData.localPort.value + '"' +"\n    hca: "+'":'+ prepareData.hca +'"';
+                                }
+
+                                if(clientFormData.allowPlugIn.value){
+                                    data = data +"\n    plg: "+ clientFormData.allowPlugIn.value+"\n    vln: "+ prepareData.vln+"\n    tls: "+  prepareData.tls;
                                 }
 
                                 let blob = new Blob([data], { type: 'text/yml' });
@@ -2097,6 +2127,23 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
+                                                NO PROXY
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="noproxy"
+                                                    value={this.state.serverForm.noproxy.value}
+                                                    onChange={(event)=>{this.handleServerFormData(event)}} />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
                                                 ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
@@ -2131,6 +2178,7 @@ export default class Maintainagentcreate extends React.Component {
                                                     <small className="text-danger">{ this.state.errorsServerForm['plugIn']}</small>
                                                 </div>
                                             </div>
+                                            
                                             : null
                                         }
                                     </div>
@@ -2332,6 +2380,23 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
+                                                NO PROXY
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="noproxy"
+                                                    value={this.state.clientForm.noproxy.value}
+                                                    onChange={(event)=>{this.handleClientFormData(event)}} />
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <div className="col-sm-12 label required">
                                                 HEALTH PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
@@ -2346,9 +2411,6 @@ export default class Maintainagentcreate extends React.Component {
                                                 <small className="text-danger">{ this.state.errorsClientForm['hca'] }</small>
                                             </div>
                                         </div>
-                                    </div> 
-
-                                    <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
                                                 OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
