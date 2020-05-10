@@ -77,7 +77,7 @@
 		
 		<div id="short-nav">
 			<dl>
-			<dd><code>import "github.build.ge.com/212359746/wzcore"</code></dd>
+			<dd><code>import "github.com/wzlib/wzcore"</code></dd>
 			</dl>
 			<dl>
 			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
@@ -424,21 +424,21 @@ The 技(waza) libraries main package contains core functionality which consists 
 			<p>
 			<span style="font-size:90%">
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/client.go">client.go</a>
+				<a href="/src/github.com/wzlib/wzcore/client.go">client.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/gateway.go">gateway.go</a>
+				<a href="/src/github.com/wzlib/wzcore/gateway.go">gateway.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go">gw-client.go</a>
+				<a href="/src/github.com/wzlib/wzcore/gw-client.go">gw-client.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go">gw-server.go</a>
+				<a href="/src/github.com/wzlib/wzcore/gw-server.go">gw-server.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/server.go">server.go</a>
+				<a href="/src/github.com/wzlib/wzcore/server.go">server.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/x-client.go">x-client.go</a>
+				<a href="/src/github.com/wzlib/wzcore/x-client.go">x-client.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go">x-gateway.go</a>
+				<a href="/src/github.com/wzlib/wzcore/x-gateway.go">x-gateway.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzcore/x-server.go">x-server.go</a>
+				<a href="/src/github.com/wzlib/wzcore/x-server.go">x-server.go</a>
 			
 			</span>
 			</p>
@@ -531,7 +531,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="KeepAlive">func <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=25894:25930#L1079">KeepAlive</a>
+			<h2 id="KeepAlive">func <a href="/src/github.com/wzlib/wzcore/gateway.go?s=25842:25878#L1079">KeepAlive</a>
 				<a class="permalink" href="#KeepAlive">&#xb6;</a>
 				
 				
@@ -544,7 +544,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="SendPong">func <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2875:2907#L136">SendPong</a>
+			<h2 id="SendPong">func <a href="/src/github.com/wzlib/wzcore/server.go?s=2823:2855#L136">SendPong</a>
 				<a class="permalink" href="#SendPong">&#xb6;</a>
 				
 				
@@ -558,7 +558,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="Agent">type <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=909:1281#L32">Agent</a>
+			<h2 id="Agent">type <a href="/src/github.com/wzlib/wzcore/gateway.go?s=857:1229#L32">Agent</a>
 				<a class="permalink" href="#Agent">&#xb6;</a>
 				
 				
@@ -567,7 +567,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 			<pre>type Agent struct {
 <span id="Agent.Id"></span>    Id            <a href="/pkg/builtin/#string">string</a>
 <span id="Agent.Conn"></span>    Conn          *<a href="#WSocket">WSocket</a>       `json:&#34;-&#34;`
-<span id="Agent.Options"></span>    Options       *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a> `json:&#34;-&#34;`
+<span id="Agent.Options"></span>    Options       *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a> `json:&#34;-&#34;`
 <span id="Agent.SessionIdChan"></span>    SessionIdChan chan <a href="/pkg/builtin/#string">string</a>    `json:&#34;-&#34;`
 <span id="Agent.SessionId"></span>    SessionId     <a href="/pkg/builtin/#string">string</a>         `json:&#34;,omitempty&#34;`
 <span id="Agent.BindId"></span>    BindId        <a href="/pkg/builtin/#string">string</a>         `json:&#34;,omitempty&#34;`
@@ -591,7 +591,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="AgentIntr">type <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=838:907#L26">AgentIntr</a>
+			<h2 id="AgentIntr">type <a href="/src/github.com/wzlib/wzcore/gateway.go?s=786:855#L26">AgentIntr</a>
 				<a class="permalink" href="#AgentIntr">&#xb6;</a>
 				
 				
@@ -600,7 +600,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 			<pre>type AgentIntr interface {
     Hire()
     Fire()
-    Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>
+    Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>
 }</pre>
 
 			
@@ -617,7 +617,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="Client">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3708:3822#L132">Client</a>
+			<h2 id="Client">type <a href="/src/github.com/wzlib/wzcore/client.go?s=3656:3770#L132">Client</a>
 				<a class="permalink" href="#Client">&#xb6;</a>
 				
 				
@@ -638,12 +638,12 @@ The 技(waza) libraries main package contains core functionality which consists 
 
 			
 				
-				<h3 id="NewClient">func <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3901:3970#L145">NewClient</a>
+				<h3 id="NewClient">func <a href="/src/github.com/wzlib/wzcore/client.go?s=3849:3918#L145">NewClient</a>
 					<a class="permalink" href="#NewClient">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewClient(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>, api <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#HealthCheckCltType">HealthCheckCltType</a>) *<a href="#Client">Client</a></pre>
+				<pre>func NewClient(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>, api <a href="/pkg/github.com/wzlib/wzapi/">api</a>.<a href="/pkg/github.com/wzlib/wzapi/#HealthCheckCltType">HealthCheckCltType</a>) *<a href="#Client">Client</a></pre>
 				
 				
 				
@@ -651,19 +651,19 @@ The 技(waza) libraries main package contains core functionality which consists 
 
 			
 				
-				<h3 id="Client.Config">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3839:3880#L141">Config</a>
+				<h3 id="Client.Config">func (*Client) <a href="/src/github.com/wzlib/wzcore/client.go?s=3787:3828#L141">Config</a>
 					<a class="permalink" href="#Client.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Client">Client</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (c *<a href="#Client">Client</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="Client.DeleteBinding">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=5604:5646#L212">DeleteBinding</a>
+				<h3 id="Client.DeleteBinding">func (*Client) <a href="/src/github.com/wzlib/wzcore/client.go?s=5552:5594#L212">DeleteBinding</a>
 					<a class="permalink" href="#Client.DeleteBinding">&#xb6;</a>
 					
 					
@@ -675,7 +675,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.DeleteSession">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=6108:6150#L238">DeleteSession</a>
+				<h3 id="Client.DeleteSession">func (*Client) <a href="/src/github.com/wzlib/wzcore/client.go?s=6056:6098#L238">DeleteSession</a>
 					<a class="permalink" href="#Client.DeleteSession">&#xb6;</a>
 					
 					
@@ -687,7 +687,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.Fire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=19755:19778#L909">Fire</a>
+				<h3 id="Client.Fire">func (*Client) <a href="/src/github.com/wzlib/wzcore/client.go?s=19703:19726#L909">Fire</a>
 					<a class="permalink" href="#Client.Fire">&#xb6;</a>
 					
 					
@@ -699,7 +699,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 				
 			
 				
-				<h3 id="Client.Hire">func (*Client) <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=13246:13269#L588">Hire</a>
+				<h3 id="Client.Hire">func (*Client) <a href="/src/github.com/wzlib/wzcore/client.go?s=13194:13217#L588">Hire</a>
 					<a class="permalink" href="#Client.Hire">&#xb6;</a>
 					
 					
@@ -713,7 +713,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="FuseAgent">type <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=1283:1678#L44">FuseAgent</a>
+			<h2 id="FuseAgent">type <a href="/src/github.com/wzlib/wzcore/gateway.go?s=1231:1626#L44">FuseAgent</a>
 				<a class="permalink" href="#FuseAgent">&#xb6;</a>
 				
 				
@@ -725,9 +725,9 @@ The 技(waza) libraries main package contains core functionality which consists 
 <span id="FuseAgent.Id"></span>    Id        <a href="/pkg/builtin/#string">string</a>
 <span id="FuseAgent.SessionId"></span>    SessionId <a href="/pkg/builtin/#string">string</a>         `json:&#34;,omitempty&#34;`
 <span id="FuseAgent.BindId"></span>    BindId    <a href="/pkg/builtin/#string">string</a>         `json:&#34;,omitempty&#34;`
-<span id="FuseAgent.Options"></span>    Options   *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a> `json:&#34;-&#34;`
+<span id="FuseAgent.Options"></span>    Options   *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a> `json:&#34;-&#34;`
     <span class="comment">//Conn          *net.TCPConn   `json:&#34;-&#34;`</span>
-<span id="FuseAgent.Conn"></span>    Conn        <a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#StreamIntr">StreamIntr</a> `json:&#34;-&#34;`
+<span id="FuseAgent.Conn"></span>    Conn        <a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#StreamIntr">StreamIntr</a> `json:&#34;-&#34;`
 <span id="FuseAgent.TimeCreated"></span>    TimeCreated <a href="/pkg/time/">time</a>.<a href="/pkg/time/#Time">Time</a>
 }
 </pre>
@@ -746,7 +746,7 @@ The 技(waza) libraries main package contains core functionality which consists 
 		
 			
 			
-			<h2 id="GWClient">type <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=1010:1171#L30">GWClient</a>
+			<h2 id="GWClient">type <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=958:1119#L30">GWClient</a>
 				<a class="permalink" href="#GWClient">&#xb6;</a>
 				
 				
@@ -770,12 +770,12 @@ gw-client mode
 
 			
 				
-				<h3 id="NewGWClient">func <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=1189:1262#L40">NewGWClient</a>
+				<h3 id="NewGWClient">func <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=1137:1210#L40">NewGWClient</a>
 					<a class="permalink" href="#NewGWClient">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewGWClient(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>, api <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#HealthCheckGwyType">HealthCheckGwyType</a>) *<a href="#GWClient">GWClient</a></pre>
+				<pre>func NewGWClient(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>, api <a href="/pkg/github.com/wzlib/wzapi/">api</a>.<a href="/pkg/github.com/wzlib/wzapi/#HealthCheckGwyType">HealthCheckGwyType</a>) *<a href="#GWClient">GWClient</a></pre>
 				
 				
 				
@@ -783,19 +783,19 @@ gw-client mode
 
 			
 				
-				<h3 id="GWClient.Config">func (*GWClient) <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=1550:1594#L55">Config</a>
+				<h3 id="GWClient.Config">func (*GWClient) <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=1498:1542#L55">Config</a>
 					<a class="permalink" href="#GWClient.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (gc *<a href="#GWClient">GWClient</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (gc *<a href="#GWClient">GWClient</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="GWClient.DeleteSession">func (*GWClient) <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=7814:7871#L313">DeleteSession</a>
+				<h3 id="GWClient.DeleteSession">func (*GWClient) <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=7762:7819#L313">DeleteSession</a>
 					<a class="permalink" href="#GWClient.DeleteSession">&#xb6;</a>
 					
 					
@@ -807,7 +807,7 @@ gw-client mode
 				
 			
 				
-				<h3 id="GWClient.ECRequest">func (*GWClient) <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=1617:1686#L60">ECRequest</a>
+				<h3 id="GWClient.ECRequest">func (*GWClient) <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=1565:1634#L60">ECRequest</a>
 					<a class="permalink" href="#GWClient.ECRequest">&#xb6;</a>
 					
 					
@@ -819,7 +819,7 @@ gw-client mode
 				
 			
 				
-				<h3 id="GWClient.Fire">func (*GWClient) <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=17577:17603#L753">Fire</a>
+				<h3 id="GWClient.Fire">func (*GWClient) <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=17525:17551#L753">Fire</a>
 					<a class="permalink" href="#GWClient.Fire">&#xb6;</a>
 					
 					
@@ -831,7 +831,7 @@ gw-client mode
 				
 			
 				
-				<h3 id="GWClient.Hire">func (*GWClient) <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=9069:9095#L368">Hire</a>
+				<h3 id="GWClient.Hire">func (*GWClient) <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=9017:9043#L368">Hire</a>
 					<a class="permalink" href="#GWClient.Hire">&#xb6;</a>
 					
 					
@@ -843,12 +843,12 @@ gw-client mode
 				
 			
 				
-				<h3 id="GWClient.ServerReq">func (*GWClient) <a href="/src/github.build.ge.com/212359746/wzcore/gw-client.go?s=20490:20551#L870">ServerReq</a>
+				<h3 id="GWClient.ServerReq">func (*GWClient) <a href="/src/github.com/wzlib/wzcore/gw-client.go?s=20438:20499#L870">ServerReq</a>
 					<a class="permalink" href="#GWClient.ServerReq">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (gc *<a href="#GWClient">GWClient</a>) ServerReq(_rs <a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#StreamIntr">StreamIntr</a>, op <a href="/pkg/builtin/#string">string</a>)</pre>
+				<pre>func (gc *<a href="#GWClient">GWClient</a>) ServerReq(_rs <a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#StreamIntr">StreamIntr</a>, op <a href="/pkg/builtin/#string">string</a>)</pre>
 				
 				
 				
@@ -857,7 +857,7 @@ gw-client mode
 		
 			
 			
-			<h2 id="GWServer">type <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=874:1023#L29">GWServer</a>
+			<h2 id="GWServer">type <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=822:971#L29">GWServer</a>
 				<a class="permalink" href="#GWServer">&#xb6;</a>
 				
 				
@@ -881,12 +881,12 @@ gw-server mode
 
 			
 				
-				<h3 id="NewGWServer">func <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=1041:1119#L38">NewGWServer</a>
+				<h3 id="NewGWServer">func <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=989:1067#L38">NewGWServer</a>
 					<a class="permalink" href="#NewGWServer">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewGWServer(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>, api <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#HealthCheckGWServerType">HealthCheckGWServerType</a>) *<a href="#GWServer">GWServer</a></pre>
+				<pre>func NewGWServer(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>, api <a href="/pkg/github.com/wzlib/wzapi/">api</a>.<a href="/pkg/github.com/wzlib/wzapi/#HealthCheckGWServerType">HealthCheckGWServerType</a>) *<a href="#GWServer">GWServer</a></pre>
 				
 				
 				
@@ -894,19 +894,19 @@ gw-server mode
 
 			
 				
-				<h3 id="GWServer.Config">func (*GWServer) <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=1349:1393#L52">Config</a>
+				<h3 id="GWServer.Config">func (*GWServer) <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=1297:1341#L52">Config</a>
 					<a class="permalink" href="#GWServer.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (gs *<a href="#GWServer">GWServer</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (gs *<a href="#GWServer">GWServer</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="GWServer.DeleteSession">func (*GWServer) <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=5486:5543#L220">DeleteSession</a>
+				<h3 id="GWServer.DeleteSession">func (*GWServer) <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=5434:5491#L220">DeleteSession</a>
 					<a class="permalink" href="#GWServer.DeleteSession">&#xb6;</a>
 					
 					
@@ -918,7 +918,7 @@ gw-server mode
 				
 			
 				
-				<h3 id="GWServer.ECRequest">func (*GWServer) <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=1416:1485#L57">ECRequest</a>
+				<h3 id="GWServer.ECRequest">func (*GWServer) <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=1364:1433#L57">ECRequest</a>
 					<a class="permalink" href="#GWServer.ECRequest">&#xb6;</a>
 					
 					
@@ -930,7 +930,7 @@ gw-server mode
 				
 			
 				
-				<h3 id="GWServer.Fire">func (*GWServer) <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=22972:22998#L980">Fire</a>
+				<h3 id="GWServer.Fire">func (*GWServer) <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=22920:22946#L980">Fire</a>
 					<a class="permalink" href="#GWServer.Fire">&#xb6;</a>
 					
 					
@@ -942,7 +942,7 @@ gw-server mode
 				
 			
 				
-				<h3 id="GWServer.Hire">func (*GWServer) <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=15982:16008#L656">Hire</a>
+				<h3 id="GWServer.Hire">func (*GWServer) <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=15930:15956#L656">Hire</a>
 					<a class="permalink" href="#GWServer.Hire">&#xb6;</a>
 					
 					
@@ -954,12 +954,12 @@ gw-server mode
 				
 			
 				
-				<h3 id="GWServer.SessionAssignment">func (*GWServer) <a href="/src/github.build.ge.com/212359746/wzcore/gw-server.go?s=11237:11367#L447">SessionAssignment</a>
+				<h3 id="GWServer.SessionAssignment">func (*GWServer) <a href="/src/github.com/wzlib/wzcore/gw-server.go?s=11185:11315#L447">SessionAssignment</a>
 					<a class="permalink" href="#GWServer.SessionAssignment">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (gs *<a href="#GWServer">GWServer</a>) SessionAssignment(_msg map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>, _rs <a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#StreamIntr">StreamIntr</a>, cagt *<a href="#Agent">Agent</a>, sidc chan&lt;- <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (gs *<a href="#GWServer">GWServer</a>) SessionAssignment(_msg map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/builtin/#string">string</a>, _rs <a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#StreamIntr">StreamIntr</a>, cagt *<a href="#Agent">Agent</a>, sidc chan&lt;- <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				
 				
 				
@@ -968,7 +968,7 @@ gw-server mode
 		
 			
 			
-			<h2 id="Gateway">type <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=1906:2097#L69">Gateway</a>
+			<h2 id="Gateway">type <a href="/src/github.com/wzlib/wzcore/gateway.go?s=1854:2045#L69">Gateway</a>
 				<a class="permalink" href="#Gateway">&#xb6;</a>
 				
 				
@@ -992,12 +992,12 @@ gateway mode
 
 			
 				
-				<h3 id="NewGateway">func <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=2115:2186#L80">NewGateway</a>
+				<h3 id="NewGateway">func <a href="/src/github.com/wzlib/wzcore/gateway.go?s=2063:2134#L80">NewGateway</a>
 					<a class="permalink" href="#NewGateway">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewGateway(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>, api <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#HealthCheckGwyType">HealthCheckGwyType</a>) *<a href="#Gateway">Gateway</a></pre>
+				<pre>func NewGateway(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>, api <a href="/pkg/github.com/wzlib/wzapi/">api</a>.<a href="/pkg/github.com/wzlib/wzapi/#HealthCheckGwyType">HealthCheckGwyType</a>) *<a href="#Gateway">Gateway</a></pre>
 				
 				
 				
@@ -1005,7 +1005,7 @@ gateway mode
 
 			
 				
-				<h3 id="Gateway.ClientPiping">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=14761:14816#L575">ClientPiping</a>
+				<h3 id="Gateway.ClientPiping">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=14709:14764#L575">ClientPiping</a>
 					<a class="permalink" href="#Gateway.ClientPiping">&#xb6;</a>
 					
 					
@@ -1017,19 +1017,19 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.Config">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=2473:2515#L95">Config</a>
+				<h3 id="Gateway.Config">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=2421:2463#L95">Config</a>
 					<a class="permalink" href="#Gateway.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (g *<a href="#Gateway">Gateway</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (g *<a href="#Gateway">Gateway</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="Gateway.DeleteClientInPool">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=14201:14249#L549">DeleteClientInPool</a>
+				<h3 id="Gateway.DeleteClientInPool">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=14149:14197#L549">DeleteClientInPool</a>
 					<a class="permalink" href="#Gateway.DeleteClientInPool">&#xb6;</a>
 					
 					
@@ -1041,7 +1041,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.DeleteSession">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=13425:13480#L514">DeleteSession</a>
+				<h3 id="Gateway.DeleteSession">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=13373:13428#L514">DeleteSession</a>
 					<a class="permalink" href="#Gateway.DeleteSession">&#xb6;</a>
 					
 					
@@ -1053,7 +1053,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.ECRequest">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=2536:2603#L99">ECRequest</a>
+				<h3 id="Gateway.ECRequest">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=2484:2551#L99">ECRequest</a>
 					<a class="permalink" href="#Gateway.ECRequest">&#xb6;</a>
 					
 					
@@ -1065,7 +1065,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.Fire">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=25865:25889#L1077">Fire</a>
+				<h3 id="Gateway.Fire">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=25813:25837#L1077">Fire</a>
 					<a class="permalink" href="#Gateway.Fire">&#xb6;</a>
 					
 					
@@ -1077,7 +1077,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.Hire">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=19531:19555#L795">Hire</a>
+				<h3 id="Gateway.Hire">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=19479:19503#L795">Hire</a>
 					<a class="permalink" href="#Gateway.Hire">&#xb6;</a>
 					
 					
@@ -1089,7 +1089,7 @@ gateway mode
 				
 			
 				
-				<h3 id="Gateway.ServerPiping">func (*Gateway) <a href="/src/github.build.ge.com/212359746/wzcore/gateway.go?s=17386:17466#L696">ServerPiping</a>
+				<h3 id="Gateway.ServerPiping">func (*Gateway) <a href="/src/github.com/wzlib/wzcore/gateway.go?s=17334:17414#L696">ServerPiping</a>
 					<a class="permalink" href="#Gateway.ServerPiping">&#xb6;</a>
 					
 					
@@ -1103,7 +1103,7 @@ gateway mode
 		
 			
 			
-			<h2 id="Locker">type <a href="/src/github.build.ge.com/212359746/wzcore/client.go?s=3645:3706#L127">Locker</a>
+			<h2 id="Locker">type <a href="/src/github.com/wzlib/wzcore/client.go?s=3593:3654#L127">Locker</a>
 				<a class="permalink" href="#Locker">&#xb6;</a>
 				
 				
@@ -1129,7 +1129,7 @@ gateway mode
 		
 			
 			
-			<h2 id="Server">type <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=3318:3554#L160">Server</a>
+			<h2 id="Server">type <a href="/src/github.com/wzlib/wzcore/server.go?s=3266:3502#L160">Server</a>
 				<a class="permalink" href="#Server">&#xb6;</a>
 				
 				
@@ -1153,12 +1153,12 @@ server mode
 
 			
 				
-				<h3 id="NewServer">func <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=3571:3640#L174">NewServer</a>
+				<h3 id="NewServer">func <a href="/src/github.com/wzlib/wzcore/server.go?s=3519:3588#L174">NewServer</a>
 					<a class="permalink" href="#NewServer">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewServer(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>, api <a href="/pkg/github.build.ge.com/212359746/wzapi/">api</a>.<a href="/pkg/github.build.ge.com/212359746/wzapi/#HealthCheckSrvType">HealthCheckSrvType</a>) *<a href="#Server">Server</a></pre>
+				<pre>func NewServer(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>, api <a href="/pkg/github.com/wzlib/wzapi/">api</a>.<a href="/pkg/github.com/wzlib/wzapi/#HealthCheckSrvType">HealthCheckSrvType</a>) *<a href="#Server">Server</a></pre>
 				
 				
 				
@@ -1166,19 +1166,19 @@ server mode
 
 			
 				
-				<h3 id="Server.Config">func (*Server) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=4049:4090#L192">Config</a>
+				<h3 id="Server.Config">func (*Server) <a href="/src/github.com/wzlib/wzcore/server.go?s=3997:4038#L192">Config</a>
 					<a class="permalink" href="#Server.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (s *<a href="#Server">Server</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (s *<a href="#Server">Server</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="Server.DeleteSession">func (*Server) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=13125:13167#L614">DeleteSession</a>
+				<h3 id="Server.DeleteSession">func (*Server) <a href="/src/github.com/wzlib/wzcore/server.go?s=13073:13115#L614">DeleteSession</a>
 					<a class="permalink" href="#Server.DeleteSession">&#xb6;</a>
 					
 					
@@ -1190,7 +1190,7 @@ server mode
 				
 			
 				
-				<h3 id="Server.Fire">func (*Server) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=23570:23592#L1061">Fire</a>
+				<h3 id="Server.Fire">func (*Server) <a href="/src/github.com/wzlib/wzcore/server.go?s=23518:23540#L1061">Fire</a>
 					<a class="permalink" href="#Server.Fire">&#xb6;</a>
 					
 					
@@ -1202,7 +1202,7 @@ server mode
 				
 			
 				
-				<h3 id="Server.Hire">func (*Server) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=4111:4133#L196">Hire</a>
+				<h3 id="Server.Hire">func (*Server) <a href="/src/github.com/wzlib/wzcore/server.go?s=4059:4081#L196">Hire</a>
 					<a class="permalink" href="#Server.Hire">&#xb6;</a>
 					
 					
@@ -1216,7 +1216,7 @@ server mode
 		
 			
 			
-			<h2 id="WSocket">type <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=1031:1232#L44">WSocket</a>
+			<h2 id="WSocket">type <a href="/src/github.com/wzlib/wzcore/server.go?s=979:1180#L44">WSocket</a>
 				<a class="permalink" href="#WSocket">&#xb6;</a>
 				
 				
@@ -1242,7 +1242,7 @@ a gorilla mutex type
 
 			
 				
-				<h3 id="WSocket.Close">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2792:2823#L131">Close</a>
+				<h3 id="WSocket.Close">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=2740:2771#L131">Close</a>
 					<a class="permalink" href="#WSocket.Close">&#xb6;</a>
 					
 					
@@ -1254,7 +1254,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.NextReader">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=1882:1954#L89">NextReader</a>
+				<h3 id="WSocket.NextReader">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=1830:1902#L89">NextReader</a>
 					<a class="permalink" href="#WSocket.NextReader">&#xb6;</a>
 					
 					
@@ -1266,7 +1266,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.ReadMessage">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=1762:1814#L83">ReadMessage</a>
+				<h3 id="WSocket.ReadMessage">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=1710:1762#L83">ReadMessage</a>
 					<a class="permalink" href="#WSocket.ReadMessage">&#xb6;</a>
 					
 					
@@ -1278,7 +1278,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.RemoteAddr">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=1234:1273#L58">RemoteAddr</a>
+				<h3 id="WSocket.RemoteAddr">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=1182:1221#L58">RemoteAddr</a>
 					<a class="permalink" href="#WSocket.RemoteAddr">&#xb6;</a>
 					
 					
@@ -1290,7 +1290,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.SetCloseHandler">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2407:2477#L113">SetCloseHandler</a>
+				<h3 id="WSocket.SetCloseHandler">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=2355:2425#L113">SetCloseHandler</a>
 					<a class="permalink" href="#WSocket.SetCloseHandler">&#xb6;</a>
 					
 					
@@ -1302,7 +1302,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.SetCompressionLevel">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2147:2201#L101">SetCompressionLevel</a>
+				<h3 id="WSocket.SetCompressionLevel">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=2095:2149#L101">SetCompressionLevel</a>
 					<a class="permalink" href="#WSocket.SetCompressionLevel">&#xb6;</a>
 					
 					
@@ -1314,7 +1314,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.SetPingHandler">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2021:2083#L95">SetPingHandler</a>
+				<h3 id="WSocket.SetPingHandler">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=1969:2031#L95">SetPingHandler</a>
 					<a class="permalink" href="#WSocket.SetPingHandler">&#xb6;</a>
 					
 					
@@ -1326,7 +1326,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.SetPongHandler">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2281:2343#L107">SetPongHandler</a>
+				<h3 id="WSocket.SetPongHandler">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=2229:2291#L107">SetPongHandler</a>
 					<a class="permalink" href="#WSocket.SetPongHandler">&#xb6;</a>
 					
 					
@@ -1338,7 +1338,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.SetReadDeadline">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2542:2594#L119">SetReadDeadline</a>
+				<h3 id="WSocket.SetReadDeadline">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=2490:2542#L119">SetReadDeadline</a>
 					<a class="permalink" href="#WSocket.SetReadDeadline">&#xb6;</a>
 					
 					
@@ -1350,7 +1350,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.SetWriteDeadline">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=2666:2719#L125">SetWriteDeadline</a>
+				<h3 id="WSocket.SetWriteDeadline">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=2614:2667#L125">SetWriteDeadline</a>
 					<a class="permalink" href="#WSocket.SetWriteDeadline">&#xb6;</a>
 					
 					
@@ -1362,7 +1362,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.WriteControl">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=1341:1427#L65">WriteControl</a>
+				<h3 id="WSocket.WriteControl">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=1289:1375#L65">WriteControl</a>
 					<a class="permalink" href="#WSocket.WriteControl">&#xb6;</a>
 					
 					
@@ -1374,7 +1374,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="WSocket.WriteMessage">func (*WSocket) <a href="/src/github.build.ge.com/212359746/wzcore/server.go?s=1524:1584#L72">WriteMessage</a>
+				<h3 id="WSocket.WriteMessage">func (*WSocket) <a href="/src/github.com/wzlib/wzcore/server.go?s=1472:1532#L72">WriteMessage</a>
 					<a class="permalink" href="#WSocket.WriteMessage">&#xb6;</a>
 					
 					
@@ -1388,7 +1388,7 @@ a gorilla mutex type
 		
 			
 			
-			<h2 id="XClient">type <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=928:1070#L36">XClient</a>
+			<h2 id="XClient">type <a href="/src/github.com/wzlib/wzcore/x-client.go?s=876:1018#L36">XClient</a>
 				<a class="permalink" href="#XClient">&#xb6;</a>
 				
 				
@@ -1409,12 +1409,12 @@ a gorilla mutex type
 
 			
 				
-				<h3 id="NewXClient">func <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=1361:1405#L58">NewXClient</a>
+				<h3 id="NewXClient">func <a href="/src/github.com/wzlib/wzcore/x-client.go?s=1309:1353#L58">NewXClient</a>
 					<a class="permalink" href="#NewXClient">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewXClient(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>) *<a href="#XClient">XClient</a></pre>
+				<pre>func NewXClient(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>) *<a href="#XClient">XClient</a></pre>
 				
 				
 				
@@ -1422,19 +1422,19 @@ a gorilla mutex type
 
 			
 				
-				<h3 id="XClient.Config">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=1087:1130#L46">Config</a>
+				<h3 id="XClient.Config">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=1035:1078#L46">Config</a>
 					<a class="permalink" href="#XClient.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (xc *<a href="#XClient">XClient</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (xc *<a href="#XClient">XClient</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="XClient.DeleteBinding">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=3208:3252#L131">DeleteBinding</a>
+				<h3 id="XClient.DeleteBinding">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=3156:3200#L131">DeleteBinding</a>
 					<a class="permalink" href="#XClient.DeleteBinding">&#xb6;</a>
 					
 					
@@ -1446,7 +1446,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="XClient.DeleteSession">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=3843:3887#L165">DeleteSession</a>
+				<h3 id="XClient.DeleteSession">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=3791:3835#L165">DeleteSession</a>
 					<a class="permalink" href="#XClient.DeleteSession">&#xb6;</a>
 					
 					
@@ -1458,7 +1458,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="XClient.DownloadFile">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=13605:13644#L604">DownloadFile</a>
+				<h3 id="XClient.DownloadFile">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=13553:13592#L604">DownloadFile</a>
 					<a class="permalink" href="#XClient.DownloadFile">&#xb6;</a>
 					
 					
@@ -1470,7 +1470,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="XClient.Fire">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=16254:16279#L742">Fire</a>
+				<h3 id="XClient.Fire">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=16202:16227#L742">Fire</a>
 					<a class="permalink" href="#XClient.Fire">&#xb6;</a>
 					
 					
@@ -1482,7 +1482,7 @@ a gorilla mutex type
 				
 			
 				
-				<h3 id="XClient.GetOAuthToken">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=1215:1256#L51">GetOAuthToken</a>
+				<h3 id="XClient.GetOAuthToken">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=1163:1204#L51">GetOAuthToken</a>
 					<a class="permalink" href="#XClient.GetOAuthToken">&#xb6;</a>
 					
 					
@@ -1497,7 +1497,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XClient.Hire">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=14730:14755#L651">Hire</a>
+				<h3 id="XClient.Hire">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=14678:14703#L651">Hire</a>
 					<a class="permalink" href="#XClient.Hire">&#xb6;</a>
 					
 					
@@ -1509,7 +1509,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XClient.Terminal">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=14401:14436#L632">Terminal</a>
+				<h3 id="XClient.Terminal">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=14349:14384#L632">Terminal</a>
 					<a class="permalink" href="#XClient.Terminal">&#xb6;</a>
 					
 					
@@ -1521,7 +1521,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XClient.UploadFile">func (*XClient) <a href="/src/github.build.ge.com/212359746/wzcore/x-client.go?s=13060:13097#L581">UploadFile</a>
+				<h3 id="XClient.UploadFile">func (*XClient) <a href="/src/github.com/wzlib/wzcore/x-client.go?s=13008:13045#L581">UploadFile</a>
 					<a class="permalink" href="#XClient.UploadFile">&#xb6;</a>
 					
 					
@@ -1539,7 +1539,7 @@ the configuration instance, FileUpload (-fup) &amp; FileDownload (-fdw)
 		
 			
 			
-			<h2 id="XGateway">type <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=855:1074#L27">XGateway</a>
+			<h2 id="XGateway">type <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=803:1022#L27">XGateway</a>
 				<a class="permalink" href="#XGateway">&#xb6;</a>
 				
 				
@@ -1563,12 +1563,12 @@ x:gateway mode
 
 			
 				
-				<h3 id="NewXGateway">func <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=1092:1137#L39">NewXGateway</a>
+				<h3 id="NewXGateway">func <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=1040:1085#L39">NewXGateway</a>
 					<a class="permalink" href="#NewXGateway">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewXGateway(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>) *<a href="#XGateway">XGateway</a></pre>
+				<pre>func NewXGateway(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>) *<a href="#XGateway">XGateway</a></pre>
 				
 				
 				
@@ -1576,7 +1576,7 @@ x:gateway mode
 
 			
 				
-				<h3 id="XGateway.ClientPiping">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=16025:16082#L616">ClientPiping</a>
+				<h3 id="XGateway.ClientPiping">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=15973:16030#L616">ClientPiping</a>
 					<a class="permalink" href="#XGateway.ClientPiping">&#xb6;</a>
 					
 					
@@ -1588,19 +1588,19 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.Config">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=1636:1680#L62">Config</a>
+				<h3 id="XGateway.Config">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=1584:1628#L62">Config</a>
 					<a class="permalink" href="#XGateway.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (xg *<a href="#XGateway">XGateway</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (xg *<a href="#XGateway">XGateway</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="XGateway.DeleteClientInPool">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=15457:15507#L590">DeleteClientInPool</a>
+				<h3 id="XGateway.DeleteClientInPool">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=15405:15455#L590">DeleteClientInPool</a>
 					<a class="permalink" href="#XGateway.DeleteClientInPool">&#xb6;</a>
 					
 					
@@ -1612,7 +1612,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.DeleteSession">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=14672:14729#L555">DeleteSession</a>
+				<h3 id="XGateway.DeleteSession">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=14620:14677#L555">DeleteSession</a>
 					<a class="permalink" href="#XGateway.DeleteSession">&#xb6;</a>
 					
 					
@@ -1624,7 +1624,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.ECRequest">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=1702:1771#L66">ECRequest</a>
+				<h3 id="XGateway.ECRequest">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=1650:1719#L66">ECRequest</a>
 					<a class="permalink" href="#XGateway.ECRequest">&#xb6;</a>
 					
 					
@@ -1636,7 +1636,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.Fire">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=27703:27729#L1145">Fire</a>
+				<h3 id="XGateway.Fire">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=27651:27677#L1145">Fire</a>
 					<a class="permalink" href="#XGateway.Fire">&#xb6;</a>
 					
 					
@@ -1648,7 +1648,7 @@ x:gateway mode
 				
 			
 				
-				<h3 id="XGateway.GetOAuthToken">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=1490:1532#L55">GetOAuthToken</a>
+				<h3 id="XGateway.GetOAuthToken">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=1438:1480#L55">GetOAuthToken</a>
 					<a class="permalink" href="#XGateway.GetOAuthToken">&#xb6;</a>
 					
 					
@@ -1663,7 +1663,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XGateway.Hire">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=20820:20846#L836">Hire</a>
+				<h3 id="XGateway.Hire">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=20768:20794#L836">Hire</a>
 					<a class="permalink" href="#XGateway.Hire">&#xb6;</a>
 					
 					
@@ -1675,7 +1675,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XGateway.ServerPiping">func (*XGateway) <a href="/src/github.build.ge.com/212359746/wzcore/x-gateway.go?s=18660:18742#L737">ServerPiping</a>
+				<h3 id="XGateway.ServerPiping">func (*XGateway) <a href="/src/github.com/wzlib/wzcore/x-gateway.go?s=18608:18690#L737">ServerPiping</a>
 					<a class="permalink" href="#XGateway.ServerPiping">&#xb6;</a>
 					
 					
@@ -1689,7 +1689,7 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="XServer">type <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=995:1282#L40">XServer</a>
+			<h2 id="XServer">type <a href="/src/github.com/wzlib/wzcore/x-server.go?s=943:1230#L40">XServer</a>
 				<a class="permalink" href="#XServer">&#xb6;</a>
 				
 				
@@ -1713,12 +1713,12 @@ x:server mode
 
 			
 				
-				<h3 id="NewXServer">func <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=1299:1343#L57">NewXServer</a>
+				<h3 id="NewXServer">func <a href="/src/github.com/wzlib/wzcore/x-server.go?s=1247:1291#L57">NewXServer</a>
 					<a class="permalink" href="#NewXServer">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func NewXServer(cf *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a>) *<a href="#XServer">XServer</a></pre>
+				<pre>func NewXServer(cf *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a>) *<a href="#XServer">XServer</a></pre>
 				
 				
 				
@@ -1726,19 +1726,19 @@ x:server mode
 
 			
 				
-				<h3 id="XServer.Config">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=1886:1929#L80">Config</a>
+				<h3 id="XServer.Config">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=1834:1877#L80">Config</a>
 					<a class="permalink" href="#XServer.Config">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (xs *<a href="#XServer">XServer</a>) Config() *<a href="/pkg/github.build.ge.com/212359746/wzconf/">config</a>.<a href="/pkg/github.build.ge.com/212359746/wzconf/#Config">Config</a></pre>
+				<pre>func (xs *<a href="#XServer">XServer</a>) Config() *<a href="/pkg/github.com/wzlib/wzconf/">config</a>.<a href="/pkg/github.com/wzlib/wzconf/#Config">Config</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="XServer.DeleteSession">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=8740:8784#L372">DeleteSession</a>
+				<h3 id="XServer.DeleteSession">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=8688:8732#L372">DeleteSession</a>
 					<a class="permalink" href="#XServer.DeleteSession">&#xb6;</a>
 					
 					
@@ -1750,7 +1750,7 @@ x:server mode
 				
 			
 				
-				<h3 id="XServer.Fire">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=24424:24448#L994">Fire</a>
+				<h3 id="XServer.Fire">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=24372:24396#L994">Fire</a>
 					<a class="permalink" href="#XServer.Fire">&#xb6;</a>
 					
 					
@@ -1762,7 +1762,7 @@ x:server mode
 				
 			
 				
-				<h3 id="XServer.GetNumGatewayInst">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=1739:1781#L73">GetNumGatewayInst</a>
+				<h3 id="XServer.GetNumGatewayInst">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=1687:1729#L73">GetNumGatewayInst</a>
 					<a class="permalink" href="#XServer.GetNumGatewayInst">&#xb6;</a>
 					
 					
@@ -1774,7 +1774,7 @@ x:server mode
 				
 			
 				
-				<h3 id="XServer.GetOAuthToken">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=2015:2057#L86">GetOAuthToken</a>
+				<h3 id="XServer.GetOAuthToken">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=1963:2005#L86">GetOAuthToken</a>
 					<a class="permalink" href="#XServer.GetOAuthToken">&#xb6;</a>
 					
 					
@@ -1789,7 +1789,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XServer.Hire">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=4359:4383#L181">Hire</a>
+				<h3 id="XServer.Hire">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=4307:4331#L181">Hire</a>
 					<a class="permalink" href="#XServer.Hire">&#xb6;</a>
 					
 					
@@ -1801,7 +1801,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XServer.SetNumGatewayInst">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=1812:1857#L76">SetNumGatewayInst</a>
+				<h3 id="XServer.SetNumGatewayInst">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=1760:1805#L76">SetNumGatewayInst</a>
 					<a class="permalink" href="#XServer.SetNumGatewayInst">&#xb6;</a>
 					
 					
@@ -1813,7 +1813,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="XServer.SuperConnMaintainer">func (*XServer) <a href="/src/github.build.ge.com/212359746/wzcore/x-server.go?s=3884:3924#L157">SuperConnMaintainer</a>
+				<h3 id="XServer.SuperConnMaintainer">func (*XServer) <a href="/src/github.com/wzlib/wzcore/x-server.go?s=3832:3872#L157">SuperConnMaintainer</a>
 					<a class="permalink" href="#XServer.SuperConnMaintainer">&#xb6;</a>
 					
 					
