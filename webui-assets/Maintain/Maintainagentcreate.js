@@ -1252,6 +1252,19 @@ export default class Maintainagentcreate extends React.Component {
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         let prepareData = {};
         let agentFormData = this.state.agentForm;
+        let modalHeading = 'Copy and run below command';
+        let buttons =[
+            {
+                className:'btn btn-danger customize-btn',
+                action:'copyAndcloseModal',
+                text:'Copy & Close'
+            },
+            {
+                className:'btn btn-default customize-view-btn',
+                action:'copyToClipboard',
+                text:'Copy'
+            },
+        ];
         if(type === 'gateway'){
             let gatewayFormData = Object.assign({}, this.state.gatewayForm);
             prepareData.mod = gatewayFormData.mode.toLowerCase();
@@ -1278,7 +1291,8 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
+                            this.props.showModal(modalHeading, respData.data, buttons);
+                            
                             setTimeout(()=> {
                                 let selectedEnv = '';
                                 let selectedOs = '';
@@ -1319,7 +1333,7 @@ export default class Maintainagentcreate extends React.Component {
                                     elem.click();
                                     document.body.removeChild(elem);
                                 }
-
+                                
                                 this.setState({
                                     gatewayForm: gatewayForm,
                                     gatewayFormIsValid: false
@@ -1393,7 +1407,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
+                            this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
                                 let selectedOs = '';
                                 let selectedHost = '';
@@ -1524,7 +1538,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
-                            this.props.showGlobalMessage(false, true, respData.data, 'custom-success');
+                            this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
                                 let selectedOs = '';
                                 let selectedHost = '';

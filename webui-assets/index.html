@@ -421,6 +421,9 @@
         background-color: #005EB8;
         color: #ffffff;
       }
+      .customize-btn, .customize-btn:hover{
+        font-size: small;
+      }
 
       .customize-reset-btn, .customize-reset-btn:hover{
         font-size: small;
@@ -841,16 +844,23 @@
       .logoutWarningModal .modal-header{
         background-color: #f55e06;
       }
+      .notificationModal .modal-header{
+        background-color: #005EB8;
+        color: white;
+      }
 
-      .logoutWarningModal .modal-body, .logoutWarningModal .modal-footer{
+      .logoutWarningModal .modal-body, .logoutWarningModal .modal-footer,
+      .notificationModal .modal-body,.notificationModal .modal-footer,{
         background-color: #ffebeb;
       }
 
-      .logoutWarningModal .modal-footer{
+      .logoutWarningModal .modal-footer,.notificationModal .modal-footer{
         border-top: 0;
         padding: 0 1rem 0.5rem 1rem;
       }
-
+      .notificationModal .modal-dialog{
+        margin-top: 14%;
+      }
       @media (max-width: 991px) {
         .ge-logo, .header-profile {
           text-align: center;
