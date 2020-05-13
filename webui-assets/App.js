@@ -55,7 +55,14 @@ export default class App extends React.Component {
       apiEndPoints: {
         baseUrl : API_URL,
       },
-      isFullScreenModal: false
+      isFullScreenModal: false,
+      notificationModal:{
+        headerText:'',
+        bodyText:'',
+        buttons:[],
+
+      }
+    
     };
   }
 
@@ -186,7 +193,7 @@ export default class App extends React.Component {
       case 'Groupupgrade':
         return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentcreate':
-        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} showModal={this.showModal.bind(this)}/>; // jshint ignore:line
       case 'Maintainagentupgrade':
         return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentview':
@@ -288,7 +295,39 @@ export default class App extends React.Component {
   continueSession(){
     window.hideLogoutWarningModal();
     window.ResetTimeOutTimer();
-  }  
+  }
+
+  copyAndcloseModal(){
+    window.copyText(this.state.notificationModal.bodyText);
+    window.hideNotificationModal();
+  }
+
+  copyToClipboard(){
+    window.copyText(this.state.notificationModal.bodyText);
+    this.showGlobalMessage(false, true, 'Statement copied', 'custom-success');
+    setTimeout(() => {
+      this.hideGlobalMessage();
+    }, 2000);
+  }
+
+  actionPerform(action){ // ye if else ko switch kar dena
+    switch(action) {
+      case 'copyAndcloseModal':
+        this.copyAndcloseModal(this);
+      case 'copyToClipboard':
+        this.copyToClipboard();
+    }
+  }
+  showModal(headerText,bodyText,buttons){
+    this.setState({
+      notificationModal:{
+        headerText :headerText,
+        bodyText:bodyText,
+        buttons:buttons
+      }
+    });
+    window.showNotificationModal();
+  }
 
   render() {
     /* jshint ignore:start */
@@ -324,6 +363,7 @@ export default class App extends React.Component {
                       { this.servedView() }
                     </div>
                     <Cookienotification />
+                    
                     <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
                       <div className="modal-dialog modal-sm">
                         <div className="modal-content rounded-0">
@@ -340,6 +380,33 @@ export default class App extends React.Component {
                         </div>
                       </div>
                     </div>
+
+                    <div className="modal fade notificationModal" id="notificationModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                      <div className="modal-dialog modal-sm">
+                        <div className="modal-content rounded-0">
+                          <div className="modal-header rounded-0">
+                            <h6 className="modal-title text-middle">{this.state.notificationModal.headerText}</h6>
+                          </div>
+                          <div className="modal-body">
+                            <p> {this.state.notificationModal.bodyText} </p>
+                          </div>
+                          <div className="modal-footer">
+                            {this.state.notificationModal.buttons.map((button, buttonIndex) => {
+                              return(
+                                <button
+                                    key={"Button"+buttonIndex} 
+                                    type="button"
+                                    id={"Button"+buttonIndex}
+                                    name="button" 
+                                    className={button.className}
+                                    onClick={this.actionPerform.bind(this,button.action)} >{button.text}</button>
+                                      )
+                              })}
+                          </div>
+                        </div>
+                      </div>
+                    </div>  
+
                   </div>
                 </div>
               </div>
