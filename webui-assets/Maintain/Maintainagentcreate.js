@@ -1291,6 +1291,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
+                            this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             
                             setTimeout(()=> {
@@ -1407,6 +1408,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
+                            this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
                                 let selectedOs = '';
@@ -1538,6 +1540,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         if(respData.errorStatus.status == 'ok'){
+                            this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
                                 let selectedOs = '';
