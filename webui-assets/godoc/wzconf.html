@@ -228,7 +228,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.CreateNetwork">func (wc *WatcherConfig) CreateNetwork() (string, error)</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.CreateProc">func (wc *WatcherConfig) CreateProc(is string, ins int, wg *sync.WaitGroup, op []string, isWatcher, isDaemon bool) (string, error)</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.CreateProc">func (wc *WatcherConfig) CreateProc(is string, ins int, op []string, isWatcher, isDaemon bool) (string, string, error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.DeployWatcher">func (wc *WatcherConfig) DeployWatcher(wbuilder WatcherCmdBuilder) error</a></dd>
@@ -385,7 +385,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="FetchArt">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=18872:18932#L768">FetchArt</a>
+			<h2 id="FetchArt">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=19051:19111#L772">FetchArt</a>
 				<a class="permalink" href="#FetchArt">&#xb6;</a>
 				
 				
@@ -411,7 +411,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillBridge">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30724:30763#L1334">KillBridge</a>
+			<h2 id="KillBridge">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=29949:29988#L1290">KillBridge</a>
 				<a class="permalink" href="#KillBridge">&#xb6;</a>
 				
 				
@@ -424,7 +424,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30420:30459#L1321">KillContainer</a>
+			<h2 id="KillContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=29645:29684#L1277">KillContainer</a>
 				<a class="permalink" href="#KillContainer">&#xb6;</a>
 				
 				
@@ -437,7 +437,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="RestartContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30148:30190#L1308">RestartContainer</a>
+			<h2 id="RestartContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=29373:29415#L1264">RestartContainer</a>
 				<a class="permalink" href="#RestartContainer">&#xb6;</a>
 				
 				
@@ -930,7 +930,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 
 			
 				
-				<h3 id="WatcherConfig.ArtUpdateOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=18020:18081#L722">ArtUpdateOps</a>
+				<h3 id="WatcherConfig.ArtUpdateOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=18199:18260#L726">ArtUpdateOps</a>
 					<a class="permalink" href="#WatcherConfig.ArtUpdateOps">&#xb6;</a>
 					
 					
@@ -957,7 +957,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 				
 			
 				
-				<h3 id="WatcherConfig.CreateNetwork">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=21024:21079#L867">CreateNetwork</a>
+				<h3 id="WatcherConfig.CreateNetwork">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=21121:21176#L868">CreateNetwork</a>
 					<a class="permalink" href="#WatcherConfig.CreateNetwork">&#xb6;</a>
 					
 					
@@ -969,12 +969,12 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 				
 			
 				
-				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=28704:28833#L1234">CreateProc</a>
+				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=28511:28627#L1216">CreateProc</a>
 					<a class="permalink" href="#WatcherConfig.CreateProc">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) CreateProc(is <a href="/pkg/builtin/#string">string</a>, ins <a href="/pkg/builtin/#int">int</a>, wg *<a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#WaitGroup">WaitGroup</a>, op []<a href="/pkg/builtin/#string">string</a>, isWatcher, isDaemon <a href="/pkg/builtin/#bool">bool</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) CreateProc(is <a href="/pkg/builtin/#string">string</a>, ins <a href="/pkg/builtin/#int">int</a>, op []<a href="/pkg/builtin/#string">string</a>, isWatcher, isDaemon <a href="/pkg/builtin/#bool">bool</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 create a process by the watcher. @@ins is the instance number, @@ip is the port number. @@fa refers to the executable
 </p>
@@ -984,7 +984,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=22386:22458#L926">DeployWatcher</a>
+				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=22483:22555#L927">DeployWatcher</a>
 					<a class="permalink" href="#WatcherConfig.DeployWatcher">&#xb6;</a>
 					
 					
@@ -996,7 +996,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=27939:27992#L1194">GetIPMap</a>
+				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=28037:28090#L1193">GetIPMap</a>
 					<a class="permalink" href="#WatcherConfig.GetIPMap">&#xb6;</a>
 					
 					
@@ -1023,7 +1023,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="WatcherConfig.HealthCheckOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=32184:32231#L1419">HealthCheckOps</a>
+				<h3 id="WatcherConfig.HealthCheckOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=31410:31457#L1375">HealthCheckOps</a>
 					<a class="permalink" href="#WatcherConfig.HealthCheckOps">&#xb6;</a>
 					
 					
@@ -1038,7 +1038,7 @@ check the health of the containers
 				
 			
 				
-				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=12378:12450#L500">Init</a>
+				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=12557:12629#L504">Init</a>
 					<a class="permalink" href="#WatcherConfig.Init">&#xb6;</a>
 					
 					
@@ -1055,7 +1055,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.InitDaemonContainer">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=10196:10248#L422">InitDaemonContainer</a>
+				<h3 id="WatcherConfig.InitDaemonContainer">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=10369:10421#L426">InitDaemonContainer</a>
 					<a class="permalink" href="#WatcherConfig.InitDaemonContainer">&#xb6;</a>
 					
 					
@@ -1067,7 +1067,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.InitOpsScheduler">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=16642:16691#L676">InitOpsScheduler</a>
+				<h3 id="WatcherConfig.InitOpsScheduler">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=16821:16870#L680">InitOpsScheduler</a>
 					<a class="permalink" href="#WatcherConfig.InitOpsScheduler">&#xb6;</a>
 					
 					
@@ -1079,7 +1079,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=15613:15690#L629">InitProxy</a>
+				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=15792:15869#L633">InitProxy</a>
 					<a class="permalink" href="#WatcherConfig.InitProxy">&#xb6;</a>
 					
 					
@@ -1091,7 +1091,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.KillContainers">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=31055:31102#L1348">KillContainers</a>
+				<h3 id="WatcherConfig.KillContainers">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30280:30327#L1304">KillContainers</a>
 					<a class="permalink" href="#WatcherConfig.KillContainers">&#xb6;</a>
 					
 					
@@ -1103,7 +1103,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=31437:31478#L1370">KillProc</a>
+				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30663:30704#L1326">KillProc</a>
 					<a class="permalink" href="#WatcherConfig.KillProc">&#xb6;</a>
 					
 					
@@ -1115,7 +1115,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=25881:25919#L1109">ProxyHTTPReq</a>
+				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=26039:26077#L1113">ProxyHTTPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyHTTPReq">&#xb6;</a>
 					
 					
@@ -1131,7 +1131,7 @@ turn watcher into an internal http proxy
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=23995:24032#L1004">ProxyTCPReq</a>
+				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=24154:24191#L1009">ProxyTCPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyTCPReq">&#xb6;</a>
 					
 					
