@@ -345,12 +345,12 @@ function showNotificationModal() {
 }    
 
 function hideNotificationModal() {
-$('#notificationModal').modal('hide');
+    $('#notificationModal').modal('hide');
 }
  
 function copyText(textToBeCopied){
-vardummy = $('<input>').val(textToBeCopied).appendTo('body').select();
-document.execCommand('copy')
+    var dummy = $('<input>').val(textToBeCopied).appendTo('body').select();
+    document.execCommand('copy')
 }
 
 

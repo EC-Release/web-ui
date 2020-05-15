@@ -15,6 +15,7 @@ import Maintainagentview from './Maintain/Maintainagentview.js';
 import Maintainwatchercreate from './Maintain/Maintainwatchercreate.js';
 import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
 import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
+import Subscriptionview from './Maintain/Subscriptionview.js'; 
 /* istanbul ignore next */
 import Monitor from './Monitor/Monitor.js';
 import Notification from './Monitor/Notification.js';
@@ -52,6 +53,7 @@ export default class App extends React.Component {
         email: '',
         name: ''
       },
+      permissions: {},
       apiEndPoints: {
         baseUrl : API_URL,
       },
@@ -59,8 +61,7 @@ export default class App extends React.Component {
       notificationModal:{
         headerText:'',
         bodyText:'',
-        buttons:[],
-
+        buttons:[]
       }
     
     };
@@ -87,15 +88,51 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             if (respData.errorStatus.status === 'ok') {
+              respData.data.permissions = {
+                "roleId": 1,
+                "roleName": "Admin",
+                "accesses": {
+                    "maintain": {
+                        "haveAccess": true,
+                        "subMenus":{
+                            "subscriptions": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            },
+                            "groups": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            },
+                            "agents": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            },
+                            "watchers": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            }
+                        }
+                    },
+                    "view": {
+                        "haveAccess": true
+                    }
+                }
+              };
               let userId = respData.data.user_id;
               let profileName = respData.data.name;
               let profileEmailId = respData.data.email;
+              let permissions = respData.data.permissions;
               this.setState({
                 profileData: {
                   email: profileEmailId,
                   name: profileName
                 },
                 userId: userId,
+                permissions: permissions,
                 currentView: 'Dashboard'
               });
             }
@@ -187,7 +224,9 @@ export default class App extends React.Component {
       case 'Subscriptioncreate':
         return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Subscriptionupgrade':
-        return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
+      case 'Subscriptionview':
+        return <Subscriptionview helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupcreate':
         return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupupgrade':
@@ -297,11 +336,13 @@ export default class App extends React.Component {
     window.ResetTimeOutTimer();
   }
 
+  /* istanbul ignore next */
   copyAndcloseModal(){
     window.copyText(this.state.notificationModal.bodyText);
     window.hideNotificationModal();
   }
 
+  /* istanbul ignore next */
   copyToClipboard(){
     window.copyText(this.state.notificationModal.bodyText);
     this.showGlobalMessage(false, true, 'Statement copied', 'custom-success');
@@ -310,6 +351,7 @@ export default class App extends React.Component {
     }, 2000);
   }
 
+  /* istanbul ignore next */
   actionPerform(action){
     switch(action) {
       case 'copyAndcloseModal':
@@ -319,6 +361,7 @@ export default class App extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
   showModal(headerText,bodyText,buttons){
     this.setState({
       notificationModal:{
@@ -359,7 +402,7 @@ export default class App extends React.Component {
                 
                   <div className="modal-body">
                     <Header profileData={this.state.profileData} maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
-                    <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)}></Navbar>
+                    <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)} permissions={this.state.permissions}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }
                     </div>
