@@ -383,7 +383,7 @@ export default class App extends React.Component {
                     </div>
 
                     <div className="modal fade notificationModal" id="notificationModal" role="dialog" data-backdrop="static" data-keyboard="false">
-                      <div className="modal-dialog modal-sm">
+                      <div className="modal-dialog modal-md">
                         <div className="modal-content rounded-0">
                           <div className="modal-header rounded-0">
                             <h6 className="modal-title text-middle">{this.state.notificationModal.headerText}</h6>
