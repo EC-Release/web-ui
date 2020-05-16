@@ -15,6 +15,7 @@ import Maintainagentview from './Maintain/Maintainagentview.js';
 import Maintainwatchercreate from './Maintain/Maintainwatchercreate.js';
 import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
 import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
+import Subscriptionview from './Maintain/Subscriptionview.js'; 
 /* istanbul ignore next */
 import Monitor from './Monitor/Monitor.js';
 import Notification from './Monitor/Notification.js';
@@ -52,10 +53,17 @@ export default class App extends React.Component {
         email: '',
         name: ''
       },
+      permissions: {},
       apiEndPoints: {
         baseUrl : API_URL,
       },
-      isFullScreenModal: false
+      isFullScreenModal: false,
+      notificationModal:{
+        headerText:'',
+        bodyText:'',
+        buttons:[]
+      }
+    
     };
   }
 
@@ -80,15 +88,51 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             if (respData.errorStatus.status === 'ok') {
+              respData.data.permissions = {
+                "roleId": 1,
+                "roleName": "Admin",
+                "accesses": {
+                    "maintain": {
+                        "haveAccess": true,
+                        "subMenus":{
+                            "subscriptions": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            },
+                            "groups": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            },
+                            "agents": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            },
+                            "watchers": {
+                                "view": true,
+                                "edit": true,
+                                "delete": true
+                            }
+                        }
+                    },
+                    "view": {
+                        "haveAccess": true
+                    }
+                }
+              };
               let userId = respData.data.user_id;
               let profileName = respData.data.name;
               let profileEmailId = respData.data.email;
+              let permissions = respData.data.permissions;
               this.setState({
                 profileData: {
                   email: profileEmailId,
                   name: profileName
                 },
                 userId: userId,
+                permissions: permissions,
                 currentView: 'Dashboard'
               });
             }
@@ -180,13 +224,15 @@ export default class App extends React.Component {
       case 'Subscriptioncreate':
         return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Subscriptionupgrade':
-        return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
+      case 'Subscriptionview':
+        return <Subscriptionview helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupcreate':
         return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupupgrade':
         return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentcreate':
-        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} showModal={this.showModal.bind(this)}/>; // jshint ignore:line
       case 'Maintainagentupgrade':
         return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentview':
@@ -288,7 +334,44 @@ export default class App extends React.Component {
   continueSession(){
     window.hideLogoutWarningModal();
     window.ResetTimeOutTimer();
-  }  
+  }
+
+  /* istanbul ignore next */
+  copyAndcloseModal(){
+    window.copyText(this.state.notificationModal.bodyText);
+    window.hideNotificationModal();
+  }
+
+  /* istanbul ignore next */
+  copyToClipboard(){
+    window.copyText(this.state.notificationModal.bodyText);
+    this.showGlobalMessage(false, true, 'Statement copied', 'custom-success');
+    setTimeout(() => {
+      this.hideGlobalMessage();
+    }, 2000);
+  }
+
+  /* istanbul ignore next */
+  actionPerform(action){
+    switch(action) {
+      case 'copyAndcloseModal':
+        this.copyAndcloseModal(this);
+      case 'copyToClipboard':
+        this.copyToClipboard();
+    }
+  }
+
+  /* istanbul ignore next */
+  showModal(headerText,bodyText,buttons){
+    this.setState({
+      notificationModal:{
+        headerText :headerText,
+        bodyText:bodyText,
+        buttons:buttons
+      }
+    });
+    window.showNotificationModal();
+  }
 
   render() {
     /* jshint ignore:start */
@@ -319,11 +402,12 @@ export default class App extends React.Component {
                 
                   <div className="modal-body">
                     <Header profileData={this.state.profileData} maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
-                    <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)}></Navbar>
+                    <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)} permissions={this.state.permissions}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }
                     </div>
                     <Cookienotification />
+                    
                     <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
                       <div className="modal-dialog modal-sm">
                         <div className="modal-content rounded-0">
@@ -336,6 +420,32 @@ export default class App extends React.Component {
                           <div className="modal-footer">
                             <button type="button" className="btn btn-default" onClick={this.forceLogout.bind(this)}>No</button>
                             <button type="button" className="btn btn-default customize-view-btn" onClick={this.continueSession.bind(this)}>Yes</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="modal fade notificationModal" id="notificationModal" role="dialog" data-backdrop="static" data-keyboard="false">
+                      <div className="modal-dialog modal-md">
+                        <div className="modal-content rounded-0">
+                          <div className="modal-header rounded-0">
+                            <h6 className="modal-title text-middle">{this.state.notificationModal.headerText}</h6>
+                          </div>
+                          <div className="modal-body">
+                            <p> {this.state.notificationModal.bodyText} </p>
+                          </div>
+                          <div className="modal-footer">
+                            {this.state.notificationModal.buttons.map((button, buttonIndex) => {
+                              return(
+                                <button
+                                    key={"notificationButton"+buttonIndex} 
+                                    type="button"
+                                    id={"notificationButton"+buttonIndex}
+                                    name="button" 
+                                    className={button.className}
+                                    onClick={this.actionPerform.bind(this,button.action)} >{button.text}</button>
+                                      )
+                              })}
                           </div>
                         </div>
                       </div>
