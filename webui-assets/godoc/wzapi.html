@@ -77,7 +77,7 @@
 		
 		<div id="short-nav">
 			<dl>
-			<dd><code>import "github.build.ge.com/212359746/wzapi"</code></dd>
+			<dd><code>import "github.com/wzlib/wzapi"</code></dd>
 			</dl>
 			<dl>
 			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
@@ -290,11 +290,11 @@
 			<p>
 			<span style="font-size:90%">
 			
-				<a href="/src/github.build.ge.com/212359746/wzapi/apimode.go">apimode.go</a>
+				<a href="/src/github.com/wzlib/wzapi/apimode.go">apimode.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go">oa2mode.go</a>
+				<a href="/src/github.com/wzlib/wzapi/oa2mode.go">oa2mode.go</a>
 			
-				<a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go">wzapi.go</a>
+				<a href="/src/github.com/wzlib/wzapi/wzapi.go">wzapi.go</a>
 			
 			</span>
 			</p>
@@ -323,6 +323,7 @@
 
     <span class="comment">//oidc github integration</span>
     <span id="OAUTH_OIDC_GITHUB">OAUTH_OIDC_GITHUB</span> = &#34;/oidc/github&#34;
+    <span id="OAUTH_OIDC_CFUAA">OAUTH_OIDC_CFUAA</span>  = &#34;/oidc/cfuaa&#34;
 
     <span id="OAUTH_ASSET">OAUTH_ASSET</span>  = &#34;/assets/&#34;
     <span id="OAUTH_USER">OAUTH_USER</span>   = &#34;/users/&#34;
@@ -337,12 +338,12 @@
 		
 			
 			
-			<h2 id="CertUserConverter">func <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=7328:7394#L334">CertUserConverter</a>
+			<h2 id="CertUserConverter">func <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=7336:7402#L335">CertUserConverter</a>
 				<a class="permalink" href="#CertUserConverter">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func CertUserConverter(cd *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#CertDetail">CertDetail</a>) (ud *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>)</pre>
+			<pre>func CertUserConverter(cd *<a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#CertDetail">CertDetail</a>) (ud *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>)</pre>
 			<p>
 CertUserConverter convert the cert owner&#39;s information and return it as the UserDetail model
 </p>
@@ -353,7 +354,7 @@ CertUserConverter convert the cert owner&#39;s information and return it as the 
 		
 			
 			
-			<h2 id="ErrResponse">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=5058:5136#L171">ErrResponse</a>
+			<h2 id="ErrResponse">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=5032:5110#L171">ErrResponse</a>
 				<a class="permalink" href="#ErrResponse">&#xb6;</a>
 				
 				
@@ -366,7 +367,7 @@ CertUserConverter convert the cert owner&#39;s information and return it as the 
 		
 			
 			
-			<h2 id="FetchOIDCTokenByCode">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=5439:5531#L182">FetchOIDCTokenByCode</a>
+			<h2 id="FetchOIDCTokenByCode">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=5413:5505#L182">FetchOIDCTokenByCode</a>
 				<a class="permalink" href="#FetchOIDCTokenByCode">&#xb6;</a>
 				
 				
@@ -382,12 +383,12 @@ FetchOIDCTokenByCode fetch a 3rd-party token by the authorization code
 		
 			
 			
-			<h2 id="GetOAuthToken">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=7430:7504#L277">GetOAuthToken</a>
+			<h2 id="GetOAuthToken">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=7402:7476#L277">GetOAuthToken</a>
 				<a class="permalink" href="#GetOAuthToken">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func GetOAuthToken(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>) <a href="/pkg/builtin/#string">string</a></pre>
+			<pre>func GetOAuthToken(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, tkn *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Token">Token</a>) <a href="/pkg/builtin/#string">string</a></pre>
 			<p>
 GetOAuthToken return a valid token for authorisation purpose
 </p>
@@ -398,12 +399,12 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="HealthCheck">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=778:884#L23">HealthCheck</a>
+			<h2 id="HealthCheck">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=752:858#L23">HealthCheck</a>
 				<a class="permalink" href="#HealthCheck">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func HealthCheck(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+			<pre>func HealthCheck(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>)</pre>
 			
 			
 			
@@ -411,12 +412,12 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="HealthCheckClt">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1231:1385#L38">HealthCheckClt</a>
+			<h2 id="HealthCheckClt">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1205:1359#L38">HealthCheckClt</a>
 				<a class="permalink" href="#HealthCheckClt">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func HealthCheckClt(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientSession">ClientSession</a>)</pre>
+			<pre>func HealthCheckClt(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientSession">ClientSession</a>)</pre>
 			
 			
 			
@@ -424,12 +425,12 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="HealthCheckGWServer">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2982:3178#L84">HealthCheckGWServer</a>
+			<h2 id="HealthCheckGWServer">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2956:3152#L84">HealthCheckGWServer</a>
 				<a class="permalink" href="#HealthCheckGWServer">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func HealthCheckGWServer(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			<pre>func HealthCheckGWServer(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
 			
 			
 			
@@ -437,12 +438,12 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="HealthCheckGwy">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2354:2570#L68">HealthCheckGwy</a>
+			<h2 id="HealthCheckGwy">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2328:2544#L68">HealthCheckGwy</a>
 				<a class="permalink" href="#HealthCheckGwy">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func HealthCheckGwy(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			<pre>func HealthCheckGwy(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
 			
 			
 			
@@ -450,12 +451,12 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="HealthCheckSrv">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1754:1929#L53">HealthCheckSrv</a>
+			<h2 id="HealthCheckSrv">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1728:1903#L53">HealthCheckSrv</a>
 				<a class="permalink" href="#HealthCheckSrv">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func HealthCheckSrv(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+			<pre>func HealthCheckSrv(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>)</pre>
 			
 			
 			
@@ -463,12 +464,12 @@ GetOAuthToken return a valid token for authorisation purpose
 		
 			
 			
-			<h2 id="TokenRefresh">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=6473:6542#L229">TokenRefresh</a>
+			<h2 id="TokenRefresh">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=6445:6514#L229">TokenRefresh</a>
 				<a class="permalink" href="#TokenRefresh">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func TokenRefresh(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a></pre>
+			<pre>func TokenRefresh(cid, csc <a href="/pkg/builtin/#string">string</a>, oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>) &lt;-chan *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Token">Token</a></pre>
 			<p>
 TokenRefresh fetch the host&#39;s bearer token for HTTP authorisation purpose
 </p>
@@ -479,12 +480,12 @@ TokenRefresh fetch the host&#39;s bearer token for HTTP authorisation purpose
 		
 			
 			
-			<h2 id="TokenValidationV2">func <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=8247:8331#L308">TokenValidationV2</a>
+			<h2 id="TokenValidationV2">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=8219:8303#L308">TokenValidationV2</a>
 				<a class="permalink" href="#TokenValidationV2">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func TokenValidationV2(oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, valTkn, tkn <a href="/pkg/builtin/#string">string</a>) &lt;-chan *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a></pre>
+			<pre>func TokenValidationV2(oa2 *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, valTkn, tkn <a href="/pkg/builtin/#string">string</a>) &lt;-chan *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a></pre>
 			<p>
 TokenValidationV2 invokes oauth2 (@@oa2) /introspect call to validate the token (@@tkn)
 @@crt used to extract the validator&#39;s token as the Authorization header
@@ -498,14 +499,14 @@ TokenValidationV2 invokes oauth2 (@@oa2) /introspect call to validate the token 
 		
 			
 			
-			<h2 id="APIMode">type <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=654:984#L34">APIMode</a>
+			<h2 id="APIMode">type <a href="/src/github.com/wzlib/wzapi/apimode.go?s=615:945#L33">APIMode</a>
 				<a class="permalink" href="#APIMode">&#xb6;</a>
 				
 				
 			</h2>
 			
 			<pre>type APIMode struct {
-<span id="APIMode.Cert"></span>    Cert *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a>
+<span id="APIMode.Cert"></span>    Cert *<a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#Cert">Cert</a>
 
 <span id="APIMode.OAuth2URL"></span>    OAuth2URL     *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>
 <span id="APIMode.AgentHTTPIntr"></span>    AgentHTTPIntr <a href="#AgentHTTPIntr">AgentHTTPIntr</a>
@@ -523,7 +524,7 @@ TokenValidationV2 invokes oauth2 (@@oa2) /introspect call to validate the token 
 
 			
 				
-				<h3 id="NewAPIMode">func <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=2657:2752#L84">NewAPIMode</a>
+				<h3 id="NewAPIMode">func <a href="/src/github.com/wzlib/wzapi/apimode.go?s=2618:2713#L83">NewAPIMode</a>
 					<a class="permalink" href="#NewAPIMode">&#xb6;</a>
 					
 					
@@ -547,36 +548,36 @@ start the agent api.
 
 			
 				
-				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12845:12914#L562">EnforceToken</a>
+				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=12806:12875#L561">EnforceToken</a>
 					<a class="permalink" href="#APIMode.EnforceToken">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (a *<a href="#APIMode">APIMode</a>) EnforceToken(_tk <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) EnforceToken(_tk <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=10992:11093#L479">FetchTokenByAuthCode</a>
+				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=10953:11054#L478">FetchTokenByAuthCode</a>
 					<a class="permalink" href="#APIMode.FetchTokenByAuthCode">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchTokenByAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, code, state <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchTokenByAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, code, state <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Token">Token</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=11877:11956#L514">FetchUserDetailByUserId</a>
+				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=11838:11917#L513">FetchUserDetailByUserId</a>
 					<a class="permalink" href="#APIMode.FetchUserDetailByUserId">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchUserDetailByUserId(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchUserDetailByUserId(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 FetchUserDetailByUserId gives detail of the user id @@uid.
 The function will first check the user detail in the cache
@@ -587,7 +588,7 @@ The function will first check the user detail in the cache
 				
 			
 				
-				<h3 id="APIMode.GetOAuthToken">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=3534:3575#L133">GetOAuthToken</a>
+				<h3 id="APIMode.GetOAuthToken">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=3495:3536#L132">GetOAuthToken</a>
 					<a class="permalink" href="#APIMode.GetOAuthToken">&#xb6;</a>
 					
 					
@@ -599,7 +600,7 @@ The function will first check the user detail in the cache
 				
 			
 				
-				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=9979:10060#L444">RedirectAuthForm</a>
+				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=9940:10021#L443">RedirectAuthForm</a>
 					<a class="permalink" href="#APIMode.RedirectAuthForm">&#xb6;</a>
 					
 					
@@ -611,7 +612,7 @@ The function will first check the user detail in the cache
 				
 			
 				
-				<h3 id="APIMode.Start">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=3880:3930#L142">Start</a>
+				<h3 id="APIMode.Start">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=3841:3891#L141">Start</a>
 					<a class="permalink" href="#APIMode.Start">&#xb6;</a>
 					
 					
@@ -629,7 +630,7 @@ where the _cb as the public key, _ps as private key, respectively.
 				
 			
 				
-				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=9950:9973#L440">Stop</a>
+				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=9911:9934#L439">Stop</a>
 					<a class="permalink" href="#APIMode.Stop">&#xb6;</a>
 					
 					
@@ -641,12 +642,12 @@ where the _cb as the public key, _ps as private key, respectively.
 				
 			
 				
-				<h3 id="APIMode.UpdateUserDetail">func (*APIMode) <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=12336:12408#L538">UpdateUserDetail</a>
+				<h3 id="APIMode.UpdateUserDetail">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=12297:12369#L537">UpdateUserDetail</a>
 					<a class="permalink" href="#APIMode.UpdateUserDetail">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (a *<a href="#APIMode">APIMode</a>) UpdateUserDetail(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (a *<a href="#APIMode">APIMode</a>) UpdateUserDetail(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 UpdateUserDetail will directly invoke the users detail endpoint from the oauth2 instance
 </p>
@@ -658,7 +659,7 @@ UpdateUserDetail will directly invoke the users detail endpoint from the oauth2 
 		
 			
 			
-			<h2 id="AgentHTTPIntr">type <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=1074:2328#L53">AgentHTTPIntr</a>
+			<h2 id="AgentHTTPIntr">type <a href="/src/github.com/wzlib/wzapi/apimode.go?s=1035:2289#L52">AgentHTTPIntr</a>
 				<a class="permalink" href="#AgentHTTPIntr">&#xb6;</a>
 				
 				
@@ -681,12 +682,12 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
     GETConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
 
     <span class="comment">//SessionEnd similar to GC invoked by the endpoint /&lt;rev&gt;/&lt;app&gt;/logout for the purpose of managing app resource. The Logout process will stop if the return error is not nil</span>
-    SessionEnd(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tknStatus *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>) <a href="/pkg/builtin/#error">error</a>
+    SessionEnd(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tknStatus *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a>) <a href="/pkg/builtin/#error">error</a>
 
     <span class="comment">// Ext extend the Agent API in the following format-</span>
     <span class="comment">//&lt;agent_url&gt;/&lt;rev. e,g v1.1|v1.1beta&gt;/&lt;app name from -app flag&gt;/custom/path/name</span>
     <span class="comment">//this api extension should assume that the user has been authenticated and promoted by the security chain.</span>
-    Ext(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tknStatus *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>)
+    Ext(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tknStatus *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a>)
 }</pre>
 
 			
@@ -703,13 +704,13 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="HealthCheckCltType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1066:1229#L36">HealthCheckCltType</a>
+			<h2 id="HealthCheckCltType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1040:1203#L36">HealthCheckCltType</a>
 				<a class="permalink" href="#HealthCheckCltType">&#xb6;</a>
 				
 				
 			</h2>
 			
-			<pre>type HealthCheckCltType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientSession">ClientSession</a>)</pre>
+			<pre>type HealthCheckCltType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientSession">ClientSession</a>)</pre>
 
 			
 
@@ -725,13 +726,13 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="HealthCheckGWServerType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2775:2980#L82">HealthCheckGWServerType</a>
+			<h2 id="HealthCheckGWServerType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2749:2954#L82">HealthCheckGWServerType</a>
 				<a class="permalink" href="#HealthCheckGWServerType">&#xb6;</a>
 				
 				
 			</h2>
 			
-			<pre>type HealthCheckGWServerType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			<pre>type HealthCheckGWServerType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
 
 			
 
@@ -747,13 +748,13 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="HealthCheckGwyType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=2127:2352#L66">HealthCheckGwyType</a>
+			<h2 id="HealthCheckGwyType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2101:2326#L66">HealthCheckGwyType</a>
 				<a class="permalink" href="#HealthCheckGwyType">&#xb6;</a>
 				
 				
 			</h2>
 			
-			<pre>type HealthCheckGwyType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			<pre>type HealthCheckGwyType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
 
 			
 
@@ -769,13 +770,13 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="HealthCheckSrvType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=1568:1752#L51">HealthCheckSrvType</a>
+			<h2 id="HealthCheckSrvType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1542:1726#L51">HealthCheckSrvType</a>
 				<a class="permalink" href="#HealthCheckSrvType">&#xb6;</a>
 				
 				
 			</h2>
 			
-			<pre>type HealthCheckSrvType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+			<pre>type HealthCheckSrvType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl, refId <a href="/pkg/builtin/#string">string</a>)</pre>
 
 			
 
@@ -791,13 +792,13 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="HealthCheckType">type <a href="/src/github.build.ge.com/212359746/wzapi/wzapi.go?s=661:776#L21">HealthCheckType</a>
+			<h2 id="HealthCheckType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=635:750#L21">HealthCheckType</a>
 				<a class="permalink" href="#HealthCheckType">&#xb6;</a>
 				
 				
 			</h2>
 			
-			<pre>type HealthCheckType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>)</pre>
+			<pre>type HealthCheckType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid, refId <a href="/pkg/builtin/#string">string</a>)</pre>
 
 			
 
@@ -813,7 +814,7 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
 		
 			
 			
-			<h2 id="OAuth2Mode">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2458:2693#L131">OAuth2Mode</a>
+			<h2 id="OAuth2Mode">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=2466:2701#L132">OAuth2Mode</a>
 				<a class="permalink" href="#OAuth2Mode">&#xb6;</a>
 				
 				
@@ -823,7 +824,7 @@ OAuth2Mode: launch the runtime as a OAuth2 IdP
 </p>
 
 			<pre>type OAuth2Mode struct {
-<span id="OAuth2Mode.Cert"></span>    Cert *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a>
+<span id="OAuth2Mode.Cert"></span>    Cert *<a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#Cert">Cert</a>
 
 <span id="OAuth2Mode.OAuth2ModeIntr"></span>    OAuth2ModeIntr <a href="#OAuth2ModeIntr">OAuth2ModeIntr</a>
     <span class="comment">// contains filtered or unexported fields</span>
@@ -840,7 +841,7 @@ OAuth2Mode: launch the runtime as a OAuth2 IdP
 
 			
 				
-				<h3 id="NewOAuth2Mode">func <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=4403:4489#L201">NewOAuth2Mode</a>
+				<h3 id="NewOAuth2Mode">func <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=4411:4497#L202">NewOAuth2Mode</a>
 					<a class="permalink" href="#NewOAuth2Mode">&#xb6;</a>
 					
 					
@@ -861,12 +862,12 @@ func NewOAuth2Mode(oagt OAuth2ModeIntr, authgrp []interface{}, _oa2, _rv string)
 
 			
 				
-				<h3 id="OAuth2Mode.EvalToken">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=9666:9740#L433">EvalToken</a>
+				<h3 id="OAuth2Mode.EvalToken">func (*OAuth2Mode) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=9674:9748#L434">EvalToken</a>
 					<a class="permalink" href="#OAuth2Mode.EvalToken">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (o *<a href="#OAuth2Mode">OAuth2Mode</a>) EvalToken(tk <a href="/pkg/builtin/#string">string</a>) (cd *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				<pre>func (o *<a href="#OAuth2Mode">OAuth2Mode</a>) EvalToken(tk <a href="/pkg/builtin/#string">string</a>) (cd *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 EvalToken validate the token&#39;s expiration and its&#39; hash, and return the token owner&#39;s information
 </p>
@@ -876,7 +877,7 @@ EvalToken validate the token&#39;s expiration and its&#39; hash, and return the 
 				
 			
 				
-				<h3 id="OAuth2Mode.GetSubscriptionById">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=3336:3413#L156">GetSubscriptionById</a>
+				<h3 id="OAuth2Mode.GetSubscriptionById">func (*OAuth2Mode) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=3344:3421#L157">GetSubscriptionById</a>
 					<a class="permalink" href="#OAuth2Mode.GetSubscriptionById">&#xb6;</a>
 					
 					
@@ -888,7 +889,7 @@ EvalToken validate the token&#39;s expiration and its&#39; hash, and return the 
 				
 			
 				
-				<h3 id="OAuth2Mode.Start">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=10233:10281#L463">Start</a>
+				<h3 id="OAuth2Mode.Start">func (*OAuth2Mode) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=10241:10289#L464">Start</a>
 					<a class="permalink" href="#OAuth2Mode.Start">&#xb6;</a>
 					
 					
@@ -903,7 +904,7 @@ Starting Agent in OAuth2 mode.
 				
 			
 				
-				<h3 id="OAuth2Mode.Stop">func (*OAuth2Mode) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=20259:20285#L905">Stop</a>
+				<h3 id="OAuth2Mode.Stop">func (*OAuth2Mode) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=20504:20530#L915">Stop</a>
 					<a class="permalink" href="#OAuth2Mode.Stop">&#xb6;</a>
 					
 					
@@ -917,7 +918,7 @@ Starting Agent in OAuth2 mode.
 		
 			
 			
-			<h2 id="OAuth2ModeIntr">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2786:3334#L146">OAuth2ModeIntr</a>
+			<h2 id="OAuth2ModeIntr">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=2794:3342#L147">OAuth2ModeIntr</a>
 				<a class="permalink" href="#OAuth2ModeIntr">&#xb6;</a>
 				
 				
@@ -927,9 +928,9 @@ Agent HTTP Interface. Each of func below will be invoked during the OAuth2 mode 
 </p>
 
 			<pre>type OAuth2ModeIntr interface {
-    GetUser(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cd *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#UserDetail">UserDetail</a>)
-    CheckToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, ts *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#TokenStatus">TokenStatus</a>)
-    CreateToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tkn *<a href="/pkg/github.build.ge.com/212359746/wzschema/">model</a>.<a href="/pkg/github.build.ge.com/212359746/wzschema/#Token">Token</a>)
+    GetUser(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cd *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>)
+    CheckToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, ts *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a>)
+    CreateToken(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tkn *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Token">Token</a>)
     CreateAuthCode(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, auth_code, callbackURL <a href="/pkg/builtin/#string">string</a>)
     Authorization(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, cid, uid <a href="/pkg/builtin/#string">string</a>, callbackURL <a href="/pkg/builtin/#string">string</a>, scope []<a href="/pkg/builtin/#string">string</a>)
 }</pre>
@@ -948,7 +949,7 @@ Agent HTTP Interface. Each of func below will be invoked during the OAuth2 mode 
 		
 			
 			
-			<h2 id="OAuth2Ops">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2286:2406#L121">OAuth2Ops</a>
+			<h2 id="OAuth2Ops">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=2294:2414#L122">OAuth2Ops</a>
 				<a class="permalink" href="#OAuth2Ops">&#xb6;</a>
 				
 				
@@ -980,7 +981,7 @@ OAuth2Ops host the clientid/userid, and the timestamp when the OAuth call was la
 		
 			
 			
-			<h2 id="OAuthCertLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1944:2021#L109">OAuthCertLocker</a>
+			<h2 id="OAuthCertLocker">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1952:2029#L110">OAuthCertLocker</a>
 				<a class="permalink" href="#OAuthCertLocker">&#xb6;</a>
 				
 				
@@ -1006,7 +1007,7 @@ OAuth2Ops host the clientid/userid, and the timestamp when the OAuth call was la
 		
 			
 			
-			<h2 id="OAuthCodeLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=2120:2189#L115">OAuthCodeLocker</a>
+			<h2 id="OAuthCodeLocker">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=2128:2197#L116">OAuthCodeLocker</a>
 				<a class="permalink" href="#OAuthCodeLocker">&#xb6;</a>
 				
 				
@@ -1035,7 +1036,7 @@ OAuthLocker the structure contains a OAuth instance map and is protected by a mu
 		
 			
 			
-			<h2 id="OAuthOIDCDetail">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=851:993#L43">OAuthOIDCDetail</a>
+			<h2 id="OAuthOIDCDetail">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=859:1001#L44">OAuthOIDCDetail</a>
 				<a class="permalink" href="#OAuthOIDCDetail">&#xb6;</a>
 				
 				
@@ -1062,7 +1063,7 @@ OAuthLocker the structure contains a OAuth instance map and is protected by a mu
 
 			
 				
-				<h3 id="OAuthOIDCDetail.UpdateScopes">func (*OAuthOIDCDetail) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=995:1047#L51">UpdateScopes</a>
+				<h3 id="OAuthOIDCDetail.UpdateScopes">func (*OAuthOIDCDetail) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1003:1055#L52">UpdateScopes</a>
 					<a class="permalink" href="#OAuthOIDCDetail.UpdateScopes">&#xb6;</a>
 					
 					
@@ -1076,14 +1077,14 @@ OAuthLocker the structure contains a OAuth instance map and is protected by a mu
 		
 			
 			
-			<h2 id="OAuthSubscription">type <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1207:1318#L63">OAuthSubscription</a>
+			<h2 id="OAuthSubscription">type <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1215:1326#L64">OAuthSubscription</a>
 				<a class="permalink" href="#OAuthSubscription">&#xb6;</a>
 				
 				
 			</h2>
 			
 			<pre>type OAuthSubscription struct {
-<span id="OAuthSubscription.Cert"></span>    Cert     *<a href="/pkg/github.build.ge.com/212359746/wzutil/">util</a>.<a href="/pkg/github.build.ge.com/212359746/wzutil/#Cert">Cert</a>
+<span id="OAuthSubscription.Cert"></span>    Cert     *<a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#Cert">Cert</a>
 <span id="OAuthSubscription.OIDC"></span>    OIDC     *<a href="#OAuthOIDCDetail">OAuthOIDCDetail</a>
 <span id="OAuthSubscription.Scope"></span>    Scope    []<a href="/pkg/builtin/#string">string</a>
 <span id="OAuthSubscription.Validate"></span>    Validate <a href="/pkg/builtin/#string">string</a>
@@ -1102,7 +1103,7 @@ OAuthLocker the structure contains a OAuth instance map and is protected by a mu
 
 			
 				
-				<h3 id="OAuthSubscription.AddScope">func (*OAuthSubscription) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1720:1768#L95">AddScope</a>
+				<h3 id="OAuthSubscription.AddScope">func (*OAuthSubscription) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1728:1776#L96">AddScope</a>
 					<a class="permalink" href="#OAuthSubscription.AddScope">&#xb6;</a>
 					
 					
@@ -1114,7 +1115,7 @@ OAuthLocker the structure contains a OAuth instance map and is protected by a mu
 				
 			
 				
-				<h3 id="OAuthSubscription.GetOIDCScopes">func (*OAuthSubscription) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1386:1437#L71">GetOIDCScopes</a>
+				<h3 id="OAuthSubscription.GetOIDCScopes">func (*OAuthSubscription) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1394:1445#L72">GetOIDCScopes</a>
 					<a class="permalink" href="#OAuthSubscription.GetOIDCScopes">&#xb6;</a>
 					
 					
@@ -1129,7 +1130,7 @@ GetOIDCScopes returns a string array of the 3rd party scope(s)
 				
 			
 				
-				<h3 id="OAuthSubscription.GetScope">func (*OAuthSubscription) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1876:1922#L105">GetScope</a>
+				<h3 id="OAuthSubscription.GetScope">func (*OAuthSubscription) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1884:1930#L106">GetScope</a>
 					<a class="permalink" href="#OAuthSubscription.GetScope">&#xb6;</a>
 					
 					
@@ -1141,7 +1142,7 @@ GetOIDCScopes returns a string array of the 3rd party scope(s)
 				
 			
 				
-				<h3 id="OAuthSubscription.IsExistScope">func (*OAuthSubscription) <a href="/src/github.build.ge.com/212359746/wzapi/oa2mode.go?s=1580:1636#L84">IsExistScope</a>
+				<h3 id="OAuthSubscription.IsExistScope">func (*OAuthSubscription) <a href="/src/github.com/wzlib/wzapi/oa2mode.go?s=1588:1644#L85">IsExistScope</a>
 					<a class="permalink" href="#OAuthSubscription.IsExistScope">&#xb6;</a>
 					
 					
@@ -1155,7 +1156,7 @@ GetOIDCScopes returns a string array of the 3rd party scope(s)
 		
 			
 			
-			<h2 id="ProfileLocker">type <a href="/src/github.build.ge.com/212359746/wzapi/apimode.go?s=577:652#L29">ProfileLocker</a>
+			<h2 id="ProfileLocker">type <a href="/src/github.com/wzlib/wzapi/apimode.go?s=538:613#L28">ProfileLocker</a>
 				<a class="permalink" href="#ProfileLocker">&#xb6;</a>
 				
 				
