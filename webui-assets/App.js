@@ -92,34 +92,66 @@ export default class App extends React.Component {
                 "roleId": 1,
                 "roleName": "Admin",
                 "accesses": {
-                    "maintain": {
-                        "haveAccess": true,
-                        "subMenus":{
-                            "subscriptions": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            },
-                            "groups": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            },
-                            "agents": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            },
-                            "watchers": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            }
-                        }
-                    },
-                    "view": {
-                        "haveAccess": true
+                  "dashboard": {
+                    "haveAccess": true
+                  },
+                  "view": {
+                    "haveAccess": true
+                  },
+                  "maintain": {
+                      "haveAccess": true,
+                      "subMenus":{
+                          "subscriptions": {
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          },
+                          "groups": {
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          },
+                          "agents": {
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          },
+                          "watchers": {
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          }
+                      }
+                  },
+                  "monitor": {
+                    "haveAccess": true,
+                    "subMenus":{
+                      "notifications": {
+                          "view": true,
+                          "edit": true,
+                          "delete": true
+                      },
+                      "alerts": {
+                          "view": true,
+                          "edit": true,
+                          "delete": true
+                      },
+                      "healthStatus": {
+                          "view": true,
+                          "edit": true,
+                          "delete": true
+                      }
                     }
+                  },
+                  "reports": {
+                    "haveAccess": true
+                  },
+                  "settings": {
+                    "haveAccess": true
+                  },
+                  "support": {
+                    "haveAccess": true
+                  },
                 }
               };
               let userId = respData.data.user_id;
@@ -230,7 +262,7 @@ export default class App extends React.Component {
       case 'Groupcreate':
         return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupupgrade':
-        return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} showModal={this.showModal.bind(this)}/>; // jshint ignore:line
       case 'Maintainagentupgrade':
