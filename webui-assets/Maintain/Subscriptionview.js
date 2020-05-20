@@ -1,8 +1,8 @@
 import React from "react";
 
-import Subscriptionedit from './Subscriptionedit.js';
+import Subscriptionviewform from './Subscriptionviewform.js';
 
-export default class Subscriptionupgrade extends React.Component {
+export default class Subscriptionview extends React.Component {
 
     constructor(props) {
         super(props);
@@ -194,16 +194,6 @@ export default class Subscriptionupgrade extends React.Component {
             newTableData: newTableData
         });
     }
-
-    /* istanbul ignore next */
-    /*filterByValue(array, string) {
-        return array.filter(o =>
-            Object.keys(o).some((k) => {
-                if(typeof o[k] != 'boolean'){
-                    return o[k].toLowerCase().includes(string.toLowerCase());
-                }
-            }));
-    }*/
 
     /* istanbul ignore next */
     filterByValue(myArray, string){
@@ -478,16 +468,7 @@ export default class Subscriptionupgrade extends React.Component {
                                                                     </td>
                                                                     <td>
                                                                         <span className="action-img">
-                                                                            { this.props.permissions.accesses.maintain.subMenus.subscriptions.edit ?
-                                                                                <img onClick={this.edit.bind(this, tbodyVal)} alt="edit-icon" title="Edit" src="assets/static/images/iconedit_tablemaintainmonitor.svg" />
-                                                                                :
-                                                                                null
-                                                                            }
-                                                                            { this.props.permissions.accesses.maintain.subMenus.subscriptions.delete ?
-                                                                                <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
-                                                                                :
-                                                                                null
-                                                                            }
+                                                                            <i onClick={this.edit.bind(this, tbodyVal)} className="fa fa-eye cursor-pointer" title="View"></i>
                                                                         </span>
                                                                     </td>
                                                                 </tr>
@@ -513,7 +494,7 @@ export default class Subscriptionupgrade extends React.Component {
                         </div>
                     </div>
                     :
-                    <Subscriptionedit authToken={this.props.authToken} helpText={this.props.helpText} handleDataTable={this.handleDataTable.bind(this)} baseUrl={this.props.baseUrl} userId={this.props.userId} showGlobalMessage={this.props.showGlobalMessage.bind(this)} hideGlobalMessage={this.props.hideGlobalMessage.bind(this)} changeView={this.changeView.bind(this)} editItemData={this.state.editItemData}></Subscriptionedit>
+                    <Subscriptionviewform authToken={this.props.authToken} helpText={this.props.helpText} handleDataTable={this.handleDataTable.bind(this)} baseUrl={this.props.baseUrl} userId={this.props.userId} showGlobalMessage={this.props.showGlobalMessage.bind(this)} hideGlobalMessage={this.props.hideGlobalMessage.bind(this)} changeView={this.changeView.bind(this)} editItemData={this.state.editItemData}></Subscriptionviewform>
                 }
             </div>
         )

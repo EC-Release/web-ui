@@ -484,7 +484,12 @@ export default class Groupupgrade extends React.Component {
                                             <th>Group ID</th>
                                             <th>AID</th>
                                             <th>TID</th>
-                                            <th>Action</th>
+                                            { 
+                                                this.props.permissions.accesses.maintain.subMenus.groups.delete ?
+                                                    <th>Action</th>
+                                                    :
+                                                    null
+                                            }
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -495,15 +500,20 @@ export default class Groupupgrade extends React.Component {
                                                     <td>{ tbodyVal.groupId }</td>
                                                     <td>{ tbodyVal.aid }</td>
                                                     <td>{ tbodyVal.tid }</td>
-                                                    <td>
-                                                        <span className="action-img">
-                                                            {
-                                                            tbodyVal.aid != 'Pending' && tbodyVal.tid != 'Pending' ? 
-                                                                <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
-                                                                :null
-                                                            }
-                                                        </span>
-                                                    </td>
+                                                    {
+                                                        this.props.permissions.accesses.maintain.subMenus.groups.delete ?
+                                                            <td>
+                                                                <span className="action-img">
+                                                                    {
+                                                                    tbodyVal.aid != 'Pending' && tbodyVal.tid != 'Pending' ? 
+                                                                        <img alt="delete-icon" onClick={this.deleteData.bind(this, tbodyVal, tbodyIndex)} title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
+                                                                        :null
+                                                                    }
+                                                                </span>
+                                                            </td>
+                                                            :
+                                                            null
+                                                    }
                                                 </tr>
                                             )
                                         })}

@@ -2,7 +2,7 @@ import React from "react";
 
 export default class Usermanagement extends React.Component {
 
-
+    /* istanbul ignore next */
     constructor(props) {
         super(props);
         this.state = {
@@ -33,6 +33,7 @@ export default class Usermanagement extends React.Component {
         };
       }
 
+    /* istanbul ignore next */
     componentDidMount(){
         $(function () {
             $(".field-wrapper .field-placeholder").on("click", function () {
@@ -124,6 +125,7 @@ export default class Usermanagement extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     handlePlaceholder(e){
         let id = e.target.id;
         let currentbasicProfile= Object.assign({}, this.state.basicProfile);
@@ -217,6 +219,8 @@ export default class Usermanagement extends React.Component {
         });
         this.validationBasicProfile();
     }
+
+    /* istanbul ignore next */
     validationBasicProfile(){
         let valid = true;
         let basicProfile = this.state.basicProfile;
@@ -229,10 +233,14 @@ export default class Usermanagement extends React.Component {
             validBasicProfile: valid
         });
     }
+
+    /* istanbul ignore next */
     SaveSetting(e){
         console.log(this.state.basicProfile);
         console.log(e.target);
     }
+
+    /* istanbul ignore next */
     handleNotification(e){
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         let fieldName = e.target.name;
@@ -257,11 +265,12 @@ export default class Usermanagement extends React.Component {
         });
         console.log(this.state.notifications);
     }
+    /* istanbul ignore next */
     saveNotifications(e){
-        
         console.log(this.state.notifications);
     }    
    
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (

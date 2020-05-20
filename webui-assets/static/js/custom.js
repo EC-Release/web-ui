@@ -339,3 +339,18 @@ function hideLogoutWarningModal(){
     $('#logoutWarningModal').modal('hide');
 }
 // Auto logout functionality end
+
+function showNotificationModal() {
+    $('#notificationModal').modal('show');
+}    
+
+function hideNotificationModal() {
+    $('#notificationModal').modal('hide');
+}
+ 
+function copyText(textToBeCopied){
+    var dummy = $('<input>').val(textToBeCopied).appendTo('body').select();
+    document.execCommand('copy')
+}
+
+
