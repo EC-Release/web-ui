@@ -144,6 +144,8 @@ const MOCK_TABLE_DATA = [
 ];
 
 export default class Notification extends React.Component {
+
+    /* istanbul ignore next */
     constructor(props){
         super(props);
         this.state = {
@@ -158,12 +160,14 @@ export default class Notification extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){ 
         setTimeout(function(){
             window.initTable('notificationTable');
         }, 100);
     }
 
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (

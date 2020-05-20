@@ -1,6 +1,13 @@
 import React from "react";
 
 export default class Monitor extends React.Component {
+
+    /* istanbul ignore next */
+    constructor(props){
+        super(props);
+    }
+
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (

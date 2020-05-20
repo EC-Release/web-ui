@@ -1,11 +1,13 @@
 import React from "react";
-import ReactDOM from "react-dom";
 
 export default class Navbar extends React.Component {
+
+    /* istanbul ignore next */
     constructor(props) {
         super(props);
     }
 
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (

@@ -9,6 +9,7 @@ export default class Groupupgrade extends React.Component {
             cookieNotificationKey: 'readCookieNotification'
         };
     }
+    
     /* istanbul ignore next */
     componentDidMount(){
         let isReadCookieNotification = this.getCookie(this.state.cookieNotificationKey);

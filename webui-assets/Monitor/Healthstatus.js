@@ -1,6 +1,8 @@
 import React from "react";
 
 export default class Healthstatus extends React.Component {
+
+    /* istanbul ignore next */
     constructor(props){
         super(props);
         this.state = {
@@ -49,6 +51,7 @@ export default class Healthstatus extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
 
         // get gateway list start
@@ -200,6 +203,7 @@ export default class Healthstatus extends React.Component {
         });*/
     }
 
+    /* istanbul ignore next */
     handleChange(e){
         let id = e.target.id;
         
@@ -223,6 +227,7 @@ export default class Healthstatus extends React.Component {
         }
     }
     
+    /* istanbul ignore next */
     fetchHealthStatus(){
         let selectedGatewayId = this.state.selectedGateway;
         let gateways = this.state.gateways;
@@ -777,6 +782,7 @@ export default class Healthstatus extends React.Component {
         
     }
 
+    /* istanbul ignore next */
     handleGatewayselection(e){
         let selectedGateway = e.target.value;
         this.setState({
@@ -784,6 +790,7 @@ export default class Healthstatus extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (
