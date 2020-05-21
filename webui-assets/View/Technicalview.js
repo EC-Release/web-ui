@@ -7,6 +7,7 @@ import Customsearch from './Customsearch.js';
 
 export default class Technicalview extends React.Component {
 
+    /* istanbul ignore next */
     constructor(props){
         super(props);
         this.state = {
@@ -559,8 +560,8 @@ export default class Technicalview extends React.Component {
         },1000);
     }
 
+    /* istanbul ignore next */
     getItems(){
-
         let technicalTableData = [];
         let treeValue = [{
             id: 1,
@@ -1206,6 +1207,7 @@ export default class Technicalview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         /* istanbul ignore next */
