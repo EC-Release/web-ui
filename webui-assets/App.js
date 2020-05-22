@@ -102,21 +102,25 @@ export default class App extends React.Component {
                       "haveAccess": true,
                       "subMenus":{
                           "subscriptions": {
+                              "create": true,
                               "view": true,
                               "edit": true,
                               "delete": true
                           },
                           "groups": {
+                              "create": true,
                               "view": true,
                               "edit": true,
                               "delete": true
                           },
                           "agents": {
+                              "create": true,
                               "view": true,
                               "edit": true,
                               "delete": true
                           },
                           "watchers": {
+                              "create": true,
                               "view": true,
                               "edit": true,
                               "delete": true
