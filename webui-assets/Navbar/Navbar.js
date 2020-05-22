@@ -45,13 +45,13 @@ export default class Navbar extends React.Component {
                                     Maintain 
                                 </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                { this.props.permissions.accesses.maintain.subMenus.subscriptions.view || this.props.permissions.accesses.maintain.subMenus.subscriptions.edit || this.props.permissions.accesses.maintain.subMenus.subscriptions.delete ?
+                                { this.props.permissions.accesses.maintain.subMenus.subscriptions.view || this.props.permissions.accesses.maintain.subMenus.subscriptions.create || this.props.permissions.accesses.maintain.subMenus.subscriptions.edit || this.props.permissions.accesses.maintain.subMenus.subscriptions.delete ?
                                     <li className="dropdown-submenu">
                                         <a id="nav-subscription" className="dropdown-item" href="#">
                                             Subscriptions
                                         </a>
                                         <ul className="dropdown-menu">
-                                            { this.props.permissions.accesses.maintain.subMenus.subscriptions.edit ?
+                                            { this.props.permissions.accesses.maintain.subMenus.subscriptions.create ?
                                                 <li>
                                                     <a id="nav-subscription-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Subscriptioncreate')} href="#">Create</a>
                                                 </li>
@@ -78,13 +78,13 @@ export default class Navbar extends React.Component {
                                     null
                                 }
 
-                                { this.props.permissions.accesses.maintain.subMenus.groups.view || this.props.permissions.accesses.maintain.subMenus.groups.edit || this.props.permissions.accesses.maintain.subMenus.groups.delete ?
+                                { this.props.permissions.accesses.maintain.subMenus.groups.view || this.props.permissions.accesses.maintain.subMenus.groups.create || this.props.permissions.accesses.maintain.subMenus.groups.edit || this.props.permissions.accesses.maintain.subMenus.groups.delete ?
                                     <li className="dropdown-submenu">
                                         <a id="nav-group" className="dropdown-item" href="#">
                                             Groups
                                         </a>
                                         <ul className="dropdown-menu">
-                                            { this.props.permissions.accesses.maintain.subMenus.groups.edit ?
+                                            { this.props.permissions.accesses.maintain.subMenus.groups.create ?
                                                 <li>
                                                     <a id="nav-group-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Groupcreate')} href="#">Create</a>
                                                 </li>
@@ -104,13 +104,13 @@ export default class Navbar extends React.Component {
                                     null
                                 }
 
-                                { this.props.permissions.accesses.maintain.subMenus.agents.edit ?
+                                { this.props.permissions.accesses.maintain.subMenus.agents.create ?
                                     <li className="dropdown-submenu">
                                         <a id="nav-agent" className="dropdown-item" href="#">
                                             Agents
                                         </a>
                                         <ul className="dropdown-menu">
-                                            { this.props.permissions.accesses.maintain.subMenus.agents.edit ?
+                                            { this.props.permissions.accesses.maintain.subMenus.agents.create ?
                                                 <li>
                                                     <a id="nav-agent-create" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentcreate')} href="#">Create</a>
                                                 </li>
@@ -129,14 +129,14 @@ export default class Navbar extends React.Component {
                                     null
                                 }
 
-                                { this.props.permissions.accesses.maintain.subMenus.watchers.view || this.props.permissions.accesses.maintain.subMenus.watchers.edit || this.props.permissions.accesses.maintain.subMenus.watchers.delete ?
+                                { this.props.permissions.accesses.maintain.subMenus.watchers.view || this.props.permissions.accesses.maintain.subMenus.watchers.create || this.props.permissions.accesses.maintain.subMenus.watchers.edit || this.props.permissions.accesses.maintain.subMenus.watchers.delete ?
                                     <li className="dropdown-submenu">
                                         <a className="dropdown-item" href="#">
                                             Watchers
                                         </a>
                                         <ul className="dropdown-menu">
                                             { 
-                                                this.props.permissions.accesses.maintain.subMenus.watchers.edit ?
+                                                this.props.permissions.accesses.maintain.subMenus.watchers.create ?
                                                     <li>
                                                         <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainwatchercreate')} href="#">Create</a>
                                                     </li>
