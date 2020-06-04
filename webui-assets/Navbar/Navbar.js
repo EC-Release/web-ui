@@ -67,7 +67,7 @@ export default class Navbar extends React.Component {
                                             }
                                             { this.props.permissions.accesses.maintain.subMenus.subscriptions.view ?
                                                 <li>
-                                                    <a id="nav-subscription-view-disable" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Subscriptionview')} href="#">View</a>
+                                                    <a id="nav-subscription-view-disable" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Subscriptionview')} href="#">View</a>
                                                 </li> 
                                                 :
                                                 null

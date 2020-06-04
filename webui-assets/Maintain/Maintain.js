@@ -14,6 +14,7 @@ export default class Maintain extends React.Component {
         /* jshint ignore:start */
         /* istanbul ignore next */
         return (
+            /* istanbul ignore next */
             <h1 className="text-center">Maintain works!</h1>
         )
         /* jshint ignore:end */

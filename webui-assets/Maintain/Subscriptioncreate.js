@@ -4,6 +4,7 @@ export default class Subscriptioncreate extends React.Component {
     constructor(props){
         super(props);
         this.state = {
+            isExisting:false,
             subscriptionForm:{
                 subscriptionName: { value: '', dirtyState: false },
                 subscriptionId: { value: '', dirtyState: false },
@@ -38,9 +39,7 @@ export default class Subscriptioncreate extends React.Component {
                 { name: 'False', id: 'false' }
             ],
             environments: [
-                { name: 'DEV', id: 'DEV' },
-                { name: 'TEST', id: 'TEST' },
-                { name: 'STAGE', id: 'STAGE' },
+                { name: 'PREPROD', id: 'PREPROD' },
                 { name: 'PROD', id: 'PROD' }
             ],
             optInoptOuts: [
@@ -202,30 +201,38 @@ export default class Subscriptioncreate extends React.Component {
         let formIsValid = true;
         let errors = {};
         let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-
+    
+        if(this.state.isExisting){
+            if(subscriptionIdValue.trim() === ''){
+                if(subscriptionIdDirtyState)
+                    errors.subscriptionId = 'Please enter Subscription ID';
+                formIsValid = false;
+            }
+    
+            if(serviceUriValue.trim() === ''){
+                if(serviceUriDirtyState)
+                    errors.serviceUri = 'Please enter Service URI';
+                formIsValid = false;
+            }
+            else if(!urlRegExp.test(serviceUriValue)){
+                if(serviceUriDirtyState){
+                    errors.serviceUri = 'Please enter valid URL';
+                }
+                formIsValid = false;
+            }
+            if(adminTokenValue.trim() === ''){
+                if(adminTokenDirtyState)
+                    errors.adminToken = 'Please enter Admin Token';
+                formIsValid = false;
+            }
+        }
         if(subscriptionNameValue.trim() === ''){
             if(subscriptionNameDirtyState)
                 errors.subscriptionName = 'Please enter Subscription Name';
             formIsValid = false;
         }
-
-        if(subscriptionIdValue.trim() === ''){
-            if(subscriptionIdDirtyState)
-                errors.subscriptionId = 'Please enter Subscription ID';
-            formIsValid = false;
-        }
-
-        if(serviceUriValue.trim() === ''){
-            if(serviceUriDirtyState)
-                errors.serviceUri = 'Please enter Service URI';
-            formIsValid = false;
-        }
-        else if(!urlRegExp.test(serviceUriValue)){
-            if(serviceUriDirtyState){
-                errors.serviceUri = 'Please enter valid URL';
-            }
-            formIsValid = false;
-        }
+        
+        
 
         if(clientIdValue.trim() === ''){
             if(clientIdDirtyState)
@@ -248,12 +255,6 @@ export default class Subscriptioncreate extends React.Component {
             if(OAuth2DirtyState){
                 errors.OAuth2 = 'Please enter valid URL';
             }
-            formIsValid = false;
-        }
-
-        if(adminTokenValue.trim() === ''){
-            if(adminTokenDirtyState)
-                errors.adminToken = 'Please enter Admin Token';
             formIsValid = false;
         }
 
@@ -286,7 +287,6 @@ export default class Subscriptioncreate extends React.Component {
                 errors.owner = 'Please enter Owner';
             formIsValid = false;
         }
-
         this.setState({
 			subscriptionFormIsValid: formIsValid,
 			errorsSubscriptionForm: errors
@@ -324,7 +324,12 @@ export default class Subscriptioncreate extends React.Component {
         prepareData.app = currentForm.app.value;
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
-
+        prepareData.existing = this.state.isExisting;
+        if(!this.state.isExisting){
+            prepareData.subscriptionId = '';
+            prepareData.serviceUri = '';
+            prepareData.adminToken = '';
+        }
         fetch(this.props.baseUrl + '/createSubscription', { 
                 method: 'POST',
                 headers: {
@@ -371,7 +376,8 @@ export default class Subscriptioncreate extends React.Component {
 
                             this.setState({
                                 subscriptionForm: subscriptionForm,
-                                subscriptionFormIsValid: false
+                                subscriptionFormIsValid: false,
+                                isExisting: false
                             });
                         }, 2000);
                     }
@@ -398,7 +404,14 @@ export default class Subscriptioncreate extends React.Component {
             }, 2000);
         });
     }
-
+    /* istanbul ignore next */
+    handleCreateMode(e){
+        let value = e.target.checked;
+        this.setState({isExisting:value});
+        setTimeout(() => {
+            this.handleFormValidation();
+        }, 100);
+    }
      /* istanbul ignore next */
      showHideField(e, formName, fieldName){
         let currentForm = Object.assign({}, this.state.subscriptionForm);
@@ -430,6 +443,78 @@ export default class Subscriptioncreate extends React.Component {
                             </div>
                             <hr></hr>
                             <div className="changeable-form subscription-form">
+                                <div className="row">
+                                    <div className="col-sm-3">
+                                        <div className="custom-control custom-checkbox">
+                                            <input 
+                                                type="checkbox" 
+                                                className="custom-control-input custom-control-checkbox" 
+                                                id="createMode" 
+                                                name="createMode" 
+                                                checked={this.state.isExisting}
+                                                onChange={(event)=>{this.handleCreateMode(event)}} />
+                                            <label className="custom-control-label" htmlFor="createMode"><small className="theme-color"><strong>Store Existing</strong></small></label>
+                                        </div>
+                                    </div>
+                                    {this.state.isExisting? 
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                        <div className="col-sm-12 label required">
+                                            SUBSCRIPTION ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            <span className="float-right help-text" >
+                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.subscriptionId} />
+                                            </span>
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <input
+                                                type="text"
+                                                autoComplete="off"
+                                                className="form-control form-control-sm"
+                                                name="subscriptionId"
+                                                value={this.state.subscriptionForm.subscriptionId.value}
+                                                onChange={(event)=>{this.handleFormData(event)}} />
+                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['subscriptionId']}</small>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-3">
+                                        <div className="col-sm-12 label required">
+                                            SERVICE URI <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            <span className="float-right help-text" >
+                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.serviceUri} />
+                                            </span>
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <input
+                                                type="text"
+                                                autoComplete="off"
+                                                className="form-control form-control-sm"
+                                                name="serviceUri"
+                                                value={this.state.subscriptionForm.serviceUri.value}
+                                                onChange={(event)=>{this.handleFormData(event)}} />
+                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['serviceUri']}</small>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-3">
+                                        <div className="col-sm-12 label required">
+                                            ADMIN TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.subscriptionForm.adminToken.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'adminToken')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'adminToken')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
+                                            <span className="float-right help-text" >
+                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.adminToken} />
+                                            </span>
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <input
+                                                type={this.state.subscriptionForm.adminToken.type}
+                                                autoComplete="off"
+                                                className="form-control form-control-sm"
+                                                name="adminToken"
+                                                value={this.state.subscriptionForm.adminToken.value}
+                                                onChange={(event)=>{this.handleFormData(event)}} />
+                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['adminToken']}</small>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    :null}
+                                </div>
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
@@ -468,45 +553,6 @@ export default class Subscriptioncreate extends React.Component {
                                     </div>
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
-                                            SUBSCRIPTION ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            <span className="float-right help-text" >
-                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.subscriptionId} />
-                                            </span>
-                                        </div>
-                                        <div className="col-sm-12 mb-2">
-                                            <input
-                                                type="text"
-                                                autoComplete="off"
-                                                className="form-control form-control-sm"
-                                                name="subscriptionId"
-                                                value={this.state.subscriptionForm.subscriptionId.value}
-                                                onChange={(event)=>{this.handleFormData(event)}} />
-                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['subscriptionId']}</small>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-3">
-                                        <div className="col-sm-12 label required">
-                                            SERVICE URI <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            <span className="float-right help-text" >
-                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.serviceUri} />
-                                            </span>
-                                        </div>
-                                        <div className="col-sm-12 mb-2">
-                                            <input
-                                                type="text"
-                                                autoComplete="off"
-                                                className="form-control form-control-sm"
-                                                name="serviceUri"
-                                                value={this.state.subscriptionForm.serviceUri.value}
-                                                onChange={(event)=>{this.handleFormData(event)}} />
-                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['serviceUri']}</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="row">
-                                    <div className="col-sm-3">
-                                        <div className="col-sm-12 label required">
                                             CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             <span className="float-right help-text" >
                                                 <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.clientId} />
@@ -540,6 +586,9 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['clientSecret']}</small>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
                                             OAUTH2 <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
@@ -558,27 +607,6 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['OAuth2']}</small>
                                         </div>
                                     </div>
-                                    <div className="col-sm-3">
-                                        <div className="col-sm-12 label required">
-                                            ADMIN TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.subscriptionForm.adminToken.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'adminToken')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'adminToken')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
-                                            <span className="float-right help-text" >
-                                                <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.adminToken} />
-                                            </span>
-                                        </div>
-                                        <div className="col-sm-12 mb-2">
-                                            <input
-                                                type={this.state.subscriptionForm.adminToken.type}
-                                                autoComplete="off"
-                                                className="form-control form-control-sm"
-                                                name="adminToken"
-                                                value={this.state.subscriptionForm.adminToken.value}
-                                                onChange={(event)=>{this.handleFormData(event)}} />
-                                            <small className="text-danger">{ this.state.errorsSubscriptionForm['adminToken']}</small>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
                                             APPLICATION ROLE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
@@ -633,6 +661,9 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['compliance']}</small>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
                                             CONFIDENTIALITY <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
@@ -654,9 +685,6 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['confidentiality']}</small>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
                                             CUSTOMER <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
@@ -711,6 +739,9 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['date']}</small>
                                         </div>
                                     </div>
+                                </div>
+                                
+                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
                                             ENVIRONMENT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
@@ -732,9 +763,6 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['environment']}</small>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label">
                                             MANAGEMENT HOST TYPE
@@ -794,6 +822,9 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['preserve']}</small>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label">
                                             ASSET ID
@@ -811,9 +842,6 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['assetId']}</small>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label">
                                             PROJECT
@@ -867,6 +895,9 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['version']}</small>
                                         </div>
                                     </div>
+                                </div>
+
+                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
                                             APPLICATION NAME
@@ -885,9 +916,6 @@ export default class Subscriptioncreate extends React.Component {
                                             <small className="text-danger">{ this.state.errorsSubscriptionForm['app']}</small>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div className="row">
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label">
                                             UNIFIED APPLICATION IDENTIFIER

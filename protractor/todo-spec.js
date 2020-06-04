@@ -6,10 +6,10 @@ describe('ec-web-ui test cases', function () {
         browser.get('http://localhost:17990/v1.1beta/ec');
         browser.driver.sleep(1000);
         element(by.name('usr_id')).sendKeys("Place your login id");
-        element(by.name('usr_pwd')).sendKeys("Place your login password");
-        element(by.name('btn_signin')).click();
-        browser.driver.sleep(1000);
-        element(by.name('btn_continue')).click(); 
+        element(by.name('usr_pwd')).sendKeys("Place your login password");
+        element(by.name('btn_signin')).click();
+        browser.driver.sleep(1000);
+        element(by.name('btn_continue')).click(); 
     });
 
     // Login test start
@@ -200,49 +200,46 @@ describe('ec-web-ui test cases', function () {
 
 
     /*
-    //Monitor Notification Component test start
-    it('Monitor Notification component test', function () {
-        browser.driver.sleep(10000);
-        element(by.id('nav-monitor')).click();
-        browser.driver.sleep(1000);
-        element(by.id('nav-notification')).click();
-        browser.driver.sleep(1000);
-        expect(element.all(by.css('.Notification')).isPresent()).toBe(true);
-    });
-    //Monitor Notification Component test end
-
-    //Monitor Alert Component test start
-    it('Monitor Alert component test', function () {
-         browser.driver.sleep(10000);
-         element(by.id('nav-monitor')).click();
-         browser.driver.sleep(1000);
-         element(by.id('nav-alert')).click();
-         browser.driver.sleep(1000);
-         expect(element.all(by.css('.Alert')).isPresent()).toBe(true);
-     }); 
-    //Monitor alert Component test end
-
-    //Monitor Health Status Component test start
-    it('Monitor Health Status component test', function () {
-        browser.driver.sleep(10000);
-        element(by.id('nav-monitor')).click();
-        browser.driver.sleep(1000);
-        element(by.id('nav-healthStatus')).click();
-        browser.driver.sleep(1000);
-        expect(element.all(by.css('.Monitorhealthstatus')).isPresent()).toBe(true);
-    });
-    //Maintain Health Status Component test end
-
-    //Monitor  Health Status button disable Component test start
-    it('Monitor component test', function () {
-        browser.driver.sleep(10000);
-        element(by.id('nav-monitor')).click();
-        browser.driver.sleep(1000);
-        element(by.id('nav-healthStatus')).click();
-        browser.driver.sleep(1000);
-        element(by.id('fetch-health-status-btn')).getAttribute('disabled').then(function (attr) {
-            expect(attr).toBe('true');
-        }); 
+    //Monitor Notification Component test start
+    it('Monitor Notification component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-monitor')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-notification')).click();
+        browser.driver.sleep(1000);
+        expect(element.all(by.css('.Notification')).isPresent()).toBe(true);
+    });
+    //Monitor Notification Component test end
+    //Monitor Alert Component test start
+    it('Monitor Alert component test', function () {
+         browser.driver.sleep(10000);
+         element(by.id('nav-monitor')).click();
+         browser.driver.sleep(1000);
+         element(by.id('nav-alert')).click();
+         browser.driver.sleep(1000);
+         expect(element.all(by.css('.Alert')).isPresent()).toBe(true);
+     }); 
+    //Monitor alert Component test end
+    //Monitor Health Status Component test start
+    it('Monitor Health Status component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-monitor')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-healthStatus')).click();
+        browser.driver.sleep(1000);
+        expect(element.all(by.css('.Monitorhealthstatus')).isPresent()).toBe(true);
+    });
+    //Maintain Health Status Component test end
+    //Monitor  Health Status button disable Component test start
+    it('Monitor component test', function () {
+        browser.driver.sleep(10000);
+        element(by.id('nav-monitor')).click();
+        browser.driver.sleep(1000);
+        element(by.id('nav-healthStatus')).click();
+        browser.driver.sleep(1000);
+        element(by.id('fetch-health-status-btn')).getAttribute('disabled').then(function (attr) {
+            expect(attr).toBe('true');
+        }); 
     });*/
 
     afterEach(function () {
