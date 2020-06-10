@@ -15,7 +15,7 @@ import Maintainagentview from './Maintain/Maintainagentview.js';
 import Maintainwatchercreate from './Maintain/Maintainwatchercreate.js';
 import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
 import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
-import Subscriptionview from './Maintain/Subscriptionview.js'; 
+import Subscriptionview from './Maintain/Subscriptionview.js'; 
 /* istanbul ignore next */
 import Monitor from './Monitor/Monitor.js';
 import Notification from './Monitor/Notification.js';
@@ -76,7 +76,7 @@ export default class App extends React.Component {
     });
 
     // Get logged user's userId start
-    fetch(this.state.apiEndPoints.baseUrl + '/getDevId', {
+    fetch(this.state.apiEndPoints.baseUrl + '/getDevId', {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
@@ -87,42 +87,78 @@ export default class App extends React.Component {
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            if (respData.errorStatus.status === 'ok') {
+            if (respData.errorStatus.status === 'ok') {
               respData.data.permissions = {
                 "roleId": 1,
                 "roleName": "Admin",
                 "accesses": {
-                    "maintain": {
-                        "haveAccess": true,
-                        "subMenus":{
-                            "subscriptions": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            },
-                            "groups": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            },
-                            "agents": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            },
-                            "watchers": {
-                                "view": true,
-                                "edit": true,
-                                "delete": true
-                            }
-                        }
-                    },
-                    "view": {
-                        "haveAccess": true
+                  "dashboard": {
+                    "haveAccess": true
+                  },
+                  "view": {
+                    "haveAccess": true
+                  },
+                  "maintain": {
+                      "haveAccess": true,
+                      "subMenus":{
+                          "subscriptions": {
+                              "create": true,
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          },
+                          "groups": {
+                              "create": true,
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          },
+                          "agents": {
+                              "create": true,
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          },
+                          "watchers": {
+                              "create": true,
+                              "view": true,
+                              "edit": true,
+                              "delete": true
+                          }
+                      }
+                  },
+                  "monitor": {
+                    "haveAccess": true,
+                    "subMenus":{
+                      "notifications": {
+                          "view": true,
+                          "edit": true,
+                          "delete": true
+                      },
+                      "alerts": {
+                          "view": true,
+                          "edit": true,
+                          "delete": true
+                      },
+                      "healthStatus": {
+                          "view": true,
+                          "edit": true,
+                          "delete": true
+                      }
                     }
+                  },
+                  "reports": {
+                    "haveAccess": true
+                  },
+                  "settings": {
+                    "haveAccess": true
+                  },
+                  "support": {
+                    "haveAccess": true
+                  },
                 }
               };
-              let userId = respData.data.user_id;
+              let userId = respData.data.user_id;
               let profileName = respData.data.name;
               let profileEmailId = respData.data.email;
               let permissions = respData.data.permissions;
@@ -131,16 +167,16 @@ export default class App extends React.Component {
                   email: profileEmailId,
                   name: profileName
                 },
-                userId: userId,
+                userId: userId,
                 permissions: permissions,
-                currentView: 'Dashboard'
+                currentView: 'Dashboard'
               });
             }
             else{
-              this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-              setTimeout(function () {
+              this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+              setTimeout(function () {
                 location.reload(true);
-              }, 2000);
+              }, 2000);
             }
           });
         }
@@ -171,7 +207,7 @@ export default class App extends React.Component {
 
   /* istanbul ignore next */
   getAuthTokenFromBackend(){ 
-    fetch(this.state.apiEndPoints.baseUrl + '/refershToken' , {
+    fetch(this.state.apiEndPoints.baseUrl + '/refershToken' , {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
@@ -182,13 +218,13 @@ export default class App extends React.Component {
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            if (respData.errorStatus.status === 'ok') {
-              let newToken = respData.data;
+            if (respData.errorStatus.status === 'ok') {
+              let newToken = respData.data;
               this.setState({
-                authToken: newToken
+                authToken: newToken
               });
-              let cookieToUpdate = 'ec-config';
-              document.cookie = cookieToUpdate+"="+newToken;
+              let cookieToUpdate = 'ec-config';
+              document.cookie = cookieToUpdate+"="+newToken;
             }
           });
         }
@@ -225,12 +261,12 @@ export default class App extends React.Component {
         return <Subscriptioncreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Subscriptionupgrade':
         return <Subscriptionupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
-      case 'Subscriptionview':
-        return <Subscriptionview helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+      case 'Subscriptionview':
+        return <Subscriptionview helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupcreate':
         return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupupgrade':
-        return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} showModal={this.showModal.bind(this)}/>; // jshint ignore:line
       case 'Maintainagentupgrade':
@@ -356,8 +392,10 @@ export default class App extends React.Component {
     switch(action) {
       case 'copyAndcloseModal':
         this.copyAndcloseModal(this);
+        break;
       case 'copyToClipboard':
         this.copyToClipboard();
+        break;
     }
   }
 

@@ -1441,7 +1441,7 @@ export default class Maintainagentcreate extends React.Component {
                                 };
                                 
                                 let filename = "server.yml";
-                                let data=''
+                                let data='';
                                 if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
                                     data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    zon: "+ serverFormData.zone.value +"\n    grp: "+ serverFormData.group.value +"\n    sst: "+ serverFormData.serviceUrl.value.split(".io")[0]+".io" +"\n    hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n    csc: "+ serverFormData.clientSecret.value+"\n    oa2: "+ serverFormData.OAuth2.value+"\n    dur: "+ serverFormData.duration.value+"\n    aid: "+ serverFormData.agentId.value+"\n    rpt: "+'"'+ serverFormData.remotePort.value+'"'+"\n    rht: "+ serverFormData.remoteHost.value+"\n    hca: "+'"'+  prepareData.hca +'"';
                                     if(serverFormData.proxy.value.trim() !== ''){

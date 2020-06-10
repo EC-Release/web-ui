@@ -7,6 +7,7 @@ import Viewtable from '../Viewtable/Viewtable.js';
 
 export default class Businessview extends React.Component {
 
+    /* istanbul ignore next */
     constructor(props){
         super(props);
         this.state = {
@@ -32,6 +33,7 @@ export default class Businessview extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     componentDidMount(){
         let treeValue = [{
             id: 1,
@@ -121,6 +123,7 @@ export default class Businessview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     changeTopologyView(items){
         let nodes = [];
         let edges = [];
@@ -157,6 +160,7 @@ export default class Businessview extends React.Component {
         });
     }
 
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (

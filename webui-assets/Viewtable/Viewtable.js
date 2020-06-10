@@ -15,7 +15,7 @@ export default class Viewtable extends React.Component {
     render(){
         /* jshint ignore:start */
         /* istanbul ignore next */
-        return(
+        return(/* istanbul ignore next */
             <table id="viewTable" className="table">
                 <thead>
                     <tr>
