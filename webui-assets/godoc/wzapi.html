@@ -492,7 +492,7 @@ TokenValidationV2 invokes oauth2 (@@oa2) /introspect call to validate the token 
 
 			
 				
-				<h3 id="NewAPIMode">func <a href="/src/github.com/wzlib/wzapi/apimode.go?s=2622:2717#L83">NewAPIMode</a>
+				<h3 id="NewAPIMode">func <a href="/src/github.com/wzlib/wzapi/apimode.go?s=3020:3115#L86">NewAPIMode</a>
 					<a class="permalink" href="#NewAPIMode">&#xb6;</a>
 					
 					
@@ -516,7 +516,7 @@ start the agent api.
 
 			
 				
-				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=12742:12811#L562">EnforceToken</a>
+				<h3 id="APIMode.EnforceToken">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=13433:13502#L573">EnforceToken</a>
 					<a class="permalink" href="#APIMode.EnforceToken">&#xb6;</a>
 					
 					
@@ -528,7 +528,7 @@ start the agent api.
 				
 			
 				
-				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=11018:11095#L490">FetchTokenByAuthCode</a>
+				<h3 id="APIMode.FetchTokenByAuthCode">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=11666:11743#L501">FetchTokenByAuthCode</a>
 					<a class="permalink" href="#APIMode.FetchTokenByAuthCode">&#xb6;</a>
 					
 					
@@ -540,7 +540,7 @@ start the agent api.
 				
 			
 				
-				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=11686:11765#L511">FetchUserDetailByUserId</a>
+				<h3 id="APIMode.FetchUserDetailByUserId">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=12377:12456#L522">FetchUserDetailByUserId</a>
 					<a class="permalink" href="#APIMode.FetchUserDetailByUserId">&#xb6;</a>
 					
 					
@@ -548,7 +548,7 @@ start the agent api.
 				<pre>func (a *<a href="#APIMode">APIMode</a>) FetchUserDetailByUserId(uid <a href="/pkg/builtin/#string">string</a>) (*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 FetchUserDetailByUserId gives detail of the user id @@uid. In OIDC validation, the user id (@@uid) maps to an OIDC identifier which specified in the config settings
-The function will first check the user detail in the cache
+The function will first check the user detail in the cache and decide whether invoke a user http call
 </p>
 
 				
@@ -556,7 +556,7 @@ The function will first check the user detail in the cache
 				
 			
 				
-				<h3 id="APIMode.GetOAuthToken">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=3539:3584#L132">GetOAuthToken</a>
+				<h3 id="APIMode.GetOAuthToken">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=3937:3982#L135">GetOAuthToken</a>
 					<a class="permalink" href="#APIMode.GetOAuthToken">&#xb6;</a>
 					
 					
@@ -571,7 +571,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="APIMode.GetUserDetail">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=12136:12205#L534">GetUserDetail</a>
+				<h3 id="APIMode.GetUserDetail">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=12827:12896#L545">GetUserDetail</a>
 					<a class="permalink" href="#APIMode.GetUserDetail">&#xb6;</a>
 					
 					
@@ -586,7 +586,7 @@ GetUserDetail will directly invoke the users detail endpoint from the oauth2 ins
 				
 			
 				
-				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=10004:10085#L454">RedirectAuthForm</a>
+				<h3 id="APIMode.RedirectAuthForm">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=10652:10733#L465">RedirectAuthForm</a>
 					<a class="permalink" href="#APIMode.RedirectAuthForm">&#xb6;</a>
 					
 					
@@ -598,7 +598,7 @@ GetUserDetail will directly invoke the users detail endpoint from the oauth2 ins
 				
 			
 				
-				<h3 id="APIMode.Start">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=4013:4063#L151">Start</a>
+				<h3 id="APIMode.Start">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=4411:4461#L154">Start</a>
 					<a class="permalink" href="#APIMode.Start">&#xb6;</a>
 					
 					
@@ -616,7 +616,7 @@ where the _cb as the public key, _ps as private key, respectively.
 				
 			
 				
-				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=9975:9998#L450">Stop</a>
+				<h3 id="APIMode.Stop">func (*APIMode) <a href="/src/github.com/wzlib/wzapi/apimode.go?s=10623:10646#L461">Stop</a>
 					<a class="permalink" href="#APIMode.Stop">&#xb6;</a>
 					
 					
@@ -630,7 +630,7 @@ where the _cb as the public key, _ps as private key, respectively.
 		
 			
 			
-			<h2 id="AgentHTTPIntr">type <a href="/src/github.com/wzlib/wzapi/apimode.go?s=1039:2293#L52">AgentHTTPIntr</a>
+			<h2 id="AgentHTTPIntr">type <a href="/src/github.com/wzlib/wzapi/apimode.go?s=1039:2691#L52">AgentHTTPIntr</a>
 				<a class="permalink" href="#AgentHTTPIntr">&#xb6;</a>
 				
 				
@@ -651,6 +651,9 @@ Agent HTTP Interface. Each of func below will be invoked during the API mode pro
     POSTConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
     PUTConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
     GETConfig(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, optId <a href="/pkg/builtin/#string">string</a>)
+
+    <span class="comment">//SessionBegin invoked first when received a user authentication callback. In the event of OIDC integration, the userDetail refers to the user information in the targeted framework provided by the integration endpoint. Like SessionEnd, the interface SessionBegin will suspend the remaining process if the return error is not nil</span>
+    SessionBegin(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, userDetail *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#UserDetail">UserDetail</a>) <a href="/pkg/builtin/#error">error</a>
 
     <span class="comment">//SessionEnd similar to GC invoked by the endpoint /&lt;rev&gt;/&lt;app&gt;/logout for the purpose of managing app resource. The Logout process will stop if the return error is not nil</span>
     SessionEnd(r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, tknStatus *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a>) <a href="/pkg/builtin/#error">error</a>
