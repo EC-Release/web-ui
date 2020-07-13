@@ -9,7 +9,7 @@ export default class Subscriptioncreate extends React.Component {
                 subscriptionName: { value: '', dirtyState: false },
                 subscriptionId: { value: '', dirtyState: false },
                 serviceUri: { value: '', dirtyState: false },
-                clientId: { value: '', dirtyState: false },
+                clientId: { value: '', dirtyState: false, type: 'password' },
                 clientSecret: { value: '', dirtyState: false, type: 'password' },
                 OAuth2: { value: '', dirtyState: false },
                 adminToken: { value: '', dirtyState: false, type: 'password' },
@@ -20,7 +20,7 @@ export default class Subscriptioncreate extends React.Component {
                 customer: { value: '', dirtyState: false },
                 cluster: { value: '', dirtyState: false },
                 date: { value: '', dirtyState: false },
-                environment: { value: '', dirtyState: false },
+                environment: { value: 'PREPROD', dirtyState: false },
                 managementHostType: { value: '', dirtyState: false },
                 optInoptOut: { value: 'true', dirtyState: false },
                 preserve: { value: 'true', dirtyState: false },
@@ -324,7 +324,8 @@ export default class Subscriptioncreate extends React.Component {
         prepareData.app = currentForm.app.value;
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
-        prepareData.existing = this.state.isExisting;
+        prepareData.existing = this.state.isExisting.toString();
+        console.log(currentForm.environment.value)
         if(!this.state.isExisting){
             prepareData.subscriptionId = '';
             prepareData.serviceUri = '';
@@ -553,14 +554,14 @@ export default class Subscriptioncreate extends React.Component {
                                     </div>
                                     <div className="col-sm-3">
                                         <div className="col-sm-12 label required">
-                                            CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.subscriptionForm.clientId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'clientId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'subscriptionForm', 'clientId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             <span className="float-right help-text" >
                                                 <img alt="info" src="assets/static/images/info.svg" data-toggle="popover" data-trigger="hover" data-placement="top" data-content={this.props.helpText.clientId} />
                                             </span>
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input
-                                                type="password"
+                                                type={this.state.subscriptionForm.clientId.type}
                                                 autoComplete="off"
                                                 className="form-control form-control-sm"
                                                 name="clientId"
