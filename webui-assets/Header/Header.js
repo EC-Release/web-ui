@@ -31,7 +31,7 @@ export default class Header extends React.Component {
                         </div>
                         <div className="col-lg-6 header-profile">
                             <span>
-                                <span className="name"> Hello {this.props.profileData.name.split(" ")[0]}!</span>
+                                <span className="name"> Hello {this.props.profileData.name.split(" ")[1]}!</span>
                             </span>
                             <span>
                                 <img src="assets/static/images/user_icon.svg" height="30" />
