@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>wzapi - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="/lib/godoc/style.css">
+
+
+<script>window.initFuncs = [];</script>
+
+<script src="/lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.12.15";</script>
+<script src="/lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package wzapi
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/wzlib/wzapi"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+			
+			
+				
+				<dd><a href="#A911">func A911(issecure bool, cid, csc string, w http.ResponseWriter, r *http.Request) bool</a></dd>
+			
+				
+				<dd><a href="#ErrResponse">func ErrResponse(w http.ResponseWriter, errcode uint16, err error, str string)</a></dd>
+			
+				
+				<dd><a href="#HealthCheck">func HealthCheck(w http.ResponseWriter, r *http.Request, rpt *model.Report, ver string, aid string)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckClt">func HealthCheckClt(w http.ResponseWriter, r *http.Request, rpt *model.Report, ver string, aid string, d []*model.RequestDetail, c []*model.ClientSession)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckGWServer">func HealthCheckGWServer(w http.ResponseWriter, r *http.Request, rpt *model.Report, ses map[string]*model.SessionDetails, cpl []*model.ClientPool, ver string, gtwId string, refId string, ncon int)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckGwy">func HealthCheckGwy(w http.ResponseWriter, r *http.Request, rpt *model.Report, ses map[string]*model.SessionDetails, scs []*model.SuperConns, cpl []*model.ClientPool, ver string, gtwId string, refId string, ncon int)</a></dd>
+			
+				
+				<dd><a href="#HealthCheckSrv">func HealthCheckSrv(w http.ResponseWriter, r *http.Request, rpt *model.Report, srv []*model.ServerPool, srl []*model.ServerSConnList, ver string, aid string, gurl string)</a></dd>
+			
+			
+				
+				<dd><a href="#HealthCheckCltType">type HealthCheckCltType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckGWServerType">type HealthCheckGWServerType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckGwyType">type HealthCheckGwyType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckSrvType">type HealthCheckSrvType</a></dd>
+				
+				
+			
+				
+				<dd><a href="#HealthCheckType">type HealthCheckType</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/wzlib/wzapi/wzapi.go">wzapi.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+		
+		
+			
+			
+			<h2 id="A911">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=4194:4280#L138">A911</a>
+				<a class="permalink" href="#A911">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func A911(issecure <a href="/pkg/builtin/#bool">bool</a>, cid, csc <a href="/pkg/builtin/#string">string</a>, w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="ErrResponse">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=4943:5021#L166">ErrResponse</a>
+				<a class="permalink" href="#ErrResponse">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func ErrResponse(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, errcode <a href="/pkg/builtin/#uint16">uint16</a>, err <a href="/pkg/builtin/#error">error</a>, str <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheck">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=715:814#L20">HealthCheck</a>
+				<a class="permalink" href="#HealthCheck">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheck(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckClt">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1155:1309#L35">HealthCheckClt</a>
+				<a class="permalink" href="#HealthCheckClt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckClt(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientSession">ClientSession</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckGWServer">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2886:3082#L81">HealthCheckGWServer</a>
+				<a class="permalink" href="#HealthCheckGWServer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckGWServer(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckGwy">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2258:2474#L65">HealthCheckGwy</a>
+				<a class="permalink" href="#HealthCheckGwy">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckGwy(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="HealthCheckSrv">func <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1671:1839#L50">HealthCheckSrv</a>
+				<a class="permalink" href="#HealthCheckSrv">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func HealthCheckSrv(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl <a href="/pkg/builtin/#string">string</a>)</pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="HealthCheckCltType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=990:1153#L33">HealthCheckCltType</a>
+				<a class="permalink" href="#HealthCheckCltType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckCltType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, d []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#RequestDetail">RequestDetail</a>, c []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientSession">ClientSession</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckGWServerType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2679:2884#L79">HealthCheckGWServerType</a>
+				<a class="permalink" href="#HealthCheckGWServerType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckGWServerType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckGwyType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=2031:2256#L63">HealthCheckGwyType</a>
+				<a class="permalink" href="#HealthCheckGwyType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckGwyType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ses map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SessionDetails">SessionDetails</a>, scs []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#SuperConns">SuperConns</a>, cpl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ClientPool">ClientPool</a>, ver <a href="/pkg/builtin/#string">string</a>, gtwId <a href="/pkg/builtin/#string">string</a>, refId <a href="/pkg/builtin/#string">string</a>, ncon <a href="/pkg/builtin/#int">int</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckSrvType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=1492:1669#L48">HealthCheckSrvType</a>
+				<a class="permalink" href="#HealthCheckSrvType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckSrvType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, srv []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerPool">ServerPool</a>, srl []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#ServerSConnList">ServerSConnList</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>, gurl <a href="/pkg/builtin/#string">string</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="HealthCheckType">type <a href="/src/github.com/wzlib/wzapi/wzapi.go?s=605:713#L18">HealthCheckType</a>
+				<a class="permalink" href="#HealthCheckType">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type HealthCheckType func(w <a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#ResponseWriter">ResponseWriter</a>, r *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>, rpt *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a>, ver <a href="/pkg/builtin/#string">string</a>, aid <a href="/pkg/builtin/#string">string</a>)</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.12.15.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+</body>
+</html>
+
