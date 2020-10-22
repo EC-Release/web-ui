@@ -7,7 +7,7 @@
       const data = await response.json();
       if (data.content) {
         let op = atob(data.content);
-        document.getElementById('wzlib-readme').innerHTML = mark(op);
+        document.getElementById('wzlib-readme').innerHTML = marked(op);
       }
 
       })()
