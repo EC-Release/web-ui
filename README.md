@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/Enterprise-connect/web-ui.svg?branch=v1.1beta)](https://travis-ci.com/Enterprise-connect/web-ui)
+[![Build Status](https://travis-ci.com/EC-Release/web-ui.svg?branch=v1.1beta)](https://travis-ci.com/EC-Release/web-ui)
 
 # web-ui
 - EC Web UI based on Bootstrap and REACT.
