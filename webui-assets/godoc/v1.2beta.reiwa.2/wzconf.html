@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#375EAB">
 
-  <title>wzconf - Go Documentation Server</title>
+  <title>wzconf - The Go Programming Language</title>
 
 <link type="text/css" rel="stylesheet" href="lib/godoc/style.css">
 
+
 <script>window.initFuncs = [];</script>
+
 <script src="lib/godoc/jquery.js" defer></script>
 
 
 
-<script>var goVersion = "go1.12.16";</script>
+<script>var goVersion = "go1.12.17";</script>
 <script src="lib/godoc/godocs.js" defer></script>
 </head>
 <body>
@@ -24,11 +26,18 @@
 </div><!-- #lowframe -->
 
 <div id="topbar" class="wide"><div class="container">
-<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
-<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
 <a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
 <form method="GET" action="/search">
 <div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
 
 <span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
 </div>
@@ -382,7 +391,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="FetchArt">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=19661:19721#L789">FetchArt</a>
+			<h2 id="FetchArt">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=19681:19741#L790">FetchArt</a>
 				<a class="permalink" href="#FetchArt">&#xb6;</a>
 				
 				
@@ -395,7 +404,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="GetRev">func <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=5203:5223#L152">GetRev</a>
+			<h2 id="GetRev">func <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=5185:5205#L152">GetRev</a>
 				<a class="permalink" href="#GetRev">&#xb6;</a>
 				
 				
@@ -408,7 +417,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillBridge">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30625:30664#L1309">KillBridge</a>
+			<h2 id="KillBridge">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30645:30684#L1310">KillBridge</a>
 				<a class="permalink" href="#KillBridge">&#xb6;</a>
 				
 				
@@ -421,7 +430,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="KillContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30321:30360#L1296">KillContainer</a>
+			<h2 id="KillContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30341:30380#L1297">KillContainer</a>
 				<a class="permalink" href="#KillContainer">&#xb6;</a>
 				
 				
@@ -434,7 +443,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="RestartContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30049:30091#L1283">RestartContainer</a>
+			<h2 id="RestartContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30069:30111#L1284">RestartContainer</a>
 				<a class="permalink" href="#RestartContainer">&#xb6;</a>
 				
 				
@@ -476,7 +485,7 @@ Waza Library configuration package which will help bootstrap the settings for th
 		
 			
 			
-			<h2 id="Config">type <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=1464:5201#L54">Config</a>
+			<h2 id="Config">type <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=1459:5183#L54">Config</a>
 				<a class="permalink" href="#Config">&#xb6;</a>
 				
 				
@@ -541,7 +550,7 @@ basic agent setting structure.
     <span class="comment">//cloud foundry service id. Deprecated in future cert-based releases.</span>
 <span id="Config.Zone"></span>    Zone <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
 
-    <span class="comment">// deprecated in v1.1beta.fukuoka.2739</span>
+    <span class="comment">// deprecated in v1.1beta</span>
 <span id="Config.GroupID"></span>    GroupID <a href="/pkg/builtin/#string">string</a> `json:&#34;groupId&#34;`
 
 <span id="Config.Duration"></span>    Duration  <a href="/pkg/builtin/#int64">int64</a>    `json:&#34;-&#34;`
@@ -583,7 +592,7 @@ basic agent setting structure.
 
 			
 				
-				<h3 id="Init">func <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=5548:5601#L175">Init</a>
+				<h3 id="Init">func <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=5530:5583#L175">Init</a>
 					<a class="permalink" href="#Init">&#xb6;</a>
 					
 					
@@ -599,7 +608,7 @@ initialise the EC configuration with the collection of the settings
 
 			
 				
-				<h3 id="Config.AutoRefresh">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=41192:41252#L1861">AutoRefresh</a>
+				<h3 id="Config.AutoRefresh">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=41594:41654#L1877">AutoRefresh</a>
 					<a class="permalink" href="#Config.AutoRefresh">&#xb6;</a>
 					
 					
@@ -614,7 +623,7 @@ AutoRefresh is irrelevant token maintainer to any x:&lt;agent_mode&gt;
 				
 			
 				
-				<h3 id="Config.ExchangeGatewayList">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=48514:48615#L2235">ExchangeGatewayList</a>
+				<h3 id="Config.ExchangeGatewayList">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=48929:49030#L2251">ExchangeGatewayList</a>
 					<a class="permalink" href="#Config.ExchangeGatewayList">&#xb6;</a>
 					
 					
@@ -626,7 +635,7 @@ AutoRefresh is irrelevant token maintainer to any x:&lt;agent_mode&gt;
 				
 			
 				
-				<h3 id="Config.GetEncryptedKey">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=47334:47391#L2172">GetEncryptedKey</a>
+				<h3 id="Config.GetEncryptedKey">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=47736:47793#L2188">GetEncryptedKey</a>
 					<a class="permalink" href="#Config.GetEncryptedKey">&#xb6;</a>
 					
 					
@@ -641,7 +650,7 @@ GetEncryptedKey used only in legacy cloud foundry agent types
 				
 			
 				
-				<h3 id="Config.GetPublicKey">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=46028:46075#L2093">GetPublicKey</a>
+				<h3 id="Config.GetPublicKey">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=46430:46477#L2109">GetPublicKey</a>
 					<a class="permalink" href="#Config.GetPublicKey">&#xb6;</a>
 					
 					
@@ -653,7 +662,7 @@ GetEncryptedKey used only in legacy cloud foundry agent types
 				
 			
 				
-				<h3 id="Config.GetPublicKeyUsrApi">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=46640:46693#L2132">GetPublicKeyUsrApi</a>
+				<h3 id="Config.GetPublicKeyUsrApi">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=47042:47095#L2148">GetPublicKeyUsrApi</a>
 					<a class="permalink" href="#Config.GetPublicKeyUsrApi">&#xb6;</a>
 					
 					
@@ -665,7 +674,7 @@ GetEncryptedKey used only in legacy cloud foundry agent types
 				
 			
 				
-				<h3 id="Config.GroupValidation">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=45123:45182#L2045">GroupValidation</a>
+				<h3 id="Config.GroupValidation">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=45525:45584#L2061">GroupValidation</a>
 					<a class="permalink" href="#Config.GroupValidation">&#xb6;</a>
 					
 					
@@ -677,7 +686,7 @@ GetEncryptedKey used only in legacy cloud foundry agent types
 				
 			
 				
-				<h3 id="Config.GroupValidationV2">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=19481:19544#L859">GroupValidationV2</a>
+				<h3 id="Config.GroupValidationV2">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=19691:19754#L873">GroupValidationV2</a>
 					<a class="permalink" href="#Config.GroupValidationV2">&#xb6;</a>
 					
 					
@@ -693,7 +702,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=32362:32427#L1417">InitClientConfig</a>
+				<h3 id="Config.InitClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=32658:32723#L1433">InitClientConfig</a>
 					<a class="permalink" href="#Config.InitClientConfig">&#xb6;</a>
 					
 					
@@ -705,7 +714,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitGWClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=25501:25568#L1120">InitGWClientConfig</a>
+				<h3 id="Config.InitGWClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=25797:25864#L1136">InitGWClientConfig</a>
 					<a class="permalink" href="#Config.InitGWClientConfig">&#xb6;</a>
 					
 					
@@ -717,7 +726,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitGWServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=29010:29077#L1273">InitGWServerConfig</a>
+				<h3 id="Config.InitGWServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=29306:29373#L1289">InitGWServerConfig</a>
 					<a class="permalink" href="#Config.InitGWServerConfig">&#xb6;</a>
 					
 					
@@ -729,7 +738,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitGatewayConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=19934:20000#L875">InitGatewayConfig</a>
+				<h3 id="Config.InitGatewayConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=20144:20210#L889">InitGatewayConfig</a>
 					<a class="permalink" href="#Config.InitGatewayConfig">&#xb6;</a>
 					
 					
@@ -741,7 +750,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=36811:36876#L1644">InitServerConfig</a>
+				<h3 id="Config.InitServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=37128:37193#L1658">InitServerConfig</a>
 					<a class="permalink" href="#Config.InitServerConfig">&#xb6;</a>
 					
 					
@@ -753,7 +762,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitXClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=35233:35299#L1562">InitXClientConfig</a>
+				<h3 id="Config.InitXClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=35542:35608#L1576">InitXClientConfig</a>
 					<a class="permalink" href="#Config.InitXClientConfig">&#xb6;</a>
 					
 					
@@ -765,7 +774,7 @@ Unlink the original GroupValidation, GroupValudationV2 validates groups without 
 				
 			
 				
-				<h3 id="Config.InitXGatewayConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=22698:22823#L985">InitXGatewayConfig</a>
+				<h3 id="Config.InitXGatewayConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=22986:23111#L1001">InitXGatewayConfig</a>
 					<a class="permalink" href="#Config.InitXGatewayConfig">&#xb6;</a>
 					
 					
@@ -781,7 +790,7 @@ credential (@@cred), and permitted subscription group list (@@grp). The @@tls in
 				
 			
 				
-				<h3 id="Config.InitXServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=39748:39814#L1787">InitXServerConfig</a>
+				<h3 id="Config.InitXServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=40142:40208#L1803">InitXServerConfig</a>
 					<a class="permalink" href="#Config.InitXServerConfig">&#xb6;</a>
 					
 					
@@ -793,7 +802,7 @@ credential (@@cred), and permitted subscription group list (@@grp). The @@tls in
 				
 			
 				
-				<h3 id="Config.IsValidSettings">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=18926:18963#L837">IsValidSettings</a>
+				<h3 id="Config.IsValidSettings">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=19136:19173#L851">IsValidSettings</a>
 					<a class="permalink" href="#Config.IsValidSettings">&#xb6;</a>
 					
 					
@@ -805,7 +814,7 @@ credential (@@cred), and permitted subscription group list (@@grp). The @@tls in
 				
 			
 				
-				<h3 id="Config.ProxySetting">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=45810:45876#L2083">ProxySetting</a>
+				<h3 id="Config.ProxySetting">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=46212:46278#L2099">ProxySetting</a>
 					<a class="permalink" href="#Config.ProxySetting">&#xb6;</a>
 					
 					
@@ -817,7 +826,7 @@ credential (@@cred), and permitted subscription group list (@@grp). The @@tls in
 				
 			
 				
-				<h3 id="Config.TokenValidation">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=44471:44532#L2007">TokenValidation</a>
+				<h3 id="Config.TokenValidation">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=44873:44934#L2023">TokenValidation</a>
 					<a class="permalink" href="#Config.TokenValidation">&#xb6;</a>
 					
 					
@@ -832,7 +841,7 @@ cloud foundry only. Being deprecated
 				
 			
 				
-				<h3 id="Config.UsageReporting">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=42349:42412#L1910">UsageReporting</a>
+				<h3 id="Config.UsageReporting">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=42751:42814#L1926">UsageReporting</a>
 					<a class="permalink" href="#Config.UsageReporting">&#xb6;</a>
 					
 					
@@ -927,7 +936,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 
 			
 				
-				<h3 id="WatcherConfig.ArtUpdateOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=18809:18870#L743">ArtUpdateOps</a>
+				<h3 id="WatcherConfig.ArtUpdateOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=18829:18890#L744">ArtUpdateOps</a>
 					<a class="permalink" href="#WatcherConfig.ArtUpdateOps">&#xb6;</a>
 					
 					
@@ -954,7 +963,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 				
 			
 				
-				<h3 id="WatcherConfig.CreateNetwork">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=21731:21786#L885">CreateNetwork</a>
+				<h3 id="WatcherConfig.CreateNetwork">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=21751:21806#L886">CreateNetwork</a>
 					<a class="permalink" href="#WatcherConfig.CreateNetwork">&#xb6;</a>
 					
 					
@@ -966,7 +975,7 @@ InternalArt, InternalCfgFile are both used to run the commands, whereas Internal
 				
 			
 				
-				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=29187:29303#L1235">CreateProc</a>
+				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=29207:29323#L1236">CreateProc</a>
 					<a class="permalink" href="#WatcherConfig.CreateProc">&#xb6;</a>
 					
 					
@@ -981,7 +990,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=23093:23165#L944">DeployWatcher</a>
+				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=23113:23185#L945">DeployWatcher</a>
 					<a class="permalink" href="#WatcherConfig.DeployWatcher">&#xb6;</a>
 					
 					
@@ -993,7 +1002,7 @@ create a process by the watcher. @@ins is the instance number, @@ip is the port 
 				
 			
 				
-				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=28713:28766#L1212">GetIPMap</a>
+				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=28733:28786#L1213">GetIPMap</a>
 					<a class="permalink" href="#WatcherConfig.GetIPMap">&#xb6;</a>
 					
 					
@@ -1020,7 +1029,7 @@ GetOAuthToken return a valid token for authorisation purpose
 				
 			
 				
-				<h3 id="WatcherConfig.HealthCheckOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=32086:32133#L1394">HealthCheckOps</a>
+				<h3 id="WatcherConfig.HealthCheckOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=32106:32153#L1395">HealthCheckOps</a>
 					<a class="permalink" href="#WatcherConfig.HealthCheckOps">&#xb6;</a>
 					
 					
@@ -1064,7 +1073,7 @@ func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string,
 				
 			
 				
-				<h3 id="WatcherConfig.InitOpsScheduler">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=17205:17254#L687">InitOpsScheduler</a>
+				<h3 id="WatcherConfig.InitOpsScheduler">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=17225:17274#L688">InitOpsScheduler</a>
 					<a class="permalink" href="#WatcherConfig.InitOpsScheduler">&#xb6;</a>
 					
 					
@@ -1080,7 +1089,7 @@ artifact update, check operations, and refresh the encrypted passphrase before t
 				
 			
 				
-				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=15983:16060#L638">InitProxy</a>
+				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=15984:16061#L638">InitProxy</a>
 					<a class="permalink" href="#WatcherConfig.InitProxy">&#xb6;</a>
 					
 					
@@ -1092,7 +1101,7 @@ artifact update, check operations, and refresh the encrypted passphrase before t
 				
 			
 				
-				<h3 id="WatcherConfig.KillContainers">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30956:31003#L1323">KillContainers</a>
+				<h3 id="WatcherConfig.KillContainers">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30976:31023#L1324">KillContainers</a>
 					<a class="permalink" href="#WatcherConfig.KillContainers">&#xb6;</a>
 					
 					
@@ -1104,7 +1113,7 @@ artifact update, check operations, and refresh the encrypted passphrase before t
 				
 			
 				
-				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=31339:31380#L1345">KillProc</a>
+				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=31359:31400#L1346">KillProc</a>
 					<a class="permalink" href="#WatcherConfig.KillProc">&#xb6;</a>
 					
 					
@@ -1116,7 +1125,7 @@ artifact update, check operations, and refresh the encrypted passphrase before t
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=26655:26693#L1130">ProxyHTTPReq</a>
+				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=26675:26713#L1131">ProxyHTTPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyHTTPReq">&#xb6;</a>
 					
 					
@@ -1132,7 +1141,7 @@ turn watcher into an internal http proxy
 				
 			
 				
-				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=24770:24807#L1026">ProxyTCPReq</a>
+				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=24790:24827#L1027">ProxyTCPReq</a>
 					<a class="permalink" href="#WatcherConfig.ProxyTCPReq">&#xb6;</a>
 					
 					
@@ -1183,7 +1192,7 @@ turn watcher into an internal http proxy
 
 
 <div id="footer">
-Build version go1.12.16.<br>
+Build version go1.12.17.<br>
 Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
 the content of this page is licensed under the
 Creative Commons Attribution 3.0 License,
@@ -1194,5 +1203,7 @@ and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
 
 </div><!-- .container -->
 </div><!-- #page -->
+
 </body>
 </html>
+

@@ -5,16 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#375EAB">
 
-  <title>wzutil - Go Documentation Server</title>
+  <title>wzutil - The Go Programming Language</title>
 
 <link type="text/css" rel="stylesheet" href="lib/godoc/style.css">
 
+
 <script>window.initFuncs = [];</script>
+
 <script src="lib/godoc/jquery.js" defer></script>
 
 
 
-<script>var goVersion = "go1.12.16";</script>
+<script>var goVersion = "go1.12.17";</script>
 <script src="lib/godoc/godocs.js" defer></script>
 </head>
 <body>
@@ -24,11 +26,18 @@
 </div><!-- #lowframe -->
 
 <div id="topbar" class="wide"><div class="container">
-<div class="top-heading" id="heading-wide"><a href="/pkg/">Go Documentation Server</a></div>
-<div class="top-heading" id="heading-narrow"><a href="/pkg/">GoDoc</a></div>
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
 <a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
 <form method="GET" action="/search">
 <div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
 
 <span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
 </div>
@@ -188,7 +197,10 @@
 				<dd><a href="#FILLog">func FILLog(l *log.Logger, c ...interface{})</a></dd>
 			
 				
-				<dd><a href="#GeneratePassphrase">func GeneratePassphrase() (string, error)</a></dd>
+				<dd><a href="#GenerateAdmPassphrase">func GenerateAdmPassphrase() (string, error)</a></dd>
+			
+				
+				<dd><a href="#GeneratePassphrase">func GeneratePassphrase(mod string) (string, error)</a></dd>
 			
 				
 				<dd><a href="#GetCurrentIPAddrs">func GetCurrentIPAddrs() (ips []net.IP)</a></dd>
@@ -210,9 +222,6 @@
 			
 				
 				<dd><a href="#GetHashedPassphraseInRootPath">func GetHashedPassphraseInRootPath() (string, error)</a></dd>
-			
-				
-				<dd><a href="#GetHashedStr">func GetHashedStr(hs string) (string, error)</a></dd>
 			
 				
 				<dd><a href="#GetOAuthToken">func GetOAuthToken(cid, csc string, oa2 *url.URL, tkn *model.Token) string</a></dd>
@@ -299,10 +308,10 @@
 				<dd><a href="#ReadFile">func ReadFile(path string) (content []byte, err error)</a></dd>
 			
 				
-				<dd><a href="#RefreshPassphrase">func RefreshPassphrase(pps string) (string, error)</a></dd>
+				<dd><a href="#RefreshPassphrase">func RefreshPassphrase(mod string) (string, error)</a></dd>
 			
 				
-				<dd><a href="#RefreshPassphraseScheduler">func RefreshPassphraseScheduler(pps *string)</a></dd>
+				<dd><a href="#RefreshPassphraseScheduler">func RefreshPassphraseScheduler(mode string)</a></dd>
 			
 				
 				<dd><a href="#RetrieveUploadFile">func RetrieveUploadFile(r *http.Request, s string) (string, error)</a></dd>
@@ -409,13 +418,13 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptFileByKeypair">func (c *Cert) EncryptFileByKeypair(fi string) (asc, sig, pvk, pbk string, err error)</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptOneShotByBase64CertStr">func (c *Cert) EncryptOneShotByBase64CertStr() string</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptOneShotByBase64CertStr">func (c *Cert) EncryptOneShotByBase64CertStr(mod string) string</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptString">func (c *Cert) EncryptString(plaintext string) (string, error)</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptV2">func (c *Cert) EncryptV2(d string) []byte</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.EncryptV2">func (c *Cert) EncryptV2(d, mod string) []byte</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.GenerateCRTFile">func (c *Cert) GenerateCRTFile(fname string, derBytes, intDERBytes []byte) ([]byte, error)</a></dd>
@@ -430,7 +439,7 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.GeneratePVKFile">func (c *Cert) GeneratePVKFile(fname, _pw string, _key *rsa.PrivateKey) error</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.GetBearToken">func (c *Cert) GetBearToken() string</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.GetBearToken">func (c *Cert) GetBearToken(mod string) string</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.GetCertDetail">func (c *Cert) GetCertDetail() *CertDetail</a></dd>
@@ -454,10 +463,10 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.HexRootCert">func (c *Cert) HexRootCert() ([]byte, error)</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.LoadKeypair">func (c *Cert) LoadKeypair(pub_raw, prv_raw string) error</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadKeypair">func (c *Cert) LoadKeypair(pub_raw, prv_raw string) (string, error)</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.LoadPrivateKey">func (c *Cert) LoadPrivateKey(prv_raw string) error</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.LoadPrivateKey">func (c *Cert) LoadPrivateKey(prv_raw string) (string, error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.LoadPublicCrt">func (c *Cert) LoadPublicCrt(pub_raw string) (*x509.Certificate, error)</a></dd>
@@ -490,13 +499,7 @@
 					<dd>&nbsp; &nbsp; <a href="#Cert.Sign">func (c *Cert) Sign()</a></dd>
 				
 					
-					<dd>&nbsp; &nbsp; <a href="#Cert.UpdatePassphraseInRootPathByStdin">func (c *Cert) UpdatePassphraseInRootPathByStdin() (string, error)</a></dd>
-				
-					
-					<dd>&nbsp; &nbsp; <a href="#Cert.UpdatePassphraseOps">func (c *Cert) UpdatePassphraseOps() (string, error)</a></dd>
-				
-					
-					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateClientCreds">func (c *Cert) ValidateClientCreds(cid, csc string) error</a></dd>
+					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateClientCreds">func (c *Cert) ValidateClientCreds(cid, csc string) (*ReservedBytes, error)</a></dd>
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#Cert.ValidateScope">func (c *Cert) ValidateScope(scp string) bool</a></dd>
@@ -622,6 +625,11 @@
 				
 					
 					<dd>&nbsp; &nbsp; <a href="#PGPObj.ValidateSignature">func (p *PGPObj) ValidateSignature(fi string) error</a></dd>
+				
+			
+				
+				<dd><a href="#ReservedBytes">type ReservedBytes</a></dd>
+				
 				
 			
 				
@@ -833,7 +841,7 @@
 		
 			
 			
-			<h2 id="BcryptComp">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=60504:60540#L1835">BcryptComp</a>
+			<h2 id="BcryptComp">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=61265:61301#L1867">BcryptComp</a>
 				<a class="permalink" href="#BcryptComp">&#xb6;</a>
 				
 				
@@ -849,7 +857,7 @@ BcryptComp compares given@pw is pwd in plaintext, and @d is pwd in bcrypt hash
 		
 			
 			
-			<h2 id="BcryptHash">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=60713:60761#L1846">BcryptHash</a>
+			<h2 id="BcryptHash">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=61474:61522#L1878">BcryptHash</a>
 				<a class="permalink" href="#BcryptHash">&#xb6;</a>
 				
 				
@@ -918,7 +926,7 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="ClearMemory">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=60865:60891#L1853">ClearMemory</a>
+			<h2 id="ClearMemory">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=61626:61652#L1885">ClearMemory</a>
 				<a class="permalink" href="#ClearMemory">&#xb6;</a>
 				
 				
@@ -1100,14 +1108,27 @@ the ca indicates the issuer&#39;s URL and will receive the API calls from the ag
 		
 			
 			
-			<h2 id="GeneratePassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=70800:70840#L2286">GeneratePassphrase</a>
+			<h2 id="GenerateAdmPassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=71735:71778#L2323">GenerateAdmPassphrase</a>
+				<a class="permalink" href="#GenerateAdmPassphrase">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GenerateAdmPassphrase() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GeneratePassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=72108:72158#L2335">GeneratePassphrase</a>
 				<a class="permalink" href="#GeneratePassphrase">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func GeneratePassphrase() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<pre>func GeneratePassphrase(mod <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-GeneratePassphrase return the passphrase in plaintext generated via stdin or env
+GeneratePassphrase return the passphrase hash generated via stdin or env
 </p>
 
 			
@@ -1185,7 +1206,7 @@ setting in the environment variable to the current process
 		
 			
 			
-			<h2 id="GetHashedPassphraseInEnv">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=72535:72581#L2355">GetHashedPassphraseInEnv</a>
+			<h2 id="GetHashedPassphraseInEnv">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=74280:74326#L2418">GetHashedPassphraseInEnv</a>
 				<a class="permalink" href="#GetHashedPassphraseInEnv">&#xb6;</a>
 				
 				
@@ -1201,7 +1222,7 @@ GetHashedPassphraseInEnv return the environment variable contains a hashed passp
 		
 			
 			
-			<h2 id="GetHashedPassphraseInRootPath">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=72863:72914#L2364">GetHashedPassphraseInRootPath</a>
+			<h2 id="GetHashedPassphraseInRootPath">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=74608:74659#L2427">GetHashedPassphraseInRootPath</a>
 				<a class="permalink" href="#GetHashedPassphraseInRootPath">&#xb6;</a>
 				
 				
@@ -1209,22 +1230,6 @@ GetHashedPassphraseInEnv return the environment variable contains a hashed passp
 			<pre>func GetHashedPassphraseInRootPath() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
 ValidateHashedPassphraseInRootPath validate the hashed passphrase in the root path and return it unaltered.
-</p>
-
-			
-			
-
-		
-			
-			
-			<h2 id="GetHashedStr">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=73976:74018#L2425">GetHashedStr</a>
-				<a class="permalink" href="#GetHashedStr">&#xb6;</a>
-				
-				
-			</h2>
-			<pre>func GetHashedStr(hs <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-			<p>
-GetHashedStr return a time-specific hashed string
 </p>
 
 			
@@ -1606,14 +1611,14 @@ InitXTermClient launches the xterm simulator with the prompt format of target @@
 		
 			
 			
-			<h2 id="RefreshPassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=73178:73227#L2377">RefreshPassphrase</a>
+			<h2 id="RefreshPassphrase">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=74939:74988#L2440">RefreshPassphrase</a>
 				<a class="permalink" href="#RefreshPassphrase">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func RefreshPassphrase(pps <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			<pre>func RefreshPassphrase(mod <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 			<p>
-RefreshPassphrase return the renewal of the passing variable @@pps
+RefreshPassphrase return the renewal of the passing hash @@pps and caches the hash
 </p>
 
 			
@@ -1622,12 +1627,12 @@ RefreshPassphrase return the renewal of the passing variable @@pps
 		
 			
 			
-			<h2 id="RefreshPassphraseScheduler">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=68236:68280#L2166">RefreshPassphraseScheduler</a>
+			<h2 id="RefreshPassphraseScheduler">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=69111:69155#L2198">RefreshPassphraseScheduler</a>
 				<a class="permalink" href="#RefreshPassphraseScheduler">&#xb6;</a>
 				
 				
 			</h2>
-			<pre>func RefreshPassphraseScheduler(pps *<a href="/pkg/builtin/#string">string</a>)</pre>
+			<pre>func RefreshPassphraseScheduler(mode <a href="/pkg/builtin/#string">string</a>)</pre>
 			<p>
 UpdatePassphraseInMemopry and update the passphrase in the root path. It returns the encrypted and updated passphrase.
 </p>
@@ -1846,7 +1851,7 @@ ValidateTokenEligibility help analyse a basic legitimate of the token
 		
 			
 			
-			<h2 id="ValidateTokenExp">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=84295:84342#L2928">ValidateTokenExp</a>
+			<h2 id="ValidateTokenExp">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=91201:91248#L3188">ValidateTokenExp</a>
 				<a class="permalink" href="#ValidateTokenExp">&#xb6;</a>
 				
 				
@@ -1876,7 +1881,7 @@ ValidateTokenExp only validate the expiration of the token, it does not garantee
 		
 			
 			
-			<h2 id="Cert">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=23822:24555#L135">Cert</a>
+			<h2 id="Cert">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=24232:24965#L147">Cert</a>
 				<a class="permalink" href="#Cert">&#xb6;</a>
 				
 				
@@ -1901,7 +1906,7 @@ ValidateTokenExp only validate the expiration of the token, it does not garantee
 
 			
 				
-				<h3 id="NewCert">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=49654:49692#L1381">NewCert</a>
+				<h3 id="NewCert">func <a href="/src/github.com/wzlib/wzutil/cert.go?s=50334:50372#L1408">NewCert</a>
 					<a class="permalink" href="#NewCert">&#xb6;</a>
 					
 					
@@ -1917,7 +1922,7 @@ create a cert instance with a custom revision
 
 			
 				
-				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=50009:50074#L1401">AgentCertVerify</a>
+				<h3 id="Cert.AgentCertVerify">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=50689:50754#L1428">AgentCertVerify</a>
 					<a class="permalink" href="#Cert.AgentCertVerify">&#xb6;</a>
 					
 					
@@ -1934,7 +1939,7 @@ The function is made to verify
 				
 			
 				
-				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=41722:41833#L1015">CRTRenewing</a>
+				<h3 id="Cert.CRTRenewing">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=42402:42513#L1042">CRTRenewing</a>
 					<a class="permalink" href="#Cert.CRTRenewing">&#xb6;</a>
 					
 					
@@ -1949,7 +1954,7 @@ uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppw
 				
 			
 				
-				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=40185:40272#L928">CSRSelfSigning</a>
+				<h3 id="Cert.CSRSelfSigning">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=40865:40952#L955">CSRSelfSigning</a>
 					<a class="permalink" href="#Cert.CSRSelfSigning">&#xb6;</a>
 					
 					
@@ -1961,7 +1966,7 @@ uid must be provisioned for the signee&#39;s &#34;crtToRenew&#34;. cert,ppvk,ppw
 				
 			
 				
-				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=40820:40924#L964">CSRSigning</a>
+				<h3 id="Cert.CSRSigning">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=41500:41604#L991">CSRSigning</a>
 					<a class="permalink" href="#Cert.CSRSigning">&#xb6;</a>
 					
 					
@@ -1976,7 +1981,7 @@ uid must be provisioned for the signee&#39;s csr. cert,ppvk,ppwd all refer to th
 				
 			
 				
-				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=42656:42774#L1067">CreateSelfSignedCert</a>
+				<h3 id="Cert.CreateSelfSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=43336:43454#L1094">CreateSelfSignedCert</a>
 					<a class="permalink" href="#Cert.CreateSelfSignedCert">&#xb6;</a>
 					
 					
@@ -1991,7 +1996,7 @@ for embedded root cert in the agent
 				
 			
 				
-				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=37412:37468#L771">CreateSignatureByPvkStr</a>
+				<h3 id="Cert.CreateSignatureByPvkStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=38091:38147#L797">CreateSignatureByPvkStr</a>
 					<a class="permalink" href="#Cert.CreateSignatureByPvkStr">&#xb6;</a>
 					
 					
@@ -2007,7 +2012,7 @@ CreateSignatureByPvkStr create the signature (sha256) based on the given data by
 				
 			
 				
-				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=44266:44432#L1130">CreateSignedCert</a>
+				<h3 id="Cert.CreateSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=44946:45112#L1157">CreateSignedCert</a>
 					<a class="permalink" href="#Cert.CreateSignedCert">&#xb6;</a>
 					
 					
@@ -2019,7 +2024,7 @@ CreateSignatureByPvkStr create the signature (sha256) based on the given data by
 				
 			
 				
-				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=77245:77291#L2602">Decrypt</a>
+				<h3 id="Cert.Decrypt">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=80106:80152#L2697">Decrypt</a>
 					<a class="permalink" href="#Cert.Decrypt">&#xb6;</a>
 					
 					
@@ -2034,7 +2039,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26861:26913#L287">DecryptFile</a>
+				<h3 id="Cert.DecryptFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27271:27323#L299">DecryptFile</a>
 					<a class="permalink" href="#Cert.DecryptFile">&#xb6;</a>
 					
 					
@@ -2046,7 +2051,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptFileByKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26427:26494#L262">DecryptFileByKeypair</a>
+				<h3 id="Cert.DecryptFileByKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26837:26904#L274">DecryptFileByKeypair</a>
 					<a class="permalink" href="#Cert.DecryptFileByKeypair">&#xb6;</a>
 					
 					
@@ -2058,7 +2063,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptFileToStream">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26678:26738#L276">DecryptFileToStream</a>
+				<h3 id="Cert.DecryptFileToStream">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27088:27148#L288">DecryptFileToStream</a>
 					<a class="permalink" href="#Cert.DecryptFileToStream">&#xb6;</a>
 					
 					
@@ -2070,7 +2075,7 @@ Decrypt will decrypt the product of EncryptV2 by the private key
 				
 			
 				
-				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=38630:38692#L830">DecryptOneShotByBase64PvkStr</a>
+				<h3 id="Cert.DecryptOneShotByBase64PvkStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=39310:39372#L857">DecryptOneShotByBase64PvkStr</a>
 					<a class="permalink" href="#Cert.DecryptOneShotByBase64PvkStr">&#xb6;</a>
 					
 					
@@ -2085,7 +2090,7 @@ Decrypt the given @_da token and return uuid string based on the preloaded priva
 				
 			
 				
-				<h3 id="Cert.DecryptString">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27038:27098#L298">DecryptString</a>
+				<h3 id="Cert.DecryptString">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27448:27508#L310">DecryptString</a>
 					<a class="permalink" href="#Cert.DecryptString">&#xb6;</a>
 					
 					
@@ -2097,7 +2102,7 @@ Decrypt the given @_da token and return uuid string based on the preloaded priva
 				
 			
 				
-				<h3 id="Cert.EncryptFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25496:25548#L211">EncryptFile</a>
+				<h3 id="Cert.EncryptFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25906:25958#L223">EncryptFile</a>
 					<a class="permalink" href="#Cert.EncryptFile">&#xb6;</a>
 					
 					
@@ -2109,7 +2114,7 @@ Decrypt the given @_da token and return uuid string based on the preloaded priva
 				
 			
 				
-				<h3 id="Cert.EncryptFileByKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25751:25831#L223">EncryptFileByKeypair</a>
+				<h3 id="Cert.EncryptFileByKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=26161:26241#L235">EncryptFileByKeypair</a>
 					<a class="permalink" href="#Cert.EncryptFileByKeypair">&#xb6;</a>
 					
 					
@@ -2124,12 +2129,12 @@ EncryptFileByKeypair produces the encrypt file, a pairkey, and the signature
 				
 			
 				
-				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=36561:36614#L732">EncryptOneShotByBase64CertStr</a>
+				<h3 id="Cert.EncryptOneShotByBase64CertStr">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=37225:37288#L758">EncryptOneShotByBase64CertStr</a>
 					<a class="permalink" href="#Cert.EncryptOneShotByBase64CertStr">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) EncryptOneShotByBase64CertStr() <a href="/pkg/builtin/#string">string</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptOneShotByBase64CertStr(mod <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
 				<p>
 Encrypt a uuid-based string (_da) based on the preloaded cert.
 </p>
@@ -2139,7 +2144,7 @@ Encrypt a uuid-based string (_da) based on the preloaded cert.
 				
 			
 				
-				<h3 id="Cert.EncryptString">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25248:25308#L200">EncryptString</a>
+				<h3 id="Cert.EncryptString">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25658:25718#L212">EncryptString</a>
 					<a class="permalink" href="#Cert.EncryptString">&#xb6;</a>
 					
 					
@@ -2151,14 +2156,14 @@ Encrypt a uuid-based string (_da) based on the preloaded cert.
 				
 			
 				
-				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=76092:76133#L2530">EncryptV2</a>
+				<h3 id="Cert.EncryptV2">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=78887:78933#L2624">EncryptV2</a>
 					<a class="permalink" href="#Cert.EncryptV2">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) EncryptV2(d <a href="/pkg/builtin/#string">string</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) EncryptV2(d, mod <a href="/pkg/builtin/#string">string</a>) []<a href="/pkg/builtin/#byte">byte</a></pre>
 				<p>
-EncryptV2 encrypt the string in uuid format with the preloaded public key
+EncryptV2 encrypt the string (@@d) in uuid format and a mode (@@mod) in usage with the preloaded public key
 </p>
 
 				
@@ -2166,7 +2171,7 @@ EncryptV2 encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=58554:58642#L1757">GenerateCRTFile</a>
+				<h3 id="Cert.GenerateCRTFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=59315:59403#L1789">GenerateCRTFile</a>
 					<a class="permalink" href="#Cert.GenerateCRTFile">&#xb6;</a>
 					
 					
@@ -2178,7 +2183,7 @@ EncryptV2 encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=56514:56579#L1668">GenerateCSR</a>
+				<h3 id="Cert.GenerateCSR">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=57275:57340#L1700">GenerateCSR</a>
 					<a class="permalink" href="#Cert.GenerateCSR">&#xb6;</a>
 					
 					
@@ -2190,7 +2195,7 @@ EncryptV2 encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=58257:58332#L1746">GenerateCSRFile</a>
+				<h3 id="Cert.GenerateCSRFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=59018:59093#L1778">GenerateCSRFile</a>
 					<a class="permalink" href="#Cert.GenerateCSRFile">&#xb6;</a>
 					
 					
@@ -2202,7 +2207,7 @@ EncryptV2 encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=59345:59421#L1791">GeneratePVKFile</a>
+				<h3 id="Cert.GeneratePVKFile">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=60106:60182#L1823">GeneratePVKFile</a>
 					<a class="permalink" href="#Cert.GeneratePVKFile">&#xb6;</a>
 					
 					
@@ -2214,19 +2219,19 @@ EncryptV2 encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=85478:85513#L2983">GetBearToken</a>
+				<h3 id="Cert.GetBearToken">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=92258:92303#L3232">GetBearToken</a>
 					<a class="permalink" href="#Cert.GetBearToken">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) GetBearToken() <a href="/pkg/builtin/#string">string</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) GetBearToken(mod <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#string">string</a></pre>
 				
 				
 				
 				
 			
 				
-				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=64979:65021#L2055">GetCertDetail</a>
+				<h3 id="Cert.GetCertDetail">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=65854:65896#L2087">GetCertDetail</a>
 					<a class="permalink" href="#Cert.GetCertDetail">&#xb6;</a>
 					
 					
@@ -2238,7 +2243,7 @@ EncryptV2 encrypt the string in uuid format with the preloaded public key
 				
 			
 				
-				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=82995:83050#L2866">GetDecryptedPrivateKey</a>
+				<h3 id="Cert.GetDecryptedPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=89763:89818#L3123">GetDecryptedPrivateKey</a>
 					<a class="permalink" href="#Cert.GetDecryptedPrivateKey">&#xb6;</a>
 					
 					
@@ -2253,7 +2258,7 @@ Print decrypted private key by passing the base64 excrypted private key (pk) and
 				
 			
 				
-				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=24687:24718#L169">GetDevID</a>
+				<h3 id="Cert.GetDevID">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25097:25128#L181">GetDevID</a>
 					<a class="permalink" href="#Cert.GetDevID">&#xb6;</a>
 					
 					
@@ -2268,7 +2273,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=64466:64506#L2034">GetExtensions</a>
+				<h3 id="Cert.GetExtensions">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=65341:65381#L2066">GetExtensions</a>
 					<a class="permalink" href="#Cert.GetExtensions">&#xb6;</a>
 					
 					
@@ -2280,7 +2285,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=64146:64192#L2020">GetScopeList</a>
+				<h3 id="Cert.GetScopeList">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=65021:65067#L2052">GetScopeList</a>
 					<a class="permalink" href="#Cert.GetScopeList">&#xb6;</a>
 					
 					
@@ -2292,7 +2297,7 @@ get the client/developer id
 				
 			
 				
-				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=74490:74552#L2451">GetTLSConfigFromBase64Keys</a>
+				<h3 id="Cert.GetTLSConfigFromBase64Keys">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=77251:77313#L2545">GetTLSConfigFromBase64Keys</a>
 					<a class="permalink" href="#Cert.GetTLSConfigFromBase64Keys">&#xb6;</a>
 					
 					
@@ -2307,7 +2312,7 @@ getting the tls.Config pair for the tls-secured calls
 				
 			
 				
-				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=79869:79910#L2731">HexRootCert</a>
+				<h3 id="Cert.HexRootCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=82728:82769#L2826">HexRootCert</a>
 					<a class="permalink" href="#Cert.HexRootCert">&#xb6;</a>
 					
 					
@@ -2319,15 +2324,14 @@ getting the tls.Config pair for the tls-secured calls
 				
 			
 				
-				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=63386:63442#L1976">LoadKeypair</a>
+				<h3 id="Cert.LoadKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=64222:64287#L2008">LoadKeypair</a>
 					<a class="permalink" href="#Cert.LoadKeypair">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) LoadKeypair(pub_raw, prv_raw <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadKeypair(pub_raw, prv_raw <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-load the keypair for the current cert object
-pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in der string
+LoadKeypair loads the keypair from the given x509 keypair and returns passphrase hash. pub_raw is base64 certficate string, where prv_raw is encrypted private key string, all in der string.
 </p>
 
 				
@@ -2335,15 +2339,14 @@ pub_raw is base64 certficate, where prv_raw is unencrypted private key, all in d
 				
 			
 				
-				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=71801:71853#L2313">LoadPrivateKey</a>
+				<h3 id="Cert.LoadPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=73365:73425#L2369">LoadPrivateKey</a>
 					<a class="permalink" href="#Cert.LoadPrivateKey">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) LoadPrivateKey(prv_raw <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) LoadPrivateKey(prv_raw <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-load and evaluate the base64-encoded private key (@@prv_raw)
-with passphrase
+LoadPrivateKey load and evaluate the base64-encoded private key (@@prv_raw) with passphrase and return the passphrase hash
 </p>
 
 				
@@ -2351,7 +2354,7 @@ with passphrase
 				
 			
 				
-				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=67628:67697#L2142">LoadPublicCrt</a>
+				<h3 id="Cert.LoadPublicCrt">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=68503:68572#L2174">LoadPublicCrt</a>
 					<a class="permalink" href="#Cert.LoadPublicCrt">&#xb6;</a>
 					
 					
@@ -2363,7 +2366,7 @@ with passphrase
 				
 			
 				
-				<h3 id="Cert.LoadSavedKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=62579:62617#L1938">LoadSavedKeypair</a>
+				<h3 id="Cert.LoadSavedKeypair">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=63354:63392#L1971">LoadSavedKeypair</a>
 					<a class="permalink" href="#Cert.LoadSavedKeypair">&#xb6;</a>
 					
 					
@@ -2378,7 +2381,7 @@ load the saved keypair for the current cert object
 				
 			
 				
-				<h3 id="Cert.LoadUnencryptedPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=61845:61907#L1893">LoadUnencryptedPrivateKey</a>
+				<h3 id="Cert.LoadUnencryptedPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=62620:62682#L1926">LoadUnencryptedPrivateKey</a>
 					<a class="permalink" href="#Cert.LoadUnencryptedPrivateKey">&#xb6;</a>
 					
 					
@@ -2393,7 +2396,7 @@ LoadPvtKey load an unencrypted plain PKCS1 PrivateKey to the Cert object
 				
 			
 				
-				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=75333:75391#L2493">ParseCRT</a>
+				<h3 id="Cert.ParseCRT">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=78094:78152#L2587">ParseCRT</a>
 					<a class="permalink" href="#Cert.ParseCRT">&#xb6;</a>
 					
 					
@@ -2408,7 +2411,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=75633:75698#L2508">ParseCSR</a>
+				<h3 id="Cert.ParseCSR">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=78394:78459#L2602">ParseCSR</a>
 					<a class="permalink" href="#Cert.ParseCSR">&#xb6;</a>
 					
 					
@@ -2420,7 +2423,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=31491:31512#L494">Renew</a>
+				<h3 id="Cert.Renew">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=32029:32050#L513">Renew</a>
 					<a class="permalink" href="#Cert.Renew">&#xb6;</a>
 					
 					
@@ -2432,7 +2435,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=46690:46837#L1241">RenewSignedCert</a>
+				<h3 id="Cert.RenewSignedCert">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=47370:47517#L1268">RenewSignedCert</a>
 					<a class="permalink" href="#Cert.RenewSignedCert">&#xb6;</a>
 					
 					
@@ -2444,7 +2447,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=51806:51829#L1486">Request</a>
+				<h3 id="Cert.Request">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=52486:52509#L1513">Request</a>
 					<a class="permalink" href="#Cert.Request">&#xb6;</a>
 					
 					
@@ -2456,7 +2459,7 @@ parse certificate without verifying
 				
 			
 				
-				<h3 id="Cert.SetRawPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=24884:24927#L179">SetRawPrivateKey</a>
+				<h3 id="Cert.SetRawPrivateKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25294:25337#L191">SetRawPrivateKey</a>
 					<a class="permalink" href="#Cert.SetRawPrivateKey">&#xb6;</a>
 					
 					
@@ -2471,7 +2474,7 @@ save raw privatekey base64 string for validation
 				
 			
 				
-				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=27869:27889#L338">Sign</a>
+				<h3 id="Cert.Sign">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=28279:28299#L350">Sign</a>
 					<a class="permalink" href="#Cert.Sign">&#xb6;</a>
 					
 					
@@ -2486,42 +2489,12 @@ Sign introduces the certificate-signing process and generate a signed x509 certi
 				
 			
 				
-				<h3 id="Cert.UpdatePassphraseInRootPathByStdin">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=69867:69933#L2245">UpdatePassphraseInRootPathByStdin</a>
-					<a class="permalink" href="#Cert.UpdatePassphraseInRootPathByStdin">&#xb6;</a>
-					
-					
-				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) UpdatePassphraseInRootPathByStdin() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-				<p>
-UpdatePassphraseByStdin request passphrase via sdtin and update the passphrase in the root path. It returns the encrypted passphrase.
-</p>
-
-				
-				
-				
-			
-				
-				<h3 id="Cert.UpdatePassphraseOps">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=70232:70284#L2261">UpdatePassphraseOps</a>
-					<a class="permalink" href="#Cert.UpdatePassphraseOps">&#xb6;</a>
-					
-					
-				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) UpdatePassphraseOps() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
-				<p>
-UpdatePassphraseByStdin request passphrase via sdtin and update the passphrase in the root path. It returns the encrypted passphrase.
-</p>
-
-				
-				
-				
-			
-				
-				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=83619:83675#L2899">ValidateClientCreds</a>
+				<h3 id="Cert.ValidateClientCreds">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=90387:90460#L3156">ValidateClientCreds</a>
 					<a class="permalink" href="#Cert.ValidateClientCreds">&#xb6;</a>
 					
 					
 				</h3>
-				<pre>func (c *<a href="#Cert">Cert</a>) ValidateClientCreds(cid, csc <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<pre>func (c *<a href="#Cert">Cert</a>) ValidateClientCreds(cid, csc <a href="/pkg/builtin/#string">string</a>) (*<a href="#ReservedBytes">ReservedBytes</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
 ValidateClientCreds validate the @@cid and @csc combine and enable token generation
 </p>
@@ -2531,7 +2504,7 @@ ValidateClientCreds validate the @@cid and @csc combine and enable token generat
 				
 			
 				
-				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=63909:63953#L2004">ValidateScope</a>
+				<h3 id="Cert.ValidateScope">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=64784:64828#L2036">ValidateScope</a>
 					<a class="permalink" href="#Cert.ValidateScope">&#xb6;</a>
 					
 					
@@ -2543,7 +2516,7 @@ ValidateClientCreds validate the @@cid and @csc combine and enable token generat
 				
 			
 				
-				<h3 id="Cert.ValidateSignatureByPublicKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=24957:25031#L183">ValidateSignatureByPublicKey</a>
+				<h3 id="Cert.ValidateSignatureByPublicKey">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=25367:25441#L195">ValidateSignatureByPublicKey</a>
 					<a class="permalink" href="#Cert.ValidateSignatureByPublicKey">&#xb6;</a>
 					
 					
@@ -2555,14 +2528,15 @@ ValidateClientCreds validate the @@cid and @csc combine and enable token generat
 				
 			
 				
-				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=84815:84875#L2951">ValidateToken</a>
+				<h3 id="Cert.ValidateToken">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=91869:91929#L3216">ValidateToken</a>
 					<a class="permalink" href="#Cert.ValidateToken">&#xb6;</a>
 					
 					
 				</h3>
 				<pre>func (c *<a href="#Cert">Cert</a>) ValidateToken(_sg, _om <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
 				<p>
-ValidateToken validate against the expiration, and the overall authenticity of the token
+export ValidateToken
+ValidateToken validate against the expiration, and the overall authenticity of the token. It returns the owner&#39;s uuid
 </p>
 
 				
@@ -2570,7 +2544,7 @@ ValidateToken validate against the expiration, and the overall authenticity of t
 				
 			
 				
-				<h3 id="Cert.VerifyStrBySignature">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=38009:38063#L799">VerifyStrBySignature</a>
+				<h3 id="Cert.VerifyStrBySignature">func (*Cert) <a href="/src/github.com/wzlib/wzutil/cert.go?s=38688:38742#L825">VerifyStrBySignature</a>
 					<a class="permalink" href="#Cert.VerifyStrBySignature">&#xb6;</a>
 					
 					
@@ -2587,7 +2561,7 @@ VerifyStrBySignature verifyas signature @da based on the original content @om by
 		
 			
 			
-			<h2 id="CertDetail">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22072:22805#L90">CertDetail</a>
+			<h2 id="CertDetail">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22482:23215#L102">CertDetail</a>
 				<a class="permalink" href="#CertDetail">&#xb6;</a>
 				
 				
@@ -2625,7 +2599,7 @@ VerifyStrBySignature verifyas signature @da based on the original content @om by
 		
 			
 			
-			<h2 id="CertExts">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22807:22995#L107">CertExts</a>
+			<h2 id="CertExts">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=23217:23405#L119">CertExts</a>
 				<a class="permalink" href="#CertExts">&#xb6;</a>
 				
 				
@@ -2654,7 +2628,7 @@ VerifyStrBySignature verifyas signature @da based on the original content @om by
 		
 			
 			
-			<h2 id="CertReqInfo">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22997:23820#L115">CertReqInfo</a>
+			<h2 id="CertReqInfo">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=23407:24230#L127">CertReqInfo</a>
 				<a class="permalink" href="#CertReqInfo">&#xb6;</a>
 				
 				
@@ -2982,7 +2956,7 @@ addr from x-forwrded-for ip:port
 
 			
 				
-				<h3 id="PGPObj.DecodePrivateKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=10622:10683#L573">DecodePrivateKey</a>
+				<h3 id="PGPObj.DecodePrivateKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=10795:10856#L582">DecodePrivateKey</a>
 					<a class="permalink" href="#PGPObj.DecodePrivateKey">&#xb6;</a>
 					
 					
@@ -2994,7 +2968,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.DecodePublicKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=11252:11312#L610">DecodePublicKey</a>
+				<h3 id="PGPObj.DecodePublicKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=11425:11485#L619">DecodePublicKey</a>
 					<a class="permalink" href="#PGPObj.DecodePublicKey">&#xb6;</a>
 					
 					
@@ -3006,7 +2980,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.DecodeSignature">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=9965:10013#L538">DecodeSignature</a>
+				<h3 id="PGPObj.DecodeSignature">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=10138:10186#L547">DecodeSignature</a>
 					<a class="permalink" href="#PGPObj.DecodeSignature">&#xb6;</a>
 					
 					
@@ -3018,7 +2992,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.DecryptFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=5242:5295#L294">DecryptFile</a>
+				<h3 id="PGPObj.DecryptFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=5328:5381#L298">DecryptFile</a>
 					<a class="permalink" href="#PGPObj.DecryptFile">&#xb6;</a>
 					
 					
@@ -3030,7 +3004,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.DecryptFileByKeypair">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=3689:3758#L202">DecryptFileByKeypair</a>
+				<h3 id="PGPObj.DecryptFileByKeypair">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=3775:3844#L206">DecryptFileByKeypair</a>
 					<a class="permalink" href="#PGPObj.DecryptFileByKeypair">&#xb6;</a>
 					
 					
@@ -3042,7 +3016,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.DecryptFileToStream">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=4755:4816#L263">DecryptFileToStream</a>
+				<h3 id="PGPObj.DecryptFileToStream">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=4841:4902#L267">DecryptFileToStream</a>
 					<a class="permalink" href="#PGPObj.DecryptFileToStream">&#xb6;</a>
 					
 					
@@ -3054,7 +3028,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.DecryptStr">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=5672:5748#L323">DecryptStr</a>
+				<h3 id="PGPObj.DecryptStr">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=5758:5834#L327">DecryptStr</a>
 					<a class="permalink" href="#PGPObj.DecryptStr">&#xb6;</a>
 					
 					
@@ -3066,7 +3040,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.EncryptFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=2285:2339#L113">EncryptFile</a>
+				<h3 id="PGPObj.EncryptFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=2371:2425#L117">EncryptFile</a>
 					<a class="permalink" href="#PGPObj.EncryptFile">&#xb6;</a>
 					
 					
@@ -3078,7 +3052,7 @@ addr from x-forwrded-for ip:port
 				
 			
 				
-				<h3 id="PGPObj.EncryptFileByRSAPrivateKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=2913:2990#L153">EncryptFileByRSAPrivateKey</a>
+				<h3 id="PGPObj.EncryptFileByRSAPrivateKey">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=2999:3076#L157">EncryptFileByRSAPrivateKey</a>
 					<a class="permalink" href="#PGPObj.EncryptFileByRSAPrivateKey">&#xb6;</a>
 					
 					
@@ -3117,7 +3091,7 @@ EncryptFileByRSAPrivateKey use the RSA private key to encrypt the file.
 				
 			
 				
-				<h3 id="PGPObj.SignFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=6705:6785#L380">SignFile</a>
+				<h3 id="PGPObj.SignFile">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=6878:6958#L389">SignFile</a>
 					<a class="permalink" href="#PGPObj.SignFile">&#xb6;</a>
 					
 					
@@ -3129,7 +3103,7 @@ EncryptFileByRSAPrivateKey use the RSA private key to encrypt the file.
 				
 			
 				
-				<h3 id="PGPObj.ValidateSignature">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=9620:9670#L517">ValidateSignature</a>
+				<h3 id="PGPObj.ValidateSignature">func (*PGPObj) <a href="/src/github.com/wzlib/wzutil/pgp.go?s=9793:9843#L526">ValidateSignature</a>
 					<a class="permalink" href="#PGPObj.ValidateSignature">&#xb6;</a>
 					
 					
@@ -3139,6 +3113,38 @@ EncryptFileByRSAPrivateKey use the RSA private key to encrypt the file.
 				
 				
 				
+			
+		
+			
+			
+			<h2 id="ReservedBytes">type <a href="/src/github.com/wzlib/wzutil/cert.go?s=22104:22480#L91">ReservedBytes</a>
+				<a class="permalink" href="#ReservedBytes">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ReservedBytes struct {
+<span id="ReservedBytes.Mode"></span>    Mode       <a href="/pkg/builtin/#string">string</a> `json:&#34;mode&#34;`
+<span id="ReservedBytes.IsFuseMode"></span>    IsFuseMode <a href="/pkg/builtin/#bool">bool</a>   `json:isFuseMode`
+<span id="ReservedBytes.IsXMode"></span>    IsXMode    <a href="/pkg/builtin/#bool">bool</a>   `json:isXMode`
+    <span class="comment">//PID                 int32 `json:&#34;pid&#34;`</span>
+    <span class="comment">//TimeStamp           time.Time `json:time`</span>
+<span id="ReservedBytes.IsRefreshed"></span>    IsRefreshed        <a href="/pkg/builtin/#bool">bool</a> `json:isRefresh`
+<span id="ReservedBytes.IsValidatedByOwner"></span>    IsValidatedByOwner <a href="/pkg/builtin/#bool">bool</a> `json:isValidated`
+<span id="ReservedBytes.IsExpired"></span>    IsExpired          <a href="/pkg/builtin/#bool">bool</a> `json:isExpired`
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
 			
 		
 			
@@ -3348,7 +3354,7 @@ NewXTerminalServer gives a ptty control of the target process to the app.
 
 
 <div id="footer">
-Build version go1.12.16.<br>
+Build version go1.12.17.<br>
 Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
 the content of this page is licensed under the
 Creative Commons Attribution 3.0 License,
@@ -3359,5 +3365,7 @@ and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
 
 </div><!-- .container -->
 </div><!-- #page -->
+
 </body>
 </html>
+
