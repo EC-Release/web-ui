@@ -10,7 +10,7 @@
         "cross-env": "^6.0.0",
         "jasmine-enzyme": "^7.1.1",
         "jsdom": "^16.2.2",
-        "node-fetch": "^2.6.0",
+        "node-fetch": "^2.6.1",
         "nyc": "^14.1.1",
         "protractor": "^5.4.2",
         "react": "^16.9.0",
