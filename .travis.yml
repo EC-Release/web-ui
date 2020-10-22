@@ -15,16 +15,16 @@ script:
   -it enterpriseconnect/webui:v1.1beta
   /bin/sh -c 'ls -al && npm install && npm test'
 
-deploy:
-  provider: pages 
-  github_token: $GITHUB_TOKEN
-  local_dir: .
-  target_branch: gh-pages
-  verbose: true
-  skip_cleanup: true
-  keep_history: true
-  on:
-    branch: v1.1beta
+#deploy:
+#  provider: pages 
+#  github_token: $GITHUB_TOKEN
+#  local_dir: .
+#  target_branch: gh-pages
+#  verbose: true
+#  skip_cleanup: true
+#  keep_history: true
+#  on:
+#    branch: v1.1beta
     
 notifications:  
   email:  
