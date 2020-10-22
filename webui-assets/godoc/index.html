@@ -2,7 +2,7 @@
   <body>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script>
-      (async0 () => {
+      (async () => {
       const response = await fetch('https://api.github.com/repos/ec-release/web-ui/contents/webui-assets/godoc/README.md');
       const data = await response.json();
       if (data[0].content) {
