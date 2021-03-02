@@ -20,4 +20,4 @@ jobs:
         id: bootstrap
         #env:
         run: |
-          echo github.event.pull_request.types = ${{ github.event.pull_request.types }}
+          echo github.pull_request.types = ${{ github.pull_request.types }}
