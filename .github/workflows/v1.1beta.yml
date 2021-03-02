@@ -4,9 +4,9 @@ on:
     branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
+    types: [opened, closed, edited]
 
-  workflow_dispatch:
-  
+  #workflow_dispatch:
   
 jobs:
   build:
@@ -20,4 +20,4 @@ jobs:
         id: bootstrap
         #env:
         run: |
-          echo github.event.pull_request.state = ${{ github.event.pull_request.state }}
+          echo github.event.pull_request = ${{ toJson(github.event.pull_request) }}
