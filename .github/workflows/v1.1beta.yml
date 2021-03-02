@@ -19,5 +19,6 @@ jobs:
         id: bootstrap
         #env:
         run: |
+          echo github.event.pull_request.merged_at = ${{ toJson(github.event.pull_request.merged_at) }}
           echo github.event.pull_request = ${{ toJson(github.event.pull_request) }}
-          echo github.event.push = ${{ toJson(github.event.push) }}
+          
