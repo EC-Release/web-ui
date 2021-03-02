@@ -4,6 +4,7 @@ on:
     branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
+    types: [opened, closed, edited]
 
   workflow_dispatch:
   
