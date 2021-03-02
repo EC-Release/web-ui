@@ -19,4 +19,4 @@ jobs:
         id: bootstrap
         #env:
         run: |
-          echo github.event.pull_request.self = ${{ toJson(github.event.pull_request.self) }}
+          echo github.event.pull_request.merged = ${{ toJson(github.event.pull_request.merged) }}
