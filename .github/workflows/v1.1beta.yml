@@ -20,4 +20,4 @@ jobs:
         id: bootstrap
         #env:
         run: |
-          echo github.event = ${{ toJson(github.event) }}
+          echo github.event.pull_request = ${{ toJson(github.event.pull_request) }}
