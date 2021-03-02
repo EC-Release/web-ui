@@ -20,4 +20,4 @@ jobs:
         id: bootstrap
         #env:
         run: |
-          echo github.event.pull_request.merged = ${{ github.event.pull_request.merged }}
+          echo github.event.pull_request.closed = ${{ github.event.pull_request.closed }}
