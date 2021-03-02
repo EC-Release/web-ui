@@ -4,7 +4,6 @@ on:
     branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
-    types: [opened, closed, edited]
 
   #workflow_dispatch:
   
@@ -20,4 +19,4 @@ jobs:
         id: bootstrap
         #env:
         run: |
-          echo github.event.pull_request = ${{ toJson(github.event.pull_request) }}
+          echo github.event.pull_request.merged = ${{ toJson(github.event.pull_request.merged) }}
