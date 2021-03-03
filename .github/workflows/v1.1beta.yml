@@ -21,4 +21,5 @@ jobs:
         #env:
         run: |
           echo github.event.pull_request.merged: ${{ toJson(github.event.pull_request.merged) }}
+          echo github.event_name: ${{ github.event_name }}
           
