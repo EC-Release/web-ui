@@ -4,10 +4,7 @@ on:
     branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
-    types: [closed]
-
-  workflow_dispatch:
-  
+  workflow_dispatch:  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,10 +13,20 @@ jobs:
     #env:
     steps:
       - uses: actions/checkout@v2
-      - name: bootstrap env
-        id: bootstrap
+      - name: ui test
+        id: ui-test
         #env:
         run: |
-          echo github.event.pull_request.merged: ${{ toJson(github.event.pull_request.merged) }}
-          echo github.event_name: ${{ toJson(github.event_name) }}
+            docker run --network host -v $pwd:/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
+      - name: pr merged
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        id: pr-merged
+        run: |
+          echo pr has been merged and closed
+        
+        
+        
+        
+      
+      
           
