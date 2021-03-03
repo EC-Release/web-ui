@@ -6,7 +6,7 @@ on:
     branches: [ v1.1beta ]
     types: [closed]
 
-  #workflow_dispatch:
+  workflow_dispatch:
   
 jobs:
   build:
@@ -21,4 +21,5 @@ jobs:
         #env:
         run: |
           echo github.event.pull_request.merged: ${{ toJson(github.event.pull_request.merged) }}
+          echo github.event_name: ${{ toJson(github.event_name) }}
           
