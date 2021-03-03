@@ -4,9 +4,7 @@ on:
     branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
-
-  workflow_dispatch:
-  
+  workflow_dispatch:  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,9 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: bootstrap env
-        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         id: bootstrap
         #env:
         run: |
-          echo pr is merged!
+          echo bootstrap env
+      - name: pr merged
+        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        id: pr-merged
+        run: |
+          echo pr has been merged and closed
+        
+        
+        
+        
+      
+      
           
