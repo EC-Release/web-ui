@@ -17,7 +17,7 @@ jobs:
         id: bootstrap
         #env:
         run: |
-            docker run --network host -v $pwd:/build -it enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
+            docker run --network host -v $pwd:/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
       - name: pr merged
         if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
         id: pr-merged
