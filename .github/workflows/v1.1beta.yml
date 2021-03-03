@@ -13,8 +13,8 @@ jobs:
     #env:
     steps:
       - uses: actions/checkout@v2
-      - name: bootstrap env
-        id: bootstrap
+      - name: ui test
+        id: ui-test
         #env:
         run: |
             docker run --network host -v $pwd:/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
