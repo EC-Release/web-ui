@@ -5,11 +5,15 @@
 
 1.1)View: Topology View Table
 
-![image](https://user-images.githubusercontent.com/76679290/109764510-aa698200-7c19-11eb-8a59-743203f4238c.png)
+![image](https://user-images.githubusercontent.com/76679290/109985830-30292280-7d2b-11eb-8dbc-78e256fed96b.png)
+
+
 
 1.2)Tree list and Topology View: 
 
-![image](https://user-images.githubusercontent.com/76679290/109764538-b2292680-7c19-11eb-927c-886e65cb4c64.png)
+
+![image](https://user-images.githubusercontent.com/76679290/109985911-3e773e80-7d2b-11eb-9118-ceae0ea11ad2.png)
+
 
 
 
@@ -19,7 +23,8 @@
 2.1)Maintain: Subscription ->Create
 
 
- ![image](https://user-images.githubusercontent.com/76679290/109764948-2d8ad800-7c1a-11eb-972f-98f1460f7b92.png)
+![image](https://user-images.githubusercontent.com/76679290/109986008-5e0e6700-7d2b-11eb-8f1b-04b95bee6ac1.png)
+
 
 
 
@@ -36,27 +41,33 @@
 
 
 
+2.3)Maintain: Groups->view/Delete
 
 
-
-2.3) Maintain: Agent->Create->Gateway
-
-
- ![image](https://user-images.githubusercontent.com/76679290/109764978-38456d00-7c1a-11eb-9018-e4b62aba3b4a.png)
-
+![image](https://user-images.githubusercontent.com/76679290/109986238-92822300-7d2b-11eb-9ef8-c2feacf67571.png)
 
 
 
 
+2.4) Maintain: Agent->Create->Gateway
+
+
+![image](https://user-images.githubusercontent.com/76679290/109986359-aa59a700-7d2b-11eb-801d-1a33dd69071c.png)
 
 
 
 
 
-2.4) Maintain: Agent->Create->Server
+
+
+
+
+
+
+2.5) Maintain: Agent->Create->Server
 
  
-![image](https://user-images.githubusercontent.com/76679290/109764985-3d0a2100-7c1a-11eb-9392-5e6c3695edf5.png)
+![image](https://user-images.githubusercontent.com/76679290/109986408-b8a7c300-7d2b-11eb-808d-844c16996cac.png)
 
 
 
@@ -64,9 +75,11 @@
 
 
 2.5) Maintain: Agent->Create->Client
-3.
 
- ![image](https://user-images.githubusercontent.com/76679290/109764995-41363e80-7c1a-11eb-99e3-e52eac9fa4d6.png)
+
+ ![image](https://user-images.githubusercontent.com/76679290/109986507-d117dd80-7d2b-11eb-969d-0b69b667be9c.png)
+
+
 
 
 
@@ -74,9 +87,11 @@
 ## 3) Monitor:
 
 3.1)	Monitor: Notifications
-4.
 
- ![image](https://user-images.githubusercontent.com/76679290/109765129-6f1b8300-7c1a-11eb-9b44-188d1e0e6498.png)
+
+![image](https://user-images.githubusercontent.com/76679290/109986613-ec82e880-7d2b-11eb-95fe-1ee6cf288fba.png)
+
+
 
 
 
@@ -89,7 +104,8 @@
 
 3.2)Monitor: Health status-> Session
 
- ![image](https://user-images.githubusercontent.com/76679290/109765153-75a9fa80-7c1a-11eb-977d-84dd63b916b8.png)
+![image](https://user-images.githubusercontent.com/76679290/109986755-0de3d480-7d2c-11eb-898d-067a90386635.png)
+
 
 
 
@@ -103,8 +119,7 @@
 3.3)Monitor: Health status-> Super Connection
 
  
-![image](https://user-images.githubusercontent.com/76679290/109765169-7b074500-7c1a-11eb-8a5d-342b92a708c2.png)
-
+![image](https://user-images.githubusercontent.com/76679290/109986825-1b00c380-7d2c-11eb-9ecc-437d33bd5661.png)
 
 
 
@@ -114,7 +129,8 @@
 
 3.4)Monitor: Health status-> Client Pool
 
- ![image](https://user-images.githubusercontent.com/76679290/109765187-7f336280-7c1a-11eb-9997-744d8f56335c.png)
+ ![image](https://user-images.githubusercontent.com/76679290/109986883-29e77600-7d2c-11eb-93f9-67cc848652b9.png)
+
 
 
 
@@ -124,7 +140,8 @@
 4.1) User management:
 
 
-![image](https://user-images.githubusercontent.com/76679290/109765469-e94c0780-7c1a-11eb-981f-962099098de3.png)
+![image](https://user-images.githubusercontent.com/76679290/109986946-35d33800-7d2c-11eb-8643-d9955f9e0f1c.png)
+
 
 
 
