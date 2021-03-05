@@ -5,14 +5,14 @@
 
 1.1)View: Topology View Table
 
-![image](https://user-images.githubusercontent.com/76679290/109985830-30292280-7d2b-11eb-8dbc-78e256fed96b.png)
 
+![Alt text](/web-ui/docs/Ec Screenshot/View/ViewTopology.png?raw=true "Optional Title")
 
 
 1.2)Tree list and Topology View: 
 
 
-![image](https://user-images.githubusercontent.com/76679290/109985911-3e773e80-7d2b-11eb-9118-ceae0ea11ad2.png)
+![Alt text](/web-ui/docs/Ec Screenshot/View/ViewTreelist.png?raw=true "Optional Title")
 
 
 
