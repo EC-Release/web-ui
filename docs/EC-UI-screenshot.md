@@ -5,14 +5,13 @@
 
 1.1)View: Topology View Table
 
-
-![Alt text](/web-ui/docs/Ec Screenshot/View/ViewTopology.png?raw=true "Optional Title")
+![Alt text](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "Optional Title")
 
 
 1.2)Tree list and Topology View: 
 
 
-![Alt text](/web-ui/docs/Ec Screenshot/View/ViewTreelist.png?raw=true "Optional Title")
+![Alt text](/docs/Ec%20Screenshot/View/ViewTreelist.png?raw=true "Optional Title")
 
 
 
