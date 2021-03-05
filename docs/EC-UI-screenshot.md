@@ -73,7 +73,7 @@
 
 
 
-2.5) Maintain: Agent->Create->Client
+2.6) Maintain: Agent->Create->Client
 
 
 ![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainAgentClient.png?raw=true "Optional Title")
@@ -87,14 +87,7 @@
 3.1)	Monitor: Notifications
 
 
-![image](https://user-images.githubusercontent.com/76679290/109986613-ec82e880-7d2b-11eb-95fe-1ee6cf288fba.png)
-
-
-
-
-
-
-
+![Alt text](/docs/Ec%20Screenshot/Monitor/MonitorNotification.png?raw=true "Optional Title")
 
 
 
@@ -102,12 +95,8 @@
 
 3.2)Monitor: Health status-> Session
 
-![image](https://user-images.githubusercontent.com/76679290/109986755-0de3d480-7d2c-11eb-898d-067a90386635.png)
 
-
-
-
-
+![Alt text](/docs/Ec%20Screenshot/Monitor/MonitorHealthSession.png?raw=true "Optional Title")
 
 
 
@@ -117,7 +106,7 @@
 3.3)Monitor: Health status-> Super Connection
 
  
-![image](https://user-images.githubusercontent.com/76679290/109986825-1b00c380-7d2c-11eb-9ecc-437d33bd5661.png)
+![Alt text](/docs/Ec%20Screenshot/Monitor/MonitoHealthSuperConnections.png?raw=true "Optional Title")
 
 
 
@@ -127,7 +116,7 @@
 
 3.4)Monitor: Health status-> Client Pool
 
- ![image](https://user-images.githubusercontent.com/76679290/109986883-29e77600-7d2c-11eb-93f9-67cc848652b9.png)
+ ![Alt text](/docs/Ec%20Screenshot/Monitor/MonitorHealthClientPool.png?raw=true "Optional Title")
 
 
 
@@ -138,7 +127,7 @@
 4.1) User management:
 
 
-![image](https://user-images.githubusercontent.com/76679290/109986946-35d33800-7d2c-11eb-8643-d9955f9e0f1c.png)
+ ![Alt text](/docs/Ec%20Screenshot/Settings/settingUserManagement.png?raw=true "Optional Title")
 
 
 
