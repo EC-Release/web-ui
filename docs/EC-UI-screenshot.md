@@ -5,7 +5,7 @@
 
 1.1)View: Topology View Table
 
-![Alt text](./docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "Optional Title")
+![Alt text](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "Optional Title")
 
 
 1.2)Tree list and Topology View: 
@@ -35,7 +35,7 @@
 2.2)Maintain: Groups->Create
 
 
- ![image](https://user-images.githubusercontent.com/76679290/109764959-31b6f580-7c1a-11eb-9f67-f12fe86184b2.png)
+![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainGroupCerate.png?raw=true "Optional Title")
 
 
 
@@ -43,7 +43,7 @@
 2.3)Maintain: Groups->view/Delete
 
 
-![image](https://user-images.githubusercontent.com/76679290/109986238-92822300-7d2b-11eb-9ef8-c2feacf67571.png)
+![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainroupViewAndDelete.png?raw=true "Optional Title")
 
 
 
@@ -51,7 +51,7 @@
 2.4) Maintain: Agent->Create->Gateway
 
 
-![image](https://user-images.githubusercontent.com/76679290/109986359-aa59a700-7d2b-11eb-801d-1a33dd69071c.png)
+![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainAgentGateway.png?raw=true "Optional Title")
 
 
 
@@ -66,7 +66,7 @@
 2.5) Maintain: Agent->Create->Server
 
  
-![image](https://user-images.githubusercontent.com/76679290/109986408-b8a7c300-7d2b-11eb-808d-844c16996cac.png)
+![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainAgentServer.png?raw=true "Optional Title")
 
 
 
@@ -76,8 +76,7 @@
 2.5) Maintain: Agent->Create->Client
 
 
- ![image](https://user-images.githubusercontent.com/76679290/109986507-d117dd80-7d2b-11eb-969d-0b69b667be9c.png)
-
+![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainAgentClient.png?raw=true "Optional Title")
 
 
 
