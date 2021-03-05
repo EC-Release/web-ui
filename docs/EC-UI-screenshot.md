@@ -5,7 +5,7 @@
 
 1.1)View: Topology View Table
 
-![Alt text](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "Optional Title")
+![Alt text](./docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "Optional Title")
 
 
 1.2)Tree list and Topology View: 
@@ -22,8 +22,8 @@
 2.1)Maintain: Subscription ->Create
 
 
-![image](https://user-images.githubusercontent.com/76679290/109986008-5e0e6700-7d2b-11eb-8f1b-04b95bee6ac1.png)
 
+![Alt text](/docs/Ec%20Screenshot/Maintain/MaintainSubscription.png?raw=true "Optional Title")
 
 
 
