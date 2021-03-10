@@ -1,9 +1,9 @@
 # EC WEB-UI Screenshots as per Tabs
 <p>
- <a id="View" class="anchor" href="#view" aria-hidden="true">View</a><br>
- <a id="maintain" class="anchor" href="#maintain" aria-hidden="true">Maintain</a><br>
- <a id="monitor" class="anchor" href="#monitor" aria-hidden="true">Monitor</a><br>
- <a id="setting" class="anchor" href="#setting" aria-hidden="true">Setting</a><br>
+ <a href="#view">View</a><br>
+ <a href="#maintain">Maintain</a><br>
+ <a href="#monitor">Monitor</a><br>
+ <a href="#setting">Setting</a><br>
 </p>
 
 <a id="view" class="anchor" href="#view" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg>View</a>
