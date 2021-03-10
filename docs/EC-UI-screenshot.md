@@ -22,7 +22,7 @@
 
 
 
-## 2)Maintain:
+<a id="maintain" class="anchor" href="#maintain" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg>Maintain</a>
 
 2.1)Maintain: Subscription ->Create
 
@@ -87,7 +87,7 @@
 
 
 
-## 3) Monitor:
+<a id="monitor" class="anchor" href="#monitor" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg>Monitor</a>
 
 3.1)	Monitor: Notifications
 
@@ -127,7 +127,7 @@
 
 
 
-## 4)Setting:  
+<a id="setting" class="anchor" href="#setting" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg>Setting</a>
 
 4.1) User management:
 
