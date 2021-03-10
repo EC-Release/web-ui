@@ -19,9 +19,9 @@
  <li><a href="#monitor">Monitor</a>
   <ul>
    <li><a href="#notification">Notifications</a></li>
-   <li><a href="#healthStatus">Health status-> Session/a></li>Session
-   <li><a href="#healthSuperConnection">Health status-> Super Connection</a></li>
-   <li><a href="#healthClientPool">Health status-> Client Pool</a></li>
+   <li><a href="#healthStatus">Health status: Session/a></li>Session
+   <li><a href="#healthSuperConnection">Health status: Super Connection /a></li>
+   <li><a href="#healthClientPool">Health status: Client Pool</a></li>
   </ul>
  </li>
  <li><a href="#setting">Setting</a>
