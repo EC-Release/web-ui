@@ -1,7 +1,7 @@
 # EC WEB-UI Screenshots as per Tabs
 * [View](#view)
-  * [Topology View Table](#tableView)
-  *  [Tree list and Topology View](#treeList)
+  * [Topology View Table](#Topology View Table)
+  *  [Tree list and Topology View](#Tree list and Topology View)
 
 
 
@@ -33,14 +33,14 @@
  </li>
 </ul>
 
-### View
+## View
 
-## View: Topology View Table
+### Topology View Table
 
 ![View Topology](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "View Topology")
 
 
-## Tree list and Topology View:
+## Tree list and Topology View
 
 
 ![ViewTree list](/docs/Ec%20Screenshot/View/ViewTreelist.png?raw=true "ViewTree list")
