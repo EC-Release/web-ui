@@ -1,10 +1,10 @@
 # EC WEB-UI Screenshots as per Tabs
-<p>
- <a href="#view">View</a><br>
- <a href="#maintain">Maintain</a><br>
- <a href="#monitor">Monitor</a><br>
- <a href="#setting">Setting</a><br>
-</p>
+<ul>
+ <li><a href="#view">View</a></li>
+ <li><a href="#maintain">Maintain</a></li>
+ <li><a href="#monitor">Monitor</a></li>
+ <li><a href="#setting">Setting</a></li>
+</ul>
 
 <h3><a id="view" class="anchor" href="#view" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg>View</a></h3>
 
