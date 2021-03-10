@@ -1,6 +1,11 @@
 # EC WEB-UI Screenshots as per Tabs
 <ul>
- <li><a href="#view">View</a></li>
+ <li><a href="#view">View</a>
+  <ul>
+   <li href="#tableView">Topology View Table</li>
+   <li href="#treeList">Tree list and Topology View</li>
+  </ul>
+ </li>
  <li><a href="#maintain">Maintain</a></li>
  <li><a href="#monitor">Monitor</a></li>
  <li><a href="#setting">Setting</a></li>
@@ -8,12 +13,12 @@
 
 <h3><a id="view" class="anchor" href="#view" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg>View</a></h3>
 
-1.1)View: Topology View Table
+<h4><a id="tableView" class="anchor" href="#tableView" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg></a>1.1)View: Topology View Table</h4>
 
 ![View Topology](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "View Topology")
 
 
-1.2)Tree list and Topology View: 
+<h4><a id="treeList" class="anchor" href="#treeList" aria-hidden="true"><svg class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"></svg></a>1.2)Tree list and Topology View: </h4>
 
 
 ![ViewTree list](/docs/Ec%20Screenshot/View/ViewTreelist.png?raw=true "ViewTree list")
