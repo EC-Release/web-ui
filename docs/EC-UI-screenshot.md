@@ -7,12 +7,7 @@
 
 
 <ul>
- <li><a href="#view">View</a>
-  <ul>
-   <li><a href="#tableView">Topology View Table</a></li>
-   <li><a href="#treeList">Tree list and Topology View</a></li>
-  </ul>
- </li>
+ 
  <li><a href="#maintain">Maintain</a>
   <ul>
    <li><a href="#subscription">Subscription: Create</a></li>
@@ -45,7 +40,7 @@
 ![View Topology](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "View Topology")
 
 
-# Tree list and Topology View:
+## Tree list and Topology View:
 
 
 ![ViewTree list](/docs/Ec%20Screenshot/View/ViewTreelist.png?raw=true "ViewTree list")
