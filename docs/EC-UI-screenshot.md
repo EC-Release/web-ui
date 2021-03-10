@@ -1,7 +1,7 @@
 # EC WEB-UI Screenshots as per Tabs
 * [View](#view)
-  * [Topology View Table](#TopologyViewTable)
-  *  [Tree list and Topology View](#TreelistandTopologyView)
+  * [Topology View Table](#Topology-View-Table)
+  *  [Tree list and Topology View](#Treelist-and-Topology-View)
 
 
 
