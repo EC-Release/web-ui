@@ -1,7 +1,7 @@
 # EC WEB-UI Screenshots as per Tabs
- * [1.View](#1_view)\
-     [1.1 Topology View Table](#11-topology-view-table)\
-     [1.2 Tree list and Topology View](#12-tree-list-and-topology-view)\
+ * [1.View](#1_view)
+     [1.1 Topology View Table](#11-topology-view-table)
+     [1.2 Tree list and Topology View](#12-tree-list-and-topology-view) 
  * [2.Maintain](#2_maintain)
     * [2.1 Create Subscription](#21-create-subscription)
     * [2.2 Create Groups](#22-create-groups)
