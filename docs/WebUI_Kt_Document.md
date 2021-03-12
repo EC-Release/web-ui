@@ -8,6 +8,9 @@
 * then open web-ui folder with any frontend tool like VBC to make changes in code
 * relpace all ajax call with random URl e.g https://dive-ec-gateway.run.aws-usw02-dev.ice.predix.io/health
   and mark data with proper JSON as per Ajax request or logic to run frontend Html pages with react js
+  
+* To open index.html page of project you need to open CMD command prompt  and need to execute below cammand with you repository path 
+ "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="project directory path" so its remove Origin access error on front end
 
 
 
