@@ -17,15 +17,14 @@
 * [Setting](#setting)
   * [User management](#user-management)
 
+ ## 1. View
 
-## 1 ## View
-
-### 1.1 ### Topology View Table
+ ### 1.1 Topology View Table
 
 ![View Topology](/docs/Ec%20Screenshot/View/ViewTopology.png?raw=true "View Topology")
 
 
-### 1.2 ### Tree list and Topology View
+ ### 1.2 Tree list and Topology View
 
 
 ![ViewTree list](/docs/Ec%20Screenshot/View/ViewTreelist.png?raw=true "ViewTree list")
