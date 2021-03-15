@@ -20,3 +20,5 @@ so its getting Display the list of list structure in graph please follow below i
 
 ![ViewTree list](/docs/Ec%20Screenshot/View/ViewTreelist.png?raw=true "ViewTree list")
 
+# Summary:
+Document is relatedt o how to run Web-Ui Front end app without any API support by marking data we can run it .its about how to mark data in API as well s Graphs related to Topology and also withput having Zscaler support how to run application without cross-domain error.
