@@ -1,0 +1,25 @@
+import React from "react";
+
+export default class Topologygraph extends React.Component {
+    
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount(){
+        window.generateTopology(this.props.nodeData, 'topologygraph');
+        console.log("test Data"+this.props.nodeData);
+    }
+
+    /* istanbul ignore next */
+    componentDidUpdate(){
+        window.generateTopology(this.props.nodeData, 'topologygraph');
+    }
+
+    render(){
+        /* jshint ignore:start */
+        /* istanbul ignore next */
+        return(<div className="Topologygraph" id="topologygraph"></div>)
+        /* jshint ignore:end */
+    }
+}

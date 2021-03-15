@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="16px" viewBox="0 0 22 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>ic_cached_24px copy</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M18.068152,4 L14.1363041,8 L17.08519,8 C17.08519,11.31 14.4410223,14 11.1874181,14 C10.1946265,14 9.25098296,13.75 8.43512451,13.3 L7,14.76 C8.20904325,15.54 9.64416776,16 11.1874181,16 C15.5321101,16 19.051114,12.42 19.051114,8 L22,8 L18.068152,4 Z M4.91480996,8 C4.91480996,4.69 7.55897772,2 10.8125819,2 C11.8053735,2 12.749017,2.25 13.5648755,2.7 L15,1.24 C13.7909567,0.46 12.3558322,0 10.8125819,0 C6.46788991,0 2.94888598,3.58 2.94888598,8 L0,8 L3.93184797,12 L7.86369594,8 L4.91480996,8 Z" id="path-1"></path>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Maintain---update/disable-table" transform="translate(-1276.000000, -312.000000)">
+            <g id="ic_cached_24px-copy" transform="translate(1276.000000, 312.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <use id="Shape" fill="#9FA1A6" fill-rule="nonzero" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>
