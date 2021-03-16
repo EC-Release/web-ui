@@ -2,9 +2,11 @@ name: v1.1beta-ci
 on:
   #push:
   #  branches: [ v1.1beta ]
+  push:
+    branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
-    types: [closed, opened, synchronize]
+    types: [opened, synchronize]
   workflow_dispatch:  
 jobs:
   build:
