@@ -1,86 +1,96 @@
 import React from "react";
 
 export default class Healthstatus extends React.Component {
+  /* istanbul ignore next */
+  constructor(props) {
+    super(props);
+    this.state = {
+      gateway: "",
+      selectedGateway: "",
+      gateways: [],
+      healthLink: "",
+      session: {
+        sessionId: "",
+        id: "",
+        bindId: "",
+        targetId: "",
+        groupId: "",
+      },
+      superConnection: {
+        serverId: "",
+        id: "",
+        targetId: "",
+        groupId: "",
+        timeCreated: "",
+        ip: "",
+        lastPong: "",
+      },
+      connection: {
+        bindId: "",
+        clientConfiguration: "",
+        id: "",
+        bindId2: "",
+        targetId: "",
+        groupId: "",
+        timeCreated: "",
+        allocations: "",
+        totalAllocations: "",
+        frees: "",
+        heapAlloc: "",
+        heapInUse: "",
+        heapReleased: "",
+        heapObjects: "",
+        report: "",
+        lastUsage: "",
+        lastReport: "",
+      },
+      gatewayDetails: {
+        mode: "",
+        environment: "",
+        gatewayPort: "",
+        zone: "",
+        serviceUrl: "",
+        token: "",
+        host: "",
+        os: "",
+      },
+      showSession: false,
+      showConnection: false,
+      showSuperConnection: false,
+    };
+  }
 
-    /* istanbul ignore next */
-    constructor(props){
-        super(props);
-        this.state = {
-            gateway:'',
-            selectedGateway: '',
-            gateways: [],
-            healthLink: '',
-            session :{
-                sessionId:'',
-                id:'',
-                bindId:'',
-                targetId:'',
-                groupId:'',
+  /* istanbul ignore next */
+  componentDidMount() {
+    // get gateway list start
+    fetch("https://jsonplaceholder.typicode.com/todos/1", {
+      // Get gateways
+      method: "GET",
+    }).then((response) => {
+      if (response.status === 200) {
+        response.json().then((gateways) => {
+          gateways = [
+            {
+              gatewayId: "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
+              serviceUrl:
+                "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
             },
-            superConnection:{
-                serverId:'',
-                id:'',
-                targetId:'',
-                groupId:'',
-                timeCreated:'',
-                ip:'',
-                lastPong:'',
+            {
+              gatewayId: "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
+              serviceUrl:
+                "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
             },
-            connection:{
-                bindId:'',
-                clientConfiguration:'',
-                id:'',
-                bindId2:'',
-                targetId:'',
-                groupId:'',
-                timeCreated:'',
-                allocations:'',
-                totalAllocations:'',
-                frees:'',
-                heapAlloc:'',
-                heapInUse:'',
-                heapReleased:'',
-                heapObjects:'',
-                report:'',
-                lastUsage:'',
-                lastReport:'',
-            },
-            showSession:false,
-            showConnection:false,
-            showSuperConnection:false
-        };
-    }
-
-    /* istanbul ignore next */
-    componentDidMount(){
-
-        // get gateway list start
-        fetch('https://jsonplaceholder.typicode.com/todos/1', { // Get gateways
-            method: 'GET'
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                response.json().then((gateways) => {
-                    gateways = [
-                        {
-                          "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                        },
-                        {
-                          "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                          "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                        }
-                    ];
-                    this.setState({
-                        gateways: gateways
-                    });
-                });
-            }
+          ];
+          this.setState({
+            gateways: gateways,
+          });
         });
+      }
+    });
 
-        //get session, connection, super connection
-        
-        /*let currentSession = Object.assign({}, this.state.session);
+    //get session, connection, super connection
+
+    /*let currentSession = Object.assign({}, this.state.session);
         let currentSuperConnection = Object.assign({},this.state.superConnection);
         let currentConnection = Object.assign({},this.state.connection)
         fetch('https://jsonplaceholder.typicode.com/todos/1')
@@ -201,809 +211,662 @@ export default class Healthstatus extends React.Component {
                                 that.props.hideGlobalMessage();
                             }, 2000);
         });*/
+  }
+
+  /* istanbul ignore next */
+  handleChange(e) {
+    let id = e.target.id;
+
+    if (id === "session") {
+      let currentShowSession = this.state.showSession;
+      this.setState({
+        showSession: !currentShowSession,
+      });
+    }
+    if (id === "superConnection") {
+      let currentSuperConnection = this.state.showSuperConnection;
+      this.setState({
+        showSuperConnection: !currentSuperConnection,
+      });
+    }
+    if (id === "connections") {
+      let currentConnection = this.state.showConnection;
+      this.setState({
+        showConnection: !currentConnection,
+      });
+    }
+  }
+
+  /* istanbul ignore next */
+  fetchHealthStatus() {
+    let selectedGatewayId = this.state.selectedGateway;
+    let gateways = this.state.gateways;
+    console.log(gateways);
+    let selectedGateway = gateways.find(
+      (x) => x.gatewayId === selectedGatewayId
+    );
+    let serviceUrl = selectedGateway.serviceUrl;
+    let healthLink = "";
+    if (serviceUrl !== "") {
+      let indexFromCut = serviceUrl.indexOf(".") + 1;
+      let cutString = serviceUrl.slice(indexFromCut);
+      healthLink = "https://" + cutString + "/health";
     }
 
-    /* istanbul ignore next */
-    handleChange(e){
-        let id = e.target.id;
-        
-        if(id === "session"){
-            let currentShowSession = this.state.showSession;
-            this.setState({
-                showSession : !currentShowSession
-            });
-        }
-        if(id === "superConnection"){
-            let currentSuperConnection = this.state.showSuperConnection;
-            this.setState({
-                showSuperConnection : !currentSuperConnection
-            });
-        }
-        if(id === "connections"){
-            let currentConnection = this.state.showConnection;
-            this.setState({
-                showConnection : !currentConnection
-            });
-        }
-    }
-    
-    /* istanbul ignore next */
-    fetchHealthStatus(){
-        let selectedGatewayId = this.state.selectedGateway;
-        let gateways = this.state.gateways;
-        let selectedGateway = gateways.find(x => x.gatewayId === selectedGatewayId);
-        let serviceUrl = selectedGateway.serviceUrl;
-        let healthLink = '';
-        if(serviceUrl !== ''){
-            let indexFromCut = serviceUrl.indexOf('.') + 1;
-            let cutString = serviceUrl.slice(indexFromCut);
-            healthLink = 'https://'+cutString+'/health';
-        }
-       
-        let currentSession = Object.assign({}, this.state.session);
-        let currentSuperConnection = Object.assign({},this.state.superConnection);
-        let currentConnection = Object.assign({},this.state.connection);
-        fetch('https://jsonplaceholder.typicode.com/todos/1') // healthLink
-        .then((response) => {
-            if (response.status === 200) {
-                response.json().then((respData) => {
-                    this.props.showGlobalMessage(true, true, 'Please wait', 'custom-success');
-                    console.log(respData);
-                    respData={
-                        "Version": "v1.hokkaido.212",
-                        "GatewayID": "1f703d50-e9c9-473e-9309-1cfeea1ec2ac",
-                        "RefID": "1",
-                        "IP": "10.254.0.42",
-                        "PID": 17,
-                        "NumOfConnSinceLaunch": 49412,
-                        "Sessions": {
-                          "0DZSiogZGu": {
-                            "sessionId": "0DZSiogZGu",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "5ZyTK7kkrJ",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-08T23:09:54.906015311Z"
-                          },
-                          "8sGmr0Zz6l": {
-                            "sessionId": "8sGmr0Zz6l",
-                            "serverConfig": {
-                              "id": "mOuTjM",
-                              "bindId": "o43eTByjmP",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ub1ype",
-                              "bindId": "",
-                              "targetId": "mOuTjM",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-08T22:57:16.857906466Z"
-                          },
-                          "9As4szpFlY": {
-                            "sessionId": "9As4szpFlY",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "1gYsvJDCVZ",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:37:26.892280615Z"
-                          },
-                          "BTtIbQGePB": {
-                            "sessionId": "BTtIbQGePB",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "jXAQnVfUNh",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-09T06:50:44.881407754Z"
-                          },
-                          "CQVTPdgqen": {
-                            "sessionId": "CQVTPdgqen",
-                            "serverConfig": {
-                              "id": "mOuTjM",
-                              "bindId": "fteij3AY7F",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ub1ype",
-                              "bindId": "",
-                              "targetId": "mOuTjM",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-08T14:02:35.877650613Z"
-                          },
-                          "IrNOX7Ti15": {
-                            "sessionId": "IrNOX7Ti15",
-                            "serverConfig": {
-                              "id": "mOuTjM",
-                              "bindId": "HfedwY1bT2",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ub1ype",
-                              "bindId": "",
-                              "targetId": "mOuTjM",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-08T14:02:04.845292886Z"
-                          },
-                          "QVuJrEAKy3": {
-                            "sessionId": "QVuJrEAKy3",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "lZUuKrSKw1",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-08T14:48:33.880675241Z"
-                          },
-                          "bKEV7YUV7A": {
-                            "sessionId": "bKEV7YUV7A",
-                            "serverConfig": {
-                              "id": "mOuTjM",
-                              "bindId": "4YmdvcvlXY",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ub1ype",
-                              "bindId": "",
-                              "targetId": "mOuTjM",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-09T10:17:12.898013082Z"
-                          },
-                          "m2AyukOB1L": {
-                            "sessionId": "m2AyukOB1L",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "Ky8a4fHw6y",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-09T03:15:55.89144109Z"
-                          },
-                          "mB1slLcXtT": {
-                            "sessionId": "mB1slLcXtT",
-                            "serverConfig": {
-                              "id": "4kY8Rp",
-                              "bindId": "lRkWy1QXVm",
-                              "targetId": "",
-                              "groupId": "cirrus-corpsftp-prod"
-                            },
-                            "clientConfig": {
-                              "id": "SBewk9",
-                              "bindId": "",
-                              "targetId": "4kY8Rp",
-                              "groupId": "cirrus-corpsftp-prod"
-                            },
-                            "timeCreated": "2020-02-09T14:45:08.929716188Z"
-                          },
-                          "o700yaf9bL": {
-                            "sessionId": "o700yaf9bL",
-                            "serverConfig": {
-                              "id": "mOuTjM",
-                              "bindId": "LfishYQSdX",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ub1ype",
-                              "bindId": "",
-                              "targetId": "mOuTjM",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-09T19:22:16.881634483Z"
-                          },
-                          "oMVOXyR7A5": {
-                            "sessionId": "oMVOXyR7A5",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "NDgvIOL9Fi",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-09T03:33:20.90654554Z"
-                          },
-                          "rOmRthusnf": {
-                            "sessionId": "rOmRthusnf",
-                            "serverConfig": {
-                              "id": "4kY8Rp",
-                              "bindId": "iWPCJnT9zx",
-                              "targetId": "",
-                              "groupId": "cirrus-corpsftp-prod"
-                            },
-                            "clientConfig": {
-                              "id": "SBewk9",
-                              "bindId": "",
-                              "targetId": "4kY8Rp",
-                              "groupId": "cirrus-corpsftp-prod"
-                            },
-                            "timeCreated": "2020-02-09T13:40:20.595895236Z"
-                          },
-                          "rnlY55fVmz": {
-                            "sessionId": "rnlY55fVmz",
-                            "serverConfig": {
-                              "id": "mOuTjM",
-                              "bindId": "BSGCMCPLnU",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ub1ype",
-                              "bindId": "",
-                              "targetId": "mOuTjM",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-10T05:20:09.895990145Z"
-                          },
-                          "tsQXMHvoBj": {
-                            "sessionId": "tsQXMHvoBj",
-                            "serverConfig": {
-                              "id": "OqkLan",
-                              "bindId": "jpFS5dbV9T",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "clientConfig": {
-                              "id": "Ia8DkA",
-                              "bindId": "",
-                              "targetId": "OqkLan",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-09T10:25:05.90541234Z"
-                          }
-                        },
-                        "SuperConns": [
-                          {
-                            "serverId": "4kY8Rp",
-                            "bindId": {
-                              "id": "4kY8Rp",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-corpsftp-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.204711682Z",
-                            "ip": "10.72.1.11:63694",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "mKDAUS",
-                            "bindId": {
-                              "id": "mKDAUS",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttojeeves-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.214632814Z",
-                            "ip": "10.72.11.10:13236",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "r60wh4",
-                            "bindId": {
-                              "id": "r60wh4",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-smtp-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.217563438Z",
-                            "ip": "10.72.11.13:30718",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "wj8ut5",
-                            "bindId": {
-                              "id": "wj8ut5",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-postgres-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:21.953060319Z",
-                            "ip": "10.72.1.10:3704",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "OqkLan",
-                            "bindId": {
-                              "id": "OqkLan",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:22.787765221Z",
-                            "ip": "10.72.1.10:4068",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "DzaYzX",
-                            "bindId": {
-                              "id": "DzaYzX",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "concur-sftp-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.192820259Z",
-                            "ip": "10.72.11.14:41642",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "mKDAUS",
-                            "bindId": {
-                              "id": "mKDAUS",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttojeeves-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.192218957Z",
-                            "ip": "10.72.1.12:41234",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "4kY8Rp",
-                            "bindId": {
-                              "id": "4kY8Rp",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-corpsftp-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.193435382Z",
-                            "ip": "10.72.1.12:41228",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "mOuTjM",
-                            "bindId": {
-                              "id": "mOuTjM",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.203509394Z",
-                            "ip": "10.72.1.14:31870",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "r60wh4",
-                            "bindId": {
-                              "id": "r60wh4",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-smtp-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:20.767499516Z",
-                            "ip": "10.72.1.14:32616",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "mOuTjM",
-                            "bindId": {
-                              "id": "mOuTjM",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-mfttomdm-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:22.291384425Z",
-                            "ip": "10.72.11.14:42994",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "OqkLan",
-                            "bindId": {
-                              "id": "OqkLan",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-fdl-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:24.577507601Z",
-                            "ip": "10.72.11.16:28370",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          },
-                          {
-                            "serverId": "wj8ut5",
-                            "bindId": {
-                              "id": "wj8ut5",
-                              "bindId": "",
-                              "targetId": "",
-                              "groupId": "cirrus-postgres-prod"
-                            },
-                            "timeCreated": "2020-02-08T11:01:18.185183585Z",
-                            "ip": "10.72.11.14:41648",
-                            "lastPong": "0001-01-01T00:00:00Z"
-                          }
-                        ],
-                        "ClientPool": [],
-                        "Alloc": 18745352,
-                        "TotalAlloc": 57944971144,
-                        "Sys": 143329528,
-                        "Lookups": 0,
-                        "Mallocs": 290459711,
-                        "Frees": 290304507,
-                        "HeapAlloc": 18745352,
-                        "HeapSys": 96337920,
-                        "HeapIdle": 70377472,
-                        "HeapInuse": 25960448,
-                        "HeapReleased": 61628416,
-                        "HeapObjects": 155204,
-                        "Report": {
-                          "lastUsage": 3437,
-                          "lastReport": "0001-01-01T00:00:00Z"
-                        }
-                      };
-                    if(respData.length > 0){
-                        for(let session of respData){
-                            currentSession.sessionId = session.sessionId;
-                            currentSession.id = session.id;
-                            currentSession.bindId = session.bindId;
-                            currentSession.targetId = session.targetId;
-                            currentSession.groupId = session.groupId;
-                        }
-                        this.setState({
-                            session : currentSession
-                        });
+    let currentSession = Object.assign({}, this.state.session);
+    let currentSuperConnection = Object.assign({}, this.state.superConnection);
+    let currentConnection = Object.assign({}, this.state.connection);
+    let currentDetails = Object.assign({}, this.state.gatewayDetails);
+    fetch("https://jsonplaceholder.typicode.com/todos/1") // healthLink
+      .then((response) => {
+        if (response.status === 200) {
+          response.json().then((currentSession) => {
+            this.props.showGlobalMessage(
+              true,
+              true,
+              "Please wait",
+              "custom-success"
+            );
+
+            currentSession = [
+              {
+                sessionId: "0idLmsMk8e",
+                id: "Q7rfHI",
+                bindId: "db6Wt2ReXF",
+                targetId: "Q7rfHI",
+                groupId: "wabtec-gecars-qadasdsa",
+              },
+            ];
+            if (currentSession.length > 0) {
+              for (let session of currentSession) {
+                currentSession.sessionId = session.sessionId;
+                currentSession.id = session.id;
+                currentSession.bindId = session.bindId;
+                currentSession.targetId = session.targetId;
+                currentSession.groupId = session.groupId;
+              }
+              this.setState({
+                session: currentSession,
+              });
+            }
+
+            fetch("https://jsonplaceholder.typicode.com/todos/1").then(
+              (response) => {
+                if (response.status === 200) {
+                  response.json().then((superConnections) => {
+                    superConnections = [
+                      {
+                        serverId: "OGhEuE",
+                        id: "OGhEuE",
+                        targetId: "value",
+                        groupId: "smartshop-prod",
+                        timeCreated: "2019-11-13T22:05:38.101993815Z",
+                        ip: "10.72.1.16:61368",
+                        lastPong: "0001-01-01T00:00:00Z",
+                      },
+                    ];
+                    if (superConnections.length > 0) {
+                      for (let superConnection of superConnections) {
+                        currentSuperConnection.serverId =
+                          superConnection.serverId;
+                        currentSuperConnection.id = superConnection.id;
+                        currentSuperConnection.targetId =
+                          superConnection.targetId;
+                        currentSuperConnection.groupId =
+                          superConnection.groupId;
+                        currentSuperConnection.timeCreated =
+                          superConnection.timeCreated;
+                        currentSuperConnection.ip = superConnection.ip;
+                        currentSuperConnection.lastPong =
+                          superConnection.lastPong;
+                      }
+                      this.setState({
+                        superConnection: currentSuperConnection,
+                      });
                     }
 
-                    fetch('https://jsonplaceholder.typicode.com/todos/1')
-                    .then((response) => {
-                    if (response.status === 200) {
-                    response.json().then((superConnections) => {
-                        superConnections=[{
-                            "serverId" : "OGhEuE",
-                            "id" : "OGhEuE",
-                            "targetId" : "value",
-                            "groupId" : "smartshop-prod",
-                            "timeCreated" : "2019-11-13T22:05:38.101993815Z",
-                            "ip" : "10.72.1.16:61368",
-                            "lastPong" : "0001-01-01T00:00:00Z"
-                        }
-                        ];
-                    if(superConnections.length > 0){
-                        for(let superConnection of superConnections){
-                            currentSuperConnection.serverId = superConnection.serverId;
-                            currentSuperConnection.id = superConnection.id;
-                            currentSuperConnection.targetId = superConnection.targetId;
-                            currentSuperConnection.groupId = superConnection.groupId;
-                            currentSuperConnection.timeCreated = superConnection.timeCreated;
-                            currentSuperConnection.ip = superConnection.ip;
-                            currentSuperConnection.lastPong = superConnection.lastPong;
-                        }
-                        this.setState({
-                            superConnection : currentSuperConnection
-                        });
-                    }
-
-                    fetch('https://jsonplaceholder.typicode.com/todos/1')
-                    .then((response) => {
+                    fetch("https://jsonplaceholder.typicode.com/todos/1").then(
+                      (response) => {
                         if (response.status === 200) {
-                            response.json().then((connections) => {
-                                connections=[{
-                            "bindId" : "DstAet",
-                            "clientConfiguration" : "value",
-                            "id" : "087ADA",
-                            "bindId2" : "0074C5",
-                            "targetId" : "OGhEuE",
-                            "groupId" : "smartshop-prod",
-                            "timeCreated" : "2019-11-13T22:05:38.101993815Z",
-                            "allocations" : "2903776",
-                            "totalAllocations" : "25007624",
-                            "frees" : "394315",
-                            "heapAlloc" : "2903776",
-                            "heapInUse" : "5185536",
-                            "heapReleased" : "60203008",
-                            "heapObjects" : "20224",
-                            "report" : "value",
-                            "lastUsage" : "987",
-                            "lastReport" : "0001-01-01T00:00:00Z",
-                        }
-                        ];
-                        if(connections.length > 0){
-                            for(let connection of connections){
+                          response.json().then((connections) => {
+                            connections = [
+                              {
+                                bindId: "DstAet",
+                                clientConfiguration: "value",
+                                id: "087ADA",
+                                bindId2: "0074C5",
+                                targetId: "OGhEuE",
+                                groupId: "smartshop-prod",
+                                timeCreated: "2019-11-13T22:05:38.101993815Z",
+                                allocations: "2903776",
+                                totalAllocations: "25007624",
+                                frees: "394315",
+                                heapAlloc: "2903776",
+                                heapInUse: "5185536",
+                                heapReleased: "60203008",
+                                heapObjects: "20224",
+                                report: "value",
+                                lastUsage: "987",
+                                lastReport: "0001-01-01T00:00:00Z",
+                              },
+                            ];
+                            if (connections.length > 0) {
+                              for (let connection of connections) {
                                 currentConnection.bindId = connection.bindId;
-                                currentConnection.clientConfiguration = connection.clientConfiguration;
+                                currentConnection.clientConfiguration =
+                                  connection.clientConfiguration;
                                 currentConnection.id = connection.id;
                                 currentConnection.bindId2 = connection.bindId2;
-                                currentConnection.targetId = connection.targetId;
+                                currentConnection.targetId =
+                                  connection.targetId;
                                 currentConnection.groupId = connection.groupId;
-                                currentConnection.timeCreated = connection.timeCreated;
-                                currentConnection.allocations = connection.allocations;
-                                currentConnection.totalAllocations = connection.totalAllocations;
+                                currentConnection.timeCreated =
+                                  connection.timeCreated;
+                                currentConnection.allocations =
+                                  connection.allocations;
+                                currentConnection.totalAllocations =
+                                  connection.totalAllocations;
                                 currentConnection.frees = connection.frees;
-                                currentConnection.heapAlloc = connection.heapAlloc;
-                                currentConnection.heapInUse = connection.heapInUse;
-                                currentConnection.heapReleased = connection.heapReleased;
-                                currentConnection.heapObjects = connection.heapObjects;
+                                currentConnection.heapAlloc =
+                                  connection.heapAlloc;
+                                currentConnection.heapInUse =
+                                  connection.heapInUse;
+                                currentConnection.heapReleased =
+                                  connection.heapReleased;
+                                currentConnection.heapObjects =
+                                  connection.heapObjects;
                                 currentConnection.report = connection.report;
-                                currentConnection.lastUsage = connection.lastUsage;
-                                currentConnection.lastReport = connection.lastReport;
+                                currentConnection.lastUsage =
+                                  connection.lastUsage;
+                                currentConnection.lastReport =
+                                  connection.lastReport;
+                              }
+                              this.setState({
+                                connection: currentConnection,
+                              });
+                              /*  let that = this;
+                              that.props.hideGlobalMessage(); */
                             }
-                            this.setState({
-                                connection : currentConnection
-                            });
-                            let that= this;
-                            that.props.hideGlobalMessage();
-                            }});
-                        }}) ; 
-                    });}
-                });    
-            });}
-        })
-        .catch((err) => {
-            console.log(err);
-            this.props.showGlobalMessage(true, true, 'Error', 'custom-danger');
-                            let that= this;
-                            setTimeout(function () {
-                                that.props.hideGlobalMessage();
-                            }, 2000);
-        });
-        
-    }
+                          });
+                          fetch(
+                            "https://jsonplaceholder.typicode.com/todos/1"
+                          ).then((response) => {
+                            if (response.status === 200) {
+                              response.json().then((details) => {
+                                details = [
+                                  {
+                                    mode: "GATEWAY",
+                                    environment: "dev",
+                                    gatewayPort: "8080",
+                                    zone: "",
+                                    serviceUrl:
+                                      "https://ec-agent-portal-1x.com",
+                                    token: "none",
+                                    host: "ws://asda/agent",
+                                    os: "linux",
+                                  },
+                                ];
+                                if (details.length > 0) {
+                                  for (let detail of details) {
+                                    currentDetails.mode = detail.mode;
+                                    currentDetails.environment =
+                                      detail.environment;
+                                    currentDetails.gatewayPort =
+                                      detail.gatewayPort;
+                                    currentDetails.zone = detail.zone;
+                                    currentDetails.serviceUrl =
+                                      detail.serviceUrl;
+                                    currentDetails.token = detail.token;
+                                    currentDetails.host = detail.host;
+                                    currentDetails.os = detail.os;
+                                  }
+                                  this.setState({
+                                    gatewayDetails: currentDetails,
+                                  });
+                                  let that = this;
+                                  that.props.hideGlobalMessage();
+                                }
+                              });
+                            }
+                          });
+                        }
+                      }
+                    );
+                  });
+                }
+              }
+            );
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.props.showGlobalMessage(true, true, "Error", "custom-danger");
+        let that = this;
+        setTimeout(function () {
+          that.props.hideGlobalMessage();
+        }, 2000);
+      });
+  }
 
-    /* istanbul ignore next */
-    handleGatewayselection(e){
-        let selectedGateway = e.target.value;
-        this.setState({
-            selectedGateway : selectedGateway
-        });
-    }
+  /* istanbul ignore next */
+  handleGatewayselection(e) {
+    let selectedGateway = e.target.value;
+    this.setState({
+      selectedGateway: selectedGateway,
+    });
+  }
 
-    /* istanbul ignore next */
-    render() {
-        /* jshint ignore:start */
-        return (
-            <div className = "Monitorhealthstatus">
-                <div className="card mt-2">
-                    <div className="row insidedata">
-                        <form>
-                            <div className="form-row">
-                                <div className="col-sm-12 text-left">
-                                    <label>GATEWAY</label>
-                                    <div className="row">
-                                        <div className="col-sm-6">
-                                            <select
-												className="form-control form-control-sm"
-												id="selectedGateway"
-												name="selectedGateway"
-												value={this.state.selectedGateway}
-												onChange={(event) => {
-													this.handleGatewayselection(event);
-												}} >
-													<option value="">Select Organization</option>
-													{this.state.gateways.map((gateway, gatewayIndex) => {
-                                                    return(
-                                                        <option className="float-left"
-                                                            key={"gatewayOption"+gatewayIndex}
-                                                            value={ gateway.gatewayId }>{ gateway.gatewayId }</option>
-                                                )})}
-											</select>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <button 
-                                                type="button" 
-                                                id="fetch-health-status-btn"
-                                                disabled={this.state.selectedGateway === '' ? true : false}
-                                                className="btn customize-view-btn btn-sm" 
-                                                onClick={()=>{this.fetchHealthStatus()}}>
-                                                    FETCH HEALTH STATUS
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+  /* istanbul ignore next */
+  render() {
+    /* jshint ignore:start */
+    return (
+      <div className="Monitorhealthstatus">
+        <div className="card mt-2">
+          <div className="row insidedata">
+            <form>
+              <div className="form-row">
+                <div className="col-sm-12 text-left">
+                  <label>GATEWAY</label>
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <select
+                        className="form-control form-control-sm"
+                        id="selectedGateway"
+                        name="selectedGateway"
+                        value={this.state.selectedGateway}
+                        onChange={(event) => {
+                          this.handleGatewayselection(event);
+                        }}
+                      >
+                        <option value="">Select Organization</option>
+                        {this.state.gateways.map((gateway, gatewayIndex) => {
+                          return (
+                            <option
+                              className="float-left"
+                              key={"gatewayOption" + gatewayIndex}
+                              value={gateway.gatewayId}
+                            >
+                              {gateway.gatewayId}
+                            </option>
+                          );
+                        })}
+                      </select>
                     </div>
-                    <div className="row insidedata">
-                        <ul className="nav nav-tabs" id="myTab" role="tablist">
-                            <li className="nav-item">
-                                <a className="nav-link active" id="sessions-tab" data-toggle="tab" href="#sessions" role="tab" aria-controls="sessions" aria-selected="true">SESSIONS</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" id="superconnections-tab" data-toggle="tab" href="#superconnections" role="tab" aria-controls="superconnections" aria-selected="false">SUPER CONNECTIONS</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">SUPER CONNECTIONS1</a>
-                            </li>
-                        </ul>
-                        <div className="tab-content" id="myTabContent">
-                            <div className="tab-pane fade show active" id="sessions" role="tabpanel" aria-labelledby="sessions-tab">
-                                
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Session ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.session.sessionId}</small><br/>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Server config ID</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.session.id}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Bind ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.session.bindId}</small><br/>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Target ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.session.targetId}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Group ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.session.groupId}</small><br/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="tab-pane fade" id="superconnections" role="tabpanel" aria-labelledby="superconnections-tab">
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Server ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.serverId}</small><br/>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.id}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Target ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.targetId}</small><br/>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Group ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.groupId}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Time created:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.timeCreated}</small><br/>
-                                    </div>
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">IP:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.ip}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-6">
-                                        <small className="font-weight-bold">Last Pong:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.superConnection.lastPong}</small><br/>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Bind ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.bindId}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Client configuration:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.clientConfiguration}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.id}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Bind ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.bindId2}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Target ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.targetId}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Group ID:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.groupId}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Time created:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.timeCreated}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Allocations:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.allocations}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Total Allocations:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.totalAllocations}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Frees:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.frees}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Heap Alloc:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.heapAlloc}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Heap in use:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.heapInUse}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Heap released:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.heapReleased}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Heap Objects:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.heapObjects}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Report:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.report}</small><br/>
-                                    </div>
-                                </div>
-                                <div className="row">
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Last usage:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.lastUsage}</small><br/>
-                                    </div>
-                                    <div className="col-sm-4">
-                                        <small className="font-weight-bold">Last report:</small><br/>
-                                        <small className="font-weight-normal theme-color">{this.state.connection.lastReport}</small><br/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="col-sm-4">
+                      <button
+                        type="button"
+                        id="fetch-health-status-btn"
+                        disabled={
+                          this.state.selectedGateway === "" ? true : false
+                        }
+                        className="btn customize-view-btn btn-sm"
+                        onClick={() => {
+                          this.fetchHealthStatus();
+                        }}
+                      >
+                        FETCH HEALTH STATUS
+                      </button>
                     </div>
+                  </div>
                 </div>
+              </div>
+            </form>
+          </div>
+          <div className="row insidedata">
+            <ul className="nav nav-tabs" id="myTab" role="tablist">
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  id="sessions-tab"
+                  data-toggle="tab"
+                  href="#sessions"
+                  role="tab"
+                  aria-controls="sessions"
+                  aria-selected="true"
+                >
+                  SESSIONS
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  id="superconnections-tab"
+                  data-toggle="tab"
+                  href="#superconnections"
+                  role="tab"
+                  aria-controls="superconnections"
+                  aria-selected="false"
+                >
+                  SUPER CONNECTIONS
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  id="contact-tab"
+                  data-toggle="tab"
+                  href="#contact"
+                  role="tab"
+                  aria-controls="contact"
+                  aria-selected="false"
+                >
+                  Client Pool
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link"
+                  id="details-tab"
+                  data-toggle="tab"
+                  href="#details"
+                  role="tab"
+                  aria-controls="details"
+                  aria-selected="false"
+                >
+                  GATEWAY DETAILS
+                </a>
+              </li>
+            </ul>
+            <div className="tab-content" id="myTabContent">
+              <div
+                className="tab-pane fade show active"
+                id="sessions"
+                role="tabpanel"
+                aria-labelledby="sessions-tab"
+              >
+                <div className="row" style={{ textAlign: "center" }}>
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Session ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.session.sessionId}
+                    </small>
+                  </div>
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">
+                      Server config ID:
+                    </small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.session.id}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Bind ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.session.bindId}
+                    </small>
+                  </div>
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Target ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.session.targetId}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Group ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.session.groupId}
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="tab-pane fade"
+                id="superconnections"
+                role="tabpanel"
+                aria-labelledby="superconnections-tab"
+              >
+                <div className="row">
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Server ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.serverId}
+                    </small>
+                  </div>
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.id}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Target ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.targetId}
+                    </small>
+                  </div>
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Group ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.groupId}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Time created:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.timeCreated}
+                    </small>
+                  </div>
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">IP:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.ip}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-6">
+                    <small className="font-weight-bold">Last Pong:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.superConnection.lastPong}
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="tab-pane fade"
+                id="contact"
+                role="tabpanel"
+                aria-labelledby="contact-tab"
+              >
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Bind ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.bindId}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">
+                      Client configuration:
+                    </small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.clientConfiguration}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.id}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Bind ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.bindId2}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Target ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.targetId}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Group ID:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.groupId}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Time created:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.timeCreated}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Allocations:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.allocations}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">
+                      Total Allocations:
+                    </small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.totalAllocations}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Frees:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.frees}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Heap Alloc:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.heapAlloc}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Heap in use:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.heapInUse}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Heap released:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.heapReleased}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Heap Objects:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.heapObjects}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Report:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.report}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Last usage:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.lastUsage}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Last report:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.connection.lastReport}
+                    </small>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className="tab-pane fade show"
+                id="details"
+                role="tabpanel"
+                aria-labelledby="details-tab"
+              >
+                <br />
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Mode:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.mode}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Environment:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.environment}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Gateway Port:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.gatewayPort}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Zone:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.zone}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">serviceUrl:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.serviceUrl}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Host:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.host}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Token:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.token}
+                    </small>
+                  </div>
+
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">OS:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.os}
+                    </small>
+                  </div>
+                </div>
+              </div>
             </div>
-        /*<div className = "Monitorhealthstatus scroll">
+          </div>
+        </div>
+      </div>
+      /*<div className = "Monitorhealthstatus scroll">
                     <div className = 'row mt-2'>
                         <div className = 'col col-6'>
                             <select className="form-control form-control-sm">
@@ -1156,7 +1019,7 @@ export default class Healthstatus extends React.Component {
                     </div>
                 
                                     </div> */
-        )
-        /* jshint ignore:end */
-    }
+    );
+    /* jshint ignore:end */
+  }
 }
