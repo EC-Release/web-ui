@@ -44,6 +44,16 @@ export default class Healthstatus extends React.Component {
         lastUsage: "",
         lastReport: "",
       },
+      gatewayDetails: {
+        mode: "",
+        environment: "",
+        gatewayPort: "",
+        zone: "",
+        serviceUrl: "",
+        token: "",
+        host: "",
+        os: "",
+      },
       showSession: false,
       showConnection: false,
       showSuperConnection: false,
@@ -231,6 +241,7 @@ export default class Healthstatus extends React.Component {
   fetchHealthStatus() {
     let selectedGatewayId = this.state.selectedGateway;
     let gateways = this.state.gateways;
+    console.log(gateways);
     let selectedGateway = gateways.find(
       (x) => x.gatewayId === selectedGatewayId
     );
@@ -245,6 +256,7 @@ export default class Healthstatus extends React.Component {
     let currentSession = Object.assign({}, this.state.session);
     let currentSuperConnection = Object.assign({}, this.state.superConnection);
     let currentConnection = Object.assign({}, this.state.connection);
+    let currentDetails = Object.assign({}, this.state.gatewayDetails);
     fetch("https://jsonplaceholder.typicode.com/todos/1") // healthLink
       .then((response) => {
         if (response.status === 200) {
@@ -372,8 +384,49 @@ export default class Healthstatus extends React.Component {
                               this.setState({
                                 connection: currentConnection,
                               });
-                              let that = this;
-                              that.props.hideGlobalMessage();
+                              /*  let that = this;
+                              that.props.hideGlobalMessage(); */
+                            }
+                          });
+                          fetch(
+                            "https://jsonplaceholder.typicode.com/todos/1"
+                          ).then((response) => {
+                            if (response.status === 200) {
+                              response.json().then((details) => {
+                                details = [
+                                  {
+                                    mode: "GATEWAY",
+                                    environment: "dev",
+                                    gatewayPort: "8080",
+                                    zone: "",
+                                    serviceUrl:
+                                      "https://ec-agent-portal-1x.com",
+                                    token: "none",
+                                    host: "ws://asda/agent",
+                                    os: "linux",
+                                  },
+                                ];
+                                if (details.length > 0) {
+                                  for (let detail of details) {
+                                    currentDetails.mode = detail.mode;
+                                    currentDetails.environment =
+                                      detail.environment;
+                                    currentDetails.gatewayPort =
+                                      detail.gatewayPort;
+                                    currentDetails.zone = detail.zone;
+                                    currentDetails.serviceUrl =
+                                      detail.serviceUrl;
+                                    currentDetails.token = detail.token;
+                                    currentDetails.host = detail.host;
+                                    currentDetails.os = detail.os;
+                                  }
+                                  this.setState({
+                                    gatewayDetails: currentDetails,
+                                  });
+                                  let that = this;
+                                  that.props.hideGlobalMessage();
+                                }
+                              });
                             }
                           });
                         }
@@ -504,14 +557,14 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id="operations-tab"
+                  id="details-tab"
                   data-toggle="tab"
-                  href="#operations"
+                  href="#details"
                   role="tab"
-                  aria-controls="operations"
+                  aria-controls="details"
                   aria-selected="false"
                 >
-                  Operations
+                  GATEWAY DETAILS
                 </a>
               </li>
             </ul>
@@ -748,89 +801,64 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade show"
-                id="operations"
+                id="details"
                 role="tabpanel"
-                aria-labelledby="operations-tab"
+                aria-labelledby="details-tab"
               >
                 <br />
-                <div className="row" style={{ textAlign: "center" }}>
-                  <div className="col-sm-1">&nbsp;</div>
-                  <div className="col-sm-2">
-                    <button
-                      type="button"
-                      id="fetch-health-status-btn"
-                      disabled={
-                        this.state.selectedGateway === "" ? true : false
-                      }
-                      className="btn customize-view-btn btn-sm"
-                      /*  onClick={() => {
-                          this.fetchHealthStatus();
-                        }} */
-                    >
-                      Restart a gateway
-                    </button>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Mode:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.mode}
+                    </small>
                   </div>
-                  <div className="col-sm-2">
-                    <button
-                      type="button"
-                      id="fetch-health-status-btn"
-                      disabled={
-                        this.state.selectedGateway === "" ? true : false
-                      }
-                      className="btn customize-view-btn btn-sm"
-                      /*  onClick={() => {
-                          this.fetchHealthStatus();
-                        }} */
-                    >
-                      Launch a gateway
-                    </button>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Environment:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.environment}
+                    </small>
                   </div>
-
-                  <div className="col-sm-2">
-                    <button
-                      type="button"
-                      id="fetch-health-status-btn"
-                      disabled={
-                        this.state.selectedGateway === "" ? true : false
-                      }
-                      className="btn customize-view-btn btn-sm"
-                      /*  onClick={() => {
-                          this.fetchHealthStatus();
-                        }} */
-                    >
-                      Deploy a gateway
-                    </button>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Gateway Port:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.gatewayPort}
+                    </small>
                   </div>
-                  <div className="col-sm-2">
-                    <button
-                      type="button"
-                      id="fetch-health-status-btn"
-                      disabled={
-                        this.state.selectedGateway === "" ? true : false
-                      }
-                      className="btn customize-view-btn btn-sm"
-                      /*  onClick={() => {
-                          this.fetchHealthStatus();
-                        }} */
-                    >
-                      Access a gateway
-                    </button>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Zone:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.zone}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">serviceUrl:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.serviceUrl}
+                    </small>
+                  </div>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Host:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.host}
+                    </small>
+                  </div>
+                </div>
+                <div className="row">
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">Token:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.token}
+                    </small>
                   </div>
 
-                  <div className="col-sm-2">
-                    <button
-                      type="button"
-                      id="fetch-health-status-btn"
-                      disabled={
-                        this.state.selectedGateway === "" ? true : false
-                      }
-                      className="btn customize-view-btn btn-sm"
-                      /*  onClick={() => {
-                          this.fetchHealthStatus();
-                        }} */
-                    >
-                      Kill a gateway
-                    </button>
+                  <div className="col-sm-4">
+                    <small className="font-weight-bold">OS:</small>
+                    <small className="font-weight-normal theme-color">
+                      {this.state.gatewayDetails.os}
+                    </small>
                   </div>
                 </div>
               </div>
