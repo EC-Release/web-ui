@@ -69,4 +69,10 @@ describe('Testing from Maintainagetedit.test.js <Maintainagetedit />', () => {
         });
         expect(wrapper).toBeTruthy();
     });
+  it("should render upgrade Button", () => {
+        // when
+        const component = shallow(<Maintainagentcreate   />);
+        // then
+        expect(component.getElements()).toMatchSnapshot();
+    });
 });
