@@ -126,5 +126,11 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         });
         expect(wrapper.find('div.subscription-form').length).toBe(1);
     });
+       it("should render Create Button of Subscription", () => {
+        // when
+        const component = shallow(<customize-view-btn />);
+        // then
+        expect(component.getElements()).toMatchSnapshot();
+    }); 
 
 });
