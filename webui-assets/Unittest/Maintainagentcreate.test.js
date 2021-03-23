@@ -126,4 +126,17 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
         });
         expect(wrapper.find('div.client-form').length).toBe(1);
     });
+    it("should render initial layout", () => {
+        // when
+        const component = shallow(<Maintainagentcreate />);
+        // then
+        expect(component.getElements()).toMatchSnapshot();
+    });
+    
+    it("should render initial layout", () => {
+        // when
+        const component = shallow(<customize-view-btn />);
+        // then
+        expect(component.getElements()).toMatchSnapshot();
+    })
 });
