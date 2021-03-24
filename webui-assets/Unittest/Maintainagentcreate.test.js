@@ -139,17 +139,6 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
       expect(wrapper.find('div.gateway-form').length).toBe(1);
   });
 
-  it('should render the CLIENT component', () => {
-    const propsToPass = {
-        helpText: {
-            mode: '',
-            environment: ''
-        }
-    }
-    const wrapper = render(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
-   
 
-  expect(wrapper.find('div.client-form').length).toBe(1);
-});
 
 });
