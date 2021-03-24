@@ -396,7 +396,7 @@ export default class Healthstatus extends React.Component {
                                 details = [
                                   {
                                     mode: "GATEWAY",
-                                    environment: "dev",
+                                    environment: "AWS",
                                     gatewayPort: "8080",
                                     zone: "",
                                     serviceUrl:
@@ -457,6 +457,10 @@ export default class Healthstatus extends React.Component {
     });
   }
 
+  gatewayOperations(gatewayId, operation) {
+    console.log(gatewayId, operation);
+  }
+
   /* istanbul ignore next */
   render() {
     /* jshint ignore:start */
@@ -469,7 +473,7 @@ export default class Healthstatus extends React.Component {
                 <div className="col-sm-12 text-left">
                   <label>GATEWAY</label>
                   <div className="row">
-                    <div className="col-sm-6">
+                    <div className="col-sm-4">
                       <select
                         className="form-control form-control-sm"
                         id="selectedGateway"
@@ -493,20 +497,102 @@ export default class Healthstatus extends React.Component {
                         })}
                       </select>
                     </div>
-                    <div className="col-sm-4">
-                      <button
-                        type="button"
-                        id="fetch-health-status-btn"
-                        disabled={
-                          this.state.selectedGateway === "" ? true : false
-                        }
-                        className="btn customize-view-btn btn-sm"
-                        onClick={() => {
-                          this.fetchHealthStatus();
-                        }}
-                      >
-                        FETCH HEALTH STATUS
-                      </button>
+                    <div className="col-sm-8">
+                      <div className="row ops-btn">
+                        <button
+                          type="button"
+                          id="fetch-health-status-btn"
+                          disabled={
+                            this.state.selectedGateway === "" ? true : false
+                          }
+                          className="btn customize-view-btn btn-sm"
+                          onClick={() => {
+                            this.fetchHealthStatus();
+                          }}
+                        >
+                          Fetch Health Status
+                        </button>
+                        <button
+                          type="button"
+                          id="restart-gateway-btn"
+                          disabled={
+                            this.state.selectedGateway === "" ? true : false
+                          }
+                          className="btn customize-view-btn btn-sm"
+                          onClick={() => {
+                            this.gatewayOperations(
+                              this.state.selectedGateway,
+                              "restart"
+                            );
+                          }}
+                        >
+                          Restart Gateway
+                        </button>
+                        <button
+                          type="button"
+                          id="launch-gateway-btn"
+                          disabled={
+                            this.state.selectedGateway === "" ? true : false
+                          }
+                          className="btn customize-view-btn btn-sm"
+                          onClick={() => {
+                            this.gatewayOperations(
+                              this.state.selectedGateway,
+                              "launch"
+                            );
+                          }}
+                        >
+                          Launch Gateway
+                        </button>
+                        <button
+                          type="button"
+                          id="deploy-gateway-btn"
+                          disabled={
+                            this.state.selectedGateway === "" ? true : false
+                          }
+                          className="btn customize-view-btn btn-sm"
+                          onClick={() => {
+                            this.gatewayOperations(
+                              this.state.selectedGateway,
+                              "deploy"
+                            );
+                          }}
+                        >
+                          Deploy Gateway
+                        </button>
+                        <button
+                          type="button"
+                          id="access-gateway-btn"
+                          disabled={
+                            this.state.selectedGateway === "" ? true : false
+                          }
+                          className="btn customize-view-btn btn-sm"
+                          onClick={() => {
+                            this.gatewayOperations(
+                              this.state.selectedGateway,
+                              "access"
+                            );
+                          }}
+                        >
+                          Access Gateway
+                        </button>
+                        <button
+                          type="button"
+                          id="kill-gateway-btn"
+                          disabled={
+                            this.state.selectedGateway === "" ? true : false
+                          }
+                          className="btn customize-view-btn btn-sm"
+                          onClick={() => {
+                            this.gatewayOperations(
+                              this.state.selectedGateway,
+                              "kill"
+                            );
+                          }}
+                        >
+                          Kill Gateway
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -583,11 +669,9 @@ export default class Healthstatus extends React.Component {
                     </small>
                   </div>
                   <div className="col-sm-6">
-                    <small className="font-weight-bold">
-                      Server config ID:
-                    </small>
+                    <small className="font-weight-bold">Group ID:</small>
                     <small className="font-weight-normal theme-color">
-                      {this.state.session.id}
+                      {this.state.session.groupId}
                     </small>
                   </div>
                 </div>
@@ -607,9 +691,11 @@ export default class Healthstatus extends React.Component {
                 </div>
                 <div className="row">
                   <div className="col-sm-6">
-                    <small className="font-weight-bold">Group ID:</small>
+                    <small className="font-weight-bold">
+                      Server config ID:
+                    </small>
                     <small className="font-weight-normal theme-color">
-                      {this.state.session.groupId}
+                      {this.state.session.id}
                     </small>
                   </div>
                 </div>
@@ -629,17 +715,18 @@ export default class Healthstatus extends React.Component {
                     </small>
                   </div>
                   <div className="col-sm-6">
-                    <small className="font-weight-bold">ID:</small>
+                    <small className="font-weight-bold">Time created:</small>
                     <small className="font-weight-normal theme-color">
-                      {this.state.superConnection.id}
+                      {this.state.superConnection.timeCreated}
                     </small>
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="col-sm-6">
-                    <small className="font-weight-bold">Target ID:</small>
+                    <small className="font-weight-bold">ID:</small>
                     <small className="font-weight-normal theme-color">
-                      {this.state.superConnection.targetId}
+                      {this.state.superConnection.id}
                     </small>
                   </div>
                   <div className="col-sm-6">
@@ -649,11 +736,12 @@ export default class Healthstatus extends React.Component {
                     </small>
                   </div>
                 </div>
+
                 <div className="row">
                   <div className="col-sm-6">
-                    <small className="font-weight-bold">Time created:</small>
+                    <small className="font-weight-bold">Target ID:</small>
                     <small className="font-weight-normal theme-color">
-                      {this.state.superConnection.timeCreated}
+                      {this.state.superConnection.targetId}
                     </small>
                   </div>
                   <div className="col-sm-6">
@@ -703,9 +791,9 @@ export default class Healthstatus extends React.Component {
                 </div>
                 <div className="row">
                   <div className="col-sm-4">
-                    <small className="font-weight-bold">Bind ID:</small>
+                    <small className="font-weight-bold">Frees:</small>
                     <small className="font-weight-normal theme-color">
-                      {this.state.connection.bindId2}
+                      {this.state.connection.frees}
                     </small>
                   </div>
                   <div className="col-sm-4">
@@ -745,12 +833,6 @@ export default class Healthstatus extends React.Component {
                 </div>
                 <div className="row">
                   <div className="col-sm-4">
-                    <small className="font-weight-bold">Frees:</small>
-                    <small className="font-weight-normal theme-color">
-                      {this.state.connection.frees}
-                    </small>
-                  </div>
-                  <div className="col-sm-4">
                     <small className="font-weight-bold">Heap Alloc:</small>
                     <small className="font-weight-normal theme-color">
                       {this.state.connection.heapAlloc}
@@ -762,14 +844,14 @@ export default class Healthstatus extends React.Component {
                       {this.state.connection.heapInUse}
                     </small>
                   </div>
-                </div>
-                <div className="row">
                   <div className="col-sm-4">
                     <small className="font-weight-bold">Heap released:</small>
                     <small className="font-weight-normal theme-color">
                       {this.state.connection.heapReleased}
                     </small>
                   </div>
+                </div>
+                <div className="row">
                   <div className="col-sm-4">
                     <small className="font-weight-bold">Heap Objects:</small>
                     <small className="font-weight-normal theme-color">
@@ -782,18 +864,10 @@ export default class Healthstatus extends React.Component {
                       {this.state.connection.report}
                     </small>
                   </div>
-                </div>
-                <div className="row">
                   <div className="col-sm-4">
                     <small className="font-weight-bold">Last usage:</small>
                     <small className="font-weight-normal theme-color">
                       {this.state.connection.lastUsage}
-                    </small>
-                  </div>
-                  <div className="col-sm-4">
-                    <small className="font-weight-bold">Last report:</small>
-                    <small className="font-weight-normal theme-color">
-                      {this.state.connection.lastReport}
                     </small>
                   </div>
                 </div>
