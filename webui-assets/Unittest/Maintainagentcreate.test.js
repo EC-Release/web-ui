@@ -126,17 +126,30 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
         });
         expect(wrapper.find('div.client-form').length).toBe(1);
     });
-    it("should render initial layout", () => {
-        // when
-        const component = shallow(<Maintainagentcreate />);
-        // then
-        expect(component.getElements()).toMatchSnapshot();
-    });
-    
-    it("should render initial layout", () => {
-        // when
-        const component = shallow(<customize-view-btn />);
-        // then
-        expect(component.getElements()).toMatchSnapshot();
-    })
+    it('should render the GATEWAY component', () => {
+        const propsToPass = {
+            helpText: {
+                mode: '',
+                environment: ''
+            }
+        }
+        const wrapper = render(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+       
+  
+      expect(wrapper.find('div.gateway-form').length).toBe(1);
+  });
+
+  it('should render the CLIENT component', () => {
+    const propsToPass = {
+        helpText: {
+            mode: '',
+            environment: ''
+        }
+    }
+    const wrapper = render(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+   
+
+  expect(wrapper.find('div.client-form').length).toBe(1);
+});
+
 });
