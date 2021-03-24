@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, shallow } from 'enzyme';
+import { configure, shallow, render } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import fetchMock from 'fetch-mock';
 
@@ -44,4 +44,9 @@ describe('Testing from Groupcreate.test.js <Groupcreate />', () => {
         });
         expect(wrapper.find('div.group-form').length).toBe(1);
     });
+    
+      it('should render the Groupcreate component', () => {
+        const wrapper = render(<Groupcreate />);
+        expect(wrapper.find('div.group-form').length).toBe(1);
+  });
 });
