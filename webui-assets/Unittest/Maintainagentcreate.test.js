@@ -138,7 +138,19 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
   
       expect(wrapper.find('div.gateway-form').length).toBe(1);
   });
-
+ it('should have "Maintainagentcreate" class with div only once', () => {
+    const propsToPass = {
+        helpText: {
+            mode: '',
+            environment: ''
+        }
+    }
+    let demoAllFields = [
+        {subscriptionId: "subscriptionId", subscriptionName: "subscriptionName"}
+    ];
+    const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} allFields={demoAllFields} selectedFields={[]} />);
+    expect(wrapper.find('div.Maintainagentcreate').length).toBe(1);
+});  
 
 
 });
