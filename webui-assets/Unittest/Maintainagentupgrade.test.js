@@ -15,4 +15,13 @@ describe('Testing from Maintainagentupgrade.test.js <Maintainagentupgrade />', (
         const wrapper = shallow(<Maintainagentupgrade />, { disableLifecycleMethods: true });
         expect(wrapper).toBeTruthy();
     });
+    
+      it('should have "Maintainagentupgrade" class with div only once', () => {
+       const wrapper = shallow(<Maintainagentupgrade />, { disableLifecycleMethods: true });
+        expect(wrapper.find('div.Maintainagentupgrade').length).toBe(1);
+    });
+    it('should have "Maintainagentupgrade" class with div only once', () => {
+        const wrapper = shallow(<Maintainagentupgrade />, { disableLifecycleMethods: true });
+         expect(wrapper.find('div.centered-div').length).toBe(1);
+     });
 });
