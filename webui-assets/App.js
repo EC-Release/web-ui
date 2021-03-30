@@ -85,9 +85,10 @@ export default class App extends React.Component {
       }
     })
     .then((response) => {
-        if (response.status === 200) {
+       /*  if (response.status === 200) { */
           response.json().then((respData) => {
             if (respData.errorStatus.status === 'ok') {
+		     console.log('hii');
               respData.data.permissions = {
                 "roleId": 1,
                 "roleName": "Admin",
@@ -179,13 +180,13 @@ export default class App extends React.Component {
               }, 2000);
             }
           });
-        }
+      /*   }
         else {
           this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
           setTimeout(function () {
             location.reload(true);
           }, 2000);
-        }
+        } */
     });
     // Get logged user's userId end
 
