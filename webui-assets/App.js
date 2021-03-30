@@ -88,7 +88,7 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             if (respData.errorStatus.status === 'ok') {
-              /*respData.data.permissions = {
+              respData.data.permissions = {
                 "roleId": 1,
                 "roleName": "Admin",
                 "accesses": {
@@ -157,11 +157,11 @@ export default class App extends React.Component {
                     "haveAccess": true
                   },
                 }
-              };*/
-              let userId = respData.data.user_id;
+              };
+             /*  let userId = respData.data.user_id;
               let profileName = respData.data.name;
               let profileEmailId = respData.data.email;
-              let permissions = respData.data.permissions;
+              let permissions = respData.data.permissions; */
               this.setState({
                 profileData: {
                   email: profileEmailId,
