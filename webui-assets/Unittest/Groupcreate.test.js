@@ -49,4 +49,9 @@ describe('Testing from Groupcreate.test.js <Groupcreate />', () => {
         const wrapper = render(<Groupcreate />);
         expect(wrapper.find('div.group-form').length).toBe(1);
   });
+    
+    it('should render the Groupcreate component', () => {
+    const wrapper = shallow(<Groupcreate />, { disableLifecycleMethods: true });
+    expect(wrapper).toBeTruthy();
+  });
 });
