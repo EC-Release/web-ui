@@ -159,10 +159,15 @@ export default class App extends React.Component {
                   },
                 }
               };
-             /*  let userId = respData.data.user_id;
+
+              respData.data.email ="bryanTest@gmail.com";
+              respData.data.user_id ="503096280";
+              respData.data.name ="Bryan Shay";
+
+              let userId = respData.data.user_id;
               let profileName = respData.data.name;
               let profileEmailId = respData.data.email;
-              let permissions = respData.data.permissions; */
+              let permissions = respData.data.permissions; 
               this.setState({
                 profileData: {
                   email: profileEmailId,
