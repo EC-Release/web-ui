@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-
 import Dashboard from './Dashboard/Dashboard.js';
 import View from './View/View.js';
 import Maintain from './Maintain/Maintain.js';
