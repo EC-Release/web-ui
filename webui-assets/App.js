@@ -88,7 +88,7 @@ export default class App extends React.Component {
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            if (respData.errorStatus.status === 'ok') {
+            /* if (respData.errorStatus.status === 'ok') { */
               respData.data.permissions = {
                 "roleId": 1,
                 "roleName": "Admin",
@@ -172,13 +172,13 @@ export default class App extends React.Component {
                 permissions: permissions,
                 currentView: 'Dashboard'
               });
-            }
+            /* }
             else{
               this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
               setTimeout(function () {
                 location.reload(true);
               }, 2000);
-            }
+            } */
           });
         }
         else {
