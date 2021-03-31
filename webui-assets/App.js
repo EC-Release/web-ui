@@ -76,7 +76,7 @@ export default class App extends React.Component {
     });
 
     // Get logged user's userId start
-   let apiEndPoint= "https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
+   let apiEndPoint= this.state.apiEndPoints.baseUrl + '/snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
     fetch(apiEndPoint, {
       method: 'GET',
       headers: {
