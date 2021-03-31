@@ -111,7 +111,7 @@
 ### 3.2 Session
 
 
-![Monitor Health Session](/docs/Ec%20Screenshot/Monitor/MonitorHealthSession.png?raw=true "Monitor Health Session")
+![Monitor Health Session](/docs/Ec%20Screenshot/Monitor/MonitorHealthSession.jpg?raw=true "Monitor Health Session")
 
 
 
@@ -133,7 +133,7 @@
 
 ### 3.5 Gateway Details
 
- ![Monitor Health Client Pool](/docs/Ec%20Screenshot/Monitor/MonitorHealthClientPool.png?raw=true "Monitor Health Client Pool")
+ ![Monitor Health Client Pool](/docs/Ec%20Screenshot/Monitor/MonitorHealthGatewayDetails.jpg?raw=true "Monitor Health Client Pool")
 
 
 
