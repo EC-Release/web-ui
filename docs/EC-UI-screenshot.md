@@ -18,6 +18,7 @@
      &nbsp;&nbsp;&nbsp; [3.2 Session](#32-session) \
      &nbsp;&nbsp;&nbsp; [3.3 Super Connection](#33-super-connection) \
      &nbsp;&nbsp;&nbsp; [3.4 Client Pool](#34-client-pool) 
+     &nbsp;&nbsp;&nbsp; [3.5 Gateway Details](#35-gateway-details) 
      
    [4.Setting](#4-setting) \
      &nbsp;&nbsp;&nbsp; [4.1 User management](#41-user-management) 
@@ -111,7 +112,7 @@
 ### 3.2 Session
 
 
-![Monitor Health Session](/docs/Ec%20Screenshot/Monitor/MonitorHealthSession.jpg?raw=true "Monitor Health Session")
+![Monitor Health Session](/docs/Ec%20Screenshot/Monitor/MonitorHealthSession.JPG?raw=true "Monitor Health Session")
 
 
 
@@ -133,7 +134,7 @@
 
 ### 3.5 Gateway Details
 
- ![Monitor Health Client Pool](/docs/Ec%20Screenshot/Monitor/MonitorHealthGatewayDetails.jpg?raw=true "Monitor Health Client Pool")
+ ![Monitor Health Client Pool](/docs/Ec%20Screenshot/Monitor/MonitorHealthGatewayDetails.JPG?raw=true "Monitor Health Client Pool")
 
 
 
