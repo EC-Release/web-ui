@@ -131,6 +131,9 @@
  ![Monitor Health Client Pool](/docs/Ec%20Screenshot/Monitor/MonitorHealthClientPool.png?raw=true "Monitor Health Client Pool")
 
 
+### 3.5 Gateway Details
+
+ ![Monitor Health Client Pool](/docs/Ec%20Screenshot/Monitor/MonitorHealthClientPool.png?raw=true "Monitor Health Client Pool")
 
 
 
