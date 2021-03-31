@@ -31,7 +31,7 @@ import Cookienotification from './Cookienotification/Cookienotification.js';
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 
-var API_URL = '/v1.1beta/ec';
+var API_URL = 'https://ng-portal-3.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/api/';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -76,7 +76,7 @@ export default class App extends React.Component {
     });
 
     // Get logged user's userId start
-   let apiEndPoint= "https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/getDevId'
+   let apiEndPoint= "https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
     fetch(apiEndPoint, {
       method: 'GET',
       headers: {
@@ -87,7 +87,10 @@ export default class App extends React.Component {
     })
     .then((response) => {
         if (response.status === 200) {
+            console.log(response)
           response.json().then((respData) => {
+            console.log(respData)
+
             /* if (respData.errorStatus.status === 'ok') { */
               respData.data.permissions = {
                 "roleId": 1,
