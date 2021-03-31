@@ -31,7 +31,7 @@ import Cookienotification from './Cookienotification/Cookienotification.js';
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 
-var API_URL = 'https://ng-portal-3.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/api/';
+var API_URL = '/v1.2beta/ops/api/';
 
 export default class App extends React.Component {
   constructor(props) {
