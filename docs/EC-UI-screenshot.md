@@ -17,7 +17,7 @@
      &nbsp;&nbsp;&nbsp; [3.1 Notifications](#31-notifications) \
      &nbsp;&nbsp;&nbsp; [3.2 Session](#32-session) \
      &nbsp;&nbsp;&nbsp; [3.3 Super Connection](#33-super-connection) \
-     &nbsp;&nbsp;&nbsp; [3.4 Client Pool](#34-client-pool) 
+     &nbsp;&nbsp;&nbsp; [3.4 Client Pool](#34-client-pool)\
      &nbsp;&nbsp;&nbsp; [3.5 Gateway Details](#35-gateway-details) 
      
    [4.Setting](#4-setting) \
@@ -116,14 +116,10 @@
 
 
 
-
-
 ### 3.3 Super Connection
 
  
 ![MonitoHealth Super Connections](/docs/Ec%20Screenshot/Monitor/MonitoHealthSuperConnections.png?raw=true "MonitoHealth Super Connections")
-
-
 
 
 
