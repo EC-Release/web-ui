@@ -82,17 +82,19 @@ export default class App extends React.Component {
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': "Bearer " + authToken
+          'Authorization':"Bearer " + authToken
       }
     })
     .then((response) => {
         if (response.status === 200) {
-            console.log(response)
           response.json().then((respData) => {
-            console.log(respData)
-
+            let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
+            console.log(data)
             /* if (respData.errorStatus.status === 'ok') { */
-              respData.data.permissions = {
+            /*   data.email ="bryanTest@gmail.com";
+              data.user_id ="503096280";
+              data.name ="Bryan Shay"; */
+            let permission = {
                 "roleId": 1,
                 "roleName": "Admin",
                 "accesses": {
@@ -163,14 +165,10 @@ export default class App extends React.Component {
                 }
               };
 
-              respData.data.email ="bryanTest@gmail.com";
-              respData.data.user_id ="503096280";
-              respData.data.name ="Bryan Shay";
-
-              let userId = respData.data.user_id;
-              let profileName = respData.data.name;
-              let profileEmailId = respData.data.email;
-              let permissions = respData.data.permissions; 
+              let userId = data.user_id;
+              let profileName = data.name;
+              let profileEmailId = data.email;
+              let permissions = permission; 
               this.setState({
                 profileData: {
                   email: profileEmailId,
