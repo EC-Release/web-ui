@@ -166,7 +166,7 @@ export default class App extends React.Component {
               };
 
               let userId = data.user_id;
-              let profileName = data.name;
+              let profileName = data.username;
               let profileEmailId = data.email;
               let permissions = permission; 
               this.setState({
