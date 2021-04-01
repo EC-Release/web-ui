@@ -47,7 +47,7 @@ export default class Technicalview extends React.Component {
             }];
             let progressPercent = 0;
 
-            fetch(this.props.baseUrl + '/listSubscriptions', {
+            fetch(this.props.baseUrl + '/snapshot', {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
