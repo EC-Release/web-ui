@@ -324,7 +324,7 @@ export default class Subscriptioncreate extends React.Component {
         prepareData.app = currentForm.app.value;
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
-        prepareData.name = "EC-UI";
+        prepareData.name = "subscriptionData";
         prepareData.parent = "a7fb3299-5fd6-430d-8869-89f7a9ed23bf";
 
         prepareData.existing = this.state.isExisting.toString();
@@ -335,7 +335,7 @@ export default class Subscriptioncreate extends React.Component {
         }
 
         console.log(prepareData)
-        fetch(this.props.baseUrl + '/ab2a2691-a563-486c-9883-5111ff36ba9b', { 
+        fetch(this.props.baseUrl + '/subscriptionData', { 
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
