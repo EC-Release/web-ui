@@ -335,8 +335,8 @@ export default class Subscriptioncreate extends React.Component {
         }
 
         console.log(prepareData)
-        fetch(this.props.baseUrl + '/subscriptionData', { 
-                method: 'POST',
+        fetch(this.props.baseUrl + '/ab2a2691-a563-486c-9883-5111ff36ba9b', { 
+                method: 'PUT',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
