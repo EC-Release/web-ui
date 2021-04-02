@@ -324,8 +324,10 @@ export default class Subscriptioncreate extends React.Component {
         prepareData.app = currentForm.app.value;
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
+        prepareData.name = "EC-UI";
+        prepareData.parent = "a7fb3299-5fd6-430d-8869-89f7a9ed23bf";
+
         prepareData.existing = this.state.isExisting.toString();
-        console.log(currentForm.environment.value)
         if(!this.state.isExisting){
             prepareData.subscriptionId = '';
             prepareData.serviceUri = '';
