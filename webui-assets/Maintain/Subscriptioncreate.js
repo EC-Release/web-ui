@@ -331,7 +331,9 @@ export default class Subscriptioncreate extends React.Component {
             prepareData.serviceUri = '';
             prepareData.adminToken = '';
         }
-        fetch(this.props.baseUrl + '/createSubscription', { 
+
+        console.log(prepareData)
+        fetch(this.props.baseUrl + '/ab2a2691-a563-486c-9883-5111ff36ba9b', { 
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -343,7 +345,7 @@ export default class Subscriptioncreate extends React.Component {
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    if(respData.errorStatus.status == 'ok'){
+                    /* if(respData.errorStatus.status == 'ok'){ */
                         this.props.showGlobalMessage(false, true, 'Record saved successfully', 'custom-success');
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
@@ -381,13 +383,13 @@ export default class Subscriptioncreate extends React.Component {
                                 isExisting: false
                             });
                         }, 2000);
-                    }
+                  /*   }
                     else{
                         this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
                         }, 2000);
-                    }
+                    } */
                 });
             }
             else{
