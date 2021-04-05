@@ -42,8 +42,13 @@ export default class Technicalview extends React.Component {
             let treeValue = [{
                 id: 1,
                 value: 'EC',
-                title: 'EC',
-                nodeType: 'root'
+                children: [
+                    {
+                        id: 2,
+                        value: 'GroupName',
+                      
+                    }
+                ]
             }];
             let progressPercent = 0;
 
