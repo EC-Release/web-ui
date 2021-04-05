@@ -59,7 +59,7 @@ export default class Technicalview extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         
-                        if(respData.errorStatus.status == 'ok'){
+                        /* if(respData.errorStatus.status == 'ok'){ */
                             let subscriptions = respData.data;
                             if(subscriptions !== null){
                                 treeValue[0].value = treeValue[0].value + ' (' + subscriptions.length +')';
@@ -471,7 +471,7 @@ export default class Technicalview extends React.Component {
                                 },2000);
                                 this.timer = setInterval(()=> this.getItems(), 30000);
                             }
-                        }
+                        /* } */
                     });
                 }
             });
@@ -1299,5 +1299,4 @@ export default class Technicalview extends React.Component {
             </div>
         )
         /* jshint ignore:end */
-    }
-}
+    }}
