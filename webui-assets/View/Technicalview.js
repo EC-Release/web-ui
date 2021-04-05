@@ -1030,7 +1030,17 @@ export default class Technicalview extends React.Component {
         let thead = [];
         let allFields = [];
         let tbody = [];
-        let mockTableData = technicalTableData;
+        const clientConfig = [{
+            GatewayID:'0idLmsMk8e',
+            RefID:'101186260',
+            IP:'10.72.11.10:63218',
+            sessionId:'0idLmsMk8e',
+            groupId:'wabtec-gecars-qa',
+            bindid:'XvmV6ynici',
+            targetId:'Q7rfHI',
+            timeCreated:'2021-02-10T12:11:07.223278039Z'
+          }];
+        let mockTableData = clientConfig;
         
         if(mockTableData.length > 0){
             let allDataKeys = Object.keys(mockTableData[0]);
