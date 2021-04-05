@@ -125,8 +125,10 @@ export default class Technicalview extends React.Component {
 
                                 let newId = treeValue[0].id;
                                 for(let indexSubscriptions in subscriptions){
-                                    let subscriptionId = subscriptions[indexSubscriptions].subscriptionId.trim();
-                                    let subscriptionName = subscriptions[indexSubscriptions].subscriptionName.trim();
+                                    let subscriptionId = subscriptions[indexSubscriptions].listdata[indexSubscriptions].items[indexSubscriptions].groupId;
+                                    let subscriptionName = subscriptions[indexSubscriptions].listdata[indexSubscriptions].items[indexSubscriptions].groupId;
+                                  // let subscriptionId = indexSubscriptions.subscriptionId;
+                                  // let subscriptionName = indexSubscriptions.subscriptionName;
                                     newId++;
                                     let newSubscriptionsObj = {};
                                     newSubscriptionsObj.id = newId;
@@ -148,7 +150,8 @@ export default class Technicalview extends React.Component {
                                     }
 
                                     if(subscriptionId != ''){
-                                        fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
+                                       // fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
+                                       fetch('https://reqres.in/api/users/2' ,{
                                             method: 'GET',
                                             headers: {
                                                 'Accept': 'application/json',
@@ -164,6 +167,25 @@ export default class Technicalview extends React.Component {
                                                     apiLoadPercentage: progressPercent
                                                 });
                                                 response.json().then((respData) => {
+                                                    respData={
+                                                        "errorStatus": {
+                                                              "status": "ok"
+                                                             },
+                                                             "data":{
+                                                             "glist":
+                                                                 [   {"suidbscriptionId": 2323,
+                                                                 "subscrititleptionName": "abc",
+                                                                 "cfURL":"https://reqres.in/api/users/2",
+                                                                 "children":""
+                                                                },
+                                                                {"id": 6754,
+                                                                "title": "uytut",
+                                                                "cfURL":"https://reqres.in/api/users/2",
+                                                                "children":""
+                                                               }],
+                                                               
+                                                            }
+                                              }
                                                     if(respData.errorStatus.status == 'ok'){
                                                         let gateways = respData.data.glist;
                                                         let gatewaysCount = Object.keys(gateways).length;
@@ -195,10 +217,11 @@ export default class Technicalview extends React.Component {
                                                                 treeValue[0].children[indexSubscriptions].children = [newGatewayObj];
                                                             }
                                                             else{
-                                                                treeValue[0].children[indexSubscriptions].children.push(newGatewayObj);
+                                                                //treeValue[0].children[indexSubscriptions].push(newGatewayObj);
                                                             }
 
-                                                            fetch(this.props.baseUrl + '/getGatewayHealth?gatewayURL='+gateways[indexGateway].cfURL, {
+                                                           // fetch(this.props.baseUrl + '/getGatewayHealth?gatewayURL='+gateways[indexGateway].cfURL, {
+                                                                fetch('https://reqres.in/api/users/2' ,{
                                                                 method: 'GET',
                                                                 headers: {
                                                                     'Accept': 'application/json',
@@ -209,6 +232,22 @@ export default class Technicalview extends React.Component {
                                                             .then((response) => { // jshint ignore:line
                                                                 if (response.status === 200) {
                                                                     response.json().then((respData) => {
+                                                                        respData={
+                                                                            "errorStatus": {
+                                                                                  "status": "ok"
+                                                                                 },
+                                                                                 "data":{
+                                                                                    SuperConns:{
+                                                                                        serverId:23
+                                                                                       },
+                                                                                   "ClientPool" :[{bindId:3432}],
+                                                                                   "Sessions":[{clientConfig:{
+                                                                                       "groupId":53435
+                                                                                   }
+                                                                                   }]
+                                                                                  
+                                                                                 }
+                                                                                }
                                                                         totalNumOfAjaxProcessed++;
                                                                         progressPercent = Math.round((totalNumOfAjaxProcessed / totalNumOfAjax) * 100);
                                                                         this.setState({
@@ -243,11 +282,21 @@ export default class Technicalview extends React.Component {
 
                                                                             if(preparedClientPools.length > 0){
                                                                                 newId++;
-                                                                                treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [{id: newId, value: 'Client Pools ('+ clientPools.length + ')', title: 'Client Pools', nodeType: 'clientpooltitle'}];
+                                                                              //  treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children = [{id: newId, value: 'Client Pools ('+ clientPools.length + ')', title: 'Client Pools', nodeType: 'clientpooltitle'}];
                                                                                 for(let indexClientPool in preparedClientPools){
                                                                                     newId++;
                                                                                     let newClientPoolObj = {};
                                                                                     newClientPoolObj.id = newId;
+                                                                                 
+                                                                                 const preparedClientPools=[{
+                                                                                        clientConfig :{
+                                                                                            "groupId":2424,
+                                                                                            "id":121  
+                                                                                        }
+                                                                                    }];
+                                                                                    
+
+                                                                                  
                                                                                     newClientPoolObj.title = preparedClientPools[indexClientPool].clientConfig.groupId+"\n"+' ['+preparedClientPools[indexClientPool].clientConfig.id+'] '+'('+clientPoolCounts[preparedClientPools[indexClientPool].clientConfig.id]+')';
                                                                                     let valueToshow = preparedClientPools[indexClientPool].clientConfig.groupId+"\n"+' ['+preparedClientPools[indexClientPool].clientConfig.id+'] '+'('+clientPoolCounts[preparedClientPools[indexClientPool].clientConfig.id]+')';
                                                                                     
@@ -255,10 +304,10 @@ export default class Technicalview extends React.Component {
                                                                                     newClientPoolObj.nodeType = 'clientpool';
 
                                                                                     if(indexClientPool == 0){
-                                                                                        treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children = [newClientPoolObj];
+                                                                                      //  treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children = [newClientPoolObj];
                                                                                     }
                                                                                     else{
-                                                                                        treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children.push(newClientPoolObj);
+                                                                                       // treeValue[0].children[indexSubscriptions].children[indexGateway.split(":")[1]].children[0].children.push(newClientPoolObj);
                                                                                     }
 
                                                                                     let preparePoolDataForTable = {};
