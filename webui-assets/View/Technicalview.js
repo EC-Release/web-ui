@@ -58,8 +58,46 @@ export default class Technicalview extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        
-                        /* if(respData.errorStatus.status == 'ok'){ */
+                        respData={
+                            "errorStatus": {
+                                  "status": "ok"
+                                 },
+                                 "data": [
+                                            {
+                                                
+                                                "listdata":[
+                                                    {
+                                                        "groupName":"wabtec-gecars-qa",
+                                                        "items":[
+                                                            {
+                                                                "groupId": "wabtec-gecars-qa",
+                                                                "sessionId": "0idLmsMk8e"
+                                                            },
+                                                            {
+                                                                "groupId": "wabtec-gecars-qa",
+                                                                "sessionId": "0idLmsMk8t"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                "groupName":"wabtec-gecars-ba",
+                                                        "items":[
+                                                            {
+                                                                "groupId": "wabtec-gecars-ba",
+                                                                "sessionId": "0idLmsMk8e"
+                                                            },
+                                                              {
+                                                                "groupId": "wabtec-gecars-ba",
+                                                                "sessionId": "0idLmsMk8f"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }]
+                                            
+                                        
+                                };
+                         if(respData.errorStatus.status == 'ok'){ 
                             let subscriptions = respData.data;
                             if(subscriptions !== null){
                                 treeValue[0].value = treeValue[0].value + ' (' + subscriptions.length +')';
@@ -471,7 +509,7 @@ export default class Technicalview extends React.Component {
                                 },2000);
                                 this.timer = setInterval(()=> this.getItems(), 30000);
                             }
-                        /* } */
+                        } 
                     });
                 }
             });
