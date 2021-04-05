@@ -58,8 +58,46 @@ export default class Technicalview extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        
-                        /* if(respData.errorStatus.status == 'ok'){ */
+                        respData={
+                            "errorStatus": {
+                                  "status": "ok"
+                                 },
+                                 "data": [
+                                            {
+                                                
+                                                "listdata":[
+                                                    {
+                                                        "groupName":"wabtec-gecars-qa",
+                                                        "items":[
+                                                            {
+                                                                "groupId": "wabtec-gecars-qa",
+                                                                "sessionId": "0idLmsMk8e"
+                                                            },
+                                                            {
+                                                                "groupId": "wabtec-gecars-qa",
+                                                                "sessionId": "0idLmsMk8t"
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                "groupName":"wabtec-gecars-ba",
+                                                        "items":[
+                                                            {
+                                                                "groupId": "wabtec-gecars-ba",
+                                                                "sessionId": "0idLmsMk8e"
+                                                            },
+                                                              {
+                                                                "groupId": "wabtec-gecars-ba",
+                                                                "sessionId": "0idLmsMk8f"
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
+                                            }]
+                                            
+                                        
+                                };
+                        if(respData.errorStatus.status == 'ok'){
                             let subscriptions = respData.data;
                             if(subscriptions !== null){
                                 treeValue[0].value = treeValue[0].value + ' (' + subscriptions.length +')';
@@ -492,7 +530,57 @@ export default class Technicalview extends React.Component {
     displayDataFromLocalStorage(){
         let nodes = [];
         let edges = [];
-        let treeValue = JSON.parse(localStorage.getItem("treeValue"));
+        //let treeValue = JSON.parse(localStorage.getItem("treeValue"));
+        let treeValue = [{
+            id: 1,
+            value: 'EC',
+            children: [
+                {
+                    id: 2,
+                    value: 'wabtec-gecars-qa',
+                    children: [
+                        {
+                            id: 3,
+                            value: 'wabtec-gecars-ta',
+                            children: [
+                                {   
+                                    id: 4,
+                                    value: '0idLmsMk8e'
+                                },
+                                {  
+                                    id: 5,
+                                    value: '0idLmsMk8o'
+                                },
+                                {   
+                                    id: 6,
+                                    value: '0idLmsMk8r'
+                                }
+                            ]
+                        },
+                        {
+                            id: 7,
+                            value: 'wabtec-gecars-wa',
+                            children: [
+                                {   
+                                    id: 8,
+                                    value: '0idLmsMk8e'
+                                },
+                                {  
+                                    id: 9,
+                                    value: '0idLmsMk8o'
+                                },
+                                {   
+                                    id: 10,
+                                    value: '0idLmsMk8r'
+                                }
+                            ]
+                        }
+                    ]
+                }
+             
+            ]
+        }];
+
         let technicalTableData = JSON.parse(localStorage.getItem("technicalTableData"));
         this.setState({
             mockTableData: technicalTableData
@@ -626,8 +714,9 @@ export default class Technicalview extends React.Component {
                                 }
 
                                 if(subscriptionId != ''){
-                                    fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
-                                        method: 'GET',
+                                 //   fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
+                                 fetch('https://dive-ec-gateway.run.aws-usw02-dev.ice.predix.io/health', { 
+                                 method: 'GET',
                                         headers: {
                                             'Accept': 'application/json',
                                             'Content-Type': 'application/json',
@@ -638,6 +727,17 @@ export default class Technicalview extends React.Component {
                                         if (response.status === 200) {
                                             totalNumOfAjaxProcessed++;
                                             response.json().then((respData) => {
+                                                respData={
+                                                    "errorStatus": {
+                                                          "status": "ok"
+                                                         },
+                                                         "data": {
+                                                            "glist": [{cfURL:'ws://a'},
+                                                            {cfURL:'ws://b'},
+                                                            {cfURL:'ws://c'}
+                                                            ]
+                                                        }
+                                                        };
                                                 if(respData.errorStatus.status == 'ok'){
                                                     let gateways = respData.data.glist;
                                                     let gatewaysCount = Object.keys(gateways).length;
