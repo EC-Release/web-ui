@@ -2,20 +2,21 @@ describe('ec-web-ui test cases', function () {
 
     beforeEach(function () {
         browser.waitForAngularEnabled(false);
-        browser.driver.sleep(10000);
-        browser.get('http://localhost:17990/v1.1beta/ec');
-        browser.driver.sleep(1000);
-        element(by.name('usr_id')).sendKeys("Place your login id");
-        element(by.name('usr_pwd')).sendKeys("Place your login password");
-        element(by.name('btn_signin')).click();
-        browser.driver.sleep(1000);
-        element(by.name('btn_continue')).click(); 
     });
 
     // Login test start
     it('Login test', function () {
-        browser.driver.sleep(10000);
-        expect(browser.getTitle()).toEqual('EC Admin Console');
+           browser.driver.sleep(1000);
+           browser.get("https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops");
+           browser.driver.sleep(2000);
+           element(by.name("subject")).sendKeys("Place your SSO id");
+           element(by.id("post-button")).click();
+           browser.driver.sleep(1000);
+           element(by.name("pf.pass")).sendKeys("Place your login password");
+           browser.driver.sleep(1000);
+           element(by.id("remember-me-login-button")).click();
+           browser.driver.sleep(10000);
+           expect(browser.getTitle()).toEqual('EC Admin Console');
     });
     // Login test end
 
