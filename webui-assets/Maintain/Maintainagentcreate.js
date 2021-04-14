@@ -6,7 +6,7 @@ export default class Maintainagentcreate extends React.Component {
         super(props);
         this.state = {
             agentForm: {
-                agentMode: { value: 1, dirtyState: false },
+                agentMode: { value: 2, dirtyState: false },
                 gateway: { value: '', dirtyState: false },
                 businessId: { value: 0, dirtyState: false },
                 businessName: { value: '', dirtyState: false },
@@ -78,7 +78,7 @@ export default class Maintainagentcreate extends React.Component {
             subscriptions:[],
             // API will provide this agentModeButtons
             agentModeButtons: [
-                { text: 'GATEWAY', value: 1 },
+               /* { text: 'GATEWAY', value: 1 },*/
                 { text: 'SERVER', value: 2 },
                 { text: 'CLIENT', value: 3 }
             ],
