@@ -527,6 +527,52 @@ export default class Usermanagement extends React.Component {
                         </form>
                         </div>
                         </div>
+                        <div className="row my-2">
+                            <div className="card">
+                                <form>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">
+                                    <div className="row">
+                                        <div className="col-sm-12">
+                                        <h6 className="font-weight-bold ml-2 text-left">
+                                            Licensing
+                                            <small>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;Manage the Licenses and
+                                            subscriptions
+                                            </small>
+                                        </h6>
+                                        </div>
+                                    </div>
+                                    </li>
+                                    <li className="list-group-item">
+                                    <div className="row">
+                                        <div className="col-sm-4">
+                                        <h6 className="font-weight-bold ml-2 float-left">
+                                            Licenses
+                                        </h6>
+                                        </div>
+                                        <div className="col-sm-4 checkbox text-left">
+                                        You have 3 Licenses
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-sm-4">
+                                        <h6 className="font-weight-bold ml-2 float-left">
+                                            Subsciptions
+                                        </h6>
+                                        </div>
+                                        <div className="col-sm-4 checkbox text-left">
+                                        You have 5 Subsciptions
+                                        </div>
+                                    </div>
+                                    </li>
+                                    {/*  <li className="list-group-item">
+                                    
+                                    </li> */}
+                                </ul>
+                                </form>
+                            </div>
+                            </div>
                     </div>
                 </div>
             </div>
