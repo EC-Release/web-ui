@@ -274,7 +274,7 @@ export default class Usermanagement extends React.Component {
     render() {
         /* jshint ignore:start */
         return (
-            <div className = "UserManagement scroll">
+            <div className = "UserManagement">
                 <div className = "row mt-1">
                     <div className = "col-sm-4">
                     <div className="card">
