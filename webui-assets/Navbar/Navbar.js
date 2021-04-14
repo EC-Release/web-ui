@@ -129,7 +129,7 @@ export default class Navbar extends React.Component {
                                     null
                                 }
 
-                                { this.props.permissions.accesses.maintain.subMenus.watchers.view || this.props.permissions.accesses.maintain.subMenus.watchers.create || this.props.permissions.accesses.maintain.subMenus.watchers.edit || this.props.permissions.accesses.maintain.subMenus.watchers.delete ?
+                             {/*    { this.props.permissions.accesses.maintain.subMenus.watchers.view || this.props.permissions.accesses.maintain.subMenus.watchers.create || this.props.permissions.accesses.maintain.subMenus.watchers.edit || this.props.permissions.accesses.maintain.subMenus.watchers.delete ?
                                     <li className="dropdown-submenu">
                                         <a className="dropdown-item" href="#">
                                             Watchers
@@ -163,7 +163,7 @@ export default class Navbar extends React.Component {
                                     </li>
                                     :
                                     null
-                                }
+                                }  */}
                                 </ul>
                             </li>
                             :
