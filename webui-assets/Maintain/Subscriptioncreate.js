@@ -8,7 +8,8 @@ export default class Subscriptioncreate extends React.Component {
       subscriptionForm: {
         licenseId: { value: "", dirtyState: false },
         emailAddress: { value: "", dirtyState: false },
-        sso: { value: "", dirtyState: false }
+        sso: { value: "", dirtyState: false },
+        date: { value: "", dirtyState: false }
       },
       errorsSubscriptionForm: {},
       subscriptionFormIsValid: false,
