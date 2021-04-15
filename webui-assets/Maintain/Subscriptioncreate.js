@@ -125,7 +125,7 @@ export default class Subscriptioncreate extends React.Component {
     prepareData.name = "License"
 
     // fetch(this.props.baseUrl + '/createSubscription', {
-    fetch(this.props.baseUrl + "/8158e058-87fa-4264-8a35-cc74a29fb0e4", {
+    fetch(this.props.baseUrl + "8158e058-87fa-4264-8a35-cc74a29fb0e4", {
       method: "PUT",
       headers: {
         Accept: "application/json",
