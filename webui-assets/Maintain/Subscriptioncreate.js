@@ -124,8 +124,8 @@ export default class Subscriptioncreate extends React.Component {
 
 
     // fetch(this.props.baseUrl + '/createSubscription', {
-    fetch(this.props.baseUrl + "/ab2a2691-a563-486c-9883-5111ff36ba9b", {
-      method: "POST",
+    fetch(this.props.baseUrl + "/8158e058-87fa-4264-8a35-cc74a29fb0e4", {
+      method: "PUT",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -379,6 +379,16 @@ export default class Subscriptioncreate extends React.Component {
                     </div>
                   </div>
                 </div>
+                <div className="row">
+                    <div className="col-sm-12 mb-2 text-center">
+                        <button 
+                             id="create-subscription-btn"
+                             disabled={!this.state.subscriptionFormIsValid}
+                             onClick={this.createSubscription.bind(this)} 
+                             className="btn btn-sm customize-view-btn">CREATE SUBSCRIPTION</button>
+                    </div>
+                </div>
+
               </div>
             </div>
           </div>
