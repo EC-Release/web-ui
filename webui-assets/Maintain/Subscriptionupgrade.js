@@ -24,17 +24,23 @@ export default class Subscriptionupgrade extends React.Component {
     /* istanbul ignore next */
     handleDataTable(preserveState) {
         let technicalTableData = [];
-        fetch(this.props.baseUrl + '/listSubscriptions', { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
+        fetch(this.props.baseUrl + '/snapshot', { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+this.props.authToken
+                'Authorization': 'Bearer '+ this.props.authToken
             }
         })
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
+                    let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
+                    console.log(data.children)
+                    for(let individualData of data.children ){
+                    console.log(individualData)
+                    }
+
                     let subscriptions = respData.data;
                     if (subscriptions === null) {
                         subscriptions = [];
