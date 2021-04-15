@@ -121,7 +121,8 @@ export default class Subscriptioncreate extends React.Component {
     prepareData.emailAddress = currentForm.emailAddress.value;
     prepareData.date = currentForm.date.value;
     prepareData.sso = currentForm.sso.value;
-
+    prepareData.parent = "ab2a2691-a563-486c-9883-5111ff36ba9b"
+    prepareData.name = "License"
 
     // fetch(this.props.baseUrl + '/createSubscription', {
     fetch(this.props.baseUrl + "/8158e058-87fa-4264-8a35-cc74a29fb0e4", {
