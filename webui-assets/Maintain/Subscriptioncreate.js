@@ -19,7 +19,6 @@ export default class Subscriptioncreate extends React.Component {
                 confidentiality: { value: 'true', dirtyState: false },
                 customer: { value: '', dirtyState: false },
                 cluster: { value: '', dirtyState: false },
-                date: { value: '', dirtyState: false },
                 environment: { value: 'PREPROD', dirtyState: false },
                 managementHostType: { value: '', dirtyState: false },
                 optInoptOut: { value: 'true', dirtyState: false },
@@ -30,7 +29,12 @@ export default class Subscriptioncreate extends React.Component {
                 version: { value: '', dirtyState: false },
                 app: { value: '', dirtyState: false },
                 assetId: { value: '', dirtyState: false },
-                uai: { value: '', dirtyState: false }
+                uai: { value: '', dirtyState: false },
+
+                licenseId: { value: "", dirtyState: false },
+                emailAddress: { value: "", dirtyState: false },
+                sso: { value: "", dirtyState: false },
+                date: { value: '', dirtyState: false }
             },
             errorsSubscriptionForm: {},
             subscriptionFormIsValid: false,
@@ -64,7 +68,7 @@ export default class Subscriptioncreate extends React.Component {
         let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
         let currentForm =  Object.assign({}, this.state.subscriptionForm);
 
-        if(fieldName === 'subscriptionName'){
+     /*    if(fieldName === 'subscriptionName'){
             currentForm.subscriptionName.value = updatedValue;
             currentForm.subscriptionName.dirtyState = true;
         }
@@ -163,7 +167,21 @@ export default class Subscriptioncreate extends React.Component {
         else if(fieldName === 'uai'){
             currentForm.uai.value = updatedValue;
             currentForm.uai.dirtyState = true;
-        }
+        } */
+
+         if (fieldName === "licenseId") {
+            currentForm.licenseId.value = updatedValue;
+            currentForm.licenseId.dirtyState = true;
+          } else if (fieldName === "emailAddress") {
+            currentForm.emailAddress.value = updatedValue;
+            currentForm.emailAddress.dirtyState = true;
+          } else if (fieldName === "sso") {
+            currentForm.sso.value = updatedValue;
+            currentForm.sso.dirtyState = true;
+          } else if (fieldName === "date") {
+            currentForm.date.value = updatedValue;
+            currentForm.date.dirtyState = true;
+          }
 
         this.setState({
             subscriptionForm: currentForm
@@ -173,7 +191,7 @@ export default class Subscriptioncreate extends React.Component {
 
     /* istanbul ignore next */
     handleFormValidation(){
-        let currentFormData = this.state.subscriptionForm;
+       /*  let currentFormData = this.state.subscriptionForm;
         let subscriptionNameValue = currentFormData.subscriptionName.value;
         let subscriptionNameDirtyState = currentFormData.subscriptionName.dirtyState;
         let subscriptionIdValue = currentFormData.subscriptionId.value;
@@ -198,11 +216,19 @@ export default class Subscriptioncreate extends React.Component {
         let customerDirtyState = currentFormData.customer.dirtyState;
         let ownerValue = currentFormData.owner.value;
         let ownerDirtyState = currentFormData.owner.dirtyState;
+ */
+        let licenseId = currentFormData.licenseId.value;
+        let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
+        let emailAddress = currentFormData.emailAddress.value;
+        let emailAddressDirtyState = currentFormData.emailAddress.dirtyState;
+        let expdate = currentFormData.date.value;
+        let expdateDirtyState = currentFormData.date.dirtyState;
+
         let formIsValid = true;
         let errors = {};
         let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
     
-        if(this.state.isExisting){
+       /*  if(this.state.isExisting){
             if(subscriptionIdValue.trim() === ''){
                 if(subscriptionIdDirtyState)
                     errors.subscriptionId = 'Please enter Subscription ID';
@@ -286,7 +312,30 @@ export default class Subscriptioncreate extends React.Component {
             if(ownerDirtyState)
                 errors.owner = 'Please enter Owner';
             formIsValid = false;
-        }
+        } */
+
+        if (licenseId.trim() === "") {
+            if (licenseIdDirtyState) {
+              errors.licenseId = "Please enter License Id";
+            }
+            formIsValid = false;
+          }
+      
+          if (emailAddress.trim() === "") {
+            if (emailAddressDirtyState) {
+              errors.emailAddress = "Please enter Email Address";
+            }
+            formIsValid = false;
+          }
+      
+          if (expdate.trim() === "") {
+            if (expdateDirtyState) {
+              errors.date = "Please enter Expiry Date";
+            }
+            formIsValid = false;
+          }
+
+
         this.setState({
 			subscriptionFormIsValid: formIsValid,
 			errorsSubscriptionForm: errors
@@ -299,7 +348,7 @@ export default class Subscriptioncreate extends React.Component {
         let currentForm =  Object.assign({}, this.state.subscriptionForm);
         let prepareData = {};
 
-        prepareData.subscriptionName = currentForm.subscriptionName.value;
+       /*  prepareData.subscriptionName = currentForm.subscriptionName.value;
         prepareData.subscriptionId = currentForm.subscriptionId.value;
         prepareData.serviceUri = currentForm.serviceUri.value;
         prepareData.clientId = currentForm.clientId.value;
@@ -325,7 +374,14 @@ export default class Subscriptioncreate extends React.Component {
         prepareData.assetId = currentForm.assetId.value;
         prepareData.uai = currentForm.uai.value;
         prepareData.name = "subscriptionData";
-        prepareData.parent = "a7fb3299-5fd6-430d-8869-89f7a9ed23bf";
+        prepareData.parent = "a7fb3299-5fd6-430d-8869-89f7a9ed23bf"; */
+
+        prepareData.licenseId = currentForm.licenseId.value;
+        prepareData.emailAddress = currentForm.emailAddress.value;
+        prepareData.date = currentForm.date.value;
+        prepareData.sso = currentForm.sso.value;
+
+
 
         prepareData.existing = this.state.isExisting.toString();
         if(!this.state.isExisting){
@@ -352,7 +408,13 @@ export default class Subscriptioncreate extends React.Component {
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
                             let subscriptionForm = {
-                                subscriptionName: { value: '', dirtyState: false },
+
+                                licenseId: { value: "", dirtyState: false },
+                                emailAddress: { value: "", dirtyState: false },
+                                sso: { value: "", dirtyState: false },
+                                date: { value: "", dirtyState: false },
+
+                                /* subscriptionName: { value: '', dirtyState: false },
                                 subscriptionId: { value: '', dirtyState: false },
                                 serviceUri: { value: '', dirtyState: false },
                                 clientId: { value: '', dirtyState: false },
@@ -376,7 +438,7 @@ export default class Subscriptioncreate extends React.Component {
                                 version: { value: '', dirtyState: false },
                                 app: { value: '', dirtyState: false },
                                 assetId: { value: '', dirtyState: false },
-                                uai: { value: '', dirtyState: false }
+                                uai: { value: '', dirtyState: false } */
                             };
 
                             this.setState({
@@ -447,7 +509,160 @@ export default class Subscriptioncreate extends React.Component {
                                 </div>
                             </div>
                             <hr></hr>
+
                             <div className="changeable-form subscription-form">
+                                <div className="row">
+                                <div className="col-sm-6">
+                                    <div className="col-sm-12 label required">
+                                    LICENSE ID
+                                    <img
+                                        alt="down-arrow"
+                                        src="assets/static/images/icon_greensortingdown.svg"
+                                    />
+                                    <span className="float-right help-text">
+                                        <img
+                                        alt="info"
+                                        src="assets/static/images/info.svg"
+                                        data-toggle="popover"
+                                        data-trigger="hover"
+                                        data-placement="top"
+                                        data-content={this.props.helpText.subscriptionName}
+                                        />
+                                    </span>
+                                    </div>
+                                    <div className="col-sm-12 mb-2">
+                                    <input
+                                        type="text"
+                                        className="form-control form-control-sm"
+                                        name="licenseId"
+                                        value={this.state.subscriptionForm.licenseId.value}
+                                        onChange={(event) => {
+                                        this.handleFormData(event);
+                                        }}
+                                    />
+                                    <small className="text-danger">
+                                        {this.state.errorsSubscriptionForm["licenseId"]}
+                                    </small>
+                                    </div>
+                                </div>
+                                <div className="col-sm-6">
+                                    <div className="col-sm-12 label required">
+                                    EXPIRY DATE/TIME
+                                    <span className="float-right help-text">
+                                        <img
+                                        alt="info"
+                                        src="assets/static/images/info.svg"
+                                        data-toggle="popover"
+                                        data-trigger="hover"
+                                        data-placement="top"
+                                        data-content={this.props.helpText.expdate}
+                                        />
+                                    </span>
+                                    </div>
+                                    <div className="col-sm-12 mb-2">
+                                    <input
+                                        type="text"
+                                        autoComplete="off"
+                                        placeholder="YYYY/DD/MM"
+                                        className="form-control form-control-sm"
+                                        name="date"
+                                        value={this.state.subscriptionForm.date.value}
+                                        onChange={(event) => {
+                                        this.handleFormData(event);
+                                        }}
+                                    />
+                                    <small className="text-danger">
+                                        {this.state.errorsSubscriptionForm["date"]}
+                                    </small>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div className="row">
+                                <div className="col-sm-6">
+                                    <div className="col-sm-12 label required">
+                                    EMAIL ADDRESS
+                                    <img
+                                        alt="down-arrow"
+                                        src="assets/static/images/icon_greensortingdown.svg"
+                                    />
+                                    <span className="float-right help-text">
+                                        <img
+                                        alt="info"
+                                        src="assets/static/images/info.svg"
+                                        data-toggle="popover"
+                                        data-trigger="hover"
+                                        data-placement="top"
+                                        data-content={this.props.helpText.subscriptionName}
+                                        />
+                                    </span>
+                                    </div>
+                                    <div className="col-sm-12 mb-2">
+                                    <input
+                                        type="text"
+                                        className="form-control form-control-sm"
+                                        name="emailAddress"
+                                        value={this.state.subscriptionForm.emailAddress.value}
+                                        onChange={(event) => {
+                                        this.handleFormData(event);
+                                        }}
+                                    />
+                                    <small className="text-danger">
+                                        {this.state.errorsSubscriptionForm["emailAddress"]}
+                                    </small>
+                                    </div>
+                                </div>
+
+                                <div className="col-sm-6">
+                                    <div className="col-sm-12 label">
+                                    SSO
+                                    <img
+                                        alt="down-arrow"
+                                        src="assets/static/images/icon_greensortingdown.svg"
+                                    />
+                                    <span className="float-right help-text">
+                                        <img
+                                        alt="info"
+                                        src="assets/static/images/info.svg"
+                                        data-toggle="popover"
+                                        data-trigger="hover"
+                                        data-placement="top"
+                                        data-content={this.props.helpText.subscriptionName}
+                                        />
+                                    </span>
+                                    </div>
+                                    <div className="col-sm-12 mb-2">
+                                    <input
+                                        type="text"
+                                        className="form-control form-control-sm"
+                                        name="sso"
+                                        value={this.state.subscriptionForm.sso.value}
+                                        onChange={(event) => {
+                                        this.handleFormData(event);
+                                        }}
+                                    />
+                                    <small className="text-danger">
+                                        {this.state.errorsSubscriptionForm["sso"]}
+                                    </small>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div className="row">
+                                <div className="col-sm-12 mb-2 text-center">
+                                    <button
+                                    id="create-subscription-btn"
+                                    disabled={!this.state.subscriptionFormIsValid}
+                                    onClick={this.createSubscription.bind(this)}
+                                    className="btn btn-sm customize-view-btn"
+                                    >
+                                    CREATE SUBSCRIPTION
+                                    </button>
+                                </div>
+                                </div>
+                            </div>
+                          {/* 
+                          <div className="changeable-form subscription-form">
                                 <div className="row">
                                     <div className="col-sm-3">
                                         <div className="custom-control custom-checkbox">
@@ -950,7 +1165,7 @@ export default class Subscriptioncreate extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                       */}    </div>
                     </div>
                 </div>
             </div>
@@ -958,3 +1173,4 @@ export default class Subscriptioncreate extends React.Component {
         /* jshint ignore:end */
     }
 }
+d
