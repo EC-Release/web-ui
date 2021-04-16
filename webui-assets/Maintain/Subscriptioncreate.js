@@ -35,7 +35,7 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-   
+   let counter = 0;
     fetch(this.props.baseUrl + "snapshot", {
         method: "GET",
         headers: {
@@ -48,7 +48,7 @@ export default class Subscriptioncreate extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
     let allData =[]
-    let counter = 0
+    
 	    Object.keys(respData).forEach((key)=> {
 		    allData.push(respData[key])
 		});
@@ -60,12 +60,12 @@ export default class Subscriptioncreate extends React.Component {
                 }
 	        }
 	    }
-        this.setState({
-            keyName:"subscription["+counter+"]"
-        })
+       
     })
     }})
-        
+       this.setState({
+            keyName:"subscription["+counter+"]"
+        })  
     window.enableToolTip();
   }
 
