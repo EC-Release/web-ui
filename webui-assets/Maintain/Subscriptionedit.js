@@ -70,7 +70,9 @@ export default class Subscriptionedit extends React.Component {
             licenseId: { value: formData.licenseId, dirtyState: false },
             emailAddress: { value: formData.emailAddress, dirtyState: false },
             sso: { value: formData.sso, dirtyState: false },
-            key : formData.key
+            key : formData.key,
+            parent : formData.parent,
+            name : formData.name
         };
 
         this.setState({
@@ -93,6 +95,9 @@ export default class Subscriptionedit extends React.Component {
         prepareData.emailAddress = currentForm.emailAddress.value;
         prepareData.sso = currentForm.sso.value;
         prepareData.date = currentForm.date.value;
+        prepareData.parent = currentForm.parent;
+        prepareData.name = currentForm.name;
+
 
         fetch(this.props.baseUrl+ currentForm.key, {
             method: 'PUT',
@@ -139,7 +144,8 @@ export default class Subscriptionedit extends React.Component {
 
     /* istanbul ignore next */
     handleFormValidation(){
-	let currentFormData = this.state.subscriptionForm;
+
+        let currentFormData = this.state.subscriptionForm;
         let licenseId = currentFormData.licenseId.value;
         let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
         let emailAddress = currentFormData.emailAddress.value;
