@@ -92,6 +92,8 @@ export default class Subscriptionupgrade extends React.Component {
             newDataObj.date = dataObj.date;
             newDataObj.sso = dataObj.sso;
             newDataObj.key = dataObj.key;
+            newDataObj.parent = dataObj.parent;
+            newDataObj.name = dataObj.name;
             newTableData.push(newDataObj);
         }
 
