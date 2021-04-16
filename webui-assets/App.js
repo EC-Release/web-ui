@@ -89,10 +89,9 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
-	    for(let indvidualData of respData){
-	    console.log(indvidualData);
-	    }
-            console.log(data)
+	    
+	    console.log(respData);
+           // console.log(data)
             /* if (respData.errorStatus.status === 'ok') { */
             /*   data.email ="bryanTest@gmail.com";
               data.user_id ="503096280";
