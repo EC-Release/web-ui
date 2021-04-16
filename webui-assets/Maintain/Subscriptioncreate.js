@@ -35,7 +35,13 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-   let counter = 0;
+   
+    window.enableToolTip();
+  }
+	
+  /* istanbul ignore next */
+  handleCountSubscriptions(){
+  
     fetch(this.props.baseUrl + "snapshot", {
         method: "GET",
         headers: {
@@ -47,28 +53,26 @@ export default class Subscriptioncreate extends React.Component {
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-    let allData =[]
-    
+    	  let allData =[]
+	  let subsData=[]
 	    Object.keys(respData).forEach((key)=> {
 		    allData.push(respData[key])
 		});
         for(let individualData of allData){
             if(individualData.parent){
                 if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
-                console.log(individualData)
-                counter++
+                subsData.push(individualData)
                 }
 	        }
 	    }
-       
+       this.setState({
+            keyName:"subscription[" + subsData.length + "]"
+        }) 
     })
     }})
-       this.setState({
-            keyName:"subscription["+counter+"]"
-        })  
-    window.enableToolTip();
+        
+  
   }
-
   /* istanbul ignore next */
   handleFormData(e) {
     let fieldName = e.target.name;
