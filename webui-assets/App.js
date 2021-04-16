@@ -89,13 +89,20 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
-	    
-	    console.log(respData);
-           // console.log(data)
-            /* if (respData.errorStatus.status === 'ok') { */
-            /*   data.email ="bryanTest@gmail.com";
-              data.user_id ="503096280";
-              data.name ="Bryan Shay"; */
+	   let allData =[]
+	    Object.keys(respData).forEach((key)=> {
+		    allData.push(respData[key])
+		});
+	    console.log(allData)
+		  
+            for(let individualData of allData){
+	    if(individualData.parent){
+		    if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+		    console.log(individualData)
+		    }
+	    }
+	    }
+		  
             let permission = {
                 "roleId": 1,
                 "roleName": "Admin",
