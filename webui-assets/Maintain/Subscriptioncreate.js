@@ -35,7 +35,7 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-   
+    this.handleCountSubscriptions();
     window.enableToolTip();
   }
 	
@@ -195,7 +195,7 @@ export default class Subscriptioncreate extends React.Component {
                   sso: { value: "", dirtyState: false },
                   date:{ value: "", dirtyState: false }
                 };
-
+		this.handleCountSubscriptions();
                 this.setState({
                   subscriptionForm: subscriptionForm,
                   subscriptionFormIsValid: false,
