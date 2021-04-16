@@ -37,7 +37,9 @@ export default class Subscriptionedit extends React.Component {
                 emailAddress: { value: "", dirtyState: false },
                 sso: { value: "", dirtyState: false },
                 date: { value: "", dirtyState: false },
-                key:""
+                key:"",
+		parent:"",
+		name:""
             },
             errorsSubscriptionForm: {},
             subscriptionFormIsValid: false,
@@ -97,7 +99,7 @@ export default class Subscriptionedit extends React.Component {
         prepareData.date = currentForm.date.value;
         prepareData.parent = currentForm.parent;
         prepareData.name = currentForm.name;
-
+	console.log(prepareData);
 
         fetch(this.props.baseUrl+ currentForm.key, {
             method: 'PUT',
@@ -203,7 +205,7 @@ export default class Subscriptionedit extends React.Component {
             currentForm.date.value = updatedValue;
             currentForm.date.dirtyState = true;
           }
-
+        console.log(currentForm)
         this.setState({
             subscriptionForm: currentForm
         });
