@@ -253,20 +253,20 @@ export default class Subscriptionupgrade extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        if (respData.errorStatus.status === 'ok') {
+                     /*    if (respData.errorStatus.status === 'ok') { */
                             this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
                             window.removeDataTableRow('subscriptionupgradeTable', rowIndex);
                             let that = this;
                             setTimeout(function () {
                                 that.props.hideGlobalMessage();
                             }, 2000);
-                        }
+                     /*    }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                             setTimeout(()=> {
                                 this.props.hideGlobalMessage();
                             }, 2000);
-                        }
+                        }*/
                     });
                 }
                 else {
