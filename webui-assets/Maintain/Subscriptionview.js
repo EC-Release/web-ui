@@ -36,7 +36,7 @@ export default class Subscriptionview extends React.Component {
         })
         .then((response) => {
             if (response.status === 200) {
-                /* response.json().then((respData) => { */
+                 response.json().then((respData) => { 
                    
                     let allData =[]
                     Object.keys(respData).forEach((key)=> {
@@ -67,7 +67,7 @@ export default class Subscriptionview extends React.Component {
                     this.setState({
                         tableData: technicalTableData
                     });
-                /* }); */
+                 }); 
             }
             else {
                 this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
