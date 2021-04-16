@@ -168,7 +168,7 @@ export default class Subscriptionupgrade extends React.Component {
     filterByValue(myArray, string){
         let retArr = [];
         for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].subscriptionId.toLowerCase().includes(string.toLowerCase()) || myArray[i].serviceUri.toLowerCase().includes(string.toLowerCase()) || myArray[i].subscriptionName.toLowerCase().replace(/\s/g, "").includes(string.toLowerCase().replace(/\s/g, "")) || myArray[i].uaaUrl.toLowerCase().includes(string.toLowerCase()) || myArray[i].role.toLowerCase().includes(string.toLowerCase())) {
+            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string) ) {
                 retArr.push(myArray[i]);
             }
         }
