@@ -139,6 +139,7 @@ export default class Subscriptionedit extends React.Component {
 
     /* istanbul ignore next */
     handleFormValidation(){
+	let currentFormData = this.state.subscriptionForm;
         let licenseId = currentFormData.licenseId.value;
         let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
         let emailAddress = currentFormData.emailAddress.value;
