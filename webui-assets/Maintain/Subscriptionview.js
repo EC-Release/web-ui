@@ -91,12 +91,11 @@ export default class Subscriptionview extends React.Component {
         let newTableData = [];
         for (let dataObj of tableData) {
             let newDataObj = {};
-
             newDataObj.licenseId = dataObj.licenseId;
             newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
             newDataObj.sso = dataObj.sso;
-
+            newDataObj.key = dataObj.key;
             newTableData.push(newDataObj);
         }
 
@@ -208,7 +207,7 @@ export default class Subscriptionview extends React.Component {
     /* istanbul ignore next */
     edit(item) {
         let editItem = Object.assign({}, item);
-        if(editItem.subscriptionIdHiddenFlag){
+      /*   if(editItem.subscriptionIdHiddenFlag){
             editItem.subscriptionId = editItem.subscriptionIdHidden;
         }
         if(editItem.serviceUriHiddenFlag){
@@ -219,7 +218,7 @@ export default class Subscriptionview extends React.Component {
         }
         if(editItem.uaaUrlHiddenFlag){
             editItem.uaaUrl = editItem.uaaUrlHidden;
-        }
+        } */
         window.destroyDataTable('subscriptionupgradeTable');
         this.setState({
             editItemData: editItem,
