@@ -159,8 +159,8 @@ export default class Subscriptionview extends React.Component {
     /* istanbul ignore next */
     filterByValue(myArray, string){
         let retArr = [];
-        for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].subscriptionId.toLowerCase().includes(string.toLowerCase()) || myArray[i].serviceUri.toLowerCase().includes(string.toLowerCase()) || myArray[i].subscriptionName.toLowerCase().replace(/\s/g, "").includes(string.toLowerCase().replace(/\s/g, "")) || myArray[i].uaaUrl.toLowerCase().includes(string.toLowerCase()) || myArray[i].role.toLowerCase().includes(string.toLowerCase())) {
+       for (var i=0; i < myArray.length; i++) {
+            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string) ) {
                 retArr.push(myArray[i]);
             }
         }
