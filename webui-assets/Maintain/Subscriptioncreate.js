@@ -37,13 +37,12 @@ export default class Subscriptioncreate extends React.Component {
   componentDidMount() {
    
     fetch(this.props.baseUrl + "snapshot", {
-        method: "POST",
+        method: "GET",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: "Bearer " + this.props.authToken,
-        },
-        body: JSON.stringify(prepareData),
+        }
       })
     .then((response) => {
         if (response.status === 200) {
