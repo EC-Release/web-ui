@@ -35,7 +35,7 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-    let apiEndPoint= this.state.apiEndPoints.baseUrl + 'snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
+   
     fetch(this.props.baseUrl + "snapshot", {
         method: "POST",
         headers: {
