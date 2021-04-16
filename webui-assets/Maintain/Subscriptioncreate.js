@@ -29,11 +29,44 @@ export default class Subscriptioncreate extends React.Component {
         { name: "True", id: "true" },
         { name: "False", id: "false" },
       ],
+      keyName:""
     };
   }
 
   /* istanbul ignore next */
   componentDidMount() {
+    let apiEndPoint= this.state.apiEndPoints.baseUrl + 'snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
+    fetch(this.props.baseUrl + "snapshot", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.props.authToken,
+        },
+        body: JSON.stringify(prepareData),
+      })
+    .then((response) => {
+        if (response.status === 200) {
+          response.json().then((respData) => {
+    let allData =[]
+    let counter = 0
+	    Object.keys(respData).forEach((key)=> {
+		    allData.push(respData[key])
+		});
+        for(let individualData of allData){
+            if(individualData.parent){
+                if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                console.log(individualData)
+                counter++
+                }
+	        }
+	    }
+        this.setState({
+            keyName:"subscription["+counter+"]"
+        })
+    })
+    }})
+        
     window.enableToolTip();
   }
 
@@ -125,7 +158,7 @@ export default class Subscriptioncreate extends React.Component {
     prepareData.name = "License"
 
     // fetch(this.props.baseUrl + '/createSubscription', {
-    fetch(this.props.baseUrl + "createSubscription-15-04-2021", {
+    fetch(this.props.baseUrl + this.state.keyName, {
       method: "POST",
       headers: {
         Accept: "application/json",
