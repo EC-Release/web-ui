@@ -89,19 +89,7 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
-	   let allData =[]
-	    Object.keys(respData).forEach((key)=> {
-		    allData.push(respData[key])
-		});
-	    console.log(allData)
-		  
-            for(let individualData of allData){
-	    if(individualData.parent){
-		    if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
-		    console.log(individualData)
-		    }
-	    }
-	    }
+	    console.log(data);
 		  
             let permission = {
                 "roleId": 1,
@@ -174,7 +162,7 @@ export default class App extends React.Component {
                 }
               };
 
-              let userId = "503029123";
+              let userId = data.user_id;
               let profileName = data.username;
               let profileEmailId = data.email;
               let permissions = permission; 
