@@ -119,13 +119,26 @@ export default class Subscriptionedit extends React.Component {
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
                         }, 2000);
-                   /*  }
-                    else{
-                        this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                        setTimeout(()=> {
-                            this.props.hideGlobalMessage();
-                        }, 2000);
-                    } */
+                 
+                        let respData =  JSON.parse(localStorage.getItem("snapshotData"))
+                        let allData =[]
+                          Object.keys(respData).forEach((key)=> {
+                              allData.push(respData[key])
+                          });
+                         
+                          allData.forEachD((item,index)=>{
+                            if(item.parent){
+                              if(item.key === currentForm.key){
+                                item.licenseId = currentForm.licenseId.value;
+                                item.emailAddress = currentForm.emailAddress.value;
+                                item.sso = currentForm.sso.value;
+                                item.date = currentForm.date.value;
+                                item.parent = currentForm.parent;
+                                item.name = currentForm.name;
+                              }}
+                          })
+
+                          console.log(allData[currentForm.key]);
                 });
             }
             else{
