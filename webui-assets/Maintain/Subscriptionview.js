@@ -28,7 +28,7 @@ export default class Subscriptionview extends React.Component {
         let technicalTableData = [];
      
             if (localStorage.getItem("snapshotData") !== null) {
-                    let respData =  JSON.parse(localStorage.getItem("snapshotData"))
+                    let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
                     let allData =[]
                       Object.keys(respData).forEach((key)=> {
                           allData.push(respData[key])
