@@ -120,13 +120,13 @@ export default class Subscriptionedit extends React.Component {
                             this.props.hideGlobalMessage();
                         }, 2000);
                  
-                        let respData =  JSON.parse(localStorage.getItem("snapshotData"))
+                        let localData =  JSON.parse(localStorage.getItem("snapshotData"))
                         let allData =[]
-                          Object.keys(respData).forEach((key)=> {
-                              allData.push(respData[key])
+                          Object.keys(localData).forEach((key)=> {
+                              allData.push(localData[key])
                           });
                          
-                          allData.forEachD((item,index)=>{
+                          allData.forEach((item,index)=>{
                             if(item.parent){
                               if(item.key === currentForm.key){
                                 item.licenseId = currentForm.licenseId.value;
