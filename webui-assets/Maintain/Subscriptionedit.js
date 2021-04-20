@@ -120,7 +120,7 @@ export default class Subscriptionedit extends React.Component {
                             this.props.hideGlobalMessage();
                         }, 2000);
                  
-                        let localData =  JSON.parse(localStorage.getItem("snapshotData"))
+                        let localData =  JSON.parse(sessionStorage.getItem("snapshotData"))
                         let allData =[]
                           Object.keys(localData).forEach((key)=> {
                               allData.push(localData[key])
@@ -137,7 +137,7 @@ export default class Subscriptionedit extends React.Component {
                                 item.name = currentForm.name;
                               }}
                           })
-                localStorage.setItem("snapshotData", JSON.stringify(allData))
+                sessionStorage.setItem("snapshotData", JSON.stringify(allData))
                 });
             }
             else{
