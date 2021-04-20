@@ -41,7 +41,7 @@ export default class Subscriptioncreate extends React.Component {
 	
   /* istanbul ignore next */
   handleCountSubscriptions(){
-	 let respData =  JSON.parse(localStorage.getItem("snapshotData"))
+	 let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
         let allData =[]
         let subsData=[]
           Object.keys(respData).forEach((key)=> {
@@ -240,7 +240,7 @@ export default class Subscriptioncreate extends React.Component {
         .then((response) => {
             if (response.status === 200) {
               response.json().then((respData) => {
-                localStorage.setItem("snapshotData", JSON.stringify(respData))
+                sessionStorage.setItem("snapshotData", JSON.stringify(respData))
         })
         }})
     }			
