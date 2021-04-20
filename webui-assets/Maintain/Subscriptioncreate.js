@@ -35,7 +35,13 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-	let respData =  JSON.parse(localStorage.getItem("snapshotData"))
+    this.handleCountSubscriptions();
+    window.enableToolTip();
+  }
+	
+  /* istanbul ignore next */
+  handleCountSubscriptions(){
+	 let respData =  JSON.parse(localStorage.getItem("snapshotData"))
         let allData =[]
         let subsData=[]
           Object.keys(respData).forEach((key)=> {
@@ -45,50 +51,14 @@ export default class Subscriptioncreate extends React.Component {
               if(individualData.parent){
                   if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
                   subsData.push(individualData)
-                  console.log(subsData)
                   }
               }
           }
-    this.handleCountSubscriptions();
-    window.enableToolTip();
+         this.setState({
+              keyName:"subscription[" + subsData.length + "]"
+          })              
   }
 	
-  /* istanbul ignore next */
-  handleCountSubscriptions(){
-	  
-	
-  
-    fetch(this.props.baseUrl + "snapshot", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + this.props.authToken,
-        }
-      })
-    .then((response) => {
-        if (response.status === 200) {
-          response.json().then((respData) => {
-    	  let allData =[]
-	  let subsData=[]
-	    Object.keys(respData).forEach((key)=> {
-		    allData.push(respData[key])
-		});
-        for(let individualData of allData){
-            if(individualData.parent){
-                if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
-                subsData.push(individualData)
-                }
-	        }
-	    }
-       this.setState({
-            keyName:"subscription[" + subsData.length + "]"
-        }) 
-    })
-    }})
-        
-  
-  }
   /* istanbul ignore next */
   handleFormData(e) {
     let fieldName = e.target.name;
