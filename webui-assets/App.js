@@ -74,6 +74,19 @@ export default class App extends React.Component {
     this.setState({
       authToken: authToken
     });
+	  
+	    fetch(this.state.apiEndPoints.baseUrl + "oauth/user", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization':"Bearer " + authToken
+            }
+          })
+          .then((respons) => {
+              if (respons.status === 200) {
+                respons.json().then((resp) => {console.log(resp)})
+              }})
 
     // Get logged user's userId start
    let apiEndPoint= this.state.apiEndPoints.baseUrl + 'snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
