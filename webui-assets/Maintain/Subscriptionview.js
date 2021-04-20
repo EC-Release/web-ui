@@ -27,7 +27,7 @@ export default class Subscriptionview extends React.Component {
     handleDataTable(preserveState) {
         let technicalTableData = [];
      
-            if (localStorage.getItem("snapshotData") !== null) {
+            if (sessionStorage.getItem("snapshotData") !== null) {
                     let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
                     let allData =[]
                       Object.keys(respData).forEach((key)=> {
