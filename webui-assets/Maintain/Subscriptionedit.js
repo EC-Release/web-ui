@@ -137,8 +137,7 @@ export default class Subscriptionedit extends React.Component {
                                 item.name = currentForm.name;
                               }}
                           })
-
-                          console.log(allData);
+                localStorage.setItem("snapshotData", JSON.stringify(allData))
                 });
             }
             else{
@@ -218,7 +217,6 @@ export default class Subscriptionedit extends React.Component {
             currentForm.date.value = updatedValue;
             currentForm.date.dirtyState = true;
           }
-        console.log(currentForm)
         this.setState({
             subscriptionForm: currentForm
         });
