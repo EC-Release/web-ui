@@ -138,7 +138,7 @@ export default class Subscriptionedit extends React.Component {
                               }}
                           })
 
-                          console.log(allData[currentForm.key]);
+                          console.log(allData);
                 });
             }
             else{
