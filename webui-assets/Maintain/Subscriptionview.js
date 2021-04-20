@@ -26,48 +26,25 @@ export default class Subscriptionview extends React.Component {
     /* istanbul ignore next */
     handleDataTable(preserveState) {
         let technicalTableData = [];
-        fetch(this.props.baseUrl + "snapshot", { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+this.props.authToken
-            }
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                 response.json().then((respData) => { 
-                   
+     
+            if (localStorage.getItem("snapshotData") !== null) {
+                    let respData =  JSON.parse(localStorage.getItem("snapshotData"))
                     let allData =[]
-                    Object.keys(respData).forEach((key)=> {
-                        allData.push(respData[key])
-                    });
-                    for(let individualData of allData){
-                        if(individualData.parent){
-                            if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
-                            console.log(individualData)
-                            technicalTableData.push(individualData);
-                            }
-                        }
-                    }
-                   
-                   
-                   /*  let subscriptions = respData.data;
-
-                    if (subscriptions === null) {
-                        subscriptions = [];
-                    }
-
-                    if (subscriptions.length > 0) {
-                        for (let subscription of subscriptions) {
-                            technicalTableData.push(subscription);
-                        }
-                    } */
+                      Object.keys(respData).forEach((key)=> {
+                          allData.push(respData[key])
+                      });
+                      for(let individualData of allData){
+                          if(individualData.parent){
+                              if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                                technicalTableData.push(individualData);
+                              }
+                          }
+                      }
                     this.generateTableStructure(technicalTableData, preserveState);
                     this.setState({
                         tableData: technicalTableData
                     });
-                 }); 
+               
             }
             else {
                 this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
@@ -75,14 +52,6 @@ export default class Subscriptionview extends React.Component {
                     this.props.hideGlobalMessage();
                 }, 2000);
             }
-        })
-        .catch((err) => {
-            console.log(err);
-            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-            setTimeout(()=> {
-                this.props.hideGlobalMessage();
-            }, 2000);
-        });
     }
 
     /* istanbul ignore next */
