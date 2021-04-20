@@ -26,7 +26,7 @@ export default class Subscriptionupgrade extends React.Component {
     handleDataTable(preserveState) {
            let technicalTableData = [];
             if (localStorage.getItem("snapshotData") !== null) {
-                    let respData =  JSON.parse(localStorage.getItem("snapshotData"))
+                    let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
                     let allData =[]
                       Object.keys(respData).forEach((key)=> {
                           allData.push(respData[key])
@@ -272,7 +272,7 @@ export default class Subscriptionupgrade extends React.Component {
         .then((response) => {
             if (response.status === 200) {
               response.json().then((respData) => {
-                localStorage.setItem("snapshotData", JSON.stringify(respData))
+                sessionStorage.setItem("snapshotData", JSON.stringify(respData))
         })
         }})
     }
