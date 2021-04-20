@@ -75,7 +75,7 @@ export default class App extends React.Component {
       authToken: authToken
     });
 	  
-	    fetch(this.state.apiEndPoints.baseUrl + "oauth/user", {
+	    fetch( "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/oauth/user" //this.state.apiEndPoints.baseUrl + "oauth/user", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
