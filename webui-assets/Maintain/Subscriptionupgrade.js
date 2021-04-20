@@ -279,6 +279,7 @@ export default class Subscriptionupgrade extends React.Component {
 
     /* istanbul ignore next */
     changeView() {
+        this.handleDataTable(false);
         this.setState({
             viewTable: true
         });
