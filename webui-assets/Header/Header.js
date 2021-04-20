@@ -12,7 +12,7 @@ export default class Header extends React.Component {
         let cnf = confirm('Are you sure you want to logout?');
         if(cnf){
             localStorage.clear();
-            let logOut = window.location.origin+window.location.pathname.replace('/ec','')+'/logout';
+            let logOut = window.location.origin+window.location.pathname.replace('/ops','')+'/logout';
             console.log(logOut);
             window.location.href = logOut;
         }
