@@ -231,6 +231,7 @@ export default class Subscriptionupgrade extends React.Component {
                             setTimeout(function () {
                                 that.props.hideGlobalMessage();
                             }, 2000);
+                           that.snapshotUpdate();
                      /*    }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
@@ -256,6 +257,24 @@ export default class Subscriptionupgrade extends React.Component {
                 }, 2000);
             });
         }
+    }
+    
+    /* istanbul ignore next */ 
+    snapshotUpdate(){
+        fetch(this.props.baseUrl + "snapshot", {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + this.props.authToken,
+            }
+          })
+        .then((response) => {
+            if (response.status === 200) {
+              response.json().then((respData) => {
+                localStorage.setItem("snapshotData", JSON.stringify(respData))
+        })
+        }})
     }
 
     /* istanbul ignore next */
