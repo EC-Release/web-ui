@@ -90,6 +90,7 @@ export default class App extends React.Component {
           response.json().then((respData) => {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
 	    console.log(respData);
+	    localStorage.setItem("snapshotData", respData)
 	   let allData =[]
                     Object.keys(respData).forEach((key)=> {
                         allData.push(respData[key])
