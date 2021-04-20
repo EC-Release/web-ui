@@ -160,6 +160,7 @@ export default class Subscriptioncreate extends React.Component {
         localStorage.setItem("prepareData", JSON.stringify(prepareData));
 
         if (response.status === 200) {
+          this.snapshotUpdate();
           response.json().then((respData) => {
             respData = {
               errorStatus: {
@@ -225,6 +226,24 @@ export default class Subscriptioncreate extends React.Component {
         }, 2000);
       });
   }
+	
+    /* istanbul ignore next */ 
+    snapshotUpdate(){
+        fetch(this.props.baseUrl + "snapshot", {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + this.props.authToken,
+            }
+          })
+        .then((response) => {
+            if (response.status === 200) {
+              response.json().then((respData) => {
+                localStorage.setItem("snapshotData", JSON.stringify(respData))
+        })
+        }})
+    }			
   /* istanbul ignore next */
   handleCreateMode(e) {
     let value = e.target.checked;
