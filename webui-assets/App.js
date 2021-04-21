@@ -75,7 +75,7 @@ export default class App extends React.Component {
       authToken: authToken
     });
 	  
-	    fetch( "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/oauth/user",{ //this.state.apiEndPoints.baseUrl + "oauth/user", {
+	 /*    fetch( "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/oauth/user",{ //this.state.apiEndPoints.baseUrl + "oauth/user", {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -86,7 +86,7 @@ export default class App extends React.Component {
           .then((respons) => {
               if (respons.status === 200) {
                 respons.json().then((resp) => {console.log(resp)})
-              }})
+              }})*/
 
     // Get logged user's userId start
    let apiEndPoint= this.state.apiEndPoints.baseUrl + 'snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
