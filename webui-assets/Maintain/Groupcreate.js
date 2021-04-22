@@ -17,63 +17,42 @@ export default class Groupcreate extends React.Component {
 
     /* istanbul ignore next */
     componentDidMount(){
-        window.enableToolTip();
+          window.enableToolTip();
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
-        if (localStorage.getItem("subscriptions") === null){
-            fetch(this.props.baseUrl + '/listSubscriptions', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer '+this.props.authToken
-                }
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                        if(respData.errorStatus.status == 'ok'){
-                            let subscriptions = respData.data;
-                            if(subscriptions.length > 0){
-                                let selectedSubscriptionId = subscriptions[0].subscriptionId;
-                                let formObj = Object.assign({}, this.state.groupForm);
-                                formObj.subscriptionId.value = selectedSubscriptionId;
-                                this.setState({
-                                    subscriptions: subscriptions,
-                                    groupForm: formObj
-                                });
-                            }
-                            this.props.hideGlobalMessage();
-                            localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
-                        }
-                        else{
-                            this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                            setTimeout(()=> {
-                                this.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                    });
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
+
+
+        if (sessionStorage.getItem("snapshotData") !== null) {
+          let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
+          let allData =[]
+          let subscriptionData=[]
+            Object.keys(respData).forEach((key)=> {
+                allData.push(respData[key])
             });
-        }
-        else{
-            let subscriptions = JSON.parse(localStorage.getItem("subscriptions"));
-            let selectedSubscriptionId = subscriptions[0].subscriptionId;
-            let formObj = Object.assign({}, this.state.groupForm);
-            formObj.subscriptionId.value = selectedSubscriptionId;
-            this.setState({
-                subscriptions: subscriptions,
-                groupForm: formObj
-            });
-            this.props.hideGlobalMessage();
-            this.timerForSubscriptionList = setInterval(()=> this.getSubscriptionList(), 20000);
-        }
+            for(let individualData of allData){
+                if(individualData.parent){
+                    if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                      subscriptionData.push(individualData);
+                    }
+                }
+            }
+            if(subscriptionData.length > 0){
+              let selectedSubscriptionId = subscriptionData[0].licenseId;
+              let formObj = Object.assign({}, this.state.groupForm);
+              formObj.subscriptionId.value = selectedSubscriptionId;
+              this.setState({
+                  subscriptions: subscriptionData,
+                  groupForm: formObj
+              });
+          }
+          this.props.hideGlobalMessage();
+          localStorage.setItem("subscriptions", JSON.stringify(subscriptionData));
+      }
+      else {
+          this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+          setTimeout(()=> {
+              this.props.hideGlobalMessage();
+          }, 2000);
+      }
     }
 
     /* istanbul ignore next */
