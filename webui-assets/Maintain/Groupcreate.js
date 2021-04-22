@@ -276,7 +276,7 @@ export default class Groupcreate extends React.Component {
                                                         return(
                                                             <option
                                                                 key={"subscriptionOption"+subscriptionIndex}
-                                                                value={ subscription.subscriptionId }>{ subscription.subscriptionName }</option>)
+                                                                value={ subscription.licenseId }>{ subscription.licenseId }</option>)
                                                     })}
                                             </select>
                                             <small className="text-danger">{ this.state.errorsGroupForm['subscriptionId']}</small>
