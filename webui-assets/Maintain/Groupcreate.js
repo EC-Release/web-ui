@@ -19,8 +19,6 @@ export default class Groupcreate extends React.Component {
     componentDidMount(){
           window.enableToolTip();
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
-
-
         if (sessionStorage.getItem("snapshotData") !== null) {
           let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
           let allData =[]
@@ -43,6 +41,7 @@ export default class Groupcreate extends React.Component {
                   subscriptions: subscriptionData,
                   groupForm: formObj
               });
+		console.log(subscriptionData)    
           }
           this.props.hideGlobalMessage();
           localStorage.setItem("subscriptions", JSON.stringify(subscriptionData));
