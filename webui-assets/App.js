@@ -27,6 +27,7 @@ import Navbar from './Navbar/Navbar.js';
 import Header from './Header/Header.js';
 import Support from './Support/Support.js';
 import Cookienotification from './Cookienotification/Cookienotification.js';
+import FloaterHelp from "./FloaterHelp/FloaterHelp.js";
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
@@ -463,6 +464,7 @@ export default class App extends React.Component {
                       { this.servedView() }
                     </div>
                     <Cookienotification />
+		    <FloaterHelp/>
                     
                     <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
                       <div className="modal-dialog modal-sm">
