@@ -5,8 +5,8 @@ export default class FloaterHelp extends React.Component {
   render() {
     return (
       <div className="helpGuide">
-        <a class="float" id="menu-share">
-          <i class="fa fa-share my-float"></i>
+        <a className="float" id="menu-share">
+          <i className="fa fa-share my-float"></i>
         </a>
         <ul>
           <li>
@@ -15,17 +15,17 @@ export default class FloaterHelp extends React.Component {
               target="_top"
               title="Write to us?"
             >
-              <i class="fa fa-newspaper-o my-float"> </i>
+              <i className="fa fa-newspaper-o my-float"> </i>
             </a>
           </li>
           <li>
             <a href="#/help-guide" target="_blank" title="Need help?">
-              <i class="fa fa-exclamation-circle my-float"></i>
+              <i className="fa fa-exclamation-circle my-float"></i>
             </a>
           </li>
           <li>
             <a href="#/bug-page" target="_blank" title="Report a bug?">
-              <i class="fa fa-bug my-float"> </i>
+              <i className="fa fa-bug my-float"> </i>
             </a>
           </li>
         </ul>
