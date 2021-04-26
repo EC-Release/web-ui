@@ -965,6 +965,28 @@
 
       /* helpguide end */
       
+        table > tbody > tr[role="row"] > td:first-child:before {
+        height: 14px;
+        width: 14px;
+        display: block;
+        position: absolute;
+        color: white;
+        border: 2px solid white;
+        border-radius: 14px;
+        box-shadow: 0 0 3px #444;
+        box-sizing: content-box;
+        text-align: center;
+        text-indent: 0 !important;
+        font-family: "Courier New", Courier, monospace;
+        line-height: 14px;
+        content: "+";
+        background-color: #31b131;
+      }
+
+      table > tbody > tr[role="row"][id^="parent"] > td:first-child:before {
+        content: "-";
+        background-color: #d33333;
+      }
       
 
       /*Cookie Consent Begin*/
