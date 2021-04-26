@@ -1388,7 +1388,13 @@ export default class Technicalview extends React.Component {
                                         <div className="row view-table">
                                             <div className="col-md-12" id="viewTableDiv">
                                                 <button onClick={this.changeToSearchView.bind(this)} className="btn btn-sm float-right btn-link">Advanced search</button>
-                                                <Viewtable tableData={this.state.table} showHideTableTdData={this.showHideTableTdData.bind(this)}></Viewtable>
+                                                <Viewtable 
+                                                tableData={this.state.table} 
+                                                showHideTableTdData={this.showHideTableTdData.bind(this)}
+                                                userId={this.props.userId}
+                                                showGlobalMessage={this.props.showGlobalMessage.bind(this)}
+                                                hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}>
+                                                </Viewtable>
                                             </div>
                                         </div>:
                                         <div className="row mt-2">
