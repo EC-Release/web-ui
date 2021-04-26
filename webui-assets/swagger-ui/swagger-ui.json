@@ -29,6 +29,212 @@
     "https"
   ],
   "paths": {
+    "/getGroups": {
+      "get": {
+        "summary": "Get the Group names",
+        "description": "Get the group names in a subscription",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/getGroupDetails/{groupId}": {
+      "get": {
+        "summary": "Get the Group details",
+        "description": "Get the group details in a subscription",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "pass the group id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/getUIRoles": {
+      "get": {
+        "summary": "Get the UI roles",
+        "description": "Get the UI roles for accessing the customer console",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/getUIRoles/{uiRole}": {
+      "get": {
+        "summary": "Get the Customer Console role permissions",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uiRole",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "OPS|ADMIN|USER"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/getRoleMappings": {
+      "get": {
+        "summary": "Get the user and role mappings",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/reporting": {
+      "get": {
+        "summary": "Get the data usage and activity report",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
     "/generateGatewayScript": {
       "post": {
         "tags": [
