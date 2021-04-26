@@ -637,7 +637,7 @@ export default class Healthstatus extends React.Component {
                   aria-controls="contact"
                   aria-selected="false"
                 >
-                  Client Pool
+                  CLIENT POOL
                 </a>
               </li>
               <li className="nav-item">
