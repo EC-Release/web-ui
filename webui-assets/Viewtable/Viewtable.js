@@ -1,4 +1,5 @@
 import React from "react";
+import Healthstatus from "../Monitor/Healthstatus.js";
 
 export default class Viewtable extends React.Component {
 
