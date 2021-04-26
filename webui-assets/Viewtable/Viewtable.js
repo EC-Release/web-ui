@@ -2,6 +2,13 @@ import React from "react";
 import Healthstatus from "../Monitor/Healthstatus.js";
 
 export default class Viewtable extends React.Component {
+    /* istanbul ignore next */
+    constructor(props) {
+    super(props);
+    this.state = {
+      toggle: true,
+    };
+  }
 
     /* istanbul ignore next */
     componentDidMount(){
@@ -61,6 +68,11 @@ export default class Viewtable extends React.Component {
                   <tr
                     data-toggle="collapse"
                     data-target={"#collapseme" + tbodyIndex}
+                     role="row"
+                    onClick={() =>
+                      this.setState({ toggle: !this.state.toggle })
+                    }
+                    id={this.state.toggle ? null : "parent " + tbodyIndex}
                   >
                     {this.props.tableData.thead.map((val, tdIndex) => {
                       return (
