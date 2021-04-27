@@ -1043,7 +1043,9 @@ export default class Technicalview extends React.Component {
             groupId:'wabtec-gecars-qa',
             bindid:'XvmV6ynici',
             targetId:'Q7rfHI',
-            timeCreated:'2021-02-10T12:11:07.223278039Z'
+            timeCreated:'2021-02-10T12:11:07.223278039Z',
+            serviceUrl:
+          "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io"
           },{
             GatewayID:'1idLmsBc9x',
             RefID:'132186260',
@@ -1052,9 +1054,12 @@ export default class Technicalview extends React.Component {
             groupId:'wabtec-gecars-ta',
             bindid:'ZcdV6snbci',
             targetId:'Q7rfHI',
-            timeCreated:'2021-02-10T12:11:07.223278039Z'
+            timeCreated:'2021-02-10T12:11:07.223278039Z',
+            serviceUrl:
+          "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io" 
           }];
         let mockTableData = clientConfig;
+        sessionStorage.setItem("gatewayDetails", JSON.stringify(clientConfig));
         
         if(mockTableData.length > 0){
             let allDataKeys = Object.keys(mockTableData[0]);
