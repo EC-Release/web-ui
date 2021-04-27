@@ -97,6 +97,7 @@ export default class Viewtable extends React.Component {
                           hideGlobalMessage={this.props.hideGlobalMessage.bind(
                             this
                           )}
+                          tableindx={tbodyIndex}
                         />
                       </div>
                     </td>
