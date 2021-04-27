@@ -604,7 +604,7 @@
 
       .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div, .Subscriptionupgrade .centered-div, .Groupupgrade .centered-div{
         max-height: 450px;
-        /*overflow-y: scroll;*/
+        overflow-y: scroll;
         font-size: small;
       }
 
@@ -983,7 +983,7 @@
         background-color: #31b131;
       }
 
-      table > tbody > tr[role="row"][id^="parent"] > td:first-child:before {
+      table > tbody > tr[aria-expanded="true"] > td:first-child:before {
         content: "-";
         background-color: #d33333;
       }
