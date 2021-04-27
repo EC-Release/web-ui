@@ -1044,6 +1044,15 @@ export default class Technicalview extends React.Component {
             bindid:'XvmV6ynici',
             targetId:'Q7rfHI',
             timeCreated:'2021-02-10T12:11:07.223278039Z'
+          },{
+            GatewayID:'1idLmsBc9x',
+            RefID:'132186260',
+            IP:'10.72.11.10:63317',
+            sessionId:'1idLmsBc9x',
+            groupId:'wabtec-gecars-ta',
+            bindid:'ZcdV6snbci',
+            targetId:'Q7rfHI',
+            timeCreated:'2021-02-10T12:11:07.223278039Z'
           }];
         let mockTableData = clientConfig;
         
