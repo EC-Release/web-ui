@@ -61,6 +61,7 @@ export default class Viewtable extends React.Component {
                     data-toggle="collapse"
                     data-target={"#collapseme" + tbodyIndex}
                     role="row"
+                    className="parent-row"
                   >
                     {this.props.tableData.thead.map((val, tdIndex) => {
                       return (
