@@ -44,8 +44,8 @@ export default class Header extends React.Component {
                                 <img src="assets/static/images/logout_icon.svg" alt="logout" title="Logout" className="cursor-pointer" onClick={(event)=>{this.logout(event)}} />
                             </span> */}
                           <div className="row">
-                            <div className="col-sm-7"></div>
-                            <div className="col-sm-5 ">
+                            <div className="col-sm-8">&nbsp;</div>
+                            <div className="col-sm-4">
                               <div className="dropdown">
                                 <div
                                   className=" dropdown-toggle"
