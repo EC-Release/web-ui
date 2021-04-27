@@ -63,7 +63,15 @@ export default class Healthstatus extends React.Component {
   /* istanbul ignore next */
   componentDidMount() {
     // get gateway list start
-    fetch("https://jsonplaceholder.typicode.com/todos/1", {
+    let gatewayDetails = JSON.parse(sessionStorage.getItem("gatewayDetails"));
+    this.setState({
+      gateways: gatewayDetails,
+      selectedGateway: gatewayDetails[this.props.tableindx].gatewayId,
+    });
+    setTimeout(() => {
+      this.fetchHealthStatus();
+    }, 500);
+    /* fetch("https://jsonplaceholder.typicode.com/todos/1", {
       // Get gateways
       method: "GET",
     }).then((response) => {
@@ -86,7 +94,7 @@ export default class Healthstatus extends React.Component {
           });
         });
       }
-    });
+    }); */
 
     //get session, connection, super connection
 
@@ -473,8 +481,8 @@ export default class Healthstatus extends React.Component {
                 <div className="col-sm-12 text-left">
                   <label>GATEWAY</label>
                   <div className="row">
-                    <div className="col-sm-4">
-                      <select
+                    <div className="col-sm-4 text-center">
+                     {/*  <select
                         className="form-control form-control-sm"
                         id="selectedGateway"
                         name="selectedGateway"
@@ -495,11 +503,12 @@ export default class Healthstatus extends React.Component {
                             </option>
                           );
                         })}
-                      </select>
+                      </select> */}
+                      <b> {this.state.selectedGateway}</b>
                     </div>
                     <div className="col-sm-8">
                       <div className="row ops-btn">
-                        <button
+                      {/*   <button
                           type="button"
                           id="fetch-health-status-btn"
                           disabled={
@@ -511,7 +520,7 @@ export default class Healthstatus extends React.Component {
                           }}
                         >
                           Fetch Health Status
-                        </button>
+                        </button> */}
                         <button
                           type="button"
                           id="restart-gateway-btn"
@@ -576,7 +585,7 @@ export default class Healthstatus extends React.Component {
                         >
                           Access Gateway
                         </button>
-                        <button
+                      {/*   <button
                           type="button"
                           id="kill-gateway-btn"
                           disabled={
@@ -591,7 +600,7 @@ export default class Healthstatus extends React.Component {
                           }}
                         >
                           Kill Gateway
-                        </button>
+                        </button> */}
                       </div>
                     </div>
                   </div>
@@ -604,9 +613,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link active"
-                  id="sessions-tab"
+                  id={"sessions-tab"+ this.props.tableindx}
                   data-toggle="tab"
-                  href="#sessions"
+                  href={"#sessions"+ this.props.tableindx}
                   role="tab"
                   aria-controls="sessions"
                   aria-selected="true"
@@ -617,9 +626,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id="superconnections-tab"
+                  id={"superconnections-tab"+ this.props.tableindx}
                   data-toggle="tab"
-                  href="#superconnections"
+                  href={"#superconnections"+ this.props.tableindx}
                   role="tab"
                   aria-controls="superconnections"
                   aria-selected="false"
@@ -630,9 +639,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id="contact-tab"
+                  id={"contact-tab"+ this.props.tableindx}
                   data-toggle="tab"
-                  href="#contact"
+                  href={"#contact"+ this.props.tableindx}
                   role="tab"
                   aria-controls="contact"
                   aria-selected="false"
@@ -643,9 +652,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id="details-tab"
+                  id={"details-tab"+ this.props.tableindx}
                   data-toggle="tab"
-                  href="#details"
+                  href={"#details"+ this.props.tableindx}
                   role="tab"
                   aria-controls="details"
                   aria-selected="false"
@@ -657,9 +666,9 @@ export default class Healthstatus extends React.Component {
             <div className="tab-content" id="myTabContent">
               <div
                 className="tab-pane fade show active"
-                id="sessions"
+                id={"sessions"+ this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby="sessions-tab"
+                aria-labelledby={"sessions-tab"+ this.props.tableindx}
               >
                 <div className="row" style={{ textAlign: "center" }}>
                   <div className="col-sm-6">
@@ -703,9 +712,9 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade"
-                id="superconnections"
+                id={"superconnections"+ this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby="superconnections-tab"
+                aria-labelledby={"superconnections-tab"+ this.props.tableindx}
               >
                 <div className="row">
                   <div className="col-sm-6">
@@ -763,9 +772,9 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade"
-                id="contact"
+                id={"contact"+ this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby="contact-tab"
+                aria-labelledby={"contact-tab"+ this.props.tableindx}
               >
                 <div className="row">
                   <div className="col-sm-4">
@@ -875,9 +884,9 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade show"
-                id="details"
+                id={"details"+ this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby="details-tab"
+                aria-labelledby={"details-tab"+ this.props.tableindx}
               >
                 <br />
                 <div className="row">
