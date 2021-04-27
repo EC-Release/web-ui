@@ -1036,7 +1036,7 @@ export default class Technicalview extends React.Component {
         let allFields = [];
         let tbody = [];
         const clientConfig = [{
-            GatewayID:'0idLmsMk8e',
+            gatewayId:'0idLmsMk8e',
             RefID:'101186260',
             IP:'10.72.11.10:63218',
             sessionId:'0idLmsMk8e',
@@ -1047,7 +1047,7 @@ export default class Technicalview extends React.Component {
             serviceUrl:
           "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io"
           },{
-            GatewayID:'1idLmsBc9x',
+            gatewayId:'1idLmsBc9x',
             RefID:'132186260',
             IP:'10.72.11.10:63317',
             sessionId:'1idLmsBc9x',
