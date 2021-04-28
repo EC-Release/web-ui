@@ -670,6 +670,38 @@ export default class Healthstatus extends React.Component {
                 role="tabpanel"
                 aria-labelledby={"sessions-tab"+ this.props.tableindx}
               >
+               <br />
+                <div className="row">
+                  <div className="col-sm-5 "></div>
+                  <div className="col-sm-2 text-center">
+                    <select
+                      className="form-control form-control-sm"
+                      id="selectedSession"
+                      name="selectedSession"
+                      className="health-status-select"
+                      /*  value={this.state.selectedGateway} */
+                      onChange={(event) => {
+                        this.handleGatewayselection(event);
+                      }}
+                    >
+                      <option value="">Select SessionId</option>
+                      <option value="0idLmsMk8e">0idLmsMk8e</option>
+
+                      {/*  {this.state.gateways.map((gateway, gatewayIndex) => {
+                          return (
+                            <option
+                              className="float-left"
+                              key={"gatewayOption" + gatewayIndex}
+                              value={gateway.gatewayId}
+                            >
+                              {gateway.gatewayId}
+                            </option>
+                          );
+                        })} */}
+                    </select>
+                  </div>
+                </div>
+                <br />
                 <div className="row" style={{ textAlign: "center" }}>
                   <div className="col-sm-6">
                     <small className="font-weight-bold">Session ID:</small>
@@ -716,6 +748,38 @@ export default class Healthstatus extends React.Component {
                 role="tabpanel"
                 aria-labelledby={"superconnections-tab"+ this.props.tableindx}
               >
+               <br />
+                <div className="row">
+                  <div className="col-sm-5 "></div>
+                  <div className="col-sm-2 text-center">
+                    <select
+                      className="form-control form-control-sm"
+                      id="selectedConnection"
+                      name="selectedConnection"
+                      className="health-status-select"
+                      /*  value={this.state.selectedGateway} */
+                      onChange={(event) => {
+                        this.handleGatewayselection(event);
+                      }}
+                    >
+                      <option value="">Select ServerID</option>
+                      <option value="0idLmsMk8e">0idLmsMk8e</option>
+
+                      {/*  {this.state.gateways.map((gateway, gatewayIndex) => {
+                          return (
+                            <option
+                              className="float-left"
+                              key={"gatewayOption" + gatewayIndex}
+                              value={gateway.gatewayId}
+                            >
+                              {gateway.gatewayId}
+                            </option>
+                          );
+                        })} */}
+                    </select>
+                  </div>
+                </div>
+                <br />
                 <div className="row">
                   <div className="col-sm-6">
                     <small className="font-weight-bold">Server ID:</small>
@@ -775,7 +839,38 @@ export default class Healthstatus extends React.Component {
                 id={"contact"+ this.props.tableindx}
                 role="tabpanel"
                 aria-labelledby={"contact-tab"+ this.props.tableindx}
-              >
+              >   <br />
+                <div className="row">
+                  <div className="col-sm-5 "></div>
+                  <div className="col-sm-2 text-center">
+                    <select
+                      className="form-control form-control-sm"
+                      id="selectedClientId"
+                      name="selectedClientId"
+                      className="health-status-select"
+                      /*  value={this.state.selectedGateway} */
+                      onChange={(event) => {
+                        this.handleGatewayselection(event);
+                      }}
+                    >
+                      <option value="">Select ClientId</option>
+                      <option value="0idLmsMk8e">0idLmsMk8e</option>
+
+                      {/*  {this.state.gateways.map((gateway, gatewayIndex) => {
+                          return (
+                            <option
+                              className="float-left"
+                              key={"gatewayOption" + gatewayIndex}
+                              value={gateway.gatewayId}
+                            >
+                              {gateway.gatewayId}
+                            </option>
+                          );
+                        })} */}
+                    </select>
+                  </div>
+                </div>
+                <br />
                 <div className="row">
                   <div className="col-sm-4">
                     <small className="font-weight-bold">Bind ID:</small>
