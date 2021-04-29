@@ -22,6 +22,10 @@
     {
       "name": "Real time view",
       "description": "Handles real time APIs"
+    },
+    {
+      "name": "ng-portal",
+      "description": "Read and Write data from ng-portal"
     }
   ],
   "schemes": [
@@ -29,10 +33,13 @@
     "https"
   ],
   "paths": {
-    "/getGroups": {
+    "/group": {
       "get": {
-        "summary": "Get the Group names",
-        "description": "Get the group names in a subscription",
+        "summary": "Get the All Group names",
+        "description": "Get the all group names in a subscription",
+        "tags": [
+          "ng-portal"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -61,10 +68,13 @@
         }
       }
     },
-    "/getGroupDetails/{groupId}": {
+    "/group/{groupId}": {
       "get": {
         "summary": "Get the Group details",
         "description": "Get the group details in a subscription",
+        "tags": [
+          "ng-portal"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -84,7 +94,7 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "pass the group id"
+            "description": "Group id to get the details"
           }
         ],
         "responses": {
@@ -98,12 +108,174 @@
             "description": "Invalid value"
           }
         }
+      },
+      "post": {
+        "tags": [
+          "ng-portal"
+        ],
+        "summary": "Create a group in EC Subscription",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Group Id to create"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group created",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ng-portal"
+        ],
+        "summary": "Delete a group in EC Subscription",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Group Id to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group deleted",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
       }
     },
-    "/getUIRoles": {
+    "/group/{groupId}/add": {
+      "post": {
+        "tags": [
+          "ng-portal"
+        ],
+        "summary": "Create additional agent id's to group",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Group Id to generate and add new agent id's"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group created",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/group/{groupId}/add/{agentId}": {
+      "post": {
+        "tags": [
+          "ng-portal"
+        ],
+        "summary": "Add existing agent id to group",
+        "description": "",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "groupId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Group Id to generate and add new agent id's"
+          },
+          {
+            "name": "agentId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Existing Agent Id."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Group created",
+            "examples": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
+    "/uiRole": {
       "get": {
         "summary": "Get the UI roles",
         "description": "Get the UI roles for accessing the customer console",
+        "tags": [
+          "ng-portal"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -132,10 +304,13 @@
         }
       }
     },
-    "/getUIRoles/{uiRole}": {
+    "/uiRole/{uiRole}": {
       "get": {
         "summary": "Get the Customer Console role permissions",
         "description": "",
+        "tags": [
+          "ng-portal"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -169,12 +344,96 @@
             "description": "Invalid value"
           }
         }
+      },
+      "post": {
+        "summary": "Create new UI role",
+        "description": "Creating the UI roles for customer console",
+        "tags": [
+          "ng-portal"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "Fields",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/UIRole"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete UI role",
+        "description": "Delete the UI role for customer console",
+        "tags": [
+          "ng-portal"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "uiRoleId",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Role Id to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
       }
     },
     "/getRoleMappings": {
       "get": {
         "summary": "Get the user and role mappings",
         "description": "",
+        "tags": [
+          "ng-portal"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -207,6 +466,9 @@
       "get": {
         "summary": "Get the data usage and activity report",
         "description": "",
+        "tags": [
+          "ng-portal"
+        ],
         "consumes": [
           "application/json"
         ],
@@ -355,7 +617,7 @@
         }
       }
     },
-   "/listSubscriptions": {
+    "/listSubscriptions": {
       "get": {
         "tags": [
           "Subscription"
@@ -1030,6 +1292,16 @@
     }
   },
   "definitions": {
+    "UIRole": {
+      "type": "object",
+      "properties": {
+        "ROLE-NAME": [
+          "permission1",
+          "permission2",
+          "permission3"
+        ]
+      }
+    },
     "GatewayInfo": {
       "type": "object",
       "properties": {
