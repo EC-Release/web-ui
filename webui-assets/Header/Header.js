@@ -68,42 +68,31 @@ export default class Header extends React.Component {
                                   className="dropdown-menu"
                                   aria-labelledby="dropdownMenuButton"
                                 >
-                                  <a className="dropdown-item cursor-pointer">
-                                    {this.props.isFullScreenModal ? (
-                                      <span onClick={this.props.medModal.bind(this)}>
-                                        {/*  <img
-                                    className="cursor-pointer"
-                                    alt="minimize-window"
-                                    src="assets/static/images/minimize.svg"
-                                    onClick={this.props.medModal.bind(this)}
-                                  /> */}
-                                        Minimize
-                                      </span>
-                                    ) : (
-                                      <span onClick={this.props.maxMinModal.bind(this)}>
-                                        {/*  <img
-                                          className="cursor-pointer"
-                                          alt="minimize-window"
-                                          src="assets/static/images/minimize.svg"
-                                          onClick={this.props.maxMinModal.bind(this)}
-                                        /> */}{" "}
-                                        Minimize
+                                        <a className="dropdown-item cursor-pointer">
+                                    {this.props.isFullScreenModal ? null : (
+                                      <span onClick={this.props.fullScreenModal.bind(this)}>
+                                        FullScreen
                                       </span>
                                     )}
                                   </a>
                                   <a className="dropdown-item cursor-pointer">
-                                    {this.props.isFullScreenModal ? null : (
-                                      <span onClick={this.props.fullScreenModal.bind(this)}>
-                                        {/*  <img
-                                          className="cursor-pointer"
-                                          alt="maximize-window"
-                                          onClick={this.props.fullScreenModal.bind(this)}
-                                          alt="maximize-window"
-                                          src="assets/static/images/maximize.svg"
-                                        /> */}{" "}
-                                        FullScreen
+                                    {this.props.isFullScreenModal ? (
+                                      <span onClick={this.props.medModal.bind(this)}>
+                                        Minimize
+                                      </span>
+                                    ) : (
+                                      <span onClick={this.props.maxMinModal.bind(this)}>
+                                        Minimize
                                       </span>
                                     )}
+                                  </a>
+                                  <a
+                                    className="dropdown-item cursor-pointer"
+                                    onClick={() => {
+                                      this.props.handleUser(this.props.user);
+                                    }}
+                                  >
+                                    Switch to {this.props.user}
                                   </a>
                                   <a
                                     className="dropdown-item cursor-pointer"
