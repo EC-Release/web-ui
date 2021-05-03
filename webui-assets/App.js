@@ -63,8 +63,8 @@ export default class App extends React.Component {
         headerText:'',
         bodyText:'',
         buttons:[]
-      }
-    
+      },
+      user: "OpsAdmin",
     };
   }
 
@@ -265,6 +265,45 @@ export default class App extends React.Component {
         }
     }
   }
+	
+ /* istanbul ignore next */
+handleUser(user) {
+    let newpermission = { ...this.state.permissions };
+    if (user === "OpsAdmin") {
+      newpermission.accesses.maintain.subMenus.subscriptions.create = false;
+      newpermission.accesses.maintain.subMenus.subscriptions.edit = false;
+      newpermission.accesses.maintain.subMenus.subscriptions.delete = false;
+
+      newpermission.accesses.maintain.subMenus.groups.create = false;
+      newpermission.accesses.maintain.subMenus.groups.edit = false;
+      newpermission.accesses.maintain.subMenus.groups.delete = false;
+
+      newpermission.accesses.maintain.subMenus.agents.create = false;
+      newpermission.accesses.maintain.subMenus.agents.edit = false;
+      newpermission.accesses.maintain.subMenus.agents.delete = false;
+
+      this.setState({
+        permission: newpermission,
+        user: "User",
+      });
+    }
+    if (user === "User") {
+      newpermission.accesses.maintain.subMenus.subscriptions.create = true;
+      newpermission.accesses.maintain.subMenus.subscriptions.edit = true;
+      newpermission.accesses.maintain.subMenus.subscriptions.delete = true;
+      newpermission.accesses.maintain.subMenus.groups.create = true;
+      newpermission.accesses.maintain.subMenus.groups.edit = true;
+      newpermission.accesses.maintain.subMenus.groups.delete = true;
+      newpermission.accesses.maintain.subMenus.agents.create = true;
+      newpermission.accesses.maintain.subMenus.agents.edit = true;
+      newpermission.accesses.maintain.subMenus.agents.delete = true;
+
+      this.setState({
+        permission: newpermission,
+        user: "OpsAdmin",
+      });
+    }
+  }
 
   /* istanbul ignore next */
   servedView() {
@@ -458,7 +497,15 @@ export default class App extends React.Component {
                   }
                 
                   <div className="modal-body">
-                    <Header profileData={this.state.profileData} maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
+                    <Header
+			profileData={this.state.profileData}
+			maxMinModal={this.maxMinModal.bind(this)}
+			fullScreenModal={this.fullScreenModal.bind(this)}
+			isFullScreenModal={this.state.isFullScreenModal}
+			medModal={this.medModal.bind(this, this.state.currentView)}
+			handleUser={this.handleUser.bind(this)}
+                        user={this.state.user}
+		></Header>
                     <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)} permissions={this.state.permissions}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }
