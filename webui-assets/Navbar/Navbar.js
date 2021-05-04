@@ -28,7 +28,7 @@ export default class Navbar extends React.Component {
                             :
                             null
                         }
-                      /*  { this.props.permissions.accesses && this.props.permissions.accesses.view.haveAccess ?
+                        {   /*  { this.props.permissions.accesses && this.props.permissions.accesses.view.haveAccess ?
                             <li id="nav-view" className={this.props.currentView === 'View' ? 'nav-item active' : 'nav-item'}>
                                 <a className="nav-link" href="#" onClick={this.props.clickEve.bind(this, 'View')}>
                                     <img src={'assets/static/images/view_icon.svg'} alt="nav-view" />
@@ -37,7 +37,7 @@ export default class Navbar extends React.Component {
                             </li>
                             :
                             null
-                        }*/
+                        }*/ }
                         { this.props.permissions.accesses && this.props.permissions.accesses.maintain.haveAccess ?
                             <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Maintainwatchercreate'  || this.props.currentView === 'Maintainwatcherupgrade' || this.props.currentView === 'Maintainwatcherview' || this.props.currentView === 'Subscriptioncreate' || this.props.currentView === 'Subscriptionupgrade' || this.props.currentView === 'Groupcreate' || this.props.currentView === 'Groupupgrade' ? "nav-item dropdown active" : "nav-item dropdown"}>
                                 <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
