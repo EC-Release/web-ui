@@ -62,7 +62,6 @@ export default class Healthstatus extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-    console.log(this.props.permissions)
     // get gateway list start
     let gatewayDetails = JSON.parse(sessionStorage.getItem("gatewayDetails"));
     this.setState({
@@ -509,7 +508,7 @@ export default class Healthstatus extends React.Component {
                     </div>
                     <div className="col-sm-8">
                       <div className="row ops-btn">
-      {  /*  {this.props.permissions.accesses.monitor.subMenus
+       {this.props.permissions.accesses.monitor.subMenus
                           .healthStatus.isUser ? null : (
                           <button
                             type="button"
@@ -547,7 +546,7 @@ export default class Healthstatus extends React.Component {
                           >
                             Access Gateway
                           </button>
-                        ) : null}*/ }
+                        ) : null}
                       </div>
                     </div>
                   </div>
