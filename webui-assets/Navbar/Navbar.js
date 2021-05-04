@@ -114,7 +114,7 @@ export default class Navbar extends React.Component {
                                 { this.props.permissions.accesses.maintain.subMenus.agents.create ?
                                     <li className="dropdown-submenu">
                                         <a id="nav-agent" className="dropdown-item" href="#">
-                                            Agents
+                                            Launch Scripts
                                         </a>
                                         <ul className="dropdown-menu">
                                             { this.props.permissions.accesses.maintain.subMenus.agents.create ?
@@ -136,10 +136,10 @@ export default class Navbar extends React.Component {
                                     null
                                 }
 
-                             {/*    { this.props.permissions.accesses.maintain.subMenus.watchers.view || this.props.permissions.accesses.maintain.subMenus.watchers.create || this.props.permissions.accesses.maintain.subMenus.watchers.edit || this.props.permissions.accesses.maintain.subMenus.watchers.delete ?
+                                { this.props.permissions.accesses.maintain.subMenus.watchers.view || this.props.permissions.accesses.maintain.subMenus.watchers.create || this.props.permissions.accesses.maintain.subMenus.watchers.edit || this.props.permissions.accesses.maintain.subMenus.watchers.delete ?
                                     <li className="dropdown-submenu">
                                         <a className="dropdown-item" href="#">
-                                            Watchers
+                                            Requests
                                         </a>
                                         <ul className="dropdown-menu">
                                             { 
@@ -170,7 +170,7 @@ export default class Navbar extends React.Component {
                                     </li>
                                     :
                                     null
-                                }  */}
+                                } 
                                 </ul>
                             </li>
                             :
@@ -234,6 +234,11 @@ export default class Navbar extends React.Component {
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
+                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
+                                       Web Push
+                                    </a>
+                                </li>
+                                  <li>
                                     <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
                                         User Management
                                     </a>
