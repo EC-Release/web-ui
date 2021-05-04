@@ -1407,8 +1407,9 @@ export default class Technicalview extends React.Component {
                                                 showHideTableTdData={this.showHideTableTdData.bind(this)}
                                                 userId={this.props.userId}
                                                 showGlobalMessage={this.props.showGlobalMessage.bind(this)}
-                                                hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}>
+                                                hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}
                                                 permissions={this.props.permissions}
+                                                > 
                                                 </Viewtable>
                                             </div>
                                         </div>:
