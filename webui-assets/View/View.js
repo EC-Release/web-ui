@@ -6,6 +6,7 @@ import Businessview from './Businessview.js';
 export default class View extends React.Component {
 
     constructor(props){
+        console.log(this.props.permissions)
         super(props);
         this.state = {
             mockTableData: [],
