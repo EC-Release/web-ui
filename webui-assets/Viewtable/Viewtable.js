@@ -98,6 +98,7 @@ export default class Viewtable extends React.Component {
                             this
                           )}
                           tableindx={tbodyIndex}
+                          permissions={this.props.permissions}
                         />
                       </div>
                     </td>
