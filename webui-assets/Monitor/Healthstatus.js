@@ -508,99 +508,45 @@ export default class Healthstatus extends React.Component {
                     </div>
                     <div className="col-sm-8">
                       <div className="row ops-btn">
-                      {/*   <button
-                          type="button"
-                          id="fetch-health-status-btn"
-                          disabled={
-                            this.state.selectedGateway === "" ? true : false
-                          }
-                          className="btn customize-view-btn btn-sm"
-                          onClick={() => {
-                            this.fetchHealthStatus();
-                          }}
-                        >
-                          Fetch Health Status
-                        </button> */}
-                        <button
-                          type="button"
-                          id="restart-gateway-btn"
-                          disabled={
-                            this.state.selectedGateway === "" ? true : false
-                          }
-                          className="btn customize-view-btn btn-sm"
-                          onClick={() => {
-                            this.gatewayOperations(
-                              this.state.selectedGateway,
-                              "restart"
-                            );
-                          }}
-                        >
-                          Restart Gateway
-                        </button>
-                        <button
-                          type="button"
-                          id="launch-gateway-btn"
-                          disabled={
-                            this.state.selectedGateway === "" ? true : false
-                          }
-                          className="btn customize-view-btn btn-sm"
-                          onClick={() => {
-                            this.gatewayOperations(
-                              this.state.selectedGateway,
-                              "launch"
-                            );
-                          }}
-                        >
-                          Launch Gateway
-                        </button>
-                        <button
-                          type="button"
-                          id="deploy-gateway-btn"
-                          disabled={
-                            this.state.selectedGateway === "" ? true : false
-                          }
-                          className="btn customize-view-btn btn-sm"
-                          onClick={() => {
-                            this.gatewayOperations(
-                              this.state.selectedGateway,
-                              "deploy"
-                            );
-                          }}
-                        >
-                          Deploy Gateway
-                        </button>
-                        <button
-                          type="button"
-                          id="access-gateway-btn"
-                          disabled={
-                            this.state.selectedGateway === "" ? true : false
-                          }
-                          className="btn customize-view-btn btn-sm"
-                          onClick={() => {
-                            this.gatewayOperations(
-                              this.state.selectedGateway,
-                              "access"
-                            );
-                          }}
-                        >
-                          Access Gateway
-                        </button>
-                      {/*   <button
-                          type="button"
-                          id="kill-gateway-btn"
-                          disabled={
-                            this.state.selectedGateway === "" ? true : false
-                          }
-                          className="btn customize-view-btn btn-sm"
-                          onClick={() => {
-                            this.gatewayOperations(
-                              this.state.selectedGateway,
-                              "kill"
-                            );
-                          }}
-                        >
-                          Kill Gateway
-                        </button> */}
+                    {this.props.permissions.accesses.monitor.subMenus
+                          .healthStatus.isUser ? null : (
+                          <button
+                            type="button"
+                            id="restart-gateway-btn"
+                            disabled={
+                              this.state.selectedGateway === "" ? true : false
+                            }
+                            className="btn customize-view-btn btn-sm"
+                            onClick={() => {
+                              this.gatewayOperations(
+                                this.state.selectedGateway,
+                                "restart"
+                              );
+                            }}
+                          >
+                            Restart Gateway
+                          </button>
+                        )}
+
+                        {this.props.permissions.accesses.monitor.subMenus
+                          .healthStatus.isUser ? (
+                          <button
+                            type="button"
+                            id="access-gateway-btn"
+                            disabled={
+                              this.state.selectedGateway === "" ? true : false
+                            }
+                            className="btn customize-view-btn btn-sm"
+                            onClick={() => {
+                              this.gatewayOperations(
+                                this.state.selectedGateway,
+                                "access"
+                              );
+                            }}
+                          >
+                            Access Gateway
+                          </button>
+                        ) : null}
                       </div>
                     </div>
                   </div>
