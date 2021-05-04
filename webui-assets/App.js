@@ -161,7 +161,8 @@ export default class App extends React.Component {
                       "healthStatus": {
                           "view": true,
                           "edit": true,
-                          "delete": true
+                          "delete": true,
+			  "isUser": true,
                       }
                     }
                   },
@@ -281,9 +282,9 @@ handleUser(user) {
       newpermission.accesses.maintain.subMenus.agents.create = false;
       newpermission.accesses.maintain.subMenus.agents.edit = false;
       newpermission.accesses.maintain.subMenus.agents.delete = false;
-
+      newpermission.accesses.monitor.subMenus.healthStatus.isUser = false;
       this.setState({
-        permission: newpermission,
+        permissions: newpermission,
         user: "User",
       });
     }
@@ -297,9 +298,10 @@ handleUser(user) {
       newpermission.accesses.maintain.subMenus.agents.create = true;
       newpermission.accesses.maintain.subMenus.agents.edit = true;
       newpermission.accesses.maintain.subMenus.agents.delete = true;
+      newpermission.accesses.monitor.subMenus.healthStatus.isUser = true;
 
       this.setState({
-        permission: newpermission,
+        permissions: newpermission,
         user: "OpsAdmin",
       });
     }
@@ -312,7 +314,7 @@ handleUser(user) {
       case 'Dashboard':
         return <Dashboard />; // jshint ignore:line
       case 'View':
-        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
       case 'Maintain':
         return <Maintain />; // jshint ignore:line
       case 'Subscriptioncreate':
