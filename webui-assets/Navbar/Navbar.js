@@ -227,14 +227,14 @@ export default class Navbar extends React.Component {
                         null
                         }
                         { this.props.permissions.accesses && this.props.permissions.accesses.settings.haveAccess ?
-                        <li className={this.props.currentView === 'Usermanagement' ? 'nav-item dropdown active' : 'nav-item dropdown'}>
+                        <li className={this.props.currentView === 'Usermanagement' || this.props.currentView === 'webpush'  ? 'nav-item dropdown active' : 'nav-item dropdown'}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/settings_icon.svg'} alt="nav-settings" />
                                 Settings
                             </a>
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
-                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
+                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'webpush')} href="#">
                                        Web Push
                                     </a>
                                 </li>
