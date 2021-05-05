@@ -98,8 +98,8 @@ export default class WebPush extends React.Component {
               <div className="row webpush-header">
                 <div className="col-md-12">
                   <h6 id="webpush-title">
-                    Create Notification
-                    {/* <small>Creating parameters.</small> */}
+                    Web Push
+                     <small>Creating Notification.</small>
                   </h6>
                 </div>
               </div>
