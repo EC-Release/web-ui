@@ -23,7 +23,7 @@ import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 import Report from './Report/Report.js';
 import Usermanagement from './Settings/Usermanagement.js';
-import WebPush from "./Settings/WebPush.js";
+import WebHooks from "./Settings/WebHooks.js";
 import Navbar from './Navbar/Navbar.js';
 import Header from './Header/Header.js';
 import Support from './Support/Support.js';
@@ -352,8 +352,8 @@ handleUser(user) {
         return <Report />; // jshint ignore:line
       case 'Usermanagement':
         return <Usermanagement />; // jshint ignore:line
-      case 'webpush':
-        return  <WebPush userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} /> // jshint ignore:line
+      case 'WebHooks':
+        return  <WebHooks userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} /> // jshint ignore:line
       case 'Support':
         return <Support />; // jshint ignore:line
       default:
