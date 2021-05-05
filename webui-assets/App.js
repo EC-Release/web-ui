@@ -12,7 +12,7 @@ import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 /* istanbul ignore next */
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
 import Maintainagentview from './Maintain/Maintainagentview.js';
-import RequestCreate from './Maintain/RequestCreate .js';
+import RequestCreate from './Maintain/RequestCreate.js';
 import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
 import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
 import Subscriptionview from './Maintain/Subscriptionview.js'; 
