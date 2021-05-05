@@ -145,7 +145,7 @@ export default class Navbar extends React.Component {
                                             { 
                                                 this.props.permissions.accesses.maintain.subMenus.watchers.create ?
                                                     <li>
-                                                        <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'RequestCreate')} href="#">Create</a>
+                                                        <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Requestcreate')} href="#">Create</a>
                                                     </li>
                                                     :
                                                     null
