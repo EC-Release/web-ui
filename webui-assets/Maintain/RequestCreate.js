@@ -16,6 +16,7 @@ export default class RequestCreate extends React.Component {
   componentDidMount() {
     window.enableToolTip();
     // this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
+    console.log("ReqCreate");
   }
 
   /* istanbul ignore next */
