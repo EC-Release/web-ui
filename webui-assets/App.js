@@ -334,7 +334,7 @@ handleUser(user) {
         return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentview':
         return <Maintainagentview baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
-      case 'Maintainwatchercreate':
+      case 'Requestcreate':
         return <RequestCreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainwatcherupgrade':
         return <Maintainwatcherupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
