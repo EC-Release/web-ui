@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class WebPush extends React.Component {
+export default class WebHooks extends React.Component {
    /* istanbul ignore next */
   constructor(props) {
     super(props);
@@ -91,15 +91,15 @@ export default class WebPush extends React.Component {
   render() {
     /* jshint ignore:start */
     return (
-      <div className="row web-push">
+      <div className="row web-hook">
         <div className="col-md-12 mt-2">
           <div className="centered-div">
             <div className="centered-div-header">
-              <div className="row webpush-header">
+              <div className="row WebHooks-header">
                 <div className="col-md-12">
-                  <h6 id="webpush-title">
-                    Web Push
-                     <small> Creating Notification.</small>
+                  <h6 id="WebHooks-title">
+                    Web Hooks
+                     <small> Creating Parameters.</small>
                   </h6>
                 </div>
               </div>
