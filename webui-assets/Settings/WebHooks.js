@@ -9,6 +9,7 @@ export default class WebHooks extends React.Component {
         name: { value: "", dirtyState: false },
         eventType: { value: "", dirtyState: false },
         endpoint: { value: "", dirtyState: false },
+        secret: { value: "", dirtyState: false, type: "password" },
       },
       errorsForm: {},
       formIsValid: false,
@@ -31,6 +32,9 @@ export default class WebHooks extends React.Component {
     } else if (fieldName === "name") {
       currentForm.name.value = updatedValue;
       currentForm.name.dirtyState = true;
+    }else if (fieldName === "secret") {
+      currentForm.secret.value = updatedValue;
+      currentForm.secret.dirtyState = true;
     }
 
     this.setState({
@@ -48,6 +52,8 @@ export default class WebHooks extends React.Component {
     let endpointDirtyState = currentFormData.endpoint.dirtyState;
     let eventTypeValue = currentFormData.eventType.value;
     let eventTypeDirtyState = currentFormData.eventType.dirtyState;
+    let secretValue = currentFormData.secret.value;
+    let secretDirtyState = currentFormData.secret.dirtyState;
     let formIsValid = true;
     let errors = {};
 
@@ -63,6 +69,11 @@ export default class WebHooks extends React.Component {
 
     if (eventTypeValue.trim() === "") {
       if (eventTypeDirtyState) errors.eventType = "Please enter Event Type";
+      formIsValid = false;
+    }
+
+    if (secretValue.trim() === "") {
+      if (secretDirtyState) errors.secret = "Please enter Secret";
       formIsValid = false;
     }
 
@@ -88,6 +99,24 @@ export default class WebHooks extends React.Component {
     this.props.hideGlobalMessage();
   }
 
+   /* istanbul ignore next */
+   showHideField(e, fieldName) {
+    let currentForm = {};
+     currentForm = Object.assign({}, this.state.formData);
+
+    if (currentForm[fieldName].type == "password") {
+      currentForm[fieldName].type = "text";
+    } else {
+      currentForm[fieldName].type = "password";
+    }
+
+      this.setState({
+        formData: currentForm,
+      });
+
+  }
+
+
   render() {
     /* jshint ignore:start */
     return (
@@ -106,7 +135,7 @@ export default class WebHooks extends React.Component {
               <hr></hr>
               <div className="changeable-form group-form">
                 <div className="row">
-                  <div className="col-sm-4">
+                  <div className="col-sm-6">
                     <div className="col-sm-12 label required">
                       NAME
                       <img
@@ -129,7 +158,7 @@ export default class WebHooks extends React.Component {
                       </small>
                     </div>
                   </div>
-                  <div className="col-sm-4">
+                  <div className="col-sm-6">
                     <div className="col-sm-12 label required">
                       EVENT TYPE
                       <img
@@ -138,21 +167,67 @@ export default class WebHooks extends React.Component {
                       />
                     </div>
                     <div className="col-sm-12 mb-2">
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="eventType"
-                        value={this.state.formData.eventType.value}
-                        onChange={(event) => {
-                          this.handleFormData(event);
-                        }}
-                      />
+                      <select 
+                          className="form-control form-control-sm" 
+                          name="eventType" 
+                          value={this.state.formData.eventType.value}
+                          onChange={(event)=>{this.handleFormData(event)}}>
+                              <option value="" >Choose an event </option>
+                              <option value="push" >Just a push event </option>
+                              <option value="sendAll" >Send me everything </option>
+                              <option value="selectIndividual" >Let me select individual event</option>
+                      </select>
                       <small className="text-danger">
                         {this.state.errorsForm["eventType"]}
                       </small>
                     </div>
                   </div>
-                  <div className="col-sm-4">
+                 
+                </div>
+                <div className="row">
+                <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        SECRET
+                        <img
+                          alt="down-arrow"
+                          src="assets/static/images/icon_greensortingdown.svg"
+                        />
+                        {this.state.formData.secret.type == "password" ? (
+                          <i
+                            onClick={(event) => {
+                              this.showHideField(event, "secret");
+                            }}
+                            className="fa fa-eye cursor-pointer"
+                            title="Show"
+                          ></i>
+                        ) : (
+                          <i
+                            onClick={(event) => {
+                              this.showHideField(event, "secret");
+                            }}
+                            className="fa fa-eye-slash cursor-pointer"
+                            title="Hide"
+                          ></i>
+                        )}
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type={this.state.formData.secret.type}
+                          autoComplete="off"
+                          className="form-control form-control-sm"
+                          name="secret"
+                          value={this.state.formData.secret.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["secret"]}
+                        </small>
+                      </div>
+                    </div>
+
+                    <div className="col-sm-6">
                     <div className="col-sm-12 label required">
                       TARGET ENDPOINT
                       <img
@@ -185,7 +260,7 @@ export default class WebHooks extends React.Component {
                       onClick={this.createNotification.bind(this)}
                       className="btn btn-sm customize-view-btn"
                     >
-                      CREATE NOTIFICATION
+                      CREATE WEBHOOKS
                     </button>
                   </div>
                 </div>
