@@ -227,7 +227,7 @@ export default class Navbar extends React.Component {
                         null
                         }
                         { this.props.permissions.accesses && this.props.permissions.accesses.settings.haveAccess ?
-                        <li className={this.props.currentView === 'Usermanagement' || this.props.currentView === 'WebHooks'  ? 'nav-item dropdown active' : 'nav-item dropdown'}>
+                        <li className={this.props.currentView === 'Usermanagement' || this.props.currentView === 'WebHooks' || this.props.currentView === 'UserProfile'  ? 'nav-item dropdown active' : 'nav-item dropdown'}>
                             <a className="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> 
                                 <img src={'assets/static/images/settings_icon.svg'} alt="nav-settings" />
                                 Settings
