@@ -238,7 +238,12 @@ export default class Navbar extends React.Component {
                                        Web Hooks
                                     </a>
                                 </li>
-                                  <li>
+                                <li>
+                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, "UserProfile")} href="#"  >
+                                      User Profile
+                                    </a>
+                                </li>
+                                <li>
                                     <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
                                         User Management
                                     </a>
