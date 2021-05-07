@@ -1,582 +1,371 @@
 import React from "react";
 
 export default class Usermanagement extends React.Component {
+  /* istanbul ignore next */
+  constructor(props) {
+    super(props);
+    this.state = {
+      formData: {
+        name: { value: "", dirtyState: false },
+        sso: { value: "", dirtyState: false },
+        email: { value: "", dirtyState: false },
+        makerSso: { value: "", dirtyState: false, type: "password" },
+      },
+      errorsForm: {},
+      formIsValid: false,
+      showForm: false,
+      Users: [],
+    };
+  }
 
-    /* istanbul ignore next */
-    constructor(props) {
-        super(props);
-        this.state = {
-          basicProfile:{
-              firstName:{change : false, value:''},
-              lastName:{change : false, value:''},
-              geId:{change : false, value:''},
-              mobile:{change : false, value:''},
-              city:{change : false, value:''},
-              country:{change : false, value:''},
-          },
-          validBasicProfile: true,
-          copyBasicProfile:{
-            firstName:'',
-              lastName:'',
-              geId:'',
-              mobile:'',
-              city:'',
-              country:'',
-        },
-          notifications:{
-              notifications_email:false,
-              notifications_text:false,
-              notifications_phone:false,
-              messages_email:false,
-              messages_text:false
-          }
-        };
+  /* istanbul ignore next */
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/todos/1", {
+      // Get gateways
+      method: "GET",
+    }).then((response) => {
+      if (response.status === 200) {
+        response.json().then((user) => {
+          user = [
+            {
+              name: "Adam johnson",
+              sso: "312042341",
+              email: "adam.Johnson@ge.com",
+              makersso: "31232341",
+            },
+            {
+              name: "Mark Wood",
+              sso: "21312341",
+              email: "mark.wood@ge.com",
+              makersso: "31232341",
+            },
+            {
+              name: "Mary Lou",
+              sso: "50213012",
+              email: "mary.lou@ge.com",
+              makersso: "31232341",
+            },
+          ];
+          this.setState({
+            Users: user,
+          });
+          console.log(this.state.users);
+        });
       }
+    });
+  }
 
-    /* istanbul ignore next */
-    componentDidMount(){
-        $(function () {
-            $(".field-wrapper .field-placeholder").on("click", function () {
-                $(this).closest(".field-wrapper").find("input").focus();
-                var value = $(this).closest(".field-wrapper").find("input").val();
-                if (value) {
-                    $(this).closest(".field-wrapper").addClass("hasValue");
-                } else {
-                    $(this).closest(".field-wrapper").removeClass("hasValue");
-                }
-            });
-            $(".field-wrapper input").on("keyup", function () {
-                var value = $.trim($(this).val());
-                if (value) {
-                    $(this).closest(".field-wrapper").addClass("hasValue");
-                } else {
-                    $(this).closest(".field-wrapper").removeClass("hasValue");
-                }
-            });
-        });
+  /* istanbul ignore next */
+  handleFormData(e) {
+    let fieldName = e.target.name;
+    let updatedValue =
+      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    let currentForm = Object.assign({}, this.state.formData);
 
-        fetch('https://jsonplaceholder.typicode.com/todos/1', { // Get gateways
-            method: 'GET'
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                response.json().then((profile) => {
-                    profile = {
-                        "firstName":'Aarav',
-                        "lastName":'Patel',
-                        "geId":'aarav.patel@ge.com',
-                        "mobile":'07525493650',
-                        "city":'Pune',
-                        "country":'India'
-                    };
-                    let currentbasicProfile= Object.assign({}, this.state.basicProfile);
-                    let currentCopyBasicProfile = Object.assign({}, this.state.copyBasicProfile);
-                    currentCopyBasicProfile.firstName=profile.firstName;
-                    currentbasicProfile.firstName.value=profile.firstName;
-                    currentbasicProfile.firstName.change= false;
-                    currentCopyBasicProfile.lastName=profile.lastName;
-                    currentbasicProfile.lastName.value=profile.lastName;
-                    currentbasicProfile.lastName.change= false;
-                    currentCopyBasicProfile.geId = profile.geId;
-                    currentbasicProfile.geId.value = profile.geId;
-                    currentbasicProfile.geId.change= false;
-                    currentCopyBasicProfile.mobile = profile.mobile;
-                    currentbasicProfile.mobile.value = profile.mobile;
-                    currentbasicProfile.mobile.change= false;
-                    currentCopyBasicProfile.city = profile.city;
-                    currentbasicProfile.city.value = profile.city;
-                    currentbasicProfile.city.change= false;
-                    currentCopyBasicProfile.country = profile.country;
-                    currentbasicProfile.country.value = profile.country;
-                    currentbasicProfile.country.change= false;
-                    this.setState({
-                         basicProfile: currentbasicProfile,
-                        copyBasicProfile: currentCopyBasicProfile
-                    });
-                    
-                    fetch('https://jsonplaceholder.typicode.com/todos/1', { // Get gateways
-                        method: 'GET'
-                    })
-                    .then((response) => {
-                        if (response.status === 200) {
-                            response.json().then((notifications) => {
-                                notifications = {
-                                    "notifications_email":false,
-                                    "notifications_text":true,
-                                    "notifications_phone":true,
-                                    "messages_email":false,
-                                    "messages_text":false
-                                };
-                                    
-                                let currentNotifications= Object.assign({}, this.state.notifications);
-                                currentNotifications.notifications_email = notifications.notifications_email;
-                                currentNotifications.notifications_text = notifications.notifications_text;
-                                currentNotifications.notifications_phone = notifications.notifications_phone;
-                                currentNotifications.messages_email = notifications.messages_email;
-                                currentNotifications.messages_text = notifications.messages_text;
-                                this.setState({
-                                    notifications:currentNotifications
-                                });
-                            });
-                        }
-                    });
-                });
-            }
-        });
+    if (fieldName === "sso") {
+      currentForm.sso.value = updatedValue;
+      currentForm.sso.dirtyState = true;
+    } else if (fieldName === "email") {
+      currentForm.email.value = updatedValue;
+      currentForm.email.dirtyState = true;
+    } else if (fieldName === "name") {
+      currentForm.name.value = updatedValue;
+      currentForm.name.dirtyState = true;
+    } else if (fieldName === "makerSso") {
+      currentForm.makerSso.value = updatedValue;
+      currentForm.makerSso.dirtyState = true;
     }
 
-    /* istanbul ignore next */
-    handlePlaceholder(e){
-        let id = e.target.id;
-        let currentbasicProfile= Object.assign({}, this.state.basicProfile);
-        let copyProfile = this.state.basicProfile;
-        let value = e.target.value;
-        if(id==="firstName"){
-            currentbasicProfile.firstName.change = true;
-            if(typeof value !== 'undefined'){
-                currentbasicProfile.firstName.value=e.target.value;
-            }
-            else{
-                currentbasicProfile.firstName.value=copyProfile.firstName.value;
-            }
-        } 
-        else{
-            currentbasicProfile.firstName.value=copyProfile.firstName.value;
-            //currentbasicProfile.firstName.change = false;
-        }  
-        if(id==="lastName"){
-            currentbasicProfile.lastName.change = true;
-            if(typeof value !== 'undefined'){
-                currentbasicProfile.lastName.value=e.target.value;
-                
-            }
-            else{
-                currentbasicProfile.lastName.value=copyProfile.lastName.value;
-            }
-        }   
-        else{
-            currentbasicProfile.lastName.value=copyProfile.lastName.value;
-            //currentbasicProfile.lastName.change = false;
-        }   
-        if(id==="geId"){
-            currentbasicProfile.geId.change = true;
-            if(typeof value !== 'undefined'){
-                currentbasicProfile.geId.value=e.target.value;
-                
-            }
-            else{
-                currentbasicProfile.geId.value=copyProfile.geId.value;
-            }
-            
-        } 
-        else{
-            currentbasicProfile.geId.value=copyProfile.geId.value;
-            //currentbasicProfile.geId.change = false;
-        }             
-        if(id==="mobile"){
-            currentbasicProfile.mobile.change = true;
-            if(typeof value !== 'undefined'){
-                currentbasicProfile.mobile.value=e.target.value;
-            }
-            else{
-                currentbasicProfile.mobile.value=copyProfile.mobile.value;
-            }
-        }   
-        else{
-            currentbasicProfile.mobile.value=copyProfile.mobile.value;
-            //currentbasicProfile.mobile.change = false;  
-        }            
-        if(id==="city"){
-            currentbasicProfile.city.change = true;
-            if(typeof value !== 'undefined'){
-                currentbasicProfile.city.value=e.target.value;
-            }
-            else{
-                currentbasicProfile.city.value=copyProfile.city.value;
-            }
-        }   
-        else{
-            currentbasicProfile.city.value=copyProfile.city.value;
-            //currentbasicProfile.city.change = false;
-        }
-        if(id==="country"){
-            currentbasicProfile.country.change = true;
-            if(typeof value !== 'undefined'){
-                currentbasicProfile.country.value=e.target.value;
-                
-            }
-            else{
-                currentbasicProfile.country.value=copyProfile.country.value;
-            }
-            
-        }
-        else{
-            currentbasicProfile.country.value=copyProfile.country.value;
-            //currentbasicProfile.country.change = false;  
-        }     
-        this.setState({
-            basicProfile: currentbasicProfile
-        });
-        this.validationBasicProfile();
+    this.setState({
+      formData: currentForm,
+    });
+    this.handleFormValidation();
+  }
+
+  /* istanbul ignore next */
+  handleFormValidation() {
+    let currentFormData = this.state.formData;
+    let nameValue = currentFormData.name.value;
+    let nameDirtyState = currentFormData.name.dirtyState;
+    let emailValue = currentFormData.email.value;
+    let emailDirtyState = currentFormData.email.dirtyState;
+    let ssoValue = currentFormData.sso.value;
+    let ssoDirtyState = currentFormData.sso.dirtyState;
+    let makerSsoValue = currentFormData.makerSso.value;
+    let makerSsoDirtyState = currentFormData.makerSso.dirtyState;
+    let formIsValid = true;
+    let errors = {};
+
+    if (nameValue.trim() === "") {
+      if (nameDirtyState) errors.name = "Please enter Name";
+      formIsValid = false;
     }
 
-    /* istanbul ignore next */
-    validationBasicProfile(){
-        let valid = true;
-        let basicProfile = this.state.basicProfile;
-        if(basicProfile.firstName.value === "" || basicProfile.lastName.value === "" ||
-            basicProfile.mobile.value === "" || basicProfile.geId.value ==="" ||
-            basicProfile.city.value === "" || basicProfile.country.value === ""){
-            valid = false;
-        }
-        this.setState({
-            validBasicProfile: valid
-        });
+    if (emailValue.trim() === "") {
+      if (emailDirtyState) errors.email = "Please enter a valid Email Address ";
+      formIsValid = false;
     }
 
-    /* istanbul ignore next */
-    SaveSetting(e){
-        console.log(this.state.basicProfile);
-        console.log(e.target);
+    if (ssoValue.trim() === "") {
+      if (ssoDirtyState) errors.sso = "Please enter User SSO";
+      formIsValid = false;
     }
 
-    /* istanbul ignore next */
-    handleNotification(e){
-        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        let fieldName = e.target.name;
-        let currentNotifications= Object.assign({}, this.state.notifications);
-        if(fieldName === "notifications_email"){
-            currentNotifications.notifications_email = updatedValue;
-        }
-        if(fieldName === "notifications_text"){
-            currentNotifications.notifications_text = updatedValue;
-        }
-        if(fieldName === "notifications_phone"){
-            currentNotifications.notifications_phone = updatedValue;
-        }
-        if(fieldName === "messages_email"){
-            currentNotifications.messages_email = updatedValue;
-        }
-        if(fieldName === "messages_text"){
-            currentNotifications.messages_text = updatedValue;
-        }
-        this.setState({
-            notifications: currentNotifications
-        });
-        console.log(this.state.notifications);
+    if (makerSsoValue.trim() === "") {
+      if (makerSsoDirtyState) errors.makerSso = "Please enter Maker SSO";
+      formIsValid = false;
     }
-    /* istanbul ignore next */
-    saveNotifications(e){
-        console.log(this.state.notifications);
-    }    
-   
-    /* istanbul ignore next */
-    render() {
-        /* jshint ignore:start */
-        return (
-            <div className = "UserManagement">
-                <div className = "row mt-1">
-                    <div className = "col-sm-4">
-                    <div className="card">
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">
-                                <div className = "row executeModal">
-                                    <div className ="col-sm-6">
-                                        <h5>{this.state.copyBasicProfile.firstName+" "+this.state.copyBasicProfile.lastName}</h5>
-                                        <label className ="control-label ml-2">{this.state.copyBasicProfile.city+","+this.state.copyBasicProfile.country}</label>
-                                        <label className ="control-label ml-2">4:32PM (GMT-4)</label>
-                                    </div>
-                                    <div className ="col-sm-6">
-                                    <img src="assets/static/images/demo.jpg" 
-                                        className="rounded-circle" alt="Profile Picture"
-                                        width="130" height="130" />
-                                    </div>
-                                </div>
-                            </li>
-                            <li className="list-group-item">
-                                <div className ="row">
-                                    <div className ="col-sm-6">
-                                        <a href="#" className="custom-user-link"><small>UPLOAD PICTURE</small></a>
-                                    </div>
-                                    <div className ="col-sm-6">
-                                        <a href="#" className="stretched-link"><small>REMOVE PICTURE</small></a>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>    
-                    </div>
-                    <div className = "col-sm-8">
-                        <div className = "row">
-                            <div className="card">
-                            <form >
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">
-                                    <div className = "row ">
-                                        <div className = "col-sm-12">
-                                        <h6 className="font-weight-bold mt-1 text-left">Basic Profile   
-                                            <small>&nbsp;&nbsp;&nbsp;&nbsp;The information can be edited from your profile page.</small>
-                                        </h6>
-                                        </div>
-                                    </div> 
-                                </li>
-                                <li className="list-group-item">
-                                    <div className = "row ">
-                                        <div className="col-sm-4">
-                                            <div className="field-wrapper">
-                                                <input type="text" name="firstName" id="firstName"
-                                                    value = {this.state.basicProfile.firstName.value} 
-                                                    className="form-control form-control-sm"
-                                                    onChange = {(event)=>{this.handlePlaceholder(event)}}
-                                                 />
-                                                <div className="field-placeholder" id="firstName" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    <span id="firstName"
-                                                        onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                        {this.state.basicProfile.firstName.change==true ?
-                                                        "First Name": this.state.basicProfile.firstName.value}
-                                                    </span>
-                                                </div>
-                                            </div> 
-                                            {this.state.basicProfile.firstName.value==""?
-                                                    <small className="text-default">Please specify the first name</small>:null} 
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="field-wrapper">
-                                                <input type="text" name="lastName" id="lastName" 
-                                                    value = {this.state.basicProfile.lastName.value}
-                                                    className="form-control form-control-sm"
-                                                    onChange = {(event)=>{this.handlePlaceholder(event)}}/>
-                                                <div className="field-placeholder" id="lastName" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    <span id="lastName" onClick = {(event)=>{this.handlePlaceholder(event)}}>{this.state.basicProfile.lastName.change==true?
-                                                    "Last Name":this.state.basicProfile.lastName.value}</span></div>
-                                            </div>
-                                            {this.state.basicProfile.lastName.value===""?
-                                                    <small className="text-default">Please specify the last name</small>:null} 
-                                        </div>
-                                    </div>
-                                    <div className = "row">
-                                        <div className="col-sm-4">
-                                            <div className="field-wrapper">
-                                                <input type="text" name="geId" id="geId" 
-                                                    value = {this.state.basicProfile.geId.value}
-                                                    className="form-control form-control-sm"
-                                                onChange = {(event)=>{this.handlePlaceholder(event)}}/>
-                                                <div className="field-placeholder"  id="geId" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    <span  id="geId" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    {this.state.basicProfile.geId.change==true?
-                                                    "GE Id":this.state.basicProfile.geId.value}</span></div>
-                                            </div>
-                                            {this.state.basicProfile.geId.value===""?
-                                                    <small>Please specify the GE Id</small>:null}
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="field-wrapper">
-                                                <input type="text" name="mobile" id="mobile" 
-                                                    value = {this.state.basicProfile.mobile.value}
-                                                    className="form-control form-control-sm"
-                                                onChange = {(event)=>{this.handlePlaceholder(event)}}/>
-                                                <div className="field-placeholder" id="mobile" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    <span id="mobile" onClick = {(event)=>{this.handlePlaceholder(event)}}>{this.state.basicProfile.mobile.change==true?
-                                                    " Mobile No.":this.state.basicProfile.mobile.value}</span></div>
-                                            </div> 
-                                            {this.state.basicProfile.mobile.value===""?
-                                                   <small>Please specify the Mobile No.</small>:null}
-                                        </div>
-                                    </div>
-                                    <div className = "row">
-                                        <div className="col-sm-4">
-                                            <div className="field-wrapper">
-                                                <input type="text" name="city" id="city" 
-                                                    value = {this.state.basicProfile.city.value}
-                                                    className="form-control form-control-sm"
-                                                onChange = {(event)=>{this.handlePlaceholder(event)}}/>
-                                                <div className="field-placeholder"  id="city" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    <span  id="city" onClick = {(event)=>{this.handlePlaceholder(event)}}>{this.state.basicProfile.city.change==true?
-                                                    "City":this.state.basicProfile.city.value}</span></div>
-                                            </div>
-                                            {this.state.basicProfile.city.value===""?
-                                                   <small>Please specify the City</small>:null} 
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="field-wrapper">
-                                                <input type="text" name="country" id="country" 
-                                                    value = {this.state.basicProfile.country.value}
-                                                    className="form-control form-control-sm"
-                                                onChange = {(event)=>{this.handlePlaceholder(event)}}/>
-                                                <div className="field-placeholder" id="country" onClick = {(event)=>{this.handlePlaceholder(event)}}>
-                                                    <span id="country" onClick = {(event)=>{this.handlePlaceholder(event)}}>{this.state.basicProfile.country.change===true?
-                                                    "Country":this.state.basicProfile.country.value}</span></div>
-                                            </div> 
-                                            {this.state.basicProfile.country.value===""?
-                                                   <small>Please specify the Contry</small>:null}
-                                        </div>
-                                        <div className = "col-sm-4">
-                                        <button type="button" 
-                                            className="btn customize-user-btn btn-sm"
-                                            disabled = {!this.state.validBasicProfile}
-                                            onClick = {(event)=>{this.SaveSetting(event)}} >
-                                            Save Setting
-                                        </button>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                            </form>
-                        </div>
-                        </div>
-                        <div className = "row my-2">
-                        <div className="card">
-                        <form>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">
-                                    <div className= "row">
-                                        <div className = "col-sm-12">
-                                            <h6 className="font-weight-bold ml-2 text-left">Notification  
-                                                <small>&nbsp;&nbsp;&nbsp;&nbsp;Manage the notifications e-mailing</small>
-                                            </h6>
-                                        </div>
-                                    </div>    
-                                </li>
-                                <li className="list-group-item">
-                                <div className = "row">
-                                        <div className = "col-sm-4">
-                                            <h6 className="font-weight-bold ml-2 float-left">Notification</h6>
-                                                <div className = "row">
-                                                    <div className="col-sm-12">
-                                                    <div className="custom-control custom-checkbox">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            className="custom-control-input custom-control-checkbox" 
-                                                            id="notifications_email" name="notifications_email"
-                                                            checked = {this.state.notifications.notifications_email}
-                                                            onChange={(event)=>{this.handleNotification(event)}}  />
-                                                        <label className="custom-control-label custom-user-label float-left" htmlFor="notifications_email">Email</label>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-sm-12">
-                                                    <div className="custom-control custom-checkbox">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            className="custom-control-input custom-control-checkbox" 
-                                                            id="notifications_text"  name="notifications_text"
-                                                            checked = {this.state.notifications.notifications_text}
-                                                            onChange={(event)=>{this.handleNotification(event)}}  />
-                                                        <label className="custom-control-label custom-user-label float-left" htmlFor="notifications_text">Text messages</label>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                    <div className="col-sm-12">
-                                                    <div className="custom-control custom-checkbox">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            className="custom-control-input custom-control-checkbox" 
-                                                            id="notifications_phone" name="notifications_phone"
-                                                            checked = {this.state.notifications.notifications_phone}
-                                                            onChange={(event)=>{this.handleNotification(event)}}  />
-                                                        <label className="custom-control-label custom-user-label float-left" htmlFor="notifications_phone">Phone calls</label>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div className = "col-sm-4 checkbox">
-                                        <h6 className="font-weight-bold ml-2 float-left ">Messages</h6>
-                                            <div className = "row">
-                                            <div className="col-sm-12">
-                                                    <div className="custom-control custom-checkbox">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            className="custom-control-input custom-control-checkbox" 
-                                                            id="messages_email"  name="messages_email"
-                                                            checked = {this.state.notifications.messages_email}
-                                                            onChange={(event)=>{this.handleNotification(event)}}  />
-                                                        <label className="custom-control-label custom-user-label float-left" htmlFor="messages_email">Email</label>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                                <div className="row">
-                                                <div className="col-sm-12">
-                                                    <div className="custom-control custom-checkbox">
-                                                        <input 
-                                                            type="checkbox" 
-                                                            className="custom-control-input custom-control-checkbox" 
-                                                            id="messages_text" name="messages_text"
-                                                            checked = {this.state.notifications.messages_text} 
-                                                            onChange={(event)=>{this.handleNotification(event)}} />
-                                                        <label className="custom-control-label custom-user-label float-left" htmlFor="messages_text">Text messages</label>
-                                                    </div>
-                                                    </div>
-                                                </div>
-                                        </div>
-                                        <div className = "col-sm-4">
-                                            <button type="button" 
-                                                className="btn customize-user-btn btn-sm" 
-                                                onClick = {(event)=>{this.saveNotifications(event)}}>
-                                                    Save
-                                            </button>
-                                        </div>
 
-                                    </div>
-                                </li>
-                                {/*<li className="list-group-item">
-                                      
-                                </li>*/}
-                            </ul>
-                        </form>
-                        </div>
-                        </div>
-                        <div className="row my-2">
-                            <div className="card">
-                                <form>
-                                <ul className="list-group list-group-flush">
-                                    <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                        <h6 className="font-weight-bold ml-2 text-left">
-                                            Licensing
-                                            <small>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;Manage the Licenses and
-                                            subscriptions
-                                            </small>
-                                        </h6>
-                                        </div>
-                                    </div>
-                                    </li>
-                                    <li className="list-group-item">
-                                    <div className="row">
-                                        <div className="col-sm-4">
-                                        <h6 className="font-weight-bold ml-2 float-left">
-                                            Licenses
-                                        </h6>
-                                        </div>
-                                        <div className="col-sm-4 checkbox text-left">
-                                        You have 3 Licenses
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-sm-4">
-                                        <h6 className="font-weight-bold ml-2 float-left">
-                                            Subsciptions
-                                        </h6>
-                                        </div>
-                                        <div className="col-sm-4 checkbox text-left">
-                                        You have 5 Subsciptions
-                                        </div>
-                                    </div>
-                                    </li>
-                                    {/*  <li className="list-group-item">
-                                    
-                                    </li> */}
-                                </ul>
-                                </form>
-                            </div>
-                            </div>
-                    </div>
+    this.setState({
+      formIsValid: formIsValid,
+      errorsForm: errors,
+    });
+  }
+  /* istanbul ignore next */
+  createUser() {
+    this.props.showGlobalMessage(
+      false,
+      true,
+      "Record saving initiated. Please check after some time.",
+      "custom-success"
+    );
+    let currentForm = Object.assign({}, this.state.formData);
+    let prepareData = {};
+    prepareData.name = currentForm.name.value;
+    prepareData.sso = currentForm.sso.value;
+    prepareData.email = currentForm.email.value;
+    console.log(prepareData);
+    this.props.hideGlobalMessage();
+    this.setState({
+      showForm: false,
+    });
+  }
+
+  /* istanbul ignore next */
+  showHideField(e, fieldName) {
+    let currentForm = {};
+    currentForm = Object.assign({}, this.state.formData);
+
+    if (currentForm[fieldName].type == "password") {
+      currentForm[fieldName].type = "text";
+    } else {
+      currentForm[fieldName].type = "password";
+    }
+
+    this.setState({
+      formData: currentForm,
+    });
+  }
+
+  render() {
+    /* jshint ignore:start */
+    return (
+      <div className="row web-hook">
+        {this.state.showForm ? (
+          <div className="col-md-12 mt-2">
+            <div className="centered-div">
+              <div className="centered-div-header">
+                <div className="row WebHooks-header">
+                  <div className="col-md-12">
+                    <h6 id="WebHooks-title text-blue">
+                      User Management
+                      <span className="text-black"> Add Users</span>
+                    </h6>
+                  </div>
                 </div>
+                <hr></hr>
+                <div className="changeable-form group-form">
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        NAME
+                        <img
+                          alt="down-arrow"
+                          src="assets/static/images/icon_greensortingdown.svg"
+                        />
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type="text"
+                          className="form-control form-control-sm"
+                          name="name"
+                          value={this.state.formData.name.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["name"]}
+                        </small>
+                      </div>
+                    </div>
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        USER SSO
+                        <img
+                          alt="down-arrow"
+                          src="assets/static/images/icon_greensortingdown.svg"
+                        />
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type="text"
+                          className="form-control form-control-sm"
+                          name="sso"
+                          value={this.state.formData.sso.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["sso"]}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        Email Address
+                        <img
+                          alt="down-arrow"
+                          src="assets/static/images/icon_greensortingdown.svg"
+                        />
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type="text"
+                          className="form-control form-control-sm"
+                          name="email"
+                          value={this.state.formData.email.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["email"]}
+                        </small>
+                      </div>
+                    </div>
+
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        Maker SSO
+                        <img
+                          alt="down-arrow"
+                          src="assets/static/images/icon_greensortingdown.svg"
+                        />
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type="text"
+                          className="form-control form-control-sm"
+                          name="makerSso"
+                          value={this.state.formData.makerSso.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["makerSso"]}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="row">
+                    <div className="col-sm-12 mb-2 text-center">
+                      <button
+                        id="create-group-btn"
+                        disabled={!this.state.formIsValid}
+                        onClick={this.createUser.bind(this)}
+                        className="btn btn-sm customize-view-btn"
+                      >
+                        ADD USER
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        )
-        /* jshint ignore:end */
-    }
+          </div>
+        ) : (
+          <div className="row">
+            <div className="col-md-12 mt-2">
+              <div className="centered-div">
+                <div className="centered-div-header">
+                  <div className="row mt-2 mb-2 WebHooks-header">
+                    <div className="col-md-8">
+                      <h6 id="WebHooks-title">User Management</h6>
+                    </div>
+                    <div className="col-md-4 text-right">
+                      <button
+                        onClick={() => this.setState({ showForm: true })}
+                        className="btn btn-sm customize-view-btn"
+                      >
+                        Add User
+                      </button>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row small">
+                    <div className="col-sm-12 text-center">
+                      <table className="table ">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>SSO</th>
+                            <th>Email Address</th>
+                            <th>Maker SSO</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.Users.map((user, key) => {
+                            return (
+                              <tr key={"user" + key}>
+                                <td>{user.name} </td>
+                                <td>{user.sso} </td>
+                                <td> {user.email}</td>
+                                <td>{user.makersso} </td>
+                                <td>
+                                  <span className="action-img">
+                                    <img
+                                      alt="plus-icon"
+                                      title=""
+                                      src="assets/static/images/plus.svg"
+                                    />
+                                    <img
+                                      alt="edit-icon"
+                                      title="Edit"
+                                      src="assets/static/images/iconedit_tablemaintainmonitor.svg"
+                                    />
+                                    <img
+                                      alt="-icon"
+                                      title=""
+                                      src="assets/static/images/icon_tablemaintainmonitor.svg"
+                                    />
+                                    <img
+                                      alt="delete-icon"
+                                      title="Delete"
+                                      src="assets/static/images/icondelete_tablemaintainmonitor.svg"
+                                    />
+                                  </span>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+    /* jshint ignore:end */
+  }
 }
