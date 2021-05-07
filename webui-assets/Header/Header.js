@@ -94,6 +94,14 @@ export default class Header extends React.Component {
                                   >
                                     Switch to {this.props.user}
                                   </a>
+                                    <a
+                                    className="dropdown-item cursor-pointer"
+                                    onClick={() => {
+                                      this.props.clickEve("UserProfile");
+                                    }}
+                                   >
+                               My Profile
+                                  </a>
                                   <a
                                     className="dropdown-item cursor-pointer"
                                     onClick={(event) => {
