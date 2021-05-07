@@ -179,10 +179,11 @@ export default class WebHooks extends React.Component {
                             }}
                           >
                             <option value="">Choose a event </option>
-                            <option value="push">Just a push event </option>
-                            <option value="sendAll">Send me everything </option>
-                            <option value="selectIndividual">
-                              Let me select individual event
+                            <option value="client">Client Agent Restart </option>
+                            <option value="server">Server Agent Restart</option>
+                            <option value="gateway">Gateway Agent Restart</option>
+                            <option value="connection">
+                               Connection Establish
                             </option>
                           </select>
                           <small className="text-danger">
