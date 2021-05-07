@@ -235,7 +235,7 @@ export default class Navbar extends React.Component {
                             <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li>
                                     <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'WebHooks')} href="#">
-                                       Web Hooks
+                                       Webhooks
                                     </a>
                                 </li>
                                 <li>
