@@ -245,9 +245,9 @@ export default class WebHooks extends React.Component {
                         <div className="col-sm-12 mb-2">
                           <input
                             type="text"
-                            className="form-control form-control-sm"
+                            className={this.state.formData.endpoint.value === "" ? "blur form-control form-control-sm" : "form-control form-control-sm"}
                             name="endpoint"
-                            value={this.state.formData.endpoint.value}
+                            value={this.state.formData.endpoint.value==='' ? 'https://' : this.state.formData.endpoint.value }
                             onChange={(event) => {
                               this.handleFormData(event);
                             }}
