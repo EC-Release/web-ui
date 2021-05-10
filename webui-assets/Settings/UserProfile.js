@@ -297,7 +297,7 @@ export default class UserProfile extends React.Component {
                     </div>
                     <div className="col-sm-6">
                       <img
-                        src="assets/static/images/demo.jpg"
+                        src={"https://avatars.dicebear.com/v2/identicon/" +this.state.copyBasicProfile.firstName +".svg"}
                         className="rounded-circle"
                         alt="Profile Picture"
                         width="130"
@@ -306,7 +306,7 @@ export default class UserProfile extends React.Component {
                     </div>
                   </div>
                 </li>
-                <li className="list-group-item">
+             {/*   <li className="list-group-item">
                   <div className="row">
                     <div className="col-sm-6">
                       <a href="#" className="custom-user-link">
@@ -319,7 +319,7 @@ export default class UserProfile extends React.Component {
                       </a>
                     </div>
                   </div>
-                </li>
+                </li> */}
               </ul>
             </div>
           </div>
