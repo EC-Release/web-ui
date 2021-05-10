@@ -482,7 +482,7 @@ export default class Healthstatus extends React.Component {
                   <label>GATEWAY</label>
                   <div className="row">
                     <div className="col-sm-4 text-center">
-                     {/*  <select
+                       <select
                         className="form-control form-control-sm"
                         id="selectedGateway"
                         name="selectedGateway"
@@ -503,12 +503,12 @@ export default class Healthstatus extends React.Component {
                             </option>
                           );
                         })}
-                      </select> */}
-                      <b> {this.state.selectedGateway}</b>
+                      </select>
+                    {/*  <b> {this.state.selectedGateway}</b> */}
                     </div>
                     <div className="col-sm-8">
                       <div className="row ops-btn">
-       {this.props.permissions.accesses.monitor.subMenus
+                         {this.props.permissions.accesses.monitor.subMenus
                           .healthStatus.isUser ? null : (
                           <button
                             type="button"
