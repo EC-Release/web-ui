@@ -479,10 +479,10 @@ export default class Healthstatus extends React.Component {
             <form>
               <div className="form-row">
                 <div className="col-sm-12 text-left">
-                  <label>GATEWAY</label>
+                 
                   <div className="row">
-                    <div className="col-sm-4 text-center">
-                       <select
+                    <div className="col-sm-4 border-bottom text-center">
+                   {/*    <select
                         className="form-control form-control-sm"
                         id="selectedGateway"
                         name="selectedGateway"
@@ -503,8 +503,8 @@ export default class Healthstatus extends React.Component {
                             </option>
                           );
                         })}
-                      </select>
-                    {/*  <b> {this.state.selectedGateway}</b> */}
+                      </select>*/}
+                     <label>GATEWAYID - &nbsp;</label> <b> {this.state.selectedGateway}</b> 
                     </div>
                     <div className="col-sm-8">
                       <div className="row ops-btn">
