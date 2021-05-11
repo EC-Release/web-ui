@@ -64,6 +64,8 @@ export default class Subscriptionview extends React.Component {
             newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
             newDataObj.sso = dataObj.sso;
+            newDataObj.username = dataObj.username;
+            newDataObj.desc = dataObj.desc;
             newDataObj.key = dataObj.key;
             newTableData.push(newDataObj);
         }
@@ -129,7 +131,7 @@ export default class Subscriptionview extends React.Component {
     filterByValue(myArray, string){
         let retArr = [];
        for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string) ) {
+            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string)  ) {
                 retArr.push(myArray[i]);
             }
         }
@@ -159,6 +161,8 @@ export default class Subscriptionview extends React.Component {
             newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
             newDataObj.sso = dataObj.sso;
+            newDataObj.username = dataObj.username;
+            newDataObj.desc = dataObj.desc;
 
             newTableData.push(newDataObj);
         }
