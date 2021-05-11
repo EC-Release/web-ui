@@ -9,6 +9,8 @@ export default class Subscriptioncreate extends React.Component {
         licenseId: { value: "", dirtyState: false },
         emailAddress: { value: "", dirtyState: false },
         sso: { value: "", dirtyState: false },
+        desc: { value: "", dirtyState: false },
+        username: { value: "", dirtyState: false },
         date: { value: "", dirtyState: false }
       },
       errorsSubscriptionForm: {},
@@ -78,6 +80,12 @@ export default class Subscriptioncreate extends React.Component {
     } else if (fieldName === "date") {
       currentForm.date.value = updatedValue;
       currentForm.date.dirtyState = true;
+    }else if (fieldName === "desc") {
+      currentForm.desc.value = updatedValue;
+      currentForm.desc.dirtyState = true;
+    } else if (fieldName === "username") {
+      currentForm.username.value = updatedValue;
+      currentForm.username.dirtyState = true;
     }
 
     this.setState({
@@ -143,6 +151,8 @@ export default class Subscriptioncreate extends React.Component {
     prepareData.emailAddress = currentForm.emailAddress.value;
     prepareData.date = currentForm.date.value;
     prepareData.sso = currentForm.sso.value;
+    prepareData.desc = currentForm.desc.value;
+    prepareData.username = currentForm.username.value;
     prepareData.parent = "ab2a2691-a563-486c-9883-5111ff36ba9b"
     prepareData.name = "License"
 
@@ -180,6 +190,8 @@ export default class Subscriptioncreate extends React.Component {
                   licenseId: { value: "", dirtyState: false },
                   emailAddress: { value: "", dirtyState: false },
                   sso: { value: "", dirtyState: false },
+                  desc: { value: "", dirtyState: false },
+                  username: { value: "", dirtyState: false },
                   date:{ value: "", dirtyState: false }
                 };
 		this.handleCountSubscriptions();
@@ -421,6 +433,78 @@ export default class Subscriptioncreate extends React.Component {
                     </div>
                   </div>
                 </div>
+
+
+                <div className="row">
+                  <div className="col-sm-6">
+                    <div className="col-sm-12 label required">
+                     Username
+                      <img
+                        alt="down-arrow"
+                        src="assets/static/images/icon_greensortingdown.svg"
+                      />
+                      <span className="float-right help-text">
+                        <img
+                          alt="info"
+                          src="assets/static/images/info.svg"
+                          data-toggle="popover"
+                          data-trigger="hover"
+                          data-placement="top"
+                          data-content={this.props.helpText.username}
+                        />
+                      </span>
+                    </div>
+                    <div className="col-sm-12 mb-2">
+                      <input
+                        type="text"
+                        className="form-control form-control-sm"
+                        name="username"
+                        value={this.state.subscriptionForm.username.value}
+                        onChange={(event) => {
+                          this.handleFormData(event);
+                        }}
+                      />
+                      <small className="text-danger">
+                        {this.state.errorsSubscriptionForm["username"]}
+                      </small>
+                    </div>
+                  </div>
+
+                  <div className="col-sm-6">
+                    <div className="col-sm-12 label">
+                      Description
+                      <img
+                        alt="down-arrow"
+                        src="assets/static/images/icon_greensortingdown.svg"
+                      />
+                      <span className="float-right help-text">
+                        <img
+                          alt="info"
+                          src="assets/static/images/info.svg"
+                          data-toggle="popover"
+                          data-trigger="hover"
+                          data-placement="top"
+                          data-content={this.props.helpText.desc}
+                        />
+                      </span>
+                    </div>
+                    <div className="col-sm-12 mb-2">
+                      <input
+                        type="textArea"
+                        className="form-control form-control-sm"
+                        name="desc"
+                        value={this.state.subscriptionForm.desc.value}
+                        onChange={(event) => {
+                          this.handleFormData(event);
+                        }}
+                      />
+                      <small className="text-danger">
+                        {this.state.errorsSubscriptionForm["desc"]}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
                 <div className="row">
                     <div className="col-sm-12 mb-2 text-center">
                         <button 
