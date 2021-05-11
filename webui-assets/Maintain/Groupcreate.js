@@ -55,8 +55,10 @@ export default class Groupcreate extends React.Component {
               this.props.hideGlobalMessage();
           }, 2000);
       }
-	    
-	window.selectView();
+	   setTimeout(()=> {
+              window.selectView();
+          }, 2000);  
+	
 	    
     }
 
