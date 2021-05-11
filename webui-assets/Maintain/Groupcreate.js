@@ -271,7 +271,6 @@ export default class Groupcreate extends React.Component {
 						multiple={true}
 						data-live-search="true"
                                                 name="subscriptionId" 
-                                                value={this.state.groupForm.subscriptionId.value}
                                                 onChange={(event)=>{this.handleFormData(event)}}>
                                                     {
                                                     this.state.subscriptions.map((subscription, subscriptionIndex) => {
