@@ -17,7 +17,8 @@ export default class Groupcreate extends React.Component {
 
     /* istanbul ignore next */
     componentDidMount(){
-          window.enableToolTip();
+        window.enableToolTip();
+	window.selectView();
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         if (sessionStorage.getItem("snapshotData") !== null) {
           let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
@@ -266,7 +267,9 @@ export default class Groupcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <select 
-                                                className="form-control form-control-sm" 
+                                                className="selectpicker form-control form-control-sm" 
+						multiple={true}
+						data-live-search="true"
                                                 name="subscriptionId" 
                                                 value={this.state.groupForm.subscriptionId.value}
                                                 onChange={(event)=>{this.handleFormData(event)}}>
