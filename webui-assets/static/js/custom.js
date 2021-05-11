@@ -67,6 +67,10 @@ function loadTree(id){
     $('#'+id).treed();
 }
 
+function selectView() {
+  $("select").selectpicker();
+}
+
 function generateTopology(nodeData, replacedDivId){
     // create an array with nodes
     var nodes = new vis.DataSet(nodeData.nodes);
