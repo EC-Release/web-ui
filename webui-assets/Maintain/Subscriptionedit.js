@@ -37,6 +37,8 @@ export default class Subscriptionedit extends React.Component {
                 emailAddress: { value: "", dirtyState: false },
                 sso: { value: "", dirtyState: false },
                 date: { value: "", dirtyState: false },
+                desc: { value: "", dirtyState: false },
+                username: { value: "", dirtyState: false },
                 key:"",
 		parent:"",
 		name:""
@@ -71,6 +73,8 @@ export default class Subscriptionedit extends React.Component {
             date: { value: formData.date, dirtyState: false },
             licenseId: { value: formData.licenseId, dirtyState: false },
             emailAddress: { value: formData.emailAddress, dirtyState: false },
+            desc: { value:  formData.desc, dirtyState: false },
+            username: { value:  formData.username, dirtyState: false },
             sso: { value: formData.sso, dirtyState: false },
             key : formData.key,
             parent : formData.parent,
@@ -95,6 +99,8 @@ export default class Subscriptionedit extends React.Component {
         let prepareData = {};
         prepareData.licenseId = currentForm.licenseId.value;
         prepareData.emailAddress = currentForm.emailAddress.value;
+        prepareData.username = currentForm.username.value;
+        prepareData.desc = currentForm.desc.value;
         prepareData.sso = currentForm.sso.value;
         prepareData.date = currentForm.date.value;
         prepareData.parent = currentForm.parent;
@@ -131,6 +137,8 @@ export default class Subscriptionedit extends React.Component {
                               if(item.key === currentForm.key){
                                 item.licenseId = currentForm.licenseId.value;
                                 item.emailAddress = currentForm.emailAddress.value;
+                                item.username = currentForm.username.value;
+                                item.desc = currentForm.desc.value;
                                 item.sso = currentForm.sso.value;
                                 item.date = currentForm.date.value;
                                 item.parent = currentForm.parent;
@@ -164,6 +172,8 @@ export default class Subscriptionedit extends React.Component {
         let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
         let emailAddress = currentFormData.emailAddress.value;
         let emailAddressDirtyState = currentFormData.emailAddress.dirtyState;
+        let username = currentFormData.username.value;
+        let usernameDirtyState = currentFormData.username.dirtyState;
         let expdate = currentFormData.date.value;
         let expdateDirtyState = currentFormData.date.dirtyState;
 
@@ -181,6 +191,13 @@ export default class Subscriptionedit extends React.Component {
           if (emailAddress.trim() === "") {
             if (emailAddressDirtyState) {
               errors.emailAddress = "Please enter Email Address";
+            }
+            formIsValid = false;
+          }
+
+          if (username.trim() === "") {
+            if (usernameDirtyState) {
+              errors.username = "Please enter Username";
             }
             formIsValid = false;
           }
@@ -216,6 +233,12 @@ export default class Subscriptionedit extends React.Component {
           } else if (fieldName === "date") {
             currentForm.date.value = updatedValue;
             currentForm.date.dirtyState = true;
+          }else if (fieldName === "desc") {
+            currentForm.desc.value = updatedValue;
+            currentForm.desc.dirtyState = true;
+          }else if (fieldName === "username") {
+            currentForm.username.value = updatedValue;
+            currentForm.username.dirtyState = true;
           }
         this.setState({
             subscriptionForm: currentForm
@@ -291,43 +314,8 @@ export default class Subscriptionedit extends React.Component {
                       </small>
                     </div>
                   </div>
-                  <div className="col-sm-6">
-                    <div className="col-sm-12 label required">
-                      EMAIL ADDRESS
-                      <img
-                        alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
-                      />
-                      <span className="float-right help-text">
-                        <img
-                          alt="info"
-                          src="assets/static/images/info.svg"
-                          data-toggle="popover"
-                          data-trigger="hover"
-                          data-placement="top"
-                          data-content={this.props.helpText.subscriptionName}
-                        />
-                      </span>
-                    </div>
-                    <div className="col-sm-12 mb-2">
-                      <input
-                        type="text"
-                        className="form-control form-control-sm"
-                        name="emailAddress"
-                        disabled={this.props.isViewOnly}
-                        value={this.state.subscriptionForm.emailAddress.value}
-                        onChange={(event) => {
-                          this.handleFormData(event);
-                        }}
-                      />
-                      <small className="text-danger">
-                        {this.state.errorsSubscriptionForm["emailAddress"]}
-                      </small>
-                    </div>
-                  </div>
-                </div>
+                 
 
-                <div className="row">
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
                       EXPIRY
@@ -362,6 +350,44 @@ export default class Subscriptionedit extends React.Component {
                       </small>
                     </div>
                   </div>
+
+                </div>
+
+                <div className="row">
+                <div className="col-sm-6">
+                    <div className="col-sm-12 label required">
+                      EMAIL ADDRESS
+                      <img
+                        alt="down-arrow"
+                        src="assets/static/images/icon_greensortingdown.svg"
+                      />
+                      <span className="float-right help-text">
+                        <img
+                          alt="info"
+                          src="assets/static/images/info.svg"
+                          data-toggle="popover"
+                          data-trigger="hover"
+                          data-placement="top"
+                          data-content={this.props.helpText.subscriptionName}
+                        />
+                      </span>
+                    </div>
+                    <div className="col-sm-12 mb-2">
+                      <input
+                        type="text"
+                        className="form-control form-control-sm"
+                        name="emailAddress"
+                        disabled={this.props.isViewOnly}
+                        value={this.state.subscriptionForm.emailAddress.value}
+                        onChange={(event) => {
+                          this.handleFormData(event);
+                        }}
+                      />
+                      <small className="text-danger">
+                        {this.state.errorsSubscriptionForm["emailAddress"]}
+                      </small>
+                    </div>
+                  </div>
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
                       SSO
@@ -393,6 +419,77 @@ export default class Subscriptionedit extends React.Component {
                       />
                       <small className="text-danger">
                         {this.state.errorsSubscriptionForm["sso"]}
+                      </small>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                <div className="col-sm-6">
+                    <div className="col-sm-12 label required">
+                     Username
+                      <img
+                        alt="down-arrow"
+                        src="assets/static/images/icon_greensortingdown.svg"
+                      />
+                      <span className="float-right help-text">
+                        <img
+                          alt="info"
+                          src="assets/static/images/info.svg"
+                          data-toggle="popover"
+                          data-trigger="hover"
+                          data-placement="top"
+                          data-content={this.props.helpText.username}
+                        />
+                      </span>
+                    </div>
+                    <div className="col-sm-12 mb-2">
+                      <input
+                        type="text"
+                        className="form-control form-control-sm"
+                        name="username"
+                        disabled={this.props.isViewOnly}
+                        value={this.state.subscriptionForm.username.value}
+                        onChange={(event) => {
+                          this.handleFormData(event);
+                        }}
+                      />
+                      <small className="text-danger">
+                        {this.state.errorsSubscriptionForm["username"]}
+                      </small>
+                    </div>
+                  </div>
+                  <div className="col-sm-6">
+                    <div className="col-sm-12 label required">
+                      Description
+                      <img
+                        alt="down-arrow"
+                        src="assets/static/images/icon_greensortingdown.svg"
+                      />
+                      <span className="float-right help-text">
+                        <img
+                          alt="info"
+                          src="assets/static/images/info.svg"
+                          data-toggle="popover"
+                          data-trigger="hover"
+                          data-placement="top"
+                          data-content={this.props.helpText.desc}
+                        />
+                      </span>
+                    </div>
+                    <div className="col-sm-12 mb-2">
+                      <input
+                        type="text"
+                        className="form-control form-control-sm"
+                        name="desc"
+                        disabled={this.props.isViewOnly}
+                        value={this.state.subscriptionForm.desc.value}
+                        onChange={(event) => {
+                          this.handleFormData(event);
+                        }}
+                      />
+                      <small className="text-danger">
+                        {this.state.errorsSubscriptionForm["desc"]}
                       </small>
                     </div>
                   </div>
