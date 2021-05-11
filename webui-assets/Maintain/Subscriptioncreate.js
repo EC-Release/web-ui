@@ -105,6 +105,8 @@ export default class Subscriptioncreate extends React.Component {
     let emailAddressDirtyState = currentFormData.emailAddress.dirtyState;
     let expdate = currentFormData.date.value;
     let expdateDirtyState = currentFormData.date.dirtyState;
+    let username = currentFormData.username.value;
+    let usernameDirtyState = currentFormData.username.dirtyState;
     let formIsValid = true;
     let errors = {};
 
@@ -115,6 +117,14 @@ export default class Subscriptioncreate extends React.Component {
       formIsValid = false;
     }
 
+    if (username.trim() === "") {
+      if (usernameDirtyState) {
+        errors.username = "Please enter Username";
+      }
+      formIsValid = false;
+    }
+	  
+	  
     if (emailAddress.trim() === "") {
       if (emailAddressDirtyState) {
         errors.emailAddress = "Please enter Email Address";
