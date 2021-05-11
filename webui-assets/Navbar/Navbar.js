@@ -243,11 +243,11 @@ export default class Navbar extends React.Component {
                                       User Profile
                                     </a>
                                 </li>
-                                <li>
+                              {   /*    <li>
                                     <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
                                         User Management
                                     </a>
-                                </li>
+                                </li> */}
                             </ul>
                         </li>
                         :
