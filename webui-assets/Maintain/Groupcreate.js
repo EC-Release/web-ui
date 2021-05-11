@@ -42,7 +42,7 @@ export default class Groupcreate extends React.Component {
                   subscriptions: subscriptionData,
                   groupForm: formObj
               });
-		console.log(subscriptionData)    
+		console.log(this.state.subscriptions)    
           }
           this.props.hideGlobalMessage();
           localStorage.setItem("subscriptions", JSON.stringify(subscriptionData));
@@ -272,15 +272,12 @@ export default class Groupcreate extends React.Component {
 						data-live-search="true"
                                                 name="subscriptionId" 
                                                 onChange={(event)=>{this.handleFormData(event)}}>
-		
-                                                   <option value="">Choose a event </option>
-						  <option value="push">Just a push event </option>
-						  <option value="sendAll">Send me everything </option>
-						  <option value="selectIndividual">
-						    Let me select individual event
-						  </option>
-
-
+						{ this.state.subscriptions.map((subscription, subscriptionIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"subscriptionOption"+subscriptionIndex}
+                                                                value={ subscription.licenseId }>{ subscription.licenseId }</option>)
+                                                    })}
                                             </select>
                                             <small className="text-danger">{ this.state.errorsGroupForm['subscriptionId']}</small>
                                         </div>
