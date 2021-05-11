@@ -588,6 +588,8 @@ export default class Technicalview extends React.Component {
         let treeValue = [{
             id: 1,
             value: 'EC',
+            x: 200,
+             y: 100,
             children: [
                 {
                     id: 2,
