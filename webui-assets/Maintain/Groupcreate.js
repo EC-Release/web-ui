@@ -42,7 +42,10 @@ export default class Groupcreate extends React.Component {
                   subscriptions: subscriptionData,
                   groupForm: formObj
               });
-		console.log(this.state.subscriptions)    
+		  
+		    setTimeout(()=> {
+              console.log(this.state.subscriptions) 
+          }, 2000);
           }
           this.props.hideGlobalMessage();
           localStorage.setItem("subscriptions", JSON.stringify(subscriptionData));
