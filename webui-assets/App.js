@@ -90,6 +90,13 @@ export default class App extends React.Component {
               if (respons.status === 200) {
                 respons.json().then((resp) => {console.log(resp)})
               }})*/
+	  
+	    this.showGlobalMessage(
+      true,
+      true,
+      "Please wait...",
+      "custom-success"
+    );
 
     // Get logged user's userId start
    let apiEndPoint= this.state.apiEndPoints.baseUrl + 'snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
@@ -179,7 +186,7 @@ export default class App extends React.Component {
                   },
                 }
               };
-
+ 	      this.hideGlobalMessage();
               let userId = data.user_id;
               let profileName = data.username;
               let profileEmailId = data.email;
