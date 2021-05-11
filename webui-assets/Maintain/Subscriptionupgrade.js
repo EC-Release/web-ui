@@ -62,6 +62,8 @@ export default class Subscriptionupgrade extends React.Component {
             newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
             newDataObj.sso = dataObj.sso;
+            newDataObj.desc = dataObj.desc;
+            newDataObj.username = dataObj.username;
             newDataObj.key = dataObj.key;
             newDataObj.parent = dataObj.parent;
             newDataObj.name = dataObj.name;
@@ -139,7 +141,7 @@ export default class Subscriptionupgrade extends React.Component {
     filterByValue(myArray, string){
         let retArr = [];
         for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string) ) {
+            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string) || myArray[i].username.includes(string) ) {
                 retArr.push(myArray[i]);
             }
         }
@@ -168,6 +170,8 @@ export default class Subscriptionupgrade extends React.Component {
             newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
             newDataObj.sso = dataObj.sso;
+            newDataObj.desc = dataObj.desc;
+            newDataObj.username = dataObj.username;
 
             newTableData.push(newDataObj);
         }
