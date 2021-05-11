@@ -18,7 +18,6 @@ export default class Groupcreate extends React.Component {
     /* istanbul ignore next */
     componentDidMount(){
         window.enableToolTip();
-	window.selectView();
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         if (sessionStorage.getItem("snapshotData") !== null) {
           let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
@@ -56,6 +55,9 @@ export default class Groupcreate extends React.Component {
               this.props.hideGlobalMessage();
           }, 2000);
       }
+	    
+	window.selectView();
+	    
     }
 
     /* istanbul ignore next */
