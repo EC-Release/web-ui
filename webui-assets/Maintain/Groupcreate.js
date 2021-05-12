@@ -24,6 +24,7 @@ export default class Groupcreate extends React.Component {
           let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
           let allData =[]
           let subscriptionData=[]
+          let groupData =[]
             Object.keys(respData).forEach((key)=> {
                 allData.push(respData[key])
             });
@@ -32,9 +33,12 @@ export default class Groupcreate extends React.Component {
                     if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
                       subscriptionData.push(individualData);
                     }
+                    if(individualData.parent ==="f894e5a8-0f9b-46ca-8b74-57e94610d731"){
+                        groupData.push(individualData);
+                      }
                 }
             }
-            this.setState({keyName: "Group[" + subscriptionData.length + "]"})
+            this.setState({keyName: "Group[" + groupData.length + "]"})
             if(subscriptionData.length > 0){
               let selectedSubscriptionId = subscriptionData[0].licenseId;
               let formObj = Object.assign({}, this.state.groupForm);
@@ -59,7 +63,7 @@ export default class Groupcreate extends React.Component {
       }
 	   setTimeout(()=> {
               window.selectView();
-          }, 2000);  
+          }, 1000);  
 	
 	    
     }
@@ -311,7 +315,7 @@ export default class Groupcreate extends React.Component {
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-sm-12 mb-2 text-center">
+                                    <div className="col-sm-12 mb-2 text-right">
                                         <button 
                                             id="create-group-btn"
                                             disabled={!this.state.groupFormIsValid}
