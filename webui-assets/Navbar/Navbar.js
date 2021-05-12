@@ -100,7 +100,7 @@ export default class Navbar extends React.Component {
                                             }
                                             { this.props.permissions.accesses.maintain.subMenus.groups.view ?
                                                 <li>
-                                                    <a id="nav-group-view-delete" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Groupupgrade')} href="#">View</a>
+                                                    <a id="nav-group-view-delete" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'GroupView')} href="#">View</a>
                                                 </li>
                                                 :
                                                 null
