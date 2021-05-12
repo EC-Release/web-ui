@@ -15,199 +15,41 @@ export default class Groupupgrade extends React.Component {
 
     /* istanbul ignore next */
     componentDidMount(){
-        if(localStorage.getItem("subscriptions") === null){
-            fetch(this.props.baseUrl + '/listSubscriptions', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer '+this.props.authToken
-                }
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                        if(respData.errorStatus.status == 'ok'){
-                            let subscriptions = respData.data;
-                            if(subscriptions.length > 0){
-                                let selectedSubscriptionId = subscriptions[1].subscriptionId;
-                                this.setState({
-                                    subscriptions: subscriptions,
-                                    selectedSubscriptionId: selectedSubscriptionId
-                                });
-                                if(selectedSubscriptionId == ''){
-                                    this.setState({
-                                        tableData: []
-                                    });
-                                    this.generateTableStructure([]);
-                                }
-                                else{
-                                    fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
-                                        method: 'GET',
-                                        headers: {
-                                            'Accept': 'application/json',
-                                            'Content-Type': 'application/json',
-                                            'Authorization': 'Bearer '+this.props.authToken
-                                        }
-                                    
-                                    })
-                                    .then((response) => {
-                                        if (response.status === 200) {
-                                            response.json().then((respData) => {
-                                                let data = respData.data;
-                                                if(respData.errorStatus.status == 'ok'){
-                                                    // check selectedSubscriptionId in createGroup localStorage and append it to data here
-                                                    let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
-                                                    let findIndex = newlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === selectedSubscriptionId);
-                                                    if(findIndex != -1){
-                                                        let allNewlyCreatedGroupsData = [...newlyCreatedGroupsofSubscriptions[findIndex].createdData];
-                                                        if(allNewlyCreatedGroupsData.length > 0){
-                                                            for(let dataToAppendAsPending of allNewlyCreatedGroupsData){
-                                                                let pendingData = {
-                                                                    groupId: dataToAppendAsPending.groupId,
-                                                                    ids: {
-                                                                        aid: dataToAppendAsPending.aid,
-                                                                        tid: dataToAppendAsPending.tid
-                                                                    }
-                                                                };
-                                                                data.push(pendingData);
-                                                            }
-                                                        }
-                                                    }
-                                                    this.setState({
-                                                        tableData: data
-                                                    });
-                                                    this.generateTableStructure(data);
-                                                }
-                                                else{
-                                                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                                                    setTimeout(()=> {
-                                                        this.props.hideGlobalMessage();
-                                                    }, 2000);
-                                                }
-                                            });
-                                        }
-                                        else{
-                                            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                                            setTimeout(()=> {
-                                                this.props.hideGlobalMessage();
-                                            }, 2000);
-                                        }
-                                    })
-                                    .catch((err) => {
-                                        console.log(err);
-                                        this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                                        setTimeout(()=> {
-                                            this.props.hideGlobalMessage();
-                                        }, 2000);
-                                    });
-                                }
-                                localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
-                            }
-                            else{
-                                this.generateTableStructure([]);
-                                this.timerForSubscriptionList = setInterval(()=> this.getSubscriptionList(), 20000);
-                            }
-                        }
-                        else{
-                            this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                            setTimeout(()=> {
-                                this.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                    });
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
-            });
-        }
-        else{
-            let subscriptions = JSON.parse(localStorage.getItem("subscriptions"));
-            if(subscriptions.length > 0){
-                let selectedSubscriptionId = subscriptions[1].subscriptionId;
+       
+        let technicalTableData = [];
+        if (sessionStorage.getItem("snapshotData") !== null) {
+                let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
+                let allData =[]
+                  Object.keys(respData).forEach((key)=> {
+                      allData.push(respData[key])
+                  });
+                  for(let individualData of allData){
+                      if(individualData.parent){
+                          if(individualData.parent ==="f894e5a8-0f9b-46ca-8b74-57e94610d731"){
+                            technicalTableData.push(individualData);
+                          }
+                      }
+                  }
+                this.generateTableStructure(technicalTableData);
                 this.setState({
-                    subscriptions: subscriptions,
-                    selectedSubscriptionId: selectedSubscriptionId
+                    tableData: technicalTableData
                 });
-                if(selectedSubscriptionId == ''){
-                    this.setState({
-                        tableData: []
-                    });
-                    this.generateTableStructure([]);
+
+                if(technicalTableData.length ===0){
+                    this.props.showGlobalMessage(true, true, 'There is no Data', 'custom-danger');
+                    setTimeout(()=> {
+                        this.props.hideGlobalMessage();
+                    }, 2000);
                 }
-                else{
-                    fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
-                        method: 'GET',
-                        headers: {
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                            'Authorization': 'Bearer '+this.props.authToken
-                        }
-                    })
-                    .then((response) => {
-                        if (response.status === 200) {
-                            response.json().then((respData) => {
-                                
-                                let data = respData.data;
-                                if(respData.errorStatus.status == 'ok'){
-                                    // check selectedSubscriptionId in createGroup localStorage and append it to data here
-                                    let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
-                                    let findIndex = newlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === selectedSubscriptionId);
-                                    if(findIndex != -1){
-                                        let allNewlyCreatedGroupsData = [...newlyCreatedGroupsofSubscriptions[findIndex].createdData];
-                                        if(allNewlyCreatedGroupsData.length > 0){
-                                            for(let dataToAppendAsPending of allNewlyCreatedGroupsData){
-                                                let pendingData = {
-                                                    groupId: dataToAppendAsPending.groupId,
-                                                    ids: {
-                                                        aid: dataToAppendAsPending.aid,
-                                                        tid: dataToAppendAsPending.tid
-                                                    }
-                                                };
-                                                data.push(pendingData);
-                                            }
-                                        }
-                                    }
-                                    this.setState({
-                                        tableData: data
-                                    });
-                                    this.generateTableStructure(data);
-                                }
-                                else{
-                                    this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                                    setTimeout(()=> {
-                                        this.props.hideGlobalMessage();
-                                    }, 2000);
-                                }
-                            });
-                        }
-                        else{
-                            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                            setTimeout(()=> {
-                                this.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err);
-                        this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                        setTimeout(()=> {
-                            this.props.hideGlobalMessage();
-                        }, 2000);
-                    });
-                }
-            }
-            else{
-                this.generateTableStructure([]);
-            }
-            
-            this.timerForSubscriptionList = setInterval(()=> this.getSubscriptionList(), 20000);
+           
         }
+        else {
+            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+            setTimeout(()=> {
+                this.props.hideGlobalMessage();
+            }, 2000);
+        }  
+
     }
 
     /* istanbul ignore next */
@@ -247,13 +89,16 @@ export default class Groupupgrade extends React.Component {
 
     /* istanbul ignore next */
     generateTableStructure(tableData){
+        tableData=[{
+            "groupId":"12345",
+            "ids":{
+                "aid":"avbf43",
+                "tid":"avbf43"}  
+                }];
         let newTableData = [];
         for(let dataObj of tableData){
             let newDataObj = {};
             newDataObj.groupId = dataObj.groupId;
-            newDataObj.aid = dataObj.ids.aid;
-            newDataObj.tid = dataObj.ids.tid;
-
             newTableData.push(newDataObj);
         }
 
@@ -283,8 +128,9 @@ export default class Groupupgrade extends React.Component {
             this.generateTableStructure([]);
         }
         else{
-            fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
-                method: 'GET',
+         // fetch(this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId, { //this.props.baseUrl + '/groupList?subscriptionID='+selectedSubscriptionId
+         fetch('https://reqres.in/api/users/2' ,{
+         method: 'GET',
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
@@ -295,6 +141,12 @@ export default class Groupupgrade extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         let data = respData.data;
+                        respData={
+                            "errorStatus": {
+                                  "status": "ok"
+                                 }
+                                };
+
                         if(respData.errorStatus.status == 'ok'){
                             // check selectedSubscriptionId in createGroup localStorage and append it to data here
                             let newlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups")) || [];
@@ -348,7 +200,7 @@ export default class Groupupgrade extends React.Component {
     filterByValue(myArray, string){
         let retArr = [];
         for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].groupId.toLowerCase().includes(string.toLowerCase()) || myArray[i].aid.toLowerCase().includes(string.toLowerCase()) || myArray[i].tid.toLowerCase().replace(/\s/g, "").includes(string.toLowerCase().replace(/\s/g, ""))) {
+            if (myArray[i].groupId.toLowerCase().includes(string.toLowerCase())) {
                 retArr.push(myArray[i]);
             }
         }
@@ -444,7 +296,7 @@ export default class Groupupgrade extends React.Component {
             <div className="row Groupupgrade">
                 <div className="col-md-12">
                     <div className="row mt-2">
-                        <div className="col-sm-6">
+                      {/*   <div className="col-sm-6">
                             <select 
                                 className="form-control form-control-sm" 
                                 name="subscriptionId" 
@@ -458,7 +310,7 @@ export default class Groupupgrade extends React.Component {
                                                 value={ subscription.subscriptionId }>{ subscription.subscriptionName }</option>)
                                     })}
                             </select>
-                        </div>
+                        </div> */}
                         <div className="col-sm-6 text-left">
                             <div className="d-inline">
                                 <button type="button" className="btn btn-sm btn-outline-secondary disabled">
@@ -482,8 +334,6 @@ export default class Groupupgrade extends React.Component {
                                     <thead>
                                         <tr>
                                             <th>Group ID</th>
-                                            <th>AID</th>
-                                            <th>TID</th>
                                             { 
                                                 this.props.permissions.accesses.maintain.subMenus.groups.delete ?
                                                     <th>Action</th>
@@ -498,8 +348,6 @@ export default class Groupupgrade extends React.Component {
                                                 <tr key={'groupupgradeTableTbodyTr_'+tbodyIndex} id={'groupupgradeTableTbodyTr_'+tbodyIndex}>
                                                     
                                                     <td>{ tbodyVal.groupId }</td>
-                                                    <td>{ tbodyVal.aid }</td>
-                                                    <td>{ tbodyVal.tid }</td>
                                                     {
                                                         this.props.permissions.accesses.maintain.subMenus.groups.delete ?
                                                             <td>
