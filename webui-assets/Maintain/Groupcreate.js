@@ -6,12 +6,13 @@ export default class Groupcreate extends React.Component {
         super(props);
         this.state = {
             groupForm:{
-                subscriptionId: { value: '', dirtyState: false },
+                subscriptionId: { value: [], dirtyState: false },
                 groupId: { value: '', dirtyState: false },
             },
             errorsGroupForm: {},
             groupFormIsValid: false,
-            subscriptions: []
+            subscriptions: [],
+            keyName:''
         };
     }
 
@@ -33,6 +34,7 @@ export default class Groupcreate extends React.Component {
                     }
                 }
             }
+            this.setState({keyName: "Group[" + subscriptionData.length + "]"})
             if(subscriptionData.length > 0){
               let selectedSubscriptionId = subscriptionData[0].licenseId;
               let formObj = Object.assign({}, this.state.groupForm);
@@ -104,7 +106,8 @@ export default class Groupcreate extends React.Component {
         let currentForm =  Object.assign({}, this.state.groupForm);
 
         if(fieldName === 'subscriptionId'){
-            currentForm.subscriptionId.value = updatedValue;
+            let value = Array.from(e.target.selectedOptions, (option) => option.value);
+            currentForm.subscriptionId.value = value;
             currentForm.subscriptionId.dirtyState = true;
         }
         else if(fieldName === 'groupId'){
@@ -153,13 +156,15 @@ export default class Groupcreate extends React.Component {
         let prepareData = {};
         prepareData.subscriptionId = currentForm.subscriptionId.value;
         prepareData.groupId = currentForm.groupId.value;
+        prepareData.parent = "ab2a2691-a563-486c-9883-5111ff36ba9b"
+        prepareData.name = "GroupName"
         let newlyCreatedGroups = [];
         let createdGroupDataObj = {
             groupId: prepareData.groupId,
             aid: 'Pending',
             tid: 'Pending'
         };
-        if (localStorage.getItem("newlyCreatedGroups") === null){
+  /*       if (localStorage.getItem("newlyCreatedGroups") === null){
             // newlyCreatedGroups not found
             let newlyCreatedGroupObj = {};
             newlyCreatedGroupObj = {
@@ -188,9 +193,9 @@ export default class Groupcreate extends React.Component {
                 oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData.push(createdGroupDataObj);
                 localStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
             }
-        }
+        } */
 
-        console.log(JSON.parse(localStorage.getItem("newlyCreatedGroups")));
+/*         console.log(JSON.parse(localStorage.getItem("newlyCreatedGroups")));
         setTimeout(()=> {
             this.props.hideGlobalMessage();
             let groupForm = {
@@ -202,10 +207,10 @@ export default class Groupcreate extends React.Component {
                 groupForm: groupForm,
                 groupFormIsValid: false
             });
-        }, 2000);
+        }, 2000); */
 
         
-        fetch(this.props.baseUrl + '/createGroup', { //this.props.baseUrl + '/createGroup'
+        fetch(this.props.baseUrl + this.state.keyName, { //this.props.baseUrl + '/createGroup'
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -226,13 +231,13 @@ export default class Groupcreate extends React.Component {
                             this.props.hideGlobalMessage();
                         }, 2000);
                     }
-                    let oldNewlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups"));
+                    let oldNewlyCreatedGroupsofSubscriptions = JSON.parse(sessionStorage.getItem("newlyCreatedGroups"));
                     let findIndex = oldNewlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === prepareData.subscriptionId);
                     let allNewlyCreatedGroupsData = [...oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData];
                     let findGroupIndex = allNewlyCreatedGroupsData.findIndex(x => x.groupId === prepareData.groupId);
                     allNewlyCreatedGroupsData.splice(findGroupIndex, 1);
                     oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData = allNewlyCreatedGroupsData;
-                    localStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
+                    sessionStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
 
                 });
             }
