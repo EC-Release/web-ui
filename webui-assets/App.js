@@ -8,6 +8,7 @@ import Subscriptioncreate from './Maintain/Subscriptioncreate.js';
 import Subscriptionupgrade from './Maintain/Subscriptionupgrade.js';
 import Groupcreate from './Maintain/Groupcreate.js';
 import Groupupgrade from './Maintain/Groupupgrade.js';
+import GroupView from './Maintain/GroupView.js';
 import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 /* istanbul ignore next */
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
@@ -336,6 +337,8 @@ handleUser(user) {
         return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupupgrade':
         return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
+      case 'GroupView':
+        return <GroupView helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} showModal={this.showModal.bind(this)}/>; // jshint ignore:line
       case 'Maintainagentupgrade':
