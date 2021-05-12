@@ -89,12 +89,12 @@ export default class Groupupgrade extends React.Component {
 
     /* istanbul ignore next */
     generateTableStructure(tableData){
-        tableData=[{
+      /*  tableData=[{
             "groupId":"12345",
             "ids":{
                 "aid":"avbf43",
                 "tid":"avbf43"}  
-                }];
+                }];*/
         let newTableData = [];
         for(let dataObj of tableData){
             let newDataObj = {};
