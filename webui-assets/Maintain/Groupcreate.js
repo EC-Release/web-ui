@@ -137,13 +137,12 @@ export default class Groupcreate extends React.Component {
 
         let subscriptionIdFound = false;
         for (let subscriptionId of subscriptionIdValue) {
-          if (subscriptionId.value.trim() !== "") {
+          if (subscriptionId.trim() !== "") {
             subscriptionIdFound = true;
           }
         }
         if (!subscriptionIdFound) {
-          errors["subscriptionId"] =
-            "Please select Subscription ID";
+          errors.subscriptionId = "Please select Subscription ID";
           formIsValid = false;
         }
 
