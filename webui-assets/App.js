@@ -293,6 +293,7 @@ handleUser(user) {
       newpermission.accesses.maintain.subMenus.agents.edit = false;
       newpermission.accesses.maintain.subMenus.agents.delete = false;
       newpermission.accesses.monitor.subMenus.healthStatus.isUser = false;
+      newpermission.accesses.settings.haveAccess = false;
       this.setState({
         permissions: newpermission,
         user: "User",
@@ -309,6 +310,7 @@ handleUser(user) {
       newpermission.accesses.maintain.subMenus.agents.edit = true;
       newpermission.accesses.maintain.subMenus.agents.delete = true;
       newpermission.accesses.monitor.subMenus.healthStatus.isUser = true;
+      newpermission.accesses.settings.haveAccess = true;
 
       this.setState({
         permissions: newpermission,
