@@ -229,7 +229,7 @@ export default class GroupView extends React.Component {
         return (
             <div className="row Groupupgrade">
                 {this.state.changeForm ? 
-                 <div className="col-md-12">
+                 <div className="col-md-12 centered-div">
                 <div className="row" >
                     <div className="col-sm-6" > 
                     <div className="col-sm-12 label text-left">
