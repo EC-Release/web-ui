@@ -113,8 +113,7 @@ export default class App extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
-	    console.log(respData);
-	    sessionStorage.setItem("snapshotData", JSON.stringify(respData))
+	          sessionStorage.setItem("snapshotData", JSON.stringify(respData))
 	
             let permission = {
                 "roleId": 1,
@@ -220,13 +219,13 @@ export default class App extends React.Component {
     // Get logged user's userId end
 
     setTimeout(()=>{
-      this.updateEcConfigCookie();
+      this.updateEcLocalStorage();
     },300000); // 5 mins
   }
 
   /* istanbul ignore next */
-  updateEcConfigCookie(){
-    this.timer = setInterval(()=> this.getAuthTokenFromBackend(), 300000); // 5 mins
+  updateEcLocalStorage(){
+    this.timer = setInterval(()=> this.refreshSnapshot(), 300000); // 5 mins
   }
 
   /* istanbul ignore next */
@@ -236,8 +235,8 @@ export default class App extends React.Component {
   }
 
   /* istanbul ignore next */
-  getAuthTokenFromBackend(){ 
-    fetch(this.state.apiEndPoints.baseUrl + '/refershToken' , {
+   refreshSnapshot(){ 
+    fetch(this.state.apiEndPoints.baseUrl + 'snapshot' , {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
@@ -248,14 +247,13 @@ export default class App extends React.Component {
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            if (respData.errorStatus.status === 'ok') {
-              let newToken = respData.data;
+           /*    let newToken = respData.data;
               this.setState({
                 authToken: newToken
               });
               let cookieToUpdate = 'ec-config';
-              document.cookie = cookieToUpdate+"="+newToken;
-            }
+              document.cookie = cookieToUpdate+"="+newToken; */
+              sessionStorage.setItem("snapshotData", JSON.stringify(respData))
           });
         }
     });
