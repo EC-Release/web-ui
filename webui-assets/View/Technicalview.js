@@ -36,20 +36,127 @@ export default class Technicalview extends React.Component {
 
     /* istanbul ignore next */
     componentDidMount(){
+        
+        //for now once api ready change it again 
+           let treeValue = [
+      {
+        id: 1,
+        value: "group-101",
+        x: 200,
+        y: 100,
+        children: [
+          {
+            id: 2,
+            value: "License-104",
+            children: [
+              {
+                id: 3,
+                value: "wabtec-gecars-ta",
+                children: [
+                  {
+                    id: 4,
+                    value: "0idLmsMk8e",
+                  },
+                  {
+                    id: 5,
+                    value: "0idLmsMk8o",
+                  },
+                  {
+                    id: 6,
+                    value: "0idLmsMk8r",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: 7,
+            value: "License-101",
+            children: [
+              {
+                id: 8,
+                value: "wabtec-gecars-qa",
+                children: [
+                  {
+                    id: 8,
+                    value: "0idLmsMk8e",
+                  },
+                  {
+                    id: 10,
+                    value: "0idLmsMk8o",
+                  },
+                  {
+                    id: 11,
+                    value: "0idLmsMk8r",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+      {
+        id: 12,
+        value: "group-102",
+        x: 200,
+        y: 100,
+        children: [
+          {
+            id: 13,
+            value: "License-102",
+            children: [
+              {
+                id: 14,
+                value: "wabtec-gecars-ta",
+                children: [
+                  {
+                    id: 15,
+                    value: "0idLmsMk8e",
+                  },
+                  {
+                    id: 17,
+                    value: "0idLmsMk8o",
+                  },
+                  {
+                    id: 16,
+                    value: "0idLmsMk8r",
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            id: 1,
+            value: "License-103",
+            children: [
+              {
+                id: 2,
+                value: "wabtec-gecars-qa",
+                children: [
+                  {
+                    id: 3,
+                    value: "0idLmsMk8e",
+                  },
+                  {
+                    id: 4,
+                    value: "0idLmsMk8o",
+                  },
+                  {
+                    id: 5,
+                    value: "0idLmsMk8r",
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ];
+
+    sessionStorage.setItem("graphData", JSON.stringify(treeValue));
 
         if (localStorage.getItem("treeValue") === null || localStorage.getItem("technicalTableData") === null){
             let technicalTableData = [];
-            let treeValue = [{
-                id: 1,
-                value: 'EC',
-                children: [
-                    {
-                        id: 2,
-                        value: 'GroupName',
-                      
-                    }
-                ]
-            }];
             let progressPercent = 0;
 
             fetch(this.props.baseUrl + '/snapshot', {
@@ -584,122 +691,7 @@ export default class Technicalview extends React.Component {
     displayDataFromLocalStorage(){
         let nodes = [];
         let edges = [];
-        //let treeValue = JSON.parse(localStorage.getItem("treeValue"));
-        let treeValue = [
-      {
-        id: 1,
-        value: "group-101",
-        x: 200,
-        y: 100,
-        children: [
-          {
-            id: 2,
-            value: "License-104",
-            children: [
-              {
-                id: 3,
-                value: "wabtec-gecars-ta",
-                children: [
-                  {
-                    id: 4,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 5,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 6,
-                    value: "0idLmsMk8r",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: 7,
-            value: "License-101",
-            children: [
-              {
-                id: 8,
-                value: "wabtec-gecars-qa",
-                children: [
-                  {
-                    id: 8,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 10,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 11,
-                    value: "0idLmsMk8r",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-      {
-        id: 12,
-        value: "group-102",
-        x: 200,
-        y: 100,
-        children: [
-          {
-            id: 13,
-            value: "License-102",
-            children: [
-              {
-                id: 14,
-                value: "wabtec-gecars-ta",
-                children: [
-                  {
-                    id: 15,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 17,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 16,
-                    value: "0idLmsMk8r",
-                  },
-                ],
-              },
-            ],
-          },
-          {
-            id: 1,
-            value: "License-103",
-            children: [
-              {
-                id: 2,
-                value: "wabtec-gecars-qa",
-                children: [
-                  {
-                    id: 3,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 4,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 5,
-                    value: "0idLmsMk8r",
-                  },
-                ],
-              },
-            ],
-          },
-        ],
-      },
-    ];
-
+        let treeValue = JSON.parse(localStorage.getItem("graphData"));
         let technicalTableData = JSON.parse(localStorage.getItem("technicalTableData"));
         this.setState({
             mockTableData: technicalTableData
