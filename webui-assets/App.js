@@ -226,12 +226,11 @@ export default class App extends React.Component {
   /* istanbul ignore next */
   updateEcLocalStorage(){
     this.timer = setInterval(()=> this.refreshSnapshot(), 300000); // 5 mins
-	  console.log("timeOn")
   }
 
   /* istanbul ignore next */
   componentWillUnmount() {
-    clearInterval(this.timer);
+     clearInterval(this.timer);
     this.timer = null;
   }
 
@@ -248,7 +247,6 @@ export default class App extends React.Component {
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-		   console.log("snapshotCall")
            /*    let newToken = respData.data;
               this.setState({
                 authToken: newToken
