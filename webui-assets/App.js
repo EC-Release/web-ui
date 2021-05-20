@@ -14,7 +14,7 @@ import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
 import Maintainagentview from './Maintain/Maintainagentview.js';
 import RequestCreate from './Maintain/RequestCreate.js';
-import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
+import RequestUpgrade from './Maintain/RequestUpgrade.js';
 import RequestView from './Maintain/RequestView.js';
 import Subscriptionview from './Maintain/Subscriptionview.js'; 
 /* istanbul ignore next */
@@ -347,8 +347,8 @@ handleUser(user) {
         return <Maintainagentview baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Requestcreate':
         return <RequestCreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
-      case 'Maintainwatcherupgrade':
-        return <Maintainwatcherupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+      case 'RequestUpgrade':
+        return <RequestUpgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'RequestView':
         return <RequestView baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Monitor':
