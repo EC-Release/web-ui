@@ -378,7 +378,7 @@ export default class RequestUpgrade extends React.Component {
                               <td>
                                 <span className="action-img">
                                   {this.props.permissions.accesses.maintain
-                                    .subMenus.subscriptions.edit ? (
+                                    .subMenus.watchers.edit ? (
                                     <img
                                       onClick={this.edit.bind(this, tbodyVal)}
                                       alt="edit-icon"
@@ -387,7 +387,7 @@ export default class RequestUpgrade extends React.Component {
                                     />
                                   ) : null}
                                   {this.props.permissions.accesses.maintain
-                                    .subMenus.subscriptions.delete ? (
+                                    .subMenus.watchers.delete ? (
                                     <img
                                       alt="delete-icon"
                                       onClick={this.deleteData.bind(
