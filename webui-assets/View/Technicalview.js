@@ -691,7 +691,7 @@ export default class Technicalview extends React.Component {
     displayDataFromLocalStorage(){
         let nodes = [];
         let edges = [];
-        let treeValue = JSON.parse(localStorage.getItem("graphData"));
+        let treeValue = JSON.parse(sessionStorage.getItem("graphData"));
         let technicalTableData = JSON.parse(localStorage.getItem("technicalTableData"));
         this.setState({
             mockTableData: technicalTableData
