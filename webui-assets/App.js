@@ -220,12 +220,13 @@ export default class App extends React.Component {
 
     setTimeout(()=>{
       this.updateEcLocalStorage();
-    },300000); // 5 mins
+    },60000); // 5 mins
   }
 
   /* istanbul ignore next */
   updateEcLocalStorage(){
     this.timer = setInterval(()=> this.refreshSnapshot(), 300000); // 5 mins
+	  console.log("timeOn")
   }
 
   /* istanbul ignore next */
@@ -241,12 +242,13 @@ export default class App extends React.Component {
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': this.state.authToken
+          'Authorization': "Bearer " + this.state.authToken
       }
     })
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
+		   console.log("snapshotCall")
            /*    let newToken = respData.data;
               this.setState({
                 authToken: newToken
