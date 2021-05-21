@@ -310,7 +310,7 @@ export default class Subscriptioncreate extends React.Component {
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                      LICENSE ID
+                      SUBSCRIPTION ID
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
@@ -448,7 +448,7 @@ export default class Subscriptioncreate extends React.Component {
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                     Username
+                     USER Forname
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
@@ -482,7 +482,7 @@ export default class Subscriptioncreate extends React.Component {
 
                   <div className="col-sm-6">
                     <div className="col-sm-12 label">
-                      Description
+                      DESCRIPTION
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
