@@ -325,7 +325,7 @@ export default class Subscriptionupgrade extends React.Component {
                                             <table id="subscriptionupgradeTable" className="table">
                                                 <thead>
                                                     <tr>
-                                                    <th>License ID</th>
+                                                    <th>Subscription ID</th>
                                                     <th>Email Address</th>
                                                     <th>Expiry Date</th>
                                                     <th>SSO</th>
