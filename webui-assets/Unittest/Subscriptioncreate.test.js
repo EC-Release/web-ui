@@ -15,23 +15,8 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
-                subscriptionId: '',
-                serviceUri: '',
-                clientId: '',
-                clientSecret: '',
-                OAuth2: '',
-                adminToken: '',
-                applicationRole: '',
-                bucAdn: '',
-                compliance: '',
-                customer: '',
-                cluster: '',
                 expdate: '',
-                managementHostType: '',
-                owner: '',
-                project: '',
-                security: '',
-                version: ''
+                username: ''
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
