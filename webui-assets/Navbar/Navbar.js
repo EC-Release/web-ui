@@ -28,16 +28,6 @@ export default class Navbar extends React.Component {
                             :
                             null
                         }
-                        {   /*  { this.props.permissions.accesses && this.props.permissions.accesses.view.haveAccess ?
-                            <li id="nav-view" className={this.props.currentView === 'View' ? 'nav-item active' : 'nav-item'}>
-                                <a className="nav-link" href="#" onClick={this.props.clickEve.bind(this, 'View')}>
-                                    <img src={'assets/static/images/view_icon.svg'} alt="nav-view" />
-                                    View
-                                </a>
-                            </li>
-                            :
-                            null
-                        }*/ }
                         { this.props.permissions.accesses && this.props.permissions.accesses.maintain.haveAccess ?
                             <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || 
                             this.props.currentView === 'Maintainagentview' || this.props.currentView === 'RequestCreate'  || this.props.currentView === 'RequestUpgrade' || this.props.currentView === 'RequestView' 
@@ -247,11 +237,6 @@ export default class Navbar extends React.Component {
                                       User Profile
                                     </a>
                                 </li>
-                              {   /*    <li>
-                                    <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Usermanagement')} href="#">
-                                        User Management
-                                    </a>
-                                </li> */}
                             </ul>
                         </li>
                         :
