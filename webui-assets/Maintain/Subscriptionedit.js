@@ -6,33 +6,6 @@ export default class Subscriptionedit extends React.Component {
         super(props);
         this.state = {
             subscriptionForm:{
-                subscriptionName: { value: '', dirtyState: false },
-                subscriptionId: { value: '', dirtyState: false },
-                serviceUri: { value: '', dirtyState: false },
-                clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false, type: 'password' },
-                OAuth2: { value: '', dirtyState: false },
-                adminToken: { value: '', dirtyState: false, type: 'password' },
-                applicationRole: { value: '', dirtyState: false },
-                bucAdn: { value: '', dirtyState: false },
-                compliance: { value: '', dirtyState: false },
-                confidentiality: { value: 'true', dirtyState: false },
-                customer: { value: '', dirtyState: false },
-                cluster: { value: '', dirtyState: false },
-                date: { value: '', dirtyState: false },
-                environment: { value: '', dirtyState: false },
-                managementHostType: { value: '', dirtyState: false },
-                optInoptOut: { value: 'true', dirtyState: false },
-                preserve: { value: 'true', dirtyState: false },
-                owner: { value: '', dirtyState: false },
-                project: { value: '', dirtyState: false },
-                security: { value: '', dirtyState: false },
-                version: { value: '', dirtyState: false },
-                app: { value: '', dirtyState: false },
-                assetId: { value: '', dirtyState: false },
-                uai: { value: '', dirtyState: false },
-                developerId: { value: '', dirtyState: false },
-                
                 licenseId: { value: "", dirtyState: false },
                 emailAddress: { value: "", dirtyState: false },
                 sso: { value: "", dirtyState: false },
@@ -294,7 +267,7 @@ export default class Subscriptionedit extends React.Component {
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
-                          data-content={this.props.helpText.subscriptionName}
+                          data-content={this.props.helpText.licenseId}
                         />
                       </span>
                     </div>
@@ -330,7 +303,7 @@ export default class Subscriptionedit extends React.Component {
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
-                          data-content={this.props.helpText.subscriptionName}
+                          data-content={this.props.helpText.expdate}
                         />
                       </span>
                     </div>
@@ -368,7 +341,7 @@ export default class Subscriptionedit extends React.Component {
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
-                          data-content={this.props.helpText.subscriptionName}
+                          data-content={this.props.helpText.emailAddress}
                         />
                       </span>
                     </div>
@@ -402,7 +375,7 @@ export default class Subscriptionedit extends React.Component {
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
-                          data-content={this.props.helpText.subscriptionName}
+                          data-content={this.props.helpText.sso}
                         />
                       </span>
                     </div>
