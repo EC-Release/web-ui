@@ -378,15 +378,6 @@ export default class RequestUpgrade extends React.Component {
                               <td>
                                 <span className="action-img">
                                   {this.props.permissions.accesses.maintain
-                                    .subMenus.watchers.edit ? (
-                                    <img
-                                      onClick={this.edit.bind(this, tbodyVal)}
-                                      alt="edit-icon"
-                                      title="Edit"
-                                      src="assets/static/images/iconedit_tablemaintainmonitor.svg"
-                                    />
-                                  ) : null}
-                                  {this.props.permissions.accesses.maintain
                                     .subMenus.watchers.delete ? (
                                     <img
                                       alt="delete-icon"
