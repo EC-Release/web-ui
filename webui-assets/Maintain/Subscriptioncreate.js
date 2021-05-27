@@ -300,7 +300,7 @@ export default class Subscriptioncreate extends React.Component {
               <div className="row maintainagentcreate-header">
                 <div className="col-md-12">
                   <h6 id="maintainsubscriptioncreate-title">
-                    Create Subscription <small>Creating parameters.</small>
+                    Create License <small>Creating parameters.</small>
                   </h6>
                 </div>
               </div>
