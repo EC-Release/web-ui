@@ -42,7 +42,7 @@ export default class Navbar extends React.Component {
                                 { this.props.permissions.accesses.maintain.subMenus.subscriptions.view || this.props.permissions.accesses.maintain.subMenus.subscriptions.create || this.props.permissions.accesses.maintain.subMenus.subscriptions.edit || this.props.permissions.accesses.maintain.subMenus.subscriptions.delete ?
                                     <li className="dropdown-submenu">
                                         <a id="nav-subscription" className="dropdown-item" href="#">
-                                            Subscriptions
+                                            License
                                         </a>
                                         <ul className="dropdown-menu">
                                             { this.props.permissions.accesses.maintain.subMenus.subscriptions.create ?
