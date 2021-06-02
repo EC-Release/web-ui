@@ -3,7 +3,9 @@ import React from "react";
 export default class Dashboard extends React.Component {
   /* istanbul ignore next */
   componentDidMount() {
-    this.highChart();
+    setTimeout(() => {
+        this.highChart();
+    }, 1000);
   }
 
   /* istanbul ignore next */
