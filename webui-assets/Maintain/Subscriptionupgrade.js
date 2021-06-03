@@ -1,4 +1,3 @@
-Subscriptionupgrade
 import React from "react";
 
 import Subscriptionedit from './Subscriptionedit.js';
