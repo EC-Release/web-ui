@@ -2,9 +2,11 @@ name: v1.1beta-ci
 on:
   #push:
   #  branches: [ v1.1beta ]
+  push:
+    branches: [ v1.1beta ]
   pull_request:
     branches: [ v1.1beta ]
-    types: [closed, opened, synchronize]
+    types: [opened, synchronize]
   workflow_dispatch:  
 jobs:
   build:
@@ -20,7 +22,7 @@ jobs:
         run: |
           docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
       - name: pr merged
-        if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
+        if: github.event_name == 'push'
         id: pr-merged
         run: |
           echo pr has been merged and closed

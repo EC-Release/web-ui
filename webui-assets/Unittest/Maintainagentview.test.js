@@ -16,4 +16,14 @@ describe('Testing from Maintainagentview.test.js <Maintainagentview />', () => {
         wrapper.setState({ newTableData: [] });
         expect(wrapper).toBeTruthy();
     });
+    
+       it('should have "Maintainagentview" class with div only once', () => {
+        const wrapper = shallow(<Maintainagentview />, { disableLifecycleMethods: true });
+         expect(wrapper.find('div.Maintainagentview').length).toBe(1);
+     });
+
+     it('should have "Maintainagentview" class with div only once', () => {
+        const wrapper = shallow(<Maintainagentview />, { disableLifecycleMethods: true });
+         expect(wrapper.find('div.centered-div').length).toBe(1);
+     });
 });

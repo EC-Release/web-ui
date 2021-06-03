@@ -58,5 +58,32 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         });
         expect(wrapper.find('div.subscription-form').length).toBe(1);
     });
+      it('should render the Subscriptioncreate component', () => {
+        const propsToPass = {
+            helpText: {
+                subscriptionName: '',
+                subscriptionId: '',
+                serviceUri: '',
+                clientId: '',
+                clientSecret: '',
+                OAuth2: '',
+                adminToken: '',
+                applicationRole: '',
+                bucAdn: '',
+                compliance: '',
+                customer: '',
+                cluster: '',
+                expdate: '',
+                managementHostType: '',
+                owner: '',
+                project: '',
+                security: '',
+                version: ''
+            }
+        }
+        const wrapper = shallow(<Subscriptioncreate  helpText={propsToPass.helpText}/>);
+        expect(wrapper.find('div.Subscriptioncreate').length).toBe(1);
+    });
+     
 
 });

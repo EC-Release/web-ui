@@ -39,4 +39,9 @@ describe('Testing from Technicalview.test.js <Technicalview />', () => {
         wrapper.setState({ treeValue: treeValue });
         expect(wrapper.find(Topologygraph).length).toBe(1);
     });
+
+     it('should render the Topologygraph component', () => {
+        const wrapper = shallow(<Topologygraph />, { disableLifecycleMethods: true });
+        expect(wrapper).toBeTruthy();
+      });
 });
