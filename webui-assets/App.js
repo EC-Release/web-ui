@@ -23,7 +23,7 @@ import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 import Report from './Report/Report.js';
-import Usermanagement from './Settings/Usermanagement.js';
+import UserManagement from './Settings/UserManagement.js';
 import UserProfile from "./Settings/UserProfile.js";
 import WebHooks from "./Settings/WebHooks.js";
 import Navbar from './Navbar/Navbar.js';
@@ -362,7 +362,7 @@ handleUser(user) {
       case 'Report':
         return <Report />; // jshint ignore:line
       case 'Usermanagement':
-        return <Usermanagement />; // jshint ignore:line
+        return <UserManagement />; // jshint ignore:line
       case "UserProfile":
         return <UserProfile />; // jshint ignore:line
       case 'WebHooks':
