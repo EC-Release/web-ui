@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Usermanagement extends React.Component {
+export default class UserManagement extends React.Component {
   /* istanbul ignore next */
   constructor(props) {
     super(props);
