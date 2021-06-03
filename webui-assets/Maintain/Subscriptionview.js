@@ -1,4 +1,3 @@
-Subscriptionview
 import React from "react";
 
 import Subscriptionviewform from './Subscriptionviewform.js';
