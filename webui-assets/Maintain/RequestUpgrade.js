@@ -1,6 +1,8 @@
 import React from "react";
 
 export default class RequestUpgrade extends React.Component {
+  
+  /* istanbul ignore next */
   constructor(props) {
     super(props);
     this.state = {
