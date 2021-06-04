@@ -69,16 +69,6 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
         });
         expect(wrapper.find('div.client-form').length).toBe(1);
     });
-    it('should render the SERVER component', () => {
-        const propsToPass = {
-            helpText: {
-                mode: '',
-                environment: ''
-            }
-        }
-        const wrapper = render(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
-      expect(wrapper.find('div.server-form').length).toBe(1);
-  });
  it('should have "Maintainagentcreate" class with div only once', () => {
     const propsToPass = {
         helpText: {
