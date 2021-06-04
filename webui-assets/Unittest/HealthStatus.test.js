@@ -29,7 +29,7 @@ it('should have "Monitorhealthstatus" class with div only once', () => {
                        }
                    }
                 }
-  const wrapper = shallow(<Healthstatus createView={()=>{}} allFields={demoAllFields} selectedFields={[]} permissions={propsToPass} />);
+  const wrapper = shallow(<Healthstatus createView={()=>{}} allFields={demoAllFields} selectedFields={[]} permissions={propsToPass.permissions} />);
   expect(wrapper.find('div.Monitorhealthstatus').length).toBe(1);
 });
 });
