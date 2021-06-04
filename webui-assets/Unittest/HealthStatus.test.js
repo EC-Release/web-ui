@@ -8,7 +8,21 @@ configure({adapter: new Adapter()});
 describe('Testing from HealthStatus.test.js <View />', () => {
 
 it('should render the View component', () => {
-  const wrapper = shallow(<Healthstatus />, { disableLifecycleMethods: true });
+   const propsToPass = {
+            tableindx : 0 ,
+            permissions: {
+                accesses: {
+                   monitor: {
+                     subMenus :{
+                       healthStatus:{
+                         isUser :true
+                                   }
+                              }
+                           }
+                       }
+                   }
+                }
+  const wrapper = shallow(<Healthstatus  permissions={propsToPass.permissions} tableindx={propsToPass.tableindx}  />, { disableLifecycleMethods: true });
   expect(wrapper).toBeTruthy();
 });
     
