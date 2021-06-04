@@ -465,6 +465,7 @@ export default class Healthstatus extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   gatewayOperations(gatewayId, operation) {
     console.log(gatewayId, operation);
   }
