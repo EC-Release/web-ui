@@ -37,13 +37,8 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   componentDidMount() {
-    this.handleCountSubscriptions();
-    window.enableToolTip();
-  }
-	
-  /* istanbul ignore next */
-  handleCountSubscriptions(){
-	 let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
+   	window.enableToolTip();
+	let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
         let allData =[]
         let subsData=[]
           Object.keys(respData).forEach((key)=> {
@@ -58,7 +53,7 @@ export default class Subscriptioncreate extends React.Component {
           }
          this.setState({
               keyName:"subscription[" + subsData.length + "]"
-          })              
+          })  
   }
 	
   /* istanbul ignore next */
