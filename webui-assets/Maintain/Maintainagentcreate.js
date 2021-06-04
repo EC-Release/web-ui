@@ -21,18 +21,6 @@ export default class Maintainagentcreate extends React.Component {
             },
             errorsAgentForm: {},
             agentFormIsValid: false,
-            gatewayForm: {
-                mode: 'GATEWAY',
-                environment: { value: '', dirtyState: false },
-                gatewayPort: { value: '', dirtyState: false },
-                zone: { value: '', dirtyState: false },
-                serviceUrl: { value: '', dirtyState: false },
-                token: { value: '', dirtyState: false, type: 'password' },
-                host: { value: '', dirtyState: false },
-                os: { value: '', dirtyState: false },
-            },
-            errorsGatewayForm: {},
-            gatewayFormIsValid: false,
             serverForm: {
                 mode: 'SERVER',
                 agentId: { value: '', dirtyState: false, type: 'password' },
@@ -78,7 +66,6 @@ export default class Maintainagentcreate extends React.Component {
             subscriptions:[],
             // API will provide this agentModeButtons
             agentModeButtons: [
-               /* { text: 'GATEWAY', value: 1 },*/
                 { text: 'SERVER', value: 2 },
                 { text: 'CLIENT', value: 3 }
             ],
@@ -138,25 +125,13 @@ export default class Maintainagentcreate extends React.Component {
             });
         }
 
-        if(this.state.environments.length > 0){
-            let selectedEnv = this.state.environments[0].id;
-            let gatewayForm = Object.assign({}, this.state.gatewayForm);
-            gatewayForm.environment.value = selectedEnv;
-            this.setState({
-                gatewayForm: gatewayForm
-            });
-        }
-
         if(this.state.operatingSystems.length > 0){
             let selectedOs = this.state.operatingSystems[0].id;
-            let gatewayForm = Object.assign({}, this.state.gatewayForm);
             let serverForm = Object.assign({}, this.state.serverForm);
             let clientForm = Object.assign({}, this.state.clientForm);
-            gatewayForm.os.value = selectedOs;
             serverForm.os.value = selectedOs;
             clientForm.os.value = selectedOs;
             this.setState({
-                gatewayForm: gatewayForm,
                 serverForm: serverForm,
                 clientForm: clientForm
             });
@@ -244,16 +219,11 @@ export default class Maintainagentcreate extends React.Component {
     /* istanbul ignore next */
     changeFormAutofill(selectedSubscriptionId){
         let subscriptions = this.state.subscriptions;
-        let gatewayForm = this.state.gatewayForm;
         let serverForm = this.state.serverForm;
         let clientForm = this.state.clientForm;
         if(selectedSubscriptionId != ''){
             let selectedSubscription  = subscriptions.filter(function(o){return o.subscriptionId == selectedSubscriptionId;} );
             
-            gatewayForm.zone.value = selectedSubscriptionId;
-            gatewayForm.serviceUrl.value = selectedSubscription[0].serviceUri;
-            gatewayForm.token.value = selectedSubscription[0].adminToken;
-
             serverForm.zone.value = selectedSubscriptionId;
             serverForm.serviceUrl.value = selectedSubscription[0].serviceUri;
             serverForm.clientId.value = selectedSubscription[0].clientId;
@@ -285,7 +255,6 @@ export default class Maintainagentcreate extends React.Component {
                                 clientForm.group.value = selectedGroupId;
                                 this.setState({
                                     groups: groups,
-                                    gatewayForm: gatewayForm,
                                     serverForm: serverForm,
                                     clientForm: clientForm
                                 });
@@ -469,150 +438,7 @@ export default class Maintainagentcreate extends React.Component {
 		});
     }
 
-    /* istanbul ignore next */
-    handleGatewayFormData(e){
-        let fieldName = e.target.name;
-        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        let currentGatewayForm =  Object.assign({}, this.state.gatewayForm);
-
-        if(fieldName === 'environment'){
-            currentGatewayForm.environment.value = updatedValue;
-            currentGatewayForm.environment.dirtyState = true;
-        }
-        else if(fieldName === 'gatewayPort'){
-            let gatewayPortAfterValidityCheck = (e.target.validity.valid) ? updatedValue : currentGatewayForm.gatewayPort.value;
-            if(gatewayPortAfterValidityCheck.length > 4){
-                gatewayPortAfterValidityCheck = currentGatewayForm.gatewayPort.value;
-            }
-            currentGatewayForm.gatewayPort.value = gatewayPortAfterValidityCheck;
-            currentGatewayForm.gatewayPort.dirtyState = true;
-        }
-        else if(fieldName === 'zone'){
-            if(updatedValue.length > 36){
-                updatedValue = currentGatewayForm.zone.value;
-            }
-            currentGatewayForm.zone.value = updatedValue;
-            currentGatewayForm.zone.dirtyState = true;
-        }
-        else if(fieldName === 'serviceUrl'){
-            currentGatewayForm.serviceUrl.value = updatedValue;
-            currentGatewayForm.serviceUrl.dirtyState = true;
-        }
-        else if(fieldName === 'token'){
-            currentGatewayForm.token.value = updatedValue;
-            currentGatewayForm.token.dirtyState = true;
-        }
-        else if(fieldName === 'host'){
-            currentGatewayForm.host.value = updatedValue;
-            currentGatewayForm.host.dirtyState = true;
-        }
-        else if(fieldName === 'os'){
-            currentGatewayForm.os.value = updatedValue;
-            currentGatewayForm.os.dirtyState = true;
-        }
-
-        this.setState({
-            gatewayForm: currentGatewayForm
-        });
-        this.handleGatewayFormValidation();
-    }
-
-    /* istanbul ignore next */
-    handleGatewayFormValidation(){
-        let currentFormData = this.state.gatewayForm;
-        let environmentValue = currentFormData.environment.value;
-        let environmentDirtyState = currentFormData.environment.dirtyState;
-        let gatewayPortValue = currentFormData.gatewayPort.value;
-        let gatewayPortDirtyState = currentFormData.gatewayPort.dirtyState;
-        let zoneValue = currentFormData.zone.value;
-        let zoneDirtyState = currentFormData.zone.dirtyState;
-        let serviceUrlValue = currentFormData.serviceUrl.value;
-        let serviceUrlDirtyState = currentFormData.serviceUrl.dirtyState;
-        let tokenValue = currentFormData.token.value;
-        let tokenDirtyState = currentFormData.token.dirtyState;
-        let hostValue = currentFormData.host.value;
-        let hostDirtyState = currentFormData.host.dirtyState;
-        let formIsValid = true;
-        let errors = {};
-        let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-        
-        if(environmentValue.trim() === ''){
-            if(environmentDirtyState){
-                errors.environment = 'Please enter Environment';
-            }
-            formIsValid = false;
-        }
-
-        if(gatewayPortValue.trim() === ''){
-            if(gatewayPortDirtyState){
-                errors.gatewayPort = 'Please enter Gateway Port in digit';
-            }
-            formIsValid = false;
-        }
-        else if(gatewayPortValue.length != 4){
-            if(gatewayPortDirtyState){
-                errors.gatewayPort = 'Gateway Port must have 4 digit';
-            }
-            formIsValid = false;
-        }
-
-        if(zoneValue.trim() === ''){
-            if(zoneDirtyState){
-                errors.zone = 'Please enter Zone';
-            }
-            formIsValid = false;
-        }
-        else if(zoneValue.length < 36){
-            if(zoneDirtyState){
-                errors.zone = 'Zone must have 36 character';
-            }
-            formIsValid = false;
-        }
-
-        if(serviceUrlValue.trim() === ''){
-            if(serviceUrlDirtyState){
-                errors.serviceUrl = 'Please enter Service Url';
-            }
-            formIsValid = false;
-        }
-        else if(!urlRegExp.test(serviceUrlValue)){
-            if(serviceUrlDirtyState){
-                errors.serviceUrl = 'Please enter valid URL';
-            }
-            formIsValid = false;
-        }
-
-        if(tokenValue.trim() === ''){
-            if(tokenDirtyState){
-                errors.token = 'Please enter Token';
-            }
-            formIsValid = false;
-        }
-
-        if(hostValue.trim() === ''){
-            if(hostDirtyState){
-                errors.host = 'Please enter Host';
-            }
-            formIsValid = false;
-        }
-        else if(hostValue.substr(0, 6) != 'wss://' && hostValue.substr(0, 5) != 'ws://'){
-            if(hostDirtyState){
-                errors.host = 'Host starts with wss:// or ws://';
-            }
-            formIsValid = false;
-        }
-        else if(hostValue.substr(hostValue.length - 6, 6) != '/agent'){
-            if(hostDirtyState){
-                errors.host = 'Host ends with /agent';
-            }
-            formIsValid = false;
-        }
-
-        this.setState({
-            gatewayFormIsValid: formIsValid,
-            errorsGatewayForm: errors
-        });
-    }
+    
 
     /* istanbul ignore next */
     handleServerFormData(e){
@@ -1173,24 +999,6 @@ export default class Maintainagentcreate extends React.Component {
         });
     }
 
-    /* istanbul ignore next */
-    copyFromClientToGateway(){
-        let currentClientForm =  Object.assign({}, this.state.clientForm);
-        let currentGatewayForm =  Object.assign({}, this.state.gatewayForm);
-
-        currentGatewayForm.host.value = currentClientForm.host.value;
-
-        this.setState({
-            gatewayForm: currentGatewayForm
-        });
-
-        this.props.showGlobalMessage(false, true, 'Data copied from client', 'custom-success');
-        setTimeout(()=> {
-            this.props.hideGlobalMessage();
-        }, 2000);
-        this.handleGatewayFormValidation();
-    }
-
      /* istanbul ignore next */
     copyFromClientToServer(){
         let currentClientForm =  Object.assign({}, this.state.clientForm);
@@ -1265,106 +1073,7 @@ export default class Maintainagentcreate extends React.Component {
                 text:'Copy'
             },
         ];
-        if(type === 'gateway'){
-            let gatewayFormData = Object.assign({}, this.state.gatewayForm);
-            prepareData.mod = gatewayFormData.mode.toLowerCase();
-            prepareData.dbg = agentFormData.debugMode.value;
-            prepareData.ecVersion = agentFormData.ecVersion.value;
-            prepareData.env = gatewayFormData.environment.value;
-            prepareData.gpt = gatewayFormData.gatewayPort.value;
-            prepareData.zon = gatewayFormData.zone.value;
-            prepareData.sst = gatewayFormData.serviceUrl.value;
-            prepareData.tkn = gatewayFormData.token.value;
-            prepareData.hst = gatewayFormData.host.value;
-            prepareData.os = gatewayFormData.os.value;
-            
-            fetch(this.props.baseUrl + '/generateGatewayScript', { // '/generateGatewayScript?user_id='+this.props.userId
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
-                },
-                body: JSON.stringify(prepareData)
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                        if(respData.errorStatus.status == 'ok'){
-                            this.props.hideGlobalMessage();
-                            this.props.showModal(modalHeading, respData.data, buttons);
-                            
-                            setTimeout(()=> {
-                                let selectedEnv = '';
-                                let selectedOs = '';
-                                if(this.state.environments.length > 0){
-                                    selectedEnv = this.state.environments[0].id;
-                                }
-                                if(this.state.operatingSystems.length > 0){
-                                    selectedOs = this.state.operatingSystems[0].id;
-                                }
-                                let gatewayForm = {
-                                    mode: 'GATEWAY',
-                                    environment: { value: selectedEnv, dirtyState: false },
-                                    gatewayPort: { value: '', dirtyState: false },
-                                    zone: { value: gatewayFormData.zone.value, dirtyState: false },
-                                    serviceUrl: { value: gatewayFormData.serviceUrl.value, dirtyState: false },
-                                    token: { value: gatewayFormData.token.value, dirtyState: false, type: gatewayFormData.token.type },
-                                    host: { value: '', dirtyState: false },
-                                    os: { value: selectedOs, dirtyState: false },
-                                };
-
-                                let filename = "gateway.yml";
-                                let data='';
-                                if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
-                                    data = "ec-config:\n  conf:\n    mod: "+gatewayFormData.mode.toLowerCase()+"\n    gpt: "+'"'+ gatewayFormData.gatewayPort.value +'"' +"\n    zon: "+ gatewayFormData.zone.value +"\n    sst: "+ gatewayFormData.serviceUrl.value.split(".io")[0]+".io" +"\n    dbg: "+ agentFormData.debugMode.value +"\n    tkn: "+ gatewayFormData.token.value +"\n    hst: "+ gatewayFormData.host.value;
-                                }
-                                else{
-                                    data = "ec-config:\n  conf:\n    mod: "+gatewayFormData.mode.toLowerCase()+"\n    gpt: "+'":'+ gatewayFormData.gatewayPort.value +'"' +"\n    zon: "+ gatewayFormData.zone.value +"\n    sst: "+ gatewayFormData.serviceUrl.value +"\n    dbg: "+ agentFormData.debugMode.value +"\n    tkn: "+ gatewayFormData.token.value +"\n    hst: "+ gatewayFormData.host.value;
-                                } 
-                                let blob = new Blob([data], { type: 'text/yml' });
-                                if (window.navigator.msSaveOrOpenBlob) {
-                                    window.navigator.msSaveBlob(blob, filename);
-                                }
-                                else {
-                                    let elem = window.document.createElement('a');
-                                    elem.href = window.URL.createObjectURL(blob);
-                                    elem.download = filename;
-                                    document.body.appendChild(elem);
-                                    elem.click();
-                                    document.body.removeChild(elem);
-                                }
-                                
-                                this.setState({
-                                    gatewayForm: gatewayForm,
-                                    gatewayFormIsValid: false
-                                });
-                            }, 2000);
-                        }
-                        else{
-                            this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                            setTimeout(()=> {
-                                this.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                    });
-                }
-                else{
-                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                    setTimeout(()=> {
-                        this.props.hideGlobalMessage();
-                    }, 2000);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
-            });
-        }
-        else if(type === 'server'){
+         if(type === 'server'){
             let serverFormData = Object.assign({}, this.state.serverForm);
             prepareData.mod = serverFormData.mode.toLowerCase();
             prepareData.dbg = agentFormData.debugMode.value;
@@ -1633,10 +1342,7 @@ export default class Maintainagentcreate extends React.Component {
     /* istanbul ignore next */
     showHideField(e, formName, fieldName){
         let currentForm = {};
-        if(formName == 'gatewayForm'){
-            currentForm = Object.assign({}, this.state.gatewayForm);
-        }
-        else if(formName == 'serverForm'){
+         if(formName == 'serverForm'){
             currentForm = Object.assign({}, this.state.serverForm);
         }
         else if(formName == 'clientForm'){
@@ -1650,12 +1356,7 @@ export default class Maintainagentcreate extends React.Component {
             currentForm[fieldName].type = 'password';
         }
 
-        if(formName == 'gatewayForm'){
-            this.setState({
-                gatewayForm: currentForm
-            });
-        }
-        else if(formName == 'serverForm'){
+      if(formName == 'serverForm'){
             this.setState({
                 serverForm: currentForm
             });
