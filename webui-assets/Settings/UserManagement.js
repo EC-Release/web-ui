@@ -159,6 +159,7 @@ export default class UserManagement extends React.Component {
 
   render() {
     /* jshint ignore:start */
+    /* istanbul ignore next */
     return (
       <div className="row web-hook">
         {this.state.showForm ? (
