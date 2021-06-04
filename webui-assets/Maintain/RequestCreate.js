@@ -1,6 +1,8 @@
 import React from "react";
 
 export default class RequestCreate extends React.Component {
+  
+  /* istanbul ignore next */
   constructor(props) {
     super(props);
     this.state = {
@@ -16,7 +18,6 @@ export default class RequestCreate extends React.Component {
   componentDidMount() {
     window.enableToolTip();
     // this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
-    console.log("ReqCreate");
   }
 
   /* istanbul ignore next */
