@@ -45,7 +45,7 @@ it('should have "Monitorhealthstatus" class with div only once', () => {
                        }
                    }
                 }
-  const wrapper = shallow(<Healthstatus createView={()=>{}} allFields={demoAllFields} selectedFields={[]} permissions={propsToPass.permissions} tableindx={propsToPass.tableindx} />);
+  const wrapper = shallow(<Healthstatus createView={()=>{}} allFields={demoAllFields} selectedFields={[]} permissions={propsToPass.permissions} tableindx={propsToPass.tableindx} /> , { disableLifecycleMethods: true });
   expect(wrapper.find('div.Monitorhealthstatus').length).toBe(1);
 });
 });
