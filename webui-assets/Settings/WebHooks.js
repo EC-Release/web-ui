@@ -83,6 +83,7 @@ export default class WebHooks extends React.Component {
       errorsForm: errors,
     });
   }
+  
   /* istanbul ignore next */
   createNotification() {
     this.props.showGlobalMessage(
@@ -121,6 +122,7 @@ export default class WebHooks extends React.Component {
 
   render() {
     /* jshint ignore:start */
+    /* istanbul ignore next */
     return (
       <div className="row web-hook">
         {this.state.showForm ? (
