@@ -79,7 +79,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
     let demoAllFields = [
         {subscriptionId: "subscriptionId", subscriptionName: "subscriptionName"}
     ];
-    const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} allFields={demoAllFields} selectedFields={[]} />);
+     fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+    const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} allFields={demoAllFields} selectedFields={[]} /> , { disableLifecycleMethods: true });
     expect(wrapper.find('div.Maintainagentcreate').length).toBe(1);
 });  
 
