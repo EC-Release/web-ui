@@ -16,7 +16,20 @@ it('should have "Monitorhealthstatus" class with div only once', () => {
   let demoAllFields = [
       {gatewayId: "345435"}
   ];
-  const wrapper = shallow(<Healthstatus createView={()=>{}} allFields={demoAllFields} selectedFields={[]} />);
+   const propsToPass = {
+            permissions: {
+                accesses: {
+                   monitor: {
+                     subMenus :{
+                       healthStatus:{
+                         isUser :true
+                                   }
+                              }
+                           }
+                       }
+                   }
+                }
+  const wrapper = shallow(<Healthstatus createView={()=>{}} allFields={demoAllFields} selectedFields={[]} permissions={propsToPass} />);
   expect(wrapper.find('div.Monitorhealthstatus').length).toBe(1);
 });
 });
