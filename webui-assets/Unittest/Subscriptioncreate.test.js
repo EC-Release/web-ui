@@ -10,7 +10,6 @@ configure({ adapter: new Adapter() });
 window.enableToolTip = () => { };
 
 describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () => {
-
     it('should render the Subscriptioncreate component', () => {
         const propsToPass = {
             helpText: {
@@ -21,7 +20,6 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<Subscriptioncreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
-        
         wrapper.setState({
             subscriptionForm:{
                         licenseId: { value: "", dirtyState: false },
@@ -66,7 +64,8 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
                 username: ''
             }
         }
-        const wrapper = shallow(<Subscriptioncreate  helpText={propsToPass.helpText}/>);
+        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+        const wrapper = shallow(<Subscriptioncreate  helpText={propsToPass.helpText}/> , { disableLifecycleMethods: true });
         expect(wrapper.find('div.Subscriptioncreate').length).toBe(1);
     });
      
