@@ -33,7 +33,8 @@ describe('Testing from Groupupgrade.test.js <Groupupgrade />', () => {
                            }
                        }
                     }
-         const wrapper = shallow(<Groupupgrade permissions={propsToPass.permissions }  />);
+       fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+         const wrapper = shallow(<Groupupgrade permissions={propsToPass.permissions }/> , { disableLifecycleMethods: true } );
          expect(wrapper.find('div.Groupupgrade').length).toBe(1);
       });
     
