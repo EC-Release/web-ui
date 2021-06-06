@@ -67,6 +67,10 @@ function loadTree(id){
     $('#'+id).treed();
 }
 
+function selectView() {
+  $("select").selectpicker();
+}
+
 function generateTopology(nodeData, replacedDivId){
     // create an array with nodes
     var nodes = new vis.DataSet(nodeData.nodes);
@@ -305,7 +309,7 @@ function hideCookieInfo(){
 // Auto logout functionality start
 var timoutWarning = 840000;//840000; // Display warning in 14 Mins.
 var timoutNow = 60000; // Warning has been shown, give the user 1 minute to interact
-var logoutUrl = window.location.origin+window.location.pathname.replace('/ec','')+'/logout'; // URL to logout page.
+var logoutUrl = window.location.origin+window.location.pathname.replace('/ops','')+'/logout'; // URL to logout page.
 
 var warningTimer;
 var timeoutTimer;

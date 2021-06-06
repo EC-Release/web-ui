@@ -23,33 +23,25 @@ export default class Subscriptionupgrade extends React.Component {
 
     /* istanbul ignore next */
     handleDataTable(preserveState) {
-        let technicalTableData = [];
-        fetch(this.props.baseUrl + '/listSubscriptions', { // this.props.baseUrl + '/listSubscriptions' | 'https://reqres.in/api/users/2'
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+this.props.authToken
-            }
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                response.json().then((respData) => {
-                    let subscriptions = respData.data;
-                    if (subscriptions === null) {
-                        subscriptions = [];
-                    }
-
-                    if (subscriptions.length > 0) {
-                        for (let subscription of subscriptions) {
-                            technicalTableData.push(subscription);
-                        }
-                    }
+           let technicalTableData = [];
+            if (sessionStorage.getItem("snapshotData") !== null) {
+                    let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
+                    let allData =[]
+                      Object.keys(respData).forEach((key)=> {
+                          allData.push(respData[key])
+                      });
+                      for(let individualData of allData){
+                          if(individualData.parent){
+                              if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                                technicalTableData.push(individualData);
+                              }
+                          }
+                      }
                     this.generateTableStructure(technicalTableData, preserveState);
                     this.setState({
                         tableData: technicalTableData
                     });
-                });
+               
             }
             else {
                 this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
@@ -57,14 +49,6 @@ export default class Subscriptionupgrade extends React.Component {
                     this.props.hideGlobalMessage();
                 }, 2000);
             }
-        })
-        .catch((err) => {
-            console.log(err);
-            this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-            setTimeout(()=> {
-                this.props.hideGlobalMessage();
-            }, 2000);
-        });
     }
 
     /* istanbul ignore next */
@@ -73,68 +57,15 @@ export default class Subscriptionupgrade extends React.Component {
         let newTableData = [];
         for (let dataObj of tableData) {
             let newDataObj = {};
-            newDataObj.adminToken = dataObj.adminToken;
-            newDataObj.app = dataObj.app;
-            newDataObj.assetId = dataObj.assetId;
-            newDataObj.bucAdn = dataObj.bucAdn;
-            newDataObj.clientId = dataObj.clientId;
-            newDataObj.clientSc = dataObj.clientSc;
-            newDataObj.cluster = dataObj.cluster;
-            newDataObj.compliance = dataObj.compliance;
-            newDataObj.confidentiality = dataObj.confidentiality;
-            newDataObj.customer = dataObj.customer;
+            newDataObj.licenseId = dataObj.licenseId;
+            newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
-            newDataObj.env = dataObj.env;
-            newDataObj.managementHostType = dataObj.managementHostType;
-            newDataObj.optInoptOut = dataObj.optInoptOut;
-            newDataObj.owner = dataObj.owner;
-            newDataObj.preserve = dataObj.preserve;
-            newDataObj.project = dataObj.project;
-            newDataObj.role = dataObj.role;
-            newDataObj.security = dataObj.security;
-            newDataObj.uai = dataObj.uai;
-            newDataObj.version = dataObj.version;
-            newDataObj.developerId = dataObj.developerId; 
-            if (dataObj.subscriptionId.length > 10) {
-                newDataObj.subscriptionId = dataObj.subscriptionId.substr(0, 10);
-                newDataObj.subscriptionIdHidden = dataObj.subscriptionId;
-                newDataObj.subscriptionIdHiddenFlag = true;
-            }
-            else {
-                newDataObj.subscriptionId = dataObj.subscriptionId;
-                newDataObj.subscriptionIdHiddenFlag = false;
-            }
-
-            if (dataObj.serviceUri.length > 10) {
-                newDataObj.serviceUri = dataObj.serviceUri.substr(0, 10);
-                newDataObj.serviceUriHidden = dataObj.serviceUri;
-                newDataObj.serviceUriHiddenFlag = true;
-            }
-            else {
-                newDataObj.serviceUri = dataObj.serviceUri;
-                newDataObj.serviceUriHiddenFlag = false;
-            }
-
-            if (dataObj.subscriptionName.length > 10) {
-                newDataObj.subscriptionName = dataObj.subscriptionName.substr(0, 10);
-                newDataObj.subscriptionNameHidden = dataObj.subscriptionName;
-                newDataObj.subscriptionNameHiddenFlag = true;
-            }
-            else {
-                newDataObj.subscriptionName = dataObj.subscriptionName;
-                newDataObj.subscriptionNameHiddenFlag = false;
-            }
-
-            if (dataObj.uaaUrl.length > 10) {
-                newDataObj.uaaUrl = dataObj.uaaUrl.substr(0, 10);
-                newDataObj.uaaUrlHidden = dataObj.uaaUrl;
-                newDataObj.uaaUrlHiddenFlag = true;
-            }
-            else {
-                newDataObj.uaaUrl = dataObj.uaaUrl;
-                newDataObj.uaaUrlHiddenFlag = false;
-            }
-
+            newDataObj.sso = dataObj.sso;
+            newDataObj.desc = dataObj.desc;
+            newDataObj.username = dataObj.username;
+            newDataObj.key = dataObj.key;
+            newDataObj.parent = dataObj.parent;
+            newDataObj.name = dataObj.name;
             newTableData.push(newDataObj);
         }
 
@@ -209,7 +140,7 @@ export default class Subscriptionupgrade extends React.Component {
     filterByValue(myArray, string){
         let retArr = [];
         for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].subscriptionId.toLowerCase().includes(string.toLowerCase()) || myArray[i].serviceUri.toLowerCase().includes(string.toLowerCase()) || myArray[i].subscriptionName.toLowerCase().replace(/\s/g, "").includes(string.toLowerCase().replace(/\s/g, "")) || myArray[i].uaaUrl.toLowerCase().includes(string.toLowerCase()) || myArray[i].role.toLowerCase().includes(string.toLowerCase())) {
+            if (myArray[i].licenseId.toLowerCase().includes(string.toLowerCase()) || myArray[i].emailAddress.toLowerCase().includes(string.toLowerCase()) || myArray[i].date.includes(string) || myArray[i].sso.includes(string) || myArray[i].username.includes(string) ) {
                 retArr.push(myArray[i]);
             }
         }
@@ -234,67 +165,12 @@ export default class Subscriptionupgrade extends React.Component {
 
         for (let dataObj of filteredData) {
             let newDataObj = {};
-            newDataObj.adminToken = dataObj.adminToken;
-            newDataObj.app = dataObj.app;
-            newDataObj.assetId = dataObj.assetId;
-            newDataObj.bucAdn = dataObj.bucAdn;
-            newDataObj.clientId = dataObj.clientId;
-            newDataObj.clientSc = dataObj.clientSc;
-            newDataObj.cluster = dataObj.cluster;
-            newDataObj.compliance = dataObj.compliance;
-            newDataObj.confidentiality = dataObj.confidentiality;
-            newDataObj.customer = dataObj.customer;
+            newDataObj.licenseId = dataObj.licenseId;
+            newDataObj.emailAddress = dataObj.emailAddress;
             newDataObj.date = dataObj.date;
-            newDataObj.env = dataObj.env;
-            newDataObj.managementHostType = dataObj.managementHostType;
-            newDataObj.optInoptOut = dataObj.optInoptOut;
-            newDataObj.owner = dataObj.owner;
-            newDataObj.preserve = dataObj.preserve;
-            newDataObj.project = dataObj.project;
-            newDataObj.role = dataObj.role;
-            newDataObj.security = dataObj.security;
-            newDataObj.uai = dataObj.uai;
-            newDataObj.version = dataObj.version;
-            newDataObj.developerId = dataObj.developerId; 
-            if (dataObj.subscriptionId.length > 10) {
-                newDataObj.subscriptionId = dataObj.subscriptionId.substr(0, 10);
-                newDataObj.subscriptionIdHidden = dataObj.subscriptionId;
-                newDataObj.subscriptionIdHiddenFlag = true;
-            }
-            else {
-                newDataObj.subscriptionId = dataObj.subscriptionId;
-                newDataObj.subscriptionIdHiddenFlag = false;
-            }
-
-            if (dataObj.serviceUri.length > 10) {
-                newDataObj.serviceUri = dataObj.serviceUri.substr(0, 10);
-                newDataObj.serviceUriHidden = dataObj.serviceUri;
-                newDataObj.serviceUriHiddenFlag = true;
-            }
-            else {
-                newDataObj.serviceUri = dataObj.serviceUri;
-                newDataObj.serviceUriHiddenFlag = false;
-            }
-
-            if (dataObj.subscriptionName.length > 10) {
-                newDataObj.subscriptionName = dataObj.subscriptionName.substr(0, 10);
-                newDataObj.subscriptionNameHidden = dataObj.subscriptionName;
-                newDataObj.subscriptionNameHiddenFlag = true;
-            }
-            else {
-                newDataObj.subscriptionName = dataObj.subscriptionName;
-                newDataObj.subscriptionNameHiddenFlag = false;
-            }
-
-            if (dataObj.uaaUrl.length > 10) {
-                newDataObj.uaaUrl = dataObj.uaaUrl.substr(0, 10);
-                newDataObj.uaaUrlHidden = dataObj.uaaUrl;
-                newDataObj.uaaUrlHiddenFlag = true;
-            }
-            else {
-                newDataObj.uaaUrl = dataObj.uaaUrl;
-                newDataObj.uaaUrlHiddenFlag = false;
-            }
+            newDataObj.sso = dataObj.sso;
+            newDataObj.desc = dataObj.desc;
+            newDataObj.username = dataObj.username;
 
             newTableData.push(newDataObj);
         }
@@ -312,7 +188,7 @@ export default class Subscriptionupgrade extends React.Component {
     /* istanbul ignore next */
     edit(item) {
         let editItem = Object.assign({}, item);
-        if(editItem.subscriptionIdHiddenFlag){
+       /*  if(editItem.subscriptionIdHiddenFlag){
             editItem.subscriptionId = editItem.subscriptionIdHidden;
         }
         if(editItem.serviceUriHiddenFlag){
@@ -323,7 +199,7 @@ export default class Subscriptionupgrade extends React.Component {
         }
         if(editItem.uaaUrlHiddenFlag){
             editItem.uaaUrl = editItem.uaaUrlHidden;
-        }
+        } */
         window.destroyDataTable('subscriptionupgradeTable');
         this.setState({
             editItemData: editItem,
@@ -340,7 +216,7 @@ export default class Subscriptionupgrade extends React.Component {
                 subscripnId = tbodyVal.subscriptionIdHidden;
             }
             this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
-            fetch(this.props.baseUrl + '/deleteSubscription?subscriptionID='+subscripnId, {
+            fetch(this.props.baseUrl + tbodyVal.key, {
                 method: 'DELETE',
                 headers: {
                     'Accept': 'application/json',
@@ -351,20 +227,21 @@ export default class Subscriptionupgrade extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        if (respData.errorStatus.status === 'ok') {
+                     /*    if (respData.errorStatus.status === 'ok') { */
                             this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
                             window.removeDataTableRow('subscriptionupgradeTable', rowIndex);
                             let that = this;
                             setTimeout(function () {
                                 that.props.hideGlobalMessage();
                             }, 2000);
-                        }
+                           that.snapshotUpdate();
+                     /*    }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                             setTimeout(()=> {
                                 this.props.hideGlobalMessage();
                             }, 2000);
-                        }
+                        }*/
                     });
                 }
                 else {
@@ -384,9 +261,28 @@ export default class Subscriptionupgrade extends React.Component {
             });
         }
     }
+    
+    /* istanbul ignore next */ 
+    snapshotUpdate(){
+        fetch(this.props.baseUrl + "snapshot", {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + this.props.authToken,
+            }
+          })
+        .then((response) => {
+            if (response.status === 200) {
+              response.json().then((respData) => {
+                sessionStorage.setItem("snapshotData", JSON.stringify(respData))
+        })
+        }})
+    }
 
     /* istanbul ignore next */
     changeView() {
+        this.handleDataTable(false);
         this.setState({
             viewTable: true
         });
@@ -428,13 +324,18 @@ export default class Subscriptionupgrade extends React.Component {
                                             <table id="subscriptionupgradeTable" className="table">
                                                 <thead>
                                                     <tr>
-                                                        <th>Subscription ID</th>
+                                                    <th>License ID</th>
+                                                    <th>Email Address</th>
+                                                    <th>Expiry Date</th>
+                                                    <th>SSO</th>
+                                                    <th>Actions</th>
+                                                        {/* <th>Subscription ID</th>
                                                         <th>Service Uri</th>
                                                         <th>Subscription Name</th>
                                                         <th>OAuth Provider</th>
                                                         <th>Owner</th>
                                                         <th>Application Role</th>
-                                                        <th>Actions</th>
+                                                        <th>Actions</th> */}
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -442,7 +343,7 @@ export default class Subscriptionupgrade extends React.Component {
                                                     this.state.newTableData.map((tbodyVal, tbodyIndex) => {
                                                             return (
                                                                 <tr id={'subscriptionupgradeTableTbodyTr_' + tbodyIndex} key={'subscriptionupgradeTableTbodyTr_' + tbodyIndex}>
-                                                                    <td>
+                                                                  {/*   <td>
                                                                         {tbodyVal.subscriptionId}&nbsp;&nbsp;
                                                                         {tbodyVal.subscriptionIdHiddenFlag ?
                                                                             <img onClick={this.showHideTableTdData.bind(this, tbodyIndex, 'subscriptionId')} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" /> :
@@ -475,7 +376,11 @@ export default class Subscriptionupgrade extends React.Component {
                                                                     </td>
                                                                     <td>
                                                                         {tbodyVal.role}
-                                                                    </td>
+                                                                    </td> */}
+                                                                    <td>{tbodyVal.licenseId}</td>
+                                                                    <td>{tbodyVal.emailAddress}</td>
+                                                                    <td>{tbodyVal.date}</td>
+                                                                    <td>{tbodyVal.sso}</td>
                                                                     <td>
                                                                         <span className="action-img">
                                                                             { this.props.permissions.accesses.maintain.subMenus.subscriptions.edit ?
@@ -513,7 +418,18 @@ export default class Subscriptionupgrade extends React.Component {
                         </div>
                     </div>
                     :
-                    <Subscriptionedit authToken={this.props.authToken} helpText={this.props.helpText} handleDataTable={this.handleDataTable.bind(this)} baseUrl={this.props.baseUrl} userId={this.props.userId} showGlobalMessage={this.props.showGlobalMessage.bind(this)} hideGlobalMessage={this.props.hideGlobalMessage.bind(this)} changeView={this.changeView.bind(this)} editItemData={this.state.editItemData}></Subscriptionedit>
+                    <Subscriptionedit
+                        authToken={this.props.authToken}
+                        helpText={this.props.helpText}
+                        handleDataTable={this.handleDataTable.bind(this)}
+                        baseUrl={this.props.baseUrl}
+                        userId={this.props.userId}
+                        showGlobalMessage={this.props.showGlobalMessage.bind(this)}
+                        hideGlobalMessage={this.props.hideGlobalMessage.bind(this)}
+                        changeView={this.changeView.bind(this)}
+                        editItemData={this.state.editItemData}
+                        isViewOnly={false}
+                    ></Subscriptionedit>
                 }
             </div>
         )

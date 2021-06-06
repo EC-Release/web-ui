@@ -29,7 +29,7 @@ export default class View extends React.Component {
         const currentTopologyView = this.state.topologyView;
         if(!currentTopologyView){
             // Technical view
-            return <Technicalview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showGlobalMessage={this.props.showGlobalMessage} hideGlobalMessage={this.props.hideGlobalMessage} />; // jshint ignore:line
+            return <Technicalview authToken={this.props.authToken} baseUrl={this.props.baseUrl} userId={this.props.userId} showGlobalMessage={this.props.showGlobalMessage} hideGlobalMessage={this.props.hideGlobalMessage} permissions={this.props.permissions} />; // jshint ignore:line
         }
         else{
             // Business view

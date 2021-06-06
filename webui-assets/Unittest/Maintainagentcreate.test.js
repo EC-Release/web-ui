@@ -11,64 +11,7 @@ window.enableToolTip = () => { };
 
 describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () => {
 
-    it('should render the Maintainagentcreate component', () => {
-        const propsToPass = {
-            helpText: {
-                mode: '',
-                environment: ''
-            }
-        }
-        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
-        
-        wrapper.setState({
-            agentForm: {
-                agentMode: { value: 1, dirtyState: false },
-                gateway: { value: '', dirtyState: false },
-                businessId: { value: 0, dirtyState: false },
-                businessName: { value: '', dirtyState: false },
-                requestor: { value: '', dirtyState: false },
-                requestedDate: { value: '', dirtyState: false },
-                customerEmail: { value: '', dirtyState: false },
-                bucAnd: { value: '', dirtyState: false },
-                vpc: { value: '', dirtyState: false },
-                debugMode: { value: true, dirtyState: false },
-                subscriptionId: { value: '', dirtyState: false },
-                ecVersion: { value: '', dirtyState: false },
-            }
-        });
-        expect(wrapper).toBeTruthy();
-    });
-
-    it('should have "GATEWAY" button with div only once', () => {
-        const propsToPass = {
-            helpText: {
-                mode: '',
-                environment: ''
-            }
-        }
-        fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
-        
-        wrapper.setState({
-            agentForm: {
-                agentMode: { value: 1, dirtyState: false },
-                gateway: { value: '', dirtyState: false },
-                businessId: { value: 0, dirtyState: false },
-                businessName: { value: '', dirtyState: false },
-                requestor: { value: '', dirtyState: false },
-                requestedDate: { value: '', dirtyState: false },
-                customerEmail: { value: '', dirtyState: false },
-                bucAnd: { value: '', dirtyState: false },
-                vpc: { value: '', dirtyState: false },
-                debugMode: { value: true, dirtyState: false },
-                subscriptionId: { value: '', dirtyState: false },
-                ecVersion: { value: '', dirtyState: false },
-            }
-        });
-        expect(wrapper.find('div.gateway-form').length).toBe(1);
-    });
-
+    
     it('should have "SERVER" button with div only once', () => {
         const propsToPass = {
             helpText: {
@@ -126,18 +69,6 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
         });
         expect(wrapper.find('div.client-form').length).toBe(1);
     });
-    it('should render the GATEWAY component', () => {
-        const propsToPass = {
-            helpText: {
-                mode: '',
-                environment: ''
-            }
-        }
-        const wrapper = render(<Maintainagentcreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
-       
-  
-      expect(wrapper.find('div.gateway-form').length).toBe(1);
-  });
  it('should have "Maintainagentcreate" class with div only once', () => {
     const propsToPass = {
         helpText: {
@@ -148,7 +79,8 @@ describe('Testing from Maintainagentcreate.test.js <Maintainagentcreate />', () 
     let demoAllFields = [
         {subscriptionId: "subscriptionId", subscriptionName: "subscriptionName"}
     ];
-    const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} allFields={demoAllFields} selectedFields={[]} />);
+     fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
+    const wrapper = shallow(<Maintainagentcreate helpText={propsToPass.helpText} allFields={demoAllFields} selectedFields={[]} /> , { disableLifecycleMethods: true });
     expect(wrapper.find('div.Maintainagentcreate').length).toBe(1);
 });  
 

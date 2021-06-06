@@ -6,12 +6,13 @@ export default class Groupcreate extends React.Component {
         super(props);
         this.state = {
             groupForm:{
-                subscriptionId: { value: '', dirtyState: false },
+                subscriptionId: { value: [], dirtyState: false },
                 groupId: { value: '', dirtyState: false },
             },
             errorsGroupForm: {},
             groupFormIsValid: false,
-            subscriptions: []
+            subscriptions: [],
+            keyName:''
         };
     }
 
@@ -19,61 +20,52 @@ export default class Groupcreate extends React.Component {
     componentDidMount(){
         window.enableToolTip();
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
-        if (localStorage.getItem("subscriptions") === null){
-            fetch(this.props.baseUrl + '/listSubscriptions', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer '+this.props.authToken
-                }
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                        if(respData.errorStatus.status == 'ok'){
-                            let subscriptions = respData.data;
-                            if(subscriptions.length > 0){
-                                let selectedSubscriptionId = subscriptions[0].subscriptionId;
-                                let formObj = Object.assign({}, this.state.groupForm);
-                                formObj.subscriptionId.value = selectedSubscriptionId;
-                                this.setState({
-                                    subscriptions: subscriptions,
-                                    groupForm: formObj
-                                });
-                            }
-                            this.props.hideGlobalMessage();
-                            localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
-                        }
-                        else{
-                            this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                            setTimeout(()=> {
-                                this.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                    });
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
+        if (sessionStorage.getItem("snapshotData") !== null) {
+          let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
+          let allData =[]
+          let subscriptionData=[]
+          let groupData =[]
+            Object.keys(respData).forEach((key)=> {
+                allData.push(respData[key])
             });
-        }
-        else{
-            let subscriptions = JSON.parse(localStorage.getItem("subscriptions"));
-            let selectedSubscriptionId = subscriptions[0].subscriptionId;
-            let formObj = Object.assign({}, this.state.groupForm);
-            formObj.subscriptionId.value = selectedSubscriptionId;
-            this.setState({
-                subscriptions: subscriptions,
-                groupForm: formObj
-            });
-            this.props.hideGlobalMessage();
-            this.timerForSubscriptionList = setInterval(()=> this.getSubscriptionList(), 20000);
-        }
+            for(let individualData of allData){
+                if(individualData.parent){
+                    if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                      subscriptionData.push(individualData);
+                    }
+                    if(individualData.parent ==="f894e5a8-0f9b-46ca-8b74-57e94610d731"){
+                        groupData.push(individualData);
+                      }
+                }
+            }
+            this.setState({keyName: "Group[" + groupData.length + "]"})
+            if(subscriptionData.length > 0){
+              let selectedSubscriptionId = subscriptionData[0].licenseId;
+              let formObj = Object.assign({}, this.state.groupForm);
+              formObj.subscriptionId.value = selectedSubscriptionId;
+              this.setState({
+                  subscriptions: subscriptionData,
+                  groupForm: formObj
+              });
+		  
+		    setTimeout(()=> {
+              console.log(this.state.subscriptions) 
+          }, 2000);
+          }
+          this.props.hideGlobalMessage();
+          localStorage.setItem("subscriptions", JSON.stringify(subscriptionData));
+      }
+      else {
+          this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+          setTimeout(()=> {
+              this.props.hideGlobalMessage();
+          }, 2000);
+      }
+	   setTimeout(()=> {
+              window.selectView();
+          }, 1000);  
+	
+	    
     }
 
     /* istanbul ignore next */
@@ -118,7 +110,8 @@ export default class Groupcreate extends React.Component {
         let currentForm =  Object.assign({}, this.state.groupForm);
 
         if(fieldName === 'subscriptionId'){
-            currentForm.subscriptionId.value = updatedValue;
+            let value = Array.from(e.target.selectedOptions, (option) => option.value);
+            currentForm.subscriptionId.value = value;
             currentForm.subscriptionId.dirtyState = true;
         }
         else if(fieldName === 'groupId'){
@@ -142,10 +135,15 @@ export default class Groupcreate extends React.Component {
         let formIsValid = true;
         let errors = {};
 
-        if(subscriptionIdValue.trim() === ''){
-            if(subscriptionIdDirtyState)
-                errors.subscriptionId = 'Please select Subscription ID';
-            formIsValid = false;
+        let subscriptionIdFound = false;
+        for (let subscriptionId of subscriptionIdValue) {
+          if (subscriptionId.trim() !== "") {
+            subscriptionIdFound = true;
+          }
+        }
+        if (!subscriptionIdFound) {
+          errors.subscriptionId = "Please select Subscription ID";
+          formIsValid = false;
         }
 
         if(groupIdValue.trim() === ''){
@@ -167,13 +165,15 @@ export default class Groupcreate extends React.Component {
         let prepareData = {};
         prepareData.subscriptionId = currentForm.subscriptionId.value;
         prepareData.groupId = currentForm.groupId.value;
+        prepareData.parent = "f894e5a8-0f9b-46ca-8b74-57e94610d731"
+        prepareData.name = "GroupName"
         let newlyCreatedGroups = [];
         let createdGroupDataObj = {
             groupId: prepareData.groupId,
             aid: 'Pending',
             tid: 'Pending'
         };
-        if (localStorage.getItem("newlyCreatedGroups") === null){
+  /*       if (localStorage.getItem("newlyCreatedGroups") === null){
             // newlyCreatedGroups not found
             let newlyCreatedGroupObj = {};
             newlyCreatedGroupObj = {
@@ -202,9 +202,9 @@ export default class Groupcreate extends React.Component {
                 oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData.push(createdGroupDataObj);
                 localStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
             }
-        }
+        } */
 
-        console.log(JSON.parse(localStorage.getItem("newlyCreatedGroups")));
+/*         console.log(JSON.parse(localStorage.getItem("newlyCreatedGroups")));
         setTimeout(()=> {
             this.props.hideGlobalMessage();
             let groupForm = {
@@ -216,10 +216,10 @@ export default class Groupcreate extends React.Component {
                 groupForm: groupForm,
                 groupFormIsValid: false
             });
-        }, 2000);
+        }, 2000); */
 
         
-        fetch(this.props.baseUrl + '/createGroup', { //this.props.baseUrl + '/createGroup'
+        fetch(this.props.baseUrl + this.state.keyName, { //this.props.baseUrl + '/createGroup'
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -240,13 +240,13 @@ export default class Groupcreate extends React.Component {
                             this.props.hideGlobalMessage();
                         }, 2000);
                     }
-                    let oldNewlyCreatedGroupsofSubscriptions = JSON.parse(localStorage.getItem("newlyCreatedGroups"));
+                    let oldNewlyCreatedGroupsofSubscriptions = JSON.parse(sessionStorage.getItem("newlyCreatedGroups"));
                     let findIndex = oldNewlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === prepareData.subscriptionId);
                     let allNewlyCreatedGroupsData = [...oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData];
                     let findGroupIndex = allNewlyCreatedGroupsData.findIndex(x => x.groupId === prepareData.groupId);
                     allNewlyCreatedGroupsData.splice(findGroupIndex, 1);
                     oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData = allNewlyCreatedGroupsData;
-                    localStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
+                    sessionStorage.setItem("newlyCreatedGroups", JSON.stringify(oldNewlyCreatedGroupsofSubscriptions));
 
                 });
             }
@@ -288,16 +288,16 @@ export default class Groupcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <select 
-                                                className="form-control form-control-sm" 
+                                                className="selectpicker form-control form-control-sm" 
+						multiple={true}
+						data-live-search="true"
                                                 name="subscriptionId" 
-                                                value={this.state.groupForm.subscriptionId.value}
                                                 onChange={(event)=>{this.handleFormData(event)}}>
-                                                    {
-                                                    this.state.subscriptions.map((subscription, subscriptionIndex) => {
+						{ this.state.subscriptions.map((subscription, subscriptionIndex) => {
                                                         return(
                                                             <option
                                                                 key={"subscriptionOption"+subscriptionIndex}
-                                                                value={ subscription.subscriptionId }>{ subscription.subscriptionName }</option>)
+                                                                value={ subscription.licenseId }>{ subscription.licenseId }</option>)
                                                     })}
                                             </select>
                                             <small className="text-danger">{ this.state.errorsGroupForm['subscriptionId']}</small>
@@ -320,7 +320,7 @@ export default class Groupcreate extends React.Component {
                                 </div>
 
                                 <div className="row">
-                                    <div className="col-sm-12 mb-2 text-center">
+                                    <div className="col-sm-12 mb-2 text-right">
                                         <button 
                                             id="create-group-btn"
                                             disabled={!this.state.groupFormIsValid}

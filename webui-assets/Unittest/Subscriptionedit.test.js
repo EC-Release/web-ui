@@ -14,24 +14,12 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
     it('should render the Subscriptionedit component', () => {
         const propsToPass = {
             helpText: {
-                subscriptionName: '',
-                subscriptionId: '',
-                serviceUri: '',
-                clientId: '',
-                clientSecret: '',
-                OAuth2: '',
-                adminToken: '',
-                applicationRole: '',
-                bucAdn: '',
-                compliance: '',
-                customer: '',
-                cluster: '',
+                licenseId:'',
+                emailAddress: '',
+                sso: '',
                 expdate: '',
-                managementHostType: '',
-                owner: '',
-                project: '',
-                security: '',
-                version: ''
+                desc: '',
+                username: ''
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
@@ -39,31 +27,15 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
         
         wrapper.setState({
             subscriptionForm:{
-                subscriptionName: { value: '', dirtyState: false },
-                subscriptionId: { value: '', dirtyState: false },
-                serviceUri: { value: '', dirtyState: false },
-                clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
-                OAuth2: { value: '', dirtyState: false },
-                adminToken: { value: '', dirtyState: false },
-                applicationRole: { value: '', dirtyState: false },
-                bucAdn: { value: '', dirtyState: false },
-                compliance: { value: '', dirtyState: false },
-                confidentiality: { value: 'true', dirtyState: false },
-                customer: { value: '', dirtyState: false },
-                cluster: { value: '', dirtyState: false },
-                date: { value: '', dirtyState: false },
-                environment: { value: '', dirtyState: false },
-                managementHostType: { value: '', dirtyState: false },
-                optInoptOut: { value: 'true', dirtyState: false },
-                preserve: { value: 'true', dirtyState: false },
-                owner: { value: '', dirtyState: false },
-                project: { value: '', dirtyState: false },
-                security: { value: '', dirtyState: false },
-                version: { value: '', dirtyState: false },
-                app: { value: '', dirtyState: false },
-                assetId: { value: '', dirtyState: false },
-                uai: { value: '', dirtyState: false }
+                licenseId: { value: "", dirtyState: false },
+                emailAddress: { value: "", dirtyState: false },
+                sso: { value: "", dirtyState: false },
+                date: { value: "", dirtyState: false },
+                desc: { value: "", dirtyState: false },
+                username: { value: "", dirtyState: false },
+                key:"",
+                parent:"",
+                name:""
             }
         });
         expect(wrapper).toBeTruthy();
@@ -72,24 +44,12 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
     it('should have "Subscription form" with div only once', () => {
         const propsToPass = {
             helpText: {
-                subscriptionName: '',
-                subscriptionId: '',
-                serviceUri: '',
-                clientId: '',
-                clientSecret: '',
-                OAuth2: '',
-                adminToken: '',
-                applicationRole: '',
-                bucAdn: '',
-                compliance: '',
-                customer: '',
-                cluster: '',
+                licenseId:'',
+                emailAddress: '',
+                sso: '',
                 expdate: '',
-                managementHostType: '',
-                owner: '',
-                project: '',
-                security: '',
-                version: ''
+                desc: '',
+                username: ''
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
@@ -97,31 +57,15 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
         
         wrapper.setState({
             subscriptionForm:{
-                subscriptionName: { value: '', dirtyState: false },
-                subscriptionId: { value: '', dirtyState: false },
-                serviceUri: { value: '', dirtyState: false },
-                clientId: { value: '', dirtyState: false },
-                clientSecret: { value: '', dirtyState: false },
-                OAuth2: { value: '', dirtyState: false },
-                adminToken: { value: '', dirtyState: false },
-                applicationRole: { value: '', dirtyState: false },
-                bucAdn: { value: '', dirtyState: false },
-                compliance: { value: '', dirtyState: false },
-                confidentiality: { value: 'true', dirtyState: false },
-                customer: { value: '', dirtyState: false },
-                cluster: { value: '', dirtyState: false },
-                date: { value: '', dirtyState: false },
-                environment: { value: '', dirtyState: false },
-                managementHostType: { value: '', dirtyState: false },
-                optInoptOut: { value: 'true', dirtyState: false },
-                preserve: { value: 'true', dirtyState: false },
-                owner: { value: '', dirtyState: false },
-                project: { value: '', dirtyState: false },
-                security: { value: '', dirtyState: false },
-                version: { value: '', dirtyState: false },
-                app: { value: '', dirtyState: false },
-                assetId: { value: '', dirtyState: false },
-                uai: { value: '', dirtyState: false }
+                licenseId: { value: "", dirtyState: false },
+                emailAddress: { value: "", dirtyState: false },
+                sso: { value: "", dirtyState: false },
+                date: { value: "", dirtyState: false },
+                desc: { value: "", dirtyState: false },
+                username: { value: "", dirtyState: false },
+                key:"",
+                parent:"",
+                name:""
             }
         });
         expect(wrapper.find('div.subscription-form').length).toBe(1);

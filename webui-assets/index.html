@@ -10,8 +10,17 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     <!-- Bootstrap table -->
     <link rel="stylesheet" href="assets/static/css/jquery.dataTables.css">
-    <!-- Modular library -->
+  
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
+    
+      <!-- HighChart Library -->
+      <script src="assets/static/js/highchart.js" defer></script>
+      <script src="assets/static/js/series-label.js" defer></script>
+      <script src="assets/static/js/exporting.js" defer></script>
+      <script src="assets/static/js/export-data.js" defer></script>
+      <script src="assets/static/js/accessibility.js" defer></script>
+    
+    
     <title>EC Admin Console</title>
     <style>
       /*@font-face {
@@ -22,6 +31,13 @@
       #root{
         font-family: customRegular;
       }*/
+      
+         @font-face {
+        font-family: GE Inspira Sans;
+        src: url(GEInspiraSans-Regular-v02.ttf);
+      }
+
+      
       bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -54,6 +70,7 @@
         padding-top: 40px;
         padding-bottom: 40px;
         background-color: #f5f5f5;
+        font-family: GE Inspira Sans;
       }
       .btn-space {
         margin-right: 5px;
@@ -116,6 +133,14 @@
         min-height: 200px; 
         padding: 20px;
       }
+      
+      table{
+      width: 100% !important ;
+      }
+      
+      thead{
+        font-weight: bold !important ;
+      }
 
       #close {
         font-size: 1em;
@@ -164,6 +189,10 @@
         margin: auto;
         right: 0;
         left: 0;
+      }
+      
+       .blur {
+        opacity: 0.5;
       }
 
       .custom-success{
@@ -273,6 +302,7 @@
         background-color: #ffffff;
         border: 1px solid #ebeced;
         height: 500px;
+        overflow-y: auto;
       }
 
       .centered-div.View{
@@ -283,7 +313,11 @@
         height: 300px;
       }
 
-      .centered-div-header .view-header h6, .centered-div-header .maintainagentcreate-header h6, .centered-div-header .subscriptionupgrade-header h6{
+      .centered-div-header .view-header h6, 
+      .centered-div-header .maintainagentcreate-header h6, 
+      .centered-div-header .WebHooks-header h6,
+      .centered-div-header .Requestcreate-header h6,
+      .centered-div-header .subscriptionupgrade-header h6{
         font-weight: 600;
       }
 
@@ -291,7 +325,7 @@
         font-size: small;
       }
 
-      .view-header div:first-child, .Maintainagentcreate, .Subscriptioncreate, .Groupcreate{
+      .view-header div:first-child, .Maintainagentcreate, .Subscriptioncreate, .Groupcreate , .web-hook ,.Requestcreate{
         text-align: left;
       }
 
@@ -394,7 +428,7 @@
 
       .view-table{
         max-height: 350px;
-        /*overflow-y: scroll;*/
+        overflow-y: scroll;
         font-size: small;
       }
 
@@ -596,7 +630,7 @@
 
       .Maintainagentview .centered-div, .Maintainagentupgrade .centered-div, .Notification .centered-div, .Subscriptionupgrade .centered-div, .Groupupgrade .centered-div{
         max-height: 450px;
-        /*overflow-y: scroll;*/
+        overflow-y: auto;
         font-size: small;
       }
 
@@ -682,6 +716,29 @@
 
       .Monitorhealthstatus .control-label{
         text-align: left;
+      }
+      
+        #ops-btn {
+        text-align: justify;
+        min-width: 45em;
+        padding: 1.2em 1em 0;
+        box-shadow: 0 0 5px;
+        margin: 1em;
+        border-radius: 0.25em;
+      }
+
+      .buttons:after {
+        content: "";
+        display: inline-block;
+        width: 99.5%; /* generates an extra transparent line */
+      }
+
+      #access-gateway-btn,
+      #launch-gateway-btn,
+      #deploy-gateway-btn,
+      #restart-gateway-btn,
+      #kill-gateway-btn {
+        margin-left: 10px;
       }
 
       .insidedata{
@@ -793,6 +850,176 @@
         min-height: 100% !important;
         border-radius: 0 !important;
       }
+      
+           /*  helpguide start */
+
+      .helpGuide .label-container {
+        position: fixed;
+        bottom: 48px;
+        right: 105px;
+        display: table;
+        visibility: hidden;
+      }
+
+      .helpGuide .label-text {
+        color: #fff;
+        background: rgba(51, 51, 51, 0.5);
+        display: table-cell;
+        vertical-align: middle;
+        padding: 10px;
+        border-radius: 3px;
+      }
+
+      .helpGuide .label-arrow {
+        display: table-cell;
+        vertical-align: middle;
+        color: #333;
+        opacity: 0.5;
+      }
+
+      .helpGuide a:hover {
+        color: black;
+      }
+
+      .helpGuide .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        background-color: #005eb8;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        z-index: 1000;
+        animation: bot-to-top 2s ease-out;
+      }
+
+      .helpGuide ul {
+        position: fixed;
+        right: 40px;
+        padding-bottom: 20px;
+        bottom: 80px;
+        z-index: 100;
+      }
+
+      .helpGuide ul li {
+        list-style: none;
+        margin-bottom: 10px;
+      }
+
+      .helpGuide ul li a {
+        background-color: #005eb8;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 2px 3px #999;
+        width: 60px;
+        height: 60px;
+        display: block;
+      }
+
+      .helpGuide ul:hover {
+        visibility: visible !important;
+        opacity: 1 !important;
+      }
+
+      .helpGuide .my-float {
+        font-size: 24px;
+        margin-top: 18px;
+      }
+
+      a#menu-share + ul {
+        visibility: hidden;
+      }
+
+      a#menu-share:hover + ul {
+        visibility: visible;
+        animation: scale-in 0.5s;
+      }
+
+      a#menu-share i {
+        animation: rotate-in 0.5s;
+      }
+
+      a#menu-share:hover > i {
+        animation: rotate-out 0.5s;
+      }
+
+      @keyframes bot-to-top {
+        0% {
+          bottom: -40px;
+        }
+
+        50% {
+          bottom: 40px;
+        }
+      }
+
+      @keyframes scale-in {
+        from {
+          transform: scale(0);
+          opacity: 0;
+        }
+
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes rotate-in {
+        from {
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes rotate-out {
+        from {
+          transform: rotate(360deg);
+        }
+
+        to {
+          transform: rotate(0deg);
+        }
+      }
+
+      /* helpguide end */
+      
+        table > tbody > tr.parent-row > td:first-child:before {
+        height: 14px;
+        width: 14px;
+        display: block;
+        position: absolute;
+        color: white;
+        border: 2px solid white;
+        border-radius: 14px;
+        box-shadow: 0 0 3px #444;
+        box-sizing: content-box;
+        text-align: center;
+        text-indent: 0 !important;
+        font-family: "Courier New", Courier, monospace;
+        line-height: 14px;
+        content: "+";
+        background-color: #31b131;
+      }
+
+      table > tbody > tr[aria-expanded="true"] > td:first-child:before {
+        content: "-";
+        background-color: #d33333;
+      }
+      
+      .health-status-select {
+        border-left: none;
+        border-top: none;
+        border-right: none;
+      }
+      
 
       /*Cookie Consent Begin*/
       #cookieConsent {
@@ -911,7 +1138,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script type="text/javascript" src="assets/static/js/custom.js"></script>
-    
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  
   </body>
 </html>

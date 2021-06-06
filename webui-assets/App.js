@@ -7,13 +7,14 @@ import Subscriptioncreate from './Maintain/Subscriptioncreate.js';
 import Subscriptionupgrade from './Maintain/Subscriptionupgrade.js';
 import Groupcreate from './Maintain/Groupcreate.js';
 import Groupupgrade from './Maintain/Groupupgrade.js';
+import GroupView from './Maintain/GroupView.js';
 import Maintainagentcreate from './Maintain/Maintainagentcreate.js';
 /* istanbul ignore next */
 import Maintainagentupgrade from './Maintain/Maintainagentupgrade.js';
 import Maintainagentview from './Maintain/Maintainagentview.js';
-import Maintainwatchercreate from './Maintain/Maintainwatchercreate.js';
-import Maintainwatcherupgrade from './Maintain/Maintainwatcherupgrade.js';
-import Maintainwatcherview from './Maintain/Maintainwatcherview.js';
+import RequestCreate from './Maintain/RequestCreate.js';
+import RequestUpgrade from './Maintain/RequestUpgrade.js';
+import RequestView from './Maintain/RequestView.js';
 import Subscriptionview from './Maintain/Subscriptionview.js'; 
 /* istanbul ignore next */
 import Monitor from './Monitor/Monitor.js';
@@ -21,16 +22,19 @@ import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 import Report from './Report/Report.js';
-import Usermanagement from './Settings/Usermanagement.js';
+import UserManagement from './Settings/UserManagement.js';
+import UserProfile from "./Settings/UserProfile.js";
+import WebHooks from "./Settings/WebHooks.js";
 import Navbar from './Navbar/Navbar.js';
 import Header from './Header/Header.js';
 import Support from './Support/Support.js';
 import Cookienotification from './Cookienotification/Cookienotification.js';
+import FloaterHelp from "./FloaterHelp/FloaterHelp.js";
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 
-var API_URL = '/v1.1beta/ec';
+var API_URL = '/v1.2beta/ops/api/';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -61,8 +65,8 @@ export default class App extends React.Component {
         headerText:'',
         bodyText:'',
         buttons:[]
-      }
-    
+      },
+      user: "OpsAdmin",
     };
   }
 
@@ -73,21 +77,44 @@ export default class App extends React.Component {
     this.setState({
       authToken: authToken
     });
+	  
+	 /*    fetch( "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/oauth/user",{ //this.state.apiEndPoints.baseUrl + "oauth/user", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization':"Bearer " + authToken
+            }
+          })
+          .then((respons) => {
+              if (respons.status === 200) {
+                respons.json().then((resp) => {console.log(resp)})
+              }})*/
+	  
+	    this.showGlobalMessage(
+      true,
+      true,
+      "Please wait...",
+      "custom-success"
+    );
 
     // Get logged user's userId start
-    fetch(this.state.apiEndPoints.baseUrl + '/getDevId', {
+   let apiEndPoint= this.state.apiEndPoints.baseUrl + 'snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
+    fetch(apiEndPoint, {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': authToken
+          'Authorization':"Bearer " + authToken
       }
     })
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            if (respData.errorStatus.status === 'ok') {
-              /*respData.data.permissions = {
+            let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
+	          sessionStorage.setItem("snapshotData", JSON.stringify(respData))
+	
+            let permission = {
                 "roleId": 1,
                 "roleName": "Admin",
                 "accesses": {
@@ -142,7 +169,8 @@ export default class App extends React.Component {
                       "healthStatus": {
                           "view": true,
                           "edit": true,
-                          "delete": true
+                          "delete": true,
+			  "isUser": true,
                       }
                     }
                   },
@@ -156,11 +184,12 @@ export default class App extends React.Component {
                     "haveAccess": true
                   },
                 }
-              };*/
-              let userId = respData.data.user_id;
-              let profileName = respData.data.name;
-              let profileEmailId = respData.data.email;
-              let permissions = respData.data.permissions;
+              };
+ 	      this.hideGlobalMessage();
+              let userId = data.user_id;
+              let profileName = data.username;
+              let profileEmailId = data.email;
+              let permissions = permission; 
               this.setState({
                 profileData: {
                   email: profileEmailId,
@@ -170,13 +199,13 @@ export default class App extends React.Component {
                 permissions: permissions,
                 currentView: 'Dashboard'
               });
-            }
+            /* }
             else{
               this.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
               setTimeout(function () {
                 location.reload(true);
               }, 2000);
-            }
+            } */
           });
         }
         else {
@@ -189,42 +218,41 @@ export default class App extends React.Component {
     // Get logged user's userId end
 
     setTimeout(()=>{
-      this.updateEcConfigCookie();
-    },300000); // 5 mins
+      this.updateEcLocalStorage();
+    },60000); // 5 mins
   }
 
   /* istanbul ignore next */
-  updateEcConfigCookie(){
-    this.timer = setInterval(()=> this.getAuthTokenFromBackend(), 300000); // 5 mins
+  updateEcLocalStorage(){
+    this.timer = setInterval(()=> this.refreshSnapshot(), 300000); // 5 mins
   }
 
   /* istanbul ignore next */
   componentWillUnmount() {
-    clearInterval(this.timer);
+     clearInterval(this.timer);
     this.timer = null;
   }
 
   /* istanbul ignore next */
-  getAuthTokenFromBackend(){ 
-    fetch(this.state.apiEndPoints.baseUrl + '/refershToken' , {
+   refreshSnapshot(){ 
+    fetch(this.state.apiEndPoints.baseUrl + 'snapshot' , {
       method: 'GET',
       headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': this.state.authToken
+          'Authorization': "Bearer " + this.state.authToken
       }
     })
     .then((response) => {
         if (response.status === 200) {
           response.json().then((respData) => {
-            if (respData.errorStatus.status === 'ok') {
-              let newToken = respData.data;
+           /*    let newToken = respData.data;
               this.setState({
                 authToken: newToken
               });
               let cookieToUpdate = 'ec-config';
-              document.cookie = cookieToUpdate+"="+newToken;
-            }
+              document.cookie = cookieToUpdate+"="+newToken; */
+              sessionStorage.setItem("snapshotData", JSON.stringify(respData))
           });
         }
     });
@@ -245,6 +273,48 @@ export default class App extends React.Component {
         }
     }
   }
+	
+ /* istanbul ignore next */
+handleUser(user) {
+    let newpermission = { ...this.state.permissions };
+    if (user === "OpsAdmin") {
+      newpermission.accesses.maintain.subMenus.subscriptions.create = false;
+      newpermission.accesses.maintain.subMenus.subscriptions.edit = false;
+      newpermission.accesses.maintain.subMenus.subscriptions.delete = false;
+
+      newpermission.accesses.maintain.subMenus.groups.create = false;
+      newpermission.accesses.maintain.subMenus.groups.edit = false;
+      newpermission.accesses.maintain.subMenus.groups.delete = false;
+
+      newpermission.accesses.maintain.subMenus.agents.create = false;
+      newpermission.accesses.maintain.subMenus.agents.edit = false;
+      newpermission.accesses.maintain.subMenus.agents.delete = false;
+      newpermission.accesses.monitor.subMenus.healthStatus.isUser = false;
+      newpermission.accesses.settings.haveAccess = false;
+      this.setState({
+        permissions: newpermission,
+        user: "User",
+      });
+    }
+    if (user === "User") {
+      newpermission.accesses.maintain.subMenus.subscriptions.create = true;
+      newpermission.accesses.maintain.subMenus.subscriptions.edit = true;
+      newpermission.accesses.maintain.subMenus.subscriptions.delete = true;
+      newpermission.accesses.maintain.subMenus.groups.create = true;
+      newpermission.accesses.maintain.subMenus.groups.edit = true;
+      newpermission.accesses.maintain.subMenus.groups.delete = true;
+      newpermission.accesses.maintain.subMenus.agents.create = true;
+      newpermission.accesses.maintain.subMenus.agents.edit = true;
+      newpermission.accesses.maintain.subMenus.agents.delete = true;
+      newpermission.accesses.monitor.subMenus.healthStatus.isUser = true;
+      newpermission.accesses.settings.haveAccess = true;
+
+      this.setState({
+        permissions: newpermission,
+        user: "OpsAdmin",
+      });
+    }
+  }
 
   /* istanbul ignore next */
   servedView() {
@@ -253,7 +323,7 @@ export default class App extends React.Component {
       case 'Dashboard':
         return <Dashboard />; // jshint ignore:line
       case 'View':
-        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+        return <View baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
       case 'Maintain':
         return <Maintain />; // jshint ignore:line
       case 'Subscriptioncreate':
@@ -266,18 +336,20 @@ export default class App extends React.Component {
         return <Groupcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Groupupgrade':
         return <Groupupgrade helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
+      case 'GroupView':
+        return <GroupView helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions} />; // jshint ignore:line
       case 'Maintainagentcreate':
         return <Maintainagentcreate helpText={HELPTEXT} baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} showModal={this.showModal.bind(this)}/>; // jshint ignore:line
       case 'Maintainagentupgrade':
         return <Maintainagentupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Maintainagentview':
         return <Maintainagentview baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
-      case 'Maintainwatchercreate':
-        return <Maintainwatchercreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
-      case 'Maintainwatcherupgrade':
-        return <Maintainwatcherupgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
-      case 'Maintainwatcherview':
-        return <Maintainwatcherview />; // jshint ignore:line
+      case 'Requestcreate':
+        return <RequestCreate baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
+      case 'RequestUpgrade':
+        return <RequestUpgrade baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} permissions={this.state.permissions}  />; // jshint ignore:line
+      case 'RequestView':
+        return <RequestView baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken} userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Monitor':
         return <Monitor />; // jshint ignore:line
       case 'Notification':
@@ -289,7 +361,11 @@ export default class App extends React.Component {
       case 'Report':
         return <Report />; // jshint ignore:line
       case 'Usermanagement':
-        return <Usermanagement />; // jshint ignore:line
+        return <UserManagement />; // jshint ignore:line
+      case "UserProfile":
+        return <UserProfile />; // jshint ignore:line
+      case 'WebHooks':
+        return  <WebHooks userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} /> // jshint ignore:line
       case 'Support':
         return <Support />; // jshint ignore:line
       default:
@@ -438,12 +514,22 @@ export default class App extends React.Component {
                   }
                 
                   <div className="modal-body">
-                    <Header profileData={this.state.profileData} maxMinModal={this.maxMinModal.bind(this)} fullScreenModal={this.fullScreenModal.bind(this)} isFullScreenModal={this.state.isFullScreenModal} medModal={this.medModal.bind(this, this.state.currentView)}></Header>
+                    <Header
+			profileData={this.state.profileData}
+			maxMinModal={this.maxMinModal.bind(this)}
+			fullScreenModal={this.fullScreenModal.bind(this)}
+			isFullScreenModal={this.state.isFullScreenModal}
+			medModal={this.medModal.bind(this, this.state.currentView)}
+			handleUser={this.handleUser.bind(this)}
+                        user={this.state.user}
+			clickEve={this.changeView.bind(this)}
+		></Header>
                     <Navbar currentView={this.state.currentView} clickEve={this.changeView.bind(this)} permissions={this.state.permissions}></Navbar>
                     <div className="col-md-12 dynamic-container">
                       { this.servedView() }
                     </div>
                     <Cookienotification />
+		    <FloaterHelp/>
                     
                     <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
                       <div className="modal-dialog modal-sm">

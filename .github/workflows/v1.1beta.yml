@@ -20,7 +20,7 @@ jobs:
         id: ui-test
         #env:
         run: |
-          docker run --network host -v $pwd:/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
+          docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
       - name: pr merged
         if: github.event_name == 'push'
         id: pr-merged

@@ -22,6 +22,10 @@
     {
       "name": "Real time view",
       "description": "Handles real time APIs"
+    },
+    {
+      "name": "ng-portal",
+      "description": "Read and Write data from ng-portal"
     }
   ],
   "schemes": [
@@ -29,6 +33,122 @@
     "https"
   ],
   "paths": {
+    "{key}": {
+      "get": {
+        "summary": "Get the All Group names",
+        "description": "Get the all group names in a subscription",
+        "tags": [
+          "ng-portal"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "key name to get the details from database"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "ng-portal"
+        ],
+        "summary": "Update or create the key value pair",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Key name"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Data updated"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "ng-portal"
+        ],
+        "summary": "Delete Key Value pair",
+        "description": "",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Bearer Authorization token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Key value pair to delete"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Key value pair deleted"
+          },
+          "400": {
+            "description": "Invalid value"
+          }
+        }
+      }
+    },
     "/generateGatewayScript": {
       "post": {
         "tags": [
@@ -149,7 +269,7 @@
         }
       }
     },
-   "/listSubscriptions": {
+    "/listSubscriptions": {
       "get": {
         "tags": [
           "Subscription"
@@ -824,6 +944,16 @@
     }
   },
   "definitions": {
+    "UIRole": {
+      "type": "object",
+      "properties": {
+        "ROLE-NAME": [
+          "permission1",
+          "permission2",
+          "permission3"
+        ]
+      }
+    },
     "GatewayInfo": {
       "type": "object",
       "properties": {
