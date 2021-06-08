@@ -183,7 +183,7 @@ export default class Notification extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="centered-div">
+                    <div className="centered-div" id="notificationTableDiv">
                         <table id="notificationTable" className="table">
                             <thead>
                                 <tr>
