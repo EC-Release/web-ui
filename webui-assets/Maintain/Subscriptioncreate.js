@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default class Subscriptioncreate extends React.Component {
   constructor(props) {
@@ -91,8 +92,7 @@ export default class Subscriptioncreate extends React.Component {
 
   /* istanbul ignore next */
   handleFormValidation() {
-    let currentFormData = this.state.subscriptionForm;
-   
+    let currentFormData = this.state.subscriptionForm;   
 
     let licenseId = currentFormData.licenseId.value;
     let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
@@ -150,9 +150,10 @@ export default class Subscriptioncreate extends React.Component {
     );
     let currentForm = Object.assign({}, this.state.subscriptionForm);
     let prepareData = {};
-
+    let myuuid = uuidv4();
+    console.log("Your UUID is: " + myuuid);
    
-    prepareData.licenseId = currentForm.licenseId.value;
+    prepareData.licenseId = myuuid;
     prepareData.emailAddress = currentForm.emailAddress.value;
     prepareData.date = currentForm.date.value;
     prepareData.sso = currentForm.sso.value;
@@ -326,6 +327,7 @@ export default class Subscriptioncreate extends React.Component {
                         type="text"
                         className="form-control form-control-sm"
                         name="licenseId"
+			readOnly={true}
                         value={this.state.subscriptionForm.licenseId.value}
                         onChange={(event) => {
                           this.handleFormData(event);
@@ -516,7 +518,7 @@ export default class Subscriptioncreate extends React.Component {
                              id="create-subscription-btn"
                              disabled={!this.state.subscriptionFormIsValid}
                              onClick={this.createSubscription.bind(this)} 
-                             className="btn btn-sm customize-view-btn">CREATE SUBSCRIPTION</button>
+                             className="btn btn-sm customize-view-btn">CREATE LICENSE</button>
                     </div>
                 </div>
 
