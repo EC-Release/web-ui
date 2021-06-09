@@ -46,11 +46,8 @@ export default class Subscriptioncreate extends React.Component {
     let updatedValue =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     let currentForm = Object.assign({}, this.state.subscriptionForm);
-
-    if (fieldName === "licenseId") {
-      currentForm.licenseId.value = updatedValue;
-      currentForm.licenseId.dirtyState = true;
-    } else if (fieldName === "emailAddress") {
+	 
+     if (fieldName === "emailAddress") {
       currentForm.emailAddress.value = updatedValue;
       currentForm.emailAddress.dirtyState = true;
     } else if (fieldName === "sso") {
