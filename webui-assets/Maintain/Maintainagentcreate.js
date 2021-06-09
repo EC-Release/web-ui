@@ -156,6 +156,9 @@ export default class Maintainagentcreate extends React.Component {
                     if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
                       subscriptionData.push(individualData);
                     }
+	        if(individualData.parent ==="f894e5a8-0f9b-46ca-8b74-57e94610d731"){
+                      groupData.push(individualData);
+                    }
                 }
             }
             this.setState({keyName: "[" + groupData.length + "]"})
@@ -164,6 +167,7 @@ export default class Maintainagentcreate extends React.Component {
              }
              this.setState({
               subscriptions: subscriptionData,
+	      groups:groupData     
           });
           console.log(subscriptionData)
           this.props.hideGlobalMessage();
