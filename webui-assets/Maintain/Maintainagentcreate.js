@@ -140,39 +140,6 @@ export default class Maintainagentcreate extends React.Component {
 
 
         // Subscription list start
-        fetch(this.props.baseUrl + '/listSubscriptions', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer '+this.props.authToken
-            }
-        })
-        .then((response) => {
-            if (response.status === 200) {
-                response.json().then((respData) => {
-                    if(respData.errorStatus.status == 'ok'){
-                        let agentForm = this.state.agentForm;
-                        let subscriptions = respData.data;
-                        let selectedSubscriptionId = '';
-                        if(subscriptions === null){
-                            subscriptions = [];
-                        }
-                        else{
-                            selectedSubscriptionId = subscriptions[1].subscriptionId;
-                            agentForm.subscriptionId.value = selectedSubscriptionId;
-                        }
-
-                        this.setState({
-                            subscriptions: subscriptions,
-                            agentForm: agentForm
-                        });
-                        //this.changeFormAutofill(selectedSubscriptionId);
-                    }
-                });
-            }
-        });
-
 
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         if (sessionStorage.getItem("snapshotData") !== null) {
@@ -209,7 +176,7 @@ export default class Maintainagentcreate extends React.Component {
         // Subscription list end
     
         // get EC Version list start
-        fetch(this.props.baseUrl+'/ecVersions', { // this.props.baseUrl+'ecVersions'
+/*         fetch(this.props.baseUrl+'/ecVersions', { // this.props.baseUrl+'ecVersions'
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -238,7 +205,7 @@ export default class Maintainagentcreate extends React.Component {
                     }
                 });
             }
-        });
+        }); */
     }
 
     /* istanbul ignore next */
