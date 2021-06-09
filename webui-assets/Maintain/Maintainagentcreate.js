@@ -164,6 +164,7 @@ export default class Maintainagentcreate extends React.Component {
              this.setState({
               subscriptions: subscriptionData,
           });
+          console.log(subscriptionData)
           this.props.hideGlobalMessage();
           }
           else {
