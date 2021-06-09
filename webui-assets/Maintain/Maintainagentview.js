@@ -47,7 +47,7 @@ export default class Maintainagentview extends React.Component {
                         }
                     ];
 
-                    let gateways = respData.data;
+                   // let gateways = respData.data;
                     if(gateways === null){
                         gateways = [];
                     }
@@ -114,7 +114,7 @@ export default class Maintainagentview extends React.Component {
                                       "plugin": null
                                     }
                                 ];
-                                let servers = respData.data;
+                               // let servers = respData.data;
                                 if(servers === null){
                                     servers = [];
                                 }
@@ -177,7 +177,7 @@ export default class Maintainagentview extends React.Component {
                                                   "plugin": null
                                                 }
                                             ];
-                                            let clients = respData.data;
+                                           // let clients = respData.data;
                                             if(clients === null){
                                                 clients = [];
                                             }
