@@ -137,6 +137,8 @@ export default class Maintainagentcreate extends React.Component {
             });
         }
 
+
+
         // Subscription list start
         fetch(this.props.baseUrl + '/listSubscriptions', {
             method: 'GET',
@@ -165,11 +167,45 @@ export default class Maintainagentcreate extends React.Component {
                             subscriptions: subscriptions,
                             agentForm: agentForm
                         });
-                        this.changeFormAutofill(selectedSubscriptionId);
+                        //this.changeFormAutofill(selectedSubscriptionId);
                     }
                 });
             }
         });
+
+
+        this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
+        if (sessionStorage.getItem("snapshotData") !== null) {
+          let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
+          let allData =[]
+          let subscriptionData=[]
+          let groupData =[]
+            Object.keys(respData).forEach((key)=> {
+                allData.push(respData[key])
+            });
+            for(let individualData of allData){
+                if(individualData.parent){
+                    if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                      subscriptionData.push(individualData);
+                    }
+                }
+            }
+            this.setState({keyName: "[" + groupData.length + "]"})
+            if(subscriptionData.length > 0){
+              subscriptionData = [];
+             }
+             this.setState({
+              subscriptions: subscriptionData,
+          });
+          this.props.hideGlobalMessage();
+          }
+          else {
+              this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+              setTimeout(()=> {
+                  this.props.hideGlobalMessage();
+              }, 2000);
+          }
+
         // Subscription list end
     
         // get EC Version list start
@@ -1095,6 +1131,8 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.plg = serverFormData.allowPlugIn.value;
             prepareData.hca = serverFormData.hca.value;
             prepareData.os = serverFormData.os.value;
+            prepareData.parent = '65c77c4f-fdf4-4c6d-a703-48b12cc21b2d';
+            prepareData.name = 'server'
             for(let statePlugIn of this.state.plugIns){
                 if(serverFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
                     prepareData[statePlugIn.id] = true;
@@ -1227,6 +1265,8 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.plg = clientFormData.allowPlugIn.value;
             prepareData.hca = clientFormData.hca.value;
             prepareData.os = clientFormData.os.value;
+            prepareData.parent = '65c77c4f-fdf4-4c6d-a703-48b12cc21b2d';
+            prepareData.name = 'client'
             for(let statePlugIn of this.state.plugIns){
                 if(clientFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
                     prepareData[statePlugIn.id] = true;
@@ -1427,7 +1467,7 @@ export default class Maintainagentcreate extends React.Component {
                                             return(
                                                 <option
                                                     key={"subscriptionOption"+subscriptionIndex}
-                                                    value={ subscription.subscriptionId }>{ subscription.subscriptionName }</option>)
+                                                    value={ subscription.licenseId }>{ subscription.licenseId }</option>)
                                         })}
                                     </select>
                                 </div>
