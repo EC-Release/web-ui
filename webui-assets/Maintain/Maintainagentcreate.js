@@ -465,7 +465,7 @@ export default class Maintainagentcreate extends React.Component {
         else if(fieldName === 'group'){
             currentServerForm.group.value = updatedValue;
             currentServerForm.group.dirtyState = true;
-            this.changeAidForServer(updatedValue);
+          //  this.changeAidForServer(updatedValue);
         }
         else if(fieldName === 'clientId'){
             currentServerForm.clientId.value = updatedValue;
@@ -761,7 +761,7 @@ export default class Maintainagentcreate extends React.Component {
         else if(fieldName === 'group'){
             currentClientForm.group.value = updatedValue;
             currentClientForm.group.dirtyState = true;
-            this.changeAidTidForClient(updatedValue);
+          //  this.changeAidTidForClient(updatedValue);
         }
         else if(fieldName === 'clientId'){
             currentClientForm.clientId.value = updatedValue;
