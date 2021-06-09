@@ -276,7 +276,7 @@ export default class Subscriptionedit extends React.Component {
                         type="text"
                         className="form-control form-control-sm"
                         name="licenseId"
-                        disabled={this.props.isViewOnly}
+                        readOnly={true}
                         value={this.state.subscriptionForm.licenseId.value}
                         onChange={(event) => {
                           this.handleFormData(event);
@@ -477,7 +477,7 @@ export default class Subscriptionedit extends React.Component {
                         onClick={this.editSubscription.bind(this)}
                         className="btn btn-sm customize-view-btn"
                       >
-                        EDIT SUBSCRIPTION
+                        EDIT LICENSE
                       </button>
                     ) : null}
                     <button
