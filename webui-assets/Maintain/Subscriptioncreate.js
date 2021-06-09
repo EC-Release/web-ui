@@ -124,7 +124,6 @@ export default class Subscriptioncreate extends React.Component {
     let currentForm = Object.assign({}, this.state.subscriptionForm);
     let prepareData = {};
     let myuuid = uuidv4();
-    console.log("Your UUID is: " + myuuid);
    
     prepareData.licenseId = myuuid;
     prepareData.emailAddress = currentForm.emailAddress.value;
@@ -173,7 +172,6 @@ export default class Subscriptioncreate extends React.Component {
                   username: { value: "", dirtyState: false },
                   date:{ value: "", dirtyState: false }
                 };
-		this.handleCountSubscriptions();
                 this.setState({
                   subscriptionForm: subscriptionForm,
                   subscriptionFormIsValid: false,
