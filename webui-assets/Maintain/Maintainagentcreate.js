@@ -71,7 +71,10 @@ export default class Maintainagentcreate extends React.Component {
             ],
             /* istanbul ignore next */
             // API will provide this gateways
-            gateways: [],
+            gateways: [
+              {name:"gateway-03123012" , id:101},
+              {name:"gateway-31034216" , id:102},
+              {name:"gateway-03130357" , id:103}],
             // API will provide this businesses
             businesses: [
                 { name: 'Aviation', id: '1' },
@@ -1115,6 +1118,8 @@ export default class Maintainagentcreate extends React.Component {
                 }
             }
             
+            console.log(prepareData)
+
             fetch(this.props.baseUrl + '/generateServerScript', {
                 method: 'POST',
                 headers: {
