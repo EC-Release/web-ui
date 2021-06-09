@@ -85,13 +85,6 @@ export default class Subscriptioncreate extends React.Component {
     let formIsValid = true;
     let errors = {};
 
-    if (licenseId.trim() === "") {
-      if (licenseIdDirtyState) {
-        errors.licenseId = "Please enter License Id";
-      }
-      formIsValid = false;
-    }
-
     if (username.trim() === "") {
       if (usernameDirtyState) {
         errors.username = "Please enter Username";
