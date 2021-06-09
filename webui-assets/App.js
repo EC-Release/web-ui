@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+
 import Dashboard from './Dashboard/Dashboard.js';
 import View from './View/View.js';
 import Maintain from './Maintain/Maintain.js';
@@ -30,6 +31,7 @@ import Header from './Header/Header.js';
 import Support from './Support/Support.js';
 import Cookienotification from './Cookienotification/Cookienotification.js';
 import FloaterHelp from "./FloaterHelp/FloaterHelp.js";
+import Footer from "./Footer/Footer.js";
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
@@ -530,7 +532,7 @@ handleUser(user) {
                     </div>
                     <Cookienotification />
 		    <FloaterHelp/>
-                    
+                    <Footer/>
                     <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
                       <div className="modal-dialog modal-sm">
                         <div className="modal-content rounded-0">
