@@ -159,7 +159,7 @@ export default class Maintainagentcreate extends React.Component {
                 }
             }
             this.setState({keyName: "[" + groupData.length + "]"})
-            if(subscriptionData.length > 0){
+            if(subscriptionData.length < 0){
               subscriptionData = [];
              }
              this.setState({
