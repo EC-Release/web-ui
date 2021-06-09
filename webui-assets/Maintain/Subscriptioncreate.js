@@ -32,29 +32,12 @@ export default class Subscriptioncreate extends React.Component {
         { name: "True", id: "true" },
         { name: "False", id: "false" },
       ],
-      keyName:""
     };
   }
 
   /* istanbul ignore next */
   componentDidMount() {
-   	window.enableToolTip();
-	let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
-        let allData =[]
-        let subsData=[]
-          Object.keys(respData).forEach((key)=> {
-              allData.push(respData[key])
-          });
-          for(let individualData of allData){
-              if(individualData.parent){
-                  if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
-                  subsData.push(individualData)
-                  }
-              }
-          }
-         this.setState({
-              keyName:"subscription[" + subsData.length + "]"
-          })  
+   	window.enableToolTip(); 
   }
 	
   /* istanbul ignore next */
@@ -163,7 +146,7 @@ export default class Subscriptioncreate extends React.Component {
     prepareData.name = "License"
 
     // fetch(this.props.baseUrl + '/createSubscription', {
-    fetch(this.props.baseUrl + this.state.keyName, {
+    fetch(this.props.baseUrl + myuuid, {
       method: "POST",
       headers: {
         Accept: "application/json",
