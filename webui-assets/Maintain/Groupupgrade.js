@@ -31,7 +31,6 @@ export default class Groupupgrade extends React.Component {
                       }
                   }
                 this.generateTableStructure(technicalTableData);
-                console.log(technicalTableData)
                 this.setState({
                     tableData: technicalTableData
                 });
@@ -95,7 +94,7 @@ export default class Groupupgrade extends React.Component {
         for(let dataObj of tableData){
             let newDataObj = {};
             newDataObj.groupId = dataObj.groupId;
-            newDataObj.key = dataObj.groupId;
+            newDataObj.key = dataObj.key;
             newTableData.push(newDataObj);
         }
 
