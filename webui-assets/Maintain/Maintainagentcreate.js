@@ -552,7 +552,8 @@ export default class Maintainagentcreate extends React.Component {
             currentServerForm.os.value = updatedValue;
             currentServerForm.os.dirtyState = true;
         }
-
+	    
+	console.log(serverForm)
         this.setState({
             serverForm: currentServerForm
         });
