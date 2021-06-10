@@ -656,7 +656,7 @@ export default class Maintainagentcreate extends React.Component {
             formIsValid = false;
         }
 
-        if(hostValue.trim() === ''){
+    /*    if(hostValue.trim() === ''){
             if(hostDirtyState){
                 errors.host = 'Please enter Host';
             }
@@ -673,7 +673,7 @@ export default class Maintainagentcreate extends React.Component {
                 errors.host = 'Host ends with /agent';
             }
             formIsValid = false;
-        }
+        }*/
 
         if(zoneValue.trim() === ''){
             if(zoneDirtyState){
@@ -939,7 +939,7 @@ export default class Maintainagentcreate extends React.Component {
             formIsValid = false;
         }
 
-        if(hostValue.trim() === ''){
+      /*  if(hostValue.trim() === ''){
             if(hostDirtyState){
                 errors.host = 'Please enter Host';
             }
@@ -956,7 +956,7 @@ export default class Maintainagentcreate extends React.Component {
                 errors.host = 'Host ends with /agent';
             }
             formIsValid = false;
-        }
+        }*/
 
         if(localPortValue.trim() === ''){
             if(localPortDirtyState){
