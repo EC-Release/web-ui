@@ -1134,7 +1134,7 @@ export default class Maintainagentcreate extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        if(respData.errorStatus.status == 'ok'){
+                        /* if(respData.errorStatus.status == 'ok'){ */
                             this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
@@ -1201,13 +1201,13 @@ export default class Maintainagentcreate extends React.Component {
                                     serverFormIsValid: false
                                 });
                             }, 2000);
-                        }
+                       /*  }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                             setTimeout(()=> {
                                 this.props.hideGlobalMessage();
                             }, 2000);
-                        }
+                        } */
                     });
                 }
                 else{
@@ -1268,7 +1268,7 @@ export default class Maintainagentcreate extends React.Component {
             .then((response) => {
                 if (response.status === 200) {
                     response.json().then((respData) => {
-                        if(respData.errorStatus.status == 'ok'){
+                       /*  if(respData.errorStatus.status == 'ok'){ */
                             this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
@@ -1333,13 +1333,13 @@ export default class Maintainagentcreate extends React.Component {
                                     clientFormIsValid: false
                                 });
                             }, 2000);
-                        }
+                      /*   }
                         else{
                             this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                             setTimeout(()=> {
                                 this.props.hideGlobalMessage();
                             }, 2000);
-                        }
+                        } */
                     });
                 }
                 else{
