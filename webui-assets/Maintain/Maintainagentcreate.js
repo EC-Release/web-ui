@@ -552,8 +552,7 @@ export default class Maintainagentcreate extends React.Component {
             currentServerForm.os.value = updatedValue;
             currentServerForm.os.dirtyState = true;
         }
-	    
-	console.log(currentServerForm)
+	   
         this.setState({
             serverForm: currentServerForm
         });
@@ -1110,7 +1109,6 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.os = serverFormData.os.value;
             prepareData.parent = '65c77c4f-fdf4-4c6d-a703-48b12cc21b2d';
             prepareData.name = 'server'
-            console.log(prepareData)
             for(let statePlugIn of this.state.plugIns){
                 if(serverFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
                     prepareData[statePlugIn.id] = true;
