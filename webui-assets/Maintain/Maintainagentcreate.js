@@ -1110,6 +1110,7 @@ export default class Maintainagentcreate extends React.Component {
             prepareData.os = serverFormData.os.value;
             prepareData.parent = '65c77c4f-fdf4-4c6d-a703-48b12cc21b2d';
             prepareData.name = 'server'
+            console.log(prepareData)
             for(let statePlugIn of this.state.plugIns){
                 if(serverFormData.plugIn.value.indexOf(statePlugIn.id) !== -1){
                     prepareData[statePlugIn.id] = true;
@@ -1121,7 +1122,7 @@ export default class Maintainagentcreate extends React.Component {
             
             console.log(prepareData)
 
-            fetch(this.props.baseUrl + '/generateServerScript', {
+            fetch(this.props.baseUrl + 'generateServerScript', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -1255,7 +1256,7 @@ export default class Maintainagentcreate extends React.Component {
                 }
             }
 
-            fetch(this.props.baseUrl + '/generateClientScript', {
+            fetch(this.props.baseUrl + 'generateClientScript', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
