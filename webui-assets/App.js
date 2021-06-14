@@ -531,7 +531,7 @@ handleUser(user) {
                       { this.servedView() }
                     </div>
                     <Cookienotification />
-		    <FloaterHelp/>
+		                <FloaterHelp/>
                     <Footer/>
                     <div className="modal fade logoutWarningModal" id="logoutWarningModal" role="dialog" data-backdrop="static" data-keyboard="false">
                       <div className="modal-dialog modal-sm">
