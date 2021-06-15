@@ -170,9 +170,8 @@ export default class Maintainagentcreate extends React.Component {
              }
              this.setState({
               subscriptions: subscriptionData,
-	      groups:groupData     
+	            groups:groupData     
           });
-          console.log(subscriptionData)
           this.props.hideGlobalMessage();
           }
           else {
@@ -1118,8 +1117,6 @@ export default class Maintainagentcreate extends React.Component {
                 }
             }
             
-            console.log(prepareData)
-
             fetch(this.props.baseUrl + 'generateServerScript', {
                 method: 'POST',
                 headers: {
@@ -1133,6 +1130,7 @@ export default class Maintainagentcreate extends React.Component {
                 if (response.status === 200) {
                     response.json().then((respData) => {
                         /* if(respData.errorStatus.status == 'ok'){ */
+                          sessionStorage.setItem("ServerData",JSON.stringify(prepareData))
                             this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
@@ -1268,6 +1266,7 @@ export default class Maintainagentcreate extends React.Component {
                     response.json().then((respData) => {
                        /*  if(respData.errorStatus.status == 'ok'){ */
                             this.props.hideGlobalMessage();
+                            sessionStorage.setItem("ClientData",JSON.stringify(prepareData))
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
                                 let selectedOs = '';
