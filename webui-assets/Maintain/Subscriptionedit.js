@@ -249,7 +249,7 @@ export default class Subscriptionedit extends React.Component {
                 <div className="row">
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                      LICENSE ID
+                      License ID
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
@@ -272,9 +272,9 @@ export default class Subscriptionedit extends React.Component {
                         name="licenseId"
                         readOnly={true}
                         value={this.state.subscriptionForm.licenseId.value}
-                        onChange={(event) => {
+                       {/* onChange={(event) => {
                           this.handleFormData(event);
-                        }}
+                        }}  */}
                       />
                       <small className="text-danger">
                         {this.state.errorsSubscriptionForm["licenseId"]}
@@ -285,7 +285,7 @@ export default class Subscriptionedit extends React.Component {
 
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                      EXPIRY
+                      Expiry Date/Time
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
@@ -323,7 +323,7 @@ export default class Subscriptionedit extends React.Component {
                 <div className="row">
                 <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                      EMAIL ADDRESS
+                      Email Address
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
@@ -394,7 +394,7 @@ export default class Subscriptionedit extends React.Component {
                 <div className="row">
                 <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                     USER FULLNAME
+                     User Fullname
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
@@ -428,7 +428,7 @@ export default class Subscriptionedit extends React.Component {
                   </div>
                   <div className="col-sm-6">
                     <div className="col-sm-12 label required">
-                      DESCRIPTION
+                      Description
                       <img
                         alt="down-arrow"
                         src="assets/static/images/icon_greensortingdown.svg"
