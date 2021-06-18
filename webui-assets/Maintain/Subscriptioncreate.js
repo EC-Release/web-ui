@@ -300,9 +300,9 @@ export default class Subscriptioncreate extends React.Component {
                         name="licenseId"
 			readOnly={true}
                         value={this.state.subscriptionForm.licenseId.value}
-                        onChange={(event) => {
+                      /*  onChange={(event) => {
                           this.handleFormData(event);
-                        }}
+                        }}*/
                       />
                       <small className="text-danger">
                         {this.state.errorsSubscriptionForm["licenseId"]}
