@@ -1409,7 +1409,7 @@ export default class Maintainagentcreate extends React.Component {
                             <hr></hr>
                             <div className="row form-body">
                                 <div className="col-sm-3">
-                                    <h6>AGENT MODE</h6>
+                                    <h6>Agent Mode</h6>
                                         <div className="col-sm-12 mb-2">
                                             {this.state.agentModeButtons.map((agentModeButton, buttonIndex) => {
                                                 return(
@@ -1466,7 +1466,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                MODE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Mode <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1479,7 +1479,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Group <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <select className="form-control form-control-sm" name="group" value={this.state.serverForm.group.value} onChange={(event)=>{this.handleServerFormData(event)}}>
@@ -1495,7 +1495,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
+                                                Agent ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1510,7 +1510,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Client ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1528,7 +1528,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
+                                                Client Secret <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.serverForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'serverForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1543,7 +1543,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                DURATION <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Duration <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1574,7 +1574,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <select className="form-control form-control-sm" name="host" value={this.state.serverForm.host.value} onChange={(event)=>{this.handleServerFormData(event)}}>
@@ -1593,7 +1593,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                ZONE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Zone <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1608,7 +1608,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                SERVICE URL <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Service URL <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1622,7 +1622,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                REMOTE HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Remote Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1637,7 +1637,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                REMOTE PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            Remote Port <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1656,7 +1656,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                HEALTH PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Health Port <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1672,7 +1672,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Operating System  <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <select className="form-control form-control-sm" name="os" value={this.state.serverForm.os.value} onChange={(event)=>{this.handleServerFormData(event)}}>
@@ -1687,7 +1687,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                PROXY
+                                                Proxy
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1701,7 +1701,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                NO PROXY
+                                                No Proxy
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1718,7 +1718,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Allow Plug-in <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <div className="custom-control custom-checkbox">
@@ -1737,7 +1737,7 @@ export default class Maintainagentcreate extends React.Component {
                                             this.state.serverForm.allowPlugIn.value ? 
                                             <div className="col-sm-3">
                                                 <div className="col-sm-12 label">
-                                                    PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Plug-in <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                                 </div>
                                                 <div className="col-sm-12 mb-2">
                                                     <select multiple className="form-control form-control-sm" style={{height:'45px'}} name="plugIn" value={this.state.serverForm.plugIn.value} onChange={(event)=>{this.handleServerFormData(event)}}>
@@ -1782,7 +1782,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                MODE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Mode <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1795,7 +1795,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                GROUP <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Group <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <select className="form-control form-control-sm" name="group" value={this.state.clientForm.group.value} onChange={(event)=>{this.handleClientFormData(event)}}>
@@ -1811,7 +1811,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                AGENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
+                                                Agent ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.agentId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'agentId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1826,7 +1826,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Client ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1844,7 +1844,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                CLIENT SECRET <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
+                                            Client Secret <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.clientSecret.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'clientSecret')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1859,7 +1859,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                DURATION <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Duration <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1890,7 +1890,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <select className="form-control form-control-sm" name="host" value={this.state.clientForm.host.value} onChange={(event)=>{this.handleClientFormData(event)}}>
@@ -1909,7 +1909,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                LOCAL PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Local Port <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1925,7 +1925,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                TARGET ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.targetId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
+                                                Target ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" /> { this.state.clientForm.targetId.type == 'password' ? <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye cursor-pointer" title="Show"></i> : <i onClick={(event)=>{this.showHideField(event, 'clientForm', 'targetId')}} className="fa fa-eye-slash cursor-pointer" title="Hide"></i> }
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1940,7 +1940,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                PROXY
+                                            Proxy
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1954,7 +1954,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                NO PROXY
+                                                No Proxy
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1971,7 +1971,7 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="row">
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                HEALTH PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Health Port <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <input
@@ -1987,7 +1987,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                OPERATING SYSTEM <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Operating System <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                             </div>
                                             <div className="col-sm-12 mb-2">
                                                 <select className="form-control form-control-sm" name="os" value={this.state.clientForm.os.value} onChange={(event)=>{this.handleClientFormData(event)}}>
@@ -2002,7 +2002,7 @@ export default class Maintainagentcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-3">
                                             <div className="col-sm-12 label required">
-                                                    ALLOW PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                    Allow Plug-in <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                                 </div>
                                                 <div className="col-sm-12 mb-2">
                                                     <div className="custom-control custom-checkbox">
@@ -2021,7 +2021,7 @@ export default class Maintainagentcreate extends React.Component {
                                             this.state.clientForm.allowPlugIn.value ? 
                                             <div className="col-sm-3">
                                                 <div className="col-sm-12 label">
-                                                    PLUG-IN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                                Plug-in <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
                                                 </div>
                                                 <div className="col-sm-12 mb-2">
                                                     <select multiple className="form-control form-control-sm" style={{height:'45px'}} name="plugIn" value={this.state.clientForm.plugIn.value} onChange={(event)=>{this.handleClientFormData(event)}}>
