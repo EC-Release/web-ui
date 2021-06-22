@@ -141,7 +141,7 @@ export default class WebHooks extends React.Component {
       prepareData.name = "webHook"
   
       // fetch(this.props.baseUrl + '/createSubscription', {
-      fetch(this.props.baseUrl + `webhook-${myuuid}` , {
+      fetch(`${this.props.baseUrl}webhook-${myuuid}` , {
         method: "POST",
         headers: {
           Accept: "application/json",
