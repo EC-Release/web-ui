@@ -365,10 +365,10 @@ export default class WebHooks extends React.Component {
                         </div>
                       </div>
                     </div>
-
+                    <br/>
                     <div className="row">
-                        <div className="col-m-3" >&nbsp;</div>
-                        <div  className="col-sm-3 mb-2 text-center">
+                        <div className="col-sm-4" >&nbsp;</div>
+                        <div  className="col-sm-2 mb-2 text-right">
                         <button
                           id="create-group-btn"
                           disabled={!this.state.formIsValid}
@@ -377,7 +377,7 @@ export default class WebHooks extends React.Component {
                         >
                           CREATE WEBHOOKS
                         </button> </div>
-                        <div className="col-sm-3 mb-2 text-center">
+                        <div className="col-sm-2 mb-2 text-left">
                         <button
                           id="create-group-btn"
                           onClick={()=>this.setState({showForm:false})}
