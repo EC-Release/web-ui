@@ -522,7 +522,7 @@ export default class WebHooks extends React.Component {
                   </div>
                   <hr />
                   <div className="row">
-                    <div className="col-sm-12 text-center">
+                    <div className="col-sm-12 text-center" id="webhookTableDiv">
                     <table className="table ">
                         <thead>
                           <tr>
