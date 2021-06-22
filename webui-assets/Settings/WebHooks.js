@@ -218,11 +218,25 @@ export default class WebHooks extends React.Component {
             this.props.hideGlobalMessage();
           }, 2000);
         });
-
-
-
-
   }
+  
+   /* istanbul ignore next */ 
+    snapshotUpdate(){
+        fetch(this.props.baseUrl + "snapshot", {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + this.props.authToken,
+            }
+          })
+        .then((response) => {
+            if (response.status === 200) {
+              response.json().then((respData) => {
+                sessionStorage.setItem("snapshotData", JSON.stringify(respData))
+        })
+        }})
+    }			
 
   render() {
     /* jshint ignore:start */
