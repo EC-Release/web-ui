@@ -1,4 +1,3 @@
-const cacheName = "v1";
 
 //service worker install
 self.addEventListener("install", (e) => {
