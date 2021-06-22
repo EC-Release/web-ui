@@ -363,11 +363,11 @@ handleUser(user) {
       case 'Report':
         return <Report />; // jshint ignore:line
       case 'Usermanagement':
-        return <UserManagement />; // jshint ignore:line
+        return <UserManagement baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken}  userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)}  />; // jshint ignore:line
       case "UserProfile":
-        return <UserProfile />; // jshint ignore:line
+        return <UserProfile baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken}  userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)}  />; // jshint ignore:line
       case 'WebHooks':
-        return  <WebHooks userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} /> // jshint ignore:line
+        return  <WebHooks baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken}  userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} /> // jshint ignore:line
       case 'Support':
         return <Support />; // jshint ignore:line
       default:
