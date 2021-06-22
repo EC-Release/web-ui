@@ -179,7 +179,7 @@ export default class WebHooks extends React.Component {
       let currentForm = Object.assign({}, this.state.formData);
       let prepareData = {};
       let myuuid = uuidv4();
-      prepareData.name = currentForm.name.value;
+      prepareData.webhookname = currentForm.name.value;
       prepareData.eventType = currentForm.eventType.value;
       prepareData.endpoint = currentForm.endpoint.value;
       prepareData.secret = btoa(unescape(encodeURIComponent( currentForm.secret.value )));
@@ -225,8 +225,7 @@ export default class WebHooks extends React.Component {
                   };
                   this.setState({
                     formData: formData,
-                    formIsValid: false,
-                    showForm:false
+                    formIsValid: false
                   });
                 }, 2000);
               } else {
@@ -281,7 +280,7 @@ export default class WebHooks extends React.Component {
         if (response.status === 200) {
           response.json().then((respData) => {
             sessionStorage.setItem("snapshotData", JSON.stringify(respData));
-            this.fetchData()
+            this.fetchData();
     })
     }})
     }			
@@ -429,8 +428,8 @@ export default class WebHooks extends React.Component {
                     </div>
 
                     <div className="row">
-                        <div className="col-m-3" ></div>
-                        <div  className="col-sm-3 mb-2 text-center">
+                        <div className="col-sm-4" ></div>
+                        <div  className="col-sm-2 mb-2 text-right">
                         <button
                           id="create-group-btn"
                           disabled={!this.state.formIsValid}
@@ -439,10 +438,9 @@ export default class WebHooks extends React.Component {
                         >
                           CREATE WEBHOOKS
                         </button> </div>
-                        <div className="col-sm-3 mb-2 text-center">
+                        <div className="col-sm-2 mb-2 text-left">
                         <button
                           id="create-group-btn"
-                          disabled={!this.state.formIsValid}
                           onClick={()=>this.setState({showForm:false})}
                           className="btn btn-sm customize-view-btn"
                         >
@@ -484,14 +482,14 @@ export default class WebHooks extends React.Component {
                             <th>Name</th>
                             <th>Event Type</th>
                             <th>Target Endpoint</th>
-                            <th>Actions</th>
+                            
                           </tr>
                         </thead>
                         <tbody>
                           {this.state.WebHookList.map((hooks, key) => {
                             return (
                               <tr key={"user" + key}>
-                                <td>{hooks.name} </td>
+                                <td>{hooks.webhookname} </td>
                                 <td>{hooks.eventType} </td>
                                 <td> {hooks.endpoint}</td>
                                 <td>
