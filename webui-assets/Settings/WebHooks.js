@@ -287,7 +287,7 @@ export default class WebHooks extends React.Component {
     }
     
      /* istanbul ignore next */ 
-    deleteWebhook(tbodyVal){
+    deleteWebhook(tbodyVal,rowIndex){
         let cnf = window.confirm('Are you sure you want to delete');
         if (cnf) {
             this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
@@ -533,9 +533,9 @@ export default class WebHooks extends React.Component {
                           </tr>
                         </thead>
                         <tbody>
-                          {this.state.WebHookList.map((hooks, key) => {
+                          {this.state.WebHookList.map((hooks, indx) => {
                             return (
-                              <tr key={"user" + key}>
+                              <tr key={"user" + indx}>
                                 <td>{hooks.webhookname} </td>
                                 <td>{hooks.eventType} </td>
                                 <td> {hooks.endpoint}</td>
@@ -557,7 +557,7 @@ export default class WebHooks extends React.Component {
                                       src="assets/static/images/icon_tablemaintainmonitor.svg"
                                     />
                                     <img
-                                      onClick={()=>this.deleteWebhook(hooks)}
+                                      onClick={()=>this.deleteWebhook(hooks,indx)}
                                       alt="delete-icon"
                                       title="Delete"
                                       src="assets/static/images/icondelete_tablemaintainmonitor.svg"
