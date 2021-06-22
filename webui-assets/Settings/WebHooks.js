@@ -25,7 +25,8 @@ export default class WebHooks extends React.Component {
 
 /* istanbul ignore next */
   componentDidMount(){
-    this.fetchData()
+    window.initTable('webhookTable', true);
+    this.fetchData();
   }
 
   /* istanbul ignore next */
@@ -283,7 +284,53 @@ export default class WebHooks extends React.Component {
             this.fetchData();
     })
     }})
-    }			
+    }
+    
+     /* istanbul ignore next */ 
+    deleteWebhook(tbodyVal){
+        let cnf = window.confirm('Are you sure you want to delete');
+        if (cnf) {
+            this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
+            fetch(this.props.baseUrl + tbodyVal.key, {
+                method: 'DELETE',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer '+this.props.authToken
+                }
+            })
+            .then((response) => {
+                if (response.status === 200) {
+                    response.json().then((respData) => {
+                     /*    if (respData.errorStatus.status === 'ok') { */
+                            this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
+                            window.removeDataTableRow('webhookTable', rowIndex);
+                            let that = this;
+                            setTimeout(function () {
+                                that.props.hideGlobalMessage();
+                            }, 2000);
+                           that.snapshotUpdate();
+                    
+                    });
+                }
+                else {
+                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                    let that = this;
+                    setTimeout(function () {
+                        that.props.hideGlobalMessage();
+                    }, 2000);
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                setTimeout(()=> {
+                    this.props.hideGlobalMessage();
+                }, 2000);
+            });
+        }
+
+    }
 
   render() {
     /* jshint ignore:start */
@@ -510,6 +557,7 @@ export default class WebHooks extends React.Component {
                                       src="assets/static/images/icon_tablemaintainmonitor.svg"
                                     />
                                     <img
+                                      onClick={()=>this.deleteWebhook(hooks)}
                                       alt="delete-icon"
                                       title="Delete"
                                       src="assets/static/images/icondelete_tablemaintainmonitor.svg"
