@@ -181,7 +181,7 @@ export default class Navbar extends React.Component {
                                 { this.props.permissions.accesses.monitor.subMenus.notifications.view ?
                                     <li>
                                         <a id="nav-notification" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Notification')} href="#">
-                                            Alert
+                                            Event
                                         </a>
                                     </li>
                                     :
