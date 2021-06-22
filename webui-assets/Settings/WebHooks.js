@@ -393,10 +393,10 @@ export default class WebHooks extends React.Component {
                             }}
                           >
                             <option value="">Choose a event </option>
-                            <option value="client">Client Agent Restart </option>
-                            <option value="server">Server Agent Restart</option>
-                            <option value="gateway">Gateway Agent Restart</option>
-                            <option value="connection">
+                            <option value="Client Agent Restart">Client Agent Restart </option>
+                            <option value="Server Agent Restart">Server Agent Restart</option>
+                            <option value="Gateway Agent Restart">Gateway Agent Restart</option>
+                            <option value="Connection Establish">
                                Connection Establish
                             </option>
                           </select>
@@ -474,6 +474,7 @@ export default class WebHooks extends React.Component {
                       </div>
                     </div>
 
+                    <br/>
                     <div className="row">
                         <div className="col-sm-4" ></div>
                         <div  className="col-sm-2 mb-2 text-right">
