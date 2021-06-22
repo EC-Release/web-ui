@@ -236,7 +236,7 @@ function initTable(tableId,  preserveState){
                     $('td:eq('+i+')', row).css('min-width', (tableWidth/data.length)+'px');
                 }
             },
-            "pageLength": 10,
+            "pageLength": pageLength,
             destroy: true,
             "fnDrawCallback": function(oSettings) {
                 if (oSettings.aiDisplay.length <= pageLength) {
