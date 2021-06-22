@@ -529,7 +529,7 @@ export default class WebHooks extends React.Component {
                             <th>Name</th>
                             <th>Event Type</th>
                             <th>Target Endpoint</th>
-                            
+                             <th>Actions</th>
                           </tr>
                         </thead>
                         <tbody>
