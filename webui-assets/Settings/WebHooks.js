@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export default class WebHooks extends React.Component {
   /* istanbul ignore next */
@@ -85,7 +86,7 @@ export default class WebHooks extends React.Component {
   }
   
   /* istanbul ignore next */
-  createNotification() {
+/*   createNotification() {
     this.props.showGlobalMessage(
       false,
       true,
@@ -102,7 +103,7 @@ export default class WebHooks extends React.Component {
     this.setState({
       showForm: false,
     });
-  }
+  } */
 
   /* istanbul ignore next */
   showHideField(e, fieldName) {
@@ -118,6 +119,109 @@ export default class WebHooks extends React.Component {
     this.setState({
       formData: currentForm,
     });
+  }
+
+    /* istanbul ignore next */
+  createWebHook(){
+    this.props.showGlobalMessage(
+        true,
+        true,
+        "Please wait...",
+        "custom-success"
+      );
+      let currentForm = Object.assign({}, this.state.formData);
+      let prepareData = {};
+      let myuuid = uuidv4();
+      prepareData.name = currentForm.name.value;
+      prepareData.eventType = currentForm.eventType.value;
+      prepareData.endpoint = currentForm.endpoint.value;
+      prepareData.secret = btoa(unescape(encodeURIComponent( currentForm.secret.value )));
+  
+      prepareData.parent = "5e69f043-966d-438f-9421-83fb18272a7d"
+      prepareData.name = "webHook"
+  
+      // fetch(this.props.baseUrl + '/createSubscription', {
+      fetch(this.props.baseUrl + `webhook-${myuuid}` , {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + this.props.authToken,
+        },
+        body: JSON.stringify(prepareData),
+      })
+        .then((response) => {
+          localStorage.setItem("prepareData", JSON.stringify(prepareData));
+  
+          if (response.status === 200) {
+            this.snapshotUpdate();
+            response.json().then((respData) => {
+              respData = {
+                errorStatus: {
+                  status: "ok",
+                },
+              };
+              if (respData.errorStatus.status == "ok") {
+                this.props.showGlobalMessage(
+                  false,
+                  true,
+                  "Record saved successfully",
+                  "custom-success"
+                );
+                setTimeout(() => {
+                  this.props.hideGlobalMessage();
+                  let formData = {
+                    name: { value: "", dirtyState: false },
+                    eventType: { value: "", dirtyState: false },
+                    endpoint: { value: "", dirtyState: false },
+                    secret: { value: "", dirtyState: false, type: "password" },
+                  };
+                  this.setState({
+                    formData: formData,
+                    formIsValid: false,
+                    showForm:false
+                  });
+                }, 2000);
+              } else {
+                this.props.showGlobalMessage(
+                  true,
+                  true,
+                  respData.errorStatus.statusMsg,
+                  "custom-danger"
+                );
+                setTimeout(() => {
+                  this.props.hideGlobalMessage();
+                }, 2000);
+              }
+            });
+          } else {
+            this.props.showGlobalMessage(
+              true,
+              true,
+              "Please try after sometime",
+              "custom-danger"
+            );
+            setTimeout(() => {
+              this.props.hideGlobalMessage();
+            }, 2000);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          this.props.showGlobalMessage(
+            true,
+            true,
+            "Please try after sometime",
+            "custom-danger"
+          );
+          setTimeout(() => {
+            this.props.hideGlobalMessage();
+          }, 2000);
+        });
+
+
+
+
   }
 
   render() {
@@ -263,14 +367,23 @@ export default class WebHooks extends React.Component {
                     </div>
 
                     <div className="row">
-                      <div className="col-sm-12 mb-2 text-center">
+                        <div className="col-m-3" >&nbsp;</div>
+                        <div  className="col-sm-3 mb-2 text-center">
                         <button
                           id="create-group-btn"
                           disabled={!this.state.formIsValid}
-                          onClick={this.createNotification.bind(this)}
+                          onClick={this.createWebHook.bind(this)}
                           className="btn btn-sm customize-view-btn"
                         >
                           CREATE WEBHOOKS
+                        </button> </div>
+                        <div className="col-sm-3 mb-2 text-center">
+                        <button
+                          id="create-group-btn"
+                          onClick={()=>this.setState({showForm:false})}
+                          className="btn btn-sm customize-view-btn"
+                        >
+                          BACK
                         </button>
                       </div>
                     </div>
