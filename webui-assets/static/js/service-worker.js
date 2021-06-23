@@ -1,7 +1,21 @@
+const cacheName = "v1";
+
+const cacheAssets =[
+  'index.html',
+  'app.js'
+]
 
 //service worker install
 self.addEventListener("install", (e) => {
   console.log("service Worker: Installed");
+   /*   e.waitUntil(
+    caches
+    .open(cacheName)
+    .then(cache=>
+    {  console.log('Service Worker: caching files');
+      cache.addAll(cacheAssets)})
+      .then(()=>self.skipWaiting())
+  )*/
 });
 
 //service worker activated
