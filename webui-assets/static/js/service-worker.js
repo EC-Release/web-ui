@@ -8,14 +8,14 @@ const cacheAssets =[
 //service worker install
 self.addEventListener("install", (e) => {
   console.log("service Worker: Installed");
-   /*   e.waitUntil(
+    e.waitUntil(
     caches
     .open(cacheName)
     .then(cache=>
     {  console.log('Service Worker: caching files');
       cache.addAll(cacheAssets)})
       .then(()=>self.skipWaiting())
-  )*/
+  )
 });
 
 //service worker activated
@@ -38,7 +38,7 @@ self.addEventListener("activate", (e) => {
 //Call fetch event
 self.addEventListener("fetch", (e) => {
   console.log("Service Worker : fetching");
-   e.respondWith(
+   /*  e.respondWith(
     fetch(e.request)
       .then((res) => {
         //make copy/clone of response
@@ -50,4 +50,11 @@ self.addEventListener("fetch", (e) => {
       })
       .catch((err) => caches.match(e.request).then((res) => res))
   ); 
+  */
+    e.respondWith(
+    fetch(e.request)
+    .catch(() => caches.match(e.request))
+  )
+  
+  
 });
