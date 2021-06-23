@@ -30,7 +30,7 @@ export default class Navbar extends React.Component {
                         }
                         { this.props.permissions.accesses && this.props.permissions.accesses.maintain.haveAccess ?
                             <li id="nav-maintain" className={this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || 
-                            this.props.currentView === 'Maintainagentview' || this.props.currentView === 'RequestCreate'  || this.props.currentView === 'RequestUpgrade' || this.props.currentView === 'RequestView' 
+                            this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Requestcreate'  || this.props.currentView === 'RequestUpgrade' || this.props.currentView === 'RequestView' 
                             || this.props.currentView === 'Subscriptioncreate'  || this.props.currentView === 'Subscriptionview' || this.props.currentView === 'Subscriptionupgrade' || this.props.currentView === 'Groupcreate'
                              || this.props.currentView === 'Groupupgrade' || this.props.currentView === 'GroupView'
                             ? "nav-item dropdown active" : "nav-item dropdown"}>
