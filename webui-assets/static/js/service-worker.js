@@ -7,7 +7,7 @@ self.addEventListener("install", (e) => {
 //service worker activated
 self.addEventListener("activate", (e) => {
   console.log("service Worker: Activated");
-/*   e.waitUntil(
+   e.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
@@ -18,13 +18,13 @@ self.addEventListener("activate", (e) => {
         })
       );
     })
-  ); */
+  ); 
 });
 
 //Call fetch event
 self.addEventListener("fetch", (e) => {
   console.log("Service Worker : fetching");
-/*   e.resposndWith(
+   e.resposndWith(
     fetch(e.request)
       .then((res) => {
         //make copy/clone of response
@@ -35,5 +35,5 @@ self.addEventListener("fetch", (e) => {
         return res;
       })
       .catch((err) => caches.match(e.request).then((res) => res))
-  ); */
+  ); 
 });
