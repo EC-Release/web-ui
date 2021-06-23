@@ -1,7 +1,9 @@
 const cacheName = "v1";
 
 const cacheAssets =[
-  'index.html'
+  'index.html',
+  '../../App.js',
+  '../../index.html'
 ]
 
 //service worker install
