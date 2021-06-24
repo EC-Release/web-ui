@@ -3,6 +3,7 @@ const cacheName = "v1";
 const cacheAssets =[
   'index.html',
   'App.js',
+  'xcalrWebUI.js'
 ]
 
 //service worker install
