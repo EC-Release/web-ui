@@ -160,7 +160,7 @@ export default class App extends React.Component {
         };
 
     // Get logged user's userId start
-    let snapshotData =  sessionStorage.setItem("snapshotData")
+    let snapshotData =  sessionStorage.getItem("snapshotData")
     if (snapshotData !== null){
       let jsonData = JSON.parse(snapshotData)
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
