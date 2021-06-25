@@ -16,11 +16,8 @@
                 response.json().then((respData) => {
                   let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"]
                   sessionStorage.setItem("snapshotData", JSON.stringify(respData))
-                  console.log("Snapshot Data from Index" + respData)
                 });
-                  
-
-                }})
+           }})
       })();
 
       function getToken(name){
