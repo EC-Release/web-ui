@@ -22,7 +22,7 @@ self.addEventListener("install", (e) => {
 //service worker activated
 self.addEventListener("activate", (e) => {
   console.log("service Worker: Activated");
-   e.waitUntil(
+  /*   e.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
@@ -33,7 +33,7 @@ self.addEventListener("activate", (e) => {
         })
       );
     })
-  ); 
+  );  */
 });
 
 //Call fetch event
