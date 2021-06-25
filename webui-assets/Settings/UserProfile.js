@@ -63,7 +63,7 @@ export default class UserProfile extends React.Component {
           profile = {
             firstName: "Bryan",
             lastName: "Shaw",
-            geId: "brayan.shaw@ge.com",
+            geId: "bryan.shaw@ge.com",
             mobile: "+113120312",
             city: "Nevada",
             country: "US",
