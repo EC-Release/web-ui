@@ -1,7 +1,5 @@
 (function fetchSnapShotData(){
         let authToken = this.getToken('ec-config');
-        let baseURL = '/v1.2beta/ops/api/';
-
         let apiEndPoint=  '/v1.2beta/ops/api/snapshot'    //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
           fetch(apiEndPoint, {
             method: 'GET',
