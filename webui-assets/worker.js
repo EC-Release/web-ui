@@ -1,5 +1,4 @@
 
-console.log('web-worker calling');
 this.onmessage = function (e) {
 console.log(e.data.authToken)
   setInterval(() => {
@@ -20,6 +19,6 @@ console.log(e.data.authToken)
         });
       }
     });
-  }, 10000);
+  }, 300000);
 };
 
