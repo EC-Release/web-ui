@@ -221,46 +221,6 @@ export default class App extends React.Component {
         }
     });}
     // Get logged user's userId end
-
-    setTimeout(()=>{
-      this.updateEcLocalStorage();
-    },60000); // 5 mins
-  }
-
-  /* istanbul ignore next */
-  updateEcLocalStorage(){
-    this.timer = setInterval(()=> this.refreshSnapshot(), 300000); // 5 mins
-  }
-
-  /* istanbul ignore next */
-  componentWillUnmount() {
-     clearInterval(this.timer);
-    this.timer = null;
-  }
-
-  /* istanbul ignore next */
-   refreshSnapshot(){ 
-    fetch(this.state.apiEndPoints.baseUrl + 'snapshot' , {
-      method: 'GET',
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'Authorization': "Bearer " + this.state.authToken
-      }
-    })
-    .then((response) => {
-        if (response.status === 200) {
-          response.json().then((respData) => {
-           /*    let newToken = respData.data;
-              this.setState({
-                authToken: newToken
-              });
-              let cookieToUpdate = 'ec-config';
-              document.cookie = cookieToUpdate+"="+newToken; */
-              sessionStorage.setItem("snapshotData", JSON.stringify(respData))
-          });
-        }
-    });
   }
 
   /* istanbul ignore next */
