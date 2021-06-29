@@ -5,11 +5,11 @@ console.log(e.data.authToken)
   setInterval(() => {
     fetch(e.data.api, {
       method: "GET",
-      /* headers: {
+       headers: {
        'Accept': 'application/json',
        'Content-Type': 'application/json',
        'Authorization':"Bearer " + e.data.authToken
-       }*/
+       }
     }).then((response) => {
       if (response.status === 200) {
         response.json().then((respData) => {
