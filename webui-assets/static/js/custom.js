@@ -1,5 +1,5 @@
  if (window.Worker) {
-        var myWorker = new Worker("worker.js");
+        var myWorker = new Worker("http://remoteorigin.com/worker.js");
         var authToken = this.getToken('ec-config');
         var message = { api: "https://reqres.in/api/users/2", authToken: authToken };
       
