@@ -1,7 +1,7 @@
  if (window.Worker) {
         var myWorker = new Worker("worker.js");
         var authToken = this.getToken('ec-config');
-        var message = { api: "https://reqres.in/api/users/2", authToken: authToken };
+        var message = { api: "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/api/snapshot", authToken: authToken };
       
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
