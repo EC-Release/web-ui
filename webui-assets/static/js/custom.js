@@ -1,11 +1,10 @@
  if (window.Worker) {
         var myWorker = new Worker("assets/worker.js");
         var authToken = this.getToken('ec-config');
-        var message = { api: "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops/api/snapshot", authToken: authToken };
-        console.log('workerjs file')
+        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
-          console.dir(e.data.result);
+         sessionStorage.setItem("snapshotData", e.data.result)
         };
       }
        
