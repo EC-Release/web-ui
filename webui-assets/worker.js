@@ -1,6 +1,5 @@
 
 this.onmessage = function (e) {
-console.log(e.data.authToken)
   setInterval(() => {
     fetch(e.data.api, {
       method: "GET",
@@ -12,7 +11,6 @@ console.log(e.data.authToken)
     }).then((response) => {
       if (response.status === 200) {
         response.json().then((respData) => {
-          console.log("Snapshot Data from web Worker" + respData)
           this.postMessage({
             result: JSON.parse(JSON.stringify(respData)),
           });
