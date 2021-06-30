@@ -6,6 +6,7 @@ const cacheName = "v1";
   'xcalrWebUI.js',
   'Dashboard/Dashboard.js ',
   './FloaterHelp/FloaterHelp.js', 
+  'https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js'
 ] 
 
 //service worker install
