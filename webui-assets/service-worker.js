@@ -33,7 +33,6 @@ const cacheName = "v1";
   './Support/Support.js',
   './Cookienotification/Cookienotification.js',
   './Footer/Footer.js',
-  './static/images/info.svg'
 ] 
 
 //service worker install
@@ -81,6 +80,19 @@ self.addEventListener("fetch", (e) => {
       })
       .catch((err) => caches.match(e.request).then((res) => res))
   ); */
+ 
+  if (event.request.destination === 'image') {
+    event.respondWith(fetch(e.request)
+      .then((res) => {
+        //make copy/clone of response
+        const resClone = res.clone();
+        caches.open(cacheName).then((cache) => {
+          cache.put(e.request, resClone);
+        });
+        return res;
+      })
+      .catch((err) => caches.match(e.request).then((res) => res)));
+  }
  
     e.respondWith(
     fetch(e.request)
