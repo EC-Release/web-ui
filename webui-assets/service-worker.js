@@ -32,7 +32,7 @@ workbox.routing.registerRoute(
     }),
 );
 
-const cacheName = "v1";
+/* const cacheName = "v1";
 
  const cacheAssets =[
   'index.html',
@@ -88,7 +88,7 @@ self.addEventListener("fetch", (e) => {
       .catch((err) => caches.match(e.request).then((res) => res))
   ); */
  
-  if (event.request.destination === 'image') {
+/*  if (event.request.destination === 'image') {
     event.respondWith(fetch(e.request)
       .then((res) => {
         //make copy/clone of response
@@ -107,4 +107,4 @@ self.addEventListener("fetch", (e) => {
   ) 
   
   
-});
+}); */
