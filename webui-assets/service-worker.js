@@ -33,7 +33,7 @@ const cacheName = "v1";
   './Support/Support.js',
   './Cookienotification/Cookienotification.js',
   './Footer/Footer.js',
-  './static/images'
+  './static/images/info.svg'
 ] 
 
 //service worker install
