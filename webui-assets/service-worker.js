@@ -13,8 +13,6 @@ workbox.precaching.precacheAndRoute([
   "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
   'index.html',
   'App.js',
-  'xcalrWebUI.js',
-  './static/images/info.svg'
 ]);
 
 // Demonstrates using default cache
