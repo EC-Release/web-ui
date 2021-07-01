@@ -1,4 +1,4 @@
-import React from "react";
+import React ,  { lazy } from "react";
 import ReactDOM from "react-dom";
 
 import Dashboard from './Dashboard/Dashboard.js';
@@ -23,7 +23,7 @@ import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 
-const Report = React.lazy(() => import('./Report/Report.js'));
+const Report = lazy(() => import('./Report/Report.js'));
 //import Report from './Report/Report.js';
 import UserManagement from './Settings/UserManagement.js';
 import UserProfile from "./Settings/UserProfile.js";
