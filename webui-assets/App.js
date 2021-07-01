@@ -22,7 +22,9 @@ import Monitor from './Monitor/Monitor.js';
 import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
-import Report from './Report/Report.js';
+
+const Report = React.lazy(() => import('./Report/Report.js'));
+//import Report from './Report/Report.js';
 import UserManagement from './Settings/UserManagement.js';
 import UserProfile from "./Settings/UserProfile.js";
 import WebHooks from "./Settings/WebHooks.js";
