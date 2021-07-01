@@ -11,6 +11,10 @@ workbox.precaching.precacheAndRoute([
   "https://unpkg.com/react@16/umd/react.development.js",
   "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
   "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
+  'index.html',
+  'App.js',
+  'xcalrWebUI.js',
+  './static/images/info.svg'
 ]);
 
 // Demonstrates using default cache
@@ -38,7 +42,7 @@ workbox.routing.registerRoute(
   new workbox.strategies.CacheFirst({
     cacheName: 'image',
     plugins: [
-      new workbox.expiration.Plugin({
+      new workbox.expiration.ExpirationPlugin({
         maxEntries: 20,
         maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
       }),
