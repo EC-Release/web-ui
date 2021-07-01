@@ -22,7 +22,7 @@ export default class Maintainagentcreate extends React.Component {
             errorsAgentForm: {},
             agentFormIsValid: false,
             serverForm: {
-                mode: 'SERVER',
+                mode: 'X:SERVER',
                 agentId: { value: '', dirtyState: false, type: 'password' },
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
@@ -44,7 +44,7 @@ export default class Maintainagentcreate extends React.Component {
             errorsServerForm: {},
             serverFormIsValid: false,
             clientForm: {
-                mode: 'CLIENT',
+                mode: 'X:CLIENT',
                 agentId: { value: '', dirtyState: false, type: 'password' },
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
@@ -66,8 +66,8 @@ export default class Maintainagentcreate extends React.Component {
             subscriptions:[],
             // API will provide this agentModeButtons
             agentModeButtons: [
-                { text: 'SERVER', value: 2 },
-                { text: 'CLIENT', value: 3 }
+                { text: 'X:SERVER', value: 2 },
+                { text: 'X:CLIENT', value: 3 }
             ],
             /* istanbul ignore next */
             // API will provide this gateways
