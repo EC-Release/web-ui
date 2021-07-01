@@ -4,7 +4,7 @@
         var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
-         sessionStorage.setItem("snapshotData", e.data.result)
+         sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
         };
       }
        
