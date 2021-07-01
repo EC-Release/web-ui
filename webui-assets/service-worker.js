@@ -32,6 +32,21 @@ workbox.routing.registerRoute(
     }),
 );
 
+workbox.routing.registerRoute(
+  // Custom `matchCallback` function
+  ({event}) => event.request.destination === 'image',
+  new workbox.strategies.CacheFirst({
+    cacheName: 'image',
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 20,
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
+      }),
+    ],
+  })
+);
+
+
 /* const cacheName = "v1";
 
  const cacheAssets =[
