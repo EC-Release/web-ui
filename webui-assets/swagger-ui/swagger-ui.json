@@ -132,6 +132,38 @@
           }
         }
       }
+    },
+    "/snapshot": {
+      "get": {
+        "summary": "Get the All Group names",
+        "description": "Get the all group names in a subscription",
+        "tags": [
+          "ng-portal"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "description": "Basic Authorization token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "response details",
+            "schema": {
+              "type": "object"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
     }
   },
   "externalDocs": {
