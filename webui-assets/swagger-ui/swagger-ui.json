@@ -5,7 +5,7 @@
     "version": "1.0.0",
     "title": "Admin WebUI"
   },
-  "basePath": "/v1.1beta/ec",
+  "basePath": "/v1.2beta/ops/api",
   "tags": [
     {
       "name": "ng-portal",
@@ -17,7 +17,7 @@
     "https"
   ],
   "paths": {
-    "{key}": {
+    "/{key}": {
       "get": {
         "summary": "Get the All Group names",
         "description": "Get the all group names in a subscription",
