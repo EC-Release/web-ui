@@ -1,7 +1,13 @@
 
 this.onmessage = function (e) {
+   getSnapData(e)
   setInterval(() => {
-    fetch(e.data.api, {
+    getSnapData(e)
+  }, 300000);
+};
+
+function getSnapData(e){
+   fetch(e.data.api, {
       method: "GET",
        headers: {
        'Accept': 'application/json',
@@ -17,6 +23,7 @@ this.onmessage = function (e) {
         });
       }
     });
-  }, 300000);
-};
+}
+
+
 

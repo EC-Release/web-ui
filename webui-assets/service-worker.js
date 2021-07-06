@@ -1,12 +1,63 @@
-const cacheName = "v1";
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
+
+// Note: Ignore the error that Glitch raises about workbox being undefined.
+workbox.setConfig({
+  debug: true,
+});
+
+workbox.precaching.precacheAndRoute([
+  "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
+  "https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js",
+  "https://unpkg.com/react@16/umd/react.development.js",
+  "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+  "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
+  'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images/info.svg',
+  'index.html',
+  'App.js',
+]);
+
+// Demonstrates using default cache
+workbox.routing.registerRoute(
+    new RegExp('.*\\.(?:js)'),
+    new workbox.strategies.NetworkFirst(),
+);
+
+// Demonstrates a custom cache name for a route.
+workbox.routing.registerRoute(
+    new RegExp('.*\\.(?:png|jpg|jpeg|svg|gif)'),
+    new workbox.strategies.CacheFirst({
+      cacheName: 'image-cache',
+      plugins: [
+        new workbox.expiration.ExpirationPlugin({
+          maxEntries: 3,
+        }),
+      ],
+    }),
+);
+
+workbox.routing.registerRoute(
+  // Custom `matchCallback` function
+  ({event}) => event.request.destination === 'image',
+  new workbox.strategies.CacheFirst({
+    cacheName: 'image',
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 20,
+        maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
+      }),
+    ],
+  })
+);
+
+
+/* const cacheName = "v1";
 
  const cacheAssets =[
   'index.html',
   'App.js',
   'xcalrWebUI.js',
-  'Dashboard/Dashboard.js ',
-  './FloaterHelp/FloaterHelp.js', 
-  'https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js'
+  './Dashboard/Dashboard.js ',
+  './FloaterHelp/FloaterHelp.js'
 ] 
 
 //service worker install
@@ -55,10 +106,23 @@ self.addEventListener("fetch", (e) => {
       .catch((err) => caches.match(e.request).then((res) => res))
   ); */
  
+/*  if (event.request.destination === 'image') {
+    event.respondWith(fetch(e.request)
+      .then((res) => {
+        //make copy/clone of response
+        const resClone = res.clone();
+        caches.open(cacheName).then((cache) => {
+          cache.put(e.request, resClone);
+        });
+        return res;
+      })
+      .catch((err) => caches.match(e.request).then((res) => res)));
+  }
+ 
     e.respondWith(
     fetch(e.request)
     .catch(() => caches.match(e.request))
   ) 
   
   
-});
+}); */
