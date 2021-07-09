@@ -1850,7 +1850,7 @@ export default class Maintainagentcreate extends React.Component {
                             </div>
                             <hr></hr>
                             <div className="row form-body">
-                                <div className="col-sm-3">
+                                <div className="col-sm-4">
                                     <h6>Agent Mode</h6>
                                         <div className="col-sm-12 mb-2">
                                             {this.state.agentModeButtons.map((agentModeButton, buttonIndex) => {
@@ -1866,7 +1866,7 @@ export default class Maintainagentcreate extends React.Component {
                                             })}
                                         </div>
                                 </div>
-                                <div className="col-sm-3">
+                                <div className="col-sm-2">
                                     <h6>&nbsp;</h6>
                                     <div className="custom-control custom-checkbox">
                                         <input 
