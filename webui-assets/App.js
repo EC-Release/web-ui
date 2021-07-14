@@ -37,6 +37,7 @@ import Footer from "./Footer/Footer.js";
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 var API_URL = '/v1.2beta/ops/api/';
+var SWAGGER_API = '/v1.2beta/assets/swagger-ui/'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -86,6 +87,18 @@ export default class App extends React.Component {
       "Please wait...",
       "custom-success"
     );
+	  
+	fetch(SWAGGER_API + 'snapshot', {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Authorization':"Bearer " + authToken
+        }
+      }).then((response)=>{
+        if (response.status === 200) {
+            response.json().then((respData) => { console.log( 'swagerUI '+ respData )}) }
+      }) 
 
     let permission = {
       "roleId": 1,
