@@ -23,7 +23,7 @@ import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 
-import Report from './Report/Report.js';
+//import Report from './Report/Report.js';
 import UserManagement from './Settings/UserManagement.js';
 import UserProfile from "./Settings/UserProfile.js";
 import WebHooks from "./Settings/WebHooks.js";
@@ -37,6 +37,8 @@ import Footer from "./Footer/Footer.js";
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 var API_URL = '/v1.2beta/ops/api/';
+
+const Report = React.lazy(()=>import('./Report/Report.js'));
 
 export default class App extends React.Component {
   constructor(props) {
