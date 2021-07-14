@@ -10,8 +10,8 @@ workbox.setConfig({
 workbox.precaching.precacheAndRoute([
   "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
   "https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js",
-  "https://unpkg.com/react@17/umd/react.development.js",
-  "https://unpkg.com/react-dom@17/umd/react-dom.development.js",
+  "https://unpkg.com/react@16/umd/react.development.js",
+  "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
   "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
   'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images/info.svg',
  
