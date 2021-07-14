@@ -13,9 +13,7 @@ workbox.precaching.precacheAndRoute([
   "https://unpkg.com/react@16/umd/react.development.js",
   "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
   "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
-  'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images/info.svg',
- 
-  
+  "https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
 ]);
 
 // Demonstrates using default cache
@@ -84,7 +82,7 @@ self.addEventListener('fetch', event => {
 
   // serve the cat SVG from the cache if the request is
   // same-origin and the path is '/dog.svg'
-  if (url.origin == location.origin && url.pathname == 'App.js') {
+  if (url.origin == location.origin) {
     event.respondWith(caches.match(e.request));
   }
 });
