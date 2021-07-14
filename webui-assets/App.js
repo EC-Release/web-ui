@@ -1,4 +1,4 @@
-import React ,  { lazy } from "react";
+import React ,  { lazy , Suspense } from "react";
 import ReactDOM from "react-dom";
 
 import Dashboard from './Dashboard/Dashboard.js';
@@ -23,8 +23,8 @@ import Notification from './Monitor/Notification.js';
 import Alert from './Monitor/Alert.js';
 import Healthstatus from './Monitor/Healthstatus.js';
 
-//const Report = lazy(() => import('./Report/Report.js'));
-import Report from './Report/Report.js';
+
+//import Report from './Report/Report.js';
 import UserManagement from './Settings/UserManagement.js';
 import UserProfile from "./Settings/UserProfile.js";
 import WebHooks from "./Settings/WebHooks.js";
@@ -37,6 +37,7 @@ import Footer from "./Footer/Footer.js";
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
+const Report = lazy(() => import('./Report/Report.js'));
 
 var API_URL = '/v1.2beta/ops/api/';
 
@@ -326,7 +327,7 @@ handleUser(user) {
       case 'Healthstatus':
         return <Healthstatus userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Report':
-        return <Report />; // jshint ignore:line
+        return (<Suspense fallback={<h1>Still Loading…</h1>}> <Report />  </Suspense>) ; // jshint ignore:line
       case 'Usermanagement':
         return <UserManagement baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken}  userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)}  />; // jshint ignore:line
       case "UserProfile":
