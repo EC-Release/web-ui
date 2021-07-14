@@ -25,16 +25,19 @@ workbox.routing.registerRoute(
 );
 
 
-const buildSW = () => {
-  // This will return a Promise
-  return workbox.workboxBuild.generateSW({
-    globDirectory: 'build',
-    globPatterns: [
-      '**/*.{html,json,js,css}',
+workbox.routing.registerRoute(
+  ({url}) => url.origin === 'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/ops',
+  new workbox.strategies.NetworkFirst({
+    networkTimeoutSeconds: 3,
+    cacheName: 'stories',
+    plugins: [
+      new workbox.expiration.ExpirationPlugin({
+        maxEntries: 50,
+        maxAgeSeconds: 5 * 60, // 5 minutes
+      }),
     ],
-    swDest: 'assets/',
-  });
-};
+  })
+);
 
 // Demonstrates a custom cache name for a route.
 workbox.routing.registerRoute(
