@@ -71,7 +71,7 @@ self.addEventListener('install', event => {
 
   // cache a cat SVG
   event.waitUntil(
-    caches.open('static-v1').then(cache => cache.add('/index.html'))
+    caches.open('static-v1').then(cache => cache.add('index.html'))
   );
 });
 
@@ -84,7 +84,7 @@ self.addEventListener('fetch', event => {
 
   // serve the cat SVG from the cache if the request is
   // same-origin and the path is '/dog.svg'
-  if (url.origin == location.origin && url.pathname == './App.js') {
+  if (url.origin == location.origin && url.pathname == 'App.js') {
     event.respondWith(caches.match(e.request));
   }
 });
