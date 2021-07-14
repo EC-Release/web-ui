@@ -39,7 +39,7 @@ import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 var API_URL = '/v1.2beta/ops/api/';
 
-const Report = (React.lazy(() => import('./Report/Report.js')));
+const Report = (React.lazy(() => import('.assets/Report/Report.js')));
 
 export default class App extends React.Component {
   constructor(props) {
