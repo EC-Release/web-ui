@@ -10,12 +10,12 @@ workbox.setConfig({
 workbox.precaching.precacheAndRoute([
   "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css",
   "https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js",
-  "https://unpkg.com/react@16/umd/react.development.js",
-  "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
+  "https://unpkg.com/react@17/umd/react.development.js",
+  "https://unpkg.com/react-dom@17/umd/react-dom.development.js",
   "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
   'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images/info.svg',
-  'index.html',
-  'App.js',
+ 
+  
 ]);
 
 // Demonstrates using default cache
@@ -66,6 +66,28 @@ workbox.routing.registerRoute(
   })
 );
 
+self.addEventListener('install', event => {
+  console.log('V1 installing…');
+
+  // cache a cat SVG
+  event.waitUntil(
+    caches.open('static-v1').then(cache => cache.add('/index.html'))
+  );
+});
+
+self.addEventListener('activate', event => {
+  console.log('V1 now ready to handle fetches!');
+});
+
+self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+
+  // serve the cat SVG from the cache if the request is
+  // same-origin and the path is '/dog.svg'
+  if (url.origin == location.origin && url.pathname == './App.js') {
+    event.respondWith(caches.match(e.request));
+  }
+});
 
 /* const cacheName = "v1";
 
