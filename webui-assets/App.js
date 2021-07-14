@@ -37,7 +37,7 @@ import Footer from "./Footer/Footer.js";
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 var API_URL = '/v1.2beta/ops/api/';
-var SWAGGER_API = '/v1.2beta/assets/swagger-ui/'
+var SWAGGER_API = '/v1.2beta/assets/swagger-ui/#/'
 
 export default class App extends React.Component {
   constructor(props) {
