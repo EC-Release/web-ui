@@ -1,6 +1,6 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
-importScripts(https://cdn.jsdelivr.net/npm/workbox-build@6.1.5/build/index.min.js)
+importScripts('https://cdn.jsdelivr.net/npm/workbox-build@6.1.5/build/index.min.js');
 
 
 // Note: Ignore the error that Glitch raises about workbox being undefined.
