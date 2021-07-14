@@ -1,5 +1,8 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/5.1.2/workbox-sw.js');
 
+importScripts(https://cdn.jsdelivr.net/npm/workbox-build@6.1.5/build/index.min.js)
+
+
 // Note: Ignore the error that Glitch raises about workbox being undefined.
 workbox.setConfig({
   debug: true,
@@ -21,6 +24,18 @@ workbox.routing.registerRoute(
     new RegExp('.*\\.(?:js)'),
     new workbox.strategies.NetworkFirst(),
 );
+
+
+const buildSW = () => {
+  // This will return a Promise
+  return workboxBuild.generateSW({
+    globDirectory: 'build',
+    globPatterns: [
+      '**/*.{html,json,js,css}',
+    ],
+    swDest: 'build/sw.js',
+  });
+};
 
 // Demonstrates a custom cache name for a route.
 workbox.routing.registerRoute(
