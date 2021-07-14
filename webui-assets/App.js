@@ -1,4 +1,4 @@
-import React ,  { lazy , Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import Dashboard from './Dashboard/Dashboard.js';
@@ -39,7 +39,7 @@ import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 var API_URL = '/v1.2beta/ops/api/';
 
-const Report = lazy(() => import('./Report/Report.js'));
+const Report = (React.lazy(() => import('./Report/Report.js')));
 
 export default class App extends React.Component {
   constructor(props) {
@@ -327,7 +327,7 @@ handleUser(user) {
       case 'Healthstatus':
         return <Healthstatus userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)} />; // jshint ignore:line
       case 'Report':
-        return (<Suspense fallback={<h1>Still Loading…</h1>}> <Report />  </Suspense>) ; // jshint ignore:line
+        return (<React.Suspense fallback={<h1>Still Loading…</h1>}> <Report />  </React.Suspense>) ; // jshint ignore:line
       case 'Usermanagement':
         return <UserManagement baseUrl={this.state.apiEndPoints.baseUrl} authToken={this.state.authToken}  userId={this.state.userId} showGlobalMessage={this.showGlobalMessage.bind(this)} hideGlobalMessage={this.hideGlobalMessage.bind(this)}  />; // jshint ignore:line
       case "UserProfile":
