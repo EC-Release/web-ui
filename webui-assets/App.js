@@ -37,9 +37,9 @@ import Footer from "./Footer/Footer.js";
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
-const Report = lazy(() => import('./Report/Report.js'));
-
 var API_URL = '/v1.2beta/ops/api/';
+
+const Report = lazy(() => import('./Report/Report.js'));
 
 export default class App extends React.Component {
   constructor(props) {
