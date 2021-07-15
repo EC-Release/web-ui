@@ -36,8 +36,8 @@ import Footer from "./Footer/Footer.js";
 
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
-var API_URL = '/v1.2beta/ops/api/';
-var SWAGGER_API = '/v1.2beta/assets/swagger-ui/#/'
+const API_URL = '/v1.2beta/ops/api/';
+const USER_API = 'https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -88,8 +88,8 @@ export default class App extends React.Component {
       "custom-success"
     );
 	  
-	fetch(SWAGGER_API + 'snapshot', {
-        method: 'GET',
+	fetch(USER_API + 'introspect', {
+        method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ export default class App extends React.Component {
         }
       }).then((response)=>{
         if (response.status === 200) {
-            response.json().then((respData) => { console.log( 'swagerUI '+ respData )}) }
+            response.json().then((respData) => { console.log( 'tokendata '+ respData )}) }
       }) 
 
     let permission = {
