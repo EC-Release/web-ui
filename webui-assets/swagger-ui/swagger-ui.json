@@ -34,7 +34,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "Basic Authorization token",
+            "description": "Bearer Authorization token",
             "required": true,
             "type": "string"
           },
@@ -147,7 +147,7 @@
           {
             "in": "header",
             "name": "Authorization",
-            "description": "Basic Authorization token",
+            "description": "Bearer Authorization token",
             "required": true,
             "type": "string"
           }
