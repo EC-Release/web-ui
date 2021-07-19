@@ -37,7 +37,6 @@ import Footer from "./Footer/Footer.js";
 import * as helpTextFile from './static/helpText/helpText.js';
 const HELPTEXT = helpTextFile.default;
 const API_URL = '/v1.2beta/ops/api/';
-const USER_API = 'https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -88,18 +87,6 @@ export default class App extends React.Component {
       "custom-success"
     );
 	  
-	fetch(USER_API + 'introspect', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization':"Bearer " + authToken
-        }
-      }).then((response)=>{
-        if (response.status === 200) {
-            response.json().then((respData) => { console.log( 'tokendata '+ respData )}) }
-      }) 
-
     let permission = {
       "roleId": 1,
       "roleName": "Admin",
