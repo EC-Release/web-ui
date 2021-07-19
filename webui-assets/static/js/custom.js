@@ -1,10 +1,13 @@
  if (window.Worker) {
         var myWorker = new Worker("assets/worker.js");
         var authToken = this.getToken('ec-config');
-        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
+        let user = atob(authToken.split(.)[1]).split('.')[0]
+        console.log(user);
+        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken , userId: user };
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
          sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
+         sessionStorage.setItem("userRole", e.data.user)
         };
       }
        
