@@ -3,7 +3,8 @@
         var authToken = this.getToken('ec-config');
         let user = atob(authToken.split(.)[1]).split('.')[0]
         console.log(user);
-        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken , userId: user ,userApi: "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/users/" };
+        let userApi = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/users/" + user
+        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken , userApi: userApi };
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
          sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
