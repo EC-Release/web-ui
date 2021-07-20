@@ -38,7 +38,11 @@ export default class Navbar extends React.Component {
                                     <img src={'assets/static/images/maintain_icon.svg'} alt="nav-maintain" />
                                      Maintain 
                                 </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <ul className= {this.props.currentView === 'Maintain' || this.props.currentView === 'Maintainagentcreate'  || this.props.currentView === 'Maintainagentupgrade' || 
+                            this.props.currentView === 'Maintainagentview' || this.props.currentView === 'Requestcreate'  || this.props.currentView === 'RequestUpgrade' || this.props.currentView === 'RequestView' 
+                            || this.props.currentView === 'Subscriptioncreate'  || this.props.currentView === 'Subscriptionview' || this.props.currentView === 'Subscriptionupgrade' || this.props.currentView === 'Groupcreate'
+                             || this.props.currentView === 'Groupupgrade' || this.props.currentView === 'GroupView'
+                            ?   "dropdown-menu" : "dropdown-menu hide" } aria-labelledby="navbarDropdownMenuLink">
                                 { this.props.permissions.accesses.maintain.subMenus.subscriptions.view || this.props.permissions.accesses.maintain.subMenus.subscriptions.create || this.props.permissions.accesses.maintain.subMenus.subscriptions.edit || this.props.permissions.accesses.maintain.subMenus.subscriptions.delete ?
                                     <li className="dropdown-submenu">
                                         <a id="nav-subscription" className="dropdown-item" href="#">
@@ -177,7 +181,7 @@ export default class Navbar extends React.Component {
                                 <img src={'assets/static/images/monitor_icon.svg'} alt="nav-monitor" />
                                 Monitor
                             </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+                            <ul className={this.props.currentView === 'Notification' || this.props.currentView === 'Alert' || this.props.currentView === 'View' ? "dropdown-menu" : "dropdown-menu hide"  }  aria-labelledby="navbarDropdownMenuLink1">
                                 { this.props.permissions.accesses.monitor.subMenus.notifications.view ?
                                     <li>
                                         <a id="nav-notification" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Notification')} href="#">
@@ -226,7 +230,7 @@ export default class Navbar extends React.Component {
                                 <img src={'assets/static/images/settings_icon.svg'} alt="nav-settings" />
                                 Settings
                             </a>
-                            <ul className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+                            <ul className= {this.props.currentView === 'Usermanagement' || this.props.currentView === 'WebHooks' || this.props.currentView === 'UserProfile'  ? "dropdown-menu" : "dropdown-menu hide"  } aria-labelledby="navbarDropdownMenuLink2">
                                 <li>
                                     <a className="dropdown-item" onClick={this.props.clickEve.bind(this, 'WebHooks')} href="#">
                                        Webhooks
