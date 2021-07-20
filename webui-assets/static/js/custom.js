@@ -4,10 +4,15 @@
         let user = atob(authToken.split('.')[1]).split('.')[0]
         console.log(user);
         let userApi = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/users/" + user
-        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken , userApi: userApi };
+        var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
          sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
+        };
+      var newWorker = new Worker("assets/user-worker.js");
+      var userMessage = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
+      newWorker.postMessage(userMessage);
+          myWorker.onmessage = function (e) {
          sessionStorage.setItem("userRole", e.data.user)
         };
       }
