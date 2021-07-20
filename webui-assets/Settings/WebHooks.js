@@ -341,7 +341,7 @@ export default class WebHooks extends React.Component {
       currentData.eventType.value  = currentHook.eventType;
       currentData.endpoint.value  = currentHook.endpoint;
       currentData.secret.value  = decodeURIComponent(escape(atob( currentHook.secret ))) ;
-      currentKey = currentHook.key
+      let currentKey = currentHook.key
       this.setState({
         formData: currentData,
         edit: true,
