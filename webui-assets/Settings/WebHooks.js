@@ -219,19 +219,22 @@ export default class WebHooks extends React.Component {
                   "Record saved successfully",
                   "custom-success"
                 );
-                setTimeout(() => {
-                  this.props.hideGlobalMessage();
-                  let formData = {
-                    name: { value: "", dirtyState: false },
-                    eventType: { value: "", dirtyState: false },
-                    endpoint: { value: "", dirtyState: false },
-                    secret: { value: "", dirtyState: false, type: "password" },
-                  };
-                  this.setState({
-                    formData: formData,
-                    formIsValid: false
-                  });
-                }, 2000);
+                
+               if(!this.state.edit){
+                  setTimeout(() => {
+                    this.props.hideGlobalMessage();
+                    let formData = {
+                      name: { value: "", dirtyState: false },
+                      eventType: { value: "", dirtyState: false },
+                      endpoint: { value: "", dirtyState: false },
+                      secret: { value: "", dirtyState: false, type: "password" },
+                    };
+                    this.setState({
+                      formData: formData,
+                      formIsValid: false
+                    });
+                  }, 2000);
+                }
               } else {
                 this.props.showGlobalMessage(
                   true,
