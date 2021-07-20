@@ -315,8 +315,6 @@ export default class WebHooks extends React.Component {
                             setTimeout(function () {
                                 that.props.hideGlobalMessage();
                             }, 2000);
-                           that.snapshotUpdate();
-                    
                     });
                 }
                 else {
