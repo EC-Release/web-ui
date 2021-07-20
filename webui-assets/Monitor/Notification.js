@@ -183,9 +183,7 @@ export default class Notification extends React.Component {
                                         <td>{ tbodyVal.components }</td>
                                         <td>
                                             <span className="action-img">
-                                                <img alt="plus-icon" title="" src="assets/static/images/plus.svg" />
                                                 <img  alt="edit-icon" title="Edit" src="assets/static/images/iconedit_tablemaintainmonitor.svg" />
-                                                <img alt="-icon" title="" src="assets/static/images/icon_tablemaintainmonitor.svg" />
                                                 <img alt="delete-icon" title="Delete" src="assets/static/images/icondelete_tablemaintainmonitor.svg" />
                                             </span>
                                         </td>
