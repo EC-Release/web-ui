@@ -19,7 +19,9 @@ export default class WebHooks extends React.Component {
         name: '',
         eventType: '',
         endpoint: '',
-    }]
+    }],
+    edit:false,
+    editKey:""
     };
   }
 
@@ -187,10 +189,11 @@ export default class WebHooks extends React.Component {
   
       prepareData.parent = "5e69f043-966d-438f-9421-83fb18272a7d"
       prepareData.name = "webHook"
-  
+     let currentMethod = this.state.edit ? "PUT" : "POST"
+     let currentApi = this.state.edit ? `${this.props.baseUrl}webhook-${this.state.editKey}` : `${this.props.baseUrl}webhook-${myuuid}`
       // fetch(this.props.baseUrl + '/createSubscription', {
-      fetch(`${this.props.baseUrl}webhook-${myuuid}` , {
-        method: "POST",
+      fetch(currentApi , {
+        method: currentMethod,
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -330,6 +333,35 @@ export default class WebHooks extends React.Component {
             });
         }
 
+    }
+
+    editWebhook(currentHook){
+      let currentData = {...this.state.formData}
+      currentData.name.value = currentHook.webhookname;
+      currentData.eventType.value  = currentHook.eventType;
+      currentData.endpoint.value  = currentHook.endpoint;
+      currentData.secret.value  = decodeURIComponent(escape(atob( currentHook.secret ))) ;
+      currentKey = currentHook.key
+      this.setState({
+        formData: currentData,
+        edit: true,
+        showForm: true,
+        editKey : currentKey
+      });
+    }
+
+    addWebHook(){
+      let currentData = { ...this.state.formData };
+      currentData.name.value = "";
+      currentData.eventType.value = "";
+      currentData.endpoint.value = "";
+      currentData.secret.value = "";
+      this.setState({
+        formData: currentData,
+        edit: false,
+        showForm: true,
+        editKey:""
+      });
     }
 
   render() {
@@ -484,7 +516,7 @@ export default class WebHooks extends React.Component {
                           onClick={this.createWebHook.bind(this)}
                           className="btn btn-sm customize-view-btn"
                         >
-                          CREATE WEBHOOKS
+                          {this.state.edit ? "UPDATE WEBHOOK"  : "CREATE WEBHOOKS" }
                         </button> </div>
                         <div className="col-sm-2 mb-2 text-left">
                         <button
@@ -514,7 +546,7 @@ export default class WebHooks extends React.Component {
                     </div>
                     <div className="col-md-4 text-right">
                       <button
-                        onClick={() => this.setState({ showForm: true })}
+                        onClick={() => this.addWebHook()}
                         className="btn btn-sm customize-view-btn"
                       >
                         Add Webhooks
@@ -546,6 +578,8 @@ export default class WebHooks extends React.Component {
                                       alt="edit-icon"
                                       title="Edit"
                                       src="assets/static/images/iconedit_tablemaintainmonitor.svg"
+                                      onClick={()=>this.editWebhook(hooks)}
+
                                     />
                                     <img
                                       onClick={()=>this.deleteWebhook(hooks,indx)}
