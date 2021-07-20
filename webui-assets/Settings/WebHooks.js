@@ -543,19 +543,9 @@ export default class WebHooks extends React.Component {
                                 <td>
                                   <span className="action-img">
                                     <img
-                                      alt="plus-icon"
-                                      title=""
-                                      src="assets/static/images/plus.svg"
-                                    />
-                                    <img
                                       alt="edit-icon"
                                       title="Edit"
                                       src="assets/static/images/iconedit_tablemaintainmonitor.svg"
-                                    />
-                                    <img
-                                      alt="-icon"
-                                      title=""
-                                      src="assets/static/images/icon_tablemaintainmonitor.svg"
                                     />
                                     <img
                                       onClick={()=>this.deleteWebhook(hooks,indx)}
