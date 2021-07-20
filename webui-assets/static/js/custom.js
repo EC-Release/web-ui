@@ -10,9 +10,9 @@
          sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
         };
       var newWorker = new Worker("assets/user-worker.js");
-      var userMessage = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
+      var userMessage = { userApi: userApi, authToken: authToken };
       newWorker.postMessage(userMessage);
-          myWorker.onmessage = function (e) {
+      newWorker.onmessage = function (e) {
          sessionStorage.setItem("userRole", e.data.user)
         };
       }
