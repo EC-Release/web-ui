@@ -95,6 +95,7 @@ export default class Maintainagentcreate extends React.Component {
             /* istanbul ignore next */
             // API will provide this gateways
             gateways: [
+	      {name:"Choose Gateway..." , id:100},
               {name:"gateway-03123012" , id:101},
               {name:"gateway-31034216" , id:102},
               {name:"gateway-03130357" , id:103}],
