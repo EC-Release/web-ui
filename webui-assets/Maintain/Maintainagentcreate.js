@@ -1511,7 +1511,7 @@ export default class Maintainagentcreate extends React.Component {
                             this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
-                             
+                             	let selectedHost = '';
                                 if(this.state.gateways.length > 0){
                                     selectedHost = this.state.gateways[0].id;
                                 }
@@ -1602,7 +1602,7 @@ export default class Maintainagentcreate extends React.Component {
                             this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, respData.data, buttons);
                             setTimeout(()=> {
-                             
+                             	let selectedHost = '';
                                 if(this.state.gateways.length > 0){
                                     selectedHost = this.state.gateways[0].id;
                                 }
