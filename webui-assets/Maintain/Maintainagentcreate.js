@@ -1528,10 +1528,10 @@ export default class Maintainagentcreate extends React.Component {
                                 let filename = "x:server.yml";
                                 let data='';
                                 if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
-                                    data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    grp: "+ serverFormData.group.value +"\n  hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n   oa2: "+ serverFormData.OAuth2.value+"\n   rht: "+ serverFormData.remoteHost.value + '"' 
+                                    data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    grp: "+ serverFormData.group.value +"\n  hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n   oa2: "+ serverFormData.OAuth2.value+"\n   rht: "+ serverFormData.remoteHost.value; 
                                 }
                                 else{
-                                    data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    grp: "+ serverFormData.group.value +"\n    hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n    oa2: "+ serverFormData.OAuth2.value+"\n  rht: "+ serverFormData.remoteHost.value +'"';
+                                    data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    grp: "+ serverFormData.group.value +"\n    hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n    oa2: "+ serverFormData.OAuth2.value+"\n  rht: "+ serverFormData.remoteHost.value ;
                                 }
 
         
@@ -1619,10 +1619,10 @@ export default class Maintainagentcreate extends React.Component {
                                 let filename = "x:client.yml";
                                 let data='';
                                 if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
-                                    data = "ec-config:\n  conf:\n    mod: "+xClientFormData.mode.toLowerCase()+ "\n    grp: "+xClientFormData.group.value +"\n  hst: "+xClientFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+xClientFormData.clientId.value+"\n   oa2: "+xClientFormData.OAuth2.value+"\n   rht: "+xClientFormData.remoteHost.value + '"' 
+                                    data = "ec-config:\n  conf:\n    mod: "+xClientFormData.mode.toLowerCase()+ "\n    grp: "+xClientFormData.group.value +"\n  hst: "+xClientFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+xClientFormData.clientId.value+"\n   oa2: "+xClientFormData.OAuth2.value+"\n   rht: "+xClientFormData.remoteHost.value ; 
                                 }
                                 else{
-                                    data = "ec-config:\n  conf:\n    mod: "+xClientFormData.mode.toLowerCase()+ "\n    grp: "+xClientFormData.group.value +"\n    hst: "+xClientFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+xClientFormData.clientId.value+"\n    oa2: "+xClientFormData.OAuth2.value+"\n  rht: "+xClientFormData.remoteHost.value +'"';
+                                    data = "ec-config:\n  conf:\n    mod: "+xClientFormData.mode.toLowerCase()+ "\n    grp: "+xClientFormData.group.value +"\n    hst: "+xClientFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+xClientFormData.clientId.value+"\n    oa2: "+xClientFormData.OAuth2.value+"\n  rht: "+xClientFormData.remoteHost.value ;
                                 }
 
         
