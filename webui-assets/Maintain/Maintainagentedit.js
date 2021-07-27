@@ -19,17 +19,7 @@ export default class Maintainagentedit extends React.Component {
             },
             errorsAgentForm: {},
             agentFormIsValid: false,
-            gatewayForm: {
-                mode: 'GATEWAY',
-                environment: { value: '', dirtyState: false },
-                gatewayPort: { value: '', dirtyState: false },
-                zone: { value: '', dirtyState: false },
-                serviceUrl: { value: '', dirtyState: false },
-                token: { value: '', dirtyState: false },
-                host: { value: '', dirtyState: false },
-            },
-            errorsGatewayForm: {},
-            gatewayFormIsValid: false,
+
             serverForm: {
                 mode: 'SERVER',
                 agentId: { value: '', dirtyState: false },
@@ -68,6 +58,26 @@ export default class Maintainagentedit extends React.Component {
             },
             errorsClientForm: {},
             clientFormIsValid: false,
+            xclientForm: {
+              mode: 'X:CLIENT',
+              group: { value: '', dirtyState: false },
+              clientId: { value: '', dirtyState: false },
+              OAuth2: { value: '', dirtyState: false },
+              host: { value: '', dirtyState: false },
+              remoteHost: { value: '', dirtyState: false },
+             },
+            errorsXClientForm: {},
+            xclientFormIsValid: false,
+            xserverForm: {
+                mode: 'X:CLIENT',
+                group: { value: '', dirtyState: false },
+                clientId: { value: '', dirtyState: false },
+                OAuth2: { value: '', dirtyState: false },
+                host: { value: '', dirtyState: false },
+                remoteHost: { value: '', dirtyState: false },
+            },
+            errorsXServerForm: {},
+            xserverFormIsValid: false,
             executeScriptForm: {
                 ecVersion: '',
                 ecSubVersion: '',
@@ -78,12 +88,17 @@ export default class Maintainagentedit extends React.Component {
             },
             // API will provide this agentModeButtons
             agentModeButtons: [
-                { text: 'GATEWAY', value: 1 },
                 { text: 'SERVER', value: 2 },
-                { text: 'CLIENT', value: 3 }
+                { text: 'CLIENT', value: 3 },
+                { text: 'X:SERVER', value: 4 },
+                { text: 'X:CLIENT', value: 5 },
             ],
             // API will provide this gateways
-            gateways: [],
+            gateways: [ 
+            {name:"Choose Gateway..." , id:100},
+            {name:"gateway-03123012" , id:101},
+            {name:"gateway-31034216" , id:102},
+            {name:"gateway-03130357" , id:103}],
             // API will provide this businesses
             businesses: [
                 { name: 'Aviation', id: '1' },
@@ -126,63 +141,7 @@ export default class Maintainagentedit extends React.Component {
     /* istanbul ignore next */
     componentDidMount() {
 
-        // get gateway list start
-        fetch(this.props.baseUrl+'/listGateways?user_id='+this.props.userId, { // Get gateways
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': this.props.authToken
-            }
-        })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                        let gateways = respData.data;
-                        /*let gateways = [
-                            {
-                                "gatewayId": "Gateway-10afc420-d8ad-41ec-8be6-6f723e6fb18a",
-                                "userId": "212712078",
-                                "gatewayPort": "8080",
-                                "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1b",
-                                "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                "hostUrl": "wss://gateway-url/agent"
-                            },
-                            {
-                                "gatewayId": "Gateway-d4b7844c-f9b2-4ab3-bab3-592b8ca1629d",
-                                "userId": "212712078",
-                                "gatewayPort": "8080",
-                                "zone": "b3a2e606-eaa8-4d3c-aadc-c27f12260a1d",
-                                "serviceUrl": "https://b3a2e606-eaa8-4d3c-aadc-c27f12260a1b.run.aws-usw02-dev.ice.predix.io",
-                                "admToken": "YWRtaW46WUo1NVBpWUkwWXpZcmpFQjVsc0dNNGdOcVRTSDlwS1l5RFJXcldOTElwSjA0TlBJM1M=",
-                                "hostUrl": "wss://gateway-url/agent"
-                            }
-                        ];*/
-                        if(gateways === null){
-                            gateways = [];
-                        }
-
-                        this.setState({
-                            gateways: gateways
-                        });
-                    });
-                }
-            });
-
         let formData = Object.assign({}, this.props.editItemData);
-        let agentForm = {
-            agentMode: { value: parseInt(formData.agentMode), dirtyState: false },
-            gateway: { value: formData.gatewayId, dirtyState: false },
-            businessId: { value: 0, dirtyState: false },
-            businessName: { value: '', dirtyState: false },
-            requestor: { value: '', dirtyState: false },
-            requestedDate: { value: '', dirtyState: false },
-            customerEmail: { value: '', dirtyState: false },
-            bucAnd: { value: '', dirtyState: false },
-            vpc: { value: '', dirtyState: false },
-            debugMode: { value: true, dirtyState: false },
-        };
 
         let clientForm = {
             mode: 'CLIENT',
@@ -199,16 +158,6 @@ export default class Maintainagentedit extends React.Component {
             proxy: { value: '', dirtyState: false },
             allowPlugIn: { value: false, dirtyState: false },
             plugIn: { value: [], dirtyState: false },
-        };
-
-        let gatewayForm = {
-            mode: 'GATEWAY',
-            environment: { value: formData.environment, dirtyState: false },
-            gatewayPort: { value: formData.gatewayPort, dirtyState: false },
-            zone: { value: formData.zone, dirtyState: false },
-            serviceUrl: { value: formData.serviceUrl, dirtyState: false },
-            token: { value: formData.admToken, dirtyState: false },
-            host: { value: formData.hostUrl, dirtyState: false },
         };
 
         let serverForm = {
@@ -231,18 +180,38 @@ export default class Maintainagentedit extends React.Component {
             plugIn: { value: [], dirtyState: false },
         };
 
+        let xclientForm = {
+          mode: 'X:CLIENT',
+          group: { value: formData.group , dirtyState: false },
+          clientId: { value: formData.uaaClientId, dirtyState: false },
+          OAuth2: { value: formData.oauth_provider, dirtyState: false },
+          host: { value: formData.hostUrl, dirtyState: false },
+          remoteHost: { value: formData.remote_host, dirtyState: false },
+         }
+
+         let xserverForm = {
+          mode: 'X:SERVER',
+          group: { value: formData.group , dirtyState: false },
+          clientId: { value: formData.uaaClientId, dirtyState: false },
+          OAuth2: { value: formData.oauth_provider, dirtyState: false },
+          host: { value: formData.hostUrl, dirtyState: false },
+          remoteHost: { value: formData.remote_host, dirtyState: false },
+         }
+
         this.setState({
             agentForm: agentForm,
             clientForm: clientForm,
-            gatewayForm: gatewayForm,
-            serverForm: serverForm
+            serverForm: serverForm,
+            xclientForm:xclientForm,
+            xserverForm:xserverForm
         });
 
         let that = this;
         setTimeout(function () {
-            that.handleGatewayFormValidation();
             that.handleServerFormValidation();
             that.handleClientFormValidation();
+            that.handleXClientFormValidation();
+            that.handleXServerFormValidation();
         }, 1000);
     }
 
@@ -254,24 +223,6 @@ export default class Maintainagentedit extends React.Component {
         this.setState({
             agentForm: currentAgentForm
         });
-    }
-
-    /* istanbul ignore next */
-    copyFromClientToGateway() {
-        let currentClientForm = Object.assign({}, this.state.clientForm);
-        let currentGatewayForm = Object.assign({}, this.state.gatewayForm);
-
-        currentGatewayForm.host.value = currentClientForm.host.value;
-
-        this.setState({
-            gatewayForm: currentGatewayForm
-        });
-
-        this.props.showGlobalMessage(false, true, 'Data copied from client', 'custom-success');
-        setTimeout(() => {
-            this.props.hideGlobalMessage();
-        }, 2000);
-        this.handleGatewayFormValidation();
     }
 
     /* istanbul ignore next */
@@ -330,76 +281,7 @@ export default class Maintainagentedit extends React.Component {
     downloadFile(type) {
         let prepareData = {};
         let agentFormData = this.state.agentForm;
-        if (type === 'gateway') {
-            let gatewayFormData = this.state.gatewayForm;
-            prepareData.mod = gatewayFormData.mode.toLowerCase();
-            prepareData.dbg = agentFormData.debugMode.value;
-            prepareData.env = gatewayFormData.environment.value;
-            prepareData.gpt = gatewayFormData.gatewayPort.value;
-            prepareData.zon = gatewayFormData.zone.value;
-            prepareData.sst = gatewayFormData.serviceUrl.value;
-            prepareData.tkn = gatewayFormData.token.value;
-            prepareData.hst = gatewayFormData.host.value;
-
-            fetch(this.props.baseUrl + '/updateGateway?user_id=' + this.props.userId + '&gateway_id=' + agentFormData.gateway.value, {
-                method: 'PUT',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
-                },
-                body: JSON.stringify(prepareData)
-            })
-                .then((response) => {
-                    if (response.status === 200) {
-                        response.json().then((respData) => {
-                            if(respData.errorStatus.status == 'ok'){
-                                this.props.handleDataTable(true);
-                                this.props.showGlobalMessage(true, true, 'Record updated successfully', 'custom-success');
-                                
-                                let filename = "gateway.yml";
-                                let data = "ec-config: \n\tconf: \n\t\tmod: "+gatewayFormData.mode.toLowerCase()+" \n\t\tgpt: "+ gatewayFormData.gatewayPort.value +" \n\t\tzon: "+ gatewayFormData.zone.value +" \n\t\tsst: "+ gatewayFormData.serviceUrl.value +" \n\t\tdbg: "+ agentFormData.debugMode.value +" \n\t\ttkn: "+ gatewayFormData.token.value +" \n\t\thst: "+ gatewayFormData.host.value;
-                                let blob = new Blob([data], { type: 'text/yml' });
-                                if (window.navigator.msSaveOrOpenBlob) {
-                                    window.navigator.msSaveBlob(blob, filename);
-                                }
-                                else {
-                                    let elem = window.document.createElement('a');
-                                    elem.href = window.URL.createObjectURL(blob);
-                                    elem.download = filename;
-                                    document.body.appendChild(elem);
-                                    elem.click();
-                                    document.body.removeChild(elem);
-                                }
-
-                                setTimeout(() => {
-                                    this.props.hideGlobalMessage();
-                                }, 2000);
-                            }
-                            else{
-                                this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                                setTimeout(() => {
-                                    this.props.hideGlobalMessage();
-                                }, 2000);
-                            }
-                        });
-                    }
-                    else {
-                        this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                        setTimeout(() => {
-                            this.props.hideGlobalMessage();
-                        }, 2000);
-                    }
-                })
-                .catch((err) => {
-                    console.log(err);
-                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                    setTimeout(() => {
-                        this.props.hideGlobalMessage();
-                    }, 2000);
-                });
-        }
-        else if (type === 'server') {
+        if (type === 'server') {
             let serverFormData = this.state.serverForm;
             prepareData.mod = serverFormData.mode;
             prepareData.dbg = agentFormData.debugMode.value;
@@ -485,6 +367,186 @@ export default class Maintainagentedit extends React.Component {
                     }, 2000);
                 });
         }
+        else if(type === 'x:server'){
+          let serverFormData = Object.assign({}, this.state.xserverForm);
+          prepareData.mod = serverFormData.mode.toLowerCase();
+          prepareData.dbg = agentFormData.debugMode.value;
+          prepareData.ecVersion = agentFormData.ecVersion.value;
+          prepareData.grp = serverFormData.group.value;
+          prepareData.cid = serverFormData.clientId.value;
+          prepareData.oa2 = serverFormData.OAuth2.value;
+          prepareData.hst = serverFormData.host.value;
+          prepareData.cps = 0;
+          prepareData.rht = serverFormData.remoteHost.value;
+          prepareData.parent = '65c77c4f-fdf4-4c6d-a703-48b12cc21b2d';
+          prepareData.name = 'server'
+      
+          fetch(this.props.baseUrl + 'generateXServerScript', {
+              method: 'PUT',
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Authorization': this.props.authToken
+              },
+              body: JSON.stringify(prepareData)
+          })
+          .then((response) => {
+              if (response.status === 200) {
+                  response.json().then((respData) => {
+                      /* if(respData.errorStatus.status == 'ok'){ */
+                        sessionStorage.setItem("ServerData",JSON.stringify(prepareData))
+                          this.props.hideGlobalMessage();
+                          this.props.showModal(modalHeading, respData.data, buttons);
+                          setTimeout(()=> {
+                             let selectedHost = '';
+                              if(this.state.gateways.length > 0){
+                                  selectedHost = this.state.gateways[0].id;
+                              }
+                              let serverForm = {
+                                  mode: 'X:SERVER',
+                                  group: { value: serverFormData.group.value, dirtyState: false },
+                                  clientId: { value: serverFormData.clientId.value, dirtyState: false },
+                                  OAuth2:{ value: serverFormData.OAuth2.value, dirtyState: false },
+                                  host: { value: selectedHost, dirtyState: false },
+                                  remoteHost: { value: '', dirtyState: false },
+                              };
+                              
+                              let filename = "x:server.yml";
+                              let data='';
+                              if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                  data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    grp: "+ serverFormData.group.value +"\n  hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n   oa2: "+ serverFormData.OAuth2.value+"\n   rht: "+ serverFormData.remoteHost.value; 
+                              }
+                              else{
+                                  data = "ec-config:\n  conf:\n    mod: "+serverFormData.mode.toLowerCase()+ "\n    grp: "+ serverFormData.group.value +"\n    hst: "+ serverFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+ serverFormData.clientId.value+"\n    oa2: "+ serverFormData.OAuth2.value+"\n  rht: "+ serverFormData.remoteHost.value ;
+                              }
+
+      
+
+                              let blob = new Blob([data], { type: 'text/yml' });
+                              if (window.navigator.msSaveOrOpenBlob) {
+                                  window.navigator.msSaveBlob(blob, filename);
+                              }
+                              else {
+                                  let elem = window.document.createElement('a');
+                                  elem.href = window.URL.createObjectURL(blob);
+                                  elem.download = filename;
+                                  document.body.appendChild(elem);
+                                  elem.click();
+                                  document.body.removeChild(elem);
+                              }
+
+                              this.setState({
+                                  xserverForm: serverForm,
+                                  xserverFormIsValid: false
+                              });
+                          }, 2000);
+                  });
+              }
+              else{
+                  this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                  setTimeout(()=> {
+                      this.props.hideGlobalMessage();
+                  }, 2000);
+              }
+          })
+          .catch((err) => {
+              console.log(err);
+              this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+              setTimeout(()=> {
+                  this.props.hideGlobalMessage();
+              }, 2000);
+          });
+      }
+      else if(type === 'x:client'){
+          let xClientFormData = Object.assign({}, this.state.xclientForm);
+          prepareData.mod = xClientFormData.mode.toLowerCase();
+          prepareData.dbg = agentFormData.debugMode.value;
+          prepareData.ecVersion = agentFormData.ecVersion.value;
+          prepareData.grp = xClientFormData.group.value;
+          prepareData.cid = xClientFormData.clientId.value;
+          prepareData.oa2 = xClientFormData.OAuth2.value;
+          prepareData.hst = xClientFormData.host.value;
+          prepareData.cps = 0;
+          prepareData.rht = xClientFormData.remoteHost.value;
+          prepareData.parent = '65c77c4f-fdf4-4c6d-a703-48b12cc21b2d';
+          prepareData.name = 'server'
+      
+          fetch(this.props.baseUrl + 'generateXCLIENTScript', {
+              method: 'PUT',
+              headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json',
+                  'Authorization': this.props.authToken
+              },
+              body: JSON.stringify(prepareData)
+          })
+          .then((response) => {
+              if (response.status === 200) {
+                  response.json().then((respData) => {
+                      /* if(respData.errorStatus.status == 'ok'){ */
+                        sessionStorage.setItem("ServerData",JSON.stringify(prepareData))
+                          this.props.hideGlobalMessage();
+                          this.props.showModal(modalHeading, respData.data, buttons);
+                          setTimeout(()=> {
+                             let selectedHost = '';
+                              if(this.state.gateways.length > 0){
+                                  selectedHost = this.state.gateways[0].id;
+                              }
+                              let XClientForm = {
+                                  mode: 'X:CLIENT',
+                                  group: { value: xClientFormData.group.value, dirtyState: false },
+                                  clientId: { value: xClientFormData.clientId.value, dirtyState: false },
+                                  OAuth2:{ value: xClientFormData.OAuth2.value, dirtyState: false },
+                                  host: { value: selectedHost, dirtyState: false },
+                                  remoteHost: { value: '', dirtyState: false },
+                              };
+                              
+                              let filename = "x:client.yml";
+                              let data='';
+                              if(agentFormData.ecVersion.value == 'v1.hokkaido.212'){
+                                  data = "ec-config:\n  conf:\n    mod: "+xClientFormData.mode.toLowerCase()+ "\n    grp: "+xClientFormData.group.value +"\n  hst: "+xClientFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+xClientFormData.clientId.value+"\n   oa2: "+xClientFormData.OAuth2.value+"\n   rht: "+xClientFormData.remoteHost.value ; 
+                              }
+                              else{
+                                  data = "ec-config:\n  conf:\n    mod: "+xClientFormData.mode.toLowerCase()+ "\n    grp: "+xClientFormData.group.value +"\n    hst: "+xClientFormData.host.value +"\n    dbg: "+ agentFormData.debugMode.value+"\n    cid: "+xClientFormData.clientId.value+"\n    oa2: "+xClientFormData.OAuth2.value+"\n  rht: "+xClientFormData.remoteHost.value ;
+                              }
+
+      
+
+                              let blob = new Blob([data], { type: 'text/yml' });
+                              if (window.navigator.msSaveOrOpenBlob) {
+                                  window.navigator.msSaveBlob(blob, filename);
+                              }
+                              else {
+                                  let elem = window.document.createElement('a');
+                                  elem.href = window.URL.createObjectURL(blob);
+                                  elem.download = filename;
+                                  document.body.appendChild(elem);
+                                  elem.click();
+                                  document.body.removeChild(elem);
+                              }
+
+                              this.setState({
+                                  xClientFormData: XClientForm,
+                                  xclientFormIsValid: false
+                              });
+                          }, 2000);
+                  });
+              }
+              else{
+                  this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+                  setTimeout(()=> {
+                      this.props.hideGlobalMessage();
+                  }, 2000);
+              }
+          })
+          .catch((err) => {
+              console.log(err);
+              this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
+              setTimeout(()=> {
+                  this.props.hideGlobalMessage();
+              }, 2000);
+          });
+      }
         else if (type === 'client') {
             let clientFormData = this.state.clientForm;
             prepareData.mod = clientFormData.mode;
@@ -592,147 +654,6 @@ export default class Maintainagentedit extends React.Component {
 
         this.setState({
             agentForm: currentAgentForm
-        });
-    }
-
-    /* istanbul ignore next */
-    handleGatewayFormData(e) {
-        let fieldName = e.target.name;
-        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
-        let currentGatewayForm = Object.assign({}, this.state.gatewayForm);
-
-        if (fieldName === 'environment') {
-            currentGatewayForm.environment.value = updatedValue;
-            currentGatewayForm.environment.dirtyState = true;
-        }
-        else if (fieldName === 'gatewayPort') {
-            let gatewayPortAfterValidityCheck = (e.target.validity.valid) ? updatedValue : currentGatewayForm.gatewayPort.value;
-            if(gatewayPortAfterValidityCheck.length > 4){
-                gatewayPortAfterValidityCheck = currentGatewayForm.gatewayPort.value;
-            }
-            currentGatewayForm.gatewayPort.value = gatewayPortAfterValidityCheck;
-            currentGatewayForm.gatewayPort.dirtyState = true;
-        }
-        else if (fieldName === 'zone') {
-            if(updatedValue.length > 36){
-                updatedValue = currentGatewayForm.zone.value;
-            }
-            currentGatewayForm.zone.value = updatedValue;
-            currentGatewayForm.zone.dirtyState = true;
-        }
-        else if (fieldName === 'serviceUrl') {
-            currentGatewayForm.serviceUrl.value = updatedValue;
-            currentGatewayForm.serviceUrl.dirtyState = true;
-        }
-        else if (fieldName === 'token') {
-            currentGatewayForm.token.value = updatedValue;
-            currentGatewayForm.token.dirtyState = true;
-        }
-        else if (fieldName === 'host') {
-            currentGatewayForm.host.value = updatedValue;
-            currentGatewayForm.host.dirtyState = true;
-        }
-
-        this.setState({
-            gatewayForm: currentGatewayForm
-        });
-        this.handleGatewayFormValidation();
-    }
-
-    /* istanbul ignore next */
-    handleGatewayFormValidation() {
-        let currentFormData = this.state.gatewayForm;
-        let environmentValue = currentFormData.environment.value;
-        let environmentDirtyState = currentFormData.environment.dirtyState;
-        let gatewayPortValue = currentFormData.gatewayPort.value;
-        let gatewayPortDirtyState = currentFormData.gatewayPort.dirtyState;
-        let zoneValue = currentFormData.zone.value;
-        let zoneDirtyState = currentFormData.zone.dirtyState;
-        let serviceUrlValue = currentFormData.serviceUrl.value;
-        let serviceUrlDirtyState = currentFormData.serviceUrl.dirtyState;
-        let tokenValue = currentFormData.token.value;
-        let tokenDirtyState = currentFormData.token.dirtyState;
-        let hostValue = currentFormData.host.value;
-        let hostDirtyState = currentFormData.host.dirtyState;
-        let formIsValid = true;
-        let errors = {};
-        let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-
-        if (environmentValue.trim() === '') {
-            if (environmentDirtyState) {
-                errors.environment = 'Please enter Environment';
-            }
-            formIsValid = false;
-        }
-
-        if(gatewayPortValue.trim() === ''){
-            if(gatewayPortDirtyState){
-                errors.gatewayPort = 'Please enter Gateway Port in digit';
-            }
-            formIsValid = false;
-        }
-        else if(gatewayPortValue.length != 4){
-            if(gatewayPortDirtyState){
-                errors.gatewayPort = 'Gateway Port must have 4 digit';
-            }
-            formIsValid = false;
-        }
-
-        if (zoneValue.trim() === '') {
-            if (zoneDirtyState) {
-                errors.zone = 'Please enter Zone';
-            }
-            formIsValid = false;
-        }
-        else if(zoneValue.length < 36){
-            if(zoneDirtyState){
-                errors.zone = 'Zone must have 36 character';
-            }
-            formIsValid = false;
-        }
-
-        if(serviceUrlValue.trim() === ''){
-            if(serviceUrlDirtyState){
-                errors.serviceUrl = 'Please enter Service Url';
-            }
-            formIsValid = false;
-        }
-        else if(!urlRegExp.test(serviceUrlValue)){
-            if(serviceUrlDirtyState){
-                errors.serviceUrl = 'Please enter valid URL';
-            }
-            formIsValid = false;
-        }
-
-        if (tokenValue.trim() === '') {
-            if (tokenDirtyState) {
-                errors.token = 'Please enter Token';
-            }
-            formIsValid = false;
-        }
-
-        if(hostValue.trim() === ''){
-            if(hostDirtyState){
-                errors.host = 'Please enter Host';
-            }
-            formIsValid = false;
-        }
-        else if(hostValue.substr(0, 6) != 'wss://' && hostValue.substr(0, 5) != 'ws://'){
-            if(hostDirtyState){
-                errors.host = 'Host starts with wss:// or ws://';
-            }
-            formIsValid = false;
-        }
-        else if(hostValue.substr(hostValue.length - 6, 6) != '/agent'){
-            if(hostDirtyState){
-                errors.host = 'Host ends with /agent';
-            }
-            formIsValid = false;
-        }
-
-        this.setState({
-            gatewayFormIsValid: formIsValid,
-            errorsGatewayForm: errors
         });
     }
 
@@ -1226,6 +1147,241 @@ export default class Maintainagentedit extends React.Component {
         });
     }
 
+      /* istanbul ignore next */
+      copyFromXServerToXClient(){
+        let currentServerForm =  Object.assign({}, this.state.xserverForm);
+        let currentClientForm =  Object.assign({}, this.state.xclientForm);
+
+        currentClientForm.group.value = currentServerForm.group.value;
+        currentClientForm.clientId.value = currentServerForm.clientId.value;
+        currentClientForm.OAuth2.value = currentServerForm.OAuth2.value;
+        currentClientForm.host.value = currentServerForm.host.value;
+
+        this.setState({
+            xclientForm: currentClientForm
+        });
+
+        this.props.showGlobalMessage(false, true, 'Data copied from x:server', 'custom-success');
+        setTimeout(()=> {
+            this.props.hideGlobalMessage();
+        }, 2000);
+        this.handleXClientFormValidation();
+    }
+
+       /* istanbul ignore next */
+       copyFromXClientToXServer(){
+        let currentClientForm =  Object.assign({}, this.state.xclientForm);
+        let currentServerForm =  Object.assign({}, this.state.xserverForm);
+
+        currentServerForm.group.value = currentClientForm.group.value;
+        currentServerForm.clientId.value = currentClientForm.clientId.value;
+        currentServerForm.OAuth2.value = currentClientForm.OAuth2.value;
+        currentServerForm.host.value = currentClientForm.host.value;
+
+        this.setState({
+            xserverForm: currentServerForm
+        });
+
+        this.props.showGlobalMessage(false, true, 'Data copied from x:client', 'custom-success');
+        setTimeout(()=> {
+            this.props.hideGlobalMessage();
+        }, 2000);
+        this.handleXServerFormValidation();
+    }
+
+       /* istanbul ignore next */
+       handleXServerFormData(e){
+        let fieldName = e.target.name;
+        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        let currentServerForm =  Object.assign({}, this.state.xserverForm);
+
+         if(fieldName === 'group'){
+            currentServerForm.group.value = updatedValue;
+            currentServerForm.group.dirtyState = true;
+          //  this.changeAidForServer(updatedValue);
+        }
+        else if(fieldName === 'clientId'){
+            currentServerForm.clientId.value = updatedValue;
+            currentServerForm.clientId.dirtyState = true;
+        }
+       
+        else if(fieldName === 'OAuth2'){
+            currentServerForm.OAuth2.value = updatedValue;
+            currentServerForm.OAuth2.dirtyState = true;
+        }
+        else if(fieldName === 'host'){
+            currentServerForm.host.value = updatedValue;
+            currentServerForm.host.dirtyState = true;
+        }
+       
+        else if(fieldName === 'remoteHost'){
+            currentServerForm.remoteHost.value = updatedValue;
+            currentServerForm.remoteHost.dirtyState = true;
+        }
+	   
+        this.setState({
+            xserverForm: currentServerForm
+        });
+
+        this.handleXServerFormValidation();
+    }
+
+
+    /* istanbul ignore next */
+    handleXServerFormValidation(){ 
+        let currentFormData = this.state.xserverForm;
+     
+        let groupValue = currentFormData.group.value;
+        let groupDirtyState = currentFormData.group.dirtyState;
+        let clientIdValue = currentFormData.clientId.value;
+        let clientIdDirtyState = currentFormData.clientId.dirtyState;
+        let OAuth2Value = currentFormData.OAuth2.value;
+        let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
+        let hostValue = currentFormData.host.value;
+        let hostDirtyState = currentFormData.host.dirtyState;
+        let remoteHostValue = currentFormData.remoteHost.value;
+        let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
+        let formIsValid = true;
+        let errors = {};
+        let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+
+        if(groupValue.trim() === ''){
+            if(groupDirtyState){
+                errors.group = 'Please enter Group';
+            }
+            formIsValid = false;
+        }
+
+        if(clientIdValue.trim() === ''){
+            if(clientIdDirtyState){
+                errors.clientId = 'Please enter Client Id';
+            }
+            formIsValid = false;
+        }
+
+        
+        if(remoteHostValue.trim() === ''){
+            if(remoteHostDirtyState){
+                errors.remoteHost = 'Please enter Remote Host';
+            }
+            formIsValid = false;
+        }
+        if(OAuth2Value.trim() === ''){
+            if(OAuth2DirtyState){
+                errors.OAuth2 = 'Please enter OAuth2';
+            }
+            formIsValid = false;
+        }
+        else if(!urlRegExp.test(OAuth2Value)){
+            if(OAuth2DirtyState){
+                errors.OAuth2 = 'Please enter valid URL';
+            }
+            formIsValid = false;
+        }
+
+        this.setState({
+            xserverFormIsValid: formIsValid,
+            errorsXServerForm: errors
+        });
+    }
+
+       /* istanbul ignore next */
+       handleXClientFormData(e){
+        let fieldName = e.target.name;
+        let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
+        let currentServerForm =  Object.assign({}, this.state.xclientForm);
+
+         if(fieldName === 'group'){
+            currentServerForm.group.value = updatedValue;
+            currentServerForm.group.dirtyState = true;
+          //  this.changeAidForServer(updatedValue);
+        }
+        else if(fieldName === 'clientId'){
+            currentServerForm.clientId.value = updatedValue;
+            currentServerForm.clientId.dirtyState = true;
+        }
+       
+        else if(fieldName === 'OAuth2'){
+            currentServerForm.OAuth2.value = updatedValue;
+            currentServerForm.OAuth2.dirtyState = true;
+        }
+        else if(fieldName === 'host'){
+            currentServerForm.host.value = updatedValue;
+            currentServerForm.host.dirtyState = true;
+        }
+       
+        else if(fieldName === 'remoteHost'){
+            currentServerForm.remoteHost.value = updatedValue;
+            currentServerForm.remoteHost.dirtyState = true;
+        }
+	   
+        this.setState({
+            xclientForm: currentServerForm
+        });
+
+        this.handleXClientFormValidation();
+    }
+
+
+    /* istanbul ignore next */
+    handleXClientFormValidation(){ 
+        let currentFormData = this.state.xclientForm;
+     
+        let groupValue = currentFormData.group.value;
+        let groupDirtyState = currentFormData.group.dirtyState;
+        let clientIdValue = currentFormData.clientId.value;
+        let clientIdDirtyState = currentFormData.clientId.dirtyState;
+        let OAuth2Value = currentFormData.OAuth2.value;
+        let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
+        let hostValue = currentFormData.host.value;
+        let hostDirtyState = currentFormData.host.dirtyState;
+        let remoteHostValue = currentFormData.remoteHost.value;
+        let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
+        let formIsValid = true;
+        let errors = {};
+        let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+
+        if(groupValue.trim() === ''){
+            if(groupDirtyState){
+                errors.group = 'Please enter Group';
+            }
+            formIsValid = false;
+        }
+
+        if(clientIdValue.trim() === ''){
+            if(clientIdDirtyState){
+                errors.clientId = 'Please enter Client Id';
+            }
+            formIsValid = false;
+        }
+
+        
+        if(remoteHostValue.trim() === ''){
+            if(remoteHostDirtyState){
+                errors.remoteHost = 'Please enter Remote Host';
+            }
+            formIsValid = false;
+        }
+        if(OAuth2Value.trim() === ''){
+            if(OAuth2DirtyState){
+                errors.OAuth2 = 'Please enter OAuth2';
+            }
+            formIsValid = false;
+        }
+        else if(!urlRegExp.test(OAuth2Value)){
+            if(OAuth2DirtyState){
+                errors.OAuth2 = 'Please enter valid URL';
+            }
+            formIsValid = false;
+        }
+
+        this.setState({
+            xclientFormIsValid: formIsValid,
+            errorsXClientForm: errors
+        });
+    }
+
+
     render() {
         /* jshint ignore:start */
         /* istanbul ignore next */
@@ -1297,154 +1453,6 @@ export default class Maintainagentedit extends React.Component {
                                 }
                             </div>
                             <hr></hr>
-                            {this.state.agentForm.agentMode.value == 1 ?
-                                <div className="changeable-form gateway-form">
-                                    <div className="row">
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                MODE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-sm"
-                                                    name="mode"
-                                                    disabled={true}
-                                                    defaultValue={this.state.gatewayForm.mode} />
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                ENVIRONMENT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <select
-                                                    className="form-control form-control-sm"
-                                                    name="environment"
-                                                    value={this.state.gatewayForm.environment.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }}>
-                                                    {
-                                                        this.state.environments.map((environment, environmentIndex) => {
-                                                            return (
-                                                                <option
-                                                                    key={"environmentOption" + environmentIndex}
-                                                                    value={environment.id}>{environment.name}</option>)
-                                                        })}
-                                                </select> 
-                                                {/*<input
-                                                    type="text"
-                                                    className="form-control form-control-sm"
-                                                    name="environment"
-                                                    value={this.state.gatewayForm.environment.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }} /> */}
-                                                <small className="text-danger">{this.state.errorsGatewayForm['environment']}</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                GATEWAY PORT <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    pattern="^[1-9][0-9]*"
-                                                    className="form-control form-control-sm"
-                                                    name="gatewayPort"
-                                                    value={this.state.gatewayForm.gatewayPort.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }} />
-                                                <small className="text-danger">{this.state.errorsGatewayForm['gatewayPort']}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                ZONE <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-sm"
-                                                    name="zone"
-                                                    value={this.state.gatewayForm.zone.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }} />
-                                                <small className="text-danger">{this.state.errorsGatewayForm['zone']}</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                SERVICE URL <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-sm"
-                                                    name="serviceUrl"
-                                                    value={this.state.gatewayForm.serviceUrl.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }} />
-                                                <small className="text-danger">{this.state.errorsGatewayForm['serviceUrl']}</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                TOKEN <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-sm"
-                                                    name="token"
-                                                    value={this.state.gatewayForm.token.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }} />
-                                                <small className="text-danger">{this.state.errorsGatewayForm['token']}</small>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="row">
-                                        <div className="col-sm-4">
-                                            <div className="col-sm-12 label required">
-                                                HOST <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
-                                            </div>
-                                            <div className="col-sm-12 mb-2">
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-sm"
-                                                    name="host"
-                                                    value={this.state.gatewayForm.host.value}
-                                                    onChange={(event) => { this.handleGatewayFormData(event) }} />
-                                                <small className="text-danger">{this.state.errorsGatewayForm['host']}</small>
-                                            </div>
-                                        </div>
-                                        <div className="col-sm-4">
-
-                                        </div>
-                                        <div className="col-sm-4">
-
-                                        </div>
-                                    </div>
-
-                                    <div className="col-sm-12 mb-2"><hr></hr></div>
-
-                                    <div className="row">
-                                        <div className="col-sm-5 mb-2">
-                                            {/*<img alt="copy" src="assets/static/images/copy.svg" height="15px" />
-                                            <a onClick={this.copyFromClientToGateway.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from client</small></a>*/}
-                                        </div>
-                                        <div className="col-sm-7 mb-2">
-                                            <button
-                                                disabled={!this.state.gatewayFormIsValid}
-                                                onClick={this.downloadFile.bind(this, 'gateway')}
-                                                className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
-                                            <button
-                                                onClick={this.props.changeView.bind(this)}
-                                                className="btn btn-sm customize-view-btn ml-2">BACK</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                : null
-                            }
                             {this.state.agentForm.agentMode.value == 2 ?
                                 <div className="changeable-form server-form">
                                     <div className="row">
@@ -1925,6 +1933,242 @@ export default class Maintainagentedit extends React.Component {
                                         </div>
                                     </div>
                                 </div>
+                                : null
+                            }
+
+                            {this.state.agentForm.agentMode.value == 4 ?
+                                <div className="changeable-form x-server-form">
+                                    <div className="row">
+                                        <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                Mode <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    className="form-control form-control-sm"
+                                                    name="mode"
+                                                    disabled={true}
+                                                    defaultValue={this.state.xserverForm.mode} />
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                Group <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="group" value={this.state.xserverForm.group.value} onChange={(event)=>{this.handleXServerFormData(event)}}>
+                                                    {this.state.groups.map((group, groupIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"groupOption"+groupIndex}
+                                                                value={ group.groupId }>{ group.groupId }</option>)
+                                                    })}
+                                                </select>
+                                                <small className="text-danger">{ this.state.errorsXServerForm['group']}</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                Client ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="clientId"
+                                                    value={this.state.xserverForm.clientId.value}
+                                                    onChange={(event)=>{this.handleXServerFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsXServerForm['clientId']}</small>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div className="row">
+                                        <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                OAUTH2 <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="OAuth2"
+                                                    value={this.state.xserverForm.OAuth2.value}
+                                                    onChange={(event)=>{this.handleXServerFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsXServerForm['OAuth2']}</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <select className="form-control form-control-sm" name="host" value={this.state.xserverForm.host.value} onChange={(event)=>{this.handleXServerFormData(event)}}>
+                                                    {this.state.gateways.map((gateway, gatewayIndex) => {
+                                                        return(
+                                                            <option
+                                                                key={"gatewayOption"+gatewayIndex}
+                                                                value={ gateway.id }>{ gateway.name }</option>)
+                                                    })}
+                                                </select>
+                                                <small className="text-danger">{ this.state.errorsXServerForm['host']}</small>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                Remote Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="remoteHost"
+                                                    value={this.state.xserverForm.remoteHost.value}
+                                                    onChange={(event)=>{this.handleXServerFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsXServerForm['remoteHost']}</small>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <div className="col-sm-12 mb-2"><hr></hr></div>
+                                    
+                                    <div className="row">
+                                        <div className="col-sm-5 mb-2">
+                                            <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
+                                            <a onClick={this.copyFromXClientToXServer.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from x:client</small></a>
+                                        </div>
+                                        <div className="col-sm-7 mb-2">
+                                            <button
+                                                id="create-client-btn"
+                                                disabled = {!this.state.xserverFormIsValid} 
+                                                onClick={this.downloadFile.bind(this, 'x:server')} 
+                                                className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                : null
+                            }
+
+                            {this.state.agentForm.agentMode.value == 5 ?
+                                <div className="changeable-form x-client-form">
+                                <div className="row">
+                                    <div className="col-sm-4">
+                                        <div className="col-sm-12 label required">
+                                            Mode <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <input
+                                                type="text"
+                                                className="form-control form-control-sm"
+                                                name="mode"
+                                                disabled={true}
+                                                defaultValue={this.state.xclientForm.mode} />
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-4">
+                                        <div className="col-sm-12 label required">
+                                            Group <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <select className="form-control form-control-sm" name="group" value={this.state.xclientForm.group.value} onChange={(event)=>{this.handleXClientFormData(event)}}>
+                                                {this.state.groups.map((group, groupIndex) => {
+                                                    return(
+                                                        <option
+                                                            key={"groupOption"+groupIndex}
+                                                            value={ group.groupId }>{ group.groupId }</option>)
+                                                })}
+                                            </select>
+                                            <small className="text-danger">{ this.state.errorsXClientForm['group']}</small>
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="col-sm-4">
+                                        <div className="col-sm-12 label required">
+                                            Client ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <input
+                                                type="text"
+                                                autoComplete="off"
+                                                className="form-control form-control-sm"
+                                                name="clientId"
+                                                value={this.state.xclientForm.clientId.value}
+                                                onChange={(event)=>{this.handleXClientFormData(event)}} />
+                                            <small className="text-danger">{ this.state.errorsXClientForm['clientId']}</small>
+                                        </div>
+                                    </div>
+                                </div> 
+
+                                <div className="row">
+                                    <div className="col-sm-4">
+                                        <div className="col-sm-12 label required">
+                                            OAUTH2 <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <input
+                                                type="text"
+                                                autoComplete="off"
+                                                className="form-control form-control-sm"
+                                                name="OAuth2"
+                                                value={this.state.xclientForm.OAuth2.value}
+                                                onChange={(event)=>{this.handleXClientFormData(event)}} />
+                                            <small className="text-danger">{ this.state.errorsXClientForm['OAuth2']}</small>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-4">
+                                        <div className="col-sm-12 label required">
+                                            Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                        </div>
+                                        <div className="col-sm-12 mb-2">
+                                            <select className="form-control form-control-sm" name="host" value={this.state.xclientForm.host.value} onChange={(event)=>{this.handleXClientFormData(event)}}>
+                                                {this.state.gateways.map((gateway, gatewayIndex) => {
+                                                    return(
+                                                        <option
+                                                            key={"gatewayOption"+gatewayIndex}
+                                                            value={ gateway.id }>{ gateway.name }</option>)
+                                                })}
+                                            </select>
+                                            <small className="text-danger">{ this.state.errorsXClientForm['host']}</small>
+                                        </div>
+                                    </div>
+                                    <div className="col-sm-4">
+                                            <div className="col-sm-12 label required">
+                                                Remote Host <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            </div>
+                                            <div className="col-sm-12 mb-2">
+                                                <input
+                                                    type="text"
+                                                    autoComplete="off"
+                                                    className="form-control form-control-sm"
+                                                    name="remoteHost"
+                                                    value={this.state.xclientForm.remoteHost.value}
+                                                    onChange={(event)=>{this.handleXClientFormData(event)}} />
+                                                <small className="text-danger">{ this.state.errorsXClientForm['remoteHost']}</small>
+                                            </div>
+                                        </div>
+                                </div> 
+
+                                <div className="col-sm-12 mb-2"><hr></hr></div>
+                                
+                                <div className="row">
+                                    <div className="col-sm-5 mb-2">
+                                        <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
+                                        <a onClick={this.copyFromXServerToXClient.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from x:server</small></a>
+                                    </div>
+                                    <div className="col-sm-7 mb-2">
+                                        <button
+                                            id="create-client-btn"
+                                            disabled = {!this.state.xclientFormIsValid} 
+                                            onClick={this.downloadFile.bind(this, 'x:client')} 
+                                            className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
+                                    </div>
+                                </div>
+                            </div>
                                 : null
                             }
                         </div>
