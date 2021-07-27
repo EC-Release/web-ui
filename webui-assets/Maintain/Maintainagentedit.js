@@ -142,6 +142,18 @@ export default class Maintainagentedit extends React.Component {
     componentDidMount() {
 
         let formData = Object.assign({}, this.props.editItemData);
+	let agentForm = {
+            agentMode: { value: parseInt(formData.agentMode), dirtyState: false },
+            gateway: { value: formData.gatewayId, dirtyState: false },
+            businessId: { value: 0, dirtyState: false },
+            businessName: { value: '', dirtyState: false },
+            requestor: { value: '', dirtyState: false },
+            requestedDate: { value: '', dirtyState: false },
+            customerEmail: { value: '', dirtyState: false },
+            bucAnd: { value: '', dirtyState: false },
+            vpc: { value: '', dirtyState: false },
+            debugMode: { value: true, dirtyState: false },
+        };
 
         let clientForm = {
             mode: 'CLIENT',
