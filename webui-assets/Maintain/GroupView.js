@@ -259,6 +259,7 @@ export default class GroupView extends React.Component {
                           data-live-search="true"
                           name="subscriptionId"
                           value={this.state.subscriptions}
+                          readOnly={true}
                         /*   onChange={(event) => {
                             this.handleFormData(event);
                           }} */
