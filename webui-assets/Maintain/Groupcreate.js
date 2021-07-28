@@ -231,15 +231,10 @@ export default class Groupcreate extends React.Component {
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    if(respData.errorStatus.status == 'ok'){
-                        // Both actions are same for ok and fail
-                    }
-                    else{
                         this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
                         setTimeout(()=> {
                             this.props.hideGlobalMessage();
                         }, 2000);
-                    }
                     let oldNewlyCreatedGroupsofSubscriptions = JSON.parse(sessionStorage.getItem("newlyCreatedGroups"));
                     let findIndex = oldNewlyCreatedGroupsofSubscriptions.findIndex(x => x.subscriptionId === prepareData.subscriptionId);
                     let allNewlyCreatedGroupsData = [...oldNewlyCreatedGroupsofSubscriptions[findIndex].createdData];
