@@ -11,7 +11,8 @@ export default class GroupView extends React.Component {
             showTableInit: false,
             subscriptions: [],
             groupId: "",
-            changeForm: false
+            changeForm: false,
+            filterValue:""
         };
     }
 
@@ -108,6 +109,7 @@ export default class GroupView extends React.Component {
         }
 
         this.setState({
+            tableData:newTableData,
             newTableData: newTableData,
             showTableInit: true
         });
@@ -128,6 +130,9 @@ export default class GroupView extends React.Component {
               changeForm: true,
             });
           });
+          setTimeout(() => {
+            window.selectView();
+          }, 500);
     }
 
     /* istanbul ignore next */
@@ -150,8 +155,6 @@ export default class GroupView extends React.Component {
         for(let dataObj of wholeDataUnstructured){
             let newDataObj = {};
             newDataObj.groupId = dataObj.groupId;
-            newDataObj.aid = dataObj.ids.aid;
-            newDataObj.tid = dataObj.ids.tid;
 
             wholeData.push(newDataObj);
         }
@@ -164,6 +167,7 @@ export default class GroupView extends React.Component {
         }
 
         this.setState({
+            filterValue:searchStr,
             newTableData: filteredData
         });
 
@@ -249,11 +253,29 @@ export default class GroupView extends React.Component {
                     <div className="col-sm-12 label">
                            Subscriptions
                        </div>
-                        <ul style={{listStyle:"none"}} >
-                            {this.state.subscriptions.map((subscription,indx)=>{
-                                return( <li key={indx +"subs"} > {subscription}   </li>)
-                            })}
-                        </ul>
+                        <select
+                          className="selectpicker form-control form-control-sm "
+                          multiple={true}
+                          data-live-search="true"
+                          name="subscriptionId"
+                          value={this.state.subscriptions}
+                        /*   onChange={(event) => {
+                            this.handleFormData(event);
+                          }} */
+                        >
+                          {this.state.subscriptions.map(
+                            (subscription, subscriptionIndex) => {
+                              return (
+                                <option
+                                  key={"subscriptionOption" + subscriptionIndex}
+                                  value={subscription}
+                                >
+                                  {subscription}
+                                </option>
+                              );
+                            }
+                          )}
+                        </select>
                     </div>
                 </div>
                 <div className="row">
@@ -285,6 +307,7 @@ export default class GroupView extends React.Component {
                          <div className="d-inline p-2">
                              <input 
                                  type="text" 
+                                 value={this.state.filterValue}
                                  className="d-inline form-control form-control-sm search-field"
                                  onChange={(event)=>{this.filterData(event)}} />
                          </div>  
