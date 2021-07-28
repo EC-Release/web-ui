@@ -249,8 +249,8 @@ export default class GroupView extends React.Component {
                            />
                        </div>
                     </div>
-                    <div className="col-sm-3 text-center" >
-                    <div className="col-sm-12 label">
+                    <div className="col-sm-6 text-center" >
+                    <div className="col-sm-12 label text-left">
                            Subscriptions
                        </div>
                         <select
