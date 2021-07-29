@@ -285,6 +285,7 @@ export default class Groupupgrade extends React.Component {
         }
     }
 
+     /* istanbul ignore next */
     editData(groupVal){
       let groupData ={...this.state.groupForm}
       groupData.groupId.value =groupVal.groupId,
@@ -303,6 +304,7 @@ export default class Groupupgrade extends React.Component {
       }, 500);
     }
 
+     /* istanbul ignore next */
     updategroup(){
       this.props.showGlobalMessage(false, true, 'Record update initiated. Please check after some time.', 'custom-success');
       let prepareData = {};
@@ -416,7 +418,23 @@ export default class Groupupgrade extends React.Component {
               {this.state.changeForm ? 
                  <div className="col-md-12 centered-div">
                 <div className="row" >
-                   
+                <div className="col-sm-6" > 
+                    <div className="col-sm-12 label text-left">
+                           Group Id
+                       </div>
+                       <div className="col-sm-12 mb-2">
+                           <input
+                               type="text"
+                               className="form-control form-control-sm"
+                               name="groupId"
+                               onChange={(event) => {
+                                this.handleFormData(event);
+                              }} 
+                               value={this.state.groupForm.groupId.value}
+                           />
+                           <small className="text-danger">{ this.state.errorsGroupForm['groupId']}</small>
+                       </div>
+                    </div>
                     <div className="col-sm-6 text-center" >
                     <div className="col-sm-12 label">
                            Subscriptions
@@ -427,6 +445,7 @@ export default class Groupupgrade extends React.Component {
                           data-live-search="true"
                           name="subscriptionId"
                           value={this.state.groupForm.subscriptionId.value}
+                          disabled={true}
                            onChange={(event) => {
                             this.handleFormData(event);
                           }} 
@@ -446,39 +465,22 @@ export default class Groupupgrade extends React.Component {
                         </select>
                         <small className="text-danger">{ this.state.errorsGroupForm['subscriptionId']}</small>
                     </div>
-                    <div className="col-sm-6" > 
-                    <div className="col-sm-12 label text-left">
-                           Group Id
-                       </div>
-                       <div className="col-sm-12 mb-2">
-                           <input
-                               type="text"
-                               className="form-control form-control-sm"
-                               name="groupId"
-                               onChange={(event) => {
-                                this.handleFormData(event);
-                              }} 
-                               value={this.state.groupForm.groupId.value}
-                           />
-                           <small className="text-danger">{ this.state.errorsGroupForm['groupId']}</small>
-                       </div>
-                    </div>
+                  
                 </div>
                 <div className="row">
-              <div className="col-sm-12 mb-2 text-center">
-
+              <div className="col-sm-12 mb-2 text-right">
               <button 
-                 id="update-group-btn "
+                 id="update-group-btn"
                  disabled={!this.state.groupFormIsValid}
                  onClick={this.updategroup.bind(this)} 
-                 className="btn btn-sm customize-view-btn mr-2">UPDATE GROUP</button>             
+                 className="btn btn-sm customize-view-btn">UPDATE GROUP</button>             
                 <button
                   onClick={() =>
                     setTimeout(()=>{
                         this.setState({ changeForm: false })
                     },0)
                     }
-                  className="btn btn-sm customize-view-btn">
+                  className="btn btn-sm customize-back-btn">
                   Back
                 </button>
               </div>
