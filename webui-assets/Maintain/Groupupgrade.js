@@ -414,7 +414,7 @@ export default class Groupupgrade extends React.Component {
         /* jshint ignore:start */
         /* istanbul ignore next */
         return (
-            <div className="row Groupupgrade">
+            <React.Fragment>
               {this.state.changeForm ? 
                  <div className="col-md-12 centered-div">
                 <div className="row" >
@@ -561,7 +561,7 @@ export default class Groupupgrade extends React.Component {
                         </div>
                     </div>
                 </div> }
-            </div>
+            </React.Fragment>
         )
         /* jshint ignore:end */
     }
