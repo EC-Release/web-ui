@@ -427,7 +427,6 @@ export default class Groupupgrade extends React.Component {
                           data-live-search="true"
                           name="subscriptionId"
                           value={this.state.groupForm.subscriptionId.value}
-                          disabled={true}
                            onChange={(event) => {
                             this.handleFormData(event);
                           }} 
@@ -466,13 +465,13 @@ export default class Groupupgrade extends React.Component {
                     </div>
                 </div>
                 <div className="row">
-              <div className="col-sm-12 mb-2 text-right">
+              <div className="col-sm-12 mb-2 text-center">
 
               <button 
-                 id="update-group-btn"
+                 id="update-group-btn "
                  disabled={!this.state.groupFormIsValid}
                  onClick={this.updategroup.bind(this)} 
-                 className="btn btn-sm customize-view-btn">UPDATE GROUP</button>             
+                 className="btn btn-sm customize-view-btn mr-2">UPDATE GROUP</button>             
                 <button
                   onClick={() =>
                     setTimeout(()=>{
