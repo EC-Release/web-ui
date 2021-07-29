@@ -416,6 +416,7 @@ export default class Groupupgrade extends React.Component {
         return (
             <React.Fragment>
               {this.state.changeForm ? 
+              <div className="row Groupupgrade">
                  <div className="col-md-12 centered-div">
                 <div className="row" >
                 <div className="col-sm-6" > 
@@ -485,7 +486,9 @@ export default class Groupupgrade extends React.Component {
                 </button>
               </div>
             </div>
+            </div>
                  </div> :
+                 <div className="row Groupupgrade">
                 <div className="col-md-12">
                     <div className="row mt-2">
                         <div className="col-sm-6 text-left">
@@ -559,6 +562,7 @@ export default class Groupupgrade extends React.Component {
                                 </p>
                             }
                         </div>
+            </div>
                     </div>
                 </div> }
             </React.Fragment>
