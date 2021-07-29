@@ -1,10 +1,7 @@
  if (window.Worker) {
         var myWorker = new Worker("assets/worker.js");
         var authToken = this.getToken('ec-config');
-        console.log(authToken);
         let user = atob(authToken.split('.')[1]).split('.')[0]
-        console.log(user,);
-  
         let userApi = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/users/" + user
         var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
         myWorker.postMessage(message);
