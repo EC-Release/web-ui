@@ -285,13 +285,13 @@ export default class Groupupgrade extends React.Component {
         }
     }
 
-    editData(groupData){
+    editData(groupVal){
       let groupData ={...this.state.groupForm}
-      groupData.groupId.value =groupData.groupId,
-      groupData.subscriptionId.value = groupData.subscriptionId
+      groupData.groupId.value =groupVal.groupId,
+      groupData.subscriptionId.value = groupVal.subscriptionId
       this.setState({
         groupForm:groupData,
-        currentKey: groupData.key
+        currentKey: groupVal.key
       });
       setTimeout(() => {
         this.setState({
