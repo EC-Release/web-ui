@@ -503,6 +503,7 @@ export default class Groupupgrade extends React.Component {
                             </div>  
                         </div>
                     </div>
+                    <div className="row"> {null} </div>
                     <div className="centered-div">
                         <div id="groupupgradeTableDiv">
                             { this.state.showTableInit ?
