@@ -360,7 +360,9 @@ export default class Groupupgrade extends React.Component {
       let fieldName = e.target.name;
       let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
       let currentForm =  Object.assign({}, this.state.groupForm);
-
+        let newvalue = Array.from(e.target.selectedOptions, (option) => option.value);
+        console.log(e.target.selectedOptions)
+        console.log(newvalue)
       if(fieldName === 'subscriptionId'){
           let value = Array.from(e.target.selectedOptions, (option) => option.value);
           currentForm.subscriptionId.value = value;
@@ -446,7 +448,7 @@ export default class Groupupgrade extends React.Component {
                           multiple={true}
                           data-live-search="true"
                           name="subscriptionId"
-                          value={this.state.groupForm.subscriptionId.value}
+                         /* value={this.state.groupForm.subscriptionId.value} */
                            onChange={(event) => {
                             this.handleFormData(event);
                           }} 
