@@ -370,6 +370,7 @@ export default class Groupupgrade extends React.Component {
           currentForm.groupId.value = updatedValue;
           currentForm.groupId.dirtyState = true;
       }
+        console.log(currentForm)
       this.setState({
         groupForm: currentForm
     });
@@ -446,7 +447,6 @@ export default class Groupupgrade extends React.Component {
                           data-live-search="true"
                           name="subscriptionId"
                           value={this.state.groupForm.subscriptionId.value}
-                          disabled={true}
                            onChange={(event) => {
                             this.handleFormData(event);
                           }} 
@@ -469,7 +469,7 @@ export default class Groupupgrade extends React.Component {
                   
                 </div>
                 <div className="row">
-              <div className="col-sm-12 mb-2 text-right">
+              <div className="col-sm-12 mb-2 text-center">
               <button 
                  id="update-group-btn"
                  disabled={!this.state.groupFormIsValid}
@@ -481,7 +481,7 @@ export default class Groupupgrade extends React.Component {
                         this.setState({ changeForm: false })
                     },0)
                     }
-                  className="btn btn-sm customize-back-btn">
+                  className="btn btn-sm customize-view-btn">
                   Back
                 </button>
               </div>
