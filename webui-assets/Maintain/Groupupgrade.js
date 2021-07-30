@@ -372,7 +372,6 @@ export default class Groupupgrade extends React.Component {
           currentForm.groupId.value = updatedValue;
           currentForm.groupId.dirtyState = true;
       }
-        console.log(currentForm)
       this.setState({
         groupForm: currentForm
     });
