@@ -40,7 +40,12 @@ workbox.routing.registerRoute(
   ({request}) => request.destination === 'image',
   new workbox.strategies.CacheFirst({
     cacheName: 'images',
-    plugins: [...],
+    plugins: [
+     new  workbox.expiration.ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 60 * 60,
+      })
+    ],
   })
 );
 
