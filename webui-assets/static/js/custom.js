@@ -8,12 +8,12 @@
         myWorker.onmessage = function (e) {
          sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
         };
-      var newWorker = new Worker("assets/user-worker.js");
-      var userMessage = { userApi: userApi, authToken: authToken };
-      newWorker.postMessage(userMessage);
-      newWorker.onmessage = function (e) {
-         sessionStorage.setItem("userRole", e.data.user)
-        };
+     // var newWorker = new Worker("assets/user-worker.js");
+    //  var userMessage = { userApi: userApi, authToken: authToken };
+    //  newWorker.postMessage(userMessage);
+     // newWorker.onmessage = function (e) {
+    //     sessionStorage.setItem("userRole", e.data.user)
+    //    };
       }
        
        function getToken(name){
