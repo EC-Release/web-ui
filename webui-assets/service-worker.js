@@ -37,7 +37,7 @@ workbox.routing.registerRoute(
 
 
 workbox.routing.registerRoute(
-  ({request}) => request.destination === 'image',
+  ({url}) => url.origin === 'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images',
   new workbox.strategies.CacheFirst({
     cacheName: 'images',
     plugins: [
@@ -60,20 +60,6 @@ workbox.routing.registerRoute(
         }),
       ],
     }),
-);
-
-workbox.routing.registerRoute(
-  // Custom `matchCallback` function
-  ({event}) => event.request.destination === 'image',
-  new workbox.strategies.CacheFirst({
-    cacheName: 'image',
-    plugins: [
-      new workbox.expiration.ExpirationPlugin({
-        maxEntries: 20,
-        maxAgeSeconds: 7 * 24 * 60 * 60, // 1 week
-      }),
-    ],
-  })
 );
 
 /* const cacheName = "v1";
