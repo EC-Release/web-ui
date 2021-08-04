@@ -79,14 +79,15 @@ self.addEventListener('install', event => {
   );
 }); */
 
-/* const cacheName = "v1";
+ const cacheName = "v1";
 
  const cacheAssets =[
   'index.html',
   'App.js',
   'xcalrWebUI.js',
   './Dashboard/Dashboard.js ',
-  './FloaterHelp/FloaterHelp.js'
+  './FloaterHelp/FloaterHelp.js',
+  'static/images/info.svg'
 ] 
 
 //service worker install
@@ -122,7 +123,7 @@ self.addEventListener("activate", (e) => {
 //Call fetch event
 self.addEventListener("fetch", (e) => {
   console.log("Service Worker : fetching");
-/*   e.respondWith(
+   e.respondWith(
     fetch(e.request)
       .then((res) => {
         //make copy/clone of response
@@ -133,7 +134,7 @@ self.addEventListener("fetch", (e) => {
         return res;
       })
       .catch((err) => caches.match(e.request).then((res) => res))
-  ); */
+  ); 
  
 /*  if (event.request.destination === 'image') {
     event.respondWith(fetch(e.request)
