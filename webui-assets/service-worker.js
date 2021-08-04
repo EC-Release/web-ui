@@ -79,7 +79,7 @@ self.addEventListener('install', event => {
   );
 }); */
 
- const cacheName = "v1";
+ /*const cacheName = "v1";
 
  const cacheAssets =[
   'index.html',
@@ -152,7 +152,7 @@ self.addEventListener("fetch", (e) => {
     e.respondWith(
     fetch(e.request)
     .catch(() => caches.match(e.request))
-  ) */
+  ) 
   
   
-}); 
+}); */
