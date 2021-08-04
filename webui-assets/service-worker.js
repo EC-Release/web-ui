@@ -15,21 +15,6 @@ workbox.precaching.precacheAndRoute([
 ]);
 
 // Demonstrates using default cache
-workbox.routing.registerRoute(
-  /\.css$/,
-  new workbox.strategies.NetworkFirst()
-);
-
-workbox.routing.registerRoute(
-  /\.js$/,
-  new workbox.strategies.NetworkFirst()
-);
-
-workbox.routing.registerRoute(
-  /\.(?:png|jpg|jpeg|svg|gif)$/,
-  new workbox.strategies.StaleWhileRevalidate()
-);
-
 
 workbox.routing.registerRoute(
   ({url}) => url.origin === 'https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images/',
