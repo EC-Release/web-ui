@@ -35,6 +35,15 @@ workbox.routing.registerRoute(
   })
 );
 
+
+workbox.routing.registerRoute(
+  ({request}) => request.destination === 'image',
+  new workbox.strategies.CacheFirst({
+    cacheName: 'images',
+    plugins: [...],
+  })
+);
+
 // Demonstrates a custom cache name for a route.
 workbox.routing.registerRoute(
     new RegExp('.*\\.(?:png|jpg|jpeg|svg|gif)'),
