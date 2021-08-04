@@ -11,14 +11,23 @@ workbox.precaching.precacheAndRoute([
   "https://unpkg.com/react@16/umd/react.development.js",
   "https://unpkg.com/react-dom@16/umd/react-dom.development.js",
   "https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js",
-  "https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js",
-  "https://ec-portal-1x.run.aws-usw02-dev.ice.predix.io/v1.2beta/assets/static/images/info.svg"
+  "https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js"
 ]);
 
 // Demonstrates using default cache
 workbox.routing.registerRoute(
-    new RegExp('.*\\.(?:js)'),
-    new workbox.strategies.NetworkFirst(),
+  /\.css$/,
+  new workbox.strategies.NetworkFirst()
+);
+
+workbox.routing.registerRoute(
+  /\.js$/,
+  new workbox.strategies.NetworkFirst()
+);
+
+workbox.routing.registerRoute(
+  /\.(?:png|jpg|jpeg|svg|gif)$/,
+  new workbox.strategies.StaleWhileRevalidate()
 );
 
 
