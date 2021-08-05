@@ -288,6 +288,7 @@ export default class Groupupgrade extends React.Component {
      /* istanbul ignore next */
     editData(groupVal){
       let groupData ={...this.state.groupForm}
+      let subscriptions ={...this.state.subscriptions }
       groupData.groupId.value =groupVal.groupId,
       groupData.subscriptionId.value = groupVal.subscriptionId
       this.setState({
@@ -447,19 +448,19 @@ export default class Groupupgrade extends React.Component {
                           multiple={true}
                           data-live-search="true"
                           name="subscriptionId"
-                         /* value={this.state.groupForm.subscriptionId.value} */
+                         value={this.state.groupForm.subscriptionId.value} 
                            onChange={(event) => {
                             this.handleFormData(event);
                           }} 
                         >
-                          {this.state.groupForm.subscriptionId.value.map(
+                          {this.state.tableData.map(
                             (subscription, subscriptionIndex) => {
                               return (
                                 <option
                                   key={"subscriptionOption" + subscriptionIndex}
-                                  value={subscription}
+                                  value={subscription.subscriptionId}
                                 >
-                                  {subscription}
+                                  {subscription.subscriptionId}
                                 </option>
                               );
                             }
