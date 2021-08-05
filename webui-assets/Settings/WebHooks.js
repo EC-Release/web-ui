@@ -27,7 +27,7 @@ export default class WebHooks extends React.Component {
 
 /* istanbul ignore next */
   componentDidMount(){
-    window.initTable('webhookTable', true);
+    window.initTable('webhookTable', false);
     this.fetchData();
   }
 
