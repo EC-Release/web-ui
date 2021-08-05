@@ -453,11 +453,11 @@ export default class Groupupgrade extends React.Component {
                             this.handleFormData(event);
                           }} 
                         >
-                          {this.state.tableData.map(
+                          {this.state.newTableData.map(
                             (subscription, subscriptionIndex) => {
                               return (
                                 <option
-                                  key={"subscriptionOption" + subscriptionIndex}
+                                  key={"subscriptionOption_" + subscriptionIndex}
                                   value={subscription.subscriptionId}
                                 >
                                   {subscription.subscriptionId}
