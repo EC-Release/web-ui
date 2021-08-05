@@ -17,13 +17,13 @@ export default class Groupupgrade extends React.Component {
           },
             changeForm:false,
             errorsGroupForm:{},
-            groupFormIsValid: false
+            groupFormIsValid: false,
         };
     }
 
     /* istanbul ignore next */
     componentDidMount(){
-       
+        let subscriptionData=[]
         let technicalTableData = [];
         if (sessionStorage.getItem("snapshotData") !== null) {
                 let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
@@ -36,11 +36,15 @@ export default class Groupupgrade extends React.Component {
                           if(individualData.parent ==="f894e5a8-0f9b-46ca-8b74-57e94610d731"){
                             technicalTableData.push(individualData);
                           }
+                          if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                            subscriptionData.push(individualData);
+                             }
                       }
                   }
                 this.generateTableStructure(technicalTableData);
                 this.setState({
-                    tableData: technicalTableData
+                    tableData: technicalTableData,
+                    subscriptions:subscriptionData
                 });
 
                 if(technicalTableData.length ===0){
@@ -288,7 +292,6 @@ export default class Groupupgrade extends React.Component {
      /* istanbul ignore next */
     editData(groupVal){
       let groupData ={...this.state.groupForm}
-      let subscriptions ={...this.state.subscriptions }
       groupData.groupId.value =groupVal.groupId,
       groupData.subscriptionId.value = groupVal.subscriptionId
       this.setState({
@@ -453,14 +456,14 @@ export default class Groupupgrade extends React.Component {
                             this.handleFormData(event);
                           }} 
                         >
-                          {this.state.newTableData.map(
+                          {this.state.subscriptions.map(
                             (subscription, subscriptionIndex) => {
                               return (
                                 <option
                                   key={"subscriptionOption_" + subscriptionIndex}
-                                  value={subscription.subscriptionId}
+                                  value={subscription.licenseId}
                                 >
-                                  {subscription.subscriptionId}
+                                  {subscription.licenseId}
                                 </option>
                               );
                             }
