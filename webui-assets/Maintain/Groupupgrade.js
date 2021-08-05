@@ -365,8 +365,6 @@ export default class Groupupgrade extends React.Component {
       let updatedValue = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
       let currentForm =  Object.assign({}, this.state.groupForm);
         let newvalue = Array.from(e.target.selectedOptions, (option) => option.value);
-        console.log(e.target.selectedOptions)
-        console.log(newvalue)
       if(fieldName === 'subscriptionId'){
           let value = Array.from(e.target.selectedOptions, (option) => option.value);
           currentForm.subscriptionId.value = value;
