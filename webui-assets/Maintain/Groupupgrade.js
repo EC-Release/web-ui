@@ -475,7 +475,7 @@ export default class Groupupgrade extends React.Component {
                  id="update-group-btn"
                  disabled={!this.state.groupFormIsValid}
                  onClick={this.updategroup.bind(this)} 
-                 className="btn btn-sm customize-view-btn">UPDATE GROUP</button>             
+                 className="btn btn-sm customize-view-btn mr-2">UPDATE GROUP</button>             
                 <button
                   onClick={() =>
                     setTimeout(()=>{
