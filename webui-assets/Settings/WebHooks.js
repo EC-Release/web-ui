@@ -369,8 +369,9 @@ export default class WebHooks extends React.Component {
     /* jshint ignore:start */
     /* istanbul ignore next */
     return (
-      <div className="row web-hook">
+      <React.Fragment>
         {this.state.showForm ? (
+      <div className="row web-hook">
             <div className="col-md-12 mt-2">
               <div className="centered-div">
                 <div className="centered-div-header">
@@ -532,9 +533,10 @@ export default class WebHooks extends React.Component {
                   </div>
                 </div>
             </div>
+            </div>
           </div>
         ) : (
-          <div className="row">
+          <div className="row web-hook">
             <div className="col-md-12 mt-2">
               <div className="centered-div">
                 <div className="centered-div-header">
@@ -557,7 +559,7 @@ export default class WebHooks extends React.Component {
                   <hr />
                   <div className="row">
                     <div className="col-sm-12 text-center" id="webhookTableDiv">
-                    <table className="table ">
+                    <table className="table " id="webhookTable">
                         <thead>
                           <tr>
                             <th>Name</th>
@@ -602,7 +604,7 @@ export default class WebHooks extends React.Component {
             </div>
           </div>
         )}
-      </div>
+      </React.Fragment>
     );
     /* jshint ignore:end */
   }
