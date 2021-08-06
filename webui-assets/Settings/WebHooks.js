@@ -22,7 +22,8 @@ export default class WebHooks extends React.Component {
     }],
     edit:false,
     editKey:"",
-    showTableInit:false
+    showTableInit:false,
+    newTableData: [],
     };
   }
 
