@@ -21,13 +21,13 @@ export default class WebHooks extends React.Component {
         endpoint: '',
     }],
     edit:false,
-    editKey:""
+    editKey:"",
+    showTableInit:false
     };
   }
 
 /* istanbul ignore next */
   componentDidMount(){
-    window.initTable('webhookTable', true);
     this.fetchData();
   }
 
@@ -47,6 +47,7 @@ export default class WebHooks extends React.Component {
                       }
                   }
               }
+              this.generateTableStructure(webhooks, false);
             this.setState({
                 WebHookList: webhooks
             });
@@ -67,6 +68,39 @@ export default class WebHooks extends React.Component {
     }
 
   }
+
+      /* istanbul ignore next */
+      generateTableStructure(technicalTableData, preserveState) {
+        let tableData = technicalTableData;
+        let newTableData = [];
+        for (let dataObj of tableData) {
+            let newDataObj = {};
+            newDataObj.webhookname = dataObj.webhookname;
+            newDataObj.eventType = dataObj.eventType;
+            newDataObj.endpoint = dataObj.endpoint;
+            newDataObj.secret = dataObj.secret;
+            newDataObj.key = dataObj.key;
+            newTableData.push(newDataObj);
+        }
+
+        this.setState({
+            newTableData: newTableData,
+            showTableInit: true
+        });
+
+        if (preserveState === true) {
+            setTimeout(function () {
+                window.initTable('webhookTable', true);
+            }, 100);
+        }
+        else {
+            setTimeout(function () {
+                window.initTable('webhookTable', false);
+            }, 100);
+        }
+    }
+
+
 
   /* istanbul ignore next */
   handleFormData(e) {
@@ -557,44 +591,61 @@ export default class WebHooks extends React.Component {
                   <hr />
                   <div className="row">
                     <div className="col-sm-12 text-center" id="webhookTableDiv">
-                    <table className="table " id="webhookTable">
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Event Type</th>
-                            <th>Target Endpoint</th>
-                             <th>Actions</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {this.state.WebHookList.map((hooks, indx) => {
-                            return (
-                              <tr key={"user" + indx}>
-                                <td>{hooks.webhookname} </td>
-                                <td>{hooks.eventType} </td>
-                                <td> {hooks.endpoint}</td>
-                                <td>
-                                  <span className="action-img">
-                                    <img
-                                      alt="edit-icon"
-                                      title="Edit"
-                                      src="assets/static/images/iconedit_tablemaintainmonitor.svg"
-                                      onClick={()=>this.editWebhook(hooks)}
 
-                                    />
-                                    <img
-                                      onClick={()=>this.deleteWebhook(hooks,indx)}
-                                      alt="delete-icon"
-                                      title="Delete"
-                                      src="assets/static/images/icondelete_tablemaintainmonitor.svg"
-                                    />
-                                  </span>
-                                </td>
-                              </tr>
-                            );
-                          })}
-                        </tbody>
-                      </table>
+                    { this.state.showTableInit ? 
+                                        this.state.newTableData.length > 0 ?
+                                            <table id="webhookTable" className="table">
+                                                <thead>
+                                                    <tr>
+                                                    <th>Name</th>
+                                                    <th>Event Type</th>
+                                                    <th>Target Endpoint</th>
+                                                    <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {
+                                                    this.state.newTableData.map((tbodyVal, tbodyIndex) => {
+                                                            return (
+                                                                <tr id={'webhookTableTbodyTr_' + tbodyIndex} key={'webhookTableTbodyTr_' + tbodyIndex}>
+                                                                   <td>{tbodyVal.webhookname} </td>
+                                                                    <td>{tbodyVal.eventType} </td>
+                                                                    <td> {tbodyVal.endpoint}</td>
+                                                                    <td>
+                                                                    <span className="action-img">
+                                                                        <img
+                                                                        alt="edit-icon"
+                                                                        title="Edit"
+                                                                        src="assets/static/images/iconedit_tablemaintainmonitor.svg"
+                                                                        onClick={()=>this.editWebhook(tbodyVal)}
+
+                                                                        />
+                                                                        <img
+                                                                        onClick={()=>this.deleteWebhook(tbodyVal,indx)}
+                                                                        alt="delete-icon"
+                                                                        title="Delete"
+                                                                        src="assets/static/images/icondelete_tablemaintainmonitor.svg"
+                                                                        />
+                                                                    </span>
+                                                                    </td>
+                                                                </tr>
+                                                            )
+                                                        })
+                                                    }
+                                                </tbody>
+                                            </table> :
+                                            <div className="row mt-2">
+                                                <div className="col-md-12">
+                                                    <div className="alert alert-success" role="alert">
+                                                        No record found!
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        :
+                                        <p className="text-center loader-icon">
+                                            <img alt="loading" src="assets/static/images/rolling.svg" />
+                                        </p>
+                                    }
                     </div>
                   </div>
                 </div>
