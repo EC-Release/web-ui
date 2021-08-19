@@ -1382,7 +1382,7 @@ export default class Maintainagentcreate extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
+                    'Authorization':"Bearer " + this.props.authToken
                 },
                 body: JSON.stringify(prepareData)
             })
@@ -1501,7 +1501,7 @@ export default class Maintainagentcreate extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
+                    'Authorization': "Bearer " + this.props.authToken
                 },
                 body: JSON.stringify(prepareData)
             })
@@ -1593,7 +1593,7 @@ export default class Maintainagentcreate extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
+                    'Authorization': "Bearer " + this.props.authToken
                 },
                 body: JSON.stringify(prepareData)
             })
@@ -1702,7 +1702,7 @@ export default class Maintainagentcreate extends React.Component {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': this.props.authToken
+                    'Authorization': "Bearer " + this.props.authToken
                 },
                 body: JSON.stringify(prepareData)
             })
