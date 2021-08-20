@@ -345,6 +345,56 @@
       hr{
         margin-top: 0rem;
       }
+
+      /*command prompt modal starts */
+      .command-prompt {
+        width: 800px;
+      }
+
+      pre {
+        font-size: 14px;
+        line-height: 1.4;
+        margin: 0 0;
+        max-width: 100%;
+        overflow: auto;
+        padding: 14px;
+        width: 100%;
+        background-color: #272822;
+      }
+
+      pre code {
+        color: slategray;
+      }
+
+      .copy-icon {
+        background-position: 61% 45%;
+        background-size: 16px;
+        border: 1px solid #f4f4f4;
+        border-radius: 6px;
+        cursor: pointer;
+        height: 36px;
+        margin: 0;
+        padding: 6px;
+        position: absolute;
+        right: 8px;
+        top: 8px;
+        vertical-align: middle;
+        width: 33px;
+        z-index: 100;
+        opacity: 0.4;
+      }
+
+      .copy-icon:focus,
+      .copy-icon:hover {
+        background-color: #d5d5d5;
+        opacity: 1;
+      }
+
+      .command-prompt .modal-body {
+        position: relative;
+      }
+      /*command prompt modal ends*/
+
       
       /*footer start */
       .copyright {
