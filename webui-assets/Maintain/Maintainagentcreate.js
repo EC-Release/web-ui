@@ -1325,6 +1325,22 @@ export default class Maintainagentcreate extends React.Component {
         }, 2000);
         this.handleXServerFormValidation();
     }
+/* istanbul ignore next */
+    testdownloadFile(){
+      this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
+      let modalHeading = 'Copy and run below command';
+      let buttons =[
+          {
+              className:'btn btn-default customize-view-btn',
+              action:'closeModal',
+              text:'Close'
+          }
+      ];
+
+      let commandData ="docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml";
+      this.props.hideGlobalMessage();
+      this.props.showModal(modalHeading, commandData, buttons,true);
+    }
 
      /* istanbul ignore next */
     downloadFile(type){
@@ -2728,8 +2744,9 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="col-sm-7 mb-2">
                                         <button
                                             id="create-client-btn"
-                                            disabled = {!this.state.xclientFormIsValid} 
-                                            onClick={this.downloadFile.bind(this, 'x:client')} 
+                                          /*   disabled = {!this.state.xclientFormIsValid} 
+                                            onClick={this.downloadFile.bind(this, 'x:client')}  */
+                                            onClick={this.testdownloadFile.bind(this, 'x:client')} 
                                             className="btn btn-sm customize-view-btn">CREATE SCRIPT</button>
                                     </div>
                                 </div>
