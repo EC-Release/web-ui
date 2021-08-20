@@ -1337,7 +1337,7 @@ export default class Maintainagentcreate extends React.Component {
           }
       ];
 
-      let commandData ="docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml";
+      let commandData =" docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml";
       this.props.hideGlobalMessage();
       this.props.showModal(modalHeading, commandData, buttons,true);
     }
@@ -1402,7 +1402,7 @@ export default class Maintainagentcreate extends React.Component {
                     response.json().then((respData) => {
                         /* if(respData.errorStatus.status == 'ok'){ */
                           sessionStorage.setItem("ServerData",JSON.stringify(prepareData))
-                          let commandData ="docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml";
+                          let commandData =" docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml";
                             this.props.hideGlobalMessage();
                             this.props.showModal(modalHeading, commandData, buttons,true);
                             setTimeout(()=> {
