@@ -1334,15 +1334,10 @@ export default class Maintainagentcreate extends React.Component {
         let modalHeading = 'Copy and run below command';
         let buttons =[
             {
-                className:'btn btn-danger customize-btn',
-                action:'copyAndcloseModal',
-                text:'Copy & Close'
-            },
-            {
                 className:'btn btn-default customize-view-btn',
-                action:'copyToClipboard',
-                text:'Copy'
-            },
+                action:'copyAndcloseModal',
+                text:'Close'
+            }
         ];
          if(type === 'server'){
             let serverFormData = Object.assign({}, this.state.serverForm);
@@ -1391,9 +1386,9 @@ export default class Maintainagentcreate extends React.Component {
                     response.json().then((respData) => {
                         /* if(respData.errorStatus.status == 'ok'){ */
                           sessionStorage.setItem("ServerData",JSON.stringify(prepareData))
-                          let commandData =" docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml "
+                          let commandData ="docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml";
                             this.props.hideGlobalMessage();
-                            this.props.showModal(modalHeading, commandData, buttons);
+                            this.props.showModal(modalHeading, commandData, buttons,true);
                             setTimeout(()=> {
                                 let selectedOs = '';
                                 let selectedHost = '';
@@ -1512,7 +1507,7 @@ export default class Maintainagentcreate extends React.Component {
                           let commandData =" docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -dec -cfg config.yml "
                           sessionStorage.setItem("XServerData",JSON.stringify(prepareData))
                             this.props.hideGlobalMessage();
-                            this.props.showModal(modalHeading, commandData, buttons);
+                            this.props.showModal(modalHeading, commandData, buttons,true);
                             setTimeout(()=> {
                              	let selectedHost = '';
                                 if(this.state.gateways.length > 0){
@@ -1604,7 +1599,7 @@ export default class Maintainagentcreate extends React.Component {
                           let commandData =" docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -dec -cfg config.yml "
                           sessionStorage.setItem("XClientData",JSON.stringify(prepareData))
                             this.props.hideGlobalMessage();
-                            this.props.showModal(modalHeading, commandData, buttons);
+                            this.props.showModal(modalHeading, commandData, buttons,true);
                             setTimeout(()=> {
                              	let selectedHost = '';
                                 if(this.state.gateways.length > 0){
@@ -1713,7 +1708,7 @@ export default class Maintainagentcreate extends React.Component {
                             this.props.hideGlobalMessage();
                             let commandData =" docker run -it -v $(pwd):/root/.ec enterpriseconnect/agent:v1 -cfg config.yml \n ./agent -cfg config.yml "
                             sessionStorage.setItem("ClientData",JSON.stringify(prepareData))
-                            this.props.showModal(modalHeading, commandData, buttons);
+                            this.props.showModal(modalHeading, commandData, buttons,true);
                             setTimeout(()=> {
                                 let selectedOs = '';
                                 let selectedHost = '';
