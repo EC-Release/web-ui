@@ -1335,7 +1335,7 @@ export default class Maintainagentcreate extends React.Component {
         let buttons =[
             {
                 className:'btn btn-default customize-view-btn',
-                action:'copyAndcloseModal',
+                action:'closeModal',
                 text:'Close'
             }
         ];
