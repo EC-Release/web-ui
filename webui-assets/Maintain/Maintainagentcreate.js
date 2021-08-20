@@ -75,7 +75,7 @@ export default class Maintainagentcreate extends React.Component {
             xclientFormIsValid: false,
 
             xserverForm: {
-                mode: 'X:CLIENT',
+                mode: 'X:SERVER',
                 group: { value: '', dirtyState: false },
                 clientId: { value: '', dirtyState: false },
                 OAuth2: { value: '', dirtyState: false },
