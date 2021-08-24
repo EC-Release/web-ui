@@ -123,11 +123,11 @@ export default class Navbar extends React.Component {
                                                 null
                                             }
                                             <li>
-                                                <a id="nav-agent-update-disable" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentupgrade')} href="#">Update/Delete</a>
+                                                <a id="nav-agent-update-disable" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentupgrade')} href="#">View</a>
                                             </li>
-                                            <li>
+                                          {/*  <li>
                                                 <a id="nav-agent-view" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentview')} href="#">View</a>
-                                            </li> 
+                                            </li>  */}
                                         </ul>
                                     </li>
                                     :
