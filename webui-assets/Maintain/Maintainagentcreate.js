@@ -2223,11 +2223,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="col-sm-12 mb-2"><hr></hr></div>
 
                                     <div className="row">
-                                        <div className="col-sm-4 mb-2">
+                                        <div className="col-sm-5 mb-2">
                                             <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
                                             <a onClick={this.copyFromClientToServer.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from client</small></a>
                                         </div>
-                                        <div className="col-sm-8 mb-2">
+                                        <div className="col-sm-7 mb-2">
                                           <button
                                             id="create-server-btn"
                                             disabled = {!this.state.serverFormIsValid} 
@@ -2510,11 +2510,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="col-sm-12 mb-2"><hr></hr></div>
                                     
                                     <div className="row">
-                                        <div className="col-sm-4 mb-2">
+                                        <div className="col-sm-5 mb-2">
                                             <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
                                             <a onClick={this.copyFromServerToClient.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from server</small></a>
                                         </div>
-                                        <div className="col-sm-8 mb-2">
+                                        <div className="col-sm-7 mb-2">
                                         <button
                                             id="create-client-btn"
                                             disabled = {!this.state.clientFormIsValid} 
@@ -2633,11 +2633,11 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="col-sm-12 mb-2"><hr></hr></div>
                                     
                                     <div className="row">
-                                        <div className="col-sm-4 mb-2">
+                                        <div className="col-sm-5 mb-2">
                                             <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
                                             <a onClick={this.copyFromXClientToXServer.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from x:client</small></a>
                                         </div>
-                                        <div className="col-sm-8 mb-2">
+                                        <div className="col-sm-7 mb-2">
                                              <button
                                             id="create-server-btn"
                                             disabled = {!this.state.xserverFormIsValid} 
@@ -2757,11 +2757,11 @@ export default class Maintainagentcreate extends React.Component {
                                 <div className="col-sm-12 mb-2"><hr></hr></div>
                                 
                                 <div className="row">
-                                    <div className="col-sm-4 mb-2">
+                                    <div className="col-sm-5 mb-2">
                                         <img alt="copy" src="assets/static/images/copy.svg" height="15px" />
                                         <a onClick={this.copyFromXServerToXClient.bind(this)} href="#" className="theme-color cursor-pointer ml-1"><small>Copy details from x:server</small></a>
                                     </div>
-                                    <div className="col-sm-8 mb-2">
+                                    <div className="col-sm-7 mb-2">
                                         <button
                                             id="create-client-btn"
                                             disabled = {!this.state.xclientFormIsValid} 
