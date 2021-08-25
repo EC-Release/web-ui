@@ -2230,11 +2230,12 @@ export default class Maintainagentcreate extends React.Component {
                                         <div className="col-sm-8 mb-2">
                                           <button
                                             id="create-server-btn"
+                                            disabled = {!this.state.serverFormIsValid} 
                                             onClick={this.saveFile.bind(this, 'server')} 
                                             className="btn btn-sm customize-view-btn mr-2">SAVE SCRIPT</button>
                                           <button
                                             id="create-server-btn"
-                                            disabled = {!this.state.xclientFormIsValid} 
+                                            disabled = {!this.state.serverFormIsValid} 
                                             onClick={this.downloadFile.bind(this, 'server')}  
                                             className="btn btn-sm customize-view-btn ml-2">DOWNLOAD SCRIPT</button>
                                         </div>
@@ -2516,11 +2517,12 @@ export default class Maintainagentcreate extends React.Component {
                                         <div className="col-sm-8 mb-2">
                                         <button
                                             id="create-client-btn"
+                                            disabled = {!this.state.clientFormIsValid} 
                                             onClick={this.saveFile.bind(this, 'client')} 
                                             className="btn btn-sm customize-view-btn mr-2">SAVE SCRIPT</button>
                                         <button
                                             id="create-client-btn"
-                                            disabled = {!this.state.xclientFormIsValid} 
+                                            disabled = {!this.state.clientFormIsValid} 
                                             onClick={this.downloadFile.bind(this, 'client')}  
                                             className="btn btn-sm customize-view-btn ml-2">DOWNLOAD SCRIPT</button>
                                         </div>
@@ -2638,12 +2640,13 @@ export default class Maintainagentcreate extends React.Component {
                                         <div className="col-sm-8 mb-2">
                                              <button
                                             id="create-server-btn"
+                                            disabled = {!this.state.xserverFormIsValid} 
                                             onClick={this.saveFile.bind(this, 'x:server')} 
                                             className="btn btn-sm customize-view-btn mr-2">SAVE SCRIPT</button>
 
                                         <button
                                             id="create-server-btn"
-                                            disabled = {!this.state.xclientFormIsValid} 
+                                            disabled = {!this.state.xserverFormIsValid} 
                                             onClick={this.downloadFile.bind(this, 'x:server')}  
                                             className="btn btn-sm customize-view-btn ml-2">DOWNLOAD SCRIPT</button>
                                         </div>
@@ -2761,12 +2764,13 @@ export default class Maintainagentcreate extends React.Component {
                                     <div className="col-sm-8 mb-2">
                                         <button
                                             id="create-client-btn"
+                                            disabled = {!this.state.xclientFormIsValid} 
                                             onClick={this.saveFile.bind(this, 'x:client')} 
                                             className="btn btn-sm customize-view-btn mr-2">SAVE SCRIPT</button>
 
                                         <button
                                             id="create-client-btn"
-                                            disabled = {!this.state.xclientFormIsValid} 
+                                           /*  disabled = {!this.state.xclientFormIsValid}  */
                                             onClick={this.downloadFile.bind(this, 'x:client')}  
                                             className="btn btn-sm customize-view-btn ml-2">DOWNLOAD SCRIPT</button>
                                     </div>
