@@ -2,18 +2,18 @@
         var myWorker = new Worker("assets/worker.js");
         var authToken = this.getToken('ec-config');
        // let user = atob(authToken.split('.')[1]).split('.')[0]
-      //  let userApi = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/users/" + user
+        let userApi = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/users/" + user
         var message = { api: "/v1.2beta/ops/api/snapshot", authToken: authToken };
         myWorker.postMessage(message);
         myWorker.onmessage = function (e) {
          sessionStorage.setItem("snapshotData", JSON.stringify(e.data.result))
         };
-     // var newWorker = new Worker("assets/user-worker.js");
-    //  var userMessage = { userApi: userApi, authToken: authToken };
-    //  newWorker.postMessage(userMessage);
-     // newWorker.onmessage = function (e) {
-    //     sessionStorage.setItem("userRole", e.data.user)
-    //    };
+      var newWorker = new Worker("assets/user-worker.js");
+      var userMessage = { userApi: userApi, authToken: authToken };
+      newWorker.postMessage(userMessage);
+      newWorker.onmessage = function (e) {
+        sessionStorage.setItem("userRole", e.data.user)
+        };
       }
        
        function getToken(name){
