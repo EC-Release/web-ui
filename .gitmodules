@@ -1,0 +1,4 @@
+[submodule "oa2-assets"]
+	   path = oa2-assets
+	   url = https://github.com/Enterprise-connect/web-ui-oa2.git
+		

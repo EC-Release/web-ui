@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#375EAB">
+
+  <title>wzconf - The Go Programming Language</title>
+
+<link type="text/css" rel="stylesheet" href="lib/godoc/style.css">
+
+
+<script>window.initFuncs = [];</script>
+
+<script src="lib/godoc/jquery.js" defer></script>
+
+
+
+<script>var goVersion = "go1.12.17";</script>
+<script src="lib/godoc/godocs.js" defer></script>
+</head>
+<body>
+
+<div id='lowframe' style="position: fixed; bottom: 0; left: 0; height: 0; width: 100%; border-top: thin solid grey; background-color: white; overflow: auto;">
+...
+</div><!-- #lowframe -->
+
+<div id="topbar" class="wide"><div class="container">
+<div class="top-heading" id="heading-wide"><a href="/">The Go Programming Language</a></div>
+<div class="top-heading" id="heading-narrow"><a href="/">Go</a></div>
+<a href="#" id="menu-button"><span id="menu-button-arrow">&#9661;</span></a>
+<form method="GET" action="/search">
+<div id="menu">
+<a href="/doc/">Documents</a>
+<a href="/pkg/">Packages</a>
+<a href="/project/">The Project</a>
+<a href="/help/">Help</a>
+
+<a href="/blog/">Blog</a>
+
+
+<span class="search-box"><input type="search" id="search" name="q" placeholder="Search" aria-label="Search" required><button type="submit"><span><!-- magnifying glass: --><svg width="24" height="24" viewBox="0 0 24 24"><title>submit search</title><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/><path d="M0 0h24v24H0z" fill="none"/></svg></span></button></span>
+</div>
+</form>
+
+</div></div>
+
+
+
+<div id="page" class="wide">
+<div class="container">
+
+
+  <h1>
+    Package wzconf
+    <span class="text-muted"></span>
+  </h1>
+
+
+
+
+
+
+
+<div id="nav"></div>
+
+
+<!--
+	Copyright 2009 The Go Authors. All rights reserved.
+	Use of this source code is governed by a BSD-style
+	license that can be found in the LICENSE file.
+-->
+<!--
+	Note: Static (i.e., not template-generated) href and id
+	attributes start with "pkg-" to make it impossible for
+	them to conflict with generated attributes (some of which
+	correspond to Go identifiers).
+-->
+
+	<script>
+	document.ANALYSIS_DATA = null;
+	document.CALLGRAPH = null;
+	</script>
+
+	
+		
+		<div id="short-nav">
+			<dl>
+			<dd><code>import "github.com/wzlib/wzconf"</code></dd>
+			</dl>
+			<dl>
+			<dd><a href="#pkg-overview" class="overviewLink">Overview</a></dd>
+			<dd><a href="#pkg-index" class="indexLink">Index</a></dd>
+			
+			
+			</dl>
+		</div>
+		<!-- The package's Name is printed as title by the top-level template -->
+		<div id="pkg-overview" class="toggleVisible">
+			<div class="collapsed">
+				<h2 class="toggleButton" title="Click to show Overview section">Overview ▹</h2>
+			</div>
+			<div class="expanded">
+				<h2 class="toggleButton" title="Click to hide Overview section">Overview ▾</h2>
+				<p>
+Waza Library configuration package which will help bootstrap the settings for the Agent&#39;s connectivity
+</p>
+
+				
+			</div>
+		</div>
+
+		<div id="pkg-index" class="toggleVisible">
+		<div class="collapsed">
+			<h2 class="toggleButton" title="Click to show Index section">Index ▹</h2>
+		</div>
+		<div class="expanded">
+			<h2 class="toggleButton" title="Click to hide Index section">Index ▾</h2>
+
+		<!-- Table of contents for API; must be named manual-nav to turn off auto nav. -->
+			<div id="manual-nav">
+			<dl>
+			
+				<dd><a href="#pkg-constants">Constants</a></dd>
+			
+			
+				<dd><a href="#pkg-variables">Variables</a></dd>
+			
+			
+				
+				<dd><a href="#FetchArt">func FetchArt(artUrl, revFrom, revTo string) (string, error)</a></dd>
+			
+				
+				<dd><a href="#GetRev">func GetRev() string</a></dd>
+			
+				
+				<dd><a href="#KillBridge">func KillBridge(networkId string) error</a></dd>
+			
+				
+				<dd><a href="#KillContainer">func KillContainer(contId string) error</a></dd>
+			
+				
+				<dd><a href="#RestartContainer">func RestartContainer(contId string) error</a></dd>
+			
+			
+				
+				<dd><a href="#CmdInfo">type CmdInfo</a></dd>
+				
+				
+			
+				
+				<dd><a href="#Config">type Config</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Init">func Init(cm map[string]interface{}) (*Config, error)</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.AutoRefresh">func (c *Config) AutoRefresh(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.ExchangeGatewayList">func (c *Config) ExchangeGatewayList(_str []byte, _rune string) &lt;-chan map[string]*model.GatewayInfo</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.GetEncryptedKey">func (c *Config) GetEncryptedKey(_d string) &lt;-chan []byte</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.GetPublicKey">func (c *Config) GetPublicKey() &lt;-chan string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.GetPublicKeyUsrApi">func (c *Config) GetPublicKeyUsrApi() &lt;-chan string</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.GroupValidation">func (c *Config) GroupValidation() &lt;-chan *model.GroupList</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.GroupValidationV2">func (c *Config) GroupValidationV2(_grp, _src, _tgt string) bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitClientConfig">func (c *Config) InitClientConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitGWClientConfig">func (c *Config) InitGWClientConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitGWServerConfig">func (c *Config) InitGWServerConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitGatewayConfig">func (c *Config) InitGatewayConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitServerConfig">func (c *Config) InitServerConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitXClientConfig">func (c *Config) InitXClientConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitXGatewayConfig">func (c *Config) InitXGatewayConfig(cm map[string]interface{}, cred map[string]interface{}, grp []interface{}, tls bool) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.InitXServerConfig">func (c *Config) InitXServerConfig(cm map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.IsValidSettings">func (c *Config) IsValidSettings() bool</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.ProxySetting">func (c *Config) ProxySetting(req *http.Request) (*url.URL, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.TokenValidation">func (c *Config) TokenValidation() &lt;-chan *model.TokenStatus</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#Config.UsageReporting">func (c *Config) UsageReporting() &lt;-chan map[string]interface{}</a></dd>
+				
+			
+				
+				<dd><a href="#ProcessLocker">type ProcessLocker</a></dd>
+				
+				
+			
+				
+				<dd><a href="#WatcherCmdBuilder">type WatcherCmdBuilder</a></dd>
+				
+				
+			
+				
+				<dd><a href="#WatcherConfig">type WatcherConfig</a></dd>
+				
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.ArtUpdateOps">func (wc *WatcherConfig) ArtUpdateOps() (fo string, err error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.CreateContainer">func (wc *WatcherConfig) CreateContainer(ccmd []string, ins int, envInst string, iswtr, isdae bool) (string, net.IP, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.CreateNetwork">func (wc *WatcherConfig) CreateNetwork() (string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.CreateProc">func (wc *WatcherConfig) CreateProc(is string, ins int, op []string, isWatcher, isDaemon bool) (string, string, error)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.DeployWatcher">func (wc *WatcherConfig) DeployWatcher(wbuilder WatcherCmdBuilder) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.GetIPMap">func (wc *WatcherConfig) GetIPMap() map[string]net.IP</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.GetOAuthToken">func (wc *WatcherConfig) GetOAuthToken() (tkn string)</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.HealthCheckOps">func (wc *WatcherConfig) HealthCheckOps() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.Init">func (wc *WatcherConfig) Init(wconf, cconf map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.InitDaemonContainer">func (wc *WatcherConfig) InitDaemonContainer() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.InitOpsScheduler">func (wc *WatcherConfig) InitOpsScheduler() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.InitProxy">func (wc *WatcherConfig) InitProxy(wconf, cconf map[string]interface{}) error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.KillContainers">func (wc *WatcherConfig) KillContainers() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.KillProc">func (wc *WatcherConfig) KillProc() error</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.ProxyHTTPReq">func (wc *WatcherConfig) ProxyHTTPReq()</a></dd>
+				
+					
+					<dd>&nbsp; &nbsp; <a href="#WatcherConfig.ProxyTCPReq">func (wc *WatcherConfig) ProxyTCPReq()</a></dd>
+				
+			
+				
+				<dd><a href="#WatcherIntr">type WatcherIntr</a></dd>
+				
+				
+			
+			
+			</dl>
+			</div><!-- #manual-nav -->
+
+		
+
+		
+			<h3>Package files</h3>
+			<p>
+			<span style="font-size:90%">
+			
+				<a href="/src/github.com/wzlib/wzconf/watrconf.go">watrconf.go</a>
+			
+				<a href="/src/github.com/wzlib/wzconf/wzconf.go">wzconf.go</a>
+			
+			</span>
+			</p>
+		
+		</div><!-- .expanded -->
+		</div><!-- #pkg-index -->
+
+		
+
+		
+			<h2 id="pkg-constants">Constants</h2>
+			
+				
+				<pre>const (
+    <span id="HEALTH_URI">HEALTH_URI</span> = &#34;/health&#34;
+    <span id="DOCKER_REV">DOCKER_REV</span> = &#34;1.39&#34;
+
+    <span id="WATCHER_FIELD_HTTP_PORT">WATCHER_FIELD_HTTP_PORT</span>    = &#34;httpPort&#34;
+    <span id="WATCHER_FIELD_TCP_PORT">WATCHER_FIELD_TCP_PORT</span>     = &#34;tcpPort&#34;
+    <span id="WATCHER_FIELD_CUSTOM_PORT">WATCHER_FIELD_CUSTOM_PORT</span>  = &#34;customPort&#34;
+    <span id="WATCHER_FIELD_CONT_REV">WATCHER_FIELD_CONT_REV</span>     = &#34;contRev&#34;
+    <span id="WATCHER_FIELD_CONT_ART_URL">WATCHER_FIELD_CONT_ART_URL</span> = &#34;contArtURL&#34;
+    <span id="WATCHER_FIELD_OAUTH2">WATCHER_FIELD_OAUTH2</span>       = &#34;oauth2&#34;
+    <span id="WATCHER_FIELD_NUM_INSTANCE">WATCHER_FIELD_NUM_INSTANCE</span> = &#34;instance&#34;
+    <span id="WATCHER_FIELD_CERT_DIR">WATCHER_FIELD_CERT_DIR</span>     = &#34;certsDir&#34;
+
+    <span class="comment">//oci-related</span>
+    <span id="WATCHER_FIELD_DEV_ID">WATCHER_FIELD_DEV_ID</span> = &#34;devId&#34;
+
+    <span class="comment">//oci memory resource</span>
+    <span id="WATCHER_FIELD_CPU_PERD">WATCHER_FIELD_CPU_PERD</span> = &#34;cpuPeriod&#34;
+    <span id="WATCHER_FIELD_CPU_QOTA">WATCHER_FIELD_CPU_QOTA</span> = &#34;cpuQuota&#34;
+    <span id="WATCHER_FIELD_CPU_SHRD">WATCHER_FIELD_CPU_SHRD</span> = &#34;cpuShared&#34;
+    <span id="WATCHER_FIELD_IN_MEM">WATCHER_FIELD_IN_MEM</span>   = &#34;inMemory&#34;
+    <span id="WATCHER_FIELD_SW_MEM">WATCHER_FIELD_SW_MEM</span>   = &#34;swapMemory&#34;
+
+    <span id="WATHCER_ENV_LBIP">WATHCER_ENV_LBIP</span> = &#34;WATHCER_ENV_LBIP&#34;
+
+    <span id="INTERNAL_ART">INTERNAL_ART</span>         = &#34;/root/agent&#34;
+    <span id="INTERNAL_CFGFILE">INTERNAL_CFGFILE</span>     = &#34;/root/conf.yml&#34;
+    <span id="INTERNAL_LOGFILE">INTERNAL_LOGFILE</span>     = &#34;/root/.ec&#34;
+    <span id="INTERNAL_CERTDIR">INTERNAL_CERTDIR</span>     = &#34;/etc/ssl/certs&#34;
+    <span id="INTERNAL_DOCKER_SOCK">INTERNAL_DOCKER_SOCK</span> = &#34;/var/run/docker.sock&#34;
+
+    <span id="WATCHER_ART_URL">WATCHER_ART_URL</span> = &#34;https://raw.githubusercontent.com/Enterprise-connect/sdk/v1.1beta/dist/agent/&#34;
+)</pre>
+			
+				
+				<pre>const (
+
+    <span class="comment">//IINDEX=    &#34;CF_INSTANCE_INDEX&#34;</span>
+    <span class="comment">//WZINDEX=    &#34;INSTANCE_INDEX&#34;</span>
+    <span id="VCAP_APP">VCAP_APP</span>           = &#34;VCAP_APPLICATION&#34;
+    <span id="CF_SCHEMA">CF_SCHEMA</span>          = &#34;https://&#34;
+    <span id="AUTOREFRESH_DUR">AUTOREFRESH_DUR</span>    = 60 * 60 * 24 * 356 * 100
+    <span id="PLG_LOAD_DELAY_SEC">PLG_LOAD_DELAY_SEC</span> = 7
+
+    <span id="TOKEN_VAL_API">TOKEN_VAL_API</span>    = &#34;/api/token/validate&#34;
+    <span id="USAGE_REPORT_API">USAGE_REPORT_API</span> = &#34;/reports/usage&#34;
+    <span id="GROUP_VAL_API">GROUP_VAL_API</span>    = &#34;/admin/accounts/validate&#34;
+    <span id="GATEWAY_LIST_API">GATEWAY_LIST_API</span> = &#34;/api/gateways&#34;
+    <span id="PUBKY_API">PUBKY_API</span>        = &#34;/certs/service&#34;
+    <span id="PUBKY_USR_API">PUBKY_USR_API</span>    = &#34;/api/pubkey&#34;
+)</pre>
+			
+		
+		
+			<h2 id="pkg-variables">Variables</h2>
+			
+				
+				<pre>var (
+    <span id="WATCHER_FIELD_CPU_PERD_VAL">WATCHER_FIELD_CPU_PERD_VAL</span> <a href="/pkg/builtin/#int64">int64</a> = 100000 <span class="comment">//microsec. e.g. 50000/100000 = .5 cpu</span>
+    <span id="WATCHER_FIELD_CPU_QOTA_VAL">WATCHER_FIELD_CPU_QOTA_VAL</span> <a href="/pkg/builtin/#int64">int64</a> = 50000
+    <span id="WATCHER_FIELD_CPU_SHRD_VAL">WATCHER_FIELD_CPU_SHRD_VAL</span> <a href="/pkg/builtin/#int64">int64</a> = 128      <span class="comment">//cpu proportional sharing per contr.</span>
+    <span id="WATCHER_FIELD_IN_MEM_VAL">WATCHER_FIELD_IN_MEM_VAL</span>   <a href="/pkg/builtin/#int64">int64</a> = 65536000 <span class="comment">//in bytes. ~64mb</span>
+    <span id="WATCHER_FIELD_SW_MEM_VAL">WATCHER_FIELD_SW_MEM_VAL</span>   <a href="/pkg/builtin/#int64">int64</a> = 65536000
+
+    <span id="WATCHER_FIELD_INTERNAL_VAL">WATCHER_FIELD_INTERNAL_VAL</span> = <a href="/pkg/builtin/#false">false</a>
+    <span id="WATCHER_FIELD_SUBNET_VAL">WATCHER_FIELD_SUBNET_VAL</span>   = &#34;101.101.14.0/16&#34;
+    <span id="WATCHER_FIELD_IPRANGE_VAL">WATCHER_FIELD_IPRANGE_VAL</span>  = &#34;101.101.16.10/25&#34;
+    <span id="WATCHER_FIELD_GATEWAY_VAL">WATCHER_FIELD_GATEWAY_VAL</span>  = &#34;101.101.16.254&#34;
+
+    <span id="DAEMON_FIELD_HTTP_PORT_VAL">DAEMON_FIELD_HTTP_PORT_VAL</span>   = &#34;:57991&#34;
+    <span id="DAEMON_FIELD_TCP_PORT_VAL">DAEMON_FIELD_TCP_PORT_VAL</span>    = &#34;:57990&#34;
+    <span id="DAEMON_FIELD_CUSTOM_PORT_VAL">DAEMON_FIELD_CUSTOM_PORT_VAL</span> = &#34;:57992&#34;
+    <span id="DAEMON_FIELD_DAEMON_PORT_VAL">DAEMON_FIELD_DAEMON_PORT_VAL</span> = &#34;:57993&#34;
+
+    <span id="WATCHER_ARTUPDATE_OPS_SCHEDULE">WATCHER_ARTUPDATE_OPS_SCHEDULE</span>   <a href="/pkg/builtin/#int">int</a> = 14400
+    <span id="WATCHER_HEALTHCHECK_OPS_SCHEDULE">WATCHER_HEALTHCHECK_OPS_SCHEDULE</span> <a href="/pkg/builtin/#int">int</a> = 20
+    <span id="WATCHER_CHECK_OPS_SCHEDULE">WATCHER_CHECK_OPS_SCHEDULE</span>       <a href="/pkg/builtin/#int">int</a> = 60
+)</pre>
+			
+		
+		
+			
+			
+			<h2 id="FetchArt">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=19681:19741#L790">FetchArt</a>
+				<a class="permalink" href="#FetchArt">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func FetchArt(artUrl, revFrom, revTo <a href="/pkg/builtin/#string">string</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="GetRev">func <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=5185:5205#L152">GetRev</a>
+				<a class="permalink" href="#GetRev">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func GetRev() <a href="/pkg/builtin/#string">string</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="KillBridge">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30645:30684#L1310">KillBridge</a>
+				<a class="permalink" href="#KillBridge">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func KillBridge(networkId <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="KillContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30341:30380#L1297">KillContainer</a>
+				<a class="permalink" href="#KillContainer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func KillContainer(contId <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+			
+			
+			<h2 id="RestartContainer">func <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30069:30111#L1284">RestartContainer</a>
+				<a class="permalink" href="#RestartContainer">&#xb6;</a>
+				
+				
+			</h2>
+			<pre>func RestartContainer(contId <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a></pre>
+			
+			
+			
+
+		
+		
+			
+			
+			<h2 id="CmdInfo">type <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=3093:3205#L101">CmdInfo</a>
+				<a class="permalink" href="#CmdInfo">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type CmdInfo struct {
+<span id="CmdInfo.Cmd"></span>    Cmd                *<a href="/pkg/os/exec/">exec</a>.<a href="/pkg/os/exec/#Cmd">Cmd</a>
+<span id="CmdInfo.RefID"></span>    RefID, ContainerID <a href="/pkg/builtin/#string">string</a>
+<span id="CmdInfo.ContainerIP"></span>    ContainerIP        <a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="Config">type <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=1459:5183#L54">Config</a>
+				<a class="permalink" href="#Config">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+basic agent setting structure.
+</p>
+
+			<pre>type Config struct {
+    <span class="comment">//in HTTP format&lt;http-schema://host:port&gt;.</span>
+<span id="Config.CompressionLevel"></span>    CompressionLevel <a href="/pkg/builtin/#int">int</a>    `json:&#34;compressionLevel&#34;`
+<span id="Config.FileToUpload"></span>    FileToUpload     <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.FileToDownload"></span>    FileToDownload   <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.OperationType"></span>    OperationType    <a href="/pkg/builtin/#string">string</a> `json:&#34;op&#34;`
+
+    <span class="comment">//in TCP format&lt;host:port&gt;</span>
+<span id="Config.ResourceHost"></span>    ResourceHost  <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.ResourcePorts"></span>    ResourcePorts <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+    <span class="comment">//reserved for VLAN-related usage</span>
+<span id="Config.ResourceAddress"></span>    ResourceAddress <a href="/pkg/builtin/#string">string</a> `json:&#34;resourceAddress&#34;`
+
+    <span class="comment">//reserved for VLAN-related usage</span>
+<span id="Config.ResourceNetwork"></span>    ResourceNetwork <a href="/pkg/builtin/#string">string</a> `json:&#34;resourceNetwork&#34;`
+
+    <span class="comment">//indicate VLAN. When set in server mode, all traffic from the client will redirect to the designated ip/port based on the VLAN plugin setting. Please refer to VLAN plugin doc.</span>
+<span id="Config.VLAN"></span>    VLAN <a href="/pkg/builtin/#bool">bool</a> `json:vlan`
+
+    <span class="comment">//indicate google pprof profiling. when set to true, the subsequence detail will be available in the format &lt;agent-http-endpoint&gt;/911/&lt;default-pprof-URI&gt;. Please refer to google pprof for the possible URIs for the usage.</span>
+    <span class="comment">//deprecated</span>
+    <span class="comment">//A911                     bool     `json:&#34;-&#34;`</span>
+<span id="Config.Id"></span>    Id         <a href="/pkg/builtin/#string">string</a> `json:&#34;id&#34;`
+<span id="Config.CFToken"></span>    CFToken    <a href="/pkg/builtin/#string">string</a> <span class="comment">//`json:&#34;cftkn&#34;`</span>
+<span id="Config.BasicToken"></span>    BasicToken <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+    <span class="comment">//indicate the connectivity mode. Avaialble in server|client|gateway|gw-server|gw-client|x:client|x:server|x:gateway.</span>
+<span id="Config.ClientType"></span>    ClientType <a href="/pkg/builtin/#string">string</a> `json:&#34;clientType&#34;`
+
+    <span class="comment">//reserved for connectivity session</span>
+<span id="Config.BindId"></span>    BindId <a href="/pkg/builtin/#string">string</a> `json:&#34;bindId&#34;`
+
+<span id="Config.TargetServerId"></span>    TargetServerId <a href="/pkg/builtin/#string">string</a> `json:&#34;targetServerId&#34;`
+<span id="Config.LocalPort"></span>    LocalPort      <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.FuseModePort"></span>    FuseModePort   <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.HealthPort"></span>    HealthPort     <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.HealthAuth"></span>    HealthAuth     <a href="/pkg/builtin/#bool">bool</a>   `json:&#34;-&#34;`
+
+<span id="Config.Version"></span>    Version <a href="/pkg/builtin/#string">string</a> `json:&#34;version&#34;`
+
+<span id="Config.ClientId"></span>    ClientId <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+<span id="Config.ClientSecret"></span>    ClientSecret <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+<span id="Config.GatewayHost"></span>    GatewayHost *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;ghost&#34;`
+
+    <span class="comment">//reserved for OAuth2 providers. Deprecated in the future cert-based release</span>
+<span id="Config.OAuthURL"></span>    OAuthURL *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
+
+    <span class="comment">//endpoint for reporting purposes. Please refer to the wiki for possible endpoints.</span>
+<span id="Config.ServiceURL"></span>    ServiceURL *<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a> `json:&#34;-&#34;`
+
+    <span class="comment">//cloud foundry service id. Deprecated in future cert-based releases.</span>
+<span id="Config.Zone"></span>    Zone <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+    <span class="comment">// deprecated in v1.1beta</span>
+<span id="Config.GroupID"></span>    GroupID <a href="/pkg/builtin/#string">string</a> `json:&#34;groupId&#34;`
+
+<span id="Config.Duration"></span>    Duration  <a href="/pkg/builtin/#int64">int64</a>    `json:&#34;-&#34;`
+<span id="Config.WhiteList"></span>    WhiteList []<a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+<span id="Config.BlockList"></span>    BlockList []<a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+    <span class="comment">//cert update</span>
+<span id="Config.Cert"></span>    Cert *<a href="/pkg/github.com/wzlib/wzutil/">util</a>.<a href="/pkg/github.com/wzlib/wzutil/#Cert">Cert</a> `json:&#34;-&#34;`
+
+<span id="Config.TLS"></span>    TLS <a href="/pkg/builtin/#bool">bool</a> `json:&#34;-&#34;`
+
+    <span class="comment">//the report schema rendered in the healthcheck endpoint.</span>
+<span id="Config.Report"></span>    Report      *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#Report">Report</a> `json:&#34;report&#34;`
+<span id="Config.AdminId"></span>    AdminId     <a href="/pkg/builtin/#string">string</a>        `json:&#34;-&#34;`
+<span id="Config.AdminSecret"></span>    AdminSecret <a href="/pkg/builtin/#string">string</a>        `json:&#34;-&#34;`
+<span id="Config.Debug"></span>    Debug       <a href="/pkg/builtin/#bool">bool</a>          `json:&#34;-&#34;`
+<span id="Config.Ip"></span>    Ip          []<a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>      `json:&#34;ip&#34;`
+
+    <span class="comment">//reserved for cloud foundry container access</span>
+<span id="Config.GatewayID"></span>    GatewayID <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+    <span class="comment">//reserved for cloud foundry container access</span>
+<span id="Config.ReferenceID"></span>    ReferenceID <a href="/pkg/builtin/#string">string</a> `json:&#34;refId&#34;`
+
+<span id="Config.PublicKey"></span>    PublicKey <a href="/pkg/builtin/#string">string</a> `json:&#34;-&#34;`
+
+<span id="Config.GroupInfo"></span>    GroupInfo []*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#GroupList">GroupList</a> `json:&#34;-&#34;`
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+				
+				<h3 id="Init">func <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=5530:5583#L175">Init</a>
+					<a class="permalink" href="#Init">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func Init(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) (*<a href="#Config">Config</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+initialise the EC configuration with the collection of the settings
+</p>
+
+				
+				
+			
+
+			
+				
+				<h3 id="Config.AutoRefresh">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=41594:41654#L1877">AutoRefresh</a>
+					<a class="permalink" href="#Config.AutoRefresh">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) AutoRefresh(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+AutoRefresh is irrelevant token maintainer to any x:&lt;agent_mode&gt;
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Config.ExchangeGatewayList">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=48929:49030#L2251">ExchangeGatewayList</a>
+					<a class="permalink" href="#Config.ExchangeGatewayList">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) ExchangeGatewayList(_str []<a href="/pkg/builtin/#byte">byte</a>, _rune <a href="/pkg/builtin/#string">string</a>) &lt;-chan map[<a href="/pkg/builtin/#string">string</a>]*<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#GatewayInfo">GatewayInfo</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.GetEncryptedKey">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=47736:47793#L2188">GetEncryptedKey</a>
+					<a class="permalink" href="#Config.GetEncryptedKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) GetEncryptedKey(_d <a href="/pkg/builtin/#string">string</a>) &lt;-chan []<a href="/pkg/builtin/#byte">byte</a></pre>
+				<p>
+GetEncryptedKey used only in legacy cloud foundry agent types
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Config.GetPublicKey">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=46430:46477#L2109">GetPublicKey</a>
+					<a class="permalink" href="#Config.GetPublicKey">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) GetPublicKey() &lt;-chan <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.GetPublicKeyUsrApi">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=47042:47095#L2148">GetPublicKeyUsrApi</a>
+					<a class="permalink" href="#Config.GetPublicKeyUsrApi">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) GetPublicKeyUsrApi() &lt;-chan <a href="/pkg/builtin/#string">string</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.GroupValidation">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=45525:45584#L2061">GroupValidation</a>
+					<a class="permalink" href="#Config.GroupValidation">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) GroupValidation() &lt;-chan *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#GroupList">GroupList</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.GroupValidationV2">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=19691:19754#L873">GroupValidationV2</a>
+					<a class="permalink" href="#Config.GroupValidationV2">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) GroupValidationV2(_grp, _src, _tgt <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#bool">bool</a></pre>
+				<p>
+GroupValidationV2 validate whether the source id @@src and target @@trg are in the same group @@grp.
+Unlink the original GroupValidation, GroupValudationV2 validates groups without a HTTP request.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Config.InitClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=32658:32723#L1433">InitClientConfig</a>
+					<a class="permalink" href="#Config.InitClientConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitClientConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitGWClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=25797:25864#L1136">InitGWClientConfig</a>
+					<a class="permalink" href="#Config.InitGWClientConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitGWClientConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitGWServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=29306:29373#L1289">InitGWServerConfig</a>
+					<a class="permalink" href="#Config.InitGWServerConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitGWServerConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitGatewayConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=20144:20210#L889">InitGatewayConfig</a>
+					<a class="permalink" href="#Config.InitGatewayConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitGatewayConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=37128:37193#L1658">InitServerConfig</a>
+					<a class="permalink" href="#Config.InitServerConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitServerConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitXClientConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=35542:35608#L1576">InitXClientConfig</a>
+					<a class="permalink" href="#Config.InitXClientConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitXClientConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.InitXGatewayConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=22986:23111#L1001">InitXGatewayConfig</a>
+					<a class="permalink" href="#Config.InitXGatewayConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitXGatewayConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}, cred map[<a href="/pkg/builtin/#string">string</a>]interface{}, grp []interface{}, tls <a href="/pkg/builtin/#bool">bool</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+InitXGatewayConfig initialise the setting of the x:gateway with basic configuration set (@@cm),
+credential (@@cred), and permitted subscription group list (@@grp). The @@tls indicates the usage (ws/wss) of the gateway connectivity.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Config.InitXServerConfig">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=40142:40208#L1803">InitXServerConfig</a>
+					<a class="permalink" href="#Config.InitXServerConfig">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) InitXServerConfig(cm map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.IsValidSettings">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=19136:19173#L851">IsValidSettings</a>
+					<a class="permalink" href="#Config.IsValidSettings">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) IsValidSettings() <a href="/pkg/builtin/#bool">bool</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.ProxySetting">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=46212:46278#L2099">ProxySetting</a>
+					<a class="permalink" href="#Config.ProxySetting">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) ProxySetting(req *<a href="/pkg/net/http/">http</a>.<a href="/pkg/net/http/#Request">Request</a>) (*<a href="/pkg/net/url/">url</a>.<a href="/pkg/net/url/#URL">URL</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="Config.TokenValidation">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=44873:44934#L2023">TokenValidation</a>
+					<a class="permalink" href="#Config.TokenValidation">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) TokenValidation() &lt;-chan *<a href="/pkg/github.com/wzlib/wzschema/">model</a>.<a href="/pkg/github.com/wzlib/wzschema/#TokenStatus">TokenStatus</a></pre>
+				<p>
+cloud foundry only. Being deprecated
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="Config.UsageReporting">func (*Config) <a href="/src/github.com/wzlib/wzconf/wzconf.go?s=42751:42814#L1926">UsageReporting</a>
+					<a class="permalink" href="#Config.UsageReporting">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (c *<a href="#Config">Config</a>) UsageReporting() &lt;-chan map[<a href="/pkg/builtin/#string">string</a>]interface{}</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="ProcessLocker">type <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=3207:3275#L108">ProcessLocker</a>
+				<a class="permalink" href="#ProcessLocker">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type ProcessLocker struct {
+    <a href="/pkg/sync/">sync</a>.<a href="/pkg/sync/#RWMutex">RWMutex</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="WatcherCmdBuilder">type <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=2927:2971#L98">WatcherCmdBuilder</a>
+				<a class="permalink" href="#WatcherCmdBuilder">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+dir of the artifact @@art, and @@path to the configuration yaml
+</p>
+
+			<pre>type WatcherCmdBuilder func(<a href="/pkg/builtin/#bool">bool</a>) []<a href="/pkg/builtin/#string">string</a></pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+			
+			
+			<h2 id="WatcherConfig">type <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=3623:4102#L123">WatcherConfig</a>
+				<a class="permalink" href="#WatcherConfig">&#xb6;</a>
+				
+				
+			</h2>
+			<p>
+In a watcher container, InternalPort refers to the internal port binding
+InternalArt, InternalCfgFile are both used to run the commands, whereas InternalCfgFile is used for the configuration yaml
+</p>
+
+			<pre>type WatcherConfig struct {
+<span id="WatcherConfig.ExternalCfgFile"></span>    ExternalCfgFile, ExternalCertDir,
+    Http_Port, Tcp_Port, Custom_Port <a href="/pkg/builtin/#string">string</a>
+<span id="WatcherConfig.NumInst"></span>    NumInst <a href="/pkg/builtin/#int">int</a>
+    <span class="comment">// contains filtered or unexported fields</span>
+}
+</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+				
+				<h3 id="WatcherConfig.ArtUpdateOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=18829:18890#L744">ArtUpdateOps</a>
+					<a class="permalink" href="#WatcherConfig.ArtUpdateOps">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) ArtUpdateOps() (fo <a href="/pkg/builtin/#string">string</a>, err <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.CreateContainer">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=5530:5651#L183">CreateContainer</a>
+					<a class="permalink" href="#WatcherConfig.CreateContainer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) CreateContainer(ccmd []<a href="/pkg/builtin/#string">string</a>, ins <a href="/pkg/builtin/#int">int</a>, envInst <a href="/pkg/builtin/#string">string</a>, iswtr, isdae <a href="/pkg/builtin/#bool">bool</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+@ccmd:command while launching the container, @@envInst is the env string reserved for the instance index. response with containerId and err. @@cprt refers to the container-binding port# in the host. @@hprt is used for the optional health port for the container-binding. @@art refer to the obs path of the executable, whereas @@cfg is the obs configuration yaml on the watcher vm
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.CreateNetwork">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=21751:21806#L886">CreateNetwork</a>
+					<a class="permalink" href="#WatcherConfig.CreateNetwork">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) CreateNetwork() (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.CreateProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=29207:29323#L1236">CreateProc</a>
+					<a class="permalink" href="#WatcherConfig.CreateProc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) CreateProc(is <a href="/pkg/builtin/#string">string</a>, ins <a href="/pkg/builtin/#int">int</a>, op []<a href="/pkg/builtin/#string">string</a>, isWatcher, isDaemon <a href="/pkg/builtin/#bool">bool</a>) (<a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#string">string</a>, <a href="/pkg/builtin/#error">error</a>)</pre>
+				<p>
+create a process by the watcher. @@ins is the instance number, @@ip is the port number. @@fa refers to the executable
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.DeployWatcher">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=23113:23185#L945">DeployWatcher</a>
+					<a class="permalink" href="#WatcherConfig.DeployWatcher">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) DeployWatcher(wbuilder <a href="#WatcherCmdBuilder">WatcherCmdBuilder</a>) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.GetIPMap">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=28733:28786#L1213">GetIPMap</a>
+					<a class="permalink" href="#WatcherConfig.GetIPMap">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) GetIPMap() map[<a href="/pkg/builtin/#string">string</a>]<a href="/pkg/net/">net</a>.<a href="/pkg/net/#IP">IP</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.GetOAuthToken">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=4517:4569#L155">GetOAuthToken</a>
+					<a class="permalink" href="#WatcherConfig.GetOAuthToken">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) GetOAuthToken() (tkn <a href="/pkg/builtin/#string">string</a>)</pre>
+				<p>
+GetOAuthToken return a valid token for authorisation purpose
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.HealthCheckOps">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=32106:32153#L1395">HealthCheckOps</a>
+					<a class="permalink" href="#WatcherConfig.HealthCheckOps">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) HealthCheckOps() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+check the health of the containers
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.Init">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=12695:12767#L507">Init</a>
+					<a class="permalink" href="#WatcherConfig.Init">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) Init(wconf, cconf map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+@@wconf watcher config map
+@@cconf credential config map
+func InitWatcherConfig(wtrConfURL, pxy *url.URL, envstr, crtstr, cfgpath string, wconf map[interface{}]interface{}, cconf map[interface{}]interface{}, wc *WatcherConfig) (*WatcherConfig, error) {
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.InitDaemonContainer">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=10507:10559#L429">InitDaemonContainer</a>
+					<a class="permalink" href="#WatcherConfig.InitDaemonContainer">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) InitDaemonContainer() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.InitOpsScheduler">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=17225:17274#L688">InitOpsScheduler</a>
+					<a class="permalink" href="#WatcherConfig.InitOpsScheduler">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) InitOpsScheduler() <a href="/pkg/builtin/#error">error</a></pre>
+				<p>
+InitOpsScheduler in the watcher mode, it is currently scheduled for container healthcheck,
+artifact update, check operations, and refresh the encrypted passphrase before the expiration.
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.InitProxy">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=15984:16061#L638">InitProxy</a>
+					<a class="permalink" href="#WatcherConfig.InitProxy">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) InitProxy(wconf, cconf map[<a href="/pkg/builtin/#string">string</a>]interface{}) <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.KillContainers">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=30976:31023#L1324">KillContainers</a>
+					<a class="permalink" href="#WatcherConfig.KillContainers">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) KillContainers() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.KillProc">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=31359:31400#L1346">KillProc</a>
+					<a class="permalink" href="#WatcherConfig.KillProc">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) KillProc() <a href="/pkg/builtin/#error">error</a></pre>
+				
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.ProxyHTTPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=26675:26713#L1131">ProxyHTTPReq</a>
+					<a class="permalink" href="#WatcherConfig.ProxyHTTPReq">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) ProxyHTTPReq()</pre>
+				<p>
+turn watcher into an internal http proxy
+@@sch http schema; @@uri http uri
+</p>
+
+				
+				
+				
+			
+				
+				<h3 id="WatcherConfig.ProxyTCPReq">func (*WatcherConfig) <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=24790:24827#L1027">ProxyTCPReq</a>
+					<a class="permalink" href="#WatcherConfig.ProxyTCPReq">&#xb6;</a>
+					
+					
+				</h3>
+				<pre>func (wc *<a href="#WatcherConfig">WatcherConfig</a>) ProxyTCPReq()</pre>
+				
+				
+				
+				
+			
+		
+			
+			
+			<h2 id="WatcherIntr">type <a href="/src/github.com/wzlib/wzconf/watrconf.go?s=3277:3420#L113">WatcherIntr</a>
+				<a class="permalink" href="#WatcherIntr">&#xb6;</a>
+				
+				
+			</h2>
+			
+			<pre>type WatcherIntr interface {
+    CreatedProc(<a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#int">int</a>, <a href="/pkg/builtin/#string">string</a>) <a href="/pkg/builtin/#error">error</a>
+    KillProc() <a href="/pkg/builtin/#error">error</a>
+    ProxyHTTPReq() <a href="/pkg/builtin/#error">error</a>
+    ProxyTCPReq() <a href="/pkg/builtin/#error">error</a>
+    Monitor() <a href="/pkg/builtin/#error">error</a>
+}</pre>
+
+			
+
+			
+
+			
+			
+			
+
+			
+
+			
+		
+	
+
+	
+
+
+
+
+
+
+
+<div id="footer">
+Build version go1.12.17.<br>
+Except as <a href="https://developers.google.com/site-policies#restrictions">noted</a>,
+the content of this page is licensed under the
+Creative Commons Attribution 3.0 License,
+and code is licensed under a <a href="/LICENSE">BSD license</a>.<br>
+<a href="/doc/tos.html">Terms of Service</a> |
+<a href="http://www.google.com/intl/en/policies/privacy/">Privacy Policy</a>
+</div>
+
+</div><!-- .container -->
+</div><!-- #page -->
+
+</body>
+</html>
+

@@ -1,0 +1,35 @@
+name: v1.1beta-ci
+on:
+  #push:
+  #  branches: [ v1.1beta ]
+  push:
+    branches: [ v1.1beta ]
+  pull_request:
+    branches: [ v1.1beta ]
+    types: [opened, synchronize]
+  workflow_dispatch:  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    environment: v1.1beta
+    #env:
+    steps:
+      - uses: actions/checkout@v2
+      - name: ui test
+        id: ui-test
+        #env:
+        run: |
+          docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
+      - name: pr merged
+        if: github.event_name == 'push'
+        id: pr-merged
+        run: |
+          echo pr has been merged and closed
+        
+        
+        
+        
+      
+      
+          
