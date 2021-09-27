@@ -1,50 +1,56 @@
 {
     "name": "ec-admin-webui",
-    "description": "EC Admin Console UI based on Bootstrap and REACT",
-    "version": "0.0.1",
+    "description": "EC Admin Console UI based on Bootstrap and React",
+    "version": "0.0.2",
+    "private": true,
+    "homepage": "v1.2beta/assets",
     "dependencies": {
-        "@babel/register": "^7.6.2",
-        "babel-cli": "^6.26.0",
-        "babel-preset-react-app": "^9.0.2",
-        "bower": "^1.8.8",
-        "cross-env": "^6.0.0",
-        "jasmine-enzyme": "^7.1.1",
-        "jsdom": "^16.2.2",
-        "node-fetch": "^2.6.1",
-        "nyc": "^14.1.1",
-        "protractor": "^5.4.2",
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0",
-        "typescript": "^3.7.3"
+      "@testing-library/jest-dom": "4.2.4",
+      "@testing-library/react": "9.5.0",
+      "@testing-library/user-event": "7.2.1",
+      "bootstrap": "4.6.0",
+      "bootstrap-jquery": "3.3.2",
+      "bootstrap-select": "1.13.1",
+      "cross-env": "7.0.3",
+      "datatables.net": "1.10.25",
+      "datatables.net-dt": "1.1.0",
+      "enzyme": "3.11.0",
+      "enzyme-adapter-react-16": "1.15.6",
+      "fetch-mock": "9.11.0",
+      "font-awesome": "4.7.0",
+      "highcharts": "9.2.2",
+      "jquery": "3.6.0",
+      "node-fetch": "3.0.0",
+      "popper.js": "1.14.7",
+      "react": "16.13.1",
+      "react-bootstrap": "1.0.1",
+      "react-dom": "16.13.1",
+      "react-scripts": "3.4.1",
+      "uuid": "8.3.2",
+      "vis-data": "7.1.2",
+      "vis-network": "9.1.0"
     },
     "scripts": {
-        "preinstall": "npx npm-force-resolutions",
-        "test": "nyc cross-env NODE_ENV=test jasmine",
-        "coverage": "nyc --reporter=lcov --reporter=text-lcov npm test",
-        "jshint": "jshint webui-assets/"
+      "start": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development react-scripts start --port 3001",
+      "build:dev": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development react-scripts build",
+      "build": "react-scripts build",
+      "test": "react-scripts test",
+      "eject": "react-scripts eject"
     },
-    "devDependencies": {
-        "babel-plugin-transform-runtime": "^6.23.0",
-        "babel-preset-env": "^1.7.0",
-        "braces": "^3.0.2",
-        "enzyme": "^3.10.0",
-        "enzyme-adapter-react-16": "^1.14.0",
-        "fetch-mock": "^9.0.0-beta.2",
-        "ignore-styles": "^5.0.1",
-        "jasmine": "^3.5.0",
-        "jshint": "^2.11.1",
-        "kind-of": "^6.0.3",
-        "minimist": "^1.2.5",
-        "react-test-renderer": "^16.9.0"
+    "eslintConfig": {
+      "extends": "react-app"
     },
-    "babel": {
-        "presets": [
-            "react-app"
-        ]
-    },
-    "resolutions": {
-        "minimist": "^1.2.5",
-        "braces": "^3.0.2",
-        "kind-of": "^6.0.3"
+    "browserslist": {
+      "production": [
+        ">0.2%",
+        "not dead",
+        "not op_mini all"
+      ],
+      "development": [
+        "last 1 chrome version",
+        "last 1 firefox version",
+        "last 1 safari version"
+      ]
     }
-}
+  }
+  
