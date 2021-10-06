@@ -373,14 +373,14 @@ export default class UserProfile extends React.Component {
                                   this.handlePlaceholder(event);
                                 }}
                               >
-                                {this.state.basicProfile.firstName.change ==
+                                {this.state.basicProfile.firstName.change ===
                                 true
                                   ? "First Name"
                                   : this.state.basicProfile.firstName.value}
                               </span>
                             </div>
                           </div>
-                          {this.state.basicProfile.firstName.value == "" ? (
+                          {this.state.basicProfile.firstName.value === "" ? (
                             <small className="text-default">
                               Please specify the first name
                             </small>
@@ -411,7 +411,7 @@ export default class UserProfile extends React.Component {
                                   this.handlePlaceholder(event);
                                 }}
                               >
-                                {this.state.basicProfile.lastName.change == true
+                                {this.state.basicProfile.lastName.change === true
                                   ? "Last Name"
                                   : this.state.basicProfile.lastName.value}
                               </span>
@@ -450,7 +450,7 @@ export default class UserProfile extends React.Component {
                                   this.handlePlaceholder(event);
                                 }}
                               >
-                                {this.state.basicProfile.geId.change == true
+                                {this.state.basicProfile.geId.change === true
                                   ? "GE Id"
                                   : this.state.basicProfile.geId.value}
                               </span>
@@ -485,7 +485,7 @@ export default class UserProfile extends React.Component {
                                   this.handlePlaceholder(event);
                                 }}
                               >
-                                {this.state.basicProfile.mobile.change == true
+                                {this.state.basicProfile.mobile.change === true
                                   ? " Mobile No."
                                   : this.state.basicProfile.mobile.value}
                               </span>
@@ -522,7 +522,7 @@ export default class UserProfile extends React.Component {
                                   this.handlePlaceholder(event);
                                 }}
                               >
-                                {this.state.basicProfile.city.change == true
+                                {this.state.basicProfile.city.change === true
                                   ? "City"
                                   : this.state.basicProfile.city.value}
                               </span>

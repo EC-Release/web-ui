@@ -2,6 +2,7 @@ import React from "react";
 import $ from "jquery";
 
 import IconGreenSortingDown from "../assets/images/icon_greensortingdown.svg";
+import CopyIcon from "../assets/images/copy.svg";
 
 export default class Maintainagentcreate extends React.Component {
   constructor(props) {
@@ -110,7 +111,11 @@ export default class Maintainagentcreate extends React.Component {
         { name: "External", id: "4" },
       ],
       // API will provide this ecVersions
-      ecVersions: [],
+      ecVersions: [
+        { ecVersion: "v1.hokkaido.214.lib", ecVersionIndex: "214" },
+        { ecVersion: "v1.hokkaido.213.lib", ecVersionIndex: "213" },
+        { ecVersion: "v1beta.fukuoka.1728.lib", ecVersionIndex: "212" },
+      ],
       groups: [],
       // API will provide this ecSubVersions
       ecSubVersions: [
@@ -2186,9 +2191,9 @@ export default class Maintainagentcreate extends React.Component {
                       return (
                         <option
                           key={"ecVersionOption" + ecVersionIndex}
-                          value={ecVersion}
+                          value={ecVersion.ecVersionIndex}
                         >
-                          {ecVersion}
+                          {ecVersion.ecVersion}
                         </option>
                       );
                     })}
@@ -2668,7 +2673,7 @@ export default class Maintainagentcreate extends React.Component {
                     <div className="col-sm-5 mb-2">
                       <img
                         alt="copy"
-                        src="assets/static/images/copy.svg"
+                        src={CopyIcon}
                         height="15px"
                       />
                       <a
@@ -3155,7 +3160,7 @@ export default class Maintainagentcreate extends React.Component {
                     <div className="col-sm-5 mb-2">
                       <img
                         alt="copy"
-                        src="assets/static/images/copy.svg"
+                        src={CopyIcon}
                         height="15px"
                       />
                       <a
@@ -3341,7 +3346,7 @@ export default class Maintainagentcreate extends React.Component {
                     <div className="col-sm-5 mb-2">
                       <img
                         alt="copy"
-                        src="assets/static/images/copy.svg"
+                        src={CopyIcon}
                         height="15px"
                       />
                       <a
@@ -3528,7 +3533,7 @@ export default class Maintainagentcreate extends React.Component {
                     <div className="col-sm-5 mb-2">
                       <img
                         alt="copy"
-                        src="assets/static/images/copy.svg"
+                        src={CopyIcon}
                         height="15px"
                       />
                       <a

@@ -247,10 +247,10 @@ export default class Subscriptionupgrade extends React.Component {
   deleteData(tbodyVal, rowIndex) {
     let cnf = window.confirm("Are you sure you want to delete");
     if (cnf) {
-      let subscripnId = tbodyVal.subscriptionId;
+      /* let subscripnId = tbodyVal.subscriptionId;
       if (tbodyVal.subscriptionIdHiddenFlag) {
         subscripnId = tbodyVal.subscriptionIdHidden;
-      }
+      } */
       this.props.showGlobalMessage(
         true,
         true,

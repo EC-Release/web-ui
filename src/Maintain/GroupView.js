@@ -116,7 +116,7 @@ export default class GroupView extends React.Component {
             if (response.status === 200) {
                 response.json().then((respData) => {
                     if(respData.errorStatus.status === 'ok'){
-                        let subscriptions = respData.data;
+                        let subscriptions = respData.data ;
                         localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                     }
                     else{
@@ -155,9 +155,11 @@ export default class GroupView extends React.Component {
 
     /* istanbul ignore next */
     edit(groupData){
+        let subscriptions = groupData.subscriptions === undefined ? [] : groupData.subscriptions;
+        let groupId = groupData.groupId;
         this.setState({
-            subscriptions: groupData.subscriptions,
-            groupId: groupData.groupId,
+            subscriptions: subscriptions,
+            groupId: groupId,
           });
           setTimeout(() => {
             this.setState({

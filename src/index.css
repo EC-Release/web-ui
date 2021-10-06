@@ -1,6 +1,6 @@
 @font-face {
   font-family: GE Inspira Sans;
-  /*   src: url(../assets/fonts/GEInspiraSans-Regular-v02.ttf); */
+  /* src: url(../assets/fonts/GEInspiraSans-Regular-v02.ttf);  */
 }
 
 .modal-body {
@@ -604,18 +604,18 @@ table.dataTable thead th {
 
 .btn-selected,
 .btn-selected:hover {
-  color: #ffffff;
-  background-color: #005eb8;
-  border-color: #005eb8;
-  font-weight: 600;
+  color: #ffffff !important;
+  background-color: #005eb8  !important;
+  border-color: #005eb8  !important;
+  font-weight: 600 !important;
 }
 
 .btn-deselected,
 .btn-deselected:hover {
-  color: #005eb8;
-  background-color: #ffffff;
-  border-color: #00b5e2;
-  font-weight: 600;
+  color: #005eb8 !important;
+  background-color: #ffffff !important;
+  border-color: #00b5e2 !important;
+  font-weight: 600 !important;
 }
 
 .minimized-modal {
@@ -923,6 +923,7 @@ table.dataTable thead th {
 
 .index-loader {
   height: 70px;
+  align-items: center;
 }
 
 .largeModal {
@@ -1181,6 +1182,15 @@ table > tbody > tr[aria-expanded="true"] > td:first-child:before {
 }
 .notificationModal .modal-dialog {
   margin-top: 14%;
+}
+
+.treeview-div li {
+  list-style-type: disclosure-closed;
+  }
+.treeview-div a {
+    text-decoration: underline !important;
+    color: #005eb8 !important;
+    cursor: pointer !important;
 }
 
 @media (min-width: 576px) {

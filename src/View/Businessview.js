@@ -1,9 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
+//import ReactDOM from "react-dom";
 
 import Treelist from '../Treelist/Treelist.js';
 import Topologygraph from '../Topologygraph/Topologygraph.js';
-import Viewtable from '../Viewtable/Viewtable.js';
+//import Viewtable from '../Viewtable/Viewtable.js';
 
 export default class Businessview extends React.Component {
 

@@ -123,23 +123,23 @@ export default class Technicalview extends React.Component {
             ],
           },
           {
-            id: 1,
+            id: 21,
             value: "License-103",
             children: [
               {
-                id: 2,
+                id: 22,
                 value: "wabtec-gecars-qa",
                 children: [
                   {
-                    id: 3,
+                    id: 33,
                     value: "0idLmsMk8e",
                   },
                   {
-                    id: 4,
+                    id: 24,
                     value: "0idLmsMk8o",
                   },
                   {
-                    id: 5,
+                    id: 25,
                     value: "0idLmsMk8r",
                   },
                 ],
@@ -269,7 +269,7 @@ export default class Technicalview extends React.Component {
                     treeValue[0].children.push(newSubscriptionsObj);
                   }
 
-                  if (subscriptionId != "") {
+                  if (subscriptionId !== "") {
                     // fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
                     fetch("https://reqres.in/api/users/2", {
                       method: "GET",
@@ -867,7 +867,7 @@ export default class Technicalview extends React.Component {
                 let nodes = [];
                 let edges = [];
                 if (treeValue.length > 0) {
-                  let shapeArray = this.state.nodeShapes;
+                  //let shapeArray = this.state.nodeShapes;
                   let treeObj = treeValue[0];
                   let parentNodeId = treeObj.id;
                   let parentNodeLabel = treeObj.value;
@@ -979,7 +979,7 @@ export default class Technicalview extends React.Component {
     });
     this.generateTableStructure(technicalTableData);
     if (treeValue.length > 0) {
-      let shapeArray = this.state.nodeShapes;
+      //let shapeArray = this.state.nodeShapes;
       let treeObj = treeValue[0];
       let parentNodeId = treeObj.id;
       let parentNodeLabel = treeObj.value;
@@ -1115,7 +1115,7 @@ export default class Technicalview extends React.Component {
                   treeValue[0].children.push(newSubscriptionsObj);
                 }
 
-                if (subscriptionId != "") {
+                if (subscriptionId !== "") {
                   fetch(
                     this.props.baseUrl +
                       "/gatewayList?subscriptionID=" +
@@ -1780,7 +1780,7 @@ export default class Technicalview extends React.Component {
 
   /* istanbul ignore next */
   changeTopologyView(items) {
-    let shapeArray = this.state.nodeShapes;
+    //let shapeArray = this.state.nodeShapes;
     let nodes = [];
     let edges = [];
     let treeObj = Object.assign({}, items);
@@ -1941,7 +1941,7 @@ export default class Technicalview extends React.Component {
         } else if (andFilter.whereOperator === "!=") {
           filteredData = filteredData.filter(function (data) {
             // jshint ignore:line
-            return data[andFilter.whereField] != andFilter.whereValue;
+            return data[andFilter.whereField] !== andFilter.whereValue;
           });
         }
       }
@@ -1970,7 +1970,7 @@ export default class Technicalview extends React.Component {
         } else if (orFilter.whereOperator === "!=") {
           orFilteredDatas = wholeData.filter(function (data) {
             // jshint ignore:line
-            return data[orFilter.whereField] != orFilter.whereValue;
+            return data[orFilter.whereField] !== orFilter.whereValue;
           });
         }
 

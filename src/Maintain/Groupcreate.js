@@ -51,7 +51,7 @@ export default class Groupcreate extends React.Component {
             if(subscriptionData.length > 0){
               let selectedSubscriptionId = subscriptionData[0].licenseId;
               let formObj = Object.assign({}, this.state.groupForm);
-              formObj.subscriptionId.value = selectedSubscriptionId;
+              formObj.subscriptionId.value = [];//selectedSubscriptionId;
               this.setState({
                   subscriptions: subscriptionData,
                   groupForm: formObj
@@ -143,15 +143,19 @@ export default class Groupcreate extends React.Component {
         let groupIdDirtyState = currentFormData.groupId.dirtyState;
         let formIsValid = true;
         let errors = {};
-
+        console.log(subscriptionIdValue);
         let subscriptionIdFound = false;
         for (let subscriptionId of subscriptionIdValue) {
+            console.log(subscriptionId);
           if (subscriptionId.trim() !== "") {
             subscriptionIdFound = true;
           }
         }
+
         if (!subscriptionIdFound) {
-          errors.subscriptionId = "Please select Subscription ID";
+            if(subscriptionIdDirtyState){
+                errors.subscriptionId = "Please select Subscription ID";
+            }
           formIsValid = false;
         }
 
