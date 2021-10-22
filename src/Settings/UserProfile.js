@@ -54,8 +54,75 @@ export default class UserProfile extends React.Component {
         }
       });
     });
+    let profile = {
+      firstName: "Bryan",
+      lastName: "Shaw",
+      geId: "bryan.shaw@ge.com",
+      mobile: "+113120312",
+      city: "Nevada",
+      country: "US",
+    };
+    /* let profile = {
+      firstName: data.fullName.split(" ")[1],
+      lastName: data.fullName.split(" ")[0],
+      geId: data.email, 
+      mobile: "+113120312",
+      city: data.locality,
+      country: data.country,
+    }; */
+    let currentbasicProfile = Object.assign({}, this.state.basicProfile);
+    let currentCopyBasicProfile = Object.assign(
+      {},
+      this.state.copyBasicProfile
+    );
+    currentCopyBasicProfile.firstName = profile.firstName;
+    currentbasicProfile.firstName.value = profile.firstName;
+    currentbasicProfile.firstName.change = false;
+    currentCopyBasicProfile.lastName = profile.lastName;
+    currentbasicProfile.lastName.value = profile.lastName;
+    currentbasicProfile.lastName.change = false;
+    currentCopyBasicProfile.geId = profile.geId;
+    currentbasicProfile.geId.value = profile.geId;
+    currentbasicProfile.geId.change = false;
+    currentCopyBasicProfile.mobile = profile.mobile;
+    currentbasicProfile.mobile.value = profile.mobile;
+    currentbasicProfile.mobile.change = false;
+    currentCopyBasicProfile.city = profile.city;
+    currentbasicProfile.city.value = profile.city;
+    currentbasicProfile.city.change = false;
+    currentCopyBasicProfile.country = profile.country;
+    currentbasicProfile.country.value = profile.country;
+    currentbasicProfile.country.change = false;
+    this.setState({
+      basicProfile: currentbasicProfile,
+      copyBasicProfile: currentCopyBasicProfile,
+    });
+    let notifications = {
+      notifications_email: false,
+      notifications_text: true,
+      notifications_phone: true,
+      messages_email: false,
+      messages_text: false,
+    };
 
-    fetch("https://jsonplaceholder.typicode.com/todos/1", {
+    let currentNotifications = Object.assign(
+      {},
+      this.state.notifications
+    );
+    currentNotifications.notifications_email =
+      notifications.notifications_email;
+    currentNotifications.notifications_text =
+      notifications.notifications_text;
+    currentNotifications.notifications_phone =
+      notifications.notifications_phone;
+    currentNotifications.messages_email =
+      notifications.messages_email;
+    currentNotifications.messages_text =
+      notifications.messages_text;
+    this.setState({
+      notifications: currentNotifications,
+    });
+    /* fetch("https://jsonplaceholder.typicode.com/todos/1", {
       // Get gateways
       method: "GET",
     }).then((response) => {
@@ -133,7 +200,7 @@ export default class UserProfile extends React.Component {
           });
         });
       }
-    });
+    }); */
   }
 
   /* istanbul ignore next */

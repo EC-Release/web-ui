@@ -4,7 +4,7 @@ import $ from 'jquery';
 import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
 import IconInfo from '../assets/images/info.svg';
 
-export default class Subscriptioncreate extends React.Component {
+export default class LicenseCreate extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -141,7 +141,7 @@ export default class Subscriptioncreate extends React.Component {
     prepareData.username = currentForm.username.value;
     prepareData.parent = "ab2a2691-a563-486c-9883-5111ff36ba9b"
     prepareData.name = "License"
-
+    console.log(myuuid);
     // fetch(this.props.baseUrl + '/createSubscription', {
     fetch(this.props.baseUrl + myuuid, {
       method: "POST",
@@ -268,13 +268,13 @@ export default class Subscriptioncreate extends React.Component {
     /* jshint ignore:start */
     /* istanbul ignore next */
     return (
-      <div className="row Subscriptioncreate">
+      <div className="row licenseCreate">
         <div className="col-md-12 mt-2">
           <div className="centered-div">
             <div className="centered-div-header">
               <div className="row maintainagentcreate-header">
                 <div className="col-md-12">
-                  <h6 id="maintainsubscriptioncreate-title">
+                  <h6 id="maintainlicenseCreate-title">
                     Create License <small>Creating parameters.</small>
                   </h6>
                 </div>

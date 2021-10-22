@@ -296,8 +296,8 @@ export default class Groupcreate extends React.Component {
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <select 
-                                                className="selectpicker form-control form-control-sm" 
-                                                multiple
+                                                className="selectpickerform-control form-control-sm" 
+                                                /*  multiple */
 						                        data-live-search="true"
                                                 name="subscriptionId" 
                                                 onChange={(event)=>{this.handleFormData(event)}}>

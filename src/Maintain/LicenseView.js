@@ -1,11 +1,11 @@
 import React from "react";
 
 import $ from "jquery";
-import Subscriptionviewform from './Subscriptionviewform.js';
-import Subscriptionedit from "./Subscriptionedit.js";
+import Subscriptionviewform from './LicenseViewForm.js';
+import Subscriptionedit from "./LicenseEdit.js";
 import Rolling from '../assets/images/rolling.svg';
 
-export default class Subscriptionview extends React.Component {
+export default class LicenseView extends React.Component {
 
     constructor(props) {
         super(props);
@@ -37,6 +37,7 @@ export default class Subscriptionview extends React.Component {
                       for(let individualData of allData){
                           if(individualData.parent){
                               if(individualData.parent ==="ab2a2691-a563-486c-9883-5111ff36ba9b"){
+                                console.log(individualData);
                                 technicalTableData.push(individualData);
                               }
                           }

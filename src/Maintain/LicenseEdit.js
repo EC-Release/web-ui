@@ -4,7 +4,7 @@ import $ from 'jquery';
 import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
 import IconInfo from '../assets/images/info.svg';
 
-export default class Subscriptionedit extends React.Component {
+export default class LicenseEdit extends React.Component {
 
     constructor(props) {
         super(props);

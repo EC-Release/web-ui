@@ -1,12 +1,10 @@
 import React from "react";
 import $ from "jquery";
 
-//"assets/static/images/iconedit_tablemaintainmonitor.svg"
-import IconEdit from '../assets/images/iconedit_tablemaintainmonitor.svg';
-//assets/static/images/icondelete_tablemaintainmonitor.svg
-import IconDelete from '../assets/images/icondelete_tablemaintainmonitor.svg';
-//assets/static/images/rolling.svg
-import Rolling from '../assets/images/rolling.svg';
+import IconEdit from "../assets/images/iconedit_tablemaintainmonitor.svg";
+import IconDelete from "../assets/images/icondelete_tablemaintainmonitor.svg";
+import Rolling from "../assets/images/rolling.svg";
+
 export default class Groupupgrade extends React.Component {
   /* istanbul ignore next */
   constructor(props) {
@@ -123,42 +121,41 @@ export default class Groupupgrade extends React.Component {
   initTable(tableId, preserveState) {
     var pageLength = 5;
     let tableWidth = 0;
-      tableWidth = $("#groupupgradeTableDiv")[0].offsetWidth - 200;
-      $("#" + tableId).DataTable({
-        dom: 'rt<"bottom"lp>',
-        bSort: true,
-        scrollX: true,
-        language: {
-          paginate: {
-            previous: "<",
-            next: ">",
-          },
+    tableWidth = $("#groupupgradeTableDiv")[0].offsetWidth - 200;
+    $("#" + tableId).DataTable({
+      dom: 'rt<"bottom"lp>',
+      bSort: true,
+      scrollX: true,
+      language: {
+        paginate: {
+          previous: "<",
+          next: ">",
         },
-        createdRow: function (row, data, dataIndex) {
-          for (let i = 0; i < data.length; i++) {
-            $("td:eq(" + i + ")", row).css(
-              "min-width",
-              tableWidth / data.length + "px"
-            );
-          }
-        },
-        pageLength: pageLength,
-        stateSave: preserveState,
-        destroy: true,
-        fnDrawCallback: function (oSettings) {
-          if (oSettings.aiDisplay.length <= pageLength) {
-            $(".dataTables_paginate").hide();
-          } else {
-            $(".dataTables_paginate").show();
-          }
-        },
-      });
-    
+      },
+      createdRow: function (row, data, dataIndex) {
+        for (let i = 0; i < data.length; i++) {
+          $("td:eq(" + i + ")", row).css(
+            "min-width",
+            tableWidth / data.length + "px"
+          );
+        }
+      },
+      pageLength: pageLength,
+      stateSave: preserveState,
+      destroy: true,
+      fnDrawCallback: function (oSettings) {
+        if (oSettings.aiDisplay.length <= pageLength) {
+          $(".dataTables_paginate").hide();
+        } else {
+          $(".dataTables_paginate").show();
+        }
+      },
+    });
+
     $(".bottom").addClass("row");
     $(".dataTables_length").addClass("col-sm-6");
     $(".dataTables_paginate").addClass("col-sm-6");
   }
-
 
   /* istanbul ignore next */
   generateTableStructure(tableData) {
@@ -306,12 +303,14 @@ export default class Groupupgrade extends React.Component {
     let wholeData = [];
     for (let dataObj of wholeDataUnstructured) {
       let newDataObj = {};
-      newDataObj.groupId = dataObj.groupId;
-      wholeData.push(newDataObj);
+      if (dataObj.groupId !== undefined) {
+        newDataObj.groupId = dataObj.groupId;
+        wholeData.push(newDataObj);
+      }
     }
     let filteredData = [];
     if (searchStr !== "") {
-      filteredData = this.filterByValue(wholeData, searchStr);
+      filteredData = wholeData.filter(groupId =>  groupId.groupId.toLowerCase().includes(searchStr.toLowerCase()));
     } else {
       filteredData = wholeData;
     }
@@ -557,6 +556,14 @@ export default class Groupupgrade extends React.Component {
       errorsGroupForm: errors,
     });
   }
+
+  changeFormHandler() {
+    setTimeout(() => {
+      this.setState({ changeForm: false, filterValue: "" });
+    }, 0);
+    this.generateTableStructure(this.state.tableData);
+  }
+
   /* jshint ignore:start */
   /* istanbul ignore next */
   render() {
@@ -624,11 +631,7 @@ export default class Groupupgrade extends React.Component {
                     UPDATE GROUP
                   </button>
                   <button
-                    onClick={() =>
-                      setTimeout(() => {
-                        this.setState({ changeForm: false });
-                      }, 0)
-                    }
+                    onClick={() => this.changeFormHandler()}
                     className="btn btn-sm customize-view-btn"
                   >
                     Back
@@ -668,7 +671,10 @@ export default class Groupupgrade extends React.Component {
                 <div id="groupupgradeTableDiv">
                   {this.state.showTableInit ? (
                     this.state.newTableData.length > 0 ? (
-                      <table id="groupupgradeTable" className="table text-center">
+                      <table
+                        id="groupupgradeTable"
+                        className="table text-center"
+                      >
                         <thead>
                           <tr>
                             <th>Group ID</th>
@@ -736,10 +742,7 @@ export default class Groupupgrade extends React.Component {
                     )
                   ) : (
                     <p className="text-center loader-icon">
-                      <img
-                        alt="loading"
-                        src={Rolling}
-                      />
+                      <img alt="loading" src={Rolling} />
                     </p>
                   )}
                 </div>

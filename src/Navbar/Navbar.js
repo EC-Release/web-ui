@@ -70,9 +70,9 @@ export default class Navbar extends React.Component {
                   this.props.currentView === "Requestcreate" ||
                   this.props.currentView === "RequestUpgrade" ||
                   this.props.currentView === "RequestView" ||
-                  this.props.currentView === "Subscriptioncreate" ||
-                  this.props.currentView === "Subscriptionview" ||
-                  this.props.currentView === "Subscriptionupgrade" ||
+                  this.props.currentView === "LicenseCreate" ||
+                  this.props.currentView === "LicenseView" ||
+                  this.props.currentView === "LicenseUpgrade" ||
                   this.props.currentView === "Groupcreate" ||
                   this.props.currentView === "Groupupgrade" ||
                   this.props.currentView === "GroupView"
@@ -103,9 +103,9 @@ export default class Navbar extends React.Component {
                     this.props.currentView === "Requestcreate" ||
                     this.props.currentView === "RequestUpgrade" ||
                     this.props.currentView === "RequestView" ||
-                    this.props.currentView === "Subscriptioncreate" ||
-                    this.props.currentView === "Subscriptionview" ||
-                    this.props.currentView === "Subscriptionupgrade" ||
+                    this.props.currentView === "LicenseCreate" ||
+                    this.props.currentView === "LicenseView" ||
+                    this.props.currentView === "LicenseUpgrade" ||
                     this.props.currentView === "Groupcreate" ||
                     this.props.currentView === "Groupupgrade" ||
                     this.props.currentView === "GroupView"
@@ -139,7 +139,7 @@ export default class Navbar extends React.Component {
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
-                                "Subscriptioncreate"
+                                "LicenseCreate"
                               )}
                               href="#"
                             >
@@ -157,7 +157,7 @@ export default class Navbar extends React.Component {
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
-                                "Subscriptionupgrade"
+                                "LicenseUpgrade"
                               )}
                               href="#"
                             >
@@ -173,7 +173,7 @@ export default class Navbar extends React.Component {
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
-                                "Subscriptionview"
+                                "LicenseView"
                               )}
                               href="#"
                             >

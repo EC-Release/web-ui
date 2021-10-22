@@ -1,12 +1,12 @@
 import React from "react";
 import $ from "jquery";
-import Subscriptionedit from "./Subscriptionedit.js";
+import LicenseEdit from "./LicenseEdit.js";
 
 import IconEdit from "../assets/images/iconedit_tablemaintainmonitor.svg";
 import IconDelete from "../assets/images/icondelete_tablemaintainmonitor.svg";
 import Rolling from "../assets/images/rolling.svg";
 
-export default class Subscriptionupgrade extends React.Component {
+export default class LicenseUpgrade extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -459,7 +459,7 @@ export default class Subscriptionupgrade extends React.Component {
             </div>
           </div>
         ) : (
-          <Subscriptionedit
+          <LicenseEdit
             authToken={this.props.authToken}
             helpText={this.props.helpText}
             handleDataTable={this.handleDataTable.bind(this)}
@@ -470,7 +470,7 @@ export default class Subscriptionupgrade extends React.Component {
             changeView={this.changeView.bind(this)}
             editItemData={this.state.editItemData}
             isViewOnly={false}
-          ></Subscriptionedit>
+          ></LicenseEdit>
         )}
       </div>
     );

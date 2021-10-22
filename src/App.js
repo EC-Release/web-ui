@@ -9,13 +9,16 @@ import * as helpTextFile from "./static/helpText/helpText.js";
 import Loader from "./Loader/Loader.js";
 //const Loader = lazy(() => import("./Loader/Loader.js"));
 const Dashboard = lazy(() => import("./Dashboard/Dashboard.js"));
+/* const SubscriptionDashboard = lazy(() =>
+  import("./Subscription/Dashboard/SubscriptionDashboard.js")
+); */
 const View = lazy(() => import("./View/View.js"));
 const Maintain = lazy(() => import("./Maintain/Maintain.js"));
-const Subscriptioncreate = lazy(() =>
-  import("./Maintain/Subscriptioncreate.js")
+const LicenseCreate = lazy(() =>
+  import("./Maintain/LicenseCreate.js")
 );
-const Subscriptionupgrade = lazy(() =>
-  import("./Maintain/Subscriptionupgrade.js")
+const LicenseUpgrade = lazy(() =>
+  import("./Maintain/LicenseUpgrade.js")
 );
 const Groupcreate = lazy(() => import("./Maintain/Groupcreate.js"));
 const Groupupgrade = lazy(() => import("./Maintain/Groupupgrade.js"));
@@ -31,7 +34,7 @@ const Maintainagentview = lazy(() => import("./Maintain/Maintainagentview.js"));
 const RequestCreate = lazy(() => import("./Maintain/RequestCreate.js"));
 const RequestUpgrade = lazy(() => import("./Maintain/RequestUpgrade.js"));
 const RequestView = lazy(() => import("./Maintain/RequestView.js"));
-const Subscriptionview = lazy(() => import("./Maintain/Subscriptionview.js"));
+const LicenseView = lazy(() => import("./Maintain/LicenseView.js"));
 /* istanbul ignore next */
 const Monitor = lazy(() => import("./Monitor/Monitor.js"));
 const Notification = lazy(() => import("./Monitor/Notification.js"));
@@ -177,8 +180,46 @@ export default class App extends React.Component {
       },
     };
 
+    let userEndPoint = this.state.apiEndPoints.baseUrl + "user";
+    fetch(userEndPoint, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + authToken,
+      },
+    }).then((response) => {
+      if (response.status === 200) {
+        response.json().then((respData) => {
+          this.hideGlobalMessage();
+          let userId = respData[0].userId;
+          let profileName = respData[0].fullName;
+          let profileEmailId = respData[0].email;
+          let permissions = permission;
+          this.setState({
+            profileData: {
+              email: profileEmailId,
+              name: profileName,
+            },
+            userId: userId,
+            permissions: permissions,
+            currentView: "Dashboard",
+          });
+
+          //console.log(userId, profileName);
+        });
+      } else {
+        this.showGlobalMessage(
+          true,
+          true,
+          "Please try after sometime",
+          "custom-danger"
+        );
+      }
+    });
     // Get logged user's userId start
     let snapshotData = sessionStorage.getItem("snapshotData");
+    //let userData = sessionStorage.getItem("userData");
     fetch("/setcookie").then((response) => {
       console.log(response);
     });
@@ -187,8 +228,8 @@ export default class App extends React.Component {
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
       console.log("optimized Data");
       this.hideGlobalMessage();
-      let userId = data.user_id === undefined ? "" : data.user_id;
-      let profileName = data.username === undefined ? "" : data.username;
+      /* let userId = data.userId === undefined ? "" : data.userId;
+      let profileName = data.fullName === undefined ? "" : data.fullName;
       let profileEmailId = data.email === undefined ? "" : data.email;
       let permissions = permission === undefined ? "" : permission;
       this.setState({
@@ -199,7 +240,7 @@ export default class App extends React.Component {
         userId: userId,
         permissions: permissions,
         currentView: "Dashboard",
-      });
+      }); */
     } else {
       let apiEndPoint = this.state.apiEndPoints.baseUrl + "snapshot"; //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
       fetch(apiEndPoint, {
@@ -215,7 +256,7 @@ export default class App extends React.Component {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
             sessionStorage.setItem("snapshotData", JSON.stringify(respData));
 
-            this.hideGlobalMessage();
+            /* this.hideGlobalMessage();
             let userId = data.user_id;
             let profileName = data.username;
             let profileEmailId = data.email;
@@ -228,7 +269,7 @@ export default class App extends React.Component {
               userId: userId,
               permissions: permissions,
               currentView: "Dashboard",
-            });
+            }); */
           });
         } else {
           this.showGlobalMessage(
@@ -320,9 +361,9 @@ export default class App extends React.Component {
         ); // jshint ignore:line
       case "Maintain":
         return <Maintain />; // jshint ignore:line
-      case "Subscriptioncreate":
+      case "LicenseCreate":
         return (
-          <Subscriptioncreate
+          <LicenseCreate
             helpText={HELPTEXT}
             baseUrl={this.state.apiEndPoints.baseUrl}
             authToken={this.state.authToken}
@@ -331,9 +372,9 @@ export default class App extends React.Component {
             hideGlobalMessage={this.hideGlobalMessage.bind(this)}
           />
         ); // jshint ignore:line
-      case "Subscriptionupgrade":
+      case "LicenseUpgrade":
         return (
-          <Subscriptionupgrade
+          <LicenseUpgrade
             helpText={HELPTEXT}
             baseUrl={this.state.apiEndPoints.baseUrl}
             authToken={this.state.authToken}
@@ -343,9 +384,9 @@ export default class App extends React.Component {
             permissions={this.state.permissions}
           />
         ); // jshint ignore:line
-      case "Subscriptionview":
+      case "LicenseView":
         return (
-          <Subscriptionview
+          <LicenseView
             helpText={HELPTEXT}
             baseUrl={this.state.apiEndPoints.baseUrl}
             authToken={this.state.authToken}

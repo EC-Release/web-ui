@@ -304,7 +304,7 @@ thead {
 
 .view-header div:first-child,
 .Maintainagentcreate,
-.Subscriptioncreate,
+.licenseCreate,
 .Groupcreate,
 .web-hook,
 .Requestcreate {
@@ -869,7 +869,7 @@ table.dataTable thead th {
 }
 
 .field-wrapper .field-placeholder {
-  font-size: 16px;
+  font-size: small;
   position: absolute;
   /* background: #fff; */
   bottom: 5px;

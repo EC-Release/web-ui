@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class Subscriptionviewform extends React.Component {
+export default class LicenseViewForm extends React.Component {
 
     constructor(props) {
         super(props);
