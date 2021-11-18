@@ -1,17 +1,19 @@
-name: Build & deploy
+name: v1.1beta-ci
 
 on:
   push:
-    branches:
-      - [ v1.1beta ]
+    branches: [ v1.1beta ]
   pull_request:
-    branches:
-      - [ v1.1beta ]
+    branches: [ v1.1beta ]
+    types: [opened, synchronize]
+  workflow_dispatch:  
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    environment: v1.1beta
     
     steps:
     - name: Checkout code
@@ -22,42 +24,17 @@ jobs:
       with:
         node-version: 13.x
     
+    - name: Run Docker Command
+      run: docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al
+    
     - name: Install NPM packages
       run: npm ci
-    
-    - name: Build project
-      run: npm run build
     
     - name: Run tests
       run: npm run test
 
-    - name: Upload production-ready build files
-      uses: actions/upload-artifact@v2
-      with:
-        name: production-files
-        path: ./build
-
     - name: pr merged
-        if: github.event_name == 'push'
-        id: pr-merged
-        run: |
+      if: github.event_name == 'push'
+      id: pr-merged
+      run: |
           echo pr has been merged and closed
-  
-  deploy:
-    name: Deploy
-    needs: build
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v2
-      with:
-        name: production-files
-        path: ./build
-
-    - name: Deploy to gh-pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
