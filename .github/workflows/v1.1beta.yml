@@ -26,22 +26,7 @@ jobs:
       run: docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al'
     
     - name: Install NPM packages
-      run: npm ci
-    
-    - name: Build project
-      run: npm run build
+      run: npm install
     
     - name: Run tests
-      run: npm run test
-
-    - name: Upload production-ready build files
-      uses: actions/upload-artifact@v2
-      with:
-        name: production-files
-        path: ./build
-
-    - name: pr merged
-      if: github.event_name == 'push'
-      id: pr-merged
-      run: |
-          echo pr has been merged and closed
+      run: npm test
