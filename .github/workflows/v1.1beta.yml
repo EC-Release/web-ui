@@ -9,8 +9,8 @@ on:
   workflow_dispatch:  
 
 jobs:
-  build:
-    name: Build
+  test:
+    name: Running Unit Cases
     runs-on: ubuntu-latest
     
     steps:
@@ -28,8 +28,17 @@ jobs:
     - name: Install NPM packages
       run: npm ci
     
+    - name: Build project
+      run: npm run build
+    
     - name: Run tests
       run: npm run test
+
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: production-files
+        path: ./build
 
     - name: pr merged
       if: github.event_name == 'push'
