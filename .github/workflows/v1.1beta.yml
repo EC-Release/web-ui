@@ -26,4 +26,4 @@ jobs:
       run: docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al  && npm install '
     
     - name: Run Tests
-      run: npm test
+      run: docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'npm test'
