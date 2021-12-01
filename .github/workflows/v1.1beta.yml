@@ -10,17 +10,12 @@ on:
 
 jobs:
   test:
-    name: Running Unit Cases
+    name: v1.1beta-ci
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
     
-    - name: Install Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 13.x
-    
-    - name: Run Docker Command and Install NPM packages
+    - name: ui-test
       run: docker run --network host -e CI=true -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
