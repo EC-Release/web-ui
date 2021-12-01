@@ -23,4 +23,4 @@ jobs:
         node-version: 13.x
     
     - name: Run Docker Command and Install NPM packages
-      run: docker run --network host -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al  && npm install && npm test'
+      run: docker run --network host -e CI=true -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
