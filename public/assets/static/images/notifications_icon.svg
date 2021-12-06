@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="20px" viewBox="0 0 17 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>icons/ic/outline-contact_support-24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M8.38254418,20.005 C9.48309418,20.005 10.3835442,19.10455 10.3835442,18.004 L6.38154418,18.004 C6.38154418,19.10455 7.28199418,20.005 8.38254418,20.005 Z M14.3855442,14.002 L14.3855442,8.9995 C14.3855442,5.927965 12.7547292,3.35668 9.88329418,2.67634 L9.88329418,1.996 C9.88329418,1.165585 9.21295918,0.49525 8.38254418,0.49525 C7.55212918,0.49525 6.88179418,1.165585 6.88179418,1.996 L6.88179418,2.67634 C4.02036418,3.35668 2.37954418,5.91796 2.37954418,8.9995 L2.37954418,14.002 L0.378544176,16.003 L0.378544176,17.0035 L16.3865442,17.0035 L16.3865442,16.003 L14.3855442,14.002 Z M12.3845442,15.0025 L4.38054418,15.0025 L4.38054418,8.9995 C4.38054418,6.51826 5.89129918,4.49725 8.38254418,4.49725 C10.8737892,4.49725 12.3845442,6.51826 12.3845442,8.9995 L12.3845442,15.0025 Z" id="path-1"></path>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="0-1-1-EC-Agent/-User-Settings" transform="translate(-1791.000000, -22.000000)">
+            <g id="Group-12" transform="translate(10.000000, 0.000000)">
+                <g id="Group-11" transform="translate(-10.000000, 0.000000)">
+                    <g id="Group-10">
+                        <g id="header">
+                            <g id="Group-6" transform="translate(1791.000000, 22.000000)">
+                                <g id="icons/ic/outline-contact_support-24px">
+                                    <mask id="mask-2" fill="white">
+                                        <use xlink:href="#path-1"></use>
+                                    </mask>
+                                    <g id="icons/ic/outline-notifications-24px" fill-rule="nonzero"></g>
+                                    <g id="🎨-color" mask="url(#mask-2)" fill="#FFFFFF">
+                                        <g transform="translate(-4.000000, -2.000000)" id="BG">
+                                            <rect x="0" y="0" width="24" height="24"></rect>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
