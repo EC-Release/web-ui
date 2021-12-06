@@ -408,12 +408,12 @@ pre code {
 }
 
 /* Tree css start */
-.Topologygraph {
+/* .Topologygraph {
   height: 100%;
-}
+} */
 
 .treeview-div {
-  overflow-y: auto;
+  overflow-y: auto; 
   height: 350px;
   text-align: left;
 }

@@ -9,17 +9,16 @@ import * as helpTextFile from "./static/helpText/helpText.js";
 import Loader from "./Loader/Loader.js";
 //const Loader = lazy(() => import("./Loader/Loader.js"));
 const Dashboard = lazy(() => import("./Dashboard/Dashboard.js"));
-/* const SubscriptionDashboard = lazy(() =>
+const SubscriptionDashboard = lazy(() =>
   import("./Subscription/Dashboard/SubscriptionDashboard.js")
-); */
+);
+const SubscriptionAdd = lazy(() =>
+  import("./Subscription/SubscriptionCreate/SubscriptionAdd.js")
+);
 const View = lazy(() => import("./View/View.js"));
 const Maintain = lazy(() => import("./Maintain/Maintain.js"));
-const LicenseCreate = lazy(() =>
-  import("./Maintain/LicenseCreate.js")
-);
-const LicenseUpgrade = lazy(() =>
-  import("./Maintain/LicenseUpgrade.js")
-);
+const LicenseCreate = lazy(() => import("./Maintain/LicenseCreate.js"));
+const LicenseUpgrade = lazy(() => import("./Maintain/LicenseUpgrade.js"));
 const Groupcreate = lazy(() => import("./Maintain/Groupcreate.js"));
 const Groupupgrade = lazy(() => import("./Maintain/Groupupgrade.js"));
 const GroupView = lazy(() => import("./Maintain/GroupView.js"));
@@ -95,6 +94,7 @@ export default class App extends React.Component {
       },
       isCommandPrompt: false,
       user: "OpsAdmin",
+      isNewUser: false,
     };
   }
 
@@ -218,7 +218,7 @@ export default class App extends React.Component {
       }
     });
     // Get logged user's userId start
-    let snapshotData = sessionStorage.getItem("snapshotData");
+    let snapshotData = sessionStorage.getItem("snapshotData"); // data layer class
     //let userData = sessionStorage.getItem("userData");
     fetch("/setcookie").then((response) => {
       console.log(response);
@@ -228,7 +228,7 @@ export default class App extends React.Component {
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
       console.log("optimized Data");
       this.hideGlobalMessage();
-      /* let userId = data.userId === undefined ? "" : data.userId;
+      let userId = data.userId === undefined ? "" : data.userId;
       let profileName = data.fullName === undefined ? "" : data.fullName;
       let profileEmailId = data.email === undefined ? "" : data.email;
       let permissions = permission === undefined ? "" : permission;
@@ -240,7 +240,7 @@ export default class App extends React.Component {
         userId: userId,
         permissions: permissions,
         currentView: "Dashboard",
-      }); */
+      }); 
     } else {
       let apiEndPoint = this.state.apiEndPoints.baseUrl + "snapshot"; //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
       fetch(apiEndPoint, {
@@ -256,7 +256,7 @@ export default class App extends React.Component {
             let data = respData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
             sessionStorage.setItem("snapshotData", JSON.stringify(respData));
 
-            /* this.hideGlobalMessage();
+            this.hideGlobalMessage();
             let userId = data.user_id;
             let profileName = data.username;
             let profileEmailId = data.email;
@@ -269,7 +269,7 @@ export default class App extends React.Component {
               userId: userId,
               permissions: permissions,
               currentView: "Dashboard",
-            }); */
+            }); 
           });
         } else {
           this.showGlobalMessage(
@@ -347,7 +347,14 @@ export default class App extends React.Component {
     const currentView = this.state.currentView;
     switch (currentView) {
       case "Dashboard":
-        return <Dashboard />; // jshint ignore:line
+        return (
+          <SubscriptionDashboard
+            helpText={HELPTEXT}
+            authToken={this.state.authToken}
+            showGlobalMessage={this.showGlobalMessage.bind(this)}
+            hideGlobalMessage={this.hideGlobalMessage.bind(this)}
+          />
+        ); // jshint ignore:line
       case "View":
         return (
           <View
@@ -495,6 +502,15 @@ export default class App extends React.Component {
             hideGlobalMessage={this.hideGlobalMessage.bind(this)}
           />
         ); // jshint ignore:line
+        case "SubscriptionAdd":
+        return (
+          <SubscriptionAdd
+            helpText={HELPTEXT}
+            authToken={this.state.authToken}
+            showGlobalMessage={this.showGlobalMessage.bind(this)}
+            hideGlobalMessage={this.hideGlobalMessage.bind(this)}
+          />
+        );
       case "Monitor":
         return <Monitor />; // jshint ignore:line
       case "Notification":
@@ -931,11 +947,11 @@ export default class App extends React.Component {
                       user={this.state.user}
                       clickEve={this.changeView.bind(this)}
                     ></Header>
-                    <Navbar
+                    {!this.state.isNewUser && <Navbar
                       currentView={this.state.currentView}
                       clickEve={this.changeView.bind(this)}
                       permissions={this.state.permissions}
-                    ></Navbar>
+                    ></Navbar>}
                     <div className="col-md-12 dynamic-container">
                       {this.servedView()}
                     </div>

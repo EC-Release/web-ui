@@ -1,12 +1,11 @@
 import React from "react";
 
-import IconDashboard from '../assets/images/dashboard_icon.svg';
-import IconMaintain from '../assets/images/maintain_icon.svg';
-import IconMonitor from '../assets/images/monitor_icon.svg';
-import IconReport from '../assets/images/report_icon.svg';
-import IconSetting from '../assets/images/settings_icon.svg';
-import IconSupport from '../assets/images/support_icon.svg';
-
+import IconDashboard from "../assets/images/dashboard_icon.svg";
+import IconMaintain from "../assets/images/maintain_icon.svg";
+import IconMonitor from "../assets/images/monitor_icon.svg";
+import IconReport from "../assets/images/report_icon.svg";
+import IconSetting from "../assets/images/settings_icon.svg";
+import IconSupport from "../assets/images/support_icon.svg";
 
 export default class Navbar extends React.Component {
   /* istanbul ignore next */
@@ -50,10 +49,7 @@ export default class Navbar extends React.Component {
                   href="#"
                   onClick={this.props.clickEve.bind(this, "Dashboard")}
                 >
-                  <img
-                    src={IconDashboard}
-                    alt="nav-dashboard"
-                  />
+                  <img src={IconDashboard} alt="nav-dashboard" />
                   Dashboard <span className="sr-only">(current)</span>
                 </a>
               </li>
@@ -88,10 +84,7 @@ export default class Navbar extends React.Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img
-                    src={IconMaintain}
-                    alt="nav-maintain"
-                  />
+                  <img src={IconMaintain} alt="nav-maintain" />
                   Maintain
                 </a>
                 <ul
@@ -358,6 +351,37 @@ export default class Navbar extends React.Component {
                       </ul>
                     </li>
                   ) : null}
+                  {this.props.permissions.accesses.maintain.subMenus.watchers
+                    .view ||
+                  this.props.permissions.accesses.maintain.subMenus.watchers
+                    .create ||
+                  this.props.permissions.accesses.maintain.subMenus.watchers
+                    .edit ||
+                  this.props.permissions.accesses.maintain.subMenus.watchers
+                    .delete ? (
+                    <li className="dropdown-submenu">
+                      <a className="dropdown-item" href="#">
+                        Subscription
+                      </a>
+                      <ul className="dropdown-menu">
+                        {this.props.permissions.accesses.maintain.subMenus
+                          .watchers.create ? (
+                          <li>
+                            <a
+                              className="dropdown-item"
+                              onClick={this.props.clickEve.bind(
+                                this,
+                                "SubscriptionAdd"
+                              )}
+                              href="#"
+                            >
+                              Add
+                            </a>
+                          </li>
+                        ) : null}
+                      </ul>
+                    </li>
+                  ) : null}
                 </ul>
               </li>
             ) : null}
@@ -382,10 +406,7 @@ export default class Navbar extends React.Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img
-                    src={IconMonitor}
-                    alt="nav-monitor"
-                  />
+                  <img src={IconMonitor} alt="nav-monitor" />
                   Monitor
                 </a>
                 <ul
@@ -449,10 +470,7 @@ export default class Navbar extends React.Component {
                   href="#"
                   onClick={this.props.clickEve.bind(this, "Report")}
                 >
-                  <img
-                    src={IconReport}
-                    alt="nav-report"
-                  />
+                  <img src={IconReport} alt="nav-report" />
                   Report
                 </a>
               </li>
@@ -476,10 +494,7 @@ export default class Navbar extends React.Component {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <img
-                    src={IconSetting}
-                    alt="nav-settings"
-                  />
+                  <img src={IconSetting} alt="nav-settings" />
                   Settings
                 </a>
                 <ul
@@ -527,10 +542,7 @@ export default class Navbar extends React.Component {
                   href="#"
                   onClick={this.props.clickEve.bind(this, "Support")}
                 >
-                  <img
-                    src={IconSupport}
-                    alt="nav-support"
-                  />
+                  <img src={IconSupport} alt="nav-support" />
                   Support
                 </a>
               </li>

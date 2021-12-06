@@ -6,7 +6,7 @@ import Topologygraph from "../Topologygraph/Topologygraph.js";
 import Viewtable from "../Viewtable/Viewtable.js";
 import Customsearch from "./Customsearch.js";
 
-import IconRefresh from '../assets/images/refresh.svg';
+import IconRefresh from "../assets/images/refresh.svg";
 
 export default class Technicalview extends React.Component {
   /* istanbul ignore next */
@@ -19,7 +19,7 @@ export default class Technicalview extends React.Component {
         edges: [],
       },
       loadTreeJs: false,
-      centerNodeColor: "#77b300",
+      centerNodeColor: "#ff0000",
       nodeShapes: ["ellipse", "circle", "box"],
       apiLoadPercentage: 0,
       mockTableData: [],
@@ -39,54 +39,69 @@ export default class Technicalview extends React.Component {
       {
         id: 1,
         value: "group-101",
-        x: 200,
-        y: 100,
+        color: "#57F518",
+        /* x: 200,
+        y: 100, */
         children: [
           {
             id: 2,
-            value: "License-104",
+            value: "Gateway-104",
+            color: "#8FF4FF",
             children: [
               {
                 id: 3,
-                value: "wabtec-gecars-ta",
-                children: [
-                  {
-                    id: 4,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 5,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 6,
-                    value: "0idLmsMk8r",
-                  },
-                ],
+                value: "Wabtec-gecars-qa client",
+                color: "#C98FFF",
+                edgeLabel: "Group 101",
+              },
+              {
+                id: 4,
+                value: " Wabtec-gecars-qa server",
+                color: "#C98FFF",
+                edgeLabel: "Group 101",
+              },
+              {
+                id: 5,
+                value: "wabtec-gecars-ta client",
+                color: "#45C7FF",
+                edgeLabel: "Group 101",
+              },
+              {
+                id: 6,
+                value: "wabtec-gecars-ta server",
+                color: "#45C7FF",
+                edgeLabel: "Group 101",
               },
             ],
           },
           {
             id: 7,
-            value: "License-101",
+            value: "Gateway-101",
+            color: "#8FF4FF",
             children: [
               {
                 id: 8,
-                value: "wabtec-gecars-qa",
-                children: [
-                  {
-                    id: 9,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 10,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 11,
-                    value: "0idLmsMk8r",
-                  },
-                ],
+                value: "wabtec-gecorp-qa client",
+                color: "#C98FFF",
+                edgeLabel: "Group 101",
+              },
+              {
+                id: 9,
+                value: "wabtec-gecorp-qa server",
+                color: "#C98FFF",
+                edgeLabel: "Group 101",
+              },
+              {
+                id: 10,
+                value: "wabtec-gecorp-dev client",
+                color: "#45C7FF",
+                edgeLabel: "Group 101",
+              },
+              {
+                id: 11,
+                value: "wabtec-gecorp-dev server",
+                color: "#45C7FF",
+                edgeLabel: "Group 101",
               },
             ],
           },
@@ -100,49 +115,49 @@ export default class Technicalview extends React.Component {
         children: [
           {
             id: 13,
-            value: "License-102",
+            value: "Gateway-102",
             children: [
               {
                 id: 14,
-                value: "wabtec-gecars-ta",
-                children: [
-                  {
-                    id: 15,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 17,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 16,
-                    value: "0idLmsMk8r",
-                  },
-                ],
+                value: "Client-01",
+                color: "#C98FFF",
+                edgeLabel: "Group 102",
+              },
+              {
+                id: 15,
+                value: "Server-01",
+                color: "#C98FFF",
+                edgeLabel: "Group 102",
+              },
+              {
+                id: 16,
+                value: "Client-02",
+                color: "#45C7FF",
+                edgeLabel: "Group 102",
+              },
+              {
+                id: 17,
+                value: "Server-02",
+                color: "#45C7FF",
+                edgeLabel: "Group 102",
               },
             ],
           },
           {
             id: 21,
-            value: "License-103",
+            value: "Gateway-103",
             children: [
               {
                 id: 22,
-                value: "wabtec-gecars-qa",
-                children: [
-                  {
-                    id: 33,
-                    value: "0idLmsMk8e",
-                  },
-                  {
-                    id: 24,
-                    value: "0idLmsMk8o",
-                  },
-                  {
-                    id: 25,
-                    value: "0idLmsMk8r",
-                  },
-                ],
+                value: "Client-01",
+                color: "#C98FFF",
+                edgeLabel: "Group 102",
+              },
+              {
+                id: 23,
+                value: "Server-01",
+                color: "#C98FFF",
+                edgeLabel: "Group 102",
               },
             ],
           },
@@ -869,14 +884,16 @@ export default class Technicalview extends React.Component {
                 if (treeValue.length > 0) {
                   //let shapeArray = this.state.nodeShapes;
                   let treeObj = treeValue[0];
+                  console.log(treeValue[0]);
                   let parentNodeId = treeObj.id;
                   let parentNodeLabel = treeObj.value;
                   let parentNodeTitle = treeObj.value;
+                  let color = treeObj.color;
                   let parentNode = {
                     id: parentNodeId,
                     label: parentNodeLabel,
                     title: parentNodeTitle,
-                    color: this.state.centerNodeColor,
+                    color: color,
                     shape: "ellipse",
                   };
                   nodes.push(parentNode);
@@ -885,6 +902,8 @@ export default class Technicalview extends React.Component {
                       let childNodeId = childNode.id;
                       let childNodeLabel = childNode.value;
                       let childNodeTitle = childNode.title;
+                      let childColor = childNode.color;
+                      let childNodeEgdeLabel = childNode.edgeLabel;
                       let shape = "box";
                       if (childNode.nodeType === "subscription") {
                         shape = "circle";
@@ -903,10 +922,16 @@ export default class Technicalview extends React.Component {
                         label: childNodeLabel,
                         title: childNodeTitle,
                         shape: childNodeShape,
+                        color: childColor,
                       };
                       nodes.push(preparedChildNode);
 
-                      let prepareEdges = { from: 1, to: childNodeId };
+                      let prepareEdges = {
+                        from: 1,
+                        to: childNodeId,
+                        label: childNodeEgdeLabel,
+                        color: childColor,
+                      };
                       edges.push(prepareEdges);
                     }
                   }
@@ -981,14 +1006,16 @@ export default class Technicalview extends React.Component {
     if (treeValue.length > 0) {
       //let shapeArray = this.state.nodeShapes;
       let treeObj = treeValue[0];
+      console.log(treeObj);
       let parentNodeId = treeObj.id;
       let parentNodeLabel = treeObj.value;
       let parentNodeTitle = treeObj.value;
+      let color = treeObj.color;
       let parentNode = {
         id: parentNodeId,
         label: parentNodeLabel,
         title: parentNodeTitle,
-        color: this.state.centerNodeColor,
+        color: color,
         shape: "ellipse",
       };
       nodes.push(parentNode);
@@ -997,6 +1024,8 @@ export default class Technicalview extends React.Component {
           let childNodeId = childNode.id;
           let childNodeLabel = childNode.value;
           let childNodeTitle = childNode.title;
+          let childColor = childNode.color;
+          let childNodeEgdeLabel = childNode.edgeLabel;
           let shape = "box";
           if (childNode.nodeType === "subscription") {
             shape = "circle";
@@ -1015,10 +1044,16 @@ export default class Technicalview extends React.Component {
             label: childNodeLabel,
             title: childNodeTitle,
             shape: childNodeShape,
+            color: childColor,
           };
           nodes.push(preparedChildNode);
 
-          let prepareEdges = { from: 1, to: childNodeId };
+          let prepareEdges = {
+            from: 1,
+            to: childNodeId,
+            label: childNodeEgdeLabel,
+            color: childColor,
+          };
           edges.push(prepareEdges);
         }
       }
@@ -1787,13 +1822,14 @@ export default class Technicalview extends React.Component {
     let parentNodeId = treeObj.id;
     let parentNodeLabel = treeObj.value;
     let parentNodeTitle = treeObj.title;
+    let color = treeObj.color;
     let parentNode = {};
     parentNode.id = parentNodeId;
     parentNode.label = parentNodeLabel;
     parentNode.title = parentNodeTitle;
-    parentNode.color = this.state.centerNodeColor;
+    parentNode.color = color;
     parentNode.shape = "ellipse";
-    parentNode.color = this.state.centerNodeColor;
+    parentNode.color = color;
     nodes.push(parentNode);
     if (treeObj.children) {
       let childern = [...treeObj.children];
@@ -1803,6 +1839,8 @@ export default class Technicalview extends React.Component {
         let childNodeLabel = copiedChildNode.value;
         let childNodeTitle = copiedChildNode.title;
         let childNodeType = copiedChildNode.nodeType;
+        let childNodeColor = copiedChildNode.color;
+        let childNodeEgdeLabel = childNode.edgeLabel;
         let preparedChildNode = {};
         preparedChildNode.id = childNodeId;
         preparedChildNode.label = childNodeLabel;
@@ -1827,12 +1865,14 @@ export default class Technicalview extends React.Component {
           color = "#ffc107";
         }
         preparedChildNode.shape = shape;
-        preparedChildNode.color = color;
+        preparedChildNode.color = childNodeColor;
         nodes.push(preparedChildNode);
 
         let prepareEdges = {};
         prepareEdges.from = parentNodeId;
         prepareEdges.to = childNodeId;
+        prepareEdges.label = childNodeEgdeLabel;
+        prepareEdges.color = childNodeColor;
         edges.push(prepareEdges);
       }
     }
