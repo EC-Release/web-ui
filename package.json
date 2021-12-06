@@ -5,11 +5,9 @@
   "private": true,
   "homepage": "v1.2beta/assets",
   "dependencies": {
-    "@babel/register": "^7.16.0",
     "@testing-library/jest-dom": "4.2.4",
     "@testing-library/react": "9.5.0",
     "@testing-library/user-event": "7.2.1",
-    "babel-cli": "^6.26.0",
     "bootstrap": "4.6.0",
     "bootstrap-jquery": "3.3.2",
     "bootstrap-select": "1.13.1",
@@ -21,11 +19,8 @@
     "fetch-mock": "9.11.0",
     "font-awesome": "4.7.0",
     "highcharts": "9.2.2",
-    "jasmine": "^3.10.0",
-    "jasmine-enzyme": "^7.1.2",
     "jquery": "3.6.0",
     "node-fetch": "3.0.0",
-    "nyc": "^15.1.0",
     "popper.js": "1.14.7",
     "react": "16.13.1",
     "react-bootstrap": "1.0.1",
@@ -39,7 +34,7 @@
     "start": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development react-scripts start --port 3001",
     "build:dev": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development react-scripts build",
     "build": "react-scripts build",
-    "test": "nyc cross-env NODE_ENV=test jasmine",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
