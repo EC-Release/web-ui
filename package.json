@@ -34,7 +34,7 @@
       "start": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development react-scripts start --port 3001",
       "build:dev": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development react-scripts build",
       "build": "react-scripts build",
-      "test": "react-scripts test",
+      "test": "react-scripts test --coverage",
       "eject": "react-scripts eject"
     },
     "eslintConfig": {
