@@ -43,13 +43,27 @@ export default class SubscriptionDashboard extends React.Component {
     };
   }
   /* istanbul ignore next */
-  componentDidMount() {}
+  componentDidMount() {
+    let currentForm = Object.assign({}, this.state.transactionForm);
+
+    this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
+        if (sessionStorage.getItem("userData") !== null) {
+          let userData =  JSON.parse(sessionStorage.getItem("userData"));
+          console.log(userData);
+          currentForm.licenseId.value = userData[0].license;
+          currentForm.oidcUserId.value = userData[0].userId;
+          this.setState({
+            transactionForm: currentForm
+          });
+          this.props.hideGlobalMessage();
+        }
+  }
 
   handleFormData(e) {
     let currentForm = Object.assign({}, this.state.transactionForm);
     let fieldName = e.target.name;
     let updatedValue = e.target.value;
-    if (fieldName === "licenseId") {
+    /* if (fieldName === "licenseId") {
       currentForm.licenseId.value = updatedValue;
       currentForm.licenseId.dirtyState = true;
     }
@@ -73,7 +87,7 @@ export default class SubscriptionDashboard extends React.Component {
       currentForm.oidcUserId.value = updatedValue;
       currentForm.oidcUserId.dirtyState = true;
     }
-    else if (fieldName === "paymentVadStr1") {
+    else  */if (fieldName === "paymentVadStr1") {
       currentForm.paymentVadStr1.value = updatedValue;
       currentForm.paymentVadStr1.dirtyState = true;
     }
@@ -97,12 +111,14 @@ export default class SubscriptionDashboard extends React.Component {
     let eaAmount = formData.eaAmount;
     let qty = formData.qty;
     let oidcUserId = formData.oidcUserId;
-    if(licenseId.value.trim() === ""){
+    let buc  = formData.paymentVadStr1;
+    let adn = formData.paymentVadStr2;
+    /* if(licenseId.value.trim() === ""){
       if (licenseId.dirtyState) {
         errors.licenseId = "Please enter license Id";
       }
       formIsValid = false;
-    }
+    } */
     /* if(objId.value.trim() === ""){
       if (objId.dirtyState) {
         errors.objId = "Please enter Object";
@@ -115,7 +131,7 @@ export default class SubscriptionDashboard extends React.Component {
       }
       formIsValid = false;
     } */
-    if(eaAmount.value.trim() === ""){
+    /* if(eaAmount.value.trim() === ""){
       if (eaAmount.dirtyState) {
         errors.eaAmount = "Please enter amount per each object";
       }
@@ -132,6 +148,18 @@ export default class SubscriptionDashboard extends React.Component {
         errors.oidcUserId = "Please enter OIDC User Id";
       }
       formIsValid = false;
+    } */
+    if(buc.value.trim() === ""){
+      if (buc.dirtyState) {
+        errors.paymentVadStr1 = "Please enter BUC";
+      }
+      formIsValid = false;
+    }
+    if(adn.value.trim() === ""){
+      if (adn.dirtyState) {
+        errors.paymentVadStr2 = "Please enter ADN";
+      }
+      formIsValid = false;
     }
     this.setState({
       errorsForm:errors,
@@ -140,7 +168,6 @@ export default class SubscriptionDashboard extends React.Component {
   }
 
   createSubscription(){
-    console.log(this.state.transactionForm);
     this.props.showGlobalMessage(
       true,
       true,
@@ -162,6 +189,7 @@ export default class SubscriptionDashboard extends React.Component {
     prepareData.paymentVadStr2 = currentForm.paymentVadStr2.value;
     prepareData.paymentVadStr3 = currentForm.paymentVadStr3.value;
 
+    console.log(prepareData);
     fetch(url, {
       method: "POST",
       headers: {

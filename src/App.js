@@ -94,7 +94,7 @@ export default class App extends React.Component {
       },
       isCommandPrompt: false,
       user: "OpsAdmin",
-      isNewUser: false,
+      isNewUser: true,
     };
   }
 
@@ -192,10 +192,13 @@ export default class App extends React.Component {
       if (response.status === 200) {
         response.json().then((respData) => {
           this.hideGlobalMessage();
+          sessionStorage.setItem("userData", JSON.stringify(respData));
           let userId = respData[0].userId;
           let profileName = respData[0].fullName;
           let profileEmailId = respData[0].email;
           let permissions = permission;
+          let isNewUser = false;
+          let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
           this.setState({
             profileData: {
               email: profileEmailId,
@@ -203,7 +206,8 @@ export default class App extends React.Component {
             },
             userId: userId,
             permissions: permissions,
-            currentView: "Dashboard",
+            currentView: currentView,
+            isNewUser: isNewUser
           });
 
           //console.log(userId, profileName);
@@ -219,14 +223,14 @@ export default class App extends React.Component {
     });
     // Get logged user's userId start
     let snapshotData = sessionStorage.getItem("snapshotData"); // data layer class
-    //let userData = sessionStorage.getItem("userData");
+    let userData = sessionStorage.getItem("userData");
     fetch("/setcookie").then((response) => {
       console.log(response);
     });
     if (snapshotData !== null) {
       let jsonData = JSON.parse(snapshotData);
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
-      console.log("optimized Data");
+      console.log("optimized Data" , data);
       this.hideGlobalMessage();
       let userId = data.userId === undefined ? "" : data.userId;
       let profileName = data.fullName === undefined ? "" : data.fullName;
@@ -347,6 +351,15 @@ export default class App extends React.Component {
     const currentView = this.state.currentView;
     switch (currentView) {
       case "Dashboard":
+        return (
+          <Dashboard
+            helpText={HELPTEXT}
+            authToken={this.state.authToken}
+            showGlobalMessage={this.showGlobalMessage.bind(this)}
+            hideGlobalMessage={this.hideGlobalMessage.bind(this)}
+          />
+        );
+      case "SubscriptionDashboard":
         return (
           <SubscriptionDashboard
             helpText={HELPTEXT}
