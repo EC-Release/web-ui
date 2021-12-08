@@ -30,7 +30,7 @@ export default class SubscriptionDashboard extends React.Component {
         licenseId: { value: "", dirtyState: false },
         objId: { value: "1", dirtyState: false },
         currencyId: { value: "1", dirtyState: false },
-        eaAmount: { value: "1", dirtyState: false },
+        eaAmount: { value: "98", dirtyState: false },
         qty : { value: "1", dirtyState: false },
         oidcUserId: { value: "", dirtyState: false },
         paymentVadStr1: { value: "", dirtyState: false },
