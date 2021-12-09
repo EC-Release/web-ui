@@ -95,6 +95,7 @@ export default class App extends React.Component {
       isCommandPrompt: false,
       user: "OpsAdmin",
       isNewUser: true,
+      scope : {},
     };
   }
 
@@ -180,6 +181,33 @@ export default class App extends React.Component {
       },
     };
 
+    let scopeEndPoint = this.state.apiEndPoints.baseUrl + "scope";
+    fetch(scopeEndPoint, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + authToken,
+      },
+    }).then((response) => {
+      if (response.status === 200) {
+        response.json().then((respData) => {
+          this.hideGlobalMessage();
+          sessionStorage.setItem("scope", JSON.stringify(respData));
+          this.setState({
+            scope: respData
+          });
+        });
+      } else {
+        this.showGlobalMessage(
+          true,
+          true,
+          "Please try after sometime",
+          "custom-danger"
+        );
+      }
+    });
+
     let userEndPoint = this.state.apiEndPoints.baseUrl + "user";
     fetch(userEndPoint, {
       method: "GET",
@@ -230,7 +258,7 @@ export default class App extends React.Component {
     if (snapshotData !== null) {
       let jsonData = JSON.parse(snapshotData);
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
-      console.log("optimized Data" , data);
+      //console.log("optimized Data" , data);
       this.hideGlobalMessage();
       let userId = data.userId === undefined ? "" : data.userId;
       let profileName = data.fullName === undefined ? "" : data.fullName;
