@@ -3,14 +3,14 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import fetchMock from 'fetch-mock';
 
-import Subscriptionviewform from '../Maintain/Subscriptionviewform';
+import LicenseViewForm from '../Maintain/LicenseViewForm';
 
 configure({ adapter: new Adapter() });
 
 
-describe('Testing from Subscriptionviewform.test.js <Subscriptionviewform />', () => {
+describe('Testing from LicenseViewForm.test.js <LicenseViewForm />', () => {
 
-    it('should render the Subscriptionviewform component', () => {
+    it('should render the LicenseViewForm component', () => {
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
@@ -34,7 +34,7 @@ describe('Testing from Subscriptionviewform.test.js <Subscriptionviewform />', (
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptionviewform helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
+        const wrapper = shallow(<LicenseViewForm helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
         
         wrapper.setState({
             subscriptionForm:{
@@ -92,7 +92,7 @@ describe('Testing from Subscriptionviewform.test.js <Subscriptionviewform />', (
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptionviewform helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
+        const wrapper = shallow(<LicenseViewForm helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
         
         wrapper.setState({
             subscriptionForm:{

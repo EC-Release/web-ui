@@ -93,21 +93,6 @@ export default class Subscriptionviewform extends React.Component {
         });
     }
     
-    /* istanbul ignore next */
-    /* showHideField(e, formName, fieldName){
-        let currentForm = Object.assign({}, this.state.subscriptionForm);
-
-        if(currentForm[fieldName].type == 'password'){
-            currentForm[fieldName].type = 'text'; 
-        }
-        else{
-            currentForm[fieldName].type = 'password';
-        }
-        
-        this.setState({
-            subscriptionForm: currentForm
-        });
-    } */
 
     render() {
         /* jshint ignore:start */

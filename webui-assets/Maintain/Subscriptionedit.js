@@ -1,4 +1,8 @@
 import React from "react";
+import $ from 'jquery';
+
+import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
+import IconInfo from '../assets/images/info.svg';
 
 export default class Subscriptionedit extends React.Component {
 
@@ -39,6 +43,12 @@ export default class Subscriptionedit extends React.Component {
         };
     }
 
+    enableToolTip() {
+      setTimeout(() => {
+        $('[data-toggle="popover"]').popover(); // For tooltips
+      }, 1000);
+    }
+
     /* istanbul ignore next */
     componentDidMount() {
         let formData = Object.assign({}, this.props.editItemData);
@@ -57,7 +67,7 @@ export default class Subscriptionedit extends React.Component {
         this.setState({
             subscriptionForm: subscriptionForm,
         });
-        window.enableToolTip();
+        this.enableToolTip();
 
         let that = this;
         setTimeout(function () {
@@ -141,8 +151,8 @@ export default class Subscriptionedit extends React.Component {
     handleFormValidation(){
 
         let currentFormData = this.state.subscriptionForm;
-        let licenseId = currentFormData.licenseId.value;
-        let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
+        //let licenseId = currentFormData.licenseId.value;
+        //let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
         let emailAddress = currentFormData.emailAddress.value;
         let emailAddressDirtyState = currentFormData.emailAddress.dirtyState;
         let username = currentFormData.username.value;
@@ -152,7 +162,7 @@ export default class Subscriptionedit extends React.Component {
 
         let formIsValid = true;
         let errors = {};
-        let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
+        //let urlRegExp =  /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
 
       
           if (emailAddress.trim() === "") {
@@ -217,7 +227,7 @@ export default class Subscriptionedit extends React.Component {
     showHideField(e, formName, fieldName){
         let currentForm = Object.assign({}, this.state.subscriptionForm);
 
-        if(currentForm[fieldName].type == 'password'){
+        if(currentForm[fieldName].type === 'password'){
             currentForm[fieldName].type = 'text'; 
         }
         else{
@@ -252,12 +262,12 @@ export default class Subscriptionedit extends React.Component {
                       License ID
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -288,12 +298,12 @@ export default class Subscriptionedit extends React.Component {
                       Expiry Date/Time
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -326,12 +336,12 @@ export default class Subscriptionedit extends React.Component {
                       Email Address
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -360,12 +370,12 @@ export default class Subscriptionedit extends React.Component {
                       SSO
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -397,12 +407,12 @@ export default class Subscriptionedit extends React.Component {
                      User Fullname
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -431,12 +441,12 @@ export default class Subscriptionedit extends React.Component {
                       Description
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"

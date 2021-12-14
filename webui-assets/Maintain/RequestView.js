@@ -1,4 +1,7 @@
 import React from "react";
+import $ from "jquery";
+
+import Rolling from '../assets/images/rolling.svg';
 
 export default class RequestView extends React.Component {
   
@@ -87,6 +90,46 @@ export default class RequestView extends React.Component {
       });
   }
 
+  initTable(tableId, preserveState) {
+    var pageLength = 5;
+    let tableWidth = 0;
+      tableWidth = $("#subscriptionupgradeTableDiv")[0].offsetWidth - 200;
+      $("#" + tableId).DataTable({
+        dom: 'rt<"bottom"lp>',
+        bSort: true,
+        scrollX: true,
+        language: {
+          paginate: {
+            previous: "<",
+            next: ">",
+          },
+        },
+        createdRow: function (row, data, dataIndex) {
+          for (let i = 0; i < data.length; i++) {
+            $("td:eq(" + i + ")", row).css(
+              "min-width",
+              tableWidth / data.length + "px"
+            );
+          }
+        },
+        pageLength: pageLength,
+        stateSave: preserveState,
+        destroy: true,
+        fnDrawCallback: function (oSettings) {
+          if (oSettings.aiDisplay.length <= pageLength) {
+            $(".dataTables_paginate").hide();
+          } else {
+            $(".dataTables_paginate").show();
+          }
+        },
+      });
+    
+    $(".bottom").addClass("row");
+    $(".dataTables_length").addClass("col-sm-6");
+    $(".dataTables_paginate").addClass("col-sm-6");
+  }
+
+
   /* istanbul ignore next */
   generateTableStructure(technicalTableData, preserveState) {
     let tableData = technicalTableData;
@@ -105,15 +148,19 @@ export default class RequestView extends React.Component {
       showTableInit: true,
     });
 
-    if (preserveState === true) {
+    setTimeout( () => {
+      this.initTable("subscriptionupgradeTable", preserveState);
+    }, 100);
+
+    /* if (preserveState === true) {
       setTimeout(function () {
-        window.initTable("subscriptionupgradeTable", true);
+        this.initTable("subscriptionupgradeTable", true);
       }, 100);
     } else {
       setTimeout(function () {
-        window.initTable("subscriptionupgradeTable", false);
+        this.initTable("subscriptionupgradeTable", false);
       }, 100);
-    }
+    } */
   }
 
   /* istanbul ignore next */
@@ -172,15 +219,20 @@ export default class RequestView extends React.Component {
     return retArr;
   }
 
+  destroyDataTable(tableId) {
+    var table = $("#" + tableId).DataTable();
+    table.destroy();
+  }
+
   /* istanbul ignore next */
   filterData(e) {
-    window.destroyDataTable("subscriptionupgradeTable");
+    this.destroyDataTable("subscriptionupgradeTable");
     let searchStr = e.target.value.trim();
     let searchStrWithSp = e.target.value;
     let wholeData = [...this.state.tableData];
     let filteredData = [];
     let newTableData = [];
-    if (searchStr != "") {
+    if (searchStr !== "") {
       filteredData = this.filterByValue(wholeData, searchStr);
       //console.log(filteredData);
     } else {
@@ -201,8 +253,8 @@ export default class RequestView extends React.Component {
       searchString: searchStrWithSp,
     });
 
-    setTimeout(function () {
-      window.initTable("subscriptionupgradeTable", false);
+    setTimeout( () => {
+      this.initTable("subscriptionupgradeTable", false);
     }, 0);
   }
 
@@ -221,11 +273,19 @@ export default class RequestView extends React.Component {
     if (editItem.uaaUrlHiddenFlag) {
       editItem.uaaUrl = editItem.uaaUrlHidden;
     }
-    window.destroyDataTable("subscriptionupgradeTable");
+    this.destroyDataTable("subscriptionupgradeTable");
     this.setState({
       editItemData: editItem,
       viewTable: false,
     });
+  }
+
+  removeDataTableRow(tableId, rowIndex) {
+    var table = $("#" + tableId).DataTable();
+    table
+      .row("#" + tableId + "TbodyTr_" + rowIndex)
+      .remove()
+      .draw(false);
   }
 
   /* istanbul ignore next */
@@ -265,7 +325,7 @@ export default class RequestView extends React.Component {
                   "Record deleted successfuly",
                   "custom-success"
                 );
-                window.removeDataTableRow("subscriptionupgradeTable", rowIndex);
+                this.removeDataTableRow("subscriptionupgradeTable", rowIndex);
                 let that = this;
                 setTimeout(function () {
                   that.props.hideGlobalMessage();
@@ -315,8 +375,8 @@ export default class RequestView extends React.Component {
     this.setState({
       viewTable: true,
     });
-    setTimeout(function () {
-      window.initTable("subscriptionupgradeTable", true);
+    setTimeout( () =>  {
+      this.initTable("subscriptionupgradeTable", true);
     }, 0);
   } // jshint ignore:line
 
@@ -354,7 +414,7 @@ export default class RequestView extends React.Component {
               <div id="subscriptionupgradeTableDiv">
                 {this.state.showTableInit ? (
                   this.state.newTableData.length > 0 ? (
-                    <table id="subscriptionupgradeTable" className="table">
+                    <table id="subscriptionupgradeTable" className="table text-center">
                       <thead>
                         <tr>
                           <th>Timestamp</th>
@@ -402,7 +462,7 @@ export default class RequestView extends React.Component {
                   )
                 ) : (
                   <p className="text-center loader-icon">
-                    <img alt="loading" src="assets/static/images/rolling.svg" />
+                    <img alt="loading" src={Rolling} />
                   </p>
                 )}
               </div>

@@ -3,14 +3,14 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import fetchMock from 'fetch-mock';
 
-import Subscriptioncreate from '../Maintain/Subscriptioncreate.js';
+import LicenseCreate from '../Maintain/LicenseCreate.js';
 
 configure({ adapter: new Adapter() });
 
 window.enableToolTip = () => { };
 
-describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () => {
-    it('should render the Subscriptioncreate component', () => {
+describe('Testing from LicenseCreate.test.js <LicenseCreate />', () => {
+    it('should render the LicenseCreate component', () => {
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
@@ -19,7 +19,7 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptioncreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+        const wrapper = shallow(<LicenseCreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
         wrapper.setState({
             subscriptionForm:{
                         licenseId: { value: "", dirtyState: false },
@@ -33,7 +33,7 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         expect(wrapper).toBeTruthy();
     });
 
-    it('should have "Subscription form" with div only once', () => {
+    it('should have "License form" with div only once', () => {
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
@@ -42,7 +42,7 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptioncreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
+        const wrapper = shallow(<LicenseCreate helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
         
         wrapper.setState({
             subscriptionForm:{
@@ -56,7 +56,7 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
         });
         expect(wrapper.find('div.subscription-form').length).toBe(1);
     });
-      it('should render the Subscriptioncreate component', () => {
+      it('should render the LicenseCreate component', () => {
         const propsToPass = {
             helpText: {
                 subscriptionName: '',
@@ -65,8 +65,8 @@ describe('Testing from Subscriptioncreate.test.js <Subscriptioncreate />', () =>
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptioncreate  helpText={propsToPass.helpText}/> , { disableLifecycleMethods: true });
-        expect(wrapper.find('div.Subscriptioncreate').length).toBe(1);
+        const wrapper = shallow(<LicenseCreate  helpText={propsToPass.helpText}/> , { disableLifecycleMethods: true });
+        expect(wrapper.find('div.LicenseCreate').length).toBe(0);
     });
      
 

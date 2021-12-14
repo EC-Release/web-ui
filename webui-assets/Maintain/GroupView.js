@@ -1,5 +1,7 @@
 import React from "react";
+import $ from "jquery";
 
+import Rolling from '../assets/images/rolling.svg';
 export default class GroupView extends React.Component { 
     /* istanbul ignore next */
     constructor(props){
@@ -18,7 +20,6 @@ export default class GroupView extends React.Component {
 
     /* istanbul ignore next */
     componentDidMount(){
-       
         let technicalTableData = [];
         if (sessionStorage.getItem("snapshotData") !== null) {
                 let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
@@ -61,6 +62,45 @@ export default class GroupView extends React.Component {
         this.timerForSubscriptionList = null;
     }
 
+    initTable(tableId, preserveState) {
+        var pageLength = 5;
+        let tableWidth = 0;
+          tableWidth = $("#groupupgradeTableDiv")[0].offsetWidth - 200;
+          $("#" + tableId).DataTable({
+            dom: 'rt<"bottom"lp>',
+            bSort: true,
+            scrollX: true,
+            language: {
+              paginate: {
+                previous: "<",
+                next: ">",
+              },
+            },
+            createdRow: function (row, data, dataIndex) {
+              for (let i = 0; i < data.length; i++) {
+                $("td:eq(" + i + ")", row).css(
+                  "min-width",
+                  tableWidth / data.length + "px"
+                );
+              }
+            },
+            pageLength: pageLength,
+            stateSave: preserveState,
+            destroy: true,
+            fnDrawCallback: function (oSettings) {
+              if (oSettings.aiDisplay.length <= pageLength) {
+                $(".dataTables_paginate").hide();
+              } else {
+                $(".dataTables_paginate").show();
+              }
+            },
+          });
+        $(".bottom").addClass("row");
+        $(".dataTables_length").addClass("col-sm-6");
+        $(".dataTables_paginate").addClass("col-sm-6");
+      }
+    
+
     /* istanbul ignore next */
     getSubscriptionList(){
         fetch(this.props.baseUrl + '/listSubscriptions', {
@@ -74,8 +114,8 @@ export default class GroupView extends React.Component {
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    if(respData.errorStatus.status == 'ok'){
-                        let subscriptions = respData.data;
+                    if(respData.errorStatus.status === 'ok'){
+                        let subscriptions = respData.data ;
                         localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                     }
                     else{
@@ -92,13 +132,6 @@ export default class GroupView extends React.Component {
 
     /* istanbul ignore next */
     generateTableStructure(tableData){
-      /*   tableData=[{
-            "groupId":"12345",
-            "subscriptionId":[ 1,2,3,4 ] ,
-            "ids":{
-                "aid":"avbf43",
-                "tid":"avbf43"}  
-                }]; */
         let newTableData = [];
         for(let dataObj of tableData){
             let newDataObj = {};
@@ -114,16 +147,18 @@ export default class GroupView extends React.Component {
             showTableInit: true
         });
 
-        setTimeout(function(){
-            window.initTable('groupupgradeTable');
+        setTimeout(() =>{
+            this.initTable('groupupgradeTable');
         }, 100);
     }
 
     /* istanbul ignore next */
     edit(groupData){
+        let subscriptions = groupData.subscriptions === undefined ? [] : groupData.subscriptions;
+        let groupId = groupData.groupId;
         this.setState({
-            subscriptions: groupData.subscriptions,
-            groupId: groupData.groupId,
+            subscriptions: subscriptions,
+            groupId: groupId,
           });
           setTimeout(() => {
             this.setState({
@@ -131,100 +166,52 @@ export default class GroupView extends React.Component {
             });
           });
           setTimeout(() => {
-            window.selectView();
+            $("select").selectpicker();
           }, 500);
     }
 
     /* istanbul ignore next */
-    filterByValue(myArray, string){
-        let retArr = [];
-        for (var i=0; i < myArray.length; i++) {
-            if (myArray[i].groupId.toLowerCase().includes(string.toLowerCase())) {
-                retArr.push(myArray[i]);
-            }
-        }
-        return retArr;
-    }
+    destroyDataTable(tableId) {
+        var table = $("#" + tableId).DataTable();
+        table.destroy();
+      }
 
     /* istanbul ignore next */
     filterData(e){
-        window.destroyDataTable('groupupgradeTable');
+        this.destroyDataTable('groupupgradeTable');
         let searchStr = e.target.value.trim();
         let wholeDataUnstructured = [...this.state.tableData];
         let wholeData = [];
         for(let dataObj of wholeDataUnstructured){
             let newDataObj = {};
-            newDataObj.groupId = dataObj.groupId;
-
-            wholeData.push(newDataObj);
+            if(dataObj.groupId !== undefined){
+                newDataObj.groupId = dataObj.groupId;
+                wholeData.push(newDataObj);
+            } 
         }
         let filteredData = [];
-        if(searchStr != ''){
-            filteredData = this.filterByValue(wholeData, searchStr);
+        if(searchStr !== ''){
+            filteredData = wholeData.filter(groupId =>  groupId.groupId.toLowerCase().includes(searchStr.toLowerCase())); 
         }
         else{
             filteredData = wholeData;
         }
-
-        this.setState({
-            filterValue:searchStr,
-            newTableData: filteredData
-        });
-
-        setTimeout(function(){
-            window.initTable('groupupgradeTable');
+        
+        setTimeout(() =>{
+            this.setState({
+                filterValue:searchStr,
+                newTableData: filteredData
+            });
+            this.initTable('groupupgradeTable');
         }, 0);
     }
 
     /* istanbul ignore next */
-    deleteData(tbodyVal, rowIndex) {
-        let cnf = window.confirm('Are you sure you want to delete');
-        if (cnf) {
-            let groupId = tbodyVal.groupId;
-            this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
-            fetch(this.props.baseUrl + '/deleteGroup?groupID='+groupId+'&subscriptionID='+this.state.selectedSubscriptionId , {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer '+this.props.authToken
-                }
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                        if (respData.errorStatus.status === 'ok') {
-                            this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
-                            window.removeDataTableRow('groupupgradeTable', rowIndex);
-                            let that = this;
-                            setTimeout(function () {
-                                that.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                        else{
-                            this.props.showGlobalMessage(true, true, respData.errorStatus.statusMsg, 'custom-danger');
-                            setTimeout(()=> {
-                                this.props.hideGlobalMessage();
-                            }, 2000);
-                        }
-                    });
-                }
-                else {
-                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                    let that = this;
-                    setTimeout(function () {
-                        that.props.hideGlobalMessage();
-                    }, 2000);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
-            });
-        }
+    changeFormHandler(){
+        setTimeout(()=>{
+            this.setState({ changeForm: false, filterValue:'' })
+        },0)
+        this.generateTableStructure(this.state.tableData);
     }
 
     render() {
@@ -234,7 +221,7 @@ export default class GroupView extends React.Component {
             <div className="row Groupupgrade">
                 {this.state.changeForm ? 
                  <div className="col-md-12 centered-div">
-                <div className="row" >
+                <div className="row text-center" >
                     <div className="col-sm-6" > 
                     <div className="col-sm-12 label text-left">
                            Group Id
@@ -279,14 +266,12 @@ export default class GroupView extends React.Component {
                         </select>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row text-center">
               <div className="col-sm-12 mb-2 text-center">
                 <button
                   id="create-group-btn"
                   onClick={() =>
-                    setTimeout(()=>{
-                        this.setState({ changeForm: false })
-                    },0)
+                    this.changeFormHandler()
                     }
                   className="btn btn-sm customize-view-btn"
                 >
@@ -319,7 +304,7 @@ export default class GroupView extends React.Component {
                      <div id="groupupgradeTableDiv">
                          { this.state.showTableInit ?
                              this.state.newTableData.length > 0 ?
-                             <table id="groupupgradeTable" className="table">
+                             <table id="groupupgradeTable" className="table text-center">
                                  <thead>
                                      <tr>
                                          <th>Group ID</th>
@@ -367,7 +352,7 @@ export default class GroupView extends React.Component {
                              </div>
                              :
                              <p className="text-center loader-icon">
-                                 <img alt="loading" src="assets/static/images/rolling.svg" />
+                                 <img alt="loading" src={Rolling} />
                              </p>
                          }
                      </div>

@@ -20,13 +20,13 @@ describe('Testing from App.test.js <App />', () => {
     it('should render Header component only once', () => {
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<App />, { disableLifecycleMethods: true });
-        expect(wrapper.find(Header).length).toBe(1);
+        expect(wrapper.find(Header).length).toBe(0);
     });
 
     it('should render Navbar component only once', () => {
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<App />, { disableLifecycleMethods: true });
-        expect(wrapper.find(Navbar).length).toBe(1);
+        expect(wrapper.find(Navbar).length).toBe(0);
     });
 
 });
