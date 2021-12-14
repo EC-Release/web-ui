@@ -1,9 +1,12 @@
 import React from "react";
+import Highcharts from "highcharts";
 
 export default class Dashboard extends React.Component {
   /* istanbul ignore next */
   componentDidMount() {
-        this.highChart();
+    setTimeout(() => {
+      this.highChart();
+    }, 100);
   }
 
   /* istanbul ignore next */

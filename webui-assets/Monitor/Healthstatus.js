@@ -249,19 +249,18 @@ export default class Healthstatus extends React.Component {
   fetchHealthStatus() {
     let selectedGatewayId = this.state.selectedGateway;
     let gateways = this.state.gateways;
-    console.log(gateways);
     let selectedGateway = gateways.find(
       (x) => x.gatewayId === selectedGatewayId
     );
-    let serviceUrl = selectedGateway.serviceUrl;
-    let healthLink = "";
+    //let serviceUrl = selectedGateway.serviceUrl;
+    /* let healthLink = "";
     if (serviceUrl !== "") {
       let indexFromCut = serviceUrl.indexOf(".") + 1;
       let cutString = serviceUrl.slice(indexFromCut);
       healthLink = "https://" + cutString + "/health";
-    }
+    } */
 
-    let currentSession = Object.assign({}, this.state.session);
+    //let currentSession = Object.assign({}, this.state.session);
     let currentSuperConnection = Object.assign({}, this.state.superConnection);
     let currentConnection = Object.assign({}, this.state.connection);
     let currentDetails = Object.assign({}, this.state.gatewayDetails);
@@ -480,10 +479,9 @@ export default class Healthstatus extends React.Component {
             <form>
               <div className="form-row">
                 <div className="col-sm-12 text-left">
-                 
                   <div className="row">
                     <div className="col-sm-4 border-bottom text-center">
-                   {/*    <select
+                      {/*    <select
                         className="form-control form-control-sm"
                         id="selectedGateway"
                         name="selectedGateway"
@@ -505,11 +503,12 @@ export default class Healthstatus extends React.Component {
                           );
                         })}
                       </select>*/}
-                     <label>GATEWAYID - &nbsp;</label> <b> {this.state.selectedGateway}</b> 
+                      <label>GATEWAYID - &nbsp;</label>{" "}
+                      <b> {this.state.selectedGateway}</b>
                     </div>
                     <div className="col-sm-8">
                       <div className="row ops-btn">
-                         {this.props.permissions.accesses.monitor.subMenus
+                        {this.props.permissions.accesses.monitor.subMenus
                           .healthStatus.isUser ? null : (
                           <button
                             type="button"
@@ -560,9 +559,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link active"
-                  id={"sessions-tab"+ this.props.tableindx}
+                  id={"sessions-tab" + this.props.tableindx}
                   data-toggle="tab"
-                  href={"#sessions"+ this.props.tableindx}
+                  href={"#sessions" + this.props.tableindx}
                   role="tab"
                   aria-controls="sessions"
                   aria-selected="true"
@@ -573,9 +572,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id={"superconnections-tab"+ this.props.tableindx}
+                  id={"superconnections-tab" + this.props.tableindx}
                   data-toggle="tab"
-                  href={"#superconnections"+ this.props.tableindx}
+                  href={"#superconnections" + this.props.tableindx}
                   role="tab"
                   aria-controls="superconnections"
                   aria-selected="false"
@@ -586,9 +585,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id={"contact-tab"+ this.props.tableindx}
+                  id={"contact-tab" + this.props.tableindx}
                   data-toggle="tab"
-                  href={"#contact"+ this.props.tableindx}
+                  href={"#contact" + this.props.tableindx}
                   role="tab"
                   aria-controls="contact"
                   aria-selected="false"
@@ -599,9 +598,9 @@ export default class Healthstatus extends React.Component {
               <li className="nav-item">
                 <a
                   className="nav-link"
-                  id={"details-tab"+ this.props.tableindx}
+                  id={"details-tab" + this.props.tableindx}
                   data-toggle="tab"
-                  href={"#details"+ this.props.tableindx}
+                  href={"#details" + this.props.tableindx}
                   role="tab"
                   aria-controls="details"
                   aria-selected="false"
@@ -610,14 +609,18 @@ export default class Healthstatus extends React.Component {
                 </a>
               </li>
             </ul>
-            <div className="tab-content" id="myTabContent">
+            <div
+              className="tab-content"
+              id="myTabContent"
+              style={{ textAlign: "center" }}
+            >
               <div
                 className="tab-pane fade show active"
-                id={"sessions"+ this.props.tableindx}
+                id={"sessions" + this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby={"sessions-tab"+ this.props.tableindx}
+                aria-labelledby={"sessions-tab" + this.props.tableindx}
               >
-               <br />
+                <br />
                 <div className="row">
                   <div className="col-sm-5 "></div>
                   <div className="col-sm-2 text-center">
@@ -663,7 +666,7 @@ export default class Healthstatus extends React.Component {
                     </small>
                   </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ textAlign: "center" }}>
                   <div className="col-sm-6">
                     <small className="font-weight-bold">Bind ID:</small>
                     <small className="font-weight-normal theme-color">
@@ -677,7 +680,7 @@ export default class Healthstatus extends React.Component {
                     </small>
                   </div>
                 </div>
-                <div className="row">
+                <div className="row" style={{ textAlign: "center" }}>
                   <div className="col-sm-6">
                     <small className="font-weight-bold">
                       Server config ID:
@@ -691,11 +694,11 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade"
-                id={"superconnections"+ this.props.tableindx}
+                id={"superconnections" + this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby={"superconnections-tab"+ this.props.tableindx}
+                aria-labelledby={"superconnections-tab" + this.props.tableindx}
               >
-               <br />
+                <br />
                 <div className="row">
                   <div className="col-sm-5 "></div>
                   <div className="col-sm-2 text-center">
@@ -783,10 +786,12 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade"
-                id={"contact"+ this.props.tableindx}
+                id={"contact" + this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby={"contact-tab"+ this.props.tableindx}
-              >   <br />
+                aria-labelledby={"contact-tab" + this.props.tableindx}
+              >
+                {" "}
+                <br />
                 <div className="row">
                   <div className="col-sm-5 "></div>
                   <div className="col-sm-2 text-center">
@@ -926,9 +931,9 @@ export default class Healthstatus extends React.Component {
 
               <div
                 className="tab-pane fade show"
-                id={"details"+ this.props.tableindx}
+                id={"details" + this.props.tableindx}
                 role="tabpanel"
-                aria-labelledby={"details-tab"+ this.props.tableindx}
+                aria-labelledby={"details-tab" + this.props.tableindx}
               >
                 <br />
                 <div className="row">

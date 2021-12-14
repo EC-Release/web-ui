@@ -1,4 +1,6 @@
 import React from "react";
+import $ from 'jquery';
+import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
 
 export default class RequestCreate extends React.Component {
   
@@ -14,9 +16,14 @@ export default class RequestCreate extends React.Component {
     };
   }
 
+  enableToolTip() {
+    setTimeout(() => {
+      $('[data-toggle="popover"]').popover(); // For tooltips
+    }, 1000);
+  }
   /* istanbul ignore next */
   componentDidMount() {
-    window.enableToolTip();
+    this.enableToolTip();
     // this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
   }
 
@@ -88,7 +95,7 @@ export default class RequestCreate extends React.Component {
                       No. of Gateway
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                     </div>
                     <div className="col-sm-12 mb-2">

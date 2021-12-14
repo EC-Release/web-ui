@@ -1,4 +1,7 @@
 import React from "react";
+import $ from 'jquery';
+
+import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
 
 export default class Groupcreate extends React.Component {
 
@@ -16,9 +19,15 @@ export default class Groupcreate extends React.Component {
         };
     }
 
+     enableToolTip() {
+        setTimeout(() => {
+          $('[data-toggle="popover"]').popover(); // For tooltips
+        }, 1000);
+      }
+
     /* istanbul ignore next */
     componentDidMount(){
-        window.enableToolTip();
+        this.enableToolTip();
         this.props.showGlobalMessage(true, true, 'Please wait...', 'custom-success');
         if (sessionStorage.getItem("snapshotData") !== null) {
           let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
@@ -42,7 +51,7 @@ export default class Groupcreate extends React.Component {
             if(subscriptionData.length > 0){
               let selectedSubscriptionId = subscriptionData[0].licenseId;
               let formObj = Object.assign({}, this.state.groupForm);
-              formObj.subscriptionId.value = selectedSubscriptionId;
+              formObj.subscriptionId.value = [];//selectedSubscriptionId;
               this.setState({
                   subscriptions: subscriptionData,
                   groupForm: formObj
@@ -62,8 +71,8 @@ export default class Groupcreate extends React.Component {
           }, 2000);
       }
 	   setTimeout(()=> {
-              window.selectView();
-          }, 1000);  
+            $("select").selectpicker();
+          }, 1000); 
 	
 	    
     }
@@ -134,15 +143,19 @@ export default class Groupcreate extends React.Component {
         let groupIdDirtyState = currentFormData.groupId.dirtyState;
         let formIsValid = true;
         let errors = {};
-
+        console.log(subscriptionIdValue);
         let subscriptionIdFound = false;
         for (let subscriptionId of subscriptionIdValue) {
+            console.log(subscriptionId);
           if (subscriptionId.trim() !== "") {
             subscriptionIdFound = true;
           }
         }
+
         if (!subscriptionIdFound) {
-          errors.subscriptionId = "Please select Subscription ID";
+            if(subscriptionIdDirtyState){
+                errors.subscriptionId = "Please select Subscription ID";
+            }
           formIsValid = false;
         }
 
@@ -279,13 +292,13 @@ export default class Groupcreate extends React.Component {
                                 <div className="row">
                                     <div className="col-sm-6">
                                         <div className="col-sm-12 label required">
-                                            License <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            License <img alt="down-arrow" src={IconGreenSortingDown} />
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <select 
-                                                className="selectpicker form-control form-control-sm" 
-						multiple={true}
-						data-live-search="true"
+                                                className="selectpickerform-control form-control-sm" 
+                                                /*  multiple */
+						                        data-live-search="true"
                                                 name="subscriptionId" 
                                                 onChange={(event)=>{this.handleFormData(event)}}>
 						{ this.state.subscriptions.map((subscription, subscriptionIndex) => {
@@ -300,7 +313,7 @@ export default class Groupcreate extends React.Component {
                                     </div>
                                     <div className="col-sm-6">
                                         <div className="col-sm-12 label required">
-                                            Group ID <img alt="down-arrow" src="assets/static/images/icon_greensortingdown.svg" />
+                                            Group ID <img alt="down-arrow" src={IconGreenSortingDown} />
                                         </div>
                                         <div className="col-sm-12 mb-2">
                                             <input

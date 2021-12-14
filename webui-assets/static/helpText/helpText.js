@@ -23,5 +23,11 @@ export default
     "version": "Version",
     "appName": "Name of the application",
     "assetId": "Name of the Application",
-    "uai": "Unified Application Identifier"
+    "uai": "Unified Application Identifier",
+    "licenseId" : "The SDC licensed/device Id which this transaction is made to.",
+    "objId" : "Object",
+    "currencyId" : "Currency",
+    "eaAmount": "The amount per each object",
+    "qty": "The quantity of the object",
+    "oidcUserId" : "GE SSO Id"
 }

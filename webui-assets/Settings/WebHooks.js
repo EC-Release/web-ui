@@ -1,5 +1,11 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import $ from "jquery";
+
+import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
+import IconEdit from '../assets/images/iconedit_tablemaintainmonitor.svg';
+import IconDelete from '../assets/images/icondelete_tablemaintainmonitor.svg';
+import Rolling from '../assets/images/rolling.svg';
 
 export default class WebHooks extends React.Component {
   /* istanbul ignore next */
@@ -15,93 +21,139 @@ export default class WebHooks extends React.Component {
       errorsForm: {},
       formIsValid: false,
       showForm: false,
-      WebHookList:[{
-        name: '',
-        eventType: '',
-        endpoint: '',
-    }],
-    edit:false,
-    editKey:"",
-    showTableInit:false,
-    newTableData: [],
+      WebHookList: [
+        {
+          name: "",
+          eventType: "",
+          endpoint: "",
+        },
+      ],
+      edit: false,
+      editKey: "",
+      showTableInit: false,
+      newTableData: [],
     };
   }
 
-/* istanbul ignore next */
-  componentDidMount(){
+  /* istanbul ignore next */
+  componentDidMount() {
     this.fetchData();
   }
 
   /* istanbul ignore next */
-  fetchData(){
-    let webhooks = [];
-    if (sessionStorage.getItem("snapshotData") !== null) {
-            let respData =  JSON.parse(sessionStorage.getItem("snapshotData"))
-            let allData =[]
-              Object.keys(respData).forEach((key)=> {
-                  allData.push(respData[key])
-              });
-              for(let individualData of allData){
-                  if(individualData.parent){
-                      if(individualData.parent ==="5e69f043-966d-438f-9421-83fb18272a7d"){
-                        webhooks.push(individualData);
-                      }
-                  }
-              }
-              this.generateTableStructure(webhooks, false);
-            this.setState({
-                WebHookList: webhooks
-            });
-       
-    }
-    else {
-        this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-        this.setState({
-            WebHookList: [{
-                name: '',
-                eventType: '',
-                endpoint: '',
-            }]
-        });
-        setTimeout(()=> {
-            this.props.hideGlobalMessage();
-        }, 2000);
-    }
-
+  initTable(tableId, preserveState) {
+    var pageLength = 5;
+    let tableWidth = 0;
+      tableWidth = $("#" + tableId + "Div")[0].offsetWidth - 200;
+      $("#" + tableId).DataTable({
+        dom: 'rt<"bottom"lp>',
+        bSort: true,
+        scrollX: true,
+        language: {
+          paginate: {
+            previous: "<",
+            next: ">",
+          },
+        },
+        createdRow: function (row, data, dataIndex) {
+          for (let i = 0; i < data.length; i++) {
+            $("td:eq(" + i + ")", row).css(
+              "min-width",
+              tableWidth / data.length + "px"
+            );
+          }
+        },
+        pageLength: pageLength,
+        destroy: true,
+        fnDrawCallback: function (oSettings) {
+          if (oSettings.aiDisplay.length <= pageLength) {
+            $(".dataTables_paginate").hide();
+          } else {
+            $(".dataTables_paginate").show();
+          }
+        },
+      });
+    
+    $(".bottom").addClass("row");
+    $(".dataTables_length").addClass("col-sm-6");
+    $(".dataTables_paginate").addClass("col-sm-6");
   }
 
-      /* istanbul ignore next */
-      generateTableStructure(technicalTableData, preserveState) {
-        let tableData = technicalTableData;
-        let newTableData = [];
-        for (let dataObj of tableData) {
-            let newDataObj = {};
-            newDataObj.webhookname = dataObj.webhookname;
-            newDataObj.eventType = dataObj.eventType;
-            newDataObj.endpoint = dataObj.endpoint;
-            newDataObj.secret = dataObj.secret;
-            newDataObj.key = dataObj.key;
-            newTableData.push(newDataObj);
+  fetchData() {
+    let webhooks = [];
+    if (sessionStorage.getItem("snapshotData") !== null) {
+      let respData = JSON.parse(sessionStorage.getItem("snapshotData"));
+      let allData = [];
+      Object.keys(respData).forEach((key) => {
+        allData.push(respData[key]);
+      });
+      for (let individualData of allData) {
+        if (individualData.parent) {
+          if (
+            individualData.parent === "5e69f043-966d-438f-9421-83fb18272a7d"
+          ) {
+            webhooks.push(individualData);
+          }
         }
+      }
+      this.generateTableStructure(webhooks, false);
+      this.setState({
+        WebHookList: webhooks,
+      });
+    } else {
+      this.props.showGlobalMessage(
+        true,
+        true,
+        "Please try after sometime",
+        "custom-danger"
+      );
+      this.setState({
+        WebHookList: [
+          {
+            name: "",
+            eventType: "",
+            endpoint: "",
+          },
+        ],
+      });
+      setTimeout(() => {
+        this.props.hideGlobalMessage();
+      }, 2000);
+    }
+  }
 
-        this.setState({
-            newTableData: newTableData,
-            showTableInit: true
-        });
-
-        if (preserveState === true) {
-            setTimeout(function () {
-                window.initTable('webhookTable', true);
-            }, 100);
-        }
-        else {
-            setTimeout(function () {
-                window.initTable('webhookTable', false);
-            }, 100);
-        }
+  /* istanbul ignore next */
+  generateTableStructure(technicalTableData, preserveState) {
+    let tableData = technicalTableData;
+    let newTableData = [];
+    for (let dataObj of tableData) {
+      let newDataObj = {};
+      newDataObj.webhookname = dataObj.webhookname;
+      newDataObj.eventType = dataObj.eventType;
+      newDataObj.endpoint = dataObj.endpoint;
+      newDataObj.secret = dataObj.secret;
+      newDataObj.key = dataObj.key;
+      newTableData.push(newDataObj);
     }
 
+    this.setState({
+      newTableData: newTableData,
+      showTableInit: true,
+    });
 
+    setTimeout(() => {
+      this.initTable("webhookTable", true);
+    }, 100);
+    /* if (preserveState === true) {
+      setTimeout(function () {
+        this.initTable("webhookTable", true);
+      }, 100);
+    } else {
+      setTimeout(() => {
+        this.initTable("webhookTable", false);
+      }, 100);
+    } */
+  }
 
   /* istanbul ignore next */
   handleFormData(e) {
@@ -169,9 +221,9 @@ export default class WebHooks extends React.Component {
       errorsForm: errors,
     });
   }
-  
+
   /* istanbul ignore next */
-/*   createNotification() {
+  /*   createNotification() {
     this.props.showGlobalMessage(
       false,
       true,
@@ -195,7 +247,7 @@ export default class WebHooks extends React.Component {
     let currentForm = {};
     currentForm = Object.assign({}, this.state.formData);
 
-    if (currentForm[fieldName].type == "password") {
+    if (currentForm[fieldName].type === "password") {
       currentForm[fieldName].type = "text";
     } else {
       currentForm[fieldName].type = "password";
@@ -206,81 +258,172 @@ export default class WebHooks extends React.Component {
     });
   }
 
-    /* istanbul ignore next */
-  createWebHook(){
+  /* istanbul ignore next */
+  createWebHook() {
     this.props.showGlobalMessage(
+      true,
+      true,
+      "Please wait...",
+      "custom-success"
+    );
+    let currentForm = Object.assign({}, this.state.formData);
+    let prepareData = {};
+    let myuuid = uuidv4();
+    prepareData.webhookname = currentForm.name.value;
+    prepareData.eventType = currentForm.eventType.value;
+    prepareData.endpoint = currentForm.endpoint.value;
+    prepareData.secret = btoa(
+      unescape(encodeURIComponent(currentForm.secret.value))
+    );
+
+    prepareData.parent = "5e69f043-966d-438f-9421-83fb18272a7d";
+    prepareData.name = "webHook";
+    let currentMethod = this.state.edit ? "PUT" : "POST";
+    let currentApi = this.state.edit
+      ? `${this.props.baseUrl}webhook-${this.state.editKey}`
+      : `${this.props.baseUrl}webhook-${myuuid}`;
+    // fetch(this.props.baseUrl + '/createSubscription', {
+    fetch(currentApi, {
+      method: currentMethod,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.authToken,
+      },
+      body: JSON.stringify(prepareData),
+    })
+      .then((response) => {
+        localStorage.setItem("prepareData", JSON.stringify(prepareData));
+
+        if (response.status === 200) {
+          this.snapshotUpdate();
+          response.json().then((respData) => {
+            respData = {
+              errorStatus: {
+                status: "ok",
+              },
+            };
+            if (respData.errorStatus.status === "ok") {
+              this.props.showGlobalMessage(
+                false,
+                true,
+                "Record saved successfully",
+                "custom-success"
+              );
+
+              if (!this.state.edit) {
+                setTimeout(() => {
+                  this.props.hideGlobalMessage();
+                  let formData = {
+                    name: { value: "", dirtyState: false },
+                    eventType: { value: "", dirtyState: false },
+                    endpoint: { value: "", dirtyState: false },
+                    secret: { value: "", dirtyState: false, type: "password" },
+                  };
+                  this.setState({
+                    formData: formData,
+                    formIsValid: false,
+                  });
+                }, 2000);
+              }
+            } else {
+              this.props.showGlobalMessage(
+                true,
+                true,
+                respData.errorStatus.statusMsg,
+                "custom-danger"
+              );
+              setTimeout(() => {
+                this.props.hideGlobalMessage();
+              }, 2000);
+            }
+          });
+        } else {
+          this.props.showGlobalMessage(
+            true,
+            true,
+            "Please try after sometime",
+            "custom-danger"
+          );
+          setTimeout(() => {
+            this.props.hideGlobalMessage();
+          }, 2000);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.props.showGlobalMessage(
+          true,
+          true,
+          "Please try after sometime",
+          "custom-danger"
+        );
+        setTimeout(() => {
+          this.props.hideGlobalMessage();
+        }, 2000);
+      });
+  }
+
+  /* istanbul ignore next */
+  snapshotUpdate() {
+    fetch(this.props.baseUrl + "snapshot", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + this.props.authToken,
+      },
+    }).then((response) => {
+      if (response.status === 200) {
+        response.json().then((respData) => {
+          sessionStorage.setItem("snapshotData", JSON.stringify(respData));
+          this.fetchData();
+        });
+      }
+    });
+  }
+
+  removeDataTableRow(tableId, rowIndex) {
+    var table = $("#" + tableId).DataTable();
+    table
+      .row("#" + tableId + "TbodyTr_" + rowIndex)
+      .remove()
+      .draw(false);
+  }
+
+  /* istanbul ignore next */
+  deleteWebhook(tbodyVal, rowIndex) {
+    let cnf = window.confirm("Are you sure you want to delete");
+    if (cnf) {
+      this.props.showGlobalMessage(
         true,
         true,
-        "Please wait...",
+        "Please Wait....",
         "custom-success"
       );
-      let currentForm = Object.assign({}, this.state.formData);
-      let prepareData = {};
-      let myuuid = uuidv4();
-      prepareData.webhookname = currentForm.name.value;
-      prepareData.eventType = currentForm.eventType.value;
-      prepareData.endpoint = currentForm.endpoint.value;
-      prepareData.secret = btoa(unescape(encodeURIComponent( currentForm.secret.value )));
-  
-      prepareData.parent = "5e69f043-966d-438f-9421-83fb18272a7d"
-      prepareData.name = "webHook"
-     let currentMethod = this.state.edit ? "PUT" : "POST"
-     let currentApi = this.state.edit ? `${this.props.baseUrl}webhook-${this.state.editKey}` : `${this.props.baseUrl}webhook-${myuuid}`
-      // fetch(this.props.baseUrl + '/createSubscription', {
-      fetch(currentApi , {
-        method: currentMethod,
+      fetch(this.props.baseUrl + tbodyVal.key, {
+        method: "DELETE",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           Authorization: "Bearer " + this.props.authToken,
         },
-        body: JSON.stringify(prepareData),
       })
         .then((response) => {
-          localStorage.setItem("prepareData", JSON.stringify(prepareData));
-  
           if (response.status === 200) {
-            this.snapshotUpdate();
             response.json().then((respData) => {
-              respData = {
-                errorStatus: {
-                  status: "ok",
-                },
-              };
-              if (respData.errorStatus.status == "ok") {
-                this.props.showGlobalMessage(
-                  false,
-                  true,
-                  "Record saved successfully",
-                  "custom-success"
-                );
-                
-               if(!this.state.edit){
-                  setTimeout(() => {
-                    this.props.hideGlobalMessage();
-                    let formData = {
-                      name: { value: "", dirtyState: false },
-                      eventType: { value: "", dirtyState: false },
-                      endpoint: { value: "", dirtyState: false },
-                      secret: { value: "", dirtyState: false, type: "password" },
-                    };
-                    this.setState({
-                      formData: formData,
-                      formIsValid: false
-                    });
-                  }, 2000);
-                }
-              } else {
-                this.props.showGlobalMessage(
-                  true,
-                  true,
-                  respData.errorStatus.statusMsg,
-                  "custom-danger"
-                );
-                setTimeout(() => {
-                  this.props.hideGlobalMessage();
-                }, 2000);
-              }
+              /*    if (respData.errorStatus.status === 'ok') { */
+              this.props.showGlobalMessage(
+                false,
+                true,
+                "Record deleted successfuly",
+                "custom-success"
+              );
+              this.removeDataTableRow("webhookTable", rowIndex);
+              let that = this;
+              setTimeout(function () {
+                that.props.hideGlobalMessage();
+              }, 2000);
             });
           } else {
             this.props.showGlobalMessage(
@@ -289,8 +432,9 @@ export default class WebHooks extends React.Component {
               "Please try after sometime",
               "custom-danger"
             );
-            setTimeout(() => {
-              this.props.hideGlobalMessage();
+            let that = this;
+            setTimeout(function () {
+              that.props.hideGlobalMessage();
             }, 2000);
           }
         })
@@ -306,99 +450,39 @@ export default class WebHooks extends React.Component {
             this.props.hideGlobalMessage();
           }, 2000);
         });
+    }
   }
 
-   /* istanbul ignore next */ 
-   snapshotUpdate(){
-    fetch(this.props.baseUrl + "snapshot", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + this.props.authToken,
-        }
-      })
-    .then((response) => {
-        if (response.status === 200) {
-          response.json().then((respData) => {
-            sessionStorage.setItem("snapshotData", JSON.stringify(respData));
-            this.fetchData();
-    })
-    }})
-    }
-    
-     /* istanbul ignore next */ 
-    deleteWebhook(tbodyVal,rowIndex){
-        let cnf = window.confirm('Are you sure you want to delete');
-        if (cnf) {
-            this.props.showGlobalMessage(true, true, 'Please Wait....', 'custom-success');
-            fetch(this.props.baseUrl + tbodyVal.key, {
-                method: 'DELETE',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer '+this.props.authToken
-                }
-            })
-            .then((response) => {
-                if (response.status === 200) {
-                    response.json().then((respData) => {
-                     /*    if (respData.errorStatus.status === 'ok') { */
-                            this.props.showGlobalMessage(false, true, 'Record deleted successfuly', 'custom-success');
-                            window.removeDataTableRow('webhookTable', rowIndex);
-                            let that = this;
-                            setTimeout(function () {
-                                that.props.hideGlobalMessage();
-                            }, 2000);
-                    });
-                }
-                else {
-                    this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                    let that = this;
-                    setTimeout(function () {
-                        that.props.hideGlobalMessage();
-                    }, 2000);
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-                this.props.showGlobalMessage(true, true, 'Please try after sometime', 'custom-danger');
-                setTimeout(()=> {
-                    this.props.hideGlobalMessage();
-                }, 2000);
-            });
-        }
+  editWebhook(currentHook) {
+    let currentData = { ...this.state.formData };
+    currentData.name.value = currentHook.webhookname;
+    currentData.eventType.value = currentHook.eventType;
+    currentData.endpoint.value = currentHook.endpoint;
+    currentData.secret.value = decodeURIComponent(
+      escape(atob(currentHook.secret))
+    );
+    let currentKey = currentHook.key;
+    this.setState({
+      formData: currentData,
+      edit: true,
+      showForm: true,
+      editKey: currentKey,
+    });
+  }
 
-    }
-
-    editWebhook(currentHook){
-      let currentData = {...this.state.formData}
-      currentData.name.value = currentHook.webhookname;
-      currentData.eventType.value  = currentHook.eventType;
-      currentData.endpoint.value  = currentHook.endpoint;
-      currentData.secret.value  = decodeURIComponent(escape(atob( currentHook.secret ))) ;
-      let currentKey = currentHook.key
-      this.setState({
-        formData: currentData,
-        edit: true,
-        showForm: true,
-        editKey : currentKey
-      });
-    }
-
-    addWebHook(){
-      let currentData = { ...this.state.formData };
-      currentData.name.value = "";
-      currentData.eventType.value = "";
-      currentData.endpoint.value = "";
-      currentData.secret.value = "";
-      this.setState({
-        formData: currentData,
-        edit: false,
-        showForm: true,
-        editKey:""
-      });
-    }
+  addWebHook() {
+    let currentData = { ...this.state.formData };
+    currentData.name.value = "";
+    currentData.eventType.value = "";
+    currentData.endpoint.value = "";
+    currentData.secret.value = "";
+    this.setState({
+      formData: currentData,
+      edit: false,
+      showForm: true,
+      editKey: "",
+    });
+  }
 
   render() {
     /* jshint ignore:start */
@@ -406,166 +490,181 @@ export default class WebHooks extends React.Component {
     return (
       <div className="row web-hook">
         {this.state.showForm ? (
-            <div className="col-md-12 mt-2">
-              <div className="centered-div">
-                <div className="centered-div-header">
-                  <div className="row WebHooks-header">
-                    <div className="col-md-12">
-                      <h6 id="WebHooks-title text-blue">
-                        Web Hooks /
-                        <span className="text-black"> Add webhook</span>
-                      </h6>
+          <div className="col-md-12 mt-2">
+            <div className="centered-div">
+              <div className="centered-div-header">
+                <div className="row WebHooks-header">
+                  <div className="col-md-12">
+                    <h6 id="WebHooks-title text-blue">
+                      Web Hooks /
+                      <span className="text-black"> Add webhook</span>
+                    </h6>
+                  </div>
+                </div>
+                <hr></hr>
+                <div className="changeable-form group-form">
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        NAME
+                        <img
+                          alt="down-arrow"
+                          src={IconGreenSortingDown}
+                        />
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type="text"
+                          className="form-control form-control-sm"
+                          name="name"
+                          value={this.state.formData.name.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["name"]}
+                        </small>
+                      </div>
+                    </div>
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        EVENT TYPE
+                        <img
+                          alt="down-arrow"
+                          src={IconGreenSortingDown}
+                        />
+                      </div>
+                      <div className="col-sm-12 mb-2">
+                        <select
+                          className="form-control form-control-sm"
+                          name="eventType"
+                          value={this.state.formData.eventType.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        >
+                          <option value="">Choose a event </option>
+                          <option value="Client Agent Restart">
+                            Client Agent Restart{" "}
+                          </option>
+                          <option value="Server Agent Restart">
+                            Server Agent Restart
+                          </option>
+                          <option value="Gateway Agent Restart">
+                            Gateway Agent Restart
+                          </option>
+                          <option value="Connection Establish">
+                            Connection Establish
+                          </option>
+                        </select>
+                        <small className="text-danger">
+                          {this.state.errorsForm["eventType"]}
+                        </small>
+                      </div>
                     </div>
                   </div>
-                  <hr></hr>
-                  <div className="changeable-form group-form">
-                    <div className="row">
-                      <div className="col-sm-6">
-                        <div className="col-sm-12 label required">
-                          NAME
-                          <img
-                            alt="down-arrow"
-                            src="assets/static/images/icon_greensortingdown.svg"
-                          />
-                        </div>
-                        <div className="col-sm-12 mb-2">
-                          <input
-                            type="text"
-                            className="form-control form-control-sm"
-                            name="name"
-                            value={this.state.formData.name.value}
-                            onChange={(event) => {
-                              this.handleFormData(event);
+                  <div className="row">
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        SECRET
+                        <img
+                          alt="down-arrow"
+                          src={IconGreenSortingDown}
+                        />
+                        {this.state.formData.secret.type === "password" ? (
+                          <i
+                            onClick={(event) => {
+                              this.showHideField(event, "secret");
                             }}
-                          />
-                          <small className="text-danger">
-                            {this.state.errorsForm["name"]}
-                          </small>
-                        </div>
+                            className="fa fa-eye cursor-pointer"
+                            title="Show"
+                          ></i>
+                        ) : (
+                          <i
+                            onClick={(event) => {
+                              this.showHideField(event, "secret");
+                            }}
+                            className="fa fa-eye-slash cursor-pointer"
+                            title="Hide"
+                          ></i>
+                        )}
                       </div>
-                      <div className="col-sm-6">
-                        <div className="col-sm-12 label required">
-                          EVENT TYPE
-                          <img
-                            alt="down-arrow"
-                            src="assets/static/images/icon_greensortingdown.svg"
-                          />
-                        </div>
-                        <div className="col-sm-12 mb-2">
-                          <select
-                            className="form-control form-control-sm"
-                            name="eventType"
-                            value={this.state.formData.eventType.value}
-                            onChange={(event) => {
-                              this.handleFormData(event);
-                            }}
-                          >
-                            <option value="">Choose a event </option>
-                            <option value="Client Agent Restart">Client Agent Restart </option>
-                            <option value="Server Agent Restart">Server Agent Restart</option>
-                            <option value="Gateway Agent Restart">Gateway Agent Restart</option>
-                            <option value="Connection Establish">
-                               Connection Establish
-                            </option>
-                          </select>
-                          <small className="text-danger">
-                            {this.state.errorsForm["eventType"]}
-                          </small>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="row">
-                      <div className="col-sm-6">
-                        <div className="col-sm-12 label required">
-                          SECRET
-                          <img
-                            alt="down-arrow"
-                            src="assets/static/images/icon_greensortingdown.svg"
-                          />
-                          {this.state.formData.secret.type == "password" ? (
-                            <i
-                              onClick={(event) => {
-                                this.showHideField(event, "secret");
-                              }}
-                              className="fa fa-eye cursor-pointer"
-                              title="Show"
-                            ></i>
-                          ) : (
-                            <i
-                              onClick={(event) => {
-                                this.showHideField(event, "secret");
-                              }}
-                              className="fa fa-eye-slash cursor-pointer"
-                              title="Hide"
-                            ></i>
-                          )}
-                        </div>
-                        <div className="col-sm-12 mb-2">
-                          <input
-                            type={this.state.formData.secret.type}
-                            autoComplete="off"
-                            className="form-control form-control-sm"
-                            name="secret"
-                            value={this.state.formData.secret.value}
-                            onChange={(event) => {
-                              this.handleFormData(event);
-                            }}
-                          />
-                          <small className="text-danger">
-                            {this.state.errorsForm["secret"]}
-                          </small>
-                        </div>
-                      </div>
-
-                      <div className="col-sm-6">
-                        <div className="col-sm-12 label required">
-                          TARGET ENDPOINT
-                          <img
-                            alt="down-arrow"
-                            src="assets/static/images/icon_greensortingdown.svg"
-                          />
-                        </div>
-                        <div className="col-sm-12 mb-2">
-                          <input
-                            type="text"
-                            className={this.state.formData.endpoint.value === "" ? "blur form-control form-control-sm" : "form-control form-control-sm"}
-                            name="endpoint"
-                            value={this.state.formData.endpoint.value==='' ? 'https://' : this.state.formData.endpoint.value }
-                            onChange={(event) => {
-                              this.handleFormData(event);
-                            }}
-                          />
-                          <small className="text-danger">
-                            {this.state.errorsForm["endpoint"]}
-                          </small>
-                        </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type={this.state.formData.secret.type}
+                          autoComplete="off"
+                          className="form-control form-control-sm"
+                          name="secret"
+                          value={this.state.formData.secret.value}
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["secret"]}
+                        </small>
                       </div>
                     </div>
 
-                    <br/>
-                    <div className="row">
-                        <div className="col-sm-4" ></div>
-                        <div  className="col-sm-2 mb-2 text-right">
-                        <button
-                          id="create-group-btn"
-                          disabled={!this.state.formIsValid}
-                          onClick={this.createWebHook.bind(this)}
-                          className="btn btn-sm customize-view-btn"
-                        >
-                          {this.state.edit ? "UPDATE WEBHOOK"  : "CREATE WEBHOOKS" }
-                        </button> </div>
-                        <div className="col-sm-2 mb-2 text-left">
-                        <button
-                          id="create-group-btn"
-                          onClick={()=>this.setState({showForm:false})}
-                          className="btn btn-sm customize-view-btn"
-                        >
-                          BACK
-                        </button>
+                    <div className="col-sm-6">
+                      <div className="col-sm-12 label required">
+                        TARGET ENDPOINT
+                        <img
+                          alt="down-arrow"
+                          src={IconGreenSortingDown}
+                        />
                       </div>
+                      <div className="col-sm-12 mb-2">
+                        <input
+                          type="text"
+                          className={
+                            this.state.formData.endpoint.value === ""
+                              ? "blur form-control form-control-sm"
+                              : "form-control form-control-sm"
+                          }
+                          name="endpoint"
+                          value={
+                            this.state.formData.endpoint.value === ""
+                              ? "https://"
+                              : this.state.formData.endpoint.value
+                          }
+                          onChange={(event) => {
+                            this.handleFormData(event);
+                          }}
+                        />
+                        <small className="text-danger">
+                          {this.state.errorsForm["endpoint"]}
+                        </small>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br />
+                  <div className="row">
+                    <div className="col-sm-4"></div>
+                    <div className="col-sm-2 mb-2 text-right">
+                      <button
+                        id="create-group-btn"
+                        disabled={!this.state.formIsValid}
+                        onClick={this.createWebHook.bind(this)}
+                        className="btn btn-sm customize-view-btn"
+                      >
+                        {this.state.edit ? "UPDATE WEBHOOK" : "CREATE WEBHOOKS"}
+                      </button>{" "}
+                    </div>
+                    <div className="col-sm-2 mb-2 text-left">
+                      <button
+                        id="create-group-btn"
+                        onClick={() => this.setState({ showForm: false })}
+                        className="btn btn-sm customize-view-btn"
+                      >
+                        BACK
+                      </button>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         ) : (
@@ -592,61 +691,74 @@ export default class WebHooks extends React.Component {
                   <hr />
                   <div className="row">
                     <div className="col-sm-12 text-center" id="webhookTableDiv">
-
-                    { this.state.showTableInit ? 
-                                        this.state.newTableData.length > 0 ?
-                                            <table id="webhookTable" className="table">
-                                                <thead>
-                                                    <tr>
-                                                    <th>Name</th>
-                                                    <th>Event Type</th>
-                                                    <th>Target Endpoint</th>
-                                                    <th>Actions</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {
-                                                    this.state.newTableData.map((tbodyVal, tbodyIndex) => {
-                                                            return (
-                                                                <tr id={'webhookTableTbodyTr_' + tbodyIndex} key={'webhookTableTbodyTr_' + tbodyIndex}>
-                                                                   <td>{tbodyVal.webhookname} </td>
-                                                                    <td>{tbodyVal.eventType} </td>
-                                                                    <td> {tbodyVal.endpoint}</td>
-                                                                    <td>
-                                                                    <span className="action-img">
-                                                                        <img
-                                                                        alt="edit-icon"
-                                                                        title="Edit"
-                                                                        src="assets/static/images/iconedit_tablemaintainmonitor.svg"
-                                                                        onClick={()=>this.editWebhook(tbodyVal)}
-
-                                                                        />
-                                                                        <img
-                                                                        onClick={()=>this.deleteWebhook(tbodyVal,indx)}
-                                                                        alt="delete-icon"
-                                                                        title="Delete"
-                                                                        src="assets/static/images/icondelete_tablemaintainmonitor.svg"
-                                                                        />
-                                                                    </span>
-                                                                    </td>
-                                                                </tr>
-                                                            )
-                                                        })
-                                                    }
-                                                </tbody>
-                                            </table> :
-                                            <div className="row mt-2">
-                                                <div className="col-md-12">
-                                                    <div className="alert alert-success" role="alert">
-                                                        No record found!
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        :
-                                        <p className="text-center loader-icon">
-                                            <img alt="loading" src="assets/static/images/rolling.svg" />
-                                        </p>
-                                    }
+                      {this.state.showTableInit ? (
+                        this.state.newTableData.length > 0 ? (
+                          <table id="webhookTable" className="table">
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Event Type</th>
+                                <th>Target Endpoint</th>
+                                <th>Actions</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {this.state.newTableData.map(
+                                (tbodyVal, tbodyIndex) => {
+                                  return (
+                                    <tr
+                                      id={"webhookTableTbodyTr_" + tbodyIndex}
+                                      key={"webhookTableTbodyTr_" + tbodyIndex}
+                                    >
+                                      <td>{tbodyVal.webhookname} </td>
+                                      <td>{tbodyVal.eventType} </td>
+                                      <td> {tbodyVal.endpoint}</td>
+                                      <td>
+                                        <span className="action-img">
+                                          <img
+                                            alt="edit-icon"
+                                            title="Edit"
+                                            src={IconEdit}
+                                            onClick={() =>
+                                              this.editWebhook(tbodyVal)
+                                            }
+                                          />
+                                          <img
+                                            onClick={() =>
+                                              this.deleteWebhook(
+                                                tbodyVal,
+                                                tbodyIndex
+                                              )
+                                            }
+                                            alt="delete-icon"
+                                            title="Delete"
+                                            src={IconDelete}
+                                          />
+                                        </span>
+                                      </td>
+                                    </tr>
+                                  );
+                                }
+                              )}
+                            </tbody>
+                          </table>
+                        ) : (
+                          <div className="row mt-2">
+                            <div className="col-md-12">
+                              <div className="alert alert-success" role="alert">
+                                No record found!
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      ) : (
+                        <p className="text-center loader-icon">
+                          <img
+                            alt="loading"
+                            src={Rolling}
+                          />
+                        </p>
+                      )}
                     </div>
                   </div>
                 </div>

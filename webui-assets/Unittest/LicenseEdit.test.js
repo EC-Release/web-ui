@@ -3,15 +3,15 @@ import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import fetchMock from 'fetch-mock';
 
-import Subscriptionedit from '../Maintain/Subscriptionedit.js';
+import LicenseEdit from '../Maintain/LicenseEdit.js';
 
 configure({ adapter: new Adapter() });
 
 window.enableToolTip = () => { };
 
-describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
+describe('Testing from LicenseEdit.test.js <LicenseEdit />', () => {
 
-    it('should render the Subscriptionedit component', () => {
+    it('should render the LicenseEdit component', () => {
         const propsToPass = {
             helpText: {
                 licenseId:'',
@@ -23,7 +23,7 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptionedit helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
+        const wrapper = shallow(<LicenseEdit helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
         
         wrapper.setState({
             subscriptionForm:{
@@ -41,7 +41,7 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
         expect(wrapper).toBeTruthy();
     });
 
-    it('should have "Subscription form" with div only once', () => {
+    it('should have "License form" with div only once', () => {
         const propsToPass = {
             helpText: {
                 licenseId:'',
@@ -53,7 +53,7 @@ describe('Testing from Subscriptionedit.test.js <Subscriptionedit />', () => {
             }
         }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
-        const wrapper = shallow(<Subscriptionedit helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
+        const wrapper = shallow(<LicenseEdit helpText={propsToPass.helpText} changeView={() => { }} />, { disableLifecycleMethods: true });
         
         wrapper.setState({
             subscriptionForm:{

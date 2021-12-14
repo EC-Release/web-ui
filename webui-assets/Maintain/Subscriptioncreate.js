@@ -1,5 +1,8 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
+import $ from 'jquery';
+import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
+import IconInfo from '../assets/images/info.svg';
 
 export default class Subscriptioncreate extends React.Component {
   constructor(props) {
@@ -34,10 +37,15 @@ export default class Subscriptioncreate extends React.Component {
       ],
     };
   }
+  enableToolTip() {
+    setTimeout(() => {
+      $('[data-toggle="popover"]').popover(); // For tooltips
+    }, 1000);
+  }
 
   /* istanbul ignore next */
   componentDidMount() {
-   	window.enableToolTip(); 
+   	this.enableToolTip(); 
   }
 	
   /* istanbul ignore next */
@@ -280,12 +288,12 @@ export default class Subscriptioncreate extends React.Component {
                       License ID
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -315,7 +323,7 @@ export default class Subscriptioncreate extends React.Component {
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -348,12 +356,12 @@ export default class Subscriptioncreate extends React.Component {
                       Email Address
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -382,12 +390,12 @@ export default class Subscriptioncreate extends React.Component {
                       SSO
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -419,12 +427,12 @@ export default class Subscriptioncreate extends React.Component {
                      User Fullname
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"
@@ -453,12 +461,12 @@ export default class Subscriptioncreate extends React.Component {
                       Description
                       <img
                         alt="down-arrow"
-                        src="assets/static/images/icon_greensortingdown.svg"
+                        src={IconGreenSortingDown}
                       />
                       <span className="float-right help-text">
                         <img
                           alt="info"
-                          src="assets/static/images/info.svg"
+                          src={IconInfo}
                           data-toggle="popover"
                           data-trigger="hover"
                           data-placement="top"

@@ -1,4 +1,9 @@
 import React from "react";
+import  IconGreenSortingDown from '../assets/images/icon_greensortingdown.svg';
+import IconEdit from '../assets/images/iconedit_tablemaintainmonitor.svg';
+import IconDelete from '../assets/images/icondelete_tablemaintainmonitor.svg';
+import IconTable from '../assets/images/icon_tablemaintainmonitor.svg';
+import IconPlus from '../assets/images/plus.svg';
 
 export default class UserManagement extends React.Component {
   /* istanbul ignore next */
@@ -146,7 +151,7 @@ export default class UserManagement extends React.Component {
     let currentForm = {};
     currentForm = Object.assign({}, this.state.formData);
 
-    if (currentForm[fieldName].type == "password") {
+    if (currentForm[fieldName].type === "password") {
       currentForm[fieldName].type = "text";
     } else {
       currentForm[fieldName].type = "password";
@@ -182,7 +187,7 @@ export default class UserManagement extends React.Component {
                         NAME
                         <img
                           alt="down-arrow"
-                          src="assets/static/images/icon_greensortingdown.svg"
+                          src={IconGreenSortingDown}
                         />
                       </div>
                       <div className="col-sm-12 mb-2">
@@ -205,7 +210,7 @@ export default class UserManagement extends React.Component {
                         USER SSO
                         <img
                           alt="down-arrow"
-                          src="assets/static/images/icon_greensortingdown.svg"
+                          src={IconGreenSortingDown}
                         />
                       </div>
                       <div className="col-sm-12 mb-2">
@@ -230,7 +235,7 @@ export default class UserManagement extends React.Component {
                         Email Address
                         <img
                           alt="down-arrow"
-                          src="assets/static/images/icon_greensortingdown.svg"
+                          src={IconGreenSortingDown}
                         />
                       </div>
                       <div className="col-sm-12 mb-2">
@@ -254,7 +259,7 @@ export default class UserManagement extends React.Component {
                         Maker SSO
                         <img
                           alt="down-arrow"
-                          src="assets/static/images/icon_greensortingdown.svg"
+                          src={IconGreenSortingDown}
                         />
                       </div>
                       <div className="col-sm-12 mb-2">
@@ -334,22 +339,22 @@ export default class UserManagement extends React.Component {
                                     <img
                                       alt="plus-icon"
                                       title=""
-                                      src="assets/static/images/plus.svg"
+                                      src={IconPlus}
                                     />
                                     <img
                                       alt="edit-icon"
                                       title="Edit"
-                                      src="assets/static/images/iconedit_tablemaintainmonitor.svg"
+                                      src={IconEdit}
                                     />
                                     <img
                                       alt="-icon"
                                       title=""
-                                      src="assets/static/images/icon_tablemaintainmonitor.svg"
+                                      src={IconTable}
                                     />
                                     <img
                                       alt="delete-icon"
                                       title="Delete"
-                                      src="assets/static/images/icondelete_tablemaintainmonitor.svg"
+                                      src={IconDelete}
                                     />
                                   </span>
                                 </td>

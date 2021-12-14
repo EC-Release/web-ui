@@ -1,10 +1,13 @@
 import React from "react";
 import Healthstatus from "../Monitor/Healthstatus.js";
+import $ from 'jquery';
+
+import IconArrowMore from '../assets/images/icon_arrowmore.svg';
 
 export default class Viewtable extends React.Component {
     /* istanbul ignore next */
     componentDidMount(){
-        window.initTable('viewTable');
+        //window.initTable('viewTable');
     }
 
     /* istanbul ignore next */
@@ -79,7 +82,7 @@ export default class Viewtable extends React.Component {
                               )}
                               className="icon-arrowmore"
                               alt="td-detail"
-                              src="assets/static/images/icon_arrowmore.svg"
+                              src={IconArrowMore}
                             />
                           ) : null}
                         </td>
@@ -111,5 +114,4 @@ export default class Viewtable extends React.Component {
         )
         /* jshint ignore:end */
     }
-
 }
