@@ -225,7 +225,7 @@ export default class App extends React.Component {
           let profileName = respData[0].fullName;
           let profileEmailId = respData[0].email;
           let permissions = permission;
-          let isNewUser = false;
+          let isNewUser = true;
           let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
           this.setState({
             profileData: {
