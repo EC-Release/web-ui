@@ -68,8 +68,8 @@ export default class RequestCreate extends React.Component {
   /* istanbul ignore next */
   createRequest() {
     // this.props.showGlobalMessage(false, true, 'Record saving initiated. Please check after some time.', 'custom-success');
-    let currentForm = Object.assign({}, this.state.groupForm);
-    let prepareData = {};
+    //let currentForm = Object.assign({}, this.state.groupForm);
+    //let prepareData = {};
   }
 
   render() {

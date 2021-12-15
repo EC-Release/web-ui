@@ -4,9 +4,9 @@ import IconUnderConstruction from '../assets/images/underconstruction.svg';
 export default class Support extends React.Component {
 
     /* istanbul ignore next */
-    constructor(props) {
+    /* constructor(props) {
         super(props);
-    }
+    } */
 
     /* istanbul ignore next */
     render() {

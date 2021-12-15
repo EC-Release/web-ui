@@ -2,10 +2,10 @@ import React from "react";
 
 export default class Maintain extends React.Component {
 
-    constructor(props){
-        /* istanbul ignore next */
+   /*  constructor(props){
+        /* istanbul ignore next 
         super(props);
-    }
+    } */
 
     /* istanbul ignore next */
     componentDidMount(){}

@@ -1,7 +1,7 @@
 import React from "react";
 
 import $ from "jquery";
-import Subscriptionviewform from './LicenseViewForm.js';
+//import Subscriptionviewform from './LicenseViewForm.js';
 import Subscriptionedit from "./LicenseEdit.js";
 import Rolling from '../assets/images/rolling.svg';
 
@@ -185,7 +185,7 @@ export default class LicenseView extends React.Component {
         let wholeData = [...this.state.tableData];
         let filteredData = [];
         let newTableData = [];
-        if (searchStr != '') {
+        if (searchStr !== '') {
             filteredData = this.filterByValue(wholeData, searchStr);
             //console.log(filteredData);
         }

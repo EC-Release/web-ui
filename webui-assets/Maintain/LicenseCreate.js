@@ -81,9 +81,6 @@ export default class LicenseCreate extends React.Component {
   /* istanbul ignore next */
   handleFormValidation() {
     let currentFormData = this.state.subscriptionForm;   
-
-    let licenseId = currentFormData.licenseId.value;
-    let licenseIdDirtyState = currentFormData.licenseId.dirtyState;
     let emailAddress = currentFormData.emailAddress.value;
     let emailAddressDirtyState = currentFormData.emailAddress.dirtyState;
     let expdate = currentFormData.date.value;
@@ -163,7 +160,7 @@ export default class LicenseCreate extends React.Component {
                 status: "ok",
               },
             };
-            if (respData.errorStatus.status == "ok") {
+            if (respData.errorStatus.status === "ok") {
               this.props.showGlobalMessage(
                 false,
                 true,
@@ -253,7 +250,7 @@ export default class LicenseCreate extends React.Component {
   showHideField(e, formName, fieldName) {
     let currentForm = Object.assign({}, this.state.subscriptionForm);
 
-    if (currentForm[fieldName].type == "password") {
+    if (currentForm[fieldName].type === "password") {
       currentForm[fieldName].type = "text";
     } else {
       currentForm[fieldName].type = "password";

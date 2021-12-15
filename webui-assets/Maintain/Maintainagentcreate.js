@@ -618,8 +618,8 @@ export default class Maintainagentcreate extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -707,8 +707,8 @@ export default class Maintainagentcreate extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -769,8 +769,8 @@ export default class Maintainagentcreate extends React.Component {
     let durationDirtyState = currentFormData.duration.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let zoneValue = currentFormData.zone.value;
     let zoneDirtyState = currentFormData.zone.dirtyState;
     let serviceUrlValue = currentFormData.serviceUrl.value;
@@ -780,7 +780,7 @@ export default class Maintainagentcreate extends React.Component {
     let remotePortValue = currentFormData.remotePort.value;
     let remotePortDirtyState = currentFormData.remotePort.dirtyState;
     let allowPlugInValue = currentFormData.allowPlugIn.value;
-    let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
+    //let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
     let plugInValue = currentFormData.plugIn.value;
     let plugInDirtyState = currentFormData.plugIn.dirtyState;
     let hcaValue = currentFormData.hca.value;
@@ -1044,8 +1044,8 @@ export default class Maintainagentcreate extends React.Component {
     let durationDirtyState = currentFormData.duration.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let localPortValue = currentFormData.localPort.value;
     let localPortDirtyState = currentFormData.localPort.dirtyState;
     let targetIdValue = currentFormData.targetId.value;
@@ -1434,7 +1434,7 @@ export default class Maintainagentcreate extends React.Component {
 
                 let filename = "server.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     serverFormData.mode.toLowerCase() +
@@ -1621,7 +1621,7 @@ export default class Maintainagentcreate extends React.Component {
 
                 let filename = "x:server.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     serverFormData.mode.toLowerCase() +
@@ -1757,7 +1757,7 @@ export default class Maintainagentcreate extends React.Component {
 
                 let filename = "x:client.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     xClientFormData.mode.toLowerCase() +
@@ -1932,7 +1932,7 @@ export default class Maintainagentcreate extends React.Component {
 
                 let filename = "client.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     clientFormData.mode.toLowerCase() +
