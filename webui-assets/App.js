@@ -394,6 +394,7 @@ export default class App extends React.Component {
             authToken={this.state.authToken}
             showGlobalMessage={this.showGlobalMessage.bind(this)}
             hideGlobalMessage={this.hideGlobalMessage.bind(this)}
+            baseUrl={this.state.apiEndPoints.baseUrl}
           />
         ); // jshint ignore:line
       case "View":
@@ -550,6 +551,7 @@ export default class App extends React.Component {
             authToken={this.state.authToken}
             showGlobalMessage={this.showGlobalMessage.bind(this)}
             hideGlobalMessage={this.hideGlobalMessage.bind(this)}
+            baseUrl={this.state.apiEndPoints.baseUrl}
           />
         );
       case "Monitor":

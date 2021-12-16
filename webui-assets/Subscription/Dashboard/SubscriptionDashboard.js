@@ -176,7 +176,7 @@ export default class SubscriptionDashboard extends React.Component {
     );
     let currentForm = Object.assign({}, this.state.transactionForm);
     let prepareData = {};
-    let url = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/"+ currentForm.revision.value +"/seeds";
+    let url = this.props.baseUrl + currentForm.revision.value +"/seeds";
    
     prepareData.licenseId = currentForm.licenseId.value;
     prepareData.objId = currentForm.objId.value;

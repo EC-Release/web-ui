@@ -60,7 +60,7 @@ export default class SubscriptionAdd extends React.Component {
     );
     let currentForm = Object.assign({}, this.state.transactionForm);
     let prepareData = {};
-    let url = "https://ec-oauth-sso.run.aws-usw02-dev.ice.predix.io/"+ currentForm.revision.value +"/trs/add/oidc-user-id";
+    let url = this.props.baseUrl + currentForm.revision.value +"/trs/add/oidc-user-id";
    
     prepareData.trid  = currentForm.transactionId.value;
     prepareData.oidcUserId = currentForm.oidcUserId.value;
