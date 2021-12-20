@@ -82,7 +82,7 @@
     "workbox-webpack-plugin": "4.3.1"
   },
   "scripts": {
-    "start": "set port=3001 && cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development node scripts/start.js",
+    "start": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development node scripts/start.js",
     "build:dev": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development node scripts/build.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --watchAll=false --coverage"
