@@ -4,8 +4,7 @@ class Loader extends Component {
   render() {
     return (
       <div className="row">
-        <div className="col-md-6 text-centered"></div>
-        <div className="col-md-4 text-centered">
+        <div className="col-md-12 text-centered">
           <img className="index-loader center-block" alt="loading" src={Rolling} />
         </div>
       </div>
