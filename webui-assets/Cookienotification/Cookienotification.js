@@ -1,7 +1,7 @@
 import React from "react";
 import $ from "jquery";
 
-export default class Groupupgrade extends React.Component {
+export default class Cookienotification extends React.Component {
   /* istanbul ignore next */
   constructor(props) {
     super(props);

@@ -54,7 +54,7 @@ module.exports = {
   appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('webui-assets'),
-  appHtml: resolveApp('webui-assets/index.html'),
+  appHtml: resolveApp('webui-assets/index-dev.html'),
   appIndexJs: resolveModule(resolveApp, 'webui-assets/index'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('webui-assets'),
