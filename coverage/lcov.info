@@ -1,5 +1,5 @@
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\App.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\App.js
 FN:11,(anonymous_0)
 FN:12,(anonymous_1)
 FN:15,(anonymous_2)
@@ -30,21 +30,21 @@ FN:50,(anonymous_26)
 FN:53,(anonymous_27)
 FN:54,(anonymous_28)
 FN:65,(anonymous_29)
-FN:660,(anonymous_30)
-FN:671,(anonymous_31)
-FN:686,(anonymous_32)
-FN:696,(anonymous_33)
-FN:716,(anonymous_34)
-FN:727,(anonymous_35)
-FN:747,(anonymous_36)
-FN:758,(anonymous_37)
-FN:778,(anonymous_38)
-FN:789,(anonymous_39)
-FN:809,(anonymous_40)
-FN:819,(anonymous_41)
-FN:868,(anonymous_42)
-FN:872,(anonymous_43)
-FN:939,(anonymous_44)
+FN:662,(anonymous_30)
+FN:673,(anonymous_31)
+FN:688,(anonymous_32)
+FN:698,(anonymous_33)
+FN:718,(anonymous_34)
+FN:729,(anonymous_35)
+FN:749,(anonymous_36)
+FN:760,(anonymous_37)
+FN:780,(anonymous_38)
+FN:791,(anonymous_39)
+FN:811,(anonymous_40)
+FN:821,(anonymous_41)
+FN:870,(anonymous_42)
+FN:874,(anonymous_43)
+FN:941,(anonymous_44)
 FNF:45
 FNH:2
 FNDA:0,(anonymous_0)
@@ -129,83 +129,83 @@ DA:56,1
 DA:60,1
 DA:66,6
 DA:67,6
-DA:661,0
-DA:662,0
 DA:663,0
 DA:664,0
-DA:672,0
-DA:673,0
+DA:665,0
+DA:666,0
 DA:674,0
 DA:675,0
 DA:676,0
-DA:687,0
-DA:688,0
-DA:697,0
-DA:698,0
+DA:677,0
+DA:678,0
+DA:689,0
+DA:690,0
+DA:699,0
 DA:700,0
-DA:704,0
-DA:705,0
+DA:702,0
 DA:706,0
-DA:717,0
-DA:718,0
-DA:728,0
-DA:729,0
+DA:707,0
+DA:708,0
+DA:719,0
+DA:720,0
+DA:730,0
 DA:731,0
-DA:735,0
-DA:736,0
+DA:733,0
 DA:737,0
-DA:748,0
-DA:749,0
-DA:759,0
-DA:760,0
+DA:738,0
+DA:739,0
+DA:750,0
+DA:751,0
+DA:761,0
 DA:762,0
-DA:766,0
-DA:767,0
+DA:764,0
 DA:768,0
-DA:779,0
-DA:780,0
-DA:790,0
-DA:791,0
+DA:769,0
+DA:770,0
+DA:781,0
+DA:782,0
+DA:792,0
 DA:793,0
-DA:798,0
-DA:799,0
-DA:810,0
-DA:811,0
-DA:820,0
-DA:821,0
+DA:795,0
+DA:800,0
+DA:801,0
+DA:812,0
+DA:813,0
+DA:822,0
 DA:823,0
-DA:828,0
-DA:829,0
+DA:825,0
 DA:830,0
+DA:831,0
+DA:832,0
 LF:85
 LH:33
 BRDA:60,0,0,0
 BRDA:60,0,1,1
 BRDA:60,1,0,1
 BRDA:60,1,1,0
-BRDA:674,2,0,0
-BRDA:674,2,1,0
-BRDA:697,3,0,0
-BRDA:697,3,1,0
-BRDA:704,4,0,0
-BRDA:704,4,1,0
-BRDA:728,5,0,0
-BRDA:728,5,1,0
-BRDA:735,6,0,0
-BRDA:735,6,1,0
-BRDA:759,7,0,0
-BRDA:759,7,1,0
-BRDA:766,8,0,0
-BRDA:766,8,1,0
-BRDA:790,9,0,0
-BRDA:790,9,1,0
-BRDA:820,10,0,0
-BRDA:820,10,1,0
+BRDA:676,2,0,0
+BRDA:676,2,1,0
+BRDA:699,3,0,0
+BRDA:699,3,1,0
+BRDA:706,4,0,0
+BRDA:706,4,1,0
+BRDA:730,5,0,0
+BRDA:730,5,1,0
+BRDA:737,6,0,0
+BRDA:737,6,1,0
+BRDA:761,7,0,0
+BRDA:761,7,1,0
+BRDA:768,8,0,0
+BRDA:768,8,1,0
+BRDA:792,9,0,0
+BRDA:792,9,1,0
+BRDA:822,10,0,0
+BRDA:822,10,1,0
 BRF:22
 BRH:2
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\custom-service-worker.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\custom-service-worker.js
 FN:1,(anonymous_0)
 FNF:1
 FNH:0
@@ -218,7 +218,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\index.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\index.js
 FN:43,(anonymous_0)
 FN:54,getToken
 FNF:2
@@ -256,7 +256,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\serviceWorker.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\serviceWorker.js
 FN:23,register
 FN:34,(anonymous_1)
 FN:43,(anonymous_2)
@@ -368,7 +368,7 @@ BRF:32
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\user-worker.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\user-worker.js
 FN:1,(anonymous_0)
 FN:6,getUserRole
 FN:14,(anonymous_2)
@@ -394,7 +394,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\worker.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\worker.js
 FN:1,(anonymous_0)
 FN:3,(anonymous_1)
 FN:5,(anonymous_2)
@@ -428,7 +428,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Cookienotification\Cookienotification.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Cookienotification\Cookienotification.js
 FN:23,(anonymous_0)
 FN:24,(anonymous_1)
 FN:29,(anonymous_2)
@@ -448,7 +448,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Dashboard\Dashboard.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Dashboard\Dashboard.js
 FN:237,(anonymous_0)
 FNF:1
 FNH:0
@@ -459,7 +459,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\FloaterHelp\FloaterHelp.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\FloaterHelp\FloaterHelp.js
 FN:5,(anonymous_0)
 FNF:1
 FNH:0
@@ -471,7 +471,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Footer\Footer.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Footer\Footer.js
 FN:3,(anonymous_0)
 FNF:1
 FNH:0
@@ -484,7 +484,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Header\Header.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Header\Header.js
 FNF:0
 FNH:0
 LF:0
@@ -493,7 +493,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Loader\Loader.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Loader\Loader.js
 FN:4,(anonymous_0)
 FNF:1
 FNH:0
@@ -505,7 +505,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\GroupView.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\GroupView.js
 FN:65,(anonymous_0)
 FN:79,(anonymous_1)
 FN:90,(anonymous_2)
@@ -536,7 +536,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Groupcreate.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Groupcreate.js
 FN:8,(anonymous_0)
 FN:22,(anonymous_1)
 FN:23,(anonymous_2)
@@ -557,7 +557,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Groupupgrade.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Groupupgrade.js
 FN:121,(anonymous_0)
 FN:135,(anonymous_1)
 FN:146,(anonymous_2)
@@ -692,11 +692,11 @@ BRF:18
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseCreate.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\LicenseCreate.js
 FN:8,(anonymous_0)
 FN:40,(anonymous_1)
 FN:41,(anonymous_2)
-FN:267,(anonymous_3)
+FN:264,(anonymous_3)
 FNF:4
 FNH:2
 FNDA:3,(anonymous_0)
@@ -713,7 +713,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseEdit.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\LicenseEdit.js
 FN:9,(anonymous_0)
 FN:46,(anonymous_1)
 FN:47,(anonymous_2)
@@ -734,7 +734,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseUpgrade.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\LicenseUpgrade.js
 FN:10,(anonymous_0)
 FN:62,(anonymous_1)
 FN:76,(anonymous_2)
@@ -777,7 +777,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseView.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\LicenseView.js
 FN:10,(anonymous_0)
 FN:59,(anonymous_1)
 FN:73,(anonymous_2)
@@ -820,7 +820,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseViewForm.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\LicenseViewForm.js
 FN:5,(anonymous_0)
 FN:97,(anonymous_1)
 FNF:2
@@ -835,20 +835,18 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintain.js
-FN:5,(anonymous_0)
-FN:13,(anonymous_1)
-FNF:2
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Maintain.js
+FN:13,(anonymous_0)
+FNF:1
 FNH:0
 FNDA:0,(anonymous_0)
-FNDA:0,(anonymous_1)
 LF:0
 LH:0
 BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentcreate.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Maintainagentcreate.js
 FN:8,(anonymous_0)
 FN:152,(anonymous_1)
 FN:153,(anonymous_2)
@@ -869,7 +867,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentedit.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Maintainagentedit.js
 FN:5,(anonymous_0)
 FN:1583,(anonymous_1)
 FNF:2
@@ -884,7 +882,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentupgrade.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Maintainagentupgrade.js
 FN:12,(anonymous_0)
 FN:250,(anonymous_1)
 FN:264,(anonymous_2)
@@ -927,7 +925,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentview.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Maintainagentview.js
 FN:8,(anonymous_0)
 FN:239,(anonymous_1)
 FN:254,(anonymous_2)
@@ -966,7 +964,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\RequestCreate.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\RequestCreate.js
 FN:19,(anonymous_0)
 FN:20,(anonymous_1)
 FN:75,(anonymous_2)
@@ -983,7 +981,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\RequestUpgrade.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\RequestUpgrade.js
 FN:94,(anonymous_0)
 FN:110,(anonymous_1)
 FN:121,(anonymous_2)
@@ -1022,7 +1020,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\RequestView.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\RequestView.js
 FN:93,(anonymous_0)
 FN:107,(anonymous_1)
 FN:118,(anonymous_2)
@@ -1061,7 +1059,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptioncreate.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Subscriptioncreate.js
 FN:8,(anonymous_0)
 FN:40,(anonymous_1)
 FN:41,(anonymous_2)
@@ -1082,7 +1080,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionedit.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Subscriptionedit.js
 FN:9,(anonymous_0)
 FN:46,(anonymous_1)
 FN:47,(anonymous_2)
@@ -1103,7 +1101,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionupgrade.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Subscriptionupgrade.js
 FN:10,(anonymous_0)
 FN:62,(anonymous_1)
 FN:76,(anonymous_2)
@@ -1146,7 +1144,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionview.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Subscriptionview.js
 FN:10,(anonymous_0)
 FN:58,(anonymous_1)
 FN:72,(anonymous_2)
@@ -1189,7 +1187,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionviewform.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Maintain\Subscriptionviewform.js
 FN:5,(anonymous_0)
 FN:97,(anonymous_1)
 FNF:2
@@ -1204,7 +1202,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Alert.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Monitor\Alert.js
 FNF:0
 FNH:0
 LF:0
@@ -1213,7 +1211,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Healthstatus.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Monitor\Healthstatus.js
 FNF:0
 FNH:0
 LF:0
@@ -1222,7 +1220,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Monitor.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Monitor\Monitor.js
 FNF:0
 FNH:0
 LF:0
@@ -1231,7 +1229,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Notification.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Monitor\Notification.js
 FN:137,(anonymous_0)
 FN:152,(anonymous_1)
 FN:162,(anonymous_2)
@@ -1306,7 +1304,7 @@ BRF:11
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Navbar\Navbar.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Navbar\Navbar.js
 FNF:0
 FNH:0
 LF:0
@@ -1315,7 +1313,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Report\Report.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Report\Report.js
 FNF:0
 FNH:0
 LF:0
@@ -1324,7 +1322,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\Settings.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Settings\Settings.js
 FN:5,(anonymous_0)
 FNF:1
 FNH:0
@@ -1336,7 +1334,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\UserManagement.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Settings\UserManagement.js
 FN:165,(anonymous_0)
 FNF:1
 FNH:1
@@ -1347,7 +1345,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\UserProfile.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Settings\UserProfile.js
 FNF:0
 FNH:0
 LF:0
@@ -1356,7 +1354,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\WebHooks.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Settings\WebHooks.js
 FN:82,(anonymous_0)
 FN:87,(anonymous_1)
 FN:119,(anonymous_2)
@@ -1416,7 +1414,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Subscription\Dashboard\SubscriptionDashboard.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Subscription\Dashboard\SubscriptionDashboard.js
 FN:8,(anonymous_0)
 FN:62,(anonymous_1)
 FN:104,(anonymous_2)
@@ -1430,7 +1428,7 @@ FN:261,(anonymous_9)
 FN:269,(anonymous_10)
 FNF:11
 FNH:1
-FNDA:3,(anonymous_0)
+FNDA:6,(anonymous_0)
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
@@ -1441,8 +1439,8 @@ FNDA:0,(anonymous_7)
 FNDA:0,(anonymous_8)
 FNDA:0,(anonymous_9)
 FNDA:0,(anonymous_10)
-DA:9,3
-DA:10,3
+DA:9,6
+DA:10,6
 DA:63,0
 DA:64,0
 DA:65,0
@@ -1531,7 +1529,7 @@ BRF:16
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Subscription\SubscriptionCreate\SubscriptionAdd.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Subscription\SubscriptionCreate\SubscriptionAdd.js
 FN:8,(anonymous_0)
 FN:36,(anonymous_1)
 FN:54,(anonymous_2)
@@ -1607,7 +1605,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Support\Support.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Support\Support.js
 FNF:0
 FNH:0
 LF:0
@@ -1616,7 +1614,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Topologygraph\Topologygraph.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Topologygraph\Topologygraph.js
 FN:10,(anonymous_0)
 FN:14,(anonymous_1)
 FN:23,(anonymous_2)
@@ -1640,7 +1638,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Treelist\Treelist.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Treelist\Treelist.js
 FN:4,(anonymous_0)
 FN:64,(anonymous_1)
 FNF:2
@@ -1654,7 +1652,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\Businessview.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\View\Businessview.js
 FNF:0
 FNH:0
 LF:0
@@ -1663,7 +1661,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\Customsearch.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\View\Customsearch.js
 FN:8,(anonymous_0)
 FN:334,(anonymous_1)
 FNF:2
@@ -1678,7 +1676,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\Technicalview.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\View\Technicalview.js
 FN:1895,(anonymous_0)
 FNF:1
 FNH:0
@@ -1691,7 +1689,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\View.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\View\View.js
 FN:8,(anonymous_0)
 FN:112,(anonymous_1)
 FNF:2
@@ -1706,7 +1704,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Viewtable\Viewtable.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\Viewtable\Viewtable.js
 FN:18,(anonymous_0)
 FNF:1
 FNH:0
@@ -1717,7 +1715,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\components\AppError.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\components\AppError.js
 FN:3,(anonymous_0)
 FN:13,(anonymous_1)
 FN:17,(anonymous_2)
@@ -1746,7 +1744,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\static\helpText\helpText.js
+SF:C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\webui-assets\static\helpText\helpText.js
 FNF:0
 FNH:0
 LF:0
