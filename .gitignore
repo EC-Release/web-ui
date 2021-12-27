@@ -3,7 +3,6 @@
 #*
 node_modules
 coverage
-build
 api.yml
 command_file.bat
 oauth2.yml
