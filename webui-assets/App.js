@@ -229,10 +229,6 @@ export default class App extends React.Component {
           let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
           console.log(profileName)
           this.setState({
-            profileData: {
-              email: profileEmailId,
-              name: profileName,
-            },
             userId: userId,
             permissions: permissions,
             currentView: currentView,
@@ -252,7 +248,7 @@ export default class App extends React.Component {
     });
     // Get logged user's userId start
     let snapshotData = sessionStorage.getItem("snapshotData"); // data layer class
-    let userData = sessionStorage.getItem("userData");
+    //let userData = sessionStorage.getItem("userData");
     fetch("/setcookie").then((response) => {
       console.log(response);
     });
@@ -923,6 +919,7 @@ export default class App extends React.Component {
       case "closeModal":
         $("#notificationModal").modal("hide");
         break;
+      default: break;
     }
   }
 
@@ -1141,8 +1138,8 @@ export default class App extends React.Component {
                   <div className="modal-body">
                     <div className="row">
                       <div className="col-sm-10">
-                        <img src={GeLogo} />
-                        <img src={EcIcon} width="100" height="60" />
+                        <img src={GeLogo} alt="GE Logo"/>
+                        <img src={EcIcon} width="100" height="60" alt="EC Icon" />
                       </div>
                       <div className="col-sm-2 maximize-image-div">
                         <img

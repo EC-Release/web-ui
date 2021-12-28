@@ -94,7 +94,7 @@ export default class App extends React.Component {
       },
       isCommandPrompt: false,
       user: "OpsAdmin",
-      isNewUser: true,
+      isNewUser: false,
       scope : {},
     };
   }
@@ -227,6 +227,7 @@ export default class App extends React.Component {
           let permissions = permission;
           let isNewUser = false;
           let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
+          console.log(profileName)
           this.setState({
             profileData: {
               email: profileEmailId,
@@ -255,6 +256,7 @@ export default class App extends React.Component {
     fetch("/setcookie").then((response) => {
       console.log(response);
     });
+    console.log(snapshotData);
     if (snapshotData !== null) {
       let jsonData = JSON.parse(snapshotData);
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
@@ -264,6 +266,7 @@ export default class App extends React.Component {
       let profileName = data.fullName === undefined ? "" : data.fullName;
       let profileEmailId = data.email === undefined ? "" : data.email;
       let permissions = permission === undefined ? "" : permission;
+      console.log(profileName);
       this.setState({
         profileData: {
           email: profileEmailId,

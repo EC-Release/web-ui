@@ -249,9 +249,9 @@ export default class Healthstatus extends React.Component {
   fetchHealthStatus() {
     let selectedGatewayId = this.state.selectedGateway;
     let gateways = this.state.gateways;
-    let selectedGateway = gateways.find(
+    /* let selectedGateway = gateways.find(
       (x) => x.gatewayId === selectedGatewayId
-    );
+    ); */
     //let serviceUrl = selectedGateway.serviceUrl;
     /* let healthLink = "";
     if (serviceUrl !== "") {
@@ -625,10 +625,9 @@ export default class Healthstatus extends React.Component {
                   <div className="col-sm-5 "></div>
                   <div className="col-sm-2 text-center">
                     <select
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm health-status-select"
                       id="selectedSession"
                       name="selectedSession"
-                      className="health-status-select"
                       /*  value={this.state.selectedGateway} */
                       onChange={(event) => {
                         this.handleGatewayselection(event);
@@ -703,10 +702,9 @@ export default class Healthstatus extends React.Component {
                   <div className="col-sm-5 "></div>
                   <div className="col-sm-2 text-center">
                     <select
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm health-status-select"
                       id="selectedConnection"
                       name="selectedConnection"
-                      className="health-status-select"
                       /*  value={this.state.selectedGateway} */
                       onChange={(event) => {
                         this.handleGatewayselection(event);
@@ -796,10 +794,9 @@ export default class Healthstatus extends React.Component {
                   <div className="col-sm-5 "></div>
                   <div className="col-sm-2 text-center">
                     <select
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm health-status-select"
                       id="selectedClientId"
                       name="selectedClientId"
-                      className="health-status-select"
                       /*  value={this.state.selectedGateway} */
                       onChange={(event) => {
                         this.handleGatewayselection(event);

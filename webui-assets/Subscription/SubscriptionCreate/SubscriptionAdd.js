@@ -1,7 +1,5 @@
 import React from "react";
-import $ from "jquery";
 
-import IconGreenSortingDown from "../../assets/images/icon_greensortingdown.svg";
 import IconInfo from "../../assets/images/info.svg";
 
 export default class SubscriptionAdd extends React.Component {
@@ -21,7 +19,6 @@ export default class SubscriptionAdd extends React.Component {
 
   handleFormData(e) {
     let currentForm = Object.assign({}, this.state.transactionForm);
-    let fieldName = e.target.name;
     let updatedValue = e.target.value;
     currentForm.oidcUserId.value = updatedValue;
     currentForm.oidcUserId.dirtyState = true;

@@ -83,13 +83,25 @@
   },
   "scripts": {
     "start": "cross-env node scripts/start.js",
-    "start:dev": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development node scripts/start.js",
     "build:dev": "cross-env REACT_APP_BACKEND_URL=http://localhost:4200 REACT_APP_ENV=development node scripts/build.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --watchAll=false --coverage"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "eqeqeq": "off",
+      "no-unused-vars": "off",
+      "no-useless-constructor": "off",
+      "jsx-a11y/anchor-is-valid": "off",
+      "jsx-a11y/role-supports-aria-props": "off",
+      "react/jsx-no-target-blank": "off",
+      "no-useless-concat": "off",
+      "react-hooks/exhaustive-deps": "off"
+    }
   },
   "browserslist": {
     "production": [

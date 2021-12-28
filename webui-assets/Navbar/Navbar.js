@@ -9,9 +9,9 @@ import IconSupport from "../assets/images/support_icon.svg";
 
 export default class Navbar extends React.Component {
   /* istanbul ignore next */
-  constructor(props) {
+  /* constructor(props) {
     super(props);
-  }
+  } */
 
   /* istanbul ignore next */
   render() {
