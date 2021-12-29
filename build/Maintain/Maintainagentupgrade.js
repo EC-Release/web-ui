@@ -439,9 +439,10 @@ export default class Maintainagentupgrade extends React.Component {
   filterByValue(array, string) {
     return array.filter((o) =>
       Object.keys(o).some((k) => {
-        if (o[k] != undefined) {
+        if (o[k] !== undefined) {
           return o[k].toLowerCase().includes(string.toLowerCase());
         }
+        return null;
       })
     );
   }

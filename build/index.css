@@ -298,6 +298,11 @@ thead {
   font-weight: 600;
 }
 
+.agent-create-btn{
+  border: none;
+  background-color: #ffffff;
+}
+
 .centered-div.View {
   font-size: small;
 }

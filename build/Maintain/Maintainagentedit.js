@@ -354,7 +354,7 @@ export default class Maintainagentedit extends React.Component {
         .then((response) => {
           if (response.status === 200) {
             response.json().then((respData) => {
-              if (respData.errorStatus.status == "ok") {
+              if (respData.errorStatus.status === "ok") {
                 this.props.handleDataTable(true);
                 this.props.showGlobalMessage(
                   true,
@@ -505,7 +505,7 @@ export default class Maintainagentedit extends React.Component {
 
                 let filename = "x:server.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     serverFormData.mode.toLowerCase() +
@@ -636,7 +636,7 @@ export default class Maintainagentedit extends React.Component {
 
                 let filename = "x:client.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     xClientFormData.mode.toLowerCase() +
@@ -761,7 +761,7 @@ export default class Maintainagentedit extends React.Component {
         .then((response) => {
           if (response.status === 200) {
             response.json().then((respData) => {
-              if (respData.errorStatus.status == "ok") {
+              if (respData.errorStatus.status === "ok") {
                 this.props.handleDataTable(true);
                 this.props.showGlobalMessage(
                   true,
@@ -1045,14 +1045,14 @@ export default class Maintainagentedit extends React.Component {
       }
       formIsValid = false;
     } else if (
-      hostValue.substr(0, 6) != "wss://" &&
-      hostValue.substr(0, 5) != "ws://"
+      hostValue.substr(0, 6) !== "wss://" &&
+      hostValue.substr(0, 5) !== "ws://"
     ) {
       if (hostDirtyState) {
         errors.host = "Host starts with wss:// or ws://";
       }
       formIsValid = false;
-    } else if (hostValue.substr(hostValue.length - 6, 6) != "/agent") {
+    } else if (hostValue.substr(hostValue.length - 6, 6) !== "/agent") {
       if (hostDirtyState) {
         errors.host = "Host ends with /agent";
       }
@@ -1064,7 +1064,7 @@ export default class Maintainagentedit extends React.Component {
         errors.localPort = "Please enter Local Port in digit";
       }
       formIsValid = false;
-    } else if (localPortValue.length != 4) {
+    } else if (localPortValue.length !== 4) {
       if (localPortDirtyState) {
         errors.localPort = "Local Port must have 4 digit";
       }
@@ -1207,7 +1207,7 @@ export default class Maintainagentedit extends React.Component {
     let remotePortValue = currentFormData.remotePort.value;
     let remotePortDirtyState = currentFormData.remotePort.dirtyState;
     let allowPlugInValue = currentFormData.allowPlugIn.value;
-    let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
+    
     let plugInValue = currentFormData.plugIn.value;
     let plugInDirtyState = currentFormData.plugIn.dirtyState;
     let formIsValid = true;
@@ -1278,14 +1278,14 @@ export default class Maintainagentedit extends React.Component {
       }
       formIsValid = false;
     } else if (
-      hostValue.substr(0, 6) != "wss://" &&
-      hostValue.substr(0, 5) != "ws://"
+      hostValue.substr(0, 6) !== "wss://" &&
+      hostValue.substr(0, 5) !== "ws://"
     ) {
       if (hostDirtyState) {
         errors.host = "Host starts with wss:// or ws://";
       }
       formIsValid = false;
-    } else if (hostValue.substr(hostValue.length - 6, 6) != "/agent") {
+    } else if (hostValue.substr(hostValue.length - 6, 6) !== "/agent") {
       if (hostDirtyState) {
         errors.host = "Host ends with /agent";
       }
@@ -1328,7 +1328,7 @@ export default class Maintainagentedit extends React.Component {
         errors.remotePort = "Please enter Remote Port in digit";
       }
       formIsValid = false;
-    } else if (remotePortValue.length != 4) {
+    } else if (remotePortValue.length !== 4) {
       if (remotePortDirtyState) {
         errors.remotePort = "Remote Port must have 4 digit";
       }
@@ -1444,8 +1444,8 @@ export default class Maintainagentedit extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    /* let hostValue = currentFormData.host.value;
+    let hostDirtyState = currentFormData.host.dirtyState; */
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -1658,7 +1658,7 @@ export default class Maintainagentedit extends React.Component {
                     </label>
                   </div>
                 </div>
-                {this.state.agentForm.agentMode.value != 1 ? (
+                {this.state.agentForm.agentMode.value !== 1 ? (
                   <div className="col-sm-3">
                     <h6>&nbsp;</h6>
                     <select
@@ -1684,7 +1684,7 @@ export default class Maintainagentedit extends React.Component {
                 ) : null}
               </div>
               <hr></hr>
-              {this.state.agentForm.agentMode.value == 2 ? (
+              {this.state.agentForm.agentMode.value === 2 ? (
                 <div className="changeable-form server-form">
                   <div className="row">
                     <div className="col-sm-3">
@@ -2032,7 +2032,7 @@ export default class Maintainagentedit extends React.Component {
                 </div>
               ) : null}
 
-              {this.state.agentForm.agentMode.value == 3 ? (
+              {this.state.agentForm.agentMode.value === 3 ? (
                 <div className="changeable-form client-form">
                   <div className="row">
                     <div className="col-sm-3">
@@ -2341,7 +2341,7 @@ export default class Maintainagentedit extends React.Component {
                 </div>
               ) : null}
 
-              {this.state.agentForm.agentMode.value == 4 ? (
+              {this.state.agentForm.agentMode.value === 4 ? (
                 <div className="changeable-form x-server-form">
                   <div className="row">
                     <div className="col-sm-4">
@@ -2515,7 +2515,7 @@ export default class Maintainagentedit extends React.Component {
                 </div>
               ) : null}
 
-              {this.state.agentForm.agentMode.value == 5 ? (
+              {this.state.agentForm.agentMode.value === 5 ? (
                 <div className="changeable-form x-client-form">
                   <div className="row">
                     <div className="col-sm-4">

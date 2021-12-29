@@ -1,5 +1,4 @@
 import React from "react";
-import $ from 'jquery';
 
 import IconGreenSortingDown from "../../assets/images/icon_greensortingdown.svg";
 import IconInfo from "../../assets/images/info.svg";
@@ -105,12 +104,6 @@ export default class SubscriptionDashboard extends React.Component {
     let formData  = this.state.transactionForm;
     let formIsValid = true;
     let errors = {};
-    let licenseId = formData.licenseId;
-    let objId = formData.objId;
-    let currencyId = formData.currencyId;
-    let eaAmount = formData.eaAmount;
-    let qty = formData.qty;
-    let oidcUserId = formData.oidcUserId;
     let buc  = formData.paymentVadStr1;
     let adn = formData.paymentVadStr2;
     /* if(licenseId.value.trim() === ""){
@@ -208,7 +201,7 @@ export default class SubscriptionDashboard extends React.Component {
                 status: "ok",
               },
             };
-            if (respData.errorStatus.status == "ok") {
+            if (respData.errorStatus.status === "ok") {
               this.props.showGlobalMessage(
                 false,
                 true,

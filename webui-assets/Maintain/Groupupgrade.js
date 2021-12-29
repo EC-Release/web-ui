@@ -337,7 +337,7 @@ export default class Groupupgrade extends React.Component {
   deleteData(tbodyVal, rowIndex) {
     let cnf = window.confirm("Are you sure you want to delete");
     if (cnf) {
-      let groupId = tbodyVal.groupId;
+      //let groupId = tbodyVal.groupId;
       this.props.showGlobalMessage(
         true,
         true,
@@ -503,10 +503,10 @@ export default class Groupupgrade extends React.Component {
     let updatedValue =
       e.target.type === "checkbox" ? e.target.checked : e.target.value;
     let currentForm = Object.assign({}, this.state.groupForm);
-    let newvalue = Array.from(
+    /* let newvalue = Array.from(
       e.target.selectedOptions,
       (option) => option.value
-    );
+    ); */
     if (fieldName === "subscriptionId") {
       let value = Array.from(
         e.target.selectedOptions,
@@ -529,7 +529,7 @@ export default class Groupupgrade extends React.Component {
   handleFormValidation() {
     let currentFormData = this.state.groupForm;
     let subscriptionIdValue = currentFormData.subscriptionId.value;
-    let subscriptionIdDirtyState = currentFormData.subscriptionId.dirtyState;
+    //let subscriptionIdDirtyState = currentFormData.subscriptionId.dirtyState;
     let groupIdValue = currentFormData.groupId.value;
     let groupIdDirtyState = currentFormData.groupId.dirtyState;
     let formIsValid = true;

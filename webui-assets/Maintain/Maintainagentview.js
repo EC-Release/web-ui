@@ -426,7 +426,7 @@ export default class Maintainagentview extends React.Component {
     let wholeData = [...this.state.tableData];
     let filteredData = [];
     let newTableData = [];
-    if (searchStr != "") {
+    if (searchStr !==  "") {
       filteredData = this.filterByValue(wholeData, searchStr);
     } else {
       filteredData = wholeData;

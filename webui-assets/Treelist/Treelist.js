@@ -1,9 +1,9 @@
 import React from "react";
 
 export default class Treelist extends React.Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
-  }
+  } */
 
   /* istanbul ignore next */
   componentDidMount() {

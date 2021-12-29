@@ -508,7 +508,7 @@ export default class Customsearch extends React.Component {
                     {this.state.filteredAvailableFields.map(
                       (availableFieldObj, availableFieldIndex) => {
                         return (
-                          <a
+                          <a href="#"
                             onClick={this.handleAvailableFieldSelect.bind(
                               this,
                               availableFieldIndex
@@ -564,7 +564,7 @@ export default class Customsearch extends React.Component {
                       this.state.filteredSelectedFields.map(
                         (selectedFieldObj, selectedFieldIndex) => {
                           return (
-                            <a
+                            <a  href="#"
                               onClick={this.handleSelectedFieldSelect.bind(
                                 this,
                                 selectedFieldIndex

@@ -1,6 +1,6 @@
 import React from "react";
 import Healthstatus from "../Monitor/Healthstatus.js";
-import $ from 'jquery';
+
 
 import IconArrowMore from '../assets/images/icon_arrowmore.svg';
 
@@ -36,7 +36,7 @@ export default class Viewtable extends React.Component {
                                         <td key={'viewTableTbodyTd_'+tdIndex}>
                                             { tbodyVal[tdIndex].value } &nbsp;&nbsp;
                                             {
-                                                tbodyVal[tdIndex].hiddenValue && tbodyVal[tdIndex].hiddenValue != '' && tbodyVal[tdIndex].hiddenState ?
+                                                tbodyVal[tdIndex].hiddenValue && tbodyVal[tdIndex].hiddenValue  !==  '' && tbodyVal[tdIndex].hiddenState ?
                                                     <img onClick={this.props.showHideTableTdData.bind(this, tbodyIndex, tdIndex)} className="icon-arrowmore" alt="td-detail" src="assets/static/images/icon_arrowmore.svg" />:
                                                     null
                                             }
@@ -72,7 +72,7 @@ export default class Viewtable extends React.Component {
                           {}
                           {tbodyVal[tdIndex].value} &nbsp;&nbsp;
                           {tbodyVal[tdIndex].hiddenValue &&
-                          tbodyVal[tdIndex].hiddenValue != "" &&
+                          tbodyVal[tdIndex].hiddenValue  !==  "" &&
                           tbodyVal[tdIndex].hiddenState ? (
                             <img
                               onClick={this.props.showHideTableTdData.bind(

@@ -2676,13 +2676,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       />
-                      <a
+                      <button
                         onClick={this.copyFromClientToServer.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       >
                         <small>Copy details from client</small>
-                      </a>
+                      </button>
                     </div>
                     <div className="col-sm-7 mb-2">
                       <button
@@ -3163,13 +3163,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       />
-                      <a
+                      <button
                         onClick={this.copyFromServerToClient.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       >
                         <small>Copy details from server</small>
-                      </a>
+                      </button>
                     </div>
                     <div className="col-sm-7 mb-2">
                       <button
@@ -3349,13 +3349,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       />
-                      <a
+                      <button
                         onClick={this.copyFromXClientToXServer.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       >
                         <small>Copy details from x:client</small>
-                      </a>
+                      </button>
                     </div>
                     <div className="col-sm-7 mb-2">
                       <button
@@ -3536,13 +3536,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       />
-                      <a
+                      <button
                         onClick={this.copyFromXServerToXClient.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       >
                         <small>Copy details from x:server</small>
-                      </a>
+                      </button>
                     </div>
                     <div className="col-sm-7 mb-2">
                       <button

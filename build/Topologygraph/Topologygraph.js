@@ -1,15 +1,12 @@
 import React from "react";
 //import { vis } from "vis-network";
 //import { DataSet, Network } from 'vis-network/standalone/esm/vis-network';
-import {
-  Network,
-  DataSet,
-} from "vis-network/standalone/umd/vis-network.min.js";
+import { Network } from "vis-network/standalone/umd/vis-network.min.js";
 
 export default class Topologygraph extends React.Component {
-  constructor(props) {
+  /* constructor(props) {
     super(props);
-  }
+  } */
 
   componentDidMount() {
     this.generateTopology(this.props.nodeData);

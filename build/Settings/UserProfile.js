@@ -371,7 +371,7 @@ export default class UserProfile extends React.Component {
                           ".svg"
                         }
                         className="rounded-circle"
-                        alt="Profile Picture"
+                        alt="Profile"
                         width="130"
                         height="130"
                       />

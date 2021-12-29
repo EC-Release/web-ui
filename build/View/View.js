@@ -21,11 +21,11 @@ export default class View extends React.Component {
         var openedClass = "fa-minus";
         var closedClass = "fa-plus";
   
-        if (typeof o != "undefined") {
-          if (typeof o.openedClass != "undefined") {
+        if (typeof o !== "undefined") {
+          if (typeof o.openedClass !== "undefined") {
             openedClass = o.openedClass;
           }
-          if (typeof o.closedClass != "undefined") {
+          if (typeof o.closedClass !== "undefined") {
             closedClass = o.closedClass;
           }
         }
@@ -41,7 +41,7 @@ export default class View extends React.Component {
             branch.prepend("<i class='fa " + closedClass + "'></i>");
             branch.addClass("branch");
             branch.on("click", function (e) {
-              if (this == e.target) {
+              if (this === e.target) {
                 var icon = $(this).children("i:first");
                 icon.toggleClass(openedClass + " " + closedClass);
                 $(this).children().children().toggle();

@@ -181,7 +181,7 @@ export default class App extends React.Component {
       },
     };
 
-    let scopeEndPoint = this.state.apiEndPoints.baseUrl + "scope";
+    /* let scopeEndPoint = this.state.apiEndPoints.baseUrl + "scope";
     fetch(scopeEndPoint, {
       method: "GET",
       headers: {
@@ -227,7 +227,6 @@ export default class App extends React.Component {
           let permissions = permission;
           let isNewUser = false;
           let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
-          console.log(profileName)
           this.setState({
             userId: userId,
             permissions: permissions,
@@ -235,7 +234,6 @@ export default class App extends React.Component {
             isNewUser: isNewUser
           });
 
-          //console.log(userId, profileName);
         });
       } else {
         this.showGlobalMessage(
@@ -245,21 +243,20 @@ export default class App extends React.Component {
           "custom-danger"
         );
       }
-    });
+    }); */
     // Get logged user's userId start
     let snapshotData = sessionStorage.getItem("snapshotData"); // data layer class
     //let userData = sessionStorage.getItem("userData");
     fetch("/setcookie").then((response) => {
       console.log(response);
     });
-    console.log(snapshotData);
     if (snapshotData !== null) {
       let jsonData = JSON.parse(snapshotData);
       let data = jsonData["ab2a2691-a563-486c-9883-5111ff36ba9b"];
       //console.log("optimized Data" , data);
       this.hideGlobalMessage();
       let userId = data.userId === undefined ? "" : data.userId;
-      let profileName = data.fullName === undefined ? "" : data.fullName;
+      let profileName = data.username === undefined ? "" : data.username;
       let profileEmailId = data.email === undefined ? "" : data.email;
       let permissions = permission === undefined ? "" : permission;
       console.log(profileName);
@@ -273,7 +270,7 @@ export default class App extends React.Component {
         currentView: "Dashboard",
       }); 
     } else {
-      let apiEndPoint = this.state.apiEndPoints.baseUrl + "snapshot"; //"https://reqres.in/api/users/2"  //baseUrl -this.state.apiEndPoints.baseUrl + '/snapshot'
+      let apiEndPoint = this.state.apiEndPoints.baseUrl + "snapshot";
       fetch(apiEndPoint, {
         method: "GET",
         headers: {
@@ -292,6 +289,7 @@ export default class App extends React.Component {
             let profileName = data.username;
             let profileEmailId = data.email;
             let permissions = permission;
+            console.log(data);
             this.setState({
               profileData: {
                 email: profileEmailId,

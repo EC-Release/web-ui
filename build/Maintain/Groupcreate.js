@@ -49,7 +49,7 @@ export default class Groupcreate extends React.Component {
             }
             this.setState({keyName: "Group[" + groupData.length + "]"})
             if(subscriptionData.length > 0){
-              let selectedSubscriptionId = subscriptionData[0].licenseId;
+              //let selectedSubscriptionId = subscriptionData[0].licenseId;
               let formObj = Object.assign({}, this.state.groupForm);
               formObj.subscriptionId.value = [];//selectedSubscriptionId;
               this.setState({
@@ -96,7 +96,7 @@ export default class Groupcreate extends React.Component {
         .then((response) => {
             if (response.status === 200) {
                 response.json().then((respData) => {
-                    if(respData.errorStatus.status == 'ok'){
+                    if(respData.errorStatus.status === 'ok'){
                         let subscriptions = respData.data;
                         localStorage.setItem("subscriptions", JSON.stringify(subscriptions));
                     }
@@ -180,12 +180,12 @@ export default class Groupcreate extends React.Component {
         prepareData.groupId = currentForm.groupId.value;
         prepareData.parent = "f894e5a8-0f9b-46ca-8b74-57e94610d731"
         prepareData.name = "GroupName"
-        let newlyCreatedGroups = [];
+        /* let newlyCreatedGroups = [];
         let createdGroupDataObj = {
             groupId: prepareData.groupId,
             aid: 'Pending',
             tid: 'Pending'
-        };
+        }; */
   /*       if (localStorage.getItem("newlyCreatedGroups") === null){
             // newlyCreatedGroups not found
             let newlyCreatedGroupObj = {};

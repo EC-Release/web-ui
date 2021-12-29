@@ -1846,7 +1846,7 @@ export default class Technicalview extends React.Component {
         preparedChildNode.label = childNodeLabel;
         preparedChildNode.title = childNodeTitle;
         let shape = "box";
-        let color = "#80b8d2fa";
+        //let color = "#80b8d2fa";
         if (childNodeType === "subscription") {
           shape = "circle";
           color = "#08cc9efa";
@@ -1944,7 +1944,7 @@ export default class Technicalview extends React.Component {
     let mockTableData = [...this.state.mockTableData];
     console.log(mockTableData);
     let filteredData = mockTableData;
-    let uniqueFilteredData = [];
+    //let uniqueFilteredData = [];
     let andFilters = [];
     let orFilters = [];
     for (let filterField of filterFields) {
@@ -2030,7 +2030,7 @@ export default class Technicalview extends React.Component {
 
     if (orFilters.length > 0) {
       let seen = Object.create(null);
-      let uniqueFilteredData = filteredData.filter((o) => {
+      uniqueFilteredData = filteredData.filter((o) => {
         var key = ["subscription_name", "group_id", "gateway"]
           .map((k) => o[k])
           .join("|");

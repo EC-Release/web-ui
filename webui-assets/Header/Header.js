@@ -36,11 +36,12 @@ export default class Header extends React.Component {
         <div className="col-md-12">
           <div className="row">
             <div className="col-lg-6 ge-logo">
-              <img src={GeLogo} />
+              <img src={GeLogo} alt="GE Logo"/>
               <img
                 src={EcIcon}
                 width="150"
                 height="70"
+                alt="EC Icon"
               />
             </div>
             <div className="col-lg-6 header-profile">
@@ -75,6 +76,7 @@ export default class Header extends React.Component {
                         <img
                           src={UserIcon}
                           height="30"
+                          alt="User Icon"
                         />
                       </span>
                     </div>
@@ -82,14 +84,14 @@ export default class Header extends React.Component {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a className="dropdown-item cursor-pointer">
+                      <a className="dropdown-item cursor-pointer" href="#">
                         {this.props.isFullScreenModal ? null : (
                           <span onClick={this.props.fullScreenModal.bind(this)}>
                             FullScreen
                           </span>
                         )}
                       </a>
-                      <a className="dropdown-item cursor-pointer">
+                      <a className="dropdown-item cursor-pointer"  href="#">
                         {this.props.isFullScreenModal ? (
                           <span onClick={this.props.medModal.bind(this)}>
                             Minimize
@@ -101,7 +103,7 @@ export default class Header extends React.Component {
                         )}
                       </a>
                       <a
-                        className="dropdown-item cursor-pointer"
+                        className="dropdown-item cursor-pointer"  href="#"
                         onClick={() => {
                           this.props.handleUser(this.props.user);
                         }}
@@ -109,7 +111,7 @@ export default class Header extends React.Component {
                         Switch to {this.props.user}
                       </a>
                       <a
-                        className="dropdown-item cursor-pointer"
+                        className="dropdown-item cursor-pointer"  href="#"
                         onClick={() => {
                           this.props.clickEve("UserProfile");
                         }}
@@ -117,7 +119,7 @@ export default class Header extends React.Component {
                         My Profile
                       </a>
                       <a
-                        className="dropdown-item cursor-pointer"
+                        className="dropdown-item cursor-pointer" href="#"
                         onClick={(event) => {
                           this.logout(event);
                         }}

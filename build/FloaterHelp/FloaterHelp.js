@@ -5,7 +5,7 @@ export default class FloaterHelp extends React.Component {
   render() {
     return (
       <div className="helpGuide">
-        <a className="float" id="menu-share">
+        <a  href="#" className="float" id="menu-share">
           <i className="fa fa-share my-float"></i>
         </a>
         <ul>
