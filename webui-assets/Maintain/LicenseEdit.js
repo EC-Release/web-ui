@@ -43,6 +43,7 @@ export default class LicenseEdit extends React.Component {
         };
     }
 
+    /* istanbul ignore next */
     enableToolTip() {
       setTimeout(() => {
         $('[data-toggle="popover"]').popover(); // For tooltips

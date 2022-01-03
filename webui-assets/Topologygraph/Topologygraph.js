@@ -8,6 +8,7 @@ export default class Topologygraph extends React.Component {
     super(props);
   } */
 
+  /* istanbul ignore next */
   componentDidMount() {
     this.generateTopology(this.props.nodeData);
   }
@@ -17,6 +18,7 @@ export default class Topologygraph extends React.Component {
     this.generateTopology(this.props.nodeData);
   }
 
+  /* istanbul ignore next */
   generateTopology(nodeData) {
     var width = 400;
     var height = 280;

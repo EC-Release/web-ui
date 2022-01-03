@@ -1892,6 +1892,7 @@ export default class Technicalview extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   destroyDataTable(tableId) {
     var table = $("#" + tableId).DataTable();
     table.destroy();

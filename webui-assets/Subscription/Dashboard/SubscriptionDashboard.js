@@ -57,7 +57,7 @@ export default class SubscriptionDashboard extends React.Component {
           this.props.hideGlobalMessage();
         }
   }
-
+  /* istanbul ignore next */
   handleFormData(e) {
     let currentForm = Object.assign({}, this.state.transactionForm);
     let fieldName = e.target.name;
@@ -100,6 +100,7 @@ export default class SubscriptionDashboard extends React.Component {
     });
     this.handleFormValidation();
   }
+  /* istanbul ignore next */
   handleFormValidation(){
     let formData  = this.state.transactionForm;
     let formIsValid = true;
@@ -160,6 +161,7 @@ export default class SubscriptionDashboard extends React.Component {
     })
   }
 
+  /* istanbul ignore next */
   createSubscription(){
     this.props.showGlobalMessage(
       true,

@@ -79,6 +79,7 @@ export default class WebHooks extends React.Component {
     $(".dataTables_paginate").addClass("col-sm-6");
   }
 
+  /* istanbul ignore next */
   fetchData() {
     let webhooks = [];
     if (sessionStorage.getItem("snapshotData") !== null) {
@@ -383,6 +384,7 @@ export default class WebHooks extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   removeDataTableRow(tableId, rowIndex) {
     var table = $("#" + tableId).DataTable();
     table
@@ -453,6 +455,7 @@ export default class WebHooks extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
   editWebhook(currentHook) {
     let currentData = { ...this.state.formData };
     currentData.name.value = currentHook.webhookname;
@@ -470,6 +473,7 @@ export default class WebHooks extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   addWebHook() {
     let currentData = { ...this.state.formData };
     currentData.name.value = "";
@@ -484,6 +488,7 @@ export default class WebHooks extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   render() {
     /* jshint ignore:start */
     /* istanbul ignore next */

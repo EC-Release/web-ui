@@ -20,12 +20,14 @@ export default class Cookienotification extends React.Component {
     }
   }
 
+  /* istanbul ignore next */
   showCookieInfo() {
     setTimeout(function () {
       $("cookieConsent").fadeIn(200);
     }, 4000);
   }
 
+  /* istanbul ignore next */
   hideCookieInfo() {
     $("#cookieConsent").fadeOut(200);
   }
@@ -58,6 +60,7 @@ export default class Cookienotification extends React.Component {
     return "N";
   }
 
+  /* istanbul ignore next */
   render() {
     /* jshint ignore:start */
     /* istanbul ignore next */

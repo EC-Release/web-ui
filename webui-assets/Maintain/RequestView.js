@@ -90,6 +90,7 @@ export default class RequestView extends React.Component {
       });
   }
 
+  /* istanbul ignore next */
   initTable(tableId, preserveState) {
     var pageLength = 5;
     let tableWidth = 0;
@@ -219,6 +220,7 @@ export default class RequestView extends React.Component {
     return retArr;
   }
 
+  /* istanbul ignore next */
   destroyDataTable(tableId) {
     var table = $("#" + tableId).DataTable();
     table.destroy();
@@ -280,6 +282,7 @@ export default class RequestView extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   removeDataTableRow(tableId, rowIndex) {
     var table = $("#" + tableId).DataTable();
     table
@@ -380,6 +383,7 @@ export default class RequestView extends React.Component {
     }, 0);
   } // jshint ignore:line
 
+  /* istanbul ignore next */
   render() {
     /* jshint ignore:start */
     /* istanbul ignore next */

@@ -118,6 +118,7 @@ export default class Groupupgrade extends React.Component {
       });
   }
 
+  /* istanbul ignore next */
   initTable(tableId, preserveState) {
     var pageLength = 5;
     let tableWidth = 0;
@@ -184,6 +185,8 @@ export default class Groupupgrade extends React.Component {
     var table = $("#" + tableId).DataTable();
     table.destroy();
   }
+
+  /* istanbul ignore next */
   getDataOnChange(e) {
     let selectedSubscriptionId = e.target.value;
     this.destroyDataTable("groupupgradeTable");
@@ -334,6 +337,7 @@ export default class Groupupgrade extends React.Component {
       .draw(false);
   }
 
+  /* istanbul ignore next */
   deleteData(tbodyVal, rowIndex) {
     let cnf = window.confirm("Are you sure you want to delete");
     if (cnf) {
@@ -557,6 +561,7 @@ export default class Groupupgrade extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   changeFormHandler() {
     setTimeout(() => {
       this.setState({ changeForm: false, filterValue: "" });

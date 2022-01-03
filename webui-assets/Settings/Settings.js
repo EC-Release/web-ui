@@ -2,6 +2,7 @@ import React from "react";
 import IconUnderConstruction from '../assets/images/underconstruction.svg';
 
 export default class Settings extends React.Component {
+    /* istanbul ignore next */
     render() {
         /* jshint ignore:start */
         return (

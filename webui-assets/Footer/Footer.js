@@ -1,5 +1,6 @@
 import React from "react";
 
+/* istanbul ignore next */
 const Footer = () => {
   return (
     <div className="copyright">

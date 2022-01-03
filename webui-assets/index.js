@@ -28,6 +28,7 @@ import { AppError } from "./components/AppError";
   }
 })(); */
 
+/* istanbul ignore next */
 if (window.Worker) {
   const code = worker.toString();
   const blob = new Blob(["(" + code + ")()"]);
@@ -51,6 +52,7 @@ if (window.Worker) {
   //    };
 }
 
+/* istanbul ignore next */
 function getToken(name) {
   var cookieName = name + "=";
   var decodedCookie = decodeURIComponent(document.cookie);
@@ -66,6 +68,7 @@ function getToken(name) {
   }
 }
 
+/* istanbul ignore next */
 ReactDOM.render(
   <AppError>
     <App />
@@ -76,4 +79,5 @@ ReactDOM.render(
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
+/* istanbul ignore next */
 serviceWorker.register();

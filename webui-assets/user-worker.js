@@ -1,8 +1,9 @@
+/* istanbul ignore next */
 this.onmessage = function (e) {
    getUserRole(e);
 };
 
-
+/* istanbul ignore next */
 function getUserRole(e){
  fetch(e.data.userApi, {
       method: "GET",

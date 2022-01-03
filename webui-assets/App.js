@@ -8,20 +8,31 @@ import * as helpTextFile from "./static/helpText/helpText.js";
 // from ;
 import Loader from "./Loader/Loader.js";
 //const Loader = lazy(() => import("./Loader/Loader.js"));
+/* istanbul ignore next */
 const Dashboard = lazy(() => import("./Dashboard/Dashboard.js"));
+/* istanbul ignore next */
 const SubscriptionDashboard = lazy(() =>
   import("./Subscription/Dashboard/SubscriptionDashboard.js")
 );
+/* istanbul ignore next */
 const SubscriptionAdd = lazy(() =>
   import("./Subscription/SubscriptionCreate/SubscriptionAdd.js")
 );
+/* istanbul ignore next */
 const View = lazy(() => import("./View/View.js"));
+/* istanbul ignore next */
 const Maintain = lazy(() => import("./Maintain/Maintain.js"));
+/* istanbul ignore next */
 const LicenseCreate = lazy(() => import("./Maintain/LicenseCreate.js"));
+/* istanbul ignore next */
 const LicenseUpgrade = lazy(() => import("./Maintain/LicenseUpgrade.js"));
+/* istanbul ignore next */
 const Groupcreate = lazy(() => import("./Maintain/Groupcreate.js"));
+/* istanbul ignore next */
 const Groupupgrade = lazy(() => import("./Maintain/Groupupgrade.js"));
+/* istanbul ignore next */
 const GroupView = lazy(() => import("./Maintain/GroupView.js"));
+/* istanbul ignore next */
 const Maintainagentcreate = lazy(() =>
   import("./Maintain/Maintainagentcreate.js")
 );
@@ -29,28 +40,45 @@ const Maintainagentcreate = lazy(() =>
 const Maintainagentupgrade = lazy(() =>
   import("./Maintain/Maintainagentupgrade.js")
 );
+/* istanbul ignore next */
 const Maintainagentview = lazy(() => import("./Maintain/Maintainagentview.js"));
+/* istanbul ignore next */
 const RequestCreate = lazy(() => import("./Maintain/RequestCreate.js"));
+/* istanbul ignore next */
 const RequestUpgrade = lazy(() => import("./Maintain/RequestUpgrade.js"));
+/* istanbul ignore next */
 const RequestView = lazy(() => import("./Maintain/RequestView.js"));
+/* istanbul ignore next */
 const LicenseView = lazy(() => import("./Maintain/LicenseView.js"));
 /* istanbul ignore next */
 const Monitor = lazy(() => import("./Monitor/Monitor.js"));
+/* istanbul ignore next */
 const Notification = lazy(() => import("./Monitor/Notification.js"));
+/* istanbul ignore next */
 const Alert = lazy(() => import("./Monitor/Alert.js"));
+/* istanbul ignore next */
 const Healthstatus = lazy(() => import("./Monitor/Healthstatus.js"));
-
+/* istanbul ignore next */
 const Report = lazy(() => import("./Report/Report.js"));
+/* istanbul ignore next */
 const UserManagement = lazy(() => import("./Settings/UserManagement.js"));
+/* istanbul ignore next */
 const UserProfile = lazy(() => import("./Settings/UserProfile.js"));
+/* istanbul ignore next */
 const WebHooks = lazy(() => import("./Settings/WebHooks.js"));
+/* istanbul ignore next */
 const Navbar = lazy(() => import("./Navbar/Navbar.js"));
+/* istanbul ignore next */
 const Header = lazy(() => import("./Header/Header.js"));
+/* istanbul ignore next */
 const Support = lazy(() => import("./Support/Support.js"));
+/* istanbul ignore next */
 const Cookienotification = lazy(() =>
   import("./Cookienotification/Cookienotification.js")
 );
+/* istanbul ignore next */
 const FloaterHelp = lazy(() => import("./FloaterHelp/FloaterHelp.js"));
+/* istanbul ignore next */
 const Footer = lazy(() => import("./Footer/Footer.js"));
 
 const HELPTEXT = helpTextFile.default;
@@ -656,6 +684,7 @@ export default class App extends React.Component {
     });
   }
 
+  /* istanbul ignore next */
   extraLargeModal(currentView) {
     $("#mediumModal").addClass("largeModal");
     $("#mediumModalContent").addClass("largeModalContent");
@@ -667,6 +696,7 @@ export default class App extends React.Component {
     } */
   }
 
+  /* istanbul ignore next */
   initTable(tableId, preserveState) {
     var pageLength = 5;
     let tableWidth = 0;
@@ -864,10 +894,12 @@ export default class App extends React.Component {
       "/logout";
   }
 
+  /* istanbul ignore next */
   StartWarningTimer() {
     // let warningTimer = setTimeout("IdleWarning()", timoutWarning);
   }
 
+  /* istanbul ignore next */
   ResetTimeOutTimer() {
     // clearTimeout(timeoutTimer);
     // clearTimeout(warningTimer);

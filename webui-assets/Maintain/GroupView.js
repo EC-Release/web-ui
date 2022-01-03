@@ -62,6 +62,7 @@ export default class GroupView extends React.Component {
         this.timerForSubscriptionList = null;
     }
 
+    /* istanbul ignore next */
     initTable(tableId, preserveState) {
         var pageLength = 5;
         let tableWidth = 0;

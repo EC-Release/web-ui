@@ -149,6 +149,7 @@ export default class Maintainagentcreate extends React.Component {
     };
   }
 
+  /* istanbul ignore next */
   enableToolTip() {
     setTimeout(() => {
       $('[data-toggle="popover"]').popover(); // For tooltips

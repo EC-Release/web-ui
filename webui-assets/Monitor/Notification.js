@@ -134,6 +134,7 @@ export default class Notification extends React.Component {
     };
   }
 
+  /* istanbul ignore next */
   initTable(tableId, preserveState) {
     var pageLength = 5;
     let tableWidth = 0;
@@ -173,6 +174,7 @@ export default class Notification extends React.Component {
     $(".dataTables_paginate").addClass("col-sm-6");
   }
 
+  /* istanbul ignore next */
   filterByValue(myArray, string) {
     
     let retArr = [];
@@ -191,11 +193,13 @@ export default class Notification extends React.Component {
     return retArr;
   }
 
+  /* istanbul ignore next */
   destroyDataTable(tableId) {
     var table = $("#" + tableId).DataTable();
     table.destroy();
   }
 
+  /* istanbul ignore next */
   filterData(e) {
     this.destroyDataTable("notificationTable");
     let searchStr = e.target.value.trim();

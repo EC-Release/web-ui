@@ -1,3 +1,4 @@
+/* istanbul ignore next */
 const worker = () => {
   /* eslint-disable-next-line no-restricted-globals */
   self.onmessage = (e) => {

@@ -13,11 +13,18 @@ describe('Testing from SubscriptionDashboard.test.js <SubscriptionDashboard />',
     it('should render the SubscriptionDashboard component', () => {
         const propsToPass = {
             helpText: {
-                subscriptionName: '',
-                expdate: '',
-                username: ''
+                revision: '',
+                licenseId: '',
+                objId: '',
+                currencyId: '',
+                eaAmount: '',
+                qty : '',
+                oidcUserId: '',
+                paymentVadStr1: '',
+                paymentVadStr2: '',
+                paymentVadStr3: '',
+                },      
             }
-        }
         fetchMock.get(`*`, JSON.stringify('SECONDGETOBJ'), { overwriteRoutes: false });
         const wrapper = shallow(<SubscriptionDashboard helpText={propsToPass.helpText} />, { disableLifecycleMethods: true });
         wrapper.setState({
@@ -72,6 +79,5 @@ describe('Testing from SubscriptionDashboard.test.js <SubscriptionDashboard />',
         const wrapper = shallow(<SubscriptionDashboard  helpText={propsToPass.helpText}/> , { disableLifecycleMethods: true });
         expect(wrapper.find('div.SubscriptionDashboard').length).toBe(0);
     });
-     
-
+    
 });

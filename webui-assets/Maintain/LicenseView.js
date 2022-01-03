@@ -56,6 +56,7 @@ export default class LicenseView extends React.Component {
             }
     }
 
+    /* istanbul ignore next */
     initTable(tableId, preserveState) {
         var pageLength = 5;
         let tableWidth = 0;
@@ -172,6 +173,7 @@ export default class LicenseView extends React.Component {
         return retArr;
     }
 
+    /* istanbul ignore next */
     destroyDataTable(tableId) {
         var table = $("#" + tableId).DataTable();
         table.destroy();
@@ -225,6 +227,8 @@ export default class LicenseView extends React.Component {
             viewTable: false
         });
     }
+
+    /* istanbul ignore next */
     removeDataTableRow(tableId, rowIndex) {
         var table = $("#" + tableId).DataTable();
         table

@@ -16,7 +16,6 @@ export default class SubscriptionAdd extends React.Component {
     }
   }
   /* istanbul ignore next */
-
   handleFormData(e) {
     let currentForm = Object.assign({}, this.state.transactionForm);
     let updatedValue = e.target.value;
@@ -30,6 +29,7 @@ export default class SubscriptionAdd extends React.Component {
 
   }
 
+  /* istanbul ignore next */
   handleFormValidation(){
     let formData  = this.state.transactionForm;
     let formIsValid = true;
@@ -47,7 +47,7 @@ export default class SubscriptionAdd extends React.Component {
       transactionFormIsValid: formIsValid
     })
   }
-  
+  /* istanbul ignore next */
   shareSubscription(){
     this.props.showGlobalMessage(
       true,

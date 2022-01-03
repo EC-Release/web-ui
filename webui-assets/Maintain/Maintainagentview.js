@@ -236,6 +236,7 @@ export default class Maintainagentview extends React.Component {
     //this.initTable('maintainagentviewTable');
   }
 
+  /* istanbul ignore next */
   initTable(tableId) {
     var pageLength = 5;
     let tableWidth = 0;
@@ -414,6 +415,7 @@ export default class Maintainagentview extends React.Component {
     );
   }
 
+  /* istanbul ignore next */
   destroyDataTable(tableId) {
     var table = $("#" + tableId).DataTable();
     table.destroy();

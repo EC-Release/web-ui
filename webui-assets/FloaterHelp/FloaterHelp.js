@@ -1,8 +1,10 @@
 import React from "react";
 
 export default class FloaterHelp extends React.Component {
-  /* jshint ignore:start */
+  /* istanbul ignore next */
   render() {
+    /* jshint ignore:start */
+    /* istanbul ignore next */
     return (
       <div className="helpGuide">
         <a  href="#" className="float" id="menu-share">
@@ -31,5 +33,6 @@ export default class FloaterHelp extends React.Component {
         </ul>
       </div>
     );
+    /* jshint ignore:end */
   }
 }
