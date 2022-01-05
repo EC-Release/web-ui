@@ -5,12 +5,13 @@
 <head>
     <title>Code coverage report for src/Maintain/Maintainagentcreate.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="..\..\prettify.css" />
-    <link rel="stylesheet" href="..\..\base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(..\..\sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -18,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="..\..\index.html">All files</a> / <a href="index.html">src/Maintain</a> Maintainagentcreate.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Maintain</a> Maintainagentcreate.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -36,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -53,8 +54,14 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -3632,7 +3639,8 @@
 <a name='L3574'></a><a href='#L3574'>3574</a>
 <a name='L3575'></a><a href='#L3575'>3575</a>
 <a name='L3576'></a><a href='#L3576'>3576</a>
-<a name='L3577'></a><a href='#L3577'>3577</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L3577'></a><a href='#L3577'>3577</a>
+<a name='L3578'></a><a href='#L3578'>3578</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -3784,8 +3792,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -7359,9 +7368,10 @@ export default class Maintainagentcreate extends React.Component {
     };
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  en</span>ableToolTip() {
-<span class="cstat-no" title="statement not covered" >    setTimeout(<span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >      $('[data-toggle="popover"]').popover(); </span>// For tooltips
+  /* istanbul ignore next */
+  enableToolTip() {
+    setTimeout(() =&gt; {
+      $('[data-toggle="popover"]').popover(); // For tooltips
     }, 1000);
   }
   /* istanbul ignore next */
@@ -7828,8 +7838,8 @@ export default class Maintainagentcreate extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -7917,8 +7927,8 @@ export default class Maintainagentcreate extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -7979,8 +7989,8 @@ export default class Maintainagentcreate extends React.Component {
     let durationDirtyState = currentFormData.duration.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let zoneValue = currentFormData.zone.value;
     let zoneDirtyState = currentFormData.zone.dirtyState;
     let serviceUrlValue = currentFormData.serviceUrl.value;
@@ -7990,7 +8000,7 @@ export default class Maintainagentcreate extends React.Component {
     let remotePortValue = currentFormData.remotePort.value;
     let remotePortDirtyState = currentFormData.remotePort.dirtyState;
     let allowPlugInValue = currentFormData.allowPlugIn.value;
-    let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
+    //let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
     let plugInValue = currentFormData.plugIn.value;
     let plugInDirtyState = currentFormData.plugIn.dirtyState;
     let hcaValue = currentFormData.hca.value;
@@ -8254,8 +8264,8 @@ export default class Maintainagentcreate extends React.Component {
     let durationDirtyState = currentFormData.duration.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let localPortValue = currentFormData.localPort.value;
     let localPortDirtyState = currentFormData.localPort.dirtyState;
     let targetIdValue = currentFormData.targetId.value;
@@ -8644,7 +8654,7 @@ export default class Maintainagentcreate extends React.Component {
 &nbsp;
                 let filename = "server.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     serverFormData.mode.toLowerCase() +
@@ -8831,7 +8841,7 @@ export default class Maintainagentcreate extends React.Component {
 &nbsp;
                 let filename = "x:server.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     serverFormData.mode.toLowerCase() +
@@ -8967,7 +8977,7 @@ export default class Maintainagentcreate extends React.Component {
 &nbsp;
                 let filename = "x:client.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     xClientFormData.mode.toLowerCase() +
@@ -9142,7 +9152,7 @@ export default class Maintainagentcreate extends React.Component {
 &nbsp;
                 let filename = "client.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     clientFormData.mode.toLowerCase() +
@@ -9886,13 +9896,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       /&gt;
-                      &lt;a
+                      &lt;button
                         onClick={this.copyFromClientToServer.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       &gt;
                         &lt;small&gt;Copy details from client&lt;/small&gt;
-                      &lt;/a&gt;
+                      &lt;/button&gt;
                     &lt;/div&gt;
                     &lt;div className="col-sm-7 mb-2"&gt;
                       &lt;button
@@ -10373,13 +10383,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       /&gt;
-                      &lt;a
+                      &lt;button
                         onClick={this.copyFromServerToClient.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       &gt;
                         &lt;small&gt;Copy details from server&lt;/small&gt;
-                      &lt;/a&gt;
+                      &lt;/button&gt;
                     &lt;/div&gt;
                     &lt;div className="col-sm-7 mb-2"&gt;
                       &lt;button
@@ -10559,13 +10569,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       /&gt;
-                      &lt;a
+                      &lt;button
                         onClick={this.copyFromXClientToXServer.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       &gt;
                         &lt;small&gt;Copy details from x:client&lt;/small&gt;
-                      &lt;/a&gt;
+                      &lt;/button&gt;
                     &lt;/div&gt;
                     &lt;div className="col-sm-7 mb-2"&gt;
                       &lt;button
@@ -10746,13 +10756,13 @@ export default class Maintainagentcreate extends React.Component {
                         src={CopyIcon}
                         height="15px"
                       /&gt;
-                      &lt;a
+                      &lt;button
                         onClick={this.copyFromXServerToXClient.bind(this)}
                         href="#"
-                        className="theme-color cursor-pointer ml-1"
+                        className="theme-color cursor-pointer ml-1 agent-create-btn"
                       &gt;
                         &lt;small&gt;Copy details from x:server&lt;/small&gt;
-                      &lt;/a&gt;
+                      &lt;/button&gt;
                     &lt;/div&gt;
                     &lt;div className="col-sm-7 mb-2"&gt;
                       &lt;button
@@ -10790,18 +10800,17 @@ export default class Maintainagentcreate extends React.Component {
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 10 2021 13:51:01 GMT+0530 (India Standard Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Wed Jan 05 2022 15:18:07 GMT+0530 (India Standard Time)
             </div>
-        </div>
-        <script src="..\..\prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="..\..\sorter.js"></script>
-        <script src="..\..\block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

@@ -5,12 +5,13 @@
 <head>
     <title>Code coverage report for src/View/Technicalview.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="..\..\prettify.css" />
-    <link rel="stylesheet" href="..\..\base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(..\..\sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -18,18 +19,18 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="..\..\index.html">All files</a> / <a href="index.html">src/View</a> Technicalview.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/View</a> Technicalview.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
                 <span class='fraction'>0/0</span>
             </div>
@@ -38,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/1</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>0/0</span>
             </div>
         
             
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line low'></div>
     <pre><table class="coverage">
@@ -2302,7 +2309,8 @@
 <a name='L2244'></a><a href='#L2244'>2244</a>
 <a name='L2245'></a><a href='#L2245'>2245</a>
 <a name='L2246'></a><a href='#L2246'>2246</a>
-<a name='L2247'></a><a href='#L2247'>2247</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L2247'></a><a href='#L2247'>2247</a>
+<a name='L2248'></a><a href='#L2248'>2248</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -4197,8 +4205,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -4724,7 +4733,7 @@ export default class Technicalview extends React.Component {
       let technicalTableData = [];
       let progressPercent = 0;
 &nbsp;
-      fetch(this.props.baseUrl + "/snapshot", {
+      fetch(this.props.baseUrl + "snapshot", {
         method: "GET",
         headers: {
           Accept: "application/json",
@@ -6396,7 +6405,7 @@ export default class Technicalview extends React.Component {
         preparedChildNode.label = childNodeLabel;
         preparedChildNode.title = childNodeTitle;
         let shape = "box";
-        let color = "#80b8d2fa";
+        //let color = "#80b8d2fa";
         if (childNodeType === "subscription") {
           shape = "circle";
           color = "#08cc9efa";
@@ -6442,9 +6451,10 @@ export default class Technicalview extends React.Component {
     });
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  de</span>stroyDataTable(tableId) {
-    var table = <span class="cstat-no" title="statement not covered" >$("#" + tableId).DataTable();</span>
-<span class="cstat-no" title="statement not covered" >    table.destroy();</span>
+  /* istanbul ignore next */
+  destroyDataTable(tableId) {
+    var table = $("#" + tableId).DataTable();
+    table.destroy();
   }
 &nbsp;
   /* istanbul ignore next */
@@ -6580,7 +6590,7 @@ export default class Technicalview extends React.Component {
 &nbsp;
     if (orFilters.length &gt; 0) {
       let seen = Object.create(null);
-      let uniqueFilteredData = filteredData.filter((o) =&gt; {
+      uniqueFilteredData = filteredData.filter((o) =&gt; {
         var key = ["subscription_name", "group_id", "gateway"]
           .map((k) =&gt; o[k])
           .join("|");
@@ -6800,18 +6810,17 @@ export default class Technicalview extends React.Component {
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 10 2021 13:51:01 GMT+0530 (India Standard Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Wed Jan 05 2022 15:18:07 GMT+0530 (India Standard Time)
             </div>
-        </div>
-        <script src="..\..\prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="..\..\sorter.js"></script>
-        <script src="..\..\block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

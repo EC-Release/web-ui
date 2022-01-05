@@ -5,12 +5,13 @@
 <head>
     <title>Code coverage report for src/Header/Header.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="..\..\prettify.css" />
-    <link rel="stylesheet" href="..\..\base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(..\..\sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -18,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="..\..\index.html">All files</a> / <a href="index.html">src/Header</a> Header.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Header</a> Header.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line low'></div>
     <pre><table class="coverage">
@@ -194,7 +201,11 @@
 <a name='L136'></a><a href='#L136'>136</a>
 <a name='L137'></a><a href='#L137'>137</a>
 <a name='L138'></a><a href='#L138'>138</a>
-<a name='L139'></a><a href='#L139'>139</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L139'></a><a href='#L139'>139</a>
+<a name='L140'></a><a href='#L140'>140</a>
+<a name='L141'></a><a href='#L141'>141</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -340,9 +351,9 @@ import UserIcon from '../assets/images/user_icon.svg';
 &nbsp;
 export default class Header extends React.Component {
   /* istanbul ignore next */
-  constructor(props) {
+  /* constructor(props) {
     super(props);
-  }
+  } */
 &nbsp;
   /* istanbul ignore next */
   logout(e) {
@@ -370,11 +381,12 @@ export default class Header extends React.Component {
         &lt;div className="col-md-12"&gt;
           &lt;div className="row"&gt;
             &lt;div className="col-lg-6 ge-logo"&gt;
-              &lt;img src={GeLogo} /&gt;
+              &lt;img src={GeLogo} alt="GE Logo"/&gt;
               &lt;img
                 src={EcIcon}
                 width="150"
                 height="70"
+                alt="EC Icon"
               /&gt;
             &lt;/div&gt;
             &lt;div className="col-lg-6 header-profile"&gt;
@@ -409,6 +421,7 @@ export default class Header extends React.Component {
                         &lt;img
                           src={UserIcon}
                           height="30"
+                          alt="User Icon"
                         /&gt;
                       &lt;/span&gt;
                     &lt;/div&gt;
@@ -416,14 +429,14 @@ export default class Header extends React.Component {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     &gt;
-                      &lt;a className="dropdown-item cursor-pointer"&gt;
+                      &lt;a className="dropdown-item cursor-pointer" href="#"&gt;
                         {this.props.isFullScreenModal ? null : (
                           &lt;span onClick={this.props.fullScreenModal.bind(this)}&gt;
                             FullScreen
                           &lt;/span&gt;
                         )}
                       &lt;/a&gt;
-                      &lt;a className="dropdown-item cursor-pointer"&gt;
+                      &lt;a className="dropdown-item cursor-pointer"  href="#"&gt;
                         {this.props.isFullScreenModal ? (
                           &lt;span onClick={this.props.medModal.bind(this)}&gt;
                             Minimize
@@ -435,7 +448,7 @@ export default class Header extends React.Component {
                         )}
                       &lt;/a&gt;
                       &lt;a
-                        className="dropdown-item cursor-pointer"
+                        className="dropdown-item cursor-pointer"  href="#"
                         onClick={() =&gt; {
                           this.props.handleUser(this.props.user);
                         }}
@@ -443,7 +456,7 @@ export default class Header extends React.Component {
                         Switch to {this.props.user}
                       &lt;/a&gt;
                       &lt;a
-                        className="dropdown-item cursor-pointer"
+                        className="dropdown-item cursor-pointer"  href="#"
                         onClick={() =&gt; {
                           this.props.clickEve("UserProfile");
                         }}
@@ -451,7 +464,7 @@ export default class Header extends React.Component {
                         My Profile
                       &lt;/a&gt;
                       &lt;a
-                        className="dropdown-item cursor-pointer"
+                        className="dropdown-item cursor-pointer" href="#"
                         onClick={(event) =&gt; {
                           this.logout(event);
                         }}
@@ -476,18 +489,17 @@ export default class Header extends React.Component {
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 10 2021 13:51:01 GMT+0530 (India Standard Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Wed Jan 05 2022 15:18:07 GMT+0530 (India Standard Time)
             </div>
-        </div>
-        <script src="..\..\prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="..\..\sorter.js"></script>
-        <script src="..\..\block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

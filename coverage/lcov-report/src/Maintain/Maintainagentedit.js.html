@@ -5,12 +5,13 @@
 <head>
     <title>Code coverage report for src/Maintain/Maintainagentedit.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="..\..\prettify.css" />
-    <link rel="stylesheet" href="..\..\base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(..\..\sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -18,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="..\..\index.html">All files</a> / <a href="index.html">src/Maintain</a> Maintainagentedit.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Maintain</a> Maintainagentedit.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line high'></div>
     <pre><table class="coverage">
@@ -5808,7 +5815,7 @@ export default class Maintainagentedit extends React.Component {
         .then((response) =&gt; {
           if (response.status === 200) {
             response.json().then((respData) =&gt; {
-              if (respData.errorStatus.status == "ok") {
+              if (respData.errorStatus.status === "ok") {
                 this.props.handleDataTable(true);
                 this.props.showGlobalMessage(
                   true,
@@ -5959,7 +5966,7 @@ export default class Maintainagentedit extends React.Component {
 &nbsp;
                 let filename = "x:server.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     serverFormData.mode.toLowerCase() +
@@ -6090,7 +6097,7 @@ export default class Maintainagentedit extends React.Component {
 &nbsp;
                 let filename = "x:client.yml";
                 let data = "";
-                if (agentFormData.ecVersion.value == "v1.hokkaido.212") {
+                if (agentFormData.ecVersion.value === "v1.hokkaido.212") {
                   data =
                     "ec-config:\n  conf:\n    mod: " +
                     xClientFormData.mode.toLowerCase() +
@@ -6215,7 +6222,7 @@ export default class Maintainagentedit extends React.Component {
         .then((response) =&gt; {
           if (response.status === 200) {
             response.json().then((respData) =&gt; {
-              if (respData.errorStatus.status == "ok") {
+              if (respData.errorStatus.status === "ok") {
                 this.props.handleDataTable(true);
                 this.props.showGlobalMessage(
                   true,
@@ -6499,14 +6506,14 @@ export default class Maintainagentedit extends React.Component {
       }
       formIsValid = false;
     } else if (
-      hostValue.substr(0, 6) != "wss://" &amp;&amp;
-      hostValue.substr(0, 5) != "ws://"
+      hostValue.substr(0, 6) !== "wss://" &amp;&amp;
+      hostValue.substr(0, 5) !== "ws://"
     ) {
       if (hostDirtyState) {
         errors.host = "Host starts with wss:// or ws://";
       }
       formIsValid = false;
-    } else if (hostValue.substr(hostValue.length - 6, 6) != "/agent") {
+    } else if (hostValue.substr(hostValue.length - 6, 6) !== "/agent") {
       if (hostDirtyState) {
         errors.host = "Host ends with /agent";
       }
@@ -6518,7 +6525,7 @@ export default class Maintainagentedit extends React.Component {
         errors.localPort = "Please enter Local Port in digit";
       }
       formIsValid = false;
-    } else if (localPortValue.length != 4) {
+    } else if (localPortValue.length !== 4) {
       if (localPortDirtyState) {
         errors.localPort = "Local Port must have 4 digit";
       }
@@ -6661,7 +6668,7 @@ export default class Maintainagentedit extends React.Component {
     let remotePortValue = currentFormData.remotePort.value;
     let remotePortDirtyState = currentFormData.remotePort.dirtyState;
     let allowPlugInValue = currentFormData.allowPlugIn.value;
-    let allowPlugInDirtyState = currentFormData.allowPlugIn.dirtyState;
+    
     let plugInValue = currentFormData.plugIn.value;
     let plugInDirtyState = currentFormData.plugIn.dirtyState;
     let formIsValid = true;
@@ -6732,14 +6739,14 @@ export default class Maintainagentedit extends React.Component {
       }
       formIsValid = false;
     } else if (
-      hostValue.substr(0, 6) != "wss://" &amp;&amp;
-      hostValue.substr(0, 5) != "ws://"
+      hostValue.substr(0, 6) !== "wss://" &amp;&amp;
+      hostValue.substr(0, 5) !== "ws://"
     ) {
       if (hostDirtyState) {
         errors.host = "Host starts with wss:// or ws://";
       }
       formIsValid = false;
-    } else if (hostValue.substr(hostValue.length - 6, 6) != "/agent") {
+    } else if (hostValue.substr(hostValue.length - 6, 6) !== "/agent") {
       if (hostDirtyState) {
         errors.host = "Host ends with /agent";
       }
@@ -6782,7 +6789,7 @@ export default class Maintainagentedit extends React.Component {
         errors.remotePort = "Please enter Remote Port in digit";
       }
       formIsValid = false;
-    } else if (remotePortValue.length != 4) {
+    } else if (remotePortValue.length !== 4) {
       if (remotePortDirtyState) {
         errors.remotePort = "Remote Port must have 4 digit";
       }
@@ -6898,8 +6905,8 @@ export default class Maintainagentedit extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    /* let hostValue = currentFormData.host.value;
+    let hostDirtyState = currentFormData.host.dirtyState; */
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -7112,7 +7119,7 @@ export default class Maintainagentedit extends React.Component {
                     &lt;/label&gt;
                   &lt;/div&gt;
                 &lt;/div&gt;
-                {this.state.agentForm.agentMode.value != 1 ? (
+                {this.state.agentForm.agentMode.value !== 1 ? (
                   &lt;div className="col-sm-3"&gt;
                     &lt;h6&gt;&amp;nbsp;&lt;/h6&gt;
                     &lt;select
@@ -7138,7 +7145,7 @@ export default class Maintainagentedit extends React.Component {
                 ) : null}
               &lt;/div&gt;
               &lt;hr&gt;&lt;/hr&gt;
-              {this.state.agentForm.agentMode.value == 2 ? (
+              {this.state.agentForm.agentMode.value === 2 ? (
                 &lt;div className="changeable-form server-form"&gt;
                   &lt;div className="row"&gt;
                     &lt;div className="col-sm-3"&gt;
@@ -7486,7 +7493,7 @@ export default class Maintainagentedit extends React.Component {
                 &lt;/div&gt;
               ) : null}
 &nbsp;
-              {this.state.agentForm.agentMode.value == 3 ? (
+              {this.state.agentForm.agentMode.value === 3 ? (
                 &lt;div className="changeable-form client-form"&gt;
                   &lt;div className="row"&gt;
                     &lt;div className="col-sm-3"&gt;
@@ -7795,7 +7802,7 @@ export default class Maintainagentedit extends React.Component {
                 &lt;/div&gt;
               ) : null}
 &nbsp;
-              {this.state.agentForm.agentMode.value == 4 ? (
+              {this.state.agentForm.agentMode.value === 4 ? (
                 &lt;div className="changeable-form x-server-form"&gt;
                   &lt;div className="row"&gt;
                     &lt;div className="col-sm-4"&gt;
@@ -7969,7 +7976,7 @@ export default class Maintainagentedit extends React.Component {
                 &lt;/div&gt;
               ) : null}
 &nbsp;
-              {this.state.agentForm.agentMode.value == 5 ? (
+              {this.state.agentForm.agentMode.value === 5 ? (
                 &lt;div className="changeable-form x-client-form"&gt;
                   &lt;div className="row"&gt;
                     &lt;div className="col-sm-4"&gt;
@@ -8156,18 +8163,17 @@ export default class Maintainagentedit extends React.Component {
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 10 2021 13:51:01 GMT+0530 (India Standard Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Wed Jan 05 2022 15:18:07 GMT+0530 (India Standard Time)
             </div>
-        </div>
-        <script src="..\..\prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="..\..\sorter.js"></script>
-        <script src="..\..\block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     

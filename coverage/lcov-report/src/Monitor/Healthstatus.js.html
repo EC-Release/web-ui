@@ -5,12 +5,13 @@
 <head>
     <title>Code coverage report for src/Monitor/Healthstatus.js</title>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="..\..\prettify.css" />
-    <link rel="stylesheet" href="..\..\base.css" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style type='text/css'>
         .coverage-summary .sorter {
-            background-image: url(..\..\sort-arrow-sprite.png);
+            background-image: url(../../sort-arrow-sprite.png);
         }
     </style>
 </head>
@@ -18,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="..\..\index.html">All files</a> / <a href="index.html">src/Monitor</a> Healthstatus.js</h1>
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/Monitor</a> Healthstatus.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -53,6 +54,12 @@
         <p class="quiet">
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input oninput="onInput()" type="search" id="fileSearch">
+            </div>
+        </template>
     </div>
     <div class='status-line low'></div>
     <pre><table class="coverage">
@@ -1208,13 +1215,7 @@
 <a name='L1150'></a><a href='#L1150'>1150</a>
 <a name='L1151'></a><a href='#L1151'>1151</a>
 <a name='L1152'></a><a href='#L1152'>1152</a>
-<a name='L1153'></a><a href='#L1153'>1153</a>
-<a name='L1154'></a><a href='#L1154'>1154</a>
-<a name='L1155'></a><a href='#L1155'>1155</a>
-<a name='L1156'></a><a href='#L1156'>1156</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L1153'></a><a href='#L1153'>1153</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -2617,9 +2618,9 @@ export default class Healthstatus extends React.Component {
   fetchHealthStatus() {
     let selectedGatewayId = this.state.selectedGateway;
     let gateways = this.state.gateways;
-    let selectedGateway = gateways.find(
+    /* let selectedGateway = gateways.find(
       (x) =&gt; x.gatewayId === selectedGatewayId
-    );
+    ); */
     //let serviceUrl = selectedGateway.serviceUrl;
     /* let healthLink = "";
     if (serviceUrl !== "") {
@@ -2993,10 +2994,9 @@ export default class Healthstatus extends React.Component {
                   &lt;div className="col-sm-5 "&gt;&lt;/div&gt;
                   &lt;div className="col-sm-2 text-center"&gt;
                     &lt;select
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm health-status-select"
                       id="selectedSession"
                       name="selectedSession"
-                      className="health-status-select"
                       /*  value={this.state.selectedGateway} */
                       onChange={(event) =&gt; {
                         this.handleGatewayselection(event);
@@ -3071,10 +3071,9 @@ export default class Healthstatus extends React.Component {
                   &lt;div className="col-sm-5 "&gt;&lt;/div&gt;
                   &lt;div className="col-sm-2 text-center"&gt;
                     &lt;select
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm health-status-select"
                       id="selectedConnection"
                       name="selectedConnection"
-                      className="health-status-select"
                       /*  value={this.state.selectedGateway} */
                       onChange={(event) =&gt; {
                         this.handleGatewayselection(event);
@@ -3164,10 +3163,9 @@ export default class Healthstatus extends React.Component {
                   &lt;div className="col-sm-5 "&gt;&lt;/div&gt;
                   &lt;div className="col-sm-2 text-center"&gt;
                     &lt;select
-                      className="form-control form-control-sm"
+                      className="form-control form-control-sm health-status-select"
                       id="selectedClientId"
                       name="selectedClientId"
-                      className="health-status-select"
                       /*  value={this.state.selectedGateway} */
                       onChange={(event) =&gt; {
                         this.handleGatewayselection(event);
@@ -3527,18 +3525,17 @@ export default class Healthstatus extends React.Component {
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Dec 10 2021 13:51:01 GMT+0530 (India Standard Time)
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at Wed Jan 05 2022 15:18:07 GMT+0530 (India Standard Time)
             </div>
-        </div>
-        <script src="..\..\prettify.js"></script>
+        <script src="../../prettify.js"></script>
         <script>
             window.onload = function () {
                 prettyPrint();
             };
         </script>
-        <script src="..\..\sorter.js"></script>
-        <script src="..\..\block-navigation.js"></script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
     </body>
 </html>
     
