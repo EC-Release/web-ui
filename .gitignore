@@ -11,4 +11,5 @@ run.env
 webui_windows_sys.exe
 webui-assets.zip
 protractor/debug.log
+build
  

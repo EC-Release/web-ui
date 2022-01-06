@@ -209,7 +209,7 @@ export default class App extends React.Component {
       },
     };
 
-    /* let scopeEndPoint = this.state.apiEndPoints.baseUrl + "scope";
+    let scopeEndPoint = this.state.apiEndPoints.baseUrl + "scope";
     fetch(scopeEndPoint, {
       method: "GET",
       headers: {
@@ -253,11 +253,9 @@ export default class App extends React.Component {
           let profileName = respData[0].fullName;
           let profileEmailId = respData[0].email;
           let permissions = permission;
-          let isNewUser = false;
+          let isNewUser = respData[0].license === "";
           let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
           this.setState({
-            userId: userId,
-            permissions: permissions,
             currentView: currentView,
             isNewUser: isNewUser
           });
@@ -271,7 +269,7 @@ export default class App extends React.Component {
           "custom-danger"
         );
       }
-    }); */
+    }); 
     // Get logged user's userId start
     let snapshotData = sessionStorage.getItem("snapshotData"); // data layer class
     //let userData = sessionStorage.getItem("userData");
