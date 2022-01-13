@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.3 (81716) - https://sketch.com -->
+    <title>Sin título-1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dashboard-hover" transform="translate(-1211.000000, -17.000000)" fill-rule="nonzero">
+            <g id="Sin-título-1" transform="translate(1211.000000, 17.000000)">
+                <circle id="Oval" fill="#FFFFFF" cx="15.93" cy="15.93" r="15.93"></circle>
+                <circle id="Oval" fill="#A8A8A8" cx="15.93" cy="13.14" r="5.04"></circle>
+                <path d="M15.93,31.860015 C19.3929521,31.864761 22.7623612,30.7363566 25.524,28.647 C25.11,23.895 20.97,20.16 15.93,20.16 C10.89,20.16 6.75,23.895 6.336,28.647 C9.09763884,30.7363566 12.4670479,31.864761 15.93,31.860015 Z" id="Path" fill="#A8A8A8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

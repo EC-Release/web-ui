@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1641376090253" clover="3.2.0">
+  <project timestamp="1641376090254" name="All files">
+    <metrics statements="43" coveredstatements="43" conditionals="4" coveredconditionals="3" methods="46" coveredmethods="42" elements="93" coveredelements="88" complexity="0" loc="43" ncloc="43" packages="21" files="56" classes="56"/>
+    <package name="src">
+      <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+      <file name="App.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\App.js">
+        <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="88" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="94" count="3" type="stmt"/>
+        <line num="95" count="3" type="stmt"/>
+      </file>
+      <file name="custom-service-worker.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\custom-service-worker.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="index.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\index.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="reportWebVitals.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\reportWebVitals.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="serviceWorker.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\serviceWorker.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="user-worker.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\user-worker.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="worker.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\worker.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Cookienotification">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Cookienotification.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Cookienotification\Cookienotification.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Dashboard">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="Dashboard.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Dashboard\Dashboard.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.FloaterHelp">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="FloaterHelp.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\FloaterHelp\FloaterHelp.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Footer">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Footer.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Footer\Footer.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Header">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Header.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Header\Header.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Loader">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Loader.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Loader\Loader.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Maintain">
+      <metrics statements="30" coveredstatements="30" conditionals="0" coveredconditionals="0" methods="33" coveredmethods="31"/>
+      <file name="GroupView.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\GroupView.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      </file>
+      <file name="Groupcreate.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Groupcreate.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+      </file>
+      <file name="Groupupgrade.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Groupupgrade.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="LicenseCreate.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseCreate.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+      </file>
+      <file name="LicenseEdit.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseEdit.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+      <file name="LicenseUpgrade.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseUpgrade.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="LicenseView.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseView.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="LicenseViewForm.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\LicenseViewForm.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+      </file>
+      <file name="Maintain.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintain.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      </file>
+      <file name="Maintainagentcreate.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentcreate.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+      </file>
+      <file name="Maintainagentedit.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentedit.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+      <file name="Maintainagentupgrade.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentupgrade.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+      </file>
+      <file name="Maintainagentview.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Maintainagentview.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+      </file>
+      <file name="RequestCreate.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\RequestCreate.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      </file>
+      <file name="RequestUpgrade.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\RequestUpgrade.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="RequestView.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\RequestView.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Subscriptioncreate.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptioncreate.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+      </file>
+      <file name="Subscriptionedit.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionedit.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+      <file name="Subscriptionupgrade.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionupgrade.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="Subscriptionview.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionview.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+      </file>
+      <file name="Subscriptionviewform.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Maintain\Subscriptionviewform.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Monitor">
+      <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Alert.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Alert.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Healthstatus.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Healthstatus.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Monitor.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Monitor.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Notification.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Monitor\Notification.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="8" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Navbar">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Navbar.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Navbar\Navbar.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Report">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Report.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Report\Report.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Settings">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Settings.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\Settings.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="UserManagement.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\UserManagement.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      </file>
+      <file name="UserProfile.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\UserProfile.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="WebHooks.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Settings\WebHooks.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Subscription.Dashboard">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="SubscriptionDashboard.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Subscription\Dashboard\SubscriptionDashboard.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Subscription.SubscriptionCreate">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="SubscriptionAdd.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Subscription\SubscriptionCreate\SubscriptionAdd.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Support">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Support.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Support\Support.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.Topologygraph">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Topologygraph.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Topologygraph\Topologygraph.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      </file>
+    </package>
+    <package name="src.Treelist">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="Treelist.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Treelist\Treelist.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      </file>
+    </package>
+    <package name="src.View">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="Businessview.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\Businessview.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="Customsearch.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\Customsearch.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="5" type="stmt"/>
+      </file>
+      <file name="Technicalview.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\Technicalview.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="View.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\View\View.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Viewtable">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <file name="Viewtable.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\Viewtable\Viewtable.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="AppError.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\components\AppError.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.static.helpText">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="helpText.js" path="C:\Users\s.shamsundar.chandak\Documents\ec-ui code\github-ec-ui\web-ui\src\static\helpText\helpText.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+  </project>
+</coverage>

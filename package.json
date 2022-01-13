@@ -1,0 +1,63 @@
+{
+  "name": "ec-admin-webui",
+  "description": "EC Admin Console UI based on Bootstrap and React",
+  "version": "0.0.2",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.1",
+    "@testing-library/react": "^12.1.2",
+    "@testing-library/user-event": "^13.5.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.6",
+    "bootstrap": "4.6.0",
+    "bootstrap-jquery": "3.3.2",
+    "bootstrap-select": "^1.13.18",
+    "cross-env": "7.0.3",
+    "datatables.net": "^1.11.3",
+    "datatables.net-dt": "1.1.0",
+    "enzyme": "3.11.0",
+    "fetch-mock": "9.11.0",
+    "font-awesome": "4.7.0",
+    "highcharts": "9.2.2",
+    "jquery": "3.6.0",
+    "node-fetch": "2.6.1",
+    "popper.js": "1.16.1",
+    "react": "^17.0.2",
+    "react-bootstrap": "1.0.1",
+    "react-dom": "^17.0.2",
+    "react-scripts": "^5.0.0",
+    "uuid": "8.3.2",
+    "vis-data": "7.1.2",
+    "vis-network": "9.1.0",
+    "web-vitals": "^2.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false --coverage",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.7",
+    "@babel/preset-env": "^7.16.7",
+    "babel-jest": "^27.4.5",
+    "jest": "^27.4.5"
+  }
+}

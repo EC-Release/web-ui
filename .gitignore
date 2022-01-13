@@ -1,0 +1,15 @@
+*#
+*~
+#*
+node_modules
+coverage
+api.yml
+command_file.bat
+oauth2.yml
+.nyc_output/
+run.env
+webui_windows_sys.exe
+webui-assets.zip
+protractor/debug.log
+build
+ 
