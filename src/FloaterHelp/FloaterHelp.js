@@ -7,9 +7,9 @@ export default class FloaterHelp extends React.Component {
     /* istanbul ignore next */
     return (
       <div className="helpGuide">
-        <a  href="#" className="float" id="menu-share">
+        <button className="float" id="menu-share">
           <i className="fa fa-share my-float"></i>
-        </a>
+        </button>
         <ul>
           <li>
             <a
