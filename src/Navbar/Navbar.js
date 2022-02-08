@@ -18,9 +18,9 @@ export default class Navbar extends React.Component {
     /* jshint ignore:start */
     return (
       <nav className="navbar navbar-expand-lg navbar-light">
-        <a className="navbar-brand pb-2" href="#">
+        <button className="navbar-brand pb-2">
           &nbsp;
-        </a>
+        </button>
         <button
           className="navbar-toggler"
           type="button"
@@ -43,15 +43,14 @@ export default class Navbar extends React.Component {
                     : "nav-item"
                 }
               >
-                <a
+                <button
                   id="nav-dashboard"
                   className="nav-link"
-                  href="#"
                   onClick={this.props.clickEve.bind(this, "Dashboard")}
                 >
                   <img src={IconDashboard} alt="nav-dashboard" />
                   Dashboard <span className="sr-only">(current)</span>
-                </a>
+                </button>
               </li>
             ) : null}
             {this.props.permissions.accesses &&
@@ -76,9 +75,8 @@ export default class Navbar extends React.Component {
                     : "nav-item dropdown"
                 }
               >
-                <a
+                <button
                   className="nav-link"
-                  href="#"
                   id="navbarDropdownMenuLink"
                   data-toggle="dropdown"
                   aria-haspopup="true"
@@ -86,7 +84,7 @@ export default class Navbar extends React.Component {
                 >
                   <img src={IconMaintain} alt="nav-maintain" />
                   Maintain
-                </a>
+                </button>
                 <ul
                   className={
                     this.props.currentView === "Maintain" ||
@@ -116,28 +114,26 @@ export default class Navbar extends React.Component {
                   this.props.permissions.accesses.maintain.subMenus
                     .subscriptions.delete ? (
                     <li className="dropdown-submenu">
-                      <a
+                      <button
                         id="nav-subscription"
                         className="dropdown-item"
-                        href="#"
                       >
                         License
-                      </a>
+                      </button>
                       <ul className="dropdown-menu">
                         {this.props.permissions.accesses.maintain.subMenus
                           .subscriptions.create ? (
                           <li>
-                            <a
+                            <button
                               id="nav-subscription-create"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "LicenseCreate"
                               )}
-                              href="#"
                             >
                               Create
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         {this.props.permissions.accesses.maintain.subMenus
@@ -145,33 +141,31 @@ export default class Navbar extends React.Component {
                         this.props.permissions.accesses.maintain.subMenus
                           .subscriptions.delete ? (
                           <li>
-                            <a
+                            <button
                               id="nav-subscription-update-disable"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "LicenseUpgrade"
                               )}
-                              href="#"
                             >
                               Update/Delete
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         {this.props.permissions.accesses.maintain.subMenus
                           .subscriptions.view ? (
                           <li>
-                            <a
+                            <button
                               id="nav-subscription-view-disable"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "LicenseView"
                               )}
-                              href="#"
                             >
                               View
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                       </ul>
@@ -194,17 +188,16 @@ export default class Navbar extends React.Component {
                         {this.props.permissions.accesses.maintain.subMenus
                           .groups.create ? (
                           <li>
-                            <a
+                            <button
                               id="nav-group-create"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "Groupcreate"
                               )}
-                              href="#"
                             >
                               Create
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         {this.props.permissions.accesses.maintain.subMenus
@@ -212,33 +205,31 @@ export default class Navbar extends React.Component {
                         this.props.permissions.accesses.maintain.subMenus.groups
                           .delete ? (
                           <li>
-                            <a
+                            <button
                               id="nav-group-view-delete"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "Groupupgrade"
                               )}
-                              href="#"
                             >
                               Update/Delete
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         {this.props.permissions.accesses.maintain.subMenus
                           .groups.view ? (
                           <li>
-                            <a
+                            <button
                               id="nav-group-view-delete"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "GroupView"
                               )}
-                              href="#"
                             >
                               View
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                       </ul>
@@ -255,31 +246,29 @@ export default class Navbar extends React.Component {
                         {this.props.permissions.accesses.maintain.subMenus
                           .agents.create ? (
                           <li>
-                            <a
+                            <button
                               id="nav-agent-create"
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "Maintainagentcreate"
                               )}
-                              href="#"
                             >
                               Create
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         <li>
-                          <a
+                          <button
                             id="nav-agent-update-disable"
                             className="dropdown-item"
                             onClick={this.props.clickEve.bind(
                               this,
                               "Maintainagentupgrade"
                             )}
-                            href="#"
                           >
                             View
-                          </a>
+                          </button>
                         </li>
                         {/*  <li>
                                                 <a id="nav-agent-view" className="dropdown-item" onClick={this.props.clickEve.bind(this, 'Maintainagentview')} href="#">View</a>
@@ -304,16 +293,15 @@ export default class Navbar extends React.Component {
                         {this.props.permissions.accesses.maintain.subMenus
                           .watchers.create ? (
                           <li>
-                            <a
+                            <button
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "Requestcreate"
                               )}
-                              href="#"
                             >
                               Create
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         {this.props.permissions.accesses.maintain.subMenus
@@ -336,16 +324,15 @@ export default class Navbar extends React.Component {
                         {this.props.permissions.accesses.maintain.subMenus
                           .watchers.view ? (
                           <li>
-                            <a
+                            <button
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "RequestView"
                               )}
-                              href="#"
                             >
                               View
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                       </ul>
@@ -367,16 +354,15 @@ export default class Navbar extends React.Component {
                         {this.props.permissions.accesses.maintain.subMenus
                           .watchers.create ? (
                           <li>
-                            <a
+                            <button
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "SubscriptionAdd"
                               )}
-                              href="#"
                             >
                               Add
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                       </ul>
@@ -398,9 +384,8 @@ export default class Navbar extends React.Component {
                     : "nav-item dropdown"
                 }
               >
-                <a
+                <button
                   className="nav-link"
-                  href="#"
                   id="navbarDropdownMenuLink1"
                   data-toggle="dropdown"
                   aria-haspopup="true"
@@ -408,7 +393,7 @@ export default class Navbar extends React.Component {
                 >
                   <img src={IconMonitor} alt="nav-monitor" />
                   Monitor
-                </a>
+                </button>
                 <ul
                   className={
                     this.props.currentView === "Notification" ||
@@ -422,14 +407,13 @@ export default class Navbar extends React.Component {
                   {this.props.permissions.accesses.monitor.subMenus
                     .notifications.view ? (
                     <li>
-                      <a
+                      <button
                         id="nav-notification"
                         className="dropdown-item"
                         onClick={this.props.clickEve.bind(this, "Notification")}
-                        href="#"
                       >
                         Events
-                      </a>
+                      </button>
                     </li>
                   ) : null}
                   {/* {this.props.permissions.accesses.monitor.subMenus.alerts.view ?
@@ -465,14 +449,13 @@ export default class Navbar extends React.Component {
                     : "nav-item"
                 }
               >
-                <a
+                <button
                   className="nav-link"
-                  href="#"
                   onClick={this.props.clickEve.bind(this, "Report")}
                 >
                   <img src={IconReport} alt="nav-report" />
                   Report
-                </a>
+                </button>
               </li>
             ) : null}
             {this.props.permissions.accesses &&
@@ -486,9 +469,8 @@ export default class Navbar extends React.Component {
                     : "nav-item dropdown"
                 }
               >
-                <a
+                <button
                   className="nav-link"
-                  href="#"
                   id="navbarDropdownMenuLink2"
                   data-toggle="dropdown"
                   aria-haspopup="true"
@@ -496,7 +478,7 @@ export default class Navbar extends React.Component {
                 >
                   <img src={IconSetting} alt="nav-settings" />
                   Settings
-                </a>
+                </button>
                 <ul
                   className={
                     this.props.currentView === "Usermanagement" ||
@@ -508,22 +490,20 @@ export default class Navbar extends React.Component {
                   aria-labelledby="navbarDropdownMenuLink2"
                 >
                   <li>
-                    <a
+                    <button
                       className="dropdown-item"
                       onClick={this.props.clickEve.bind(this, "WebHooks")}
-                      href="#"
                     >
                       Webhooks
-                    </a>
+                    </button>
                   </li>
                   <li>
-                    <a
+                    <button
                       className="dropdown-item"
                       onClick={this.props.clickEve.bind(this, "UserProfile")}
-                      href="#"
                     >
                       User Profile
-                    </a>
+                    </button>
                   </li>
                 </ul>
               </li>
@@ -537,14 +517,13 @@ export default class Navbar extends React.Component {
                     : "nav-item"
                 }
               >
-                <a
+                <button
                   className="nav-link"
-                  href="#"
                   onClick={this.props.clickEve.bind(this, "Support")}
                 >
                   <img src={IconSupport} alt="nav-support" />
                   Support
-                </a>
+                </button>
               </li>
             ) : null}
           </ul>
