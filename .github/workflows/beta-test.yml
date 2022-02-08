@@ -19,8 +19,3 @@ jobs:
         #env:
         run: |
           docker run --network host -e CI=true -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm test'
-      - name: pr merged
-        if: github.event_name == 'push'
-        id: pr-merged
-        run: |
-          echo pr has been merged and closed
