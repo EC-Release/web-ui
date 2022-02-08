@@ -13,4 +13,4 @@ jobs:
         id: ui-build
         #env:
         run: |
-          docker run --network host -e CI=true -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm build'
+          docker run --network host -e CI=true -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm run-script build'
