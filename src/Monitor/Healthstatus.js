@@ -247,8 +247,10 @@ export default class Healthstatus extends React.Component {
 
   /* istanbul ignore next */
   fetchHealthStatus() {
-    let selectedGatewayId = this.state.selectedGateway;
-    let gateways = this.state.gateways;
+    //linter clean up
+    //let selectedGatewayId = this.state.selectedGateway;
+    //let gateways = this.state.gateways;
+    
     /* let selectedGateway = gateways.find(
       (x) => x.gatewayId === selectedGatewayId
     ); */
