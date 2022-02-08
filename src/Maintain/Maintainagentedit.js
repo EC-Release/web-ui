@@ -1533,8 +1533,8 @@ export default class Maintainagentedit extends React.Component {
     let clientIdDirtyState = currentFormData.clientId.dirtyState;
     let OAuth2Value = currentFormData.OAuth2.value;
     let OAuth2DirtyState = currentFormData.OAuth2.dirtyState;
-    let hostValue = currentFormData.host.value;
-    let hostDirtyState = currentFormData.host.dirtyState;
+    //let hostValue = currentFormData.host.value;
+    //let hostDirtyState = currentFormData.host.dirtyState;
     let remoteHostValue = currentFormData.remoteHost.value;
     let remoteHostDirtyState = currentFormData.remoteHost.dirtyState;
     let formIsValid = true;
@@ -1610,14 +1610,14 @@ export default class Maintainagentedit extends React.Component {
                   <div className="col-sm-12 mb-2">
                     {this.state.agentModeButtons.map(
                       (agentModeButton, buttonIndex) => {
-                        return agentModeButton.value ==
+                        return agentModeButton.value ===
                           this.state.agentForm.agentMode.value ? (
                           <button
                             key={"agentModeButton" + buttonIndex}
                             type="button"
                             name="agentMode"
                             className={
-                              agentModeButton.value ==
+                              agentModeButton.value ===
                               this.state.agentForm.agentMode.value
                                 ? "btn btn-sm mr-2 btn-selected"
                                 : "btn btn-sm mr-2 btn-deselected"
@@ -1627,7 +1627,7 @@ export default class Maintainagentedit extends React.Component {
                               agentModeButton.value
                             )}
                             disabled={
-                              agentModeButton.value !=
+                              agentModeButton.value !==
                               this.state.agentForm.agentMode.value
                             }
                           >
@@ -2493,13 +2493,12 @@ export default class Maintainagentedit extends React.Component {
                   <div className="row">
                     <div className="col-sm-5 mb-2">
                       <img alt="copy" src={CopyImg} height="15px" />
-                      <a
+                      <button
                         onClick={this.copyFromXClientToXServer.bind(this)}
-                        href="#"
                         className="theme-color cursor-pointer ml-1"
                       >
                         <small>Copy details from x:client</small>
-                      </a>
+                      </button>
                     </div>
                     <div className="col-sm-7 mb-2">
                       <button
@@ -2667,13 +2666,12 @@ export default class Maintainagentedit extends React.Component {
                   <div className="row">
                     <div className="col-sm-5 mb-2">
                       <img alt="copy" src={CopyImg} height="15px" />
-                      <a
+                      <button
                         onClick={this.copyFromXServerToXClient.bind(this)}
-                        href="#"
                         className="theme-color cursor-pointer ml-1"
                       >
                         <small>Copy details from x:server</small>
-                      </a>
+                      </button>
                     </div>
                     <div className="col-sm-7 mb-2">
                       <button
