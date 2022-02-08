@@ -294,7 +294,7 @@ export default class Technicalview extends React.Component {
                         Authorization: "Bearer " + this.props.authToken,
                       },
                     }).then((response) => {
-                      // eslint-disable-next-line
+                      /* eslint-disable */
                       if (response.status === 200) {
                         totalNumOfAjaxProcessed++;
                         progressPercent = Math.round(
