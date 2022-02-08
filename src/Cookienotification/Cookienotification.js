@@ -82,14 +82,13 @@ export default class Cookienotification extends React.Component {
             placement of these cookies.
           </div>
           <div className="col-sm-4">
-            <a href="#"
-              className="cookieConsentOK"
+            <button className="cookieConsentOK"
               onClick={(event) => {
                 this.readCookieNotification(event);
               }}
             >
               That's Fine
-            </a>
+            </button>
           </div>
         </div>
       </div>
