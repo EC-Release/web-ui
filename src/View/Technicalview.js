@@ -284,6 +284,7 @@ export default class Technicalview extends React.Component {
                     treeValue[0].children.push(newSubscriptionsObj);
                   }
 
+                  /* eslint-disable */
                   if (subscriptionId !== "") {
                     // fetch(this.props.baseUrl + '/gatewayList?subscriptionID='+subscriptionId, { // Get gateways '/gatewayList?subscriptionID='+subscriptionId
                     fetch("https://reqres.in/api/users/2", {
@@ -294,7 +295,7 @@ export default class Technicalview extends React.Component {
                         Authorization: "Bearer " + this.props.authToken,
                       },
                     }).then((response) => {
-                      /* eslint-disable */
+                      
                       if (response.status === 200) {
                         totalNumOfAjaxProcessed++;
                         progressPercent = Math.round(
@@ -878,7 +879,7 @@ export default class Technicalview extends React.Component {
                     });
                   }
                 }
-
+                /* eslint-enable */
                 let nodes = [];
                 let edges = [];
                 if (treeValue.length > 0) {
