@@ -1,0 +1,16 @@
+name: Build (Beta)
+on:
+  workflow_dispatch:  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    environment: v1.1beta
+    #env:
+    steps:
+      - uses: actions/checkout@v2
+      - name: building assets
+        id: ui-build
+        #env:
+        run: |
+          docker run --network host -e CI=true -v $(pwd):/build enterpriseconnect/webui:v1.1beta /bin/sh -c 'ls -al && npm install && npm build'
