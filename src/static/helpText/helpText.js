@@ -1,4 +1,4 @@
-export default 
+const exportedObject = 
 {
     "mode" : "Agent mode",
     "environment": "Environment",
@@ -30,4 +30,7 @@ export default
     "eaAmount": "The amount per each object",
     "qty": "The quantity of the object",
     "oidcUserId" : "GE SSO Id"
-}
+};
+
+export default exportedObject;
+
