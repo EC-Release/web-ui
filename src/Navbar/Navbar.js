@@ -181,9 +181,9 @@ export default class Navbar extends React.Component {
                   this.props.permissions.accesses.maintain.subMenus.groups
                     .delete ? (
                     <li className="dropdown-submenu">
-                      <a id="nav-group" className="dropdown-item" href="#">
+                      <button id="nav-group" className="dropdown-item">
                         Groups
-                      </a>
+                      </button>
                       <ul className="dropdown-menu">
                         {this.props.permissions.accesses.maintain.subMenus
                           .groups.create ? (
@@ -239,9 +239,9 @@ export default class Navbar extends React.Component {
                   {this.props.permissions.accesses.maintain.subMenus.agents
                     .create ? (
                     <li className="dropdown-submenu">
-                      <a id="nav-agent" className="dropdown-item" href="#">
+                      <button id="nav-agent" className="dropdown-item">
                         Launch Scripts
-                      </a>
+                      </button>
                       <ul className="dropdown-menu">
                         {this.props.permissions.accesses.maintain.subMenus
                           .agents.create ? (
@@ -286,9 +286,9 @@ export default class Navbar extends React.Component {
                   this.props.permissions.accesses.maintain.subMenus.watchers
                     .delete ? (
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item" href="#">
+                      <button className="dropdown-item">
                         Requests
-                      </a>
+                      </button>
                       <ul className="dropdown-menu">
                         {this.props.permissions.accesses.maintain.subMenus
                           .watchers.create ? (
@@ -309,16 +309,15 @@ export default class Navbar extends React.Component {
                         this.props.permissions.accesses.maintain.subMenus
                           .watchers.delete ? (
                           <li>
-                            <a
+                            <button
                               className="dropdown-item"
                               onClick={this.props.clickEve.bind(
                                 this,
                                 "RequestUpgrade"
                               )}
-                              href="#"
                             >
                               Update/Disable
-                            </a>
+                            </button>
                           </li>
                         ) : null}
                         {this.props.permissions.accesses.maintain.subMenus
@@ -347,9 +346,9 @@ export default class Navbar extends React.Component {
                   this.props.permissions.accesses.maintain.subMenus.watchers
                     .delete ? (
                     <li className="dropdown-submenu">
-                      <a className="dropdown-item" href="#">
+                      <button className="dropdown-item">
                         Subscription
-                      </a>
+                      </button>
                       <ul className="dropdown-menu">
                         {this.props.permissions.accesses.maintain.subMenus
                           .watchers.create ? (
@@ -427,14 +426,13 @@ export default class Navbar extends React.Component {
                   {this.props.permissions.accesses.monitor.subMenus.healthStatus
                     .view ? (
                     <li>
-                      <a
+                      <button
                         id="nav-healthStatus"
                         className="dropdown-item"
                         onClick={this.props.clickEve.bind(this, "View")}
-                        href="#"
                       >
                         Health Operations
-                      </a>
+                      </button>
                     </li>
                   ) : null}
                 </ul>
