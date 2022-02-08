@@ -83,7 +83,7 @@ export default class SubscriptionAdd extends React.Component {
                 status: "ok",
               },
             };
-            if (respData.errorStatus.status == "ok") {
+            if (respData.errorStatus.status === "ok") {
               this.props.showGlobalMessage(
                 false,
                 true,
