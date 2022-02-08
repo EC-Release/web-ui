@@ -2118,7 +2118,7 @@ export default class Technicalview extends React.Component {
                   this.refreshData(event);
                 }}
               >
-                <a className="nav-link disabled" href="#">
+                <a className="nav-link disabled" href="#refresh">
                   <img
                     className=""
                     src={IconRefresh}
