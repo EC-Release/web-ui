@@ -84,14 +84,14 @@ export default class Header extends React.Component {
                       className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton"
                     >
-                      <a className="dropdown-item cursor-pointer" href="#">
+                      <button className="dropdown-item cursor-pointer">
                         {this.props.isFullScreenModal ? null : (
                           <span onClick={this.props.fullScreenModal.bind(this)}>
                             FullScreen
                           </span>
                         )}
-                      </a>
-                      <a className="dropdown-item cursor-pointer"  href="#">
+                      </button>
+                      <button className="dropdown-item cursor-pointer">
                         {this.props.isFullScreenModal ? (
                           <span onClick={this.props.medModal.bind(this)}>
                             Minimize
@@ -101,31 +101,28 @@ export default class Header extends React.Component {
                             Minimize
                           </span>
                         )}
-                      </a>
-                      <a
-                        className="dropdown-item cursor-pointer"  href="#"
+                      </button>
+                      <button className="dropdown-item cursor-pointer"
                         onClick={() => {
                           this.props.handleUser(this.props.user);
                         }}
                       >
                         Switch to {this.props.user}
-                      </a>
-                      <a
-                        className="dropdown-item cursor-pointer"  href="#"
+                      </button>
+                      <button className="dropdown-item cursor-pointer"
                         onClick={() => {
                           this.props.clickEve("UserProfile");
                         }}
                       >
                         My Profile
-                      </a>
-                      <a
-                        className="dropdown-item cursor-pointer" href="#"
+                      </button>
+                      <button className="dropdown-item cursor-pointer"
                         onClick={(event) => {
                           this.logout(event);
                         }}
                       >
                         Logout
-                      </a>
+                      </button>
                     </div>
                   </div>
                 </div>
