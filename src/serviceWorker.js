@@ -11,15 +11,16 @@
 // opt-in, read https://bit.ly/CRA-PWA
 
 /* istanbul ignore next */
-let hostNameCondition = new RegExp("/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[]?[0-9][0-9]?)){3}$/");
+//let hostNameCondition = new RegExp("/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[]?[0-9][0-9]?)){3}$/");
 
 /* istanbul ignore next */
 const isLocalhost = Boolean(
-  window.location.hostname === "localhost" ||
+    window.location.hostname === "localhost" ||
     // [::1] is the IPv6 localhost address.
     window.location.hostname === "[::1]" ||
-    // 127.0.0.0/8 are considered localhost for IPv4.
-    hostNameCondition
+    window.location.hostname === "127.0.0.1" //||
+   // 127.0.0.0/8 are considered localhost for IPv4.
+    //hostNameCondition
     /* window.location.hostname.match(
       /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[]?[0-9][0-9]?)){3}$/
     ) */
