@@ -249,10 +249,10 @@ export default class App extends React.Component {
         response.json().then((respData) => {
           this.hideGlobalMessage();
           sessionStorage.setItem("userData", JSON.stringify(respData));
-          let userId = respData[0].userId;
-          let profileName = respData[0].fullName;
-          let profileEmailId = respData[0].email;
-          let permissions = permission;
+          //let userId = respData[0].userId;
+          //let profileName = respData[0].fullName;
+          //let profileEmailId = respData[0].email;
+          //let permissions = permission;
           let isNewUser = respData[0].license === "";
           let currentView = isNewUser?"SubscriptionDashboard":"Dashboard";
           this.setState({
