@@ -508,7 +508,7 @@ export default class Customsearch extends React.Component {
                     {this.state.filteredAvailableFields.map(
                       (availableFieldObj, availableFieldIndex) => {
                         return (
-                          <a href="#"
+                          <button
                             onClick={this.handleAvailableFieldSelect.bind(
                               this,
                               availableFieldIndex
@@ -516,7 +516,6 @@ export default class Customsearch extends React.Component {
                             key={
                               "availableFieldAnchorKey" + availableFieldIndex
                             }
-                            href="#"
                             className={
                               this.state.clickedFilteredAvailableFieldIndex ===
                               availableFieldIndex
@@ -525,7 +524,7 @@ export default class Customsearch extends React.Component {
                             }
                           >
                             {availableFieldObj.fieldName}
-                          </a>
+                          </button>
                         );
                       }
                     )}
@@ -564,15 +563,13 @@ export default class Customsearch extends React.Component {
                       this.state.filteredSelectedFields.map(
                         (selectedFieldObj, selectedFieldIndex) => {
                           return (
-                            <a  href="#"
-                              onClick={this.handleSelectedFieldSelect.bind(
+                            <button onClick={this.handleSelectedFieldSelect.bind(
                                 this,
                                 selectedFieldIndex
                               )}
                               key={
                                 "selectedFieldAnchorKey" + selectedFieldIndex
                               }
-                              href="#"
                               className={
                                 this.state.clickedFilteredSelectedFieldIndex ===
                                 selectedFieldIndex
@@ -581,7 +578,7 @@ export default class Customsearch extends React.Component {
                               }
                             >
                               {selectedFieldObj.fieldName}
-                            </a>
+                            </button>
                           );
                         }
                       )
