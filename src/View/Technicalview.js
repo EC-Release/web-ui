@@ -1948,7 +1948,8 @@ export default class Technicalview extends React.Component {
     let mockTableData = [...this.state.mockTableData];
     console.log(mockTableData);
     let filteredData = mockTableData;
-    let uniqueFilteredData = [];
+    
+    //let uniqueFilteredData = [];
     let andFilters = [];
     let orFilters = [];
     for (let filterField of filterFields) {
