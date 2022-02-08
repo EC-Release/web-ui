@@ -2034,7 +2034,8 @@ export default class Technicalview extends React.Component {
 
     if (orFilters.length > 0) {
       let seen = Object.create(null);
-      uniqueFilteredData = filteredData.filter((o) => {
+      //uniqueFilteredData = filteredData.filter((o) => {
+      filteredData.filter((o) => {
         var key = ["subscription_name", "group_id", "gateway"]
           .map((k) => o[k])
           .join("|");
