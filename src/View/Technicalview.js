@@ -1151,6 +1151,7 @@ export default class Technicalview extends React.Component {
                   treeValue[0].children.push(newSubscriptionsObj);
                 }
 
+                /* eslint-disable */
                 if (subscriptionId !== "") {
                   fetch(
                     this.props.baseUrl +
@@ -1166,7 +1167,6 @@ export default class Technicalview extends React.Component {
                       },
                     }
                   ).then((response) => {
-                    // jshint ignore:line
                     if (response.status === 200) {
                       totalNumOfAjaxProcessed++;
                       response.json().then((respData) => {
@@ -1697,6 +1697,8 @@ export default class Technicalview extends React.Component {
                 } else {
                   totalNumOfAjaxProcessed++;
                 }
+                /* eslint-enable */
+                    
               }
             }
           }
@@ -2040,9 +2042,11 @@ export default class Technicalview extends React.Component {
           seen[key] = true;
           return true;
         }
+        //workaround for jslint. revisit the logic
+        return false;
       });
-    } else {
-      uniqueFilteredData = filteredData;
+    //} else {
+      //uniqueFilteredData = filteredData;
     }
 
     let selectedDataKeys = [];
