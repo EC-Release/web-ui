@@ -1,7 +1,7 @@
-[![Build Status](https://travis-ci.com/EC-Release/web-ui.svg?branch=v1.1beta)](https://travis-ci.com/EC-Release/web-ui)
+[![Build (Beta)](https://github.com/EC-Release/web-ui/actions/workflows/beta-build.yml/badge.svg)](https://github.com/EC-Release/web-ui/actions/workflows/beta-build.yml) [![Test Coverage (Beta)](https://github.com/EC-Release/web-ui/actions/workflows/beta-test.yml/badge.svg)](https://github.com/EC-Release/web-ui/actions/workflows/beta-test.yml)
 
 # web-ui
-- EC Web UI based on Bootstrap and REACT.
+EC Web UI based on Bootstrap and Chrome APIs.
 
 ## Runtime Requirement:
 * Agent v1.1beta [#1686+](https://github.com/Enterprise-connect/ec-x-sdk/releases/tag/v1.1beta.fukuoka.1686)
@@ -9,12 +9,11 @@
 
 ## Environment Variables:
 * ```PORT``` app port#. E.g. 3006
-* ```REACT_APP_BACKEND_URL``` app URL. E.g. http://localhost:4200
+* ```REACT_APP_BACKEND_URL``` app URL. E.g. http://localhost:4200. Development ONLY. This is NOT and will not be the production backend.
 * ```REACT_APP_ENV``` runtime environment. E.g. development
 
 ## Development Requirement:
-* [Facebook REACT v16+](https://reactjs.org/docs/getting-started.html#try-react)
-* [Bootstrap UI v4.3.0+](https://getbootstrap.com/docs/4.3/getting-started/download/)
+* [docker 1.13.1](https://docs.docker.com/engine/release-notes/prior-releases/)
 * EC Agent v1.1beta v1686+
   * [You may download an agent artifact for your supported OS other than linux](https://github.com/Enterprise-connect/ec-x-sdk/tree/v1.1beta/dist)
   * [Visit agent repo for usage](https://github.build.ge.com/Enterprise-Connect/agent/tree/v1.1beta#oauth2-authentication-provider) 
