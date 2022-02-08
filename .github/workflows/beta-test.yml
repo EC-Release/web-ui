@@ -1,9 +1,9 @@
-name: beta-ci
+name: Test Coverage (Beta)
 on:
   push:
-    branches: [ v1.2beta ]
+    branches: [ 1.2-b ]
   pull_request:
-    branches: [ v1.2beta ]
+    branches: [ 1.2-b ]
     types: [opened, synchronize]
   workflow_dispatch:  
 jobs:
